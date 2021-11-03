@@ -1,0 +1,78 @@
+/* Archive Header
+--------------------------------------------- */
+
+.archive-description {
+	text-align: center;
+	width: 100%;
+	max-width: $content-width;
+	margin: 0 auto $grid-gap;
+
+	& > *:last-child {
+		margin-bottom: 0;
+	}
+
+	.search-form {
+		margin: 0 auto;
+	}
+
+}
+
+/* Archive Post Listing
+--------------------------------------------- */
+
+.archive-post-listing {
+	@include media(">small", "<medium") {
+		@include columns(2);
+	}
+
+	@include media(">=medium") {
+		@include columns(4);
+	}
+
+	.block-area,
+	.no-results {
+		grid-column: 1 / -1;
+		margin-bottom: 48px;
+	}
+
+}
+
+/* Entry Navigation
+--------------------------------------------- */
+
+.pagination {
+	text-align: center;
+	padding-top: 22px;
+
+	ul {
+		margin: 0;
+
+		li {
+			list-style-type: none;
+			display: inline-block;
+
+			a {
+				display: block;
+				width: 44px;
+				height: 44px;
+				line-height: 44px;
+				text-align: center;
+				text-decoration: none;
+			}
+
+			&.pagination-next a,
+			&.pagination-previous a {
+				width: auto;
+			}
+
+			&:hover > a {
+			}
+
+			&.active > a {
+				background: brand-color( 'primary' );
+				color: $white;
+				font-weight: 700;
+			}
+		}
+	}
+}

@@ -1,0 +1,87 @@
+body, p {
+	@include style( 'text', null, true );
+}
+
+/* Post title width */
+.editor-post-title__block.wp-block {
+	max-width: $content-width;
+
+	/* Post title styling */
+	.editor-post-title__input {
+		@include style( 'title', 1, true );
+	}
+}
+
+/* Main column width */
+.wp-block {
+	max-width: $content-width;
+
+	/* Wide column width */
+	&[data-align="wide"] {
+		max-width: $grid-width;
+	}
+
+	&[data-align="full"] {
+		max-width: none;
+	}
+
+	&[data-align="center"] > [data-type="core/group"] {
+		text-align: inherit;
+
+		.wp-block-group__inner-container {
+			max-width: $content-width;
+		}
+	}
+
+	&[data-align="wide"] > [data-type="core/group"] {
+
+		.wp-block-group__inner-container {
+			max-width: $grid-width;
+
+			.wp-block {
+				max-width: none;
+			}
+		}
+	}
+
+}
+
+// Max with on ACF editor
+.acf-block-component .acf-block-fields {
+	max-width: $content-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Prevent clicking
+.block-post-listing,
+.block-tag-listing,
+.block-category-listing {
+	position: relative;
+
+	&::before {
+		@include block-cover;
+		z-index: 2;
+	}
+}
+
+ul, ol {
+	margin-bottom: 24px;
+}
+
+// Separator
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+	max-width: 100%;
+}
+
+// WPForms
+.wpforms-field-hp,
+.wpforms-label-hide {
+	display: none;
+}
+
+.wpforms-field {
+	@include form_style();
+}
+
+@import "entry-content";

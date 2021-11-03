@@ -1,0 +1,150 @@
+@mixin style( $type: null, $size: null, $base: false ) {
+	@if 'display' == $type  {
+
+		@if $base {
+			color: $text_dark;
+			font-family: $alt-font;
+			font-weight: 500;
+			letter-spacing: -1px;
+			line-height: 1.2;
+		}
+
+		@if 1 == $size {
+			@include font-sizes( 49px, 53px, 66px );
+		} @else if 2 == $size {
+			@include font-sizes( 44px, 46px, 53px );
+		} @else if 3 == $size {
+			@include font-sizes( 34px, 38px, 44px );
+		} @else if 4 == $size {
+			@include font-sizes( 30px, 34px, 38px );
+		}
+
+	} @else if 'title' == $type {
+
+		@if $base {
+			color: $text_dark;
+			font-family: $base-font;
+			font-weight: 700;
+			line-height: 1.2;
+		}
+
+		@if 1 == $size {
+			@include font-sizes( 44px, 46px, 49px );
+		} @else if 2 == $size {
+			@include font-sizes( 34px, 36px, 38px );
+		} @else if 3 == $size {
+			@include font-sizes( 27px, 28px, 30px );
+		} @else if 4 == $size {
+			@include font-sizes( 24px, 25px, 27px );
+		} @else if 5 == $size {
+			@include font-sizes( 22px, 23px, 24px );
+		} @else if 6 == $size {
+			@include font-sizes( 20px, 21px, 22px );
+		}
+
+	} @else if 'subtitle' == $type {
+
+		// Inherit attributes from title
+		@include style( 'title', $size, $base );
+
+		// Custom attributes
+		font-weight: 700;
+
+	} @else if 'body' == $type {
+
+		@if $base {
+			color: $text_dark;
+			font-family: $base-font;
+			font-weight: 400;
+			line-height: 1.5;
+		}
+
+		@if 1 == $size {
+			font-size: 19px;
+		} @else if 2 == $size {
+			font-size: 18px;
+		} @else if 3 == $size {
+			font-size: 17px;
+		} @else if 4 == $size {
+			font-size: 16px;
+		} @else if 5 == $size {
+			font-size: 15px;
+		} @else if 6 == $size {
+			font-size: 14px;
+		} @else if 7 == $size {
+			font-size: 13px;
+		} @else if 8 == $size {
+			font-size: 12px;
+		} @else if 9 == $size {
+			font-size: 11px;
+		}
+
+
+	} @else if 'callout' == $type {
+
+		// Inherit attributes from body
+		@include style( 'body', $size, $base );
+
+		// Custom attributes
+		font-weight: 700;
+		line-height: 1.2;
+
+	} @else if 'footnote' == $type {
+
+		// Inherit attributes from body
+		@include style( 'body', $size, $base );
+
+		// Custom attributes
+		font-weight: 400;
+		line-height: 1.2;
+
+	}
+}
+
+%transition {
+	transition: all 0.1s ease-in-out;
+}
+
+@mixin form_style {
+	input, select, textarea {
+		background: $white;
+		border: 1px solid $neutral_400;
+		border-radius: 4px;
+		color: $text_medium;
+		font-size: 18px;
+		line-height: 24px;
+		padding: 14px 16px;
+		width: 100%;
+	}
+
+	input[type="checkbox"] {
+		width: auto;
+	}
+
+	select {
+		line-height: 54px;
+		height: 54px
+	}
+
+	textarea {
+		width: 100%;
+	}
+
+	@include placeholder-color( $neutral_400 );
+
+}
+
+@mixin box-shadow( $name, $size ) {
+	@if 1 == $size {
+		box-shadow: 0 4px 8px -4px rgba( brand-color( $name ), 0.24 );
+
+	} @else if 2 == $size {
+		box-shadow: 0 8px 16px -8px rgba( brand-color( $name ), 0.24 );
+
+	} @else if 3 == $size {
+		box-shadow: 0 12px 32px -8px rgba( brand-color( $name ) , 0.24 );
+
+	} @else if 4 == $size {
+		box-shadow: 0 16px 40px -8px rgba( brand-color( $name ), 0.24 );
+	}
+}

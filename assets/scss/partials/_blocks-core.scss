@@ -1,0 +1,328 @@
+/* Button
+--------------------------------------------- */
+
+.wp-block-button__link {
+	@include style( 'callout', 5, true );
+	background-color: brand-color( 'primary' );
+	border: none;
+	border-radius: 3px;
+	padding: 11px 24px;
+	text-decoration: none;
+
+	svg {
+		margin-left: 8px;
+	}
+
+	&:not(.has-text-color) {
+		color: white;
+
+		&:hover {
+			color: white;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		background-color: brand-color( 'primary', 'darken' );
+	}
+
+	@each $name in $gutenberg_colors {
+		&.has-#{$name}-background-color {
+
+			&:hover,
+			&:focus {
+				background-color: brand-color( $name, 'darken' );
+			}
+		}
+	}
+}
+
+.wp-block-button {
+
+	&.is-style-outline {
+
+		.wp-block-button__link {
+			border: 2px solid transparent;
+			padding: 9px 22px;
+
+			&:not(.has-text-color) {
+				color: brand-color( 'primary' );
+			}
+
+			&:not(.has-background) {
+				background: white;
+				border-color: brand-color( 'primary' );
+
+				&:hover {
+					background: brand-color( 'primary', 'bg' );
+				}
+			}
+
+			@each $name in $gutenberg_colors {
+				&.has-#{$name}-background-color {
+					background: white;
+					border-color: brand-color( $name );
+
+					&:hover {
+						background: brand-color( $name, 'bg' );
+					}
+				}
+			}
+		}
+	}
+
+	&.is-style-arrow {
+
+		.wp-block-button__link {
+			background: transparent;
+			border: none;
+			padding-left: 0;
+			padding-right: 0;
+
+			&.has-background {
+				background: transparent;
+				border: none;
+			}
+
+			&:not(.has-text-color) {
+				color: brand-color( 'primary' );
+
+				svg {
+					fill: brand-color( 'primary' );
+				}
+
+				&:hover {
+					color: brand-color( 'primary', 'darken' );
+
+					svg {
+						fill: brand-color( 'primary', 'darken' );
+					}
+				}
+			}
+
+			@each $name in $gutenberg_colors {
+				&.has-#{$name}-color {
+					svg {
+						fill: brand-color( $name );
+					}
+
+					&:hover {
+						color: brand-color( $name, 'darken' );
+
+						svg {
+							fill: brand-color( $name, 'darken' );
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Blockquote
+--------------------------------------------- */
+
+blockquote,
+blockquote.wp-block-quote {
+	text-align: left;
+
+	p {
+	}
+
+	cite,
+	.wp-block-quote__citation {
+
+	}
+
+	p:last-of-type {
+			margin-bottom: 0;
+	}
+
+}
+
+/* Separator
+--------------------------------------------- */
+
+.wp-block-separator,
+hr {
+	background: transparent;
+	border: none;
+	width: 100%;
+	height: 32px;
+	position: relative;
+
+	&::before {
+		background: $neutral_200;
+		content: '';
+		display: block;
+		width: 100%;
+		height: 1px;
+		position: absolute;
+		top: 50%;
+		margin-top: -.5px;
+	}
+}
+
+/* Image
+--------------------------------------------- */
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+
+	&.emoji {
+		max-width: 16px;
+	}
+
+	&.alignleft {
+		float: left;
+		margin: 0 $block-margin $block-margin 0;
+	}
+
+	&.alignright {
+		float: right;
+		margin: 0 0 $block-margin $block-margin;
+	}
+
+	&.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+}
+
+.wp-block-image,
+.wp-block-video,
+.wp-block-table {
+	figcaption {
+
+	}
+
+	&.alignwide figcaption {
+		@include media("<desktop") {
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+	}
+
+	&.alignfull figcaption {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+}
+
+.wp-block-gallery ul {
+	flex-grow: 1;
+}
+
+/* Tables
+--------------------------------------------- */
+
+.wp-block-table  {
+
+	border-collapse: collapse;
+	width: 100%;
+
+	td, th {
+		padding: .5em;
+		border: 1px solid;
+	}
+}
+
+/* Color Options
+--------------------------------------------- */
+
+@each $name in $gutenberg_colors {
+
+	.has-#{$name}-color {
+		color: brand-color( $name );
+
+		&:hover {
+			color: brand-color( $name );
+		}
+	}
+
+	.has-#{$name}-bg-color {
+		color: brand-color( $name, 'bg' );
+	}
+
+	.has-#{$name}-background-color {
+		background-color: brand-color( $name );
+		color: $text_light;
+
+		h1, h2, h3, h4, h5, h6, p {
+			color: $text_light;
+		}
+
+	}
+
+	.has-#{$name}-bg-background-color {
+		background-color: brand-color( $name, 'bg' );
+	}
+
+	.has-#{$name}-fill {
+		fill: brand-color( $name );
+	}
+
+}
+
+.has-grey-background-color {
+	background-color: $neutral_50;
+}
+
+.has-white-background-color {
+	background-color: $white;
+}
+
+/* Group
+--------------------------------------------- */
+
+.wp-block-group {
+
+	&.alignfull,
+	&.alignwide {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	&.has-background {
+		padding: 40px 16px;
+	}
+
+	.wp-block-group__inner-container {
+		max-width: $content_width;
+		margin: 0 auto;
+		@include clearfix;
+
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+
+		.full-width-content & {
+			max-width: $grid-width;
+		}
+	}
+
+	&.aligncenter {
+		.wp-block-group__inner-container {
+			max-width: $content-width;
+		}
+	}
+
+	&.alignwide {
+
+		.wp-block-group__inner-container {
+			max-width: $grid-width;
+		}
+	}
+
+	&.alignfull {
+
+		.alignwide {
+			margin-left: ( $content-width - $grid-width ) / 2;
+			margin-right: ( $content-width - $grid-width ) / 2;
+		}
+	}
+
+}

@@ -1,0 +1,74 @@
+// Colors
+$white: #fff;
+$neutral_50: #FAFAFA;
+$neutral_100: #F5F5F5;
+$neutral_200: #EEEEEE;
+$neutral_300: #E0E0E0;
+$neutral_400: #BDBDBD;
+$neutral_500: #9E9E9E;
+$neutral_600: #757575;
+$neutral_700: #616161;
+$neutral_800: #424242;
+$neutral_900: #212121;
+$black: #000;
+
+// Text Colors
+$text_dark: #111111;
+$text_medium: #737373;
+$text_light: #FFFFFF;
+
+// Social colors
+$socials: (
+	'facebook'	: #1778F2,
+	'twitter'	: #00B6F1,
+	'pinterest'	: #CB2027,
+	'instagram'	: #C32AA3,
+	'youtube'	: #FF0000,
+	'print'		: $neutral_700,
+);
+
+// Brand Colors
+// -- primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, denary
+$brand_colors: (
+	'primary'	: #24509A,
+	'primary_darken' : #1A3B71,
+	'primary_lighten' : #2E65C3,
+	'primary_bg' : #E9EDF4,
+	'secondary' : #FEC72D,
+	'secondary_darken' : #F7B601,
+	'secondary_lighten' : #FED560,
+	'secondary_bg' : #FEF9EA,
+);
+@import "../modules/brand-color";
+
+// Gutenberg Colors
+$gutenberg_colors: ( 'primary', 'secondary' );
+
+// Fonts
+$base-font: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$alt-font: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+
+// Content
+$content-width: 736px;
+$block-margin: 24px;
+
+// Grid
+$grid: grid;
+$grid-width: 1168px;
+$grid-gap: 32px;
+
+// Include Media
+$breakpoints: (
+	'phone'  : 360px,
+	'small'  : 768px,
+	'tablet' : 768px, // required for include-media
+	'mobile_menu' : 768px,
+	'medium' : 992px,
+	'large'  : 1200px,
+	'desktop': $grid-width + $grid-gap, // required for include-media
+	'content-width': $content-width + $grid-gap,
+);
+
+@import "../modules/helpers";
+@import "../vendor/_include-media";
+@import "../modules/base-styles";

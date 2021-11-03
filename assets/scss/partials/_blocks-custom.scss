@@ -1,0 +1,67 @@
+/* Style Guide Colors
+--------------------------------------------- */
+
+.style-guide-colors,
+.block-icons {
+	display: grid;
+	grid-gap: $grid-gap;
+	grid-template-columns: repeat(auto-fill, minmax(64px,1fr));
+}
+
+.style-guide-color,
+.block-icons p {
+	@include style( 'footnote', 9, true );
+	text-align: center;
+
+	.swatch {
+		border: 1px solid $neutral_300;
+		border-radius: 50%;
+		width: 100%;
+		height: 0;
+		padding-bottom: 100%;
+		margin-bottom: 6px;
+	}
+}
+
+/* Search Form
+--------------------------------------------- */
+
+.search-form {
+	border: 1px solid $neutral_200;
+	max-width: 400px;
+	position: relative;
+	overflow: hidden;
+
+	.search-field {
+		border: none;
+		padding-right: 44px;
+		width: 100%;
+		outline: none;
+	}
+
+	.search-submit {
+		background: transparent;
+		border: none;
+		padding: 0;
+		margin: 0;
+		min-width: 0;
+		width: 44px;
+		height: 44px;
+		line-height: 0;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		margin-top: -22px;
+		right: 0;
+
+		svg {
+			fill: $neutral_600;
+			@include size( 20px );
+
+			&:hover {
+				fill: brand-color( 'primary' );
+			}
+		}
+
+	}
+}

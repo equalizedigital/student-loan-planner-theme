@@ -1,0 +1,133 @@
+/* Typographical Elements
+--------------------------------------------- */
+
+body {
+	@include style( 'body', $size: 5, $base: true );
+}
+
+/**
+ * Make sure links are accessible
+ * @link https://webaim.org/resources/linkcontrastchecker/
+ */
+a {
+	color: #4242FF;
+	text-decoration: underline;
+	@extend %transition;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	svg {
+		@extend %transition;
+	}
+}
+
+strong {
+	font-weight: 700;
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+code,
+pre {
+	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	font-size: 12px;
+}
+
+code {
+	padding: 2px 4px;
+	white-space: nowrap;
+}
+
+pre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	line-height: 18px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+}
+
+pre code {
+	padding: 0;
+	color: inherit;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: transparent;
+	border: 0;
+}
+
+cite {
+	font-style: normal;
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+/* Paragraph
+--------------------------------------------- */
+
+p {
+	margin: 0 0 16px;
+	padding: 0;
+
+	&.large,
+	&.has-large-font-size {
+		@include style( 'body', 3 );
+	}
+
+	&.has-normal-font-size {
+		@include style( 'body', 5 );
+	}
+
+	&.small,
+	&.has-small-font-size {
+		@include style( 'body', 7 );
+	}
+}
+
+/* Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include style( 'title', null, true );
+	margin: 0 0 16px;
+
+	a {
+		color: $text_dark;
+
+		&:hover {
+			color: brand-color( 'primary' );
+			text-decoration: none;
+		}
+	}
+}
+
+h1 {
+	@include style( 'display', 4, true );
+}
+
+h2 {
+	@include style( 'title', 3 );
+}
+
+h3 {
+	@include style( 'title', 5 );
+}
+
+h4, h5, h6 {
+	@include style( 'title', 7 );
+}
