@@ -12,7 +12,7 @@
  * Mobile Menu
  */
 function mst_site_header() {
-	echo mst_mobile_menu_toggle();
+	/* echo mst_mobile_menu_toggle();
 	echo mst_search_toggle();
 
 	echo '<nav' . mst_amp_class( 'nav-menu', 'active', 'menuActive' ) . ' role="navigation">';
@@ -26,7 +26,26 @@ function mst_site_header() {
 
 	if ( ! function_exists( 'SlickEngagement_init' ) ) {
 		echo '<div' . mst_amp_class( 'header-search', 'active', 'searchActive' ) . '>' . get_search_form( array( 'echo' => false ) ) . '</div>';
-	}
+	} */
+
+	if (has_nav_menu('primary')) : ?>
+		<div class="menu-container">
+			<button class="menu-button"><span class="screen-reader-text"><?php _e('Menu','rwc'); ?></span></button>
+			<div id="site-header-menu" class="site-header-menu">
+				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e('Primary Menu', 'rwc'); ?>">
+				<?php
+				wp_nav_menu(array(
+					'theme_location' => 'primary',
+					'depth'          => 3,
+					'menu_id' => 'primary-menu',
+					'container_class' => 'nav-primary'
+					));
+				?>
+				</nav>
+			</div>
+		</div>
+	<?php endif;
+
 }
 add_action( 'tha_header_bottom', 'mst_site_header', 11 );
 
@@ -48,7 +67,7 @@ function mst_nav_extras( $menu, $args ) {
 
 	return $menu;
 }
-add_filter( 'wp_nav_menu_items', 'mst_nav_extras', 10, 2 );
+//add_filter( 'wp_nav_menu_items', 'mst_nav_extras', 10, 2 );
 
 /**
  * Search toggle
@@ -105,7 +124,7 @@ function mst_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	return $output;
 }
-add_filter( 'walker_nav_menu_start_el', 'mst_nav_add_dropdown_icons', 10, 4 );
+//add_filter( 'walker_nav_menu_start_el', 'mst_nav_add_dropdown_icons', 10, 4 );
 
 /**
  * Previous/Next Archive Navigation (disabled)
