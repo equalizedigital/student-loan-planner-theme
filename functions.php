@@ -23,6 +23,7 @@ require_once get_template_directory() . '/inc/loop.php';
 require_once get_template_directory() . '/inc/author-box.php';
 require_once get_template_directory() . '/inc/comments.php';
 require_once get_template_directory() . '/inc/template-tags.php';
+require_once get_template_directory() . '/inc/admin-branding.php';
 
 // Functionality.
 require_once get_template_directory() . '/inc/blocks.php';
@@ -31,15 +32,15 @@ require_once get_template_directory() . '/inc/login-logo.php';
 require_once get_template_directory() . '/inc/social-links.php';
 
 // Plugin Support.
-require_once get_template_directory() . '/inc/class-be-acf-customizations.php';
+//require_once get_template_directory() . '/inc/class-be-acf-customizations.php';
 require_once get_template_directory() . '/inc/amp.php';
 require_once get_template_directory() . '/inc/cultivate-pro.php';
 require_once get_template_directory() . '/inc/pwa.php';
 require_once get_template_directory() . '/inc/shared-counts.php';
 require_once get_template_directory() . '/inc/slickstream.php';
 require_once get_template_directory() . '/inc/wordpress-seo.php';
-require_once get_template_directory() . '/inc/wpforms.php';
-require_once get_template_directory() . '/inc/wp-recipe-maker.php';
+//require_once get_template_directory() . '/inc/wpforms.php';
+//require_once get_template_directory() . '/inc/wp-recipe-maker.php';
 
 /**
  * Enqueue scripts and styles.
