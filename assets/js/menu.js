@@ -18,13 +18,6 @@ https://github.com/wpaccessibility/a11ythemepatterns/tree/master/menu-keyboard-a
     var siteHeaderMenu   = menuContainer.find( '#site-header-menu' );
     var siteNavigation   = menuContainer.find( '#site-navigation' );
 
-    // If you are using WordPress, and do not need to localise your script, or if you are not using WordPress, then uncomment the next line
-    // var screenReaderText = {"expand":"Expand child menu","collapse":"Collapse child menu"};
-
-    var dropdownToggle   = $('<button />', {'class': 'dropdown-toggle','aria-expanded': false})
-    .append($('<span />', {'class': 'screen-readers',text: screenReaderText.expand}));
-
-
     // Toggles the menu button
     (function() {
 
@@ -47,7 +40,20 @@ https://github.com/wpaccessibility/a11ythemepatterns/tree/master/menu-keyboard-a
     } )();
 
     // Adds the dropdown toggle button
-    $('.menu-item-has-children > a').after(dropdownToggle);
+    //$('.menu-item-has-children > a').after(dropdownToggle);
+    $('.menu-item-has-children > a').not(this).each(function(){
+
+        var linkText = $(this).text();
+        // If you are using WordPress, and do not need to localise your script, or if you are not using WordPress, then uncomment the next line
+        var screenReaderText = {"expand":": submenu","collapse":": submenu"};
+
+        var dropdownToggle   = $('<button />', {'class': 'dropdown-toggle','aria-expanded': false})
+        .append($('<span />', {'class': 'screen-readers',text: linkText+screenReaderText.expand}));
+
+        //console.log($(this).text());
+        //Learn: submenu
+        $(this).after(dropdownToggle);
+    });
 
     // Adds aria attribute
     siteHeaderMenu.find( '.menu-item-has-children' ).attr( 'aria-haspopup', 'true' );
@@ -55,7 +61,21 @@ https://github.com/wpaccessibility/a11ythemepatterns/tree/master/menu-keyboard-a
     // Toggles the sub-menu when dropdown toggle button clicked
     siteHeaderMenu.find( '.dropdown-toggle' ).click( function(e) {
 
-        screenReaderSpan = $(this).find( '.screen-readers' );
+        // close open submenus
+        $('.dropdown-toggle').not(this).each(function(){
+            //screenReaderSpan = $(this).find( '.screen-readers' );
+
+            $(this).removeClass( 'toggled-on' );
+            $(this).nextAll( '.sub-menu' ).removeClass( 'toggled-on' );
+             // jscs:disable
+            $(this).attr( 'aria-expanded', $(this).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
+            // jscs:enable
+            /* screenReaderSpan.text( screenReaderSpan.text() ===
+            screenReaderText.expand ? screenReaderText.collapse :
+            screenReaderText.expand ); */
+        });
+
+        //screenReaderSpan = $(this).find( '.screen-readers' );
 
         e.preventDefault();
         $(this).toggleClass( 'toggled-on' );
@@ -65,9 +85,9 @@ https://github.com/wpaccessibility/a11ythemepatterns/tree/master/menu-keyboard-a
         $(this).attr( 'aria-expanded', $(this).attr( 'aria-expanded' ) === 'false'
         ? 'true' : 'false' );
         // jscs:enable
-        screenReaderSpan.text( screenReaderSpan.text() ===
+        /* screenReaderSpan.text( screenReaderSpan.text() ===
         screenReaderText.expand ? screenReaderText.collapse :
-        screenReaderText.expand );
+        screenReaderText.expand ); */
     });
 
     // Adds a class to sub-menus for styling
@@ -77,11 +97,18 @@ https://github.com/wpaccessibility/a11ythemepatterns/tree/master/menu-keyboard-a
     // Keyboard navigation
     $('.menu-item a, button.dropdown-toggle').on('keydown', function(e) {
 
-        if ([37,38,39,40].indexOf(e.keyCode) == -1) {
+        if ([37,38,39,40,27].indexOf(e.keyCode) == -1) {
             return;
         }
 
         switch(e.keyCode) {
+
+            case 27: // escape key
+                
+                $(this).parents('ul').first().prev('.dropdown-toggle.toggled-on').focus();
+                $(this).parents('ul').first().prev('.dropdown-toggle.toggled-on').click();
+
+                break;
 
             case 37: 				// left key
                 e.preventDefault();
