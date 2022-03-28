@@ -32,15 +32,11 @@ require_once get_template_directory() . '/inc/login-logo.php';
 require_once get_template_directory() . '/inc/social-links.php';
 
 // Plugin Support.
-//require_once get_template_directory() . '/inc/class-be-acf-customizations.php';
 require_once get_template_directory() . '/inc/amp.php';
 require_once get_template_directory() . '/inc/cultivate-pro.php';
 require_once get_template_directory() . '/inc/pwa.php';
 require_once get_template_directory() . '/inc/shared-counts.php';
-require_once get_template_directory() . '/inc/slickstream.php';
 require_once get_template_directory() . '/inc/wordpress-seo.php';
-//require_once get_template_directory() . '/inc/wpforms.php';
-//require_once get_template_directory() . '/inc/wp-recipe-maker.php';
 
 /**
  * Enqueue scripts and styles.

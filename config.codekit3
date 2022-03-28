@@ -2637,14 +2637,6 @@
       "oAP" : "\/inc\/blocks.php",
       "oF" : 0
     },
-    "\/inc\/class-be-acf-customizations.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/inc\/class-be-acf-customizations.php",
-      "oF" : 0
-    },
     "\/inc\/comments.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -2725,14 +2717,6 @@
       "oAP" : "\/inc\/shared-counts.php",
       "oF" : 0
     },
-    "\/inc\/slickstream.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/inc\/slickstream.php",
-      "oF" : 0
-    },
     "\/inc\/social-links.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -2771,22 +2755,6 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/inc\/wordpress-seo.php",
-      "oF" : 0
-    },
-    "\/inc\/wp-recipe-maker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/inc\/wp-recipe-maker.php",
-      "oF" : 0
-    },
-    "\/inc\/wpforms.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/inc\/wpforms.php",
       "oF" : 0
     },
     "\/index.php" : {
