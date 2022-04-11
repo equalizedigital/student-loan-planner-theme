@@ -147,7 +147,7 @@ function mst_widgets_init() {
 	register_sidebar(
 		mst_widget_area_args(
 			[
-				'name' => esc_html__( 'Primary Sidebar', 'cultivate_textdomain' ),
+				'name' => esc_html__( 'Primary Sidebar', 'mainspring' ),
 			]
 		)
 	);

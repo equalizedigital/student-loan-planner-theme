@@ -22,7 +22,7 @@ the_content();
 
 wp_link_pages(
 	[
-		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cultivate_textdomain' ),
+		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mainspring' ),
 		'after'  => '</div>',
 	]
 );

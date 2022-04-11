@@ -52,17 +52,17 @@ add_filter(
 	function( $layouts ) {
 		$layouts = [
 			'alpha' => [
-				'label'          => __( '3 Column', 'cultivate_textdomain' ),
+				'label'          => __( '3 Column', 'mainspring' ),
 				'posts_per_page' => 3,
 				'partial'        => 'primary',
 			],
 			'beta'  => [
-				'label'          => __( '4 Column', 'cultivate_textdomain' ),
+				'label'          => __( '4 Column', 'mainspring' ),
 				'posts_per_page' => 4,
 				'partial'        => 'tertiary',
 			],
 			'gamma' => [
-				'label'          => __( '2x2 Grid', 'cultivate_textdomain' ),
+				'label'          => __( '2x2 Grid', 'mainspring' ),
 				'posts_per_page' => 4,
 				'partial'        => 'secondary',
 			],
@@ -81,10 +81,10 @@ add_filter(
 function mst_quick_links_layouts( $layouts ) {
 	return [
 		'alpha' => [
-			'label' => __( 'Large', 'cultivate_textdomain' ),
+			'label' => __( 'Large', 'mainspring' ),
 		],
 		'beta'  => [
-			'label' => __( 'Small', 'cultivate_textdomain' ),
+			'label' => __( 'Small', 'mainspring' ),
 		],
 	];
 }

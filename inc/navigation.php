@@ -173,13 +173,13 @@ function mst_archive_paginated_navigation() {
 
 	echo '<nav class="archive-pagination pagination">';
 
-	$before_number = '<span class="screen-reader-text">' . __( 'Go to page', 'cultivate_textdomain' ) . '</span>';
+	$before_number = '<span class="screen-reader-text">' . __( 'Go to page', 'mainspring' ) . '</span>';
 
-	printf( '<ul role="navigation" aria-label="%s">', esc_attr__( 'Pagination', 'cultivate_textdomain' ) );
+	printf( '<ul role="navigation" aria-label="%s">', esc_attr__( 'Pagination', 'mainspring' ) );
 
 	// Previous Post Link.
 	if ( get_previous_posts_link() ) {
-		$label = __( '&#x000AB; <span class="screen-reader-text">Go to</span> Previous Page', 'cultivate_textdomain' );
+		$label = __( '&#x000AB; <span class="screen-reader-text">Go to</span> Previous Page', 'mainspring' );
 		$link  = get_previous_posts_link( $label );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		printf( '<li class="pagination-previous">%s</li>' . "\n", $link );
@@ -193,7 +193,7 @@ function mst_archive_paginated_navigation() {
 		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, get_pagenum_link( 1 ), trim( $before_number . ' 1' ) );
 
 		if ( ! in_array( 2, $links, true ) ) {
-			$label = sprintf( '<span class="screen-reader-text">%s</span> &#x02026;', __( 'Interim pages omitted', 'cultivate_textdomain' ) );
+			$label = sprintf( '<span class="screen-reader-text">%s</span> &#x02026;', __( 'Interim pages omitted', 'mainspring' ) );
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is known to be safe, not set via input.
 			printf( '<li class="pagination-omission">%s</li> ' . "\n", $label );
 		}
@@ -206,7 +206,7 @@ function mst_archive_paginated_navigation() {
 		$aria  = '';
 		if ( $paged === $link ) {
 			$class = ' class="active" ';
-			$aria  = ' aria-label="' . esc_attr__( 'Current page', 'cultivate_textdomain' ) . '" aria-current="page"';
+			$aria  = ' aria-label="' . esc_attr__( 'Current page', 'mainspring' ) . '" aria-current="page"';
 		}
 
 		printf(
@@ -225,7 +225,7 @@ function mst_archive_paginated_navigation() {
 	if ( ! in_array( $max, $links, true ) ) {
 
 		if ( ! in_array( $max - 1, $links, true ) ) {
-			$label = sprintf( '<span class="screen-reader-text">%s</span> &#x02026;', __( 'Interim pages omitted', 'cultivate_textdomain' ) );
+			$label = sprintf( '<span class="screen-reader-text">%s</span> &#x02026;', __( 'Interim pages omitted', 'mainspring' ) );
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is known to be safe, not set via input.
 			printf( '<li class="pagination-omission">%s</li> ' . "\n", $label );
 		}
@@ -238,7 +238,7 @@ function mst_archive_paginated_navigation() {
 
 	// Next Post Link.
 	if ( get_next_posts_link() ) {
-		$label = __( '<span class="screen-reader-text">Go to</span> Next Page &#x000BB;', 'cultivate_textdomain' );
+		$label = __( '<span class="screen-reader-text">Go to</span> Next Page &#x000BB;', 'mainspring' );
 		$link  = get_next_posts_link( $label );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		printf( '<li class="pagination-next">%s</li>' . "\n", $link );

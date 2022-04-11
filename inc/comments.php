@@ -34,10 +34,10 @@ function mst_comment_navigation( $location = '' ) {
 	}
 
 	$output  = '<nav id="comment-nav-' . esc_attr( $location ) . '" class="navigation comment-navigation" role="navigation">';
-	$output .= '<h4 class="screen-reader-text">' . esc_html__( 'Comment navigation', 'cultivate_textdomain' ) . '</h4>';
+	$output .= '<h4 class="screen-reader-text">' . esc_html__( 'Comment navigation', 'mainspring' ) . '</h4>';
 	$output .= '<div class="nav-links">';
-	$output .= '<div class="nav-previous">' . get_previous_comments_link( esc_html__( 'Older Comments', 'cultivate_textdomain' ) ) . '</div>';
-	$output .= '<div class="nav-next">' . get_next_comments_link( esc_html__( 'Newer Comments', 'cultivate_textdomain' ) ) . '</div>';
+	$output .= '<div class="nav-previous">' . get_previous_comments_link( esc_html__( 'Older Comments', 'mainspring' ) ) . '</div>';
+	$output .= '<div class="nav-next">' . get_next_comments_link( esc_html__( 'Newer Comments', 'mainspring' ) ) . '</div>';
 	$output .= '</div>';
 	$output .= '</nav>';
 

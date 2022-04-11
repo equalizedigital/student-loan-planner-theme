@@ -98,7 +98,7 @@ if ( ! function_exists( 'mst_setup' ) ) :
 		/*
 		 * Make theme available for translation.
 		 */
-		load_theme_textdomain( 'cultivate_textdomain', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'mainspring', get_template_directory() . '/languages' );
 
 		// Editor Styles.
 		add_theme_support( 'editor-styles' );
@@ -136,8 +136,8 @@ if ( ! function_exists( 'mst_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			[
-				'primary'   => esc_html__( 'Primary Navigation Menu', 'cultivate_textdomain' ),
-				'secondary' => esc_html__( 'Secondary Navigation Menu', 'cultivate_textdomain' ),
+				'primary'   => esc_html__( 'Primary Navigation Menu', 'mainspring' ),
+				'secondary' => esc_html__( 'Secondary Navigation Menu', 'mainspring' ),
 			]
 		);
 
@@ -174,20 +174,20 @@ if ( ! function_exists( 'mst_setup' ) ) :
 			'editor-font-sizes',
 			[
 				[
-					'name'      => __( 'Large', 'cultivate_textdomain' ),
-					'shortName' => __( 'L', 'cultivate_textdomain' ),
+					'name'      => __( 'Large', 'mainspring' ),
+					'shortName' => __( 'L', 'mainspring' ),
 					'size'      => 23,
 					'slug'      => 'large',
 				],
 				[
-					'name'      => __( 'Normal', 'cultivate_textdomain' ),
-					'shortName' => __( 'M', 'cultivate_textdomain' ),
+					'name'      => __( 'Normal', 'mainspring' ),
+					'shortName' => __( 'M', 'mainspring' ),
 					'size'      => 19,
 					'slug'      => 'normal',
 				],
 				[
-					'name'      => __( 'Small', 'cultivate_textdomain' ),
-					'shortName' => __( 'S', 'cultivate_textdomain' ),
+					'name'      => __( 'Small', 'mainspring' ),
+					'shortName' => __( 'S', 'mainspring' ),
 					'size'      => 17,
 					'slug'      => 'small',
 				],
@@ -206,32 +206,32 @@ if ( ! function_exists( 'mst_setup' ) ) :
 			'editor-color-palette',
 			[
 				[
-					'name'  => __( 'Primary', 'cultivate_textdomain' ),
+					'name'  => __( 'Primary', 'mainspring' ),
 					'slug'  => 'primary',
 					'color' => '#24509A',
 				],
 				[
-					'name'  => __( 'Primary Background', 'cultivate_textdomain' ),
+					'name'  => __( 'Primary Background', 'mainspring' ),
 					'slug'  => 'primary-bg',
 					'color' => '#E9EDF4',
 				],
 				[
-					'name'  => __( 'Secondary', 'cultivate_textdomain' ),
+					'name'  => __( 'Secondary', 'mainspring' ),
 					'slug'  => 'secondary',
 					'color' => '#FEC72D',
 				],
 				[
-					'name'  => __( 'Secondary Background', 'cultivate_textdomain' ),
+					'name'  => __( 'Secondary Background', 'mainspring' ),
 					'slug'  => 'secondary-bg',
 					'color' => '#FEF9EA',
 				],
 				[
-					'name'  => __( 'Grey', 'cultivate_textdomain' ),
+					'name'  => __( 'Grey', 'mainspring' ),
 					'slug'  => 'grey',
 					'color' => '#FAFAFA',
 				],
 				[
-					'name'  => __( 'White', 'cultivate_textdomain' ),
+					'name'  => __( 'White', 'mainspring' ),
 					'slug'  => 'white',
 					'color' => '#FFFFFF',
 				],
