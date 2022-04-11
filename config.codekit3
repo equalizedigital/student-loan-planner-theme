@@ -2765,12 +2765,6 @@
       "oAP" : "\/index.php",
       "oF" : 0
     },
-    "\/node_modules" : {
-      "ft" : 65536,
-      "oA" : 2,
-      "oAP" : "\/node_modules",
-      "oF" : 0
-    },
     "\/offline.php" : {
       "cB" : 0,
       "ft" : 8192,
