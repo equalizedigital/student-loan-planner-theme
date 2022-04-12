@@ -33,7 +33,6 @@ require_once get_template_directory() . '/inc/social-links.php';
 
 // Plugin Support.
 require_once get_template_directory() . '/inc/amp.php';
-require_once get_template_directory() . '/inc/cultivate-pro.php';
 require_once get_template_directory() . '/inc/pwa.php';
 require_once get_template_directory() . '/inc/shared-counts.php';
 require_once get_template_directory() . '/inc/wordpress-seo.php';
