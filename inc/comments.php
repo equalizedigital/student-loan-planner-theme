@@ -45,49 +45,6 @@ function mst_comment_navigation( $location = '' ) {
 	echo apply_filters( 'mst_comment_navigation', $output, $location );
 }
 
-
-/**
- * Load More Comments button
- *
- * @param string $output Comment navigation output.
- * @param string $location Location.
- */
-function mst_load_more_comments_button( $output, $location ) {
-	global $wp_query;
-	if ( 'after' !== $location || ! empty( $wp_query->query['cpage'] ) ) {
-		return $output;
-	}
-	$output = '';
-	global $wp_query;
-	$cpage = get_query_var( 'cpage' ) ? get_query_var( 'cpage' ) : 1;
-	if ( $cpage > 1 && empty( $wp_query->query['cpage'] ) ) {
-		$output = '<p class="wp-block-button is-style-outline"><a class="load-more-comments wp-block-button__link" href="' . add_query_arg( 'load_all_comments', true, get_permalink() . '#comments' ) . '">See More Comments</a></p>';
-	}
-	return $output;
-}
-add_filter( 'mst_comment_navigation', 'mst_load_more_comments_button', 10, 2 );
-
-/**
- * Load More Comments script
- */
-function mst_load_more_comments_script() {
-	wp_enqueue_script( 'be-load-more-comments', get_template_directory_uri() . '/assets/js/load-more-comments-min.js', [ 'jquery' ], filemtime( get_template_directory() . '/assets/js/load-more-comments-min.js' ), true );
-}
-add_action( 'wp_enqueue_scripts', 'mst_load_more_comments_script' );
-
-/**
- * Load More Comments args
- *
- * @param array $args Comment list args.
- */
-function mst_load_more_comments_args( $args ) {
-	if ( ! empty( $_GET['load_all_comments'] ) ) {
-		$args['per_page'] = -1;
-	}
-	return $args;
-}
-add_filter( 'wp_list_comments_args', 'mst_load_more_comments_args', 99 );
-
 /**
  * Staff comment class
  *

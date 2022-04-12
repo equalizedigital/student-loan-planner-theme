@@ -2199,13 +2199,13 @@
       "oAP" : "\/assets\/js\/global-min.js.map",
       "oF" : 0
     },
-    "\/assets\/js\/load-more-comments-min.js" : {
+    "\/assets\/js\/menu-min.js" : {
       "bF" : 0,
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/assets\/load-more-comments-min-min.js",
+      "oAP" : "\/assets\/menu-min-min.js",
       "oF" : 0,
       "sC" : 1,
       "tS" : 0
@@ -2219,17 +2219,6 @@
       "oAP" : "\/assets\/js\/global-min.js",
       "oF" : 0,
       "sC" : 0,
-      "tS" : 0
-    },
-    "\/assets\/js\/src\/load-more-comments.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/load-more-comments-min.js",
-      "oF" : 0,
-      "sC" : 1,
       "tS" : 0
     },
     "\/assets\/js\/src\/menu.js" : {

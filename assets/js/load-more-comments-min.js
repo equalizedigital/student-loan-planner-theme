@@ -1,1 +1,0 @@
-jQuery((function(t){t(".load-more-comments").click((function(e){var n=t("body").find(".entry-comments .comment-list"),m=t(this);e.preventDefault(),t(this).text("Loading..."),t.get(t(this).attr("href"),(function(e){var o;t(e).find(".entry-comments .comment-list").insertAfter(m.parent()),n.remove(),m.remove(),cleanCommentUrl()}))}))}));
