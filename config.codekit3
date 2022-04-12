@@ -2610,14 +2610,6 @@
       "oAP" : "\/inc\/admin-branding-rwc.php",
       "oF" : 0
     },
-    "\/inc\/amp.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/inc\/amp.php",
-      "oF" : 0
-    },
     "\/inc\/author-box.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -2760,30 +2752,6 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/offline.php",
-      "oF" : 0
-    },
-    "\/partials\/blocks\/colors.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/partials\/blocks\/colors.php",
-      "oF" : 0
-    },
-    "\/partials\/blocks\/icons.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/partials\/blocks\/icons.php",
-      "oF" : 0
-    },
-    "\/partials\/blocks\/search.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/partials\/blocks\/search.php",
       "oF" : 0
     },
     "\/partials\/content\/content.php" : {

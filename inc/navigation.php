@@ -12,21 +12,6 @@
  * Mobile Menu
  */
 function mst_site_header() {
-	/* echo mst_mobile_menu_toggle();
-	echo mst_search_toggle();
-
-	echo '<nav' . mst_amp_class( 'nav-menu', 'active', 'menuActive' ) . ' role="navigation">';
-	if ( has_nav_menu( 'primary' ) ) {
-		wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_class' => 'nav-primary' ) );
-	}
-	if ( has_nav_menu( 'secondary' ) ) {
-		wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu', 'container_class' => 'nav-secondary' ) );
-	}
-	echo '</nav>';
-
-	if ( ! function_exists( 'SlickEngagement_init' ) ) {
-		echo '<div' . mst_amp_class( 'header-search', 'active', 'searchActive' ) . '>' . get_search_form( array( 'echo' => false ) ) . '</div>';
-	} */
 
 	if (has_nav_menu('primary')) : ?>
 		<div class="menu-container">
@@ -73,7 +58,7 @@ function mst_nav_extras( $menu, $args ) {
  * Search toggle
  */
 function mst_search_toggle() {
-	$output  = '<button aria-label="Search"' . mst_amp_class( 'search-toggle', 'active', 'searchActive' ) . mst_amp_toggle( 'searchActive', array( 'menuActive', 'mobileFollow' ) ) . '>';
+	$output  = '<button aria-label="Search" class="search-toggle">';
 	$output .= mst_icon( array( 'icon' => 'search-fat', 'class' => 'open' ) );
 	$output .= mst_icon( array( 'icon' => 'close', 'class' => 'close' ) );
 	$output .= '</button>';
@@ -84,7 +69,7 @@ function mst_search_toggle() {
  * Mobile menu toggle
  */
 function mst_mobile_menu_toggle() {
-	$output  = '<button aria-label="Menu"' . mst_amp_class( 'menu-toggle', 'active', 'menuActive' ) . mst_amp_toggle( 'menuActive', array( 'searchActive', 'mobileFollow' ) ) . '>';
+	$output  = '<button aria-label="Menu" class="menu-toggle">';
 	$output .= mst_icon( array( 'icon' => 'menu', 'class' => 'open' ) );
 	$output .= mst_icon( array( 'icon' => 'close', 'class' => 'close' ) );
 	$output .= '</button>';
@@ -117,7 +102,7 @@ function mst_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 		$icon = mst_icon( array( 'icon' => 'carat-down' ) );
 
 		$output .= sprintf(
-			'<button aria-label="Submenu Dropdown"' . mst_amp_nav_dropdown( $args->theme_location, $depth ) . ' tabindex="-1">%s</button>',
+			'<button aria-label="Submenu Dropdown" class="submenu-expand" tabindex="-1">%s</button>',
 			$icon
 		);
 	}
