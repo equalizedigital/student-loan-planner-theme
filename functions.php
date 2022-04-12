@@ -23,7 +23,7 @@ require_once get_template_directory() . '/inc/loop.php';
 require_once get_template_directory() . '/inc/author-box.php';
 require_once get_template_directory() . '/inc/comments.php';
 require_once get_template_directory() . '/inc/template-tags.php';
-require_once get_template_directory() . '/inc/admin-branding.php';
+require_once get_template_directory() . '/inc/admin-branding-ed.php';
 
 // Functionality.
 require_once get_template_directory() . '/inc/blocks.php';
@@ -55,7 +55,7 @@ function mst_scripts() {
 			)
 		);
 
-		wp_enqueue_script( 'theme-menu', get_template_directory_uri() . '/assets/js/menu.js', [], filemtime( get_template_directory() . '/assets/js/menu.js' ), true );
+		wp_enqueue_script( 'theme-menu', get_template_directory_uri() . '/assets/js/menu-min.js', [], filemtime( get_template_directory() . '/assets/js/menu-min.js' ), true );
 		wp_localize_script( 'theme-menu', 'screenReaderText', array(
 			'expand'   => __( 'Expand child menu', 'mainspring' ),
 			'collapse' => __( 'Collapse child menu', 'mainspring' ),
