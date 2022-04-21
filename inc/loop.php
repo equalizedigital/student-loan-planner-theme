@@ -67,7 +67,7 @@ add_action( 'tha_content_while_after', 'mst_archive_post_listing_close', 5 );
  * Entry Title
  */
 function mst_entry_header() {
-	if ( mst_has_h1_block() ) {
+	if ( mst_has_h1_block() || is_front_page() ) {
 		add_filter( 'render_block', 'mst_entry_header_in_content', 10, 2 );
 
 	} else {
