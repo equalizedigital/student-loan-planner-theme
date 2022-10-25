@@ -3,7 +3,7 @@
  * Sidebar
  *
  * @package      Mainspring
- * @author       Road Warrior Creative
+ * @author       Equalize Digital
  * @since        1.0.0
  * @license      GPL-2.0+
  **/

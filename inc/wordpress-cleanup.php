@@ -3,7 +3,7 @@
  * WordPress Cleanup
  *
  * @package      Mainspring
- * @author       Road Warrior Creative
+ * @author       Equalize Digital
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
@@ -14,7 +14,7 @@
  * If there is a theme in the repo with the same name, this prevents WP from prompting an update.
  *
  * @since  1.0.0
- * @author Road Warrior Creative
+ * @author Equalize Digital
  * @link   http://www.billerickson.net/excluding-theme-from-updates
  *
  * @param  array  $r Existing request arguments.
