@@ -12,7 +12,7 @@
 
 	<rule ref="WordPress.Security.EscapeOutput">
 	    <properties>
-	        <property name="customAutoEscapedFunctions" type="array" value="mst_icon,mst_mobile_menu_toggle,mst_search_toggle,mst_amp_class,"/>
+	        <property name="customAutoEscapedFunctions" type="array" value="eqd_icon,eqd_mobile_menu_toggle,eqd_search_toggle,eqd_amp_class,"/>
 	    </properties>
 	</rule>
 	<rule ref="WordPress-Docs" />

@@ -9,7 +9,7 @@
  **/
 
 // Bump this when adding new icons, see inc/acf.php.
-define( 'MST_ICON_VERSION', '0.1' );
+define( 'EQD_ICON_VERSION', '0.1' );
 
 // General cleanup.
 require_once get_template_directory() . '/inc/wordpress-cleanup.php';
@@ -39,7 +39,7 @@ require_once get_template_directory() . '/inc/wordpress-seo.php';
 /**
  * Enqueue scripts and styles.
  */
-function mst_scripts() {
+function eqd_scripts() {
 	
 	wp_enqueue_script( 'theme-global', get_template_directory_uri() . '/assets/js/global-min.js', [], filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
 
@@ -72,17 +72,17 @@ function mst_scripts() {
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), filemtime( get_template_directory() . '/assets/css/main.css' ) );
 
 }
-add_action( 'wp_enqueue_scripts', 'mst_scripts' );
+add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
 
 /**
  * Gutenberg scripts and styles
  */
-function mst_gutenberg_scripts() {
+function eqd_gutenberg_scripts() {
 	wp_enqueue_script( 'theme-editor', get_template_directory_uri() . '/assets/js/editor.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_template_directory() . '/assets/js/editor.js' ), true );
 }
-add_action( 'enqueue_block_editor_assets', 'mst_gutenberg_scripts' );
+add_action( 'enqueue_block_editor_assets', 'eqd_gutenberg_scripts' );
 
-if ( ! function_exists( 'mst_setup' ) ) :
+if ( ! function_exists( 'eqd_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -90,7 +90,7 @@ if ( ! function_exists( 'mst_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function mst_setup() {
+	function eqd_setup() {
 		/*
 		 * Make theme available for translation.
 		 */
@@ -120,7 +120,7 @@ if ( ! function_exists( 'mst_setup' ) ) :
 		/**
 		 * Set the content width in pixels, based on the theme's design and stylesheet.
 		 */
-		$GLOBALS['content_width'] = apply_filters( 'mst_content_width', 768 );
+		$GLOBALS['content_width'] = apply_filters( 'eqd_content_width', 768 );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
@@ -236,18 +236,18 @@ if ( ! function_exists( 'mst_setup' ) ) :
 
 	}
 endif;
-add_action( 'after_setup_theme', 'mst_setup' );
+add_action( 'after_setup_theme', 'eqd_setup' );
 
 /**
  * Template Hierarchy
  *
  * @param string $template Template.
  */
-function mst_template_hierarchy( $template ) {
+function eqd_template_hierarchy( $template ) {
 
 	if ( is_home() || is_search() ) {
 		$template = get_query_template( 'archive' );
 	}
 	return $template;
 }
-add_filter( 'template_include', 'mst_template_hierarchy' );
+add_filter( 'template_include', 'eqd_template_hierarchy' );

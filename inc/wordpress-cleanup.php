@@ -21,7 +21,7 @@
  * @param  string $url Request URL.
  * @return array Amended request arguments
  */
-function mst_dont_update_theme( $r, $url ) {
+function eqd_dont_update_theme( $r, $url ) {
 	if ( 0 !== strpos( $url, 'https://api.wordpress.org/themes/update-check/1.1/' ) ) {
 		return $r; // Not a theme update request. Bail immediately.
 	}
@@ -31,7 +31,7 @@ function mst_dont_update_theme( $r, $url ) {
 	$r['body']['themes'] = json_encode( $themes );
 	return $r;
 }
-add_filter( 'http_request_args', 'mst_dont_update_theme', 5, 2 );
+add_filter( 'http_request_args', 'eqd_dont_update_theme', 5, 2 );
 
 /**
  * Header Meta Tags
@@ -49,7 +49,7 @@ add_action( 'wp_head', 'ea_header_meta_tags' );
  *
  * @param array $classes Body classes.
  */
-function mst_extra_body_classes( $classes ) {
+function eqd_extra_body_classes( $classes ) {
 	if ( is_singular() ) {
 		$classes[] = 'singular';
 	}
@@ -60,14 +60,14 @@ function mst_extra_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'mst_extra_body_classes' );
+add_filter( 'body_class', 'eqd_extra_body_classes' );
 
 /**
  * Clean body classes
  *
  * @param array $classes Body classes.
  */
-function mst_clean_body_classes( $classes ) {
+function eqd_clean_body_classes( $classes ) {
 
 	$allowed_classes = [
 		'singular',
@@ -93,21 +93,21 @@ function mst_clean_body_classes( $classes ) {
 		]
 	);
 
-	if ( function_exists( 'mst_page_layout_options' ) ) {
-		$allowed_classes = array_merge( $allowed_classes, mst_page_layout_options() );
+	if ( function_exists( 'eqd_page_layout_options' ) ) {
+		$allowed_classes = array_merge( $allowed_classes, eqd_page_layout_options() );
 	}
 
 	return array_intersect( $classes, $allowed_classes );
 
 }
-add_filter( 'body_class', 'mst_clean_body_classes', 20 );
+add_filter( 'body_class', 'eqd_clean_body_classes', 20 );
 
 /**
  * Clean Nav Menu Classes
  *
  * @param array $classes Nav item classes.
  */
-function mst_clean_nav_menu_classes( $classes ) {
+function eqd_clean_nav_menu_classes( $classes ) {
 	if ( ! is_array( $classes ) ) {
 		return $classes;
 	}
@@ -144,14 +144,14 @@ function mst_clean_nav_menu_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'nav_menu_css_class', 'mst_clean_nav_menu_classes', 5 );
+add_filter( 'nav_menu_css_class', 'eqd_clean_nav_menu_classes', 5 );
 
 /**
  * Clean Post Classes
  *
  * @param array $classes Post Classes.
  */
-function mst_clean_post_classes( $classes ) {
+function eqd_clean_post_classes( $classes ) {
 
 	if ( ! is_array( $classes ) ) {
 		return $classes;
@@ -164,14 +164,14 @@ function mst_clean_post_classes( $classes ) {
 
 	return array_intersect( $classes, $allowed_classes );
 }
-add_filter( 'post_class', 'mst_clean_post_classes', 5 );
+add_filter( 'post_class', 'eqd_clean_post_classes', 5 );
 
 /**
  * Archive Title, remove prefix
  *
  * @param string $title Title.
  */
-function mst_archive_title_remove_prefix( $title ) {
+function eqd_archive_title_remove_prefix( $title ) {
 	$title_pieces = explode( ': ', $title );
 	if ( count( $title_pieces ) > 1 ) {
 		unset( $title_pieces[0] );
@@ -179,15 +179,15 @@ function mst_archive_title_remove_prefix( $title ) {
 	}
 	return $title;
 }
-add_filter( 'get_the_archive_title', 'mst_archive_title_remove_prefix' );
+add_filter( 'get_the_archive_title', 'eqd_archive_title_remove_prefix' );
 
 /**
  * Excerpt More
  */
-function mst_excerpt_more() {
+function eqd_excerpt_more() {
 	return '&hellip;';
 }
-add_filter( 'excerpt_more', 'mst_excerpt_more' );
+add_filter( 'excerpt_more', 'eqd_excerpt_more' );
 
 // Remove inline CSS for emoji.
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -203,10 +203,10 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
  *     @type int $1 The height in pixels.
  * }
  */
-function mst_max_srcset_width( $max_width, $size_array ) {
+function eqd_max_srcset_width( $max_width, $size_array ) {
 	return 1200;
 }
-add_filter( 'max_srcset_image_width', 'mst_max_srcset_width', 10, 2 );
+add_filter( 'max_srcset_image_width', 'eqd_max_srcset_width', 10, 2 );
 
 /**
  * Customize image srcset
@@ -232,7 +232,7 @@ add_filter( 'max_srcset_image_width', 'mst_max_srcset_width', 10, 2 );
  * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
  * @param int    $attachment_id Image attachment ID or 0.
  */
-function mst_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
+function eqd_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
 
 	// Array of image widths used in grid.
 	$grid_sizes = [];
@@ -263,4 +263,4 @@ function mst_image_srcset( $sources, $size_array, $image_src, $image_meta, $atta
 
 	return $sources;
 }
-add_filter( 'wp_calculate_image_srcset', 'mst_image_srcset', 10, 5 );
+add_filter( 'wp_calculate_image_srcset', 'eqd_image_srcset', 10, 5 );

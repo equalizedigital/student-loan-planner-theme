@@ -15,5 +15,5 @@
 		<span class="screen-reader-text">Search for</span>
 		<input type="search" class="search-field" placeholder="Search&hellip;" value="<?php echo get_search_query(); ?>" name="s" title="Search for" />
 	</label>
-	<button type="submit" aria-label="Submit" class="search-submit"><?php echo mst_icon( array( 'icon' => 'search-fat' ) ); ?></button>
+	<button type="submit" aria-label="Submit" class="search-submit"><?php echo eqd_icon( array( 'icon' => 'search-fat' ) ); ?></button>
 </form>

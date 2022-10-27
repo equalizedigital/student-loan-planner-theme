@@ -8,17 +8,17 @@
  * @license      GPL-2.0+
  **/
 
-if ( ! function_exists( 'mst_page_layout' ) ) {
+if ( ! function_exists( 'eqd_page_layout' ) ) {
 	return;
 }
 
-$layout = mst_page_layout();
+$layout = eqd_page_layout();
 if ( ! in_array( $layout, array( 'content-sidebar', 'sidebar-content' ), true ) ) {
 	return;
 }
 
-$sidebar = apply_filters( 'mst_sidebar', 'primary-sidebar' );
-if ( ! apply_filters( 'mst_display_sidebar', true ) ) {
+$sidebar = apply_filters( 'eqd_sidebar', 'primary-sidebar' );
+if ( ! apply_filters( 'eqd_display_sidebar', true ) ) {
 	return;
 }
 

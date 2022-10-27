@@ -10,7 +10,7 @@
 
 echo '<article class="' . esc_attr( join( ' ', get_post_class() ) ) . '">';
 
-if ( mst_has_action( 'tha_entry_top' ) ) {
+if ( eqd_has_action( 'tha_entry_top' ) ) {
 	echo '<header class="entry-header">';
 	tha_entry_top();
 	echo '</header>';
@@ -30,7 +30,7 @@ wp_link_pages(
 tha_entry_content_after();
 echo '</div>';
 
-if ( mst_has_action( 'tha_entry_bottom' ) ) {
+if ( eqd_has_action( 'tha_entry_bottom' ) ) {
 	echo '<footer class="entry-footer">';
 	tha_entry_bottom();
 	echo '</footer>';

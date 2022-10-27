@@ -10,20 +10,20 @@
 
 // Duplicate 'the_content' filters.
 global $wp_embed;
-add_filter( 'mst_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'mst_the_content', array( $wp_embed, 'autoembed'     ), 8 );
-add_filter( 'mst_the_content', 'wptexturize' );
-add_filter( 'mst_the_content', 'convert_chars' );
-add_filter( 'mst_the_content', 'wpautop' );
-add_filter( 'mst_the_content', 'shortcode_unautop' );
-add_filter( 'mst_the_content', 'do_shortcode' );
+add_filter( 'eqd_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'eqd_the_content', array( $wp_embed, 'autoembed'     ), 8 );
+add_filter( 'eqd_the_content', 'wptexturize' );
+add_filter( 'eqd_the_content', 'convert_chars' );
+add_filter( 'eqd_the_content', 'wpautop' );
+add_filter( 'eqd_the_content', 'shortcode_unautop' );
+add_filter( 'eqd_the_content', 'do_shortcode' );
 
 /**
  * Get the first term attached to post
  *
  * @param array $args Args.
  */
-function mst_first_term( $args = [] ) {
+function eqd_first_term( $args = [] ) {
 
 	$defaults = [
 		'taxonomy' => 'category',
@@ -89,7 +89,7 @@ function mst_first_term( $args = [] ) {
  * @param bool   $conditional whether to add $optional_class or not.
  * @return string $classes
  */
-function mst_class( $base_classes, $optional_class, $conditional ) {
+function eqd_class( $base_classes, $optional_class, $conditional ) {
 	return $conditional ? $base_classes . ' ' . $optional_class : $base_classes;
 }
 
@@ -99,7 +99,7 @@ function mst_class( $base_classes, $optional_class, $conditional ) {
  * @param int    $image_id Image ID.
  * @param string $image_size Image Size.
  */
-function mst_bg_image_style( $image_id = false, $image_size = 'full' ) {
+function eqd_bg_image_style( $image_id = false, $image_size = 'full' ) {
 	if ( ! empty( $image_id ) ) {
 		return ' style="background-image: url(' . wp_get_attachment_image_url( $image_id, $image_size ) . ');"';
 	}
@@ -119,7 +119,7 @@ function mst_bg_image_style( $image_id = false, $image_size = 'full' ) {
  *
  * @param array $atts Shortcode Attributes.
  */
-function mst_icon( $atts = array() ) {
+function eqd_icon( $atts = array() ) {
 
 	$atts = shortcode_atts(
 		[
@@ -178,14 +178,14 @@ function mst_icon( $atts = array() ) {
 		// Display reference to icon.
 	} else {
 
-		global $mst_icons;
-		if ( empty( $mst_icons[ $atts['group'] ] ) ) {
-			$mst_icons[ $atts['group'] ] = [];
+		global $eqd_icons;
+		if ( empty( $eqd_icons[ $atts['group'] ] ) ) {
+			$eqd_icons[ $atts['group'] ] = [];
 		}
-		if ( empty( $mst_icons[ $atts['group'] ][ $atts['icon'] ] ) ) {
-			$mst_icons[ $atts['group'] ][ $atts['icon'] ] = 1;
+		if ( empty( $eqd_icons[ $atts['group'] ][ $atts['icon'] ] ) ) {
+			$eqd_icons[ $atts['group'] ][ $atts['icon'] ] = 1;
 		} else {
-			$mst_icons[ $atts['group'] ][ $atts['icon'] ]++;
+			$eqd_icons[ $atts['group'] ][ $atts['icon'] ]++;
 		}
 
 		$attr = '';
@@ -211,12 +211,12 @@ function mst_icon( $atts = array() ) {
  *
  * @param array $atts
  */
-function mst_icon_as_img( $atts = [] ) {
+function eqd_icon_as_img( $atts = [] ) {
 
 	$atts['size'] = false;
 	$atts['force'] = true;
 
-	$icon       = mst_icon( $atts );
+	$icon       = eqd_icon( $atts );
 	$dimensions = str_replace( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ', '', $icon );
 	$dimensions = explode( ' ', substr( $dimensions, 0, strpos( $dimensions, '">' ) ) );
 	if ( 2 !== count( $dimensions ) ) {
@@ -229,29 +229,29 @@ function mst_icon_as_img( $atts = [] ) {
 /**
  * Icon Definitions
  */
-function mst_icon_definitions() {
-	global $mst_icons;
+function eqd_icon_definitions() {
+	global $eqd_icons;
 
-	if ( empty( $mst_icons ) ) {
+	if ( empty( $eqd_icons ) ) {
 		return;
 	}
 
 	echo '<svg style="display:none;"><defs>';
-	foreach ( $mst_icons as $group => $icons ) {
+	foreach ( $eqd_icons as $group => $icons ) {
 		foreach ( $icons as $icon => $count ) {
-			echo mst_icon( [ 'icon' => $icon, 'group' => $group, 'defs' => true ] );
+			echo eqd_icon( [ 'icon' => $icon, 'group' => $group, 'defs' => true ] );
 		}
 	}
 	echo '</defs></svg>';
 }
-add_action( 'wp_footer', 'mst_icon_definitions', 20 );
+add_action( 'wp_footer', 'eqd_icon_definitions', 20 );
 
 /**
  * Has Action
  *
  * @param string $hook Hook.
  */
-function mst_has_action( $hook ) {
+function eqd_has_action( $hook ) {
 	ob_start();
 	do_action( $hook );
 	$output = ob_get_clean();
@@ -264,7 +264,7 @@ function mst_has_action( $hook ) {
  * @param array $field ACF Field data.
  * @param array $atts Button attributes.
  */
-function mst_button( $field = [], $atts = [] ) {
+function eqd_button( $field = [], $atts = [] ) {
 
 	if ( empty( $field ) ) {
 		return;
@@ -290,5 +290,5 @@ function mst_button( $field = [], $atts = [] ) {
 	}
 
 	$output = '<div class="' . join( ' ', $block_class ) . '"><a class="' . join( ' ', $button_class ) . '" href="' . esc_html( $field['url'] ) . '"' . $target . '>' . esc_html( $field['title'] ) . '</a></div>';
-	return apply_filters( 'mst_button', $output, $block );
+	return apply_filters( 'eqd_button', $output, $block );
 }

@@ -14,11 +14,11 @@
  * @param string $content HTML Content.
  * @param array  $block Block data.
  */
-function mst_arrow_button( $content, $block ) {
+function eqd_arrow_button( $content, $block ) {
 	if ( 'core/button' === $block['blockName'] && ! empty( $block['attrs'] ) && ! empty( $block['attrs']['className'] ) && 'is-style-arrow' === $block['attrs']['className'] ) {
-		$content = str_replace( '</a>', mst_icon( [ 'icon' => 'arrow-right', 'size' => 20 ] ) . '</a>', $content );
+		$content = str_replace( '</a>', eqd_icon( [ 'icon' => 'arrow-right', 'size' => 20 ] ) . '</a>', $content );
 	}
 	return $content;
 }
-add_filter( 'render_block', 'mst_arrow_button', 10, 2 );
-add_filter( 'mst_button', 'mst_arrow_button', 10, 2 );
+add_filter( 'render_block', 'eqd_arrow_button', 10, 2 );
+add_filter( 'eqd_button', 'eqd_arrow_button', 10, 2 );

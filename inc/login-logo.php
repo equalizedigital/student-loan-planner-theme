@@ -13,16 +13,16 @@
  *
  * @param string $url URL.
  */
-function mst_login_header_url( $url ) {
+function eqd_login_header_url( $url ) {
 	return esc_url( home_url() );
 }
-add_filter( 'login_headerurl', 'mst_login_header_url' );
+add_filter( 'login_headerurl', 'eqd_login_header_url' );
 add_filter( 'login_headertext', '__return_empty_string' );
 
 /**
  * Login Logo
  */
-function mst_login_logo() {
+function eqd_login_logo() {
 
 	$logo_path   = '/assets/images/logo.svg';
 	$logo_width  = 212;
@@ -50,4 +50,4 @@ function mst_login_logo() {
 		</style>
 		<?php
 }
-add_action( 'login_head', 'mst_login_logo' );
+add_action( 'login_head', 'eqd_login_logo' );

@@ -31,7 +31,7 @@ echo '<div class="site-container">';
 		tha_header_top();
 
 		echo '<div class="title-area">';
-		$logo_tag = ( apply_filters( 'mst_h1_site_title', false ) || ( is_front_page() && is_home() ) ) ? 'h1' : 'p';
+		$logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() && is_home() ) ) ? 'h1' : 'p';
 		echo '<' . esc_attr( $logo_tag ) . ' class="site-title"><a href="' . esc_url( home_url() ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $logo_tag ) . '>';
 		echo '</div>';
 

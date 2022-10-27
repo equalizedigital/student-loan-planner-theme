@@ -26,14 +26,14 @@ if ( post_password_required() ) {
 	if ( have_comments() ) :
 		?>
 		<h3 class="comments-title"><?php esc_html_e( 'Comments', 'mainspring' ); ?></h3>
-		<?php mst_comment_navigation( 'before' ); ?>
+		<?php eqd_comment_navigation( 'before' ); ?>
 		<ol class="comment-list">
 			<?php
 				wp_list_comments( [ 'style' => 'ol', 'type' => 'comment' ] );
 			?>
 		</ol><!-- .comment-list -->
 		<?php
-		mst_comment_navigation( 'after' );
+		eqd_comment_navigation( 'after' );
 
 	endif; // Check for have_comments().
 

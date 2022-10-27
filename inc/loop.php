@@ -11,7 +11,7 @@
 /**
  * Default Loop
  */
-function mst_default_loop() {
+function eqd_default_loop() {
 
 	if ( have_posts() ) :
 
@@ -22,8 +22,8 @@ function mst_default_loop() {
 			the_post();
 			tha_entry_before();
 
-			$partial = apply_filters( 'mst_loop_partial', is_singular() ? 'content' : 'post-summary' );
-			$context = apply_filters( 'mst_loop_partial_context', is_singular() ? 'content' : 'primary' );
+			$partial = apply_filters( 'eqd_loop_partial', is_singular() ? 'content' : 'post-summary' );
+			$context = apply_filters( 'eqd_loop_partial_context', is_singular() ? 'content' : 'primary' );
 			get_template_part( 'partials/' . $partial . '/' . $context );
 
 			tha_entry_after();
@@ -34,49 +34,49 @@ function mst_default_loop() {
 	else :
 
 		tha_entry_before();
-		$context = apply_filters( 'mst_empty_loop_partial_context', 'no-content' );
+		$context = apply_filters( 'eqd_empty_loop_partial_context', 'no-content' );
 		get_template_part( 'partials/content/' . $context );
 		tha_entry_after();
 
 	endif;
 
 }
-add_action( 'tha_content_loop', 'mst_default_loop' );
+add_action( 'tha_content_loop', 'eqd_default_loop' );
 
 /**
  * Archive post listing open
  */
-function mst_archive_post_listing_open() {
-	if ( apply_filters( 'mst_archive_post_listing', is_home() || is_archive() || is_search() ) ) {
+function eqd_archive_post_listing_open() {
+	if ( apply_filters( 'eqd_archive_post_listing', is_home() || is_archive() || is_search() ) ) {
 		echo '<div class="archive-post-listing">';
 	}
 }
-add_action( 'tha_content_while_before', 'mst_archive_post_listing_open', 80 );
+add_action( 'tha_content_while_before', 'eqd_archive_post_listing_open', 80 );
 
 /**
  * Archive post listing close
  */
-function mst_archive_post_listing_close() {
-	if ( apply_filters( 'mst_archive_post_listing', is_home() || is_archive() || is_search() ) ) {
+function eqd_archive_post_listing_close() {
+	if ( apply_filters( 'eqd_archive_post_listing', is_home() || is_archive() || is_search() ) ) {
 		echo '</div>'; // .archive-post-listing
 	}
 }
-add_action( 'tha_content_while_after', 'mst_archive_post_listing_close', 5 );
+add_action( 'tha_content_while_after', 'eqd_archive_post_listing_close', 5 );
 
 /**
  * Entry Title
  */
-function mst_entry_header() {
-	if ( mst_has_h1_block() || is_front_page() ) {
-		add_filter( 'render_block', 'mst_entry_header_in_content', 10, 2 );
+function eqd_entry_header() {
+	if ( eqd_has_h1_block() || is_front_page() ) {
+		add_filter( 'render_block', 'eqd_entry_header_in_content', 10, 2 );
 
 	} else {
-		do_action( 'mst_entry_title_before' );
+		do_action( 'eqd_entry_title_before' );
 		echo '<h1 class="entry-title">' . esc_html( get_the_title() ) . '</h1>';
-		do_action( 'mst_entry_title_after' );
+		do_action( 'eqd_entry_title_after' );
 	}
 }
-add_action( 'tha_entry_top', 'mst_entry_header' );
+add_action( 'tha_entry_top', 'eqd_entry_header' );
 
 /**
  * Entry header in content
@@ -84,15 +84,15 @@ add_action( 'tha_entry_top', 'mst_entry_header' );
  * @param string $output Outout.
  * @param array  $block Block.
  */
-function mst_entry_header_in_content( $output, $block ) {
+function eqd_entry_header_in_content( $output, $block ) {
 	if ( 'core/heading' === $block['blockName'] && ! empty( $block['attrs'] ) && 1 === $block['attrs']['level'] ) {
 		ob_start();
-		do_action( 'mst_entry_title_before' );
+		do_action( 'eqd_entry_title_before' );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		echo $output;
-		do_action( 'mst_entry_title_after' );
+		do_action( 'eqd_entry_title_after' );
 		$output = ob_get_clean();
-		remove_filter( 'render_block', 'mst_entry_header_in_content', 10, 2 );
+		remove_filter( 'render_block', 'eqd_entry_header_in_content', 10, 2 );
 	}
 
 	return $output;
@@ -105,7 +105,7 @@ function mst_entry_header_in_content( $output, $block ) {
  *
  * @param array $blocks Blocks.
  */
-function mst_has_h1_block( $blocks = array() ) {
+function eqd_has_h1_block( $blocks = array() ) {
 
 	if ( is_singular() && empty( $blocks ) ) {
 		global $post;
@@ -128,7 +128,7 @@ function mst_has_h1_block( $blocks = array() ) {
 
 			// Scan inner blocks for headings.
 		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
-			$inner_h1 = mst_has_h1_block( $block['innerBlocks'] );
+			$inner_h1 = eqd_has_h1_block( $block['innerBlocks'] );
 			if ( $inner_h1 ) {
 				return true;
 			}

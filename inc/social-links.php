@@ -11,7 +11,7 @@
 /**
  * Social Links
  */
-function mst_social_links() {
+function eqd_social_links() {
 	$socials = [
 		'facebook'  => [
 			'key'   => 'facebook_site',
@@ -31,7 +31,7 @@ function mst_social_links() {
 			'label' => 'Instagram',
 		],
 		'youtube'   => [
-			'key'   => 'youtumst_url',
+			'key'   => 'youtueqd_url',
 			'label' => 'YouTube',
 		],
 	];
@@ -47,7 +47,7 @@ function mst_social_links() {
 			$url = $settings['url'];
 		}
 		if ( ! empty( $url ) ) {
-			$output[] = '<li><a href="' . esc_url_raw( $url ) . '" target="_blank" rel="noopener noreferrer" aria-label="' . $settings['label'] . '">' . mst_icon( array( 'icon' => $social ) ) . '</a></li>';
+			$output[] = '<li><a href="' . esc_url_raw( $url ) . '" target="_blank" rel="noopener noreferrer" aria-label="' . $settings['label'] . '">' . eqd_icon( array( 'icon' => $social ) ) . '</a></li>';
 		}
 	}
 

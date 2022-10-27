@@ -11,7 +11,7 @@
 /**
  * Mobile Menu
  */
-function mst_site_header() {
+function eqd_site_header() {
 
 	if (has_nav_menu('primary')) : ?>
 		<div class="menu-container">
@@ -32,7 +32,7 @@ function mst_site_header() {
 	<?php endif;
 
 }
-add_action( 'tha_header_bottom', 'mst_site_header', 11 );
+add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 
 /**
  * Nav Extras
@@ -40,10 +40,10 @@ add_action( 'tha_header_bottom', 'mst_site_header', 11 );
  * @param string $menu Menu.
  * @param array $args Args.
  */
-function mst_nav_extras( $menu, $args ) {
+function eqd_nav_extras( $menu, $args ) {
 
 	if ( 'primary' === $args->theme_location ) {
-		$menu .= '<li class="menu-item search">' . mst_search_toggle() . '</li>';
+		$menu .= '<li class="menu-item search">' . eqd_search_toggle() . '</li>';
 	}
 
 	if ( 'secondary' === $args->theme_location ) {
@@ -52,15 +52,15 @@ function mst_nav_extras( $menu, $args ) {
 
 	return $menu;
 }
-//add_filter( 'wp_nav_menu_items', 'mst_nav_extras', 10, 2 );
+//add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 );
 
 /**
  * Search toggle
  */
-function mst_search_toggle() {
+function eqd_search_toggle() {
 	$output  = '<button aria-label="Search" class="search-toggle">';
-	$output .= mst_icon( array( 'icon' => 'search-fat', 'class' => 'open' ) );
-	$output .= mst_icon( array( 'icon' => 'close', 'class' => 'close' ) );
+	$output .= eqd_icon( array( 'icon' => 'search-fat', 'class' => 'open' ) );
+	$output .= eqd_icon( array( 'icon' => 'close', 'class' => 'close' ) );
 	$output .= '</button>';
 	return $output;
 }
@@ -68,10 +68,10 @@ function mst_search_toggle() {
 /**
  * Mobile menu toggle
  */
-function mst_mobile_menu_toggle() {
+function eqd_mobile_menu_toggle() {
 	$output  = '<button aria-label="Menu" class="menu-toggle">';
-	$output .= mst_icon( array( 'icon' => 'menu', 'class' => 'open' ) );
-	$output .= mst_icon( array( 'icon' => 'close', 'class' => 'close' ) );
+	$output .= eqd_icon( array( 'icon' => 'menu', 'class' => 'open' ) );
+	$output .= eqd_icon( array( 'icon' => 'close', 'class' => 'close' ) );
 	$output .= '</button>';
 	return $output;
 }
@@ -86,7 +86,7 @@ function mst_mobile_menu_toggle() {
  * @return string Nav menu item start element.
  * Add a dropdown icon to top-level menu items
  */
-function mst_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
+function eqd_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	if ( ! isset( $args->theme_location ) || 'primary' !== $args->theme_location ) {
 		return $output;
@@ -99,7 +99,7 @@ function mst_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 	if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
 		// Add SVG icon to parent items.
-		$icon = mst_icon( array( 'icon' => 'carat-down' ) );
+		$icon = eqd_icon( array( 'icon' => 'carat-down' ) );
 
 		$output .= sprintf(
 			'<button aria-label="Submenu Dropdown" class="submenu-expand" tabindex="-1">%s</button>',
@@ -109,22 +109,22 @@ function mst_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	return $output;
 }
-//add_filter( 'walker_nav_menu_start_el', 'mst_nav_add_dropdown_icons', 10, 4 );
+//add_filter( 'walker_nav_menu_start_el', 'eqd_nav_add_dropdown_icons', 10, 4 );
 
 /**
  * Previous/Next Archive Navigation (disabled)
  */
-function mst_archive_navigation() {
+function eqd_archive_navigation() {
 	if ( ! is_singular() ) {
 		the_posts_navigation();
 	}
 }
-//add_action( 'tha_content_while_after', 'mst_archive_navigation' );
+//add_action( 'tha_content_while_after', 'eqd_archive_navigation' );
 
 /**
  * Archive Paginated Navigation
  */
-function mst_archive_paginated_navigation() {
+function eqd_archive_paginated_navigation() {
 
 	if ( is_singular() ) {
 		return;
@@ -232,4 +232,4 @@ function mst_archive_paginated_navigation() {
 	echo '</ul>';
 	echo '</nav>';
 }
-add_action( 'tha_content_while_after', 'mst_archive_paginated_navigation' );
+add_action( 'tha_content_while_after', 'eqd_archive_paginated_navigation' );

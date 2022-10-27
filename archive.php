@@ -9,30 +9,30 @@
  **/
 
 // Full width.
-add_filter( 'mst_page_layout', 'mst_return_full_width_content' );
+add_filter( 'eqd_page_layout', 'eqd_return_full_width_content' );
 
 /**
  * Body Class
  *
  * @param array $classes Body classes.
  */
-function mst_archive_body_class( $classes ) {
+function eqd_archive_body_class( $classes ) {
 	$classes[] = 'archive';
 	return $classes;
 }
-add_filter( 'body_class', 'mst_archive_body_class' );
+add_filter( 'body_class', 'eqd_archive_body_class' );
 
 /**
  * Archive Header
  */
-function mst_archive_header() {
+function eqd_archive_header() {
 
 	$title       = false;
 	$subtitle    = false;
 	$description = false;
 
 	if ( is_author() ) {
-		mst_author_box( get_queried_object_id(), 'author-archive' );
+		eqd_author_box( get_queried_object_id(), 'author-archive' );
 		return;
 	}
 
@@ -45,7 +45,7 @@ function mst_archive_header() {
 	} elseif ( is_archive() ) {
 		$title = false;
 		if ( is_category() || is_tag() ) {
-			$title = get_term_meta( get_queried_object_id(), 'mst_archive_headline', true );
+			$title = get_term_meta( get_queried_object_id(), 'eqd_archive_headline', true );
 		}
 		if ( empty( $title ) ) {
 			$title = get_the_archive_title();
@@ -65,19 +65,19 @@ function mst_archive_header() {
 	}
 
 	echo '<header class="' . esc_attr( join( ' ', $classes ) ) . '">';
-	do_action( 'mst_archive_header_before' );
+	do_action( 'eqd_archive_header_before' );
 	if ( ! empty( $title ) ) {
 		echo '<h1 class="archive-title">' . esc_html( wp_strip_all_tags( $title ) ) . '</h1>';
 	}
 	if ( ! empty( $subtitle ) ) {
 		echo '<h4>' . esc_html( wp_strip_all_tags( $subtitle ) ) . '</h4>';
 	}
-	echo wp_kses_post( apply_filters( 'mst_the_content', $description ) );
-	do_action( 'mst_archive_header_after' );
+	echo wp_kses_post( apply_filters( 'eqd_the_content', $description ) );
+	do_action( 'eqd_archive_header_after' );
 	echo '</header>';
 
 }
-add_action( 'tha_content_while_before', 'mst_archive_header' );
+add_action( 'tha_content_while_before', 'eqd_archive_header' );
 
 // Build the page.
 require get_template_directory() . '/index.php';

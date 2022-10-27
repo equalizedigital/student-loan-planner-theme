@@ -9,11 +9,11 @@
  **/
 
 echo '<article class="post-summary post-summary--primary">';
-mst_post_summary_image();
+eqd_post_summary_image();
 
 echo '<div class="post-summary__content">';
-mst_entry_category();
-mst_post_summary_title();
+eqd_entry_category();
+eqd_post_summary_title();
 echo '</div>';
 
 echo '</article>';

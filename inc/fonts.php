@@ -11,15 +11,15 @@
 /**
  * Theme Fonts URL
  */
-function mst_theme_fonts_url() {
+function eqd_theme_fonts_url() {
 	return false;
 }
 
 /**
  * Preconnect Font
  */
-function mst_preconnect_font() {
-	$font_url = mst_theme_fonts_url();
+function eqd_preconnect_font() {
+	$font_url = eqd_theme_fonts_url();
 	if ( empty( $font_url ) ) {
 		return;
 	}
@@ -30,37 +30,37 @@ function mst_preconnect_font() {
 		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
 	}
 }
-add_action( 'wp_head', 'mst_preconnect_font', 5 );
+add_action( 'wp_head', 'eqd_preconnect_font', 5 );
 
 /**
  * Enqueue Frontend Fonts
  */
-function mst_enqueue_frontend_fonts() {
-	$font_url = mst_theme_fonts_url();
+function eqd_enqueue_frontend_fonts() {
+	$font_url = eqd_theme_fonts_url();
 	if ( empty( $font_url ) ) {
 		return;
 	}
 
 	wp_enqueue_style( 'be-font', esc_url( $font_url ), [], null, 'all' );
 }
-add_action( 'wp_enqueue_scripts', 'mst_enqueue_frontend_fonts' );
+add_action( 'wp_enqueue_scripts', 'eqd_enqueue_frontend_fonts' );
 
 /**
  * Enqueue Backend Fonts
  */
-function mst_enqueue_backend_fonts() {
-	$font_url = mst_theme_fonts_url();
+function eqd_enqueue_backend_fonts() {
+	$font_url = eqd_theme_fonts_url();
 	if ( ! empty( $font_url ) ) {
 		wp_enqueue_style( 'be-font', esc_url( $font_url ), [], null, 'all' );
 	}
 
 }
-add_action( 'enqueue_block_editor_assets', 'mst_enqueue_backend_fonts' );
+add_action( 'enqueue_block_editor_assets', 'eqd_enqueue_backend_fonts' );
 
 /**
  * Fallback Font JS
  */
-function mst_fallback_font_js() {
+function eqd_fallback_font_js() {
 	?>
 	<script>
 
@@ -93,14 +93,14 @@ function mst_fallback_font_js() {
 	</script>
 	<?php
 }
-//add_action( 'wp_body_open', 'mst_fallback_font_js' );
+//add_action( 'wp_body_open', 'eqd_fallback_font_js' );
 
 /**
  * Fallback Font Markup
  */
-function mst_fallback_font_markup() {
+function eqd_fallback_font_markup() {
 	?>
 	<div aria-hidden="true" class="hidden" style="font-family: 'Open Sans'; position:absolute; overflow:hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;">&nbsp;</div>
 	<?php
 }
-//add_action( 'wp_footer', 'mst_fallback_font_markup' );
+//add_action( 'wp_footer', 'eqd_fallback_font_markup' );

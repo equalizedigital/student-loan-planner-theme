@@ -19,7 +19,7 @@ add_filter( 'shared_counts_load_js', '__return_false' );
  * @param array $link Link.
  * @param int   $id ID.
  */
-function mst_shared_counts_email_link( $link, $id ) {
+function eqd_shared_counts_email_link( $link, $id ) {
 	if ( 'email' !== $link['type'] ) {
 		return $link;
 	}
@@ -33,7 +33,7 @@ function mst_shared_counts_email_link( $link, $id ) {
 
 	return $link;
 }
-add_filter( 'shared_counts_link', 'mst_shared_counts_email_link', 10, 2 );
+add_filter( 'shared_counts_link', 'eqd_shared_counts_email_link', 10, 2 );
 add_filter( 'shared_counts_disable_email_modal', '__return_true' );
 
 /**
@@ -41,7 +41,7 @@ add_filter( 'shared_counts_disable_email_modal', '__return_true' );
  *
  * @param string $url (optional), URL to convert to production.
  */
-function mst_production_url( $url = false ) {
+function eqd_production_url( $url = false ) {
 	$production = false; // put production URL here.
 
 	if ( ! empty( $production ) ) {
@@ -57,32 +57,32 @@ function mst_production_url( $url = false ) {
  *
  * @param array $params API parameters used when fetching share counts.
  */
-function mst_production_url_share_count_api( $params ) {
-	$params['url'] = mst_production_url( $params['url'] );
+function eqd_production_url_share_count_api( $params ) {
+	$params['url'] = eqd_production_url( $params['url'] );
 	return $params;
 }
-add_filter( 'shared_counts_api_params', 'mst_production_url_share_count_api' );
+add_filter( 'shared_counts_api_params', 'eqd_production_url_share_count_api' );
 
 /**
  * Use Production URL for Share Count link
  *
  * @param array $link elements of the link.
  */
-function mst_production_url_share_count_link( $link ) {
+function eqd_production_url_share_count_link( $link ) {
 	$exclude = [ 'print', 'email' ];
 	if ( ! in_array( $link['type'], $exclude, true ) ) {
-		$link['link'] = mst_production_url( $link['link'] );
+		$link['link'] = eqd_production_url( $link['link'] );
 	}
 	return $link;
 }
-add_filter( 'shared_counts_link', 'mst_production_url_share_count_link' );
+add_filter( 'shared_counts_link', 'eqd_production_url_share_count_link' );
 
 /**
  * Shared Counts Icon
  *
  * @param array $link Link.
  */
-function mst_shared_counts_icon( $link ) {
+function eqd_shared_counts_icon( $link ) {
 
 	$social_icons = [
 		'facebook'        => 'facebook',
@@ -97,9 +97,9 @@ function mst_shared_counts_icon( $link ) {
 	];
 
 	if ( array_key_exists( $link['type'], $social_icons ) ) {
-		$link['icon'] = mst_icon( [ 'icon' => $social_icons[ $link['type'] ], 'size' => 20 ] );
+		$link['icon'] = eqd_icon( [ 'icon' => $social_icons[ $link['type'] ], 'size' => 20 ] );
 	}
 
 	return $link;
 }
-add_filter( 'shared_counts_link', 'mst_shared_counts_icon' );
+add_filter( 'shared_counts_link', 'eqd_shared_counts_icon' );

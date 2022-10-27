@@ -12,7 +12,7 @@ get_header();
 
 tha_content_before();
 
-	echo '<div class="' . esc_attr( mst_class( 'content-area', 'wrap', apply_filters( 'mst_content_area_wrap', true ) ) ) . '">';
+	echo '<div class="' . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
 	tha_content_wrap_before();
 	echo '<main class="site-main" role="main">';
 	tha_content_top();
