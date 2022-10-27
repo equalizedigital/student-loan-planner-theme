@@ -2,7 +2,7 @@
 /**
  * Site Header
  *
- * @package      Mainspring
+ * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
  * @since        1.0.0
  * @license      GPL-2.0+
