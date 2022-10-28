@@ -23,7 +23,6 @@ echo '</head>';
 echo '<body class="' . esc_attr( join( ' ', get_body_class() ) ) . '" id="top">';
 wp_body_open();
 tha_body_top();
-echo '<p>test</p>';
 echo '<div class="site-container">';
 	echo '<a class="skip-link screen-reader-text" href="#main-content">' . esc_html__( 'Skip to content', 'mainspring' ) . '</a>';
 
