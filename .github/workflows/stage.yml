@@ -17,4 +17,4 @@ jobs:
         # Deploy Options
         REMOTE_PATH: "wp-content/themes/equalize-digital-base-theme/"
         PHP_LINT: FALSE
-        CACHE_CLEAR: FALSE
+        CACHE_CLEAR: TRUE
