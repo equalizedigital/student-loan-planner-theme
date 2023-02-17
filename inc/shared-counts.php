@@ -69,7 +69,7 @@ add_filter( 'shared_counts_api_params', 'eqd_production_url_share_count_api' );
  * @param array $link elements of the link.
  */
 function eqd_production_url_share_count_link( $link ) {
-	$exclude = [ 'print', 'email' ];
+	$exclude = array( 'print', 'email' );
 	if ( ! in_array( $link['type'], $exclude, true ) ) {
 		$link['link'] = eqd_production_url( $link['link'] );
 	}
@@ -84,7 +84,7 @@ add_filter( 'shared_counts_link', 'eqd_production_url_share_count_link' );
  */
 function eqd_shared_counts_icon( $link ) {
 
-	$social_icons = [
+	$social_icons = array(
 		'facebook'        => 'facebook',
 		'facebook_likes'  => 'facebook',
 		'facebook_shares' => 'facebook',
@@ -94,10 +94,15 @@ function eqd_shared_counts_icon( $link ) {
 		'linkedin'        => 'linkedin',
 		'print'           => 'device-printer',
 		'email'           => 'email1',
-	];
+	);
 
 	if ( array_key_exists( $link['type'], $social_icons ) ) {
-		$link['icon'] = eqd_icon( [ 'icon' => $social_icons[ $link['type'] ], 'size' => 20 ] );
+		$link['icon'] = eqd_icon(
+			array(
+				'icon' => $social_icons[ $link['type'] ],
+				'size' => 20,
+			)
+		);
 	}
 
 	return $link;

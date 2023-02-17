@@ -13,23 +13,26 @@
  */
 function eqd_site_header() {
 
-	if (has_nav_menu('primary')) : ?>
+	if ( has_nav_menu( 'primary' ) ) : ?>
 		<div class="menu-container">
-			<button class="menu-button"><span class="screen-reader-text"><?php _e('Menu','rwc'); ?></span></button>
+			<button class="menu-button"><span class="screen-reader-text"><?php esc_html_e( 'Menu', 'rwc' ); ?></span></button>
 			<div id="site-header-menu" class="site-header-menu">
-				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e('Primary Menu', 'rwc'); ?>">
+				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'rwc' ); ?>">
 				<?php
-				wp_nav_menu(array(
-					'theme_location' => 'primary',
-					'depth'          => 3,
-					'menu_id' => 'primary-menu',
-					'container_class' => 'nav-primary'
-					));
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'depth'          => 3,
+						'menu_id' => 'primary-menu',
+						'container_class' => 'nav-primary',
+					)
+				);
 				?>
 				</nav>
 			</div>
 		</div>
-	<?php endif;
+		<?php
+	endif;
 
 }
 add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
@@ -38,7 +41,7 @@ add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
  * Nav Extras
  *
  * @param string $menu Menu.
- * @param array $args Args.
+ * @param array  $args Args.
  */
 function eqd_nav_extras( $menu, $args ) {
 
@@ -52,15 +55,25 @@ function eqd_nav_extras( $menu, $args ) {
 
 	return $menu;
 }
-//add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 );
+/* add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 ); */
 
 /**
  * Search toggle
  */
 function eqd_search_toggle() {
 	$output  = '<button aria-label="Search" class="search-toggle">';
-	$output .= eqd_icon( array( 'icon' => 'search-fat', 'class' => 'open' ) );
-	$output .= eqd_icon( array( 'icon' => 'close', 'class' => 'close' ) );
+	$output .= eqd_icon(
+		array(
+			'icon' => 'search-fat',
+			'class' => 'open',
+		)
+	);
+	$output .= eqd_icon(
+		array(
+			'icon' => 'close',
+			'class' => 'close',
+		)
+	);
 	$output .= '</button>';
 	return $output;
 }
@@ -70,8 +83,18 @@ function eqd_search_toggle() {
  */
 function eqd_mobile_menu_toggle() {
 	$output  = '<button aria-label="Menu" class="menu-toggle">';
-	$output .= eqd_icon( array( 'icon' => 'menu', 'class' => 'open' ) );
-	$output .= eqd_icon( array( 'icon' => 'close', 'class' => 'close' ) );
+	$output .= eqd_icon(
+		array(
+			'icon' => 'menu',
+			'class' => 'open',
+		)
+	);
+	$output .= eqd_icon(
+		array(
+			'icon' => 'close',
+			'class' => 'close',
+		)
+	);
 	$output .= '</button>';
 	return $output;
 }
@@ -109,7 +132,7 @@ function eqd_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	return $output;
 }
-//add_filter( 'walker_nav_menu_start_el', 'eqd_nav_add_dropdown_icons', 10, 4 );
+/* add_filter( 'walker_nav_menu_start_el', 'eqd_nav_add_dropdown_icons', 10, 4 ); */
 
 /**
  * Previous/Next Archive Navigation (disabled)
@@ -119,7 +142,7 @@ function eqd_archive_navigation() {
 		the_posts_navigation();
 	}
 }
-//add_action( 'tha_content_while_after', 'eqd_archive_navigation' );
+/* add_action( 'tha_content_while_after', 'eqd_archive_navigation' ); */
 
 /**
  * Archive Paginated Navigation

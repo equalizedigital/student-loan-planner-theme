@@ -16,7 +16,7 @@ add_filter(
 	function( $manifest ) {
 		$manifest['display'] = 'standalone';
 
-		//$manifest['short_name'] = 'Client Short Name'; // max 12 characters
+		// $manifest['short_name'] = 'Client Short Name'; // max 12 characters
 		$name = get_bloginfo( 'name' );
 		if ( 12 < strlen( $name ) ) {
 			$manifest['short_name'] = substr( $name, 0, 12 );

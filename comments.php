@@ -29,7 +29,12 @@ if ( post_password_required() ) {
 		<?php eqd_comment_navigation( 'before' ); ?>
 		<ol class="comment-list">
 			<?php
-				wp_list_comments( [ 'style' => 'ol', 'type' => 'comment' ] );
+				wp_list_comments(
+					array(
+						'style' => 'ol',
+						'type' => 'comment',
+					)
+				);
 			?>
 		</ol><!-- .comment-list -->
 		<?php

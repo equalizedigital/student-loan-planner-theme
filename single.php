@@ -32,14 +32,14 @@ function eqd_single_after_entry() {
 
 	// Related Posts.
 	if ( function_exists( 'cultivate_pro' ) ) {
-		$args = [
+		$args = array(
 			'layout'     => 'gamma',
 			'title'      => 'You May Also Like',
-			'query_args' => [
-				'post__not_in' => [ get_the_ID() ],
-				'cat'          => eqd_first_term( [ 'field' => 'term_id' ] ),
-			],
-		];
+			'query_args' => array(
+				'post__not_in' => array( get_the_ID() ),
+				'cat'          => eqd_first_term( array( 'field' => 'term_id' ) ),
+			),
+		);
 		cultivate_pro()->blocks->post_listing->display( $args );
 	}
 

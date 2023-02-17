@@ -12,31 +12,31 @@
  * Social Links
  */
 function eqd_social_links() {
-	$socials = [
-		'facebook'  => [
+	$socials = array(
+		'facebook'  => array(
 			'key'   => 'facebook_site',
 			'label' => 'Facebook',
-		],
-		'twitter'   => [
+		),
+		'twitter'   => array(
 			'key'     => 'twitter_site',
 			'label'   => 'Twitter',
 			'prepend' => 'https://twitter.com/',
-		],
-		'pinterest' => [
+		),
+		'pinterest' => array(
 			'key'   => 'pinterest_url',
 			'label' => 'Pinterest',
-		],
-		'instagram' => [
+		),
+		'instagram' => array(
 			'key'   => 'instagram_url',
 			'label' => 'Instagram',
-		],
-		'youtube'   => [
+		),
+		'youtube'   => array(
 			'key'   => 'youtueqd_url',
 			'label' => 'YouTube',
-		],
-	];
+		),
+	);
 
-	$output   = [];
+	$output   = array();
 	$seo_data = get_option( 'wpseo_social' );
 	foreach ( $socials as $social => $settings ) {
 		$url = ! empty( $settings['key'] ) && ! empty( $seo_data[ $settings['key'] ] ) ? $seo_data[ $settings['key'] ] : false;

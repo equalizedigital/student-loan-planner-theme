@@ -69,7 +69,7 @@ add_filter( 'body_class', 'eqd_extra_body_classes' );
  */
 function eqd_clean_body_classes( $classes ) {
 
-	$allowed_classes = [
+	$allowed_classes = array(
 		'singular',
 		'single',
 		'page',
@@ -79,18 +79,18 @@ function eqd_clean_body_classes( $classes ) {
 		'admin-bar',
 		'logged-in',
 		'wp-embed-responsive',
-	];
+	);
 
 	// AdThrive Classes.
 	$allowed_classes = array_merge(
 		$allowed_classes,
-		[
+		array(
 			'adthrive-disable-all',
 			'adthrive-disable-in-image',
 			'adthrive-disable-content',
 			'adthrive-disable-video',
 			'adthrive-staging',
-		]
+		)
 	);
 
 	if ( function_exists( 'eqd_page_layout_options' ) ) {
@@ -157,10 +157,10 @@ function eqd_clean_post_classes( $classes ) {
 		return $classes;
 	}
 
-	$allowed_classes = [
+	$allowed_classes = array(
 		'entry',
 		'type-' . get_post_type(),
-	];
+	);
 
 	return array_intersect( $classes, $allowed_classes );
 }
@@ -235,7 +235,7 @@ add_filter( 'max_srcset_image_width', 'eqd_max_srcset_width', 10, 2 );
 function eqd_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
 
 	// Array of image widths used in grid.
-	$grid_sizes = [];
+	$grid_sizes = array();
 
 	// Max srcset size multiplier.
 	$max = 1.5;

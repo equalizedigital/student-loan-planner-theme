@@ -40,9 +40,14 @@ function ea_home_breadcrumb( $crumbs ) {
 
 	foreach ( $crumbs as $i => $crumb ) {
 		if ( ! empty( $crumb['text'] ) && 'Home' === $crumb['text'] ) {
-			$crumbs[ $i ]['text'] = '<span class="home">' . eqd_icon( [ 'icon' => 'home', 'size' => 16 ] ) . '<span class="screen-reader-text">Home</span></span>';
+			$crumbs[ $i ]['text'] = '<span class="home">' . eqd_icon(
+				array(
+					'icon' => 'home',
+					'size' => 16,
+				)
+			) . '<span class="screen-reader-text">Home</span></span>';
 		}
 	}
 	return $crumbs;
 }
-//add_filter( 'wpseo_breadcrumb_links', 'ea_home_breadcrumb' );
+/* add_filter( 'wpseo_breadcrumb_links', 'ea_home_breadcrumb' ); */

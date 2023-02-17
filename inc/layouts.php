@@ -12,18 +12,18 @@
  * Layout Options
  **/
 function eqd_page_layout_options() {
-	return [
+	return array(
 		'content-sidebar',
 		'content',
 		'full-width-content',
-	];
+	);
 }
 
 /**
  * Gutenberg layout style
  */
 function eqd_editor_layout_style() {
-	wp_enqueue_style( 'ea-editor-layout', get_stylesheet_directory_uri() . '/assets/css/editor-layout.css', [], filemtime( get_stylesheet_directory() . '/assets/css/editor-layout.css' ) );
+	wp_enqueue_style( 'ea-editor-layout', get_stylesheet_directory_uri() . '/assets/css/editor-layout.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/editor-layout.css' ) );
 }
 add_action( 'enqueue_block_editor_assets', 'eqd_editor_layout_style' );
 
@@ -57,7 +57,7 @@ function eqd_page_layout_metabox() {
 		return;
 	}
 
-	$choices = [];
+	$choices = array();
 	$layouts = eqd_page_layout_options();
 	foreach ( $layouts as $layout ) {
 		$label              = str_replace( '-', ' ', $layout );
@@ -65,7 +65,7 @@ function eqd_page_layout_metabox() {
 	}
 
 	acf_add_local_field_group(
-		[
+		array(
 			'key' => 'group_5dd714b369526',
 			'title' => 'Page Layout',
 			'fields' => array(
@@ -83,8 +83,7 @@ function eqd_page_layout_metabox() {
 						'id' => '',
 					),
 					'choices' => $choices,
-					'default_value' => array(
-					),
+					'default_value' => array(),
 					'allow_null' => 1,
 					'multiple' => 0,
 					'ui' => 0,
@@ -110,7 +109,7 @@ function eqd_page_layout_metabox() {
 			'hide_on_screen' => '',
 			'active' => true,
 			'description' => '',
-		]
+		)
 	);
 }
 add_action( 'acf/init', 'eqd_page_layout_metabox' );
@@ -122,7 +121,7 @@ add_action( 'acf/init', 'eqd_page_layout_metabox' );
  */
 function eqd_widget_area_args( $args = array() ) {
 
-	$defaults = [
+	$defaults = array(
 		'name'          => '',
 		'id'            => '',
 		'description'   => '',
@@ -130,7 +129,7 @@ function eqd_widget_area_args( $args = array() ) {
 		'after_widget'  => '</section>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
-	];
+	);
 	$args     = wp_parse_args( $args, $defaults );
 
 	if ( ! empty( $args['name'] ) && empty( $args['id'] ) ) {
@@ -146,9 +145,9 @@ function eqd_widgets_init() {
 
 	register_sidebar(
 		eqd_widget_area_args(
-			[
+			array(
 				'name' => esc_html__( 'Primary Sidebar', 'mainspring' ),
-			]
+			)
 		)
 	);
 
@@ -184,11 +183,11 @@ function eqd_page_layout( $id = false ) {
 	$layout            = 'content';
 
 	// Default layouts.
-	$defaults = [
+	$defaults = array(
 		'post'              => 'content-sidebar',
 		'page'              => 'content',
 		'cultivate_landing' => 'full-width-content',
-	];
+	);
 	foreach ( $defaults as $post_type => $default_layout ) {
 		if ( ( $id && $post_type === get_post_type( $id ) ) || ( ! empty( $_GET['post_type'] ) && $post_type === $_GET['post_type'] ) ) {
 			$layout = $default_layout;

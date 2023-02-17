@@ -16,7 +16,16 @@
  */
 function eqd_arrow_button( $content, $block ) {
 	if ( 'core/button' === $block['blockName'] && ! empty( $block['attrs'] ) && ! empty( $block['attrs']['className'] ) && 'is-style-arrow' === $block['attrs']['className'] ) {
-		$content = str_replace( '</a>', eqd_icon( [ 'icon' => 'arrow-right', 'size' => 20 ] ) . '</a>', $content );
+		$content = str_replace(
+			'</a>',
+			eqd_icon(
+				array(
+					'icon' => 'arrow-right',
+					'size' => 20,
+				)
+			) . '</a>',
+			$content
+		);
 	}
 	return $content;
 }

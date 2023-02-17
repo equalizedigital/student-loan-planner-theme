@@ -40,23 +40,27 @@ require_once get_template_directory() . '/inc/wordpress-seo.php';
  * Enqueue scripts and styles.
  */
 function eqd_scripts() {
-	
-	wp_enqueue_script( 'theme-global', get_template_directory_uri() . '/assets/js/global-min.js', [], filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
+
+	wp_enqueue_script( 'theme-global', get_template_directory_uri() . '/assets/js/global-min.js', array(), filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
 
 	wp_localize_script(
 		'theme-global',
 		'mainspring_vars',
 		array(
-			'nonce' => wp_create_nonce('ajax-nonce'),
+			'nonce' => wp_create_nonce( 'ajax-nonce' ),
 			'post_id' => get_the_ID(),
 		)
 	);
 
-	wp_enqueue_script( 'theme-menu', get_template_directory_uri() . '/assets/js/menu-min.js', [], filemtime( get_template_directory() . '/assets/js/menu-min.js' ), true );
-	wp_localize_script( 'theme-menu', 'screenReaderText', array(
-		'expand'   => __( 'Expand child menu', 'mainspring' ),
-		'collapse' => __( 'Collapse child menu', 'mainspring' ),
-	));
+	wp_enqueue_script( 'theme-menu', get_template_directory_uri() . '/assets/js/menu-min.js', array(), filemtime( get_template_directory() . '/assets/js/menu-min.js' ), true );
+	wp_localize_script(
+		'theme-menu',
+		'screenReaderText',
+		array(
+			'expand'   => __( 'Expand child menu', 'mainspring' ),
+			'collapse' => __( 'Collapse child menu', 'mainspring' ),
+		)
+	);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -131,10 +135,10 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
-			[
+			array(
 				'primary'   => esc_html__( 'Primary Navigation Menu', 'mainspring' ),
 				'secondary' => esc_html__( 'Secondary Navigation Menu', 'mainspring' ),
-			]
+			)
 		);
 
 		/*
@@ -143,7 +147,7 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		 */
 		add_theme_support(
 			'html5',
-			[
+			array(
 				'search-form',
 				'comment-form',
 				'comment-list',
@@ -151,7 +155,7 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 				'caption',
 				'script',
 				'style',
-			]
+			)
 		);
 
 		// Gutenberg.
@@ -168,26 +172,26 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		// -- Editor Font Styles
 		add_theme_support(
 			'editor-font-sizes',
-			[
-				[
+			array(
+				array(
 					'name'      => __( 'Large', 'mainspring' ),
 					'shortName' => __( 'L', 'mainspring' ),
 					'size'      => 23,
 					'slug'      => 'large',
-				],
-				[
+				),
+				array(
 					'name'      => __( 'Normal', 'mainspring' ),
 					'shortName' => __( 'M', 'mainspring' ),
 					'size'      => 19,
 					'slug'      => 'normal',
-				],
-				[
+				),
+				array(
 					'name'      => __( 'Small', 'mainspring' ),
 					'shortName' => __( 'S', 'mainspring' ),
 					'size'      => 17,
 					'slug'      => 'small',
-				],
-			]
+				),
+			)
 		);
 
 		// -- Disable Custom Colors
@@ -200,38 +204,38 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		// -- Editor Color Palette
 		add_theme_support(
 			'editor-color-palette',
-			[
-				[
+			array(
+				array(
 					'name'  => __( 'Primary', 'mainspring' ),
 					'slug'  => 'primary',
 					'color' => '#24509A',
-				],
-				[
+				),
+				array(
 					'name'  => __( 'Primary Background', 'mainspring' ),
 					'slug'  => 'primary-bg',
 					'color' => '#E9EDF4',
-				],
-				[
+				),
+				array(
 					'name'  => __( 'Secondary', 'mainspring' ),
 					'slug'  => 'secondary',
 					'color' => '#FEC72D',
-				],
-				[
+				),
+				array(
 					'name'  => __( 'Secondary Background', 'mainspring' ),
 					'slug'  => 'secondary-bg',
 					'color' => '#FEF9EA',
-				],
-				[
+				),
+				array(
 					'name'  => __( 'Grey', 'mainspring' ),
 					'slug'  => 'grey',
 					'color' => '#FAFAFA',
-				],
-				[
+				),
+				array(
 					'name'  => __( 'White', 'mainspring' ),
 					'slug'  => 'white',
 					'color' => '#FFFFFF',
-				],
-			]
+				),
+			)
 		);
 
 	}

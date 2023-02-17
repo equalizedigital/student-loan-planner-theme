@@ -24,7 +24,7 @@ add_action( 'tha_content_while_after', 'eqd_comments' );
  * @param string $location Location.
  */
 function eqd_comment_navigation( $location = '' ) {
-	$comment_nav_locations = [ 'after' ];
+	$comment_nav_locations = array( 'after' );
 	if ( ! in_array( $location, $comment_nav_locations, true ) ) {
 		return;
 	}

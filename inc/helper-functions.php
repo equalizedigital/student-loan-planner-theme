@@ -11,7 +11,7 @@
 // Duplicate 'the_content' filters.
 global $wp_embed;
 add_filter( 'eqd_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'eqd_the_content', array( $wp_embed, 'autoembed'     ), 8 );
+add_filter( 'eqd_the_content', array( $wp_embed, 'autoembed' ), 8 );
 add_filter( 'eqd_the_content', 'wptexturize' );
 add_filter( 'eqd_the_content', 'convert_chars' );
 add_filter( 'eqd_the_content', 'wpautop' );
@@ -23,13 +23,13 @@ add_filter( 'eqd_the_content', 'do_shortcode' );
  *
  * @param array $args Args.
  */
-function eqd_first_term( $args = [] ) {
+function eqd_first_term( $args = array() ) {
 
-	$defaults = [
+	$defaults = array(
 		'taxonomy' => 'category',
 		'field'    => null,
 		'post_id'  => null,
-	];
+	);
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -122,7 +122,7 @@ function eqd_bg_image_style( $image_id = false, $image_size = 'full' ) {
 function eqd_icon( $atts = array() ) {
 
 	$atts = shortcode_atts(
-		[
+		array(
 			'icon'  => false,
 			'group' => 'utility',
 			'size'  => 24,
@@ -130,7 +130,7 @@ function eqd_icon( $atts = array() ) {
 			'label' => false,
 			'defs'  => false,
 			'force' => false,
-		],
+		),
 		$atts
 	);
 
@@ -180,7 +180,7 @@ function eqd_icon( $atts = array() ) {
 
 		global $eqd_icons;
 		if ( empty( $eqd_icons[ $atts['group'] ] ) ) {
-			$eqd_icons[ $atts['group'] ] = [];
+			$eqd_icons[ $atts['group'] ] = array();
 		}
 		if ( empty( $eqd_icons[ $atts['group'] ][ $atts['icon'] ] ) ) {
 			$eqd_icons[ $atts['group'] ][ $atts['icon'] ] = 1;
@@ -209,9 +209,9 @@ function eqd_icon( $atts = array() ) {
 /**
  * Icon as image
  *
- * @param array $atts
+ * @param array $atts array of attributes.
  */
-function eqd_icon_as_img( $atts = [] ) {
+function eqd_icon_as_img( $atts = array() ) {
 
 	$atts['size'] = false;
 	$atts['force'] = true;
@@ -239,7 +239,13 @@ function eqd_icon_definitions() {
 	echo '<svg style="display:none;"><defs>';
 	foreach ( $eqd_icons as $group => $icons ) {
 		foreach ( $icons as $icon => $count ) {
-			echo eqd_icon( [ 'icon' => $icon, 'group' => $group, 'defs' => true ] );
+			echo eqd_icon(
+				array(
+					'icon' => $icon,
+					'group' => $group,
+					'defs' => true,
+				)
+			);
 		}
 	}
 	echo '</defs></svg>';
@@ -264,15 +270,15 @@ function eqd_has_action( $hook ) {
  * @param array $field ACF Field data.
  * @param array $atts Button attributes.
  */
-function eqd_button( $field = [], $atts = [] ) {
+function eqd_button( $field = array(), $atts = array() ) {
 
 	if ( empty( $field ) ) {
 		return;
 	}
 
-	$block       = [ 'blockName' => 'core/button'];
+	$block       = array( 'blockName' => 'core/button' );
 	$target      = ! empty( $field['target'] ) ? ' target="' . $field['target'] . '"' : '';
-	$block_class = [ 'wp-block-button' ];
+	$block_class = array( 'wp-block-button' );
 
 	if ( false !== strpos( $target, '_blank' ) ) {
 		$target .= ' rel="noopener noreferrer"';
@@ -283,7 +289,7 @@ function eqd_button( $field = [], $atts = [] ) {
 		$block['attrs']['className'] = 'is-style-' . $atts['style'];
 	}
 
-	$button_class = [ 'wp-block-button__link' ];
+	$button_class = array( 'wp-block-button__link' );
 	if ( ! empty( $atts['bg'] ) ) {
 		$button_class[] = 'has-background';
 		$button_class[] = 'has-' . $atts['bg'] . '-background-color';
