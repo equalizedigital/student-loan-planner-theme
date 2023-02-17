@@ -146,7 +146,7 @@ function eqd_widgets_init() {
 	register_sidebar(
 		eqd_widget_area_args(
 			array(
-				'name' => esc_html__( 'Primary Sidebar', 'mainspring' ),
+				'name' => esc_html__( 'Primary Sidebar', 'eqd' ),
 			)
 		)
 	);

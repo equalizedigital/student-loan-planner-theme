@@ -25,7 +25,7 @@ if ( post_password_required() ) {
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h3 class="comments-title"><?php esc_html_e( 'Comments', 'mainspring' ); ?></h3>
+		<h3 class="comments-title"><?php esc_html_e( 'Comments', 'eqd' ); ?></h3>
 		<?php eqd_comment_navigation( 'before' ); ?>
 		<ol class="comment-list">
 			<?php
@@ -46,7 +46,7 @@ if ( post_password_required() ) {
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 		?>
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'mainspring' ); ?></p>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'eqd' ); ?></p>
 		<?php
 	endif;
 

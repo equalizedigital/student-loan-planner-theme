@@ -45,7 +45,7 @@ function eqd_scripts() {
 
 	wp_localize_script(
 		'theme-global',
-		'mainspring_vars',
+		'eqd_vars',
 		array(
 			'nonce' => wp_create_nonce( 'ajax-nonce' ),
 			'post_id' => get_the_ID(),
@@ -57,8 +57,8 @@ function eqd_scripts() {
 		'theme-menu',
 		'screenReaderText',
 		array(
-			'expand'   => __( 'Expand child menu', 'mainspring' ),
-			'collapse' => __( 'Collapse child menu', 'mainspring' ),
+			'expand'   => __( 'Expand child menu', 'eqd' ),
+			'collapse' => __( 'Collapse child menu', 'eqd' ),
 		)
 	);
 
@@ -98,7 +98,7 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		/*
 		 * Make theme available for translation.
 		 */
-		load_theme_textdomain( 'mainspring', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'eqd', get_template_directory() . '/languages' );
 
 		// Editor Styles.
 		add_theme_support( 'editor-styles' );
@@ -136,8 +136,8 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'primary'   => esc_html__( 'Primary Navigation Menu', 'mainspring' ),
-				'secondary' => esc_html__( 'Secondary Navigation Menu', 'mainspring' ),
+				'primary'   => esc_html__( 'Primary Navigation Menu', 'eqd' ),
+				'secondary' => esc_html__( 'Secondary Navigation Menu', 'eqd' ),
 			)
 		);
 
@@ -174,20 +174,20 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 			'editor-font-sizes',
 			array(
 				array(
-					'name'      => __( 'Large', 'mainspring' ),
-					'shortName' => __( 'L', 'mainspring' ),
+					'name'      => __( 'Large', 'eqd' ),
+					'shortName' => __( 'L', 'eqd' ),
 					'size'      => 23,
 					'slug'      => 'large',
 				),
 				array(
-					'name'      => __( 'Normal', 'mainspring' ),
-					'shortName' => __( 'M', 'mainspring' ),
+					'name'      => __( 'Normal', 'eqd' ),
+					'shortName' => __( 'M', 'eqd' ),
 					'size'      => 19,
 					'slug'      => 'normal',
 				),
 				array(
-					'name'      => __( 'Small', 'mainspring' ),
-					'shortName' => __( 'S', 'mainspring' ),
+					'name'      => __( 'Small', 'eqd' ),
+					'shortName' => __( 'S', 'eqd' ),
 					'size'      => 17,
 					'slug'      => 'small',
 				),
@@ -206,32 +206,32 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 			'editor-color-palette',
 			array(
 				array(
-					'name'  => __( 'Primary', 'mainspring' ),
+					'name'  => __( 'Primary', 'eqd' ),
 					'slug'  => 'primary',
 					'color' => '#24509A',
 				),
 				array(
-					'name'  => __( 'Primary Background', 'mainspring' ),
+					'name'  => __( 'Primary Background', 'eqd' ),
 					'slug'  => 'primary-bg',
 					'color' => '#E9EDF4',
 				),
 				array(
-					'name'  => __( 'Secondary', 'mainspring' ),
+					'name'  => __( 'Secondary', 'eqd' ),
 					'slug'  => 'secondary',
 					'color' => '#FEC72D',
 				),
 				array(
-					'name'  => __( 'Secondary Background', 'mainspring' ),
+					'name'  => __( 'Secondary Background', 'eqd' ),
 					'slug'  => 'secondary-bg',
 					'color' => '#FEF9EA',
 				),
 				array(
-					'name'  => __( 'Grey', 'mainspring' ),
+					'name'  => __( 'Grey', 'eqd' ),
 					'slug'  => 'grey',
 					'color' => '#FAFAFA',
 				),
 				array(
-					'name'  => __( 'White', 'mainspring' ),
+					'name'  => __( 'White', 'eqd' ),
 					'slug'  => 'white',
 					'color' => '#FFFFFF',
 				),

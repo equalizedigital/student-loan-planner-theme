@@ -22,7 +22,7 @@ the_content();
 
 wp_link_pages(
 	array(
-		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mainspring' ),
+		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'eqd' ),
 		'after'  => '</div>',
 	)
 );
