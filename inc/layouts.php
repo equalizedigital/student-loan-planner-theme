@@ -151,8 +151,60 @@ function eqd_widgets_init() {
 		)
 	);
 
+	register_sidebar(
+		eqd_widget_area_args(
+			array(
+				'name' => esc_html__( 'Footer Widget Area 1', 'eqd' ),
+			)
+		)
+	);
+
+	register_sidebar(
+		eqd_widget_area_args(
+			array(
+				'name' => esc_html__( 'Footer Widget Area 2', 'eqd' ),
+			)
+		)
+	);
+
+	register_sidebar(
+		eqd_widget_area_args(
+			array(
+				'name' => esc_html__( 'Footer Widget Area 3', 'eqd' ),
+			)
+		)
+	);
+
 }
 add_action( 'widgets_init', 'eqd_widgets_init' );
+
+add_action( 'tha_footer_top', 'eqd_output_footer_widgets' );
+/**
+ * Output footer widget area.
+ */
+function eqd_output_footer_widgets() {
+	if ( is_active_sidebar( 'Footer Widget Area 1' ) ) {
+		?>
+		<div id="footer-widget-area-1" class="widget-area">
+			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+		</div>
+		<?php
+	}
+	if ( is_active_sidebar( 'Footer Widget Area 2' ) ) {
+		?>
+		<div id="footer-widget-area-1" class="widget-area">
+			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+		</div>
+		<?php
+	}
+	if ( is_active_sidebar( 'Footer Widget Area 3' ) ) {
+		?>
+		<div id="footer-widget-area-1" class="widget-area">
+			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+		</div>
+		<?php
+	}
+}
 
 /**
  * Layout Body Class

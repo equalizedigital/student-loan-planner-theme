@@ -238,6 +238,8 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 			)
 		);
 
+		remove_theme_support( 'widgets-block-editor' );
+
 	}
 endif;
 add_action( 'after_setup_theme', 'eqd_setup' );
