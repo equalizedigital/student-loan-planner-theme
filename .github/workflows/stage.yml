@@ -15,6 +15,6 @@ jobs:
         WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
         WPE_ENV: rwcbasestg
         # Deploy Options
-        REMOTE_PATH: "wp-content/themes/equalize-digital-base-theme/"
+        REMOTE_PATH: "wp-content/themes/student-loan-planner-theme"
         PHP_LINT: FALSE
         CACHE_CLEAR: TRUE
