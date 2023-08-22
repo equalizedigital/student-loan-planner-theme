@@ -13,7 +13,7 @@ jobs:
       with:
         # Deploy vars
         WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
-        WPE_ENV: studentloanplanner
+        WPE_ENV: studentloanstg
         # Deploy Options
         REMOTE_PATH: "wp-content/themes/student-loan-planner-theme"
         PHP_LINT: FALSE
