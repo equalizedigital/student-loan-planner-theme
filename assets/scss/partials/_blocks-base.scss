@@ -2,7 +2,12 @@
 --------------------------------------------- */
 
 body {
-	@include style( 'body', $size: 5, $base: true );
+	@include style('body', $size: 5, $base: true);
+	color: black;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 28px; 
 }
 
 /**
@@ -10,12 +15,20 @@ body {
  * @link https://webaim.org/resources/linkcontrastchecker/
  */
 a {
-	color: #4242FF;
-	text-decoration: underline;
+	color: black;
+
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 13px; 
+	text-decoration-line: underline;
+
+
 	@extend %transition;
 
 	&:hover {
 		text-decoration: none;
+		color: brand-color('tertiary');
 	}
 
 	svg {
@@ -81,16 +94,16 @@ p {
 
 	&.large,
 	&.has-large-font-size {
-		@include style( 'body', 3 );
+		@include style('body', 3);
 	}
 
 	&.has-normal-font-size {
-		@include style( 'body', 5 );
+		@include style('body', 5);
 	}
 
 	&.small,
 	&.has-small-font-size {
-		@include style( 'body', 7 );
+		@include style('body', 7);
 	}
 }
 
@@ -103,31 +116,55 @@ h3,
 h4,
 h5,
 h6 {
-	@include style( 'title', null, true );
+	@include style('title', null, true);
 	margin: 0 0 16px;
+	color: $black;
 
 	a {
 		color: $text_dark;
 
 		&:hover {
-			color: brand-color( 'primary' );
+			color: brand-color('primary');
 			text-decoration: none;
 		}
 	}
 }
 
 h1 {
-	@include style( 'display', 4, true );
+	@include style('title', 1);
+	font-style: normal;
+	font-weight: 700;
+	line-height: 70px;
 }
 
 h2 {
-	@include style( 'title', 3 );
+	@include style('title', 2);
+	font-style: normal;
+	font-weight: 700;
+	line-height: 55px;
 }
 
 h3 {
-	@include style( 'title', 5 );
+	@include style('title', 3);
+	font-style: normal;
+	font-weight: 700;
+	line-height: 40px;
 }
 
-h4, h5, h6 {
-	@include style( 'title', 7 );
+h4{
+	@include style('title', 4);
+	font-style: normal;
+	font-weight: 700;
+}
+
+h5 {
+	@include style('title', 5);
+	font-style: normal;
+	font-weight: 700;
+}
+
+h6 {
+	@include style('title', 6);
+	font-style: normal;
+	font-weight: 700;
 }

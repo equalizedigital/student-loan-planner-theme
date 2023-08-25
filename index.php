@@ -22,6 +22,7 @@ tha_content_before();
 	get_sidebar();
 	tha_content_wrap_after();
 	echo '</div>';
+	
 tha_content_after();
 
 get_footer();
