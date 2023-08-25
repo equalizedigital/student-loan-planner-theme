@@ -2,28 +2,42 @@
 --------------------------------------------- */
 
 .wp-block-button__link {
-	@include style( 'callout', 5, true );
-	background-color: brand-color( 'primary' );
-	border: none;
-	border-radius: 3px;
-	padding: 11px 24px;
+	@include style('callout', 5, true);
+	background-color: brand-color('primary');
+	padding: 13px 24px;
 	text-decoration: none;
+	border: 1px solid transparent;
+	color: $black;
+	text-align: center;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 15px;
+	min-width: 148px;
+	border-radius: 10px;
+
+	&:hover {
+		&:hover {
+			border-color: #82BC46;
+			background: transparent;
+		}
+	}
 
 	svg {
 		margin-left: 8px;
 	}
 
 	&:not(.has-text-color) {
-		color: white;
+		color: black;
 
 		&:hover {
-			color: white;
+			color: black;
 		}
 	}
 
 	&:hover,
 	&:focus {
-		background-color: brand-color( 'primary', 'darken' );
+		background-color: brand-color('primary', 'darken');
 	}
 
 	@each $name in $gutenberg_colors {
@@ -31,7 +45,7 @@
 
 			&:hover,
 			&:focus {
-				background-color: brand-color( $name, 'darken' );
+				background-color: brand-color($name, 'darken');
 			}
 		}
 	}
@@ -46,25 +60,25 @@
 			padding: 9px 22px;
 
 			&:not(.has-text-color) {
-				color: brand-color( 'primary' );
+				color: brand-color('primary');
 			}
 
 			&:not(.has-background) {
 				background: white;
-				border-color: brand-color( 'primary' );
+				border-color: brand-color('primary');
 
 				&:hover {
-					background: brand-color( 'primary', 'bg' );
+					background: brand-color('primary', 'bg');
 				}
 			}
 
 			@each $name in $gutenberg_colors {
 				&.has-#{$name}-background-color {
 					background: white;
-					border-color: brand-color( $name );
+					border-color: brand-color($name );
 
 					&:hover {
-						background: brand-color( $name, 'bg' );
+						background: brand-color($name, 'bg');
 					}
 				}
 			}
@@ -85,17 +99,17 @@
 			}
 
 			&:not(.has-text-color) {
-				color: brand-color( 'primary' );
+				color: brand-color('primary');
 
 				svg {
-					fill: brand-color( 'primary' );
+					fill: brand-color('primary');
 				}
 
 				&:hover {
-					color: brand-color( 'primary', 'darken' );
+					color: brand-color('primary', 'darken');
 
 					svg {
-						fill: brand-color( 'primary', 'darken' );
+						fill: brand-color('primary', 'darken');
 					}
 				}
 			}
@@ -103,14 +117,14 @@
 			@each $name in $gutenberg_colors {
 				&.has-#{$name}-color {
 					svg {
-						fill: brand-color( $name );
+						fill: brand-color($name );
 					}
 
 					&:hover {
-						color: brand-color( $name, 'darken' );
+						color: brand-color($name, 'darken');
 
 						svg {
-							fill: brand-color( $name, 'darken' );
+							fill: brand-color($name, 'darken');
 						}
 					}
 				}
@@ -126,16 +140,13 @@ blockquote,
 blockquote.wp-block-quote {
 	text-align: left;
 
-	p {
-	}
+	p {}
 
 	cite,
-	.wp-block-quote__citation {
-
-	}
+	.wp-block-quote__citation {}
 
 	p:last-of-type {
-			margin-bottom: 0;
+		margin-bottom: 0;
 	}
 
 }
@@ -195,9 +206,7 @@ img {
 .wp-block-image,
 .wp-block-video,
 .wp-block-table {
-	figcaption {
-
-	}
+	figcaption {}
 
 	&.alignwide figcaption {
 		@include media("<desktop") {
@@ -219,12 +228,13 @@ img {
 /* Tables
 --------------------------------------------- */
 
-.wp-block-table  {
+.wp-block-table {
 
 	border-collapse: collapse;
 	width: 100%;
 
-	td, th {
+	td,
+	th {
 		padding: .5em;
 		border: 1px solid;
 	}
@@ -236,33 +246,39 @@ img {
 @each $name in $gutenberg_colors {
 
 	.has-#{$name}-color {
-		color: brand-color( $name );
+		color: brand-color($name );
 
 		&:hover {
-			color: brand-color( $name );
+			color: brand-color($name );
 		}
 	}
 
 	.has-#{$name}-bg-color {
-		color: brand-color( $name, 'bg' );
+		color: brand-color($name, 'bg');
 	}
 
 	.has-#{$name}-background-color {
-		background-color: brand-color( $name );
+		background-color: brand-color($name );
 		color: $text_light;
 
-		h1, h2, h3, h4, h5, h6, p {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p {
 			color: $text_light;
 		}
 
 	}
 
 	.has-#{$name}-bg-background-color {
-		background-color: brand-color( $name, 'bg' );
+		background-color: brand-color($name, 'bg');
 	}
 
 	.has-#{$name}-fill {
-		fill: brand-color( $name );
+		fill: brand-color($name );
 	}
 
 }
@@ -295,7 +311,7 @@ img {
 		margin: 0 auto;
 		@include clearfix;
 
-		& > *:last-child {
+		&>*:last-child {
 			margin-bottom: 0;
 		}
 
@@ -320,8 +336,8 @@ img {
 	&.alignfull {
 
 		.alignwide {
-			margin-left: ( $content-width - $grid-width ) / 2;
-			margin-right: ( $content-width - $grid-width ) / 2;
+			margin-left: ($content-width - $grid-width ) / 2;
+			margin-right: ($content-width - $grid-width ) / 2;
 		}
 	}
 

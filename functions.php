@@ -36,6 +36,9 @@ require_once get_template_directory() . '/inc/pwa.php';
 require_once get_template_directory() . '/inc/shared-counts.php';
 require_once get_template_directory() . '/inc/wordpress-seo.php';
 
+// Blocks
+require_once(get_template_directory() . '/inc/class-gutenberg-loader.php');
+
 /**
  * Enqueue scripts and styles.
  */
@@ -257,3 +260,4 @@ function eqd_template_hierarchy( $template ) {
 	return $template;
 }
 add_filter( 'template_include', 'eqd_template_hierarchy' );
+

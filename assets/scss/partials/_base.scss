@@ -11,9 +11,12 @@ $neutral_700: #616161;
 $neutral_800: #424242;
 $neutral_900: #212121;
 $black: #000;
+$off_black: #2D2D2D;
+$light_gray: #f7f7f7;
+$cream: #fffde9;
 
 // Text Colors
-$text_dark: #111111;
+$text_dark: #1D1F20;
 $text_medium: #737373;
 $text_light: #FFFFFF;
 
@@ -30,14 +33,17 @@ $socials: (
 // Brand Colors
 // -- primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, denary
 $brand_colors: (
-	'primary'	: #24509A,
-	'primary_darken' : #1A3B71,
-	'primary_lighten' : #2E65C3,
-	'primary_bg' : #E9EDF4,
-	'secondary' : #FEC72D,
-	'secondary_darken' : #F7B601,
-	'secondary_lighten' : #FED560,
-	'secondary_bg' : #FEF9EA,
+	'primary'	: #82BC46,
+	'primary_darken' : #82BC46,
+	'primary_lighten' : #82BC46,
+	
+	'secondary' : #547C2D,
+	'secondary_darken' : #547C2D,
+	'secondary_lighten' : #547C2D,
+
+	'tertiary' : #625089,
+	'tertiary_darken' : #625089,
+	'tertiary_lighten' : #625089,
 );
 @import "../modules/brand-color";
 
