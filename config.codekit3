@@ -3195,6 +3195,22 @@
       "oAP" : "\/template-parts\/blocks\/hero\/hero.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/media-reviews\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/media-reviews\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/media-reviews\/media-reviews.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/media-reviews\/media-reviews.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/query-loop\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3209,6 +3225,22 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/query-loop\/query-loop.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/resource-links\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/resource-links\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/resource-links\/resource-links.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/resource-links\/resource-links.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/resources-loop\/block.json" : {
