@@ -42,21 +42,30 @@ $youtube_video_id = get_field('youtube_video_id');
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="full-width-columns-background-container">
 		<div class="full-width-columns-background-container-content">
-		<h1 class="title"><?php echo $title; ?></h1>
-		<div class="content"><?php echo $content; ?></div>
+			<h1 class="title"><?php echo $title; ?></h1>
+			<div class="content"><?php echo $content; ?></div>
 		</div>
-		<div class="full-width-columns-background-container__video">
-		<img src="<?php echo $image['url']; ?>" id="thumbnail" onclick="playVideo();" alt="Click to play video" style="cursor: pointer;">
-		<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/play.svg" alt="play video" onclick="playVideo();"  id="play-iframe" class="play">
-		<div id="player"></div>
+		<div class="full-width-columns-background-container__video" >
+				<img class="modal-btn" data-modal="modal1" src="<?php echo $image['url']; ?>" id="thumbnail" onclick="playVideo();" alt="Click to play video" style="cursor: pointer;">
+				<img class="modal-btn play" data-modal="modal1" src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/play.svg" alt="play video" onclick="playVideo();"  id="play-iframe">
+				
 		</div>
 	</div>
 </section>
 
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">
+		<img src="<?php echo $featured_image_url = get_template_directory_uri() . '/assets/icons/utility/close-cross.svg'; ?>" alt="">
+	</span>
+    <div id="player"></div>
+  </div>
+</div>
+
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-var player;
+let player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -64,20 +73,10 @@ function onYouTubeIframeAPIReady() {
         width: '640',
         videoId: '<?php echo $youtube_video_id; ?>',
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            // 'onReady': onPlayerReady,
+            // 'onStateChange': onPlayerStateChange
         }
     });
-}
-
-function onPlayerReady(event) {
-    // Video player is ready but not playing yet
-}
-
-function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.ENDED) {
-        // Video ended
-    }
 }
 
 function playVideo() {

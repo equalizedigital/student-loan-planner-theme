@@ -172,3 +172,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
+// Function to open a modal
+function openModal(modalId) {
+	var modal = document.getElementById(modalId);
+	if (modal) {
+	  modal.style.display = "block";
+	}
+  }
+  
+  // Function to close a modal
+  function closeModal(modalId) {
+	var modal = document.getElementById(modalId);
+	if (modal) {
+	  modal.style.display = "none";
+	}
+  }
+  
+  // Add click event to each modal button
+  var modalButtons = document.querySelectorAll('.modal-btn');
+  modalButtons.forEach(function(button) {
+	button.addEventListener('click', function() {
+	  var modalId = button.getAttribute('data-modal');
+	  openModal(modalId);
+	});
+  });
+  
+  // Add click event to each close button
+  var closeButtons = document.querySelectorAll('.close-btn');
+  closeButtons.forEach(function(button) {
+	button.addEventListener('click', function() {
+	  var modal = button.closest('.modal');
+	  if (modal) {
+		closeModal(modal.id);
+	  }
+	});
+  });
+  
+  // Close the modal if the user clicks outside of it
+  window.addEventListener('click', function(event) {
+	var modals = document.querySelectorAll('.modal');
+	modals.forEach(function(modal) {
+	  if (event.target === modal) {
+		closeModal(modal.id);
+	  }
+	});
+  });
+  

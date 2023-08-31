@@ -76,7 +76,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 									<div class="link">
 										<?php if(!empty($link)): ?>
-											<a href="<?php echo $link['url']; ?>" class=" button button-help"><?php echo $link["title"]; ?></a>
+											<a href="<?php echo $link['url']; ?>" class=" btn "><?php echo $link["title"]; ?></a>
 										<?php endif; ?>
 									</div>
 									<div class="review"><?php echo $row['rating']; ?></div>
