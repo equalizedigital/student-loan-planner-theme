@@ -100,7 +100,7 @@ window.addEventListener("load", function () {
 			// Add a click event listener to each button
 			button.addEventListener('click', function () {
 				// Get the value of the data-target attribute
-				let targetClass = button.getAttribute('data-link');
+				let targetClass = button.getAttribute('data-resourcelink');
 
 				// Remove active class from all items before adding to the new one
 				tabButtons.forEach(btn => btn.classList.remove('active'));
@@ -116,10 +116,18 @@ window.addEventListener("load", function () {
 					targetElements.forEach(element => {
 						element.classList.add('resource-links-loop-container-item--active');
 					});
+
 				}
 
 				// Add active class to the clicked button
 				button.classList.add('active');
+
+
+				let firstLink = document.getElementById(targetClass).querySelector('a');
+				if (firstLink) {
+					firstLink.focus();
+				}
+
 			});
 		});
 
@@ -164,3 +172,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
+// Function to open a modal
+function openModal(modalId) {
+	var modal = document.getElementById(modalId);
+	if (modal) {
+	  modal.style.display = "block";
+	}
+  }
+  
+  // Function to close a modal
+  function closeModal(modalId) {
+	var modal = document.getElementById(modalId);
+	if (modal) {
+	  modal.style.display = "none";
+	}
+  }
+  
+  // Add click event to each modal button
+  var modalButtons = document.querySelectorAll('.modal-btn');
+  modalButtons.forEach(function(button) {
+	button.addEventListener('click', function() {
+	  var modalId = button.getAttribute('data-modal');
+	  openModal(modalId);
+	});
+  });
+  
+  // Add click event to each close button
+  var closeButtons = document.querySelectorAll('.close-btn');
+  closeButtons.forEach(function(button) {
+	button.addEventListener('click', function() {
+	  var modal = button.closest('.modal');
+	  if (modal) {
+		closeModal(modal.id);
+	  }
+	});
+  });
+  
+  // Close the modal if the user clicks outside of it
+  window.addEventListener('click', function(event) {
+	var modals = document.querySelectorAll('.modal');
+	modals.forEach(function(modal) {
+	  if (event.target === modal) {
+		closeModal(modal.id);
+	  }
+	});
+  });
+  

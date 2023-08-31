@@ -34,9 +34,10 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 // Load values and assing defaults.
 $title = get_field('title');
+$block_style = get_field('block_style');
 
 ?>
-<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> <?php echo $block_style == 'purple'?'media-reviews-block-purple':''; ?>">
     <div class="media-reviews-container">
         <h2 class="title"><?php echo $title; ?></h2>
 
@@ -138,7 +139,7 @@ $title = get_field('title');
 		</div>
 		<div class="media-reviews-container-review-items-read">
 			<?php $read_more_link = get_field('read_more_link'); ?>
-			<a class="button" href="<?php echo $read_more_link['url']; ?>"><?php echo $read_more_link['title']; ?></a>
+			<a class="btn" href="<?php echo $read_more_link['url']; ?>"><?php echo $read_more_link['title']; ?></a>
 		</div>
 
 

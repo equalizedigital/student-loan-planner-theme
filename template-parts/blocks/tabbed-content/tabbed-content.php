@@ -76,7 +76,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 									<div class="link">
 										<?php if(!empty($link)): ?>
-											<a href="<?php echo $link; ?>"><?php echo $link["title"]; ?></a>
+											<a href="<?php echo $link['url']; ?>" class=" btn "><?php echo $link["title"]; ?></a>
 										<?php endif; ?>
 									</div>
 									<div class="review"><?php echo $row['rating']; ?></div>
@@ -93,11 +93,11 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 										<?php 
 										$ctas = $row['ctas'];
 										if( $ctas ) {
-											foreach( $ctas as $row ) {
+											foreach( $ctas as $key => $row ) {
+												if($key != 0 ){continue;}
 												?>
 												<div class="image_info_item">
 													<div class="image_info_item_icon">
-														<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/utility/icon-checkmark.svg" alt="check">
 														<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/utility/icon-checkmark.svg" alt="check">
 													</div>
 													<div class="image_info_item_text"><?php echo $row['text']; ?></div>

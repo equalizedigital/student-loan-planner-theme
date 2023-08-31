@@ -86,7 +86,7 @@ function eqd_search_toggle() {
  * help btn
  */
 function eqd_help_btn() {
-	$output  = '<button aria-label="Get Help" class=" button button-help">';
+	$output  = '<button aria-label="Get Help" class="btn">';
 	$output .= esc_html('Get Help');
 	$output .= '</button>';
 	return $output;

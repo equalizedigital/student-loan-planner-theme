@@ -903,6 +903,16 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/icons\/utility\/close-cross.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/utility\/close-cross.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/icons\/utility\/close-large.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -2896,6 +2906,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/_layout.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/partials\/_modal.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_modal.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
