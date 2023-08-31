@@ -100,7 +100,7 @@ window.addEventListener("load", function () {
 			// Add a click event listener to each button
 			button.addEventListener('click', function () {
 				// Get the value of the data-target attribute
-				let targetClass = button.getAttribute('data-link');
+				let targetClass = button.getAttribute('data-resourcelink');
 
 				// Remove active class from all items before adding to the new one
 				tabButtons.forEach(btn => btn.classList.remove('active'));
@@ -116,10 +116,18 @@ window.addEventListener("load", function () {
 					targetElements.forEach(element => {
 						element.classList.add('resource-links-loop-container-item--active');
 					});
+
 				}
 
 				// Add active class to the clicked button
 				button.classList.add('active');
+
+
+				let firstLink = document.getElementById(targetClass).querySelector('a');
+				if (firstLink) {
+					firstLink.focus();
+				}
+
 			});
 		});
 

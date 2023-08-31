@@ -55,15 +55,35 @@ $title = get_field('title');
 					if(!empty($row['icon'])){
 					$icon 		= $row['icon']['url'];
 					}
+
+					if(!empty($row['manual_link'])){
+						$manual_link 		= $row['manual_link'];
+						$manual_link_text = $manual_link['title'];
+						$manual_link_url = $manual_link['url'];
+					}
+					
 					?>
+
 					<div class="resource-links-container-links-link ">
-						<button data-link="tab-<?php echo $key; ?>" class="resource-links-container-links-button <?php echo $key==0?'active':''; ?>">
-							<?php
-							echo "<img src='$icon'></img>";
-							echo "<span class=\"text\">$link</span>";
-							?>
-						</button>
+						<?php if($manual_link): ?>
+							<a class="resource-links-container-links-link-button" href="<?php echo $manual_link_url; ?>">
+								<?php
+								echo "<img src='$icon'></img>";
+								echo "<span class=\"text\">$manual_link_text</span>";
+								?>
+							</a>
+						<?php else: ?>
+							<button data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>">
+								<?php
+								echo "<img src='$icon'></img>";
+								echo "<span class=\"text\">$link</span>";
+								?>
+							</button>
+						<?php endif; ?>
+						
+
 					</div>
+
 					<?php
 				}
 			}
@@ -105,7 +125,7 @@ $title = get_field('title');
 								$icon = $row['icon']['url'];
 							}
 							?>
-								<li class="dropdown-li" data-link="tab-<?php echo $key; ?>">
+								<li class="dropdown-li" data-resourcelink="resource-link-<?php echo $key; ?>">
 									<img src="<?php echo $icon; ?>" />
 									<?php _e($link); ?>
 								</li>
@@ -137,10 +157,14 @@ $title = get_field('title');
 					if(!empty($row['category'])){
 						$category = $row['category'];
 					}
+					if(!empty($row['selected_posts'])){
+						$selected_posts = $row['selected_posts'];
+					}
+					
 					?>
-					<div id="tab-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key==0?'resource-links-loop-container-item--active':''; ?>">
+					<div id="resource-link-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key==0?'resource-links-loop-container-item--active':''; ?>">
 						<header class="resource-links-loop-container-header">
-							<h2 class="title"><?php echo $link; ?></h2>
+							<h3 class="title"><?php echo $link; ?></h3>
 						</header>
 						<div class="resource-links-loop-container-content">
 							<div class="resource-links-loop-container-content-featured">
@@ -155,11 +179,25 @@ $title = get_field('title');
 							<div class="resource-links-loop-container-content-loop">
 
 								<?php
-								$args = array(
-									'post_type' => 'post', 
-									'posts_per_page' => 3, 
-									'cat' => $category,
-								);
+
+
+
+								if($selected_posts){
+
+									$args = array(
+										'post_type' => 'post', 
+										'post__in' => 	$selected_posts
+									);
+
+								} else {
+									$args = array(
+										'post_type' => 'post', 
+										'posts_per_page' => 3, 
+										'cat' => $category,
+									);
+								}
+
+
 
 								$query = new WP_Query($args);
 
