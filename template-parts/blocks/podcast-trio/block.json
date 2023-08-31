@@ -1,11 +1,11 @@
 {
-	"name": "acf/resource-links-block",
-	"title": "resource links block",
+	"name": "acf/podcast-trio-block",
+	"title": "podcast trio block",
 	"category": "text",
 	"icon": "star",
 	"acf": {
 		"mode": "preview",
-		"renderTemplate": "resource-links.php"
+		"renderTemplate": "podcast-trio.php"
 	},
 	"example": {
 		"attributes": {

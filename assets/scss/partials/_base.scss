@@ -22,21 +22,21 @@ $text_light: #FFFFFF;
 
 // Social colors
 $socials: (
-	'facebook'	: #1778F2,
-	'twitter'	: #00B6F1,
-	'pinterest'	: #CB2027,
-	'instagram'	: #C32AA3,
-	'youtube'	: #FF0000,
-	'print'		: $neutral_700,
+	'facebook': #1778F2,
+	'twitter': #00B6F1,
+	'pinterest': #CB2027,
+	'instagram': #C32AA3,
+	'youtube': #FF0000,
+	'print': $neutral_700,
 );
 
 // Brand Colors
 // -- primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, denary
 $brand_colors: (
-	'primary'	: #82BC46,
+	'primary': #82BC46,
 	'primary_darken' : #82BC46,
 	'primary_lighten' : #82BC46,
-	
+
 	'secondary' : #547C2D,
 	'secondary_darken' : #547C2D,
 	'secondary_lighten' : #547C2D,
@@ -48,15 +48,22 @@ $brand_colors: (
 @import "../modules/brand-color";
 
 // Gutenberg Colors
-$gutenberg_colors: ( 'primary', 'secondary' );
+$gutenberg_colors: (
+	'primary',
+	'secondary'
+);
 
 // Fonts
-$base-font: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$base-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $alt-font: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
 
 // Content
 $content-width: 736px;
 $block-margin: 24px;
+
+// Container
+$container-width: 1168px;
+$container-padding: 24px;
 
 // Grid
 $grid: grid;
@@ -65,13 +72,15 @@ $grid-gap: 32px;
 
 // Include Media
 $breakpoints: (
-	'phone'  : 360px,
-	'small'  : 768px,
-	'tablet' : 768px, // required for include-media
+	'phone' : 360px,
+	'small' : 768px,
+	'tablet' : 768px,
+	// required for include-media
 	'mobile_menu' : 768px,
 	'medium' : 992px,
-	'large'  : 1200px,
-	'desktop': $grid-width + $grid-gap, // required for include-media
+	'large' : 1200px,
+	'desktop': $grid-width + $grid-gap,
+	// required for include-media
 	'content-width': $content-width + $grid-gap,
 );
 

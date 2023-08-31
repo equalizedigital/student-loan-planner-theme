@@ -1,11 +1,11 @@
 {
-	"name": "acf/resource-links-block",
-	"title": "resource links block",
+	"name": "acf/resources-loop-reverse-block",
+	"title": "resources loop reverse block",
 	"category": "text",
 	"icon": "star",
 	"acf": {
 		"mode": "preview",
-		"renderTemplate": "resource-links.php"
+		"renderTemplate": "resources-loop-reverse.php"
 	},
 	"example": {
 		"attributes": {

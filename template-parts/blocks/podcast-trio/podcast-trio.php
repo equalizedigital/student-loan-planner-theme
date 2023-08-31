@@ -1,7 +1,7 @@
 <?php
 
 /**
- * hero Block Template.
+ * podcast-trio Block Template.
  *
  * @param	 array $block The block settings and attributes.
  * @param	 string $content The block inner HTML (empty).
@@ -15,13 +15,13 @@ if( isset( $block['data']['preview_image_help'] )  ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'hero-block-' . $block['id'];
+$id = 'podcast-trio-block-' . $block['id'];
 if (!empty($block['anchor'])) :
 	$id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block hero-block';
+$className = 'block podcast-trio-block';
 if (!empty($block['className'])) :
 	$className .= ' ' . $block['className'];
 endif;
@@ -34,12 +34,26 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 // Load values and assing defaults.
 $title = get_field('title');
-$subtitle = get_field('subtitle');
 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<div class="hero-container">
-		<h1 class="title"><?php echo $title; ?></h1>
-		<span class="subtitle"><?php echo $subtitle; ?></span>
+	<div class="podcast-trio-container">
+		<h2 class="title"><?php echo $title; ?></h2>
+		<?php 
+		$logo_images = get_field('logo_images');
+		if( $logo_images ) {
+			echo '<div class="podcast-trio-images">';
+			foreach( $logo_images as $row ) {
+				$image = $row['image']['url'];
+				$link = $row['link'];
+				echo '<div class="podcast-trio-images__image">';
+					echo "<a href=\"$link\">";
+						echo "<img src='$image'></img>";
+					echo "</a>";
+				echo '</div>';
+			}
+			echo '</div>';
+		}
+		?>
 	</div>
 </section>

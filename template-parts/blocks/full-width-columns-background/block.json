@@ -1,11 +1,11 @@
 {
-	"name": "acf/resource-links-block",
-	"title": "resource links block",
+	"name": "acf/full-width-columns-background-block",
+	"title": "full width columns background block",
 	"category": "text",
 	"icon": "star",
 	"acf": {
 		"mode": "preview",
-		"renderTemplate": "resource-links.php"
+		"renderTemplate": "full-width-columns-background.php"
 	},
 	"example": {
 		"attributes": {

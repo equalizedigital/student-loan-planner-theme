@@ -98,6 +98,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 												<div class="image_info_item">
 													<div class="image_info_item_icon">
 														<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/utility/icon-checkmark.svg" alt="check">
+														<img src="<?php echo get_template_directory_uri(); ?>/assets/icons/utility/icon-checkmark.svg" alt="check">
 													</div>
 													<div class="image_info_item_text"><?php echo $row['text']; ?></div>
 												</div>

@@ -46,7 +46,11 @@ add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 function eqd_nav_extras( $menu, $args ) {
 
 	if ( 'primary' === $args->theme_location ) {
-		$menu .= '<li class="menu-item search">' . eqd_search_toggle() . '</li>';
+		$menu .= '<li class="menu-item search menu-item-extra">' . eqd_search_toggle() . '</li>';
+	}
+
+	if ( 'primary' === $args->theme_location ) {
+		$menu .= '<li class="menu-item help menu-item-extra">' . eqd_help_btn() . '</li>';
 	}
 
 	if ( 'secondary' === $args->theme_location ) {
@@ -55,7 +59,7 @@ function eqd_nav_extras( $menu, $args ) {
 
 	return $menu;
 }
-/* add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 ); */
+add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 ); 
 
 /**
  * Search toggle
@@ -79,10 +83,20 @@ function eqd_search_toggle() {
 }
 
 /**
+ * help btn
+ */
+function eqd_help_btn() {
+	$output  = '<button aria-label="Get Help" class=" button button-help">';
+	$output .= esc_html('Get Help');
+	$output .= '</button>';
+	return $output;
+}
+
+/**
  * Mobile menu toggle
  */
 function eqd_mobile_menu_toggle() {
-	$output  = '<button aria-label="Menu" class="menu-toggle">';
+	$output  = '<button aria-label="Menu" class="menu-toggle ">';
 	$output .= eqd_icon(
 		array(
 			'icon' => 'menu',

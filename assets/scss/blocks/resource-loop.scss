@@ -1,8 +1,11 @@
 .resources-loop-block {
     &-container {
-        max-width: 1120px;
         margin: 0 auto;
-        padding: 100px 0;
+        max-width: $container-width;
+        padding: 100px $container-padding 148px;
+        @include media("<tablet") {
+            padding: 90px $container-padding 40px;
+        }
 
         &-header {
             .title {
@@ -12,18 +15,28 @@
                 font-weight: 700;
                 line-height: 40px;
                 margin-bottom: 40px;
+                
             }
         }
 
         &-content {
             display: grid;
-            gap: 20px;
-            grid-template-columns: 1fr 0.71fr;
+            gap: 53px 20px;
+            grid-template-columns: 1fr;
+
+            @include media(">tablet") {
+                grid-template-columns: 1fr 0.71fr;
+            }
 
             &-loop-item {
                 border-bottom: 1px solid #D9D9D9;
                 padding: 0 20px 20px;
                 text-decoration: none;
+                &:hover{
+                    .title{
+                        color: brand-color('tertiary');
+                    }
+                }
 
                 .author {
                     display: flex;
@@ -48,6 +61,11 @@
                     font-weight: 400;
                     line-height: 1.4;
                     margin-bottom: 5px;
+                    color: brand-color('secondary');
+                    @include media("<tablet") {
+                        font-size: 14px;
+                    }
+
                 }
 
                 .title {
@@ -56,6 +74,11 @@
                     font-style: normal;
                     font-weight: 700;
                     line-height: 24px;
+
+                    @include media("<tablet") {
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
                 }
 
                 .author_data {
@@ -84,6 +107,11 @@
                     font-weight: 700;
                     line-height: 30px;
                     margin: 20px;
+
+                    @include media("<tablet") {
+                        font-size: 16px;
+                        line-height: 20px; 
+                    }
                 }
 
                 figure {
