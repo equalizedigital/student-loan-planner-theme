@@ -46,7 +46,6 @@ $youtube_video_id = get_field('youtube_video_id');
 			<div class="content"><?php echo $content; ?></div>
 		</div>
 		<div class="full-width-columns-background-container__video" >
-				<img class="modal-btn" data-modal="modal1" src="<?php echo $image['url']; ?>" id="thumbnail" onclick="playVideo();" alt="Click to play video" style="cursor: pointer;">
 				<img class="modal-btn play" data-modal="modal1" src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/play.svg" alt="play video" onclick="playVideo();"  id="play-iframe">
 				
 		</div>

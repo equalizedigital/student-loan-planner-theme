@@ -44,11 +44,16 @@ $title = get_field('title');
 		if( $logo_images ) {
 			echo '<div class="podcast-trio-images">';
 			foreach( $logo_images as $row ) {
-				$image = $row['image']['url'];
+				if(!empty($row['image'])){
+					$image = $row['image']['url'];
+
+				}
 				$link = $row['link'];
 				echo '<div class="podcast-trio-images__image">';
 					echo "<a href=\"$link\">";
+					if(!empty($image)){
 						echo "<img src='$image'></img>";
+					}
 					echo "</a>";
 				echo '</div>';
 			}

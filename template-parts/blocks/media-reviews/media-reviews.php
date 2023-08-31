@@ -56,8 +56,9 @@ $select_testimonials = get_field('select_testimonials');
 				<div class="media-reviews-container-review-items-item">
 					<a href="<?php echo esc_url($link); ?>">
 						<figure>
-						<img src="<?php echo $logo['url']; ?>" alt="">
-						
+							<?php if(!empty($logo)): ?>
+							<img src="<?php echo $logo['url']; ?>" alt="">
+						<?php endif; ?>
 						</figure>
 						<div class="rating-stars">
 							<span class="star">

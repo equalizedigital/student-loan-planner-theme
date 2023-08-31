@@ -94,14 +94,13 @@ window.addEventListener("load", function () {
 	const tabbedContent = document.querySelector('.resource-links-container');
 	if (tabbedContent) {
 		// Grab all buttons with the class tabbed-content__nav-item
-		const tabButtons = document.querySelectorAll('.resource-links-container-links-button,.dropdown-li');
+		const tabButtons = document.querySelectorAll('.resource-links-container-links-link-button , .dropdown-li');
 
 		tabButtons.forEach(button => {
 			// Add a click event listener to each button
-			button.addEventListener('click', function () {
+			button.addEventListener('click', function (event) {
 				// Get the value of the data-target attribute
 				let targetClass = button.getAttribute('data-resourcelink');
-
 				// Remove active class from all items before adding to the new one
 				tabButtons.forEach(btn => btn.classList.remove('active'));
 
