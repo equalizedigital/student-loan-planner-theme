@@ -2337,6 +2337,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/assets\/images\/SLP-Logo-Color-white.png" : {
+      "ft" : 32768,
+      "iS" : 4645,
+      "oA" : 0,
+      "oAP" : "\/assets\/images\/SLP-Logo-Color-white.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/assets\/images\/SLP-Logo.png" : {
       "ft" : 32768,
       "iS" : 6756,

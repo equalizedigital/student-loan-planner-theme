@@ -15,9 +15,10 @@
 	line-height: 15px;
 	min-width: 148px;
 	border-radius: 4px;
-
+	cursor: pointer;
 	&:hover {
-			border-color: #82BC46;
+		background-color: brand-color('primary', 'darken');
+
 			background: transparent;
 	}
 
@@ -35,7 +36,6 @@
 
 	&:hover,
 	&:focus {
-		background-color: brand-color('primary', 'darken');
 	}
 
 	@each $name in $gutenberg_colors {

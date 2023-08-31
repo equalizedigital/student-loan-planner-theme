@@ -46,7 +46,13 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 							echo '<li class="tabbed-content__nav-item">';
 							?>
 							<button data-link="tab-<?php echo $key; ?>" class="<?php if($key == 0){echo 'active'; } ?> ">
-								<span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/utility/tab-icons/fax.png" alt=""></span>
+								<span class="icon">
+									<?php 
+									if( $row['tab_icon'] ): ?>
+										<img src="<?php echo $row['tab_icon']; ?>" alt="<?php echo $row['tab_title']; ?> icon">
+										<img src="<?php echo $row['tab_icon_hover_state']; ?>" alt="<?php echo $row['tab_title']; ?> hover state">
+									<?php endif; ?>
+								</span>
 								<div class="text"><?php echo $row['tab_title']; ?></div>
 							</button>
 							<?php
