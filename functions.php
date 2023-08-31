@@ -211,22 +211,32 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 				array(
 					'name'  => __( 'Primary', 'eqd' ),
 					'slug'  => 'primary',
-					'color' => '#24509A',
-				),
-				array(
-					'name'  => __( 'Primary Background', 'eqd' ),
-					'slug'  => 'primary-bg',
-					'color' => '#E9EDF4',
+					'color' => '#82BC46',
 				),
 				array(
 					'name'  => __( 'Secondary', 'eqd' ),
 					'slug'  => 'secondary',
-					'color' => '#FEC72D',
+					'color' => '#547C2D',
 				),
 				array(
-					'name'  => __( 'Secondary Background', 'eqd' ),
-					'slug'  => 'secondary-bg',
-					'color' => '#FEF9EA',
+					'name'  => __( 'Tertiary', 'eqd' ),
+					'slug'  => 'tertiary',
+					'color' => '#625089',
+				),
+				array(
+					'name'  => __( 'text_dark', 'eqd' ),
+					'slug'  => 'text_dark',
+					'color' => '#1D1F20',
+				),
+				array(
+					'name'  => __( 'text_medium', 'eqd' ),
+					'slug'  => 'text_medium',
+					'color' => '#737373',
+				),
+				array(
+					'name'  => __( 'cream', 'eqd' ),
+					'slug'  => 'cream',
+					'color' => '#fffde9',
 				),
 				array(
 					'name'  => __( 'Grey', 'eqd' ),

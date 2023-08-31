@@ -23,15 +23,19 @@ class Loader_Gutenberg
 	{
 		$output = '';
 		if ( !$block_image ) return $output;
+
 		$image = get_template_directory() . '/template-parts/blocks/' . str_replace( 'acf/', '', $block_name ) . '/' . $block_image;
+
 		if ( file_exists( $image ) ) :
 			$imagetime = filemtime( $image );
 			$image_src = get_template_directory_uri() . '/template-parts/blocks/' . str_replace( 'acf/', '', $block_name ) . '/' . $block_image;
 			$output = '<img src="' . $image_src .  '?v=' . $imagetime . '" />';
+			var_dump($output);
 		else:
 			$output = '<div class="block-editor-inserter__preview-content-missing">' . __( 'No preview available', '' ) . '</div>';
 		endif;
-		// return apply_filters('get_preview_image', $output, $block_image, $block_name );
+
+		return apply_filters('get_preview_image', $output, $block_image, $block_name );
 	}
 }
 

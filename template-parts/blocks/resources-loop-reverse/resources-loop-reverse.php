@@ -1,7 +1,7 @@
 <?php
 
 /**
- * resources loop block Block Template.
+ * resources-loop-reverse-reverse block Block Template.
  *
  * @param	 array $block The block settings and attributes.
  * @param	 string $content The block inner HTML (empty).
@@ -15,13 +15,13 @@ if( isset( $block['data']['preview_image_help'] )  ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'resources-loop-block-' . $block['id'];
+$id = 'resources-loop-reverse-block-' . $block['id'];
 if (!empty($block['anchor'])) :
 	$id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block resources-loop-block';
+$className = 'block resources-loop-reverse-block';
 if (!empty($block['className'])) :
 	$className .= ' ' . $block['className'];
 endif;
@@ -44,13 +44,13 @@ if (!$featured_image_url) {
 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<div class="resources-loop-block-container">
-		<header class="resources-loop-block-container-header">
+	<div class="resources-loop-reverse-block-container">
+		<header class="resources-loop-reverse-block-container-header">
 			<h2 class="title"><?php echo $title; ?></h2>
 		</header>
-		<div class="resources-loop-block-container-content">
-			<div class="resources-loop-block-container-content-featured">
-				<a href="<?php echo get_the_permalink($featured_post->ID); ?>" class="resources-loop-block-container-content-featured-link">
+		<div class="resources-loop-reverse-block-container-content">
+			<div class="resources-loop-reverse-block-container-content-featured">
+				<a href="<?php echo get_the_permalink($featured_post->ID); ?>" class="resources-loop-reverse-block-container-content-featured-link">
 					<figure>
 						<img src="<?php echo esc_url($featured_image_url); ?>" alt="Post Featured Image">
 					</figure>
@@ -58,7 +58,7 @@ if (!$featured_image_url) {
 				</a>
 			</div>
 
-			<div class="resources-loop-block-container-content-loop">
+			<div class="resources-loop-reverse-block-container-content-loop">
 
 				<?php
 				$args = array(
@@ -93,7 +93,7 @@ if (!$featured_image_url) {
 						$author_name = get_the_author();
 
 						?>
-							<a class="resources-loop-block-container-content-loop-item" href="<?php echo $link; ?>">
+							<a class="resources-loop-reverse-block-container-content-loop-item" href="<?php echo $link; ?>">
 								<div class="category"><?php echo $category; ?></div>
 								<h3 class="title"><?php echo $title; ?></h3>
 								<div class="author">

@@ -175,6 +175,14 @@ function eqd_widgets_init() {
 		)
 	);
 
+	register_sidebar(
+		eqd_widget_area_args(
+			array(
+				'name' => esc_html__( 'Footer Widget Area 4', 'eqd' ),
+			)
+		)
+	);
+
 }
 add_action( 'widgets_init', 'eqd_widgets_init' );
 
@@ -192,15 +200,22 @@ function eqd_output_footer_widgets() {
 	}
 	if ( is_active_sidebar( 'Footer Widget Area 2' ) ) {
 		?>
-		<div id="footer-widget-area-1" class="widget-area">
-			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+		<div id="footer-widget-area-2" class="widget-area">
+			<?php dynamic_sidebar( 'Footer Widget Area 2' ); ?>
 		</div>
 		<?php
 	}
 	if ( is_active_sidebar( 'Footer Widget Area 3' ) ) {
 		?>
-		<div id="footer-widget-area-1" class="widget-area">
-			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+		<div id="footer-widget-area-3" class="widget-area">
+			<?php dynamic_sidebar( 'Footer Widget Area 3' ); ?>
+		</div>
+		<?php
+	}
+	if ( is_active_sidebar( 'Footer Widget Area 4' ) ) {
+		?>
+		<div id="footer-widget-area-4" class="widget-area">
+			<?php dynamic_sidebar( 'Footer Widget Area 4' ); ?>
 		</div>
 		<?php
 	}

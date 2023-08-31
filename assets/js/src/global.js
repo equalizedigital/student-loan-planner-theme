@@ -53,13 +53,9 @@ jQuery(function ($) {
 });
 
 window.addEventListener("load", function () {
-
-
+	// tabbed content
 	const tabbedContent = document.querySelector('.tabbed-content-block');
-
 	if (tabbedContent) {
-
-
 		// Grab all buttons with the class tabbed-content__nav-item
 		const tabButtons = document.querySelectorAll('.tabbed-content__nav-item button');
 
@@ -91,5 +87,80 @@ window.addEventListener("load", function () {
 		});
 	}
 
+});
 
+window.addEventListener("load", function () {
+	// resource links
+	const tabbedContent = document.querySelector('.resource-links-container');
+	if (tabbedContent) {
+		// Grab all buttons with the class tabbed-content__nav-item
+		const tabButtons = document.querySelectorAll('.resource-links-container-links-button,.dropdown-li');
+
+		tabButtons.forEach(button => {
+			// Add a click event listener to each button
+			button.addEventListener('click', function () {
+				// Get the value of the data-target attribute
+				let targetClass = button.getAttribute('data-link');
+
+				// Remove active class from all items before adding to the new one
+				tabButtons.forEach(btn => btn.classList.remove('active'));
+
+				let panes = document.querySelectorAll('.resource-links-loop-container-item');
+				panes.forEach(element => {
+					element.classList.remove('resource-links-loop-container-item--active');
+				});
+
+				// If a class that matches the data attribute exists, add the active class
+				if (targetClass) {
+					let targetElements = document.querySelectorAll('#' + targetClass);
+					targetElements.forEach(element => {
+						element.classList.add('resource-links-loop-container-item--active');
+					});
+				}
+
+				// Add active class to the clicked button
+				button.classList.add('active');
+			});
+		});
+
+		document.querySelectorAll('#resource-links-dropdown').forEach(function(element) {
+			element.addEventListener('click', function() {
+				this.classList.toggle('active');
+				var target = document.querySelector('.resource-links-dropdown-list');
+				target.classList.add('active');
+			});
+		});
+		
+		document.querySelectorAll('.dropdown-li').forEach(function(element) {
+			element.addEventListener('click', function() {
+				var target = document.getElementById('resource-links-dropdown');
+				var button = document.querySelector('.resource-links-dropdown-list');
+				button.classList.remove('active');
+				target.innerHTML = element.innerHTML;
+				document.getElementById('resource-links-dropdown').classList.remove('active');
+			});
+		});
+	}
+
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Find all elements with class .widget-title
+    const widgetTitles = document.querySelectorAll('.widget-title');
+	
+    widgetTitles.forEach(title => {
+        // Add click event listener to each .widget-title
+        title.addEventListener('click', function() {
+            // Check if there's a next sibling element
+			this.classList.toggle('active');
+            let sibling = this.nextElementSibling;
+            if (sibling) {
+                // Add class to the sibling
+                this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+
+            }
+        });
+    });
 });

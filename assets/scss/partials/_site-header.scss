@@ -23,6 +23,14 @@
 		a {
 			color: $text_medium;
 			text-decoration: none;
+			background-image: url('../images/SLP-Logo.png');
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			font-size: 0px;
+			width: 154px;
+			height: 50px;
+			display: flex;
 		}
 	}
 

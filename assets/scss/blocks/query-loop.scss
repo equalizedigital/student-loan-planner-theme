@@ -1,6 +1,7 @@
 .query-loop-container {
     margin: 0 auto;
-    max-width: 1120px;
+    max-width: $container-width;
+    padding: 0 $container-padding;
 
     &-header {
         display: flex;
@@ -11,15 +12,25 @@
             font-size: 35px;
             font-style: normal;
             font-weight: 700;
-            line-height: 40px; 
+            line-height: 40px;
             margin: 0 0 40px;
+
+            @include media("<tablet") {
+                font-size: 25px;
+                line-height: 40px;
+                margin: 0 0 20px;
+            }
         }
     }
 
     &-loop {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 20px;
+
+        @include media(">tablet") {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 
     &-loop-item {
@@ -29,8 +40,21 @@
         border-bottom: 1px solid #D9D9D9;
         padding-bottom: 20px;
 
-        > figure {
+
+        &:nth-child(1) {
+            >figure {
+                display: flex;
+                @include media("<tablet") {
+                    margin-bottom: 18px;
+                }
+            }
+        }
+
+        >figure {
             display: flex;
+            @include media("<tablet") {
+                display: none;
+            }
         }
 
         .title {
@@ -38,8 +62,14 @@
             font-size: 18px;
             font-style: normal;
             font-weight: 700;
-            line-height: 24px; 
+            line-height: 24px;
             margin: 33px 0 20px;
+
+            @include media("<tablet") {
+                font-size: 16px;
+                line-height: 20px;
+                margin: 0 0 10px;
+            }
         }
 
         .author {
@@ -54,7 +84,7 @@
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 1; 
+                line-height: 1;
             }
 
             figure {

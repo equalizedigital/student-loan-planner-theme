@@ -383,6 +383,16 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/icons\/utility\/arrow-up-green.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/utility\/arrow-up-green.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/icons\/utility\/arrow-up-large.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -1813,6 +1823,16 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/icons\/utility\/play.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/utility\/play.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/icons\/utility\/plus-circle.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -2307,6 +2327,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/assets\/images\/SLP-Logo.png" : {
+      "ft" : 32768,
+      "iS" : 6756,
+      "oA" : 0,
+      "oAP" : "\/assets\/images\/SLP-Logo.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/assets\/js\/blocks-min.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -2448,6 +2481,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/full-width-columns-background.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/full-width-columns-background.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/hero.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -2458,6 +2506,36 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/hero.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/media-reviews.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/media-reviews.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/podcast-trio.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/podcast-trio.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -2478,6 +2556,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/resource-links.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/resource-links.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/resource-loop.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -2488,6 +2581,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/resource-loop.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/resources-loop-reverse.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/resources-loop-reverse.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -2529,6 +2637,30 @@
       "ma" : 0,
       "oA" : 2,
       "oAP" : "\/assets\/scss\/css\/featured_in-ck.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/assets\/scss\/css\/media-reviews.css" : {
+      "aP" : 0,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/scss\/css\/media-reviews-ck.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/assets\/scss\/css\/resources-loop-reverse.css" : {
+      "aP" : 0,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/scss\/css\/resources-loop-reverse-ck.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -3179,6 +3311,35 @@
       "oAP" : "\/template-parts\/blocks\/featured-in\/featured-in.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/full-width-columns-background\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/full-width-columns-background\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 144936,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/template-parts\/blocks\/hero\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3211,6 +3372,22 @@
       "oAP" : "\/template-parts\/blocks\/media-reviews\/media-reviews.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/podcast-trio\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/podcast-trio\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/podcast-trio\/podcast-trio.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/podcast-trio\/podcast-trio.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/query-loop\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3241,6 +3418,22 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/resource-links\/resource-links.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/resources-loop-reverse\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/resources-loop-reverse\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/resources-loop-reverse\/resources-loop-reverse.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/resources-loop-reverse\/resources-loop-reverse.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/resources-loop\/block.json" : {

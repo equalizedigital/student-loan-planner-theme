@@ -1,24 +1,27 @@
 .tabbed-content-block {
+    padding-bottom: 95px;
+    overflow: hidden;
 
     .tabbed-content {
-        &__row_container{
+        &__row_container {
             background: #625089;
             margin-top: -1px;
         }
+
         &__nav-list {
-            padding: 0;
             margin: 0;
             display: flex;
             list-style: none;
-            
-            max-width: 1120px;
             margin: 0 auto;
-
+            overflow: auto;
+            max-width: $container-width;
+            padding: 0 $container-padding;
         }
 
         &__nav-item {
             padding: 0;
             display: flex;
+            min-width: 137px;
 
             button {
                 font-size: 13px;
@@ -33,6 +36,11 @@
                 background: transparent;
                 border: none;
                 cursor: pointer;
+
+                @include media("<tablet") {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
 
                 &.active {
                     background-color: white;
@@ -54,23 +62,31 @@
         }
 
         &__content {
-            padding: 127px 0;
-            max-width: 1120px;
+            padding: 46px 0;
+            max-width: $container-width;
             margin: 0 auto;
+            @include media(">tablet") {
+                padding: 127px $container-padding;
+            }
 
             &__pane {
                 display: none;
 
                 &--active {
                     display: grid;
-                    grid-template-columns: 0.6fr 1fr;
-                    gap: 124px;
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                    @include media(">tablet") {
+                        gap: 124px;
+                        grid-template-columns: 0.6fr 1fr;
+                    }
                 }
-
-                
             }
-            &__text{
-                padding-top: 70px;
+
+            &__text {
+                @include media(">tablet") {
+                    padding-top: 70px;
+                }
             }
 
             h3 {
@@ -78,28 +94,29 @@
                 font-style: normal;
                 font-weight: 700;
                 line-height: 40px;
-                color: brand-color( 'tertiary' );
+                color: brand-color('tertiary');
             }
-            
+
             .review {
                 color: #000;
                 font-size: 13px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 1; 
+                line-height: 1;
                 text-decoration-line: underline;
                 margin-top: 28px;
             }
-            
+
             .link {
                 margin: 20px 0 0;
+
                 a {
                     color: #000;
                     text-align: center;
                     font-size: 15px;
                     font-style: normal;
                     font-weight: 400;
-                    line-height: 1; /* 466.667% */
+                    line-height: 1;
                     border-radius: 10px;
                     background: var(--green, #82BC46);
                     min-width: 148px;
@@ -111,7 +128,10 @@
                 }
             }
 
-            &__text {}
+
+            &__text{
+                padding: 0 $container-padding;
+            }
 
             &__image {
                 max-width: 510px;
@@ -140,6 +160,10 @@
                     justify-content: center;
                     text-align: center;
 
+                    @include media("<tablet") {
+                        left: -18px;
+                    }
+
                     .title {
                         color: black;
                         text-align: center;
@@ -159,6 +183,22 @@
                     }
                 }
 
+                .image_info{
+                    
+                    @include media("<tablet") {
+                        display: flex;
+                        overflow: auto;
+                        position: absolute;
+                        bottom: -65px;
+                        left: 0;
+                        right: 0;
+                        gap: 17px;
+                        padding: 0 24px;
+                        padding-bottom: 30px;
+                        
+                    }
+                }
+
                 .image_info_item {
                     border-radius: 10px;
                     background: #FFF;
@@ -166,14 +206,21 @@
                     max-width: 240px;
                     width: 100%;
                     min-height: 70px;
-                    position: absolute;
-                    top: 113px;
-                    right: -115px;
+                    position: static;
+                    top: 0;
+                    right: 0;
                     display: flex;
                     gap: 13px;
                     padding: 15px 21px;
                     align-items: center;
                     justify-content: center;
+                    min-width: 240px;
+                    @include media(">tablet") {
+                        position: absolute;
+                        top: 113px;
+                        right: -115px;
+                        min-width: 0;
+                    }
 
                     &:nth-child(2) {
                         top: 220px;

@@ -1,6 +1,6 @@
 /* Button
 --------------------------------------------- */
-
+.button,
 .wp-block-button__link {
 	@include style('callout', 5, true);
 	background-color: brand-color('primary');

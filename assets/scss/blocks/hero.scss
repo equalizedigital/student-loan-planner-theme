@@ -1,19 +1,43 @@
-.hero{
+.hero {
     &-block {
-        background: #625089;
-        padding: 160px 0;
+        background: brand-color('tertiary');
+        padding: 60px 0;
+        @include media(">tablet") {
+            padding: 160px 0; 
+        }
     }
-    
+
     &-container {
-        max-width: 1120px;
+        max-width: $container-width;
         margin: 0 auto;
+        padding: 0 $container-padding;
+
         .title {
             color: white;
-            font-size: 70px;
             font-style: normal;
             font-weight: 700;
-            line-height: 70px;
-            margin: 0;
+            margin: 0 0 18px;
+            font-size: 35px;
+            line-height: 40px;
+
+            @include media(">tablet") {
+                line-height: 70px;
+                font-size: 70px;
+            }
+        }
+
+        .subtitle {
+            color: white;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+
+            @include media(">tablet") {
+                font-size: 24px;
+                line-height: 24px;
+            }
+
         }
     }
 }
