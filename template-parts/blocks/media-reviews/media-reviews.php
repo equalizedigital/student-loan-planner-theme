@@ -35,6 +35,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 // Load values and assing defaults.
 $title = get_field('title');
 $block_style = get_field('block_style');
+$select_testimonials = get_field('select_testimonials');
 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> <?php echo $block_style == 'purple'?'media-reviews-block-purple':''; ?>">
@@ -79,11 +80,22 @@ $block_style = get_field('block_style');
 		</div>
 
 		<div class="media-reviews-container-review-items-loop">
+
 		<?php 
-			$args = array(
-				'post_type' => 'testimonials',
-				'posts_per_page' => 4, 
-			);
+
+			if($select_testimonials){
+
+				$args = array(
+					'post_type' => 'testimonials', 
+					'post__in' => 	$select_testimonials
+				);
+
+			} else {
+				$args = array(
+					'post_type' => 'testimonials',
+					'posts_per_page' => 4, 
+				);
+			}
 
 			$testimonial_query = new WP_Query($args);
 
@@ -99,17 +111,18 @@ $block_style = get_field('block_style');
 										<?php 
 										$location = get_field('location',get_the_ID());
 										?>
-										<?php echo $location; ?>
+										<?php echo $location?$location:''; ?>
 										<div class="date">
 										<?php 
 										$date = get_field('date',get_the_ID());
-										echo $date;
+										echo $date?$date:'';
 										?>	
 									</div>
 								</div>
 								<div class="rating">
 									<?php 
 									$rating = get_field('rating',get_the_ID());
+									$rating?$rating:$rating=0;
 									?>
 									<div class="rating-stars">
 										<span class="star">
