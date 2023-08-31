@@ -44,9 +44,14 @@ $title = get_field('title');
 		if( $images ) {
 			echo '<div class="featured-in-block-container-images">';
 			foreach( $images as $row ) {
-				$image = $row['image']['url'];
+				if(!empty($row['image'])){
+					$image = $row['image']['url'];
+				}
+				
 				echo '<div class="featured-in-block-container-images__image">';
-					echo "<img src='$image'></img>";
+					if(!empty($image)){
+						echo "<img src='$image'></img>";
+					}
 				echo '</div>';
 			}
 			echo '</div>';

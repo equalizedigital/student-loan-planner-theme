@@ -53,7 +53,7 @@ $title = get_field('title');
 						$link 		= $row['link'];
 					}
 					if(!empty($row['icon'])){
-					$icon 		= $row['icon']['url'];
+						$icon = $row['icon']['url'];
 					}
 
 					if(!empty($row['manual_link'])){
@@ -61,22 +61,25 @@ $title = get_field('title');
 						$manual_link_text = $manual_link['title'];
 						$manual_link_url = $manual_link['url'];
 					}
-					
-					?>
 
+					?>
 					<div class="resource-links-container-links-link ">
-						<?php if($manual_link): ?>
+						<?php if($row['manual_link']): ?>
 							<a class="resource-links-container-links-link-button" href="<?php echo $manual_link_url; ?>">
 								<?php
-								echo "<img src='$icon'></img>";
-								echo "<span class=\"text\">$manual_link_text</span>";
+								echo $icon?"<img src='$icon'></img>":'';
+								echo $manual_link_text?"<span class=\"text\">$manual_link_text</span>":'';
 								?>
 							</a>
 						<?php else: ?>
 							<button data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>">
 								<?php
-								echo "<img src='$icon'></img>";
-								echo "<span class=\"text\">$link</span>";
+								if(!empty($icon)){
+									echo $icon?"<img src='$icon'></img>":'';
+								}
+								if(!empty($link)){
+								echo $link?"<span class=\"text\">$link</span>":'';
+								}
 								?>
 							</button>
 						<?php endif; ?>
@@ -88,11 +91,9 @@ $title = get_field('title');
 				}
 			}
 			?>
-			
 
 			<div class="dropdown">
 				<button id="resource-links-dropdown" class="dropdown-select">
-					
 				<?php 
 					$links = get_field('links');
 					if( $links ) {
@@ -170,7 +171,9 @@ $title = get_field('title');
 							<div class="resource-links-loop-container-content-featured">
 								<div class="resource-links-loop-container-content-featured-link">
 									<figure>
-										<img src="<?php echo esc_url($featured_image); ?>" alt="Post Featured Image">
+										<?php if(!empty($featured_image)): ?>
+											<img src="<?php echo esc_url($featured_image); ?>" alt="Post Featured Image">
+										<?php endif; ?>
 									</figure>
 									<h3 class="title"><?php echo $link; ?></h3>
 								</div>
@@ -179,8 +182,6 @@ $title = get_field('title');
 							<div class="resource-links-loop-container-content-loop">
 
 								<?php
-
-
 
 								if($selected_posts){
 
@@ -196,8 +197,6 @@ $title = get_field('title');
 										'cat' => $category,
 									);
 								}
-
-
 
 								$query = new WP_Query($args);
 

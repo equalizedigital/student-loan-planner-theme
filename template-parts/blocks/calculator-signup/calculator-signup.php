@@ -34,13 +34,17 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 // Load values and assing defaults.
 $title = get_field('title');
 $copy = get_field('copy');
-$image = get_field('image');
+if(get_field('image')){
+	$image = get_field('image');
+}
 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="calculator-signup-container">
 		<figure class="calculator-signup-container-image">
+			<?php if(!empty($image)): ?>
 		 	<img src="<?php echo $image['url']; ?>" alt="signup image">
+			<?php endif; ?>
 		</figure>
 
 		<div class="calculator-signup-container-content">

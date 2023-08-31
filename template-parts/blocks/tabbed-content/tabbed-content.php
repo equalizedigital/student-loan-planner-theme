@@ -89,7 +89,9 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								</span>
 								<div class="tabbed-content__content__image">
 									<figure>
+										<?php if(!empty($row['image'])): ?>
 										<img src="<?php echo $row['image']['url']; ?>" alt="">
+										<?php endif; ?>
 									</figure>
 									<div class="image_name">
 										<div class="title"><?php echo $row['name']; ?></div>
