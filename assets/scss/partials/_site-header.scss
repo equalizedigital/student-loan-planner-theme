@@ -13,6 +13,11 @@
 	max-width: 300px;
 	text-align: left;
 	margin: 8px auto;
+	z-index: 100;
+	position: relative;
+	@include media("<tablet") {
+	    margin: 8px 10px;
+	}
 
 	h1.site-title,
 	p.site-title {
@@ -34,7 +39,7 @@
 		}
 	}
 
-/*
+	/*
 	.site-title a {
 		background: url(../images/logo.svg) no-repeat center;
 		background-size: contain;
@@ -52,7 +57,7 @@
 /* Admin Bar
 --------------------------------------------- */
 
-@include media(">782px" ) {
+@include media(">782px") {
 	.admin-bar .site-container {
 		padding-top: 32px;
 	}
@@ -71,7 +76,7 @@ body {
 
 	.site-header {
 
-		@supports( position: sticky ) {
+		@supports(position: sticky) {
 			position: sticky;
 			top: 0;
 			transition: transform 0.3s;
@@ -81,7 +86,7 @@ body {
 
 	&.admin-bar {
 		.site-header {
-			@supports( position: sticky ) {
+			@supports(position: sticky) {
 				top: 32px;
 
 				@include media("<=782px") {
@@ -95,7 +100,7 @@ body {
 
 		.site-header {
 
-			@supports( position: sticky ) {
+			@supports(position: sticky) {
 				transform: translateY(-100%);
 			}
 		}

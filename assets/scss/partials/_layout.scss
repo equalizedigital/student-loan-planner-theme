@@ -18,6 +18,9 @@ input[type="search"] {
 }
 
 .site-inner {
+	@include media("<tablet") {
+		padding-top: 71px;
+	}
 	.content & > .wrap {
 		max-width: map-get( $breakpoints, 'content-width' );
 	}

@@ -16,10 +16,11 @@
 	min-width: 148px;
 	border-radius: 4px;
 	cursor: pointer;
+
 	&:hover {
 		background-color: brand-color('primary', 'darken');
-
-			background: transparent;
+		border-color: brand-color('primary');
+		background: transparent;
 	}
 
 	svg {
@@ -35,8 +36,7 @@
 	}
 
 	&:hover,
-	&:focus {
-	}
+	&:focus {}
 
 	@each $name in $gutenberg_colors {
 		&.has-#{$name}-background-color {
@@ -47,12 +47,13 @@
 			}
 		}
 	}
-	&.btn-outline{
+
+	&.btn-outline {
 		background-color: transparent;
 		border: 2px solid transparent;
 		border-color: brand-color('primary');
-		&:hover {
-	}
+
+		&:hover {}
 	}
 }
 
