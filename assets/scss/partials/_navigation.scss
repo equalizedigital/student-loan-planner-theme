@@ -304,21 +304,21 @@ header.site-header {
 								}
 							}
 
-							&::before {
-								content: "";
-								width: 10px;
-								height: 10px;
-								border: 2px solid #676767;
-								border-top: none;
-								border-left: none;
-								position: absolute;
-								right: 0;
-								top: 50%;
-								// transform: translateY(-50%);
-								transform: rotate(45deg);
-								transition-duration: .3s;
-								transform-origin: center;
-							}
+							// &::before {
+							// 	content: "";
+							// 	width: 10px;
+							// 	height: 10px;
+							// 	border: 2px solid #676767;
+							// 	border-top: none;
+							// 	border-left: none;
+							// 	position: absolute;
+							// 	right: 0;
+							// 	top: 50%;
+							// 	// transform: translateY(-50%);
+							// 	transform: rotate(45deg);
+							// 	transition-duration: .3s;
+							// 	transform-origin: center;
+							// }
 						}
 
 						&:hover {
