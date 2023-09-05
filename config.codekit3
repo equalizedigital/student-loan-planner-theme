@@ -7,7 +7,7 @@
       "uuidString" : "F098CAB6-68FD-4BF6-AE0A-27C6B360832B"
     }
   ],
-  "creatorBuild" : "34513",
+  "creatorBuild" : "34518",
   "files" : {
     "\/.github\/workflows\/develop.yml" : {
       "cB" : 0,
@@ -108,6 +108,16 @@
       "miP" : 0,
       "oA" : 2,
       "oAP" : "\/assets\/icons\/color\/cultivatewp.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
+    "\/assets\/icons\/search.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/search.svg",
       "oF" : 0,
       "opt" : 0,
       "plM" : 3758088159,
@@ -1963,6 +1973,16 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/icons\/utility\/search-white.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/utility\/search-white.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/icons\/utility\/search.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -3242,6 +3262,14 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/partials\/content\/content.php",
+      "oF" : 0
+    },
+    "\/partials\/content\/header\/main.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/partials\/content\/header\/main.php",
       "oF" : 0
     },
     "\/partials\/content\/no-content.php" : {

@@ -37,6 +37,27 @@ function eqd_site_header() {
 }
 add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 
+
+function slp_header_main() {
+	get_template_part('partials/content/header/main');
+}
+add_action( 'slp_main_menu', 'slp_header_main' );
+
+
+function slp_cta_button() { 
+	$slp_cta = get_field('cta_header', 'option');
+	if(isset($slp_cta)) : ?>
+		<div class="cta-header">
+			<a href="<?php echo esc_attr($slp_cta['url']); ?>" <?php echo esc_html(slp_a_target($slp_cta['target'])); ?>>
+				<?php echo esc_html($slp_cta['title']); ?>
+			</a>
+		</div>
+	<?php 
+	endif;
+}
+
+
+
 /**
  * Nav Extras
  *

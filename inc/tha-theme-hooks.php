@@ -162,6 +162,13 @@ function tha_header_bottom() {
 }
 
 /**
+ * Header Main
+ */
+function slp_main_menu() {
+	do_action( 'slp_main_menu' );
+}
+
+/**
  * Semantic <content> hooks
  *
  * $tha_supports[] = 'content';

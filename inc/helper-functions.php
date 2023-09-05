@@ -17,6 +17,25 @@ add_filter( 'eqd_the_content', 'convert_chars' );
 add_filter( 'eqd_the_content', 'wpautop' );
 add_filter( 'eqd_the_content', 'shortcode_unautop' );
 add_filter( 'eqd_the_content', 'do_shortcode' );
+add_filter('acf/load_field', 'load_menu_names_to_acf');
+
+/**
+ * Populate select field with menus
+ *
+ * @param field fields
+ */
+function load_menu_names_to_acf( $field ) {
+    // Ensure it targets the correct field key
+    if ( $field['key'] == 'field_64f21f700a2cd' ) {  
+        $menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );  // get all menus
+
+        foreach ( $menus as $menu ) {
+            $field['choices'][ $menu->term_id ] = $menu->name;
+        }
+    }
+
+    return $field;
+}
 
 /**
  * Get the first term attached to post
@@ -297,4 +316,16 @@ function eqd_button( $field = array(), $atts = array() ) {
 
 	$output = '<div class="' . join( ' ', $block_class ) . '"><a class="' . join( ' ', $button_class ) . '" href="' . esc_html( $field['url'] ) . '"' . $target . '>' . esc_html( $field['title'] ) . '</a></div>';
 	return apply_filters( 'eqd_button', $output, $block );
+}
+
+/**
+ * Add the target attribute for links
+ *
+ * @param string
+ * @return void
+ */
+function slp_a_target( $value ) {
+	if( ! $value ) return;
+
+	return ' target="' . $value . '"';
 }
