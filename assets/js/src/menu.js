@@ -99,6 +99,7 @@
 				var popup = document.querySelector('.search-popup');
 				if(popup) {
 					popup.classList.add('active'); 
+					document.querySelector('#search').focus();
 				}
 			});
 			document.querySelector('#search').addEventListener('input', function() {
