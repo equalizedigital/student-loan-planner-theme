@@ -25,12 +25,13 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
                     $link = $item['link'];
                     $columns = $item['columns'];
                     $number_of_columns = $item['number_of_columns'];
+                    
                     ?>
 
-                    <li class="<?php echo $columns ? 'has-submenus' : ''; echo " submenu-column__$number_of_columns"?>">
+                    <li class="<?php echo $columns ? 'has-submenus' : ''; echo " submenu-column__$number_of_columns"; ?>">
 
                         <?php if('#' === $link['url']) { ?>
-                            <button aria-label="<?php echo $link['title']; ?>" type="button" data-toggle="<?php echo $link['title']; ?>" aria-expanded="false">
+                            <button aria-label="<?php echo $link['title']; ?>" type="button" class="menu-item-main-link" data-toggle="<?php echo $link['title']; ?>" aria-expanded="false">
                                 <?php echo $link['title']; ?>
                                 <span class="chevron">
                                     <img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
@@ -57,16 +58,15 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
                                 
                             <?php foreach( $columns as $column ) {
                                 $sub_menu_id = $column['sub_menu'];
+                                $hide_menu_title = $column['hide_menu_title'];
                                 if ( ! $sub_menu_id ) {
                                     continue;
                                 }
                                 ?>
                                 <?php $sub_menu = wp_get_nav_menu_object( $sub_menu_id ); ?>
-                                
-                                
+
                                 <div class="menu-column">
-                                    
-                                    <h3 class="menu-column_title"><?php echo $sub_menu->name; ?></h3>
+                                    <h3 class="menu-column_title <?php echo $hide_menu_title?'menu-column-hidden':''; ?>"><?php echo $sub_menu->name; ?></h3>
                                     <?php
                                     wp_nav_menu( array(
                                         'menu' => $sub_menu_id,
