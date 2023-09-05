@@ -92,7 +92,7 @@ header.site-header {
 						}
 					}
 
-					>li>a {
+					>li> .menu-item-main-link {
 						position: relative;
 						color: #000;
 						font-size: 15px;
@@ -125,12 +125,6 @@ header.site-header {
 						}
 
 						&.has-submenus {
-							&.submenu-column__one {
-								@include media(">tablet") {
-									grid-template-columns: repeat(1, 1fr);
-								}
-							}
-
 							&.submenu-column__two {
 								.sub_menu {
 									@include media(">tablet") {
@@ -259,6 +253,13 @@ header.site-header {
 									position: relative;
 									margin-bottom: 13px;
 									padding-bottom: 13px;
+									&.menu-column-hidden {
+										opacity: 0;
+										visibility: hidden;
+										@include media("<tablet") {
+										display: none;
+										}
+									}
 
 									&::after {
 										content: "";
@@ -274,7 +275,7 @@ header.site-header {
 								>ul {
 									list-style: none;
 									display: grid;
-									grid-template-columns: 1fr 1fr;
+									grid-template-columns: 1fr;
 
 									a {
 										color: black;
