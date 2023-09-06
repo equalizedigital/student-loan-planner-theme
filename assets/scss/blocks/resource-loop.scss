@@ -123,6 +123,7 @@
                     justify-content: center;
                     border-radius: 10px;
                     overflow: hidden;
+                    width: 100%;
                     @include media("<tablet") {
                         min-height: 200px;
                         height: 260px;
