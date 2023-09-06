@@ -37,17 +37,21 @@ $title = get_field('title');
 $content = get_field('content');
 $image = get_field('image');
 $youtube_video_id = get_field('youtube_video_id');
-
+ 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="full-width-columns-background-container">
 		<div class="full-width-columns-background-container-content">
-			<h1 class="title"><?php echo $title; ?></h1>
+			<h2 class="title"><?php echo $title; ?></h2>
 			<div class="content"><?php echo $content; ?></div>
 		</div>
 		<div class="full-width-columns-background-container__video" >
-				<img class="modal-btn play" data-modal="modal1" src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/play.svg" alt="play video" onclick="playVideo();"  id="play-iframe">
-				
+			<button class="modal-btn full-width-columns-background-container__video__button" data-modal="modal1"  onclick="playVideo();" aria-label="Open Video" id="play-iframe">
+				<?php if($image): ?>
+					<img src="<?php _e($image['url']); ?>" alt="<?php _e($image['alt']); ?>">	
+				<?php endif; ?>
+				<img class=" play"  src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
+			</button>
 		</div>
 	</div>
 </section>
@@ -55,7 +59,7 @@ $youtube_video_id = get_field('youtube_video_id');
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close-btn">
-		<img src="<?php echo $featured_image_url = get_template_directory_uri() . '/assets/icons/utility/close-cross.svg'; ?>" alt="">
+		<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
 	</span>
     <div id="player"></div>
   </div>
@@ -82,7 +86,6 @@ function playVideo() {
     player.playVideo();
 	document.getElementById("thumbnail").style.display = "none";
 	document.getElementById("play-iframe").style.display = "none";
-
 }
 
 </script>

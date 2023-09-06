@@ -20,6 +20,11 @@
     @include media(">tablet") {
         width: 50%;
     }
+    &__button {
+        -webkit-appearance: none;
+        border: none;
+        background: transparent;
+    }
 }
 
 .full-width-columns-background-container__video img {
