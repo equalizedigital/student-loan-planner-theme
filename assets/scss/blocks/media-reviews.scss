@@ -22,6 +22,34 @@
         }
     }
 
+    &_with_author_images{
+        .media-reviews-container-review-items-loop{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);  
+            border-top: 1px solid #D9D9D9;
+            @include media(">tablet") {
+                grid-template-columns: repeat(2,1fr); 
+            }
+            
+
+            .media-reviews-container-review-items-loop-item{
+                border: none;
+                border-top: none!important;
+                border-right: 1px solid #D9D9D9;
+                border-bottom: 1px solid #D9D9D9;
+                &:nth-child(even){
+                    border-right: none;
+                    @include media(">tablet") {
+                        padding: 53px 59px;
+                    }
+                }
+                blockquote {
+                    align-items: center;
+                }
+            }
+        }
+    }
+
     .media-reviews-container {
         margin: 0 auto;
         max-width: $container-width;
@@ -123,6 +151,15 @@
                         .rating-stars {
                             position: relative;
                            
+                        }
+
+                        .attachment-medium_large {
+                            width: 90px;
+                            height: 90px;
+                            flex-shrink: 0;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            object-position: center;
                         }
     
                         h3.title {

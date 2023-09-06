@@ -36,7 +36,11 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 $title = get_field('title');
 $block_style = get_field('block_style');
 $select_testimonials = get_field('select_testimonials');
+$testimonial_block_style = get_field('testimonial_block_style');
 
+if ($testimonial_block_style) :
+	$className .= ' media-reviews-block_' . $testimonial_block_style;
+endif;
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> <?php echo $block_style == 'purple'?'media-reviews-block-purple':''; ?>">
     <div class="media-reviews-container">
@@ -87,13 +91,13 @@ $select_testimonials = get_field('select_testimonials');
 			if($select_testimonials){
 
 				$args = array(
-					'post_type' => 'testimonials', 
+					'post_type' => 'slp_testimonials', 
 					'post__in' => 	$select_testimonials
 				);
 
 			} else {
 				$args = array(
-					'post_type' => 'testimonials',
+					'post_type' => 'slp_testimonials',
 					'posts_per_page' => 4, 
 				);
 			}
@@ -107,6 +111,10 @@ $select_testimonials = get_field('select_testimonials');
 						<blockquote>
 
 							<div class="info">
+								<?php if ($testimonial_block_style) : 
+									the_post_thumbnail('medium_large');    // Medium large (max width 768px unlimited height)
+								?>
+								<?php endif; ?>
 								<h3 class="title"><?php the_title(); ?></h3>
 									<div class="location">
 										<?php 
@@ -152,8 +160,11 @@ $select_testimonials = get_field('select_testimonials');
 
 		</div>
 		<div class="media-reviews-container-review-items-read">
-			<?php $read_more_link = get_field('read_more_link'); ?>
+			<?php $read_more_link = get_field('read_more_link'); 
+			if($read_more_link):
+			?>
 			<a class="btn" href="<?php echo $read_more_link['url']; ?>"><?php echo $read_more_link['title']; ?></a>
+			<?php endif; ?>
 		</div>
 
 

@@ -221,15 +221,10 @@
     }
 }
 
-.footer-logo > a {
-    background-image: url('../images/SLP-Logo-Color-white.png');
-    color: #737373;
-    text-decoration: none;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    font-size: 0px;
-    width: 114px;
-    height: 33px;
-    display: flex;
+.widget-area {
+    .logo-footer,
+    .image {
+        width: 114px;
+        height: 33px;
+    }
 }
