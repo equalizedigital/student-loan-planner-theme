@@ -47,10 +47,13 @@ $title = get_field('title');
 				if(!empty($row['image'])){
 					$image = $row['image']['url'];
 				}
+				if(!empty($row['image'])){
+					$imageAlt = $row['image']['alt'];
+				}
 				
 				echo '<div class="featured-in-block-container-images__image">';
 					if(!empty($image)){
-						echo "<img src='$image'></img>";
+						echo "<img src='$image' alt='$imageAlt'></img>";
 					}
 				echo '</div>';
 			}

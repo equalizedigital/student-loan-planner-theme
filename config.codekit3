@@ -2554,6 +2554,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/media-reviews-slider.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/media-reviews-slider.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/media-reviews.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3298,7 +3313,7 @@
     },
     "\/screenshot.png" : {
       "ft" : 32768,
-      "iS" : 2085,
+      "iS" : 307259,
       "oA" : 0,
       "oAP" : "\/screenshot.png",
       "oF" : 0,
@@ -3420,6 +3435,22 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/hero\/hero.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/media-reviews-slider\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/media-reviews-slider\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/media-reviews-slider\/media-reviews-slider.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/media-reviews-slider\/media-reviews-slider.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/media-reviews\/block.json" : {
