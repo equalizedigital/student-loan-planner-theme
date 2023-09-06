@@ -34,6 +34,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 // Load values and assing defaults.
 $title = get_field('title');
 $featured_post = get_field('featured_post');
+$selected_posts = get_field('selected_posts');
 
 $featured_image_url = get_the_post_thumbnail_url($featured_post->ID, 'full'); // gets the featured image URL
 
@@ -64,6 +65,7 @@ if (!$featured_image_url) {
 				$args = array(
 					'post_type' => 'post', 
 					'posts_per_page' => 3, 
+					'post__in' => 	$selected_posts
 				);
 
 				$query = new WP_Query($args);
