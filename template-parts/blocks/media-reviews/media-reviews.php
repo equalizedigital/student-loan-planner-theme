@@ -37,7 +37,7 @@ $title = get_field('title');
 $block_style = get_field('block_style');
 $select_testimonials = get_field('select_testimonials');
 $testimonial_block_style = get_field('testimonial_block_style');
-
+ 
 if ($testimonial_block_style) :
 	$className .= ' media-reviews-block_' . $testimonial_block_style;
 endif;
@@ -87,9 +87,7 @@ endif;
 		<div class="media-reviews-container-review-items-loop">
 
 		<?php 
-
-			if($select_testimonials){
-
+			if(!empty($select_testimonials)){
 				$args = array(
 					'post_type' => 'slp_testimonials', 
 					'post__in' => 	$select_testimonials
