@@ -130,16 +130,16 @@ window.addEventListener("load", function () {
 			});
 		});
 
-		document.querySelectorAll('#resource-links-dropdown').forEach(function(element) {
-			element.addEventListener('click', function() {
+		document.querySelectorAll('#resource-links-dropdown').forEach(function (element) {
+			element.addEventListener('click', function () {
 				this.classList.toggle('active');
 				var target = document.querySelector('.resource-links-dropdown-list');
 				target.classList.add('active');
 			});
 		});
-		
-		document.querySelectorAll('.dropdown-li').forEach(function(element) {
-			element.addEventListener('click', function() {
+
+		document.querySelectorAll('.dropdown-li').forEach(function (element) {
+			element.addEventListener('click', function () {
 				var target = document.getElementById('resource-links-dropdown');
 				var button = document.querySelector('.resource-links-dropdown-list');
 				button.classList.remove('active');
@@ -152,71 +152,155 @@ window.addEventListener("load", function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-    // Find all elements with class .widget-title
-    const widgetTitles = document.querySelectorAll('.widget-title');
-	
-    widgetTitles.forEach(title => {
-        // Add click event listener to each .widget-title
-        title.addEventListener('click', function() {
-            // Check if there's a next sibling element
+	// Find all elements with class .widget-title
+	const widgetTitles = document.querySelectorAll('.widget-title');
+
+	widgetTitles.forEach(title => {
+		// Add click event listener to each .widget-title
+		title.addEventListener('click', function () {
+			// Check if there's a next sibling element
 			this.classList.toggle('active');
-            let sibling = this.nextElementSibling;
-            if (sibling) {
-                // Add class to the sibling
-                this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+			let sibling = this.nextElementSibling;
+			if (sibling) {
+				// Add class to the sibling
+				this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
 
-            }
-        });
-    });
+			}
+		});
+	});
 });
 
 
+jQuery(function ($) {
 
-// Function to open a modal
-function openModal(modalId) {
-	var modal = document.getElementById(modalId);
-	if (modal) {
-	  modal.style.display = "block";
+	// jQuery formatted selector to search for focusable items
+	var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+
+	// store the item that has focus before opening the modal window
+	var focusedElementBeforeModal;
+
+	$(document).ready(function () {
+		jQuery('.modal-btn').click(function (event) {
+			modalId = $(event.currentTarget).data('modal')
+			showModal(modalId);
+		});
+		jQuery('.modal .close-btn').click(function(e) {
+		    hideModal();
+		});
+		jQuery('.modal .close-btnButton').click(function(e) {
+		    hideModal();
+		});
+		
+		
+		jQuery('.modal').keydown(function(event) {
+		    trapTabKey($(this), event);
+		})
+		jQuery('.modal').keydown(function(event) {
+		    trapEscapeKey($(this), event);
+		})
+
+	});
+
+	function trapEscapeKey(obj, evt) {
+
+		// if escape pressed
+		if (evt.which == 27) {
+
+			// get list of all children elements in given object
+			var o = obj.find('*');
+
+			// get list of focusable items
+			var cancelElement;
+			cancelElement = o.filter(".modal .close-btn")
+
+			// close the modal window
+			cancelElement.click();
+			evt.preventDefault();
+		}
+
 	}
-  }
-  
-  // Function to close a modal
-  function closeModal(modalId) {
-	var modal = document.getElementById(modalId);
-	if (modal) {
-	  modal.style.display = "none";
+
+	function trapTabKey(obj, evt) {
+
+		// if tab or shift-tab pressed
+		if (evt.which == 9) {
+			console.log(obj)
+			// get list of all children elements in given object
+			var o = obj.find('*');
+
+			// get list of focusable items
+			var focusableItems;
+			focusableItems = o.filter(focusableElementsString).filter(':visible')
+
+			// get currently focused item
+			var focusedItem;
+			focusedItem = jQuery(':focus');
+
+			// get the number of focusable items
+			var numberOfFocusableItems;
+			numberOfFocusableItems = focusableItems.length
+
+			// get the index of the currently focused item
+			var focusedItemIndex;
+			focusedItemIndex = focusableItems.index(focusedItem);
+			if (evt.shiftKey) {
+				//back tab
+				// if focused on first item and user preses back-tab, go to the last focusable item
+				if (focusedItemIndex == 0) {
+					focusableItems.get(numberOfFocusableItems - 1).focus();
+					evt.preventDefault();
+				}
+
+			} else {
+				//forward tab
+				
+				// if focused on the last item and user preses tab, go to the first focusable item
+				if (focusedItemIndex == numberOfFocusableItems - 1) {
+					focusableItems.get(0).focus();
+					evt.preventDefault();
+				}
+			}
+		}
+
 	}
-  }
-  
-  // Add click event to each modal button
-  var modalButtons = document.querySelectorAll('.modal-btn');
-  modalButtons.forEach(function(button) {
-	button.addEventListener('click', function() {
-	  var modalId = button.getAttribute('data-modal');
-	  openModal(modalId);
-	});
-  });
-  
-  // Add click event to each close button
-  var closeButtons = document.querySelectorAll('.close-btn');
-  closeButtons.forEach(function(button) {
-	button.addEventListener('click', function() {
-	  var modal = button.closest('.modal');
-	  if (modal) {
-		closeModal(modal.id);
-	  }
-	});
-  });
-  
-  // Close the modal if the user clicks outside of it
-  window.addEventListener('click', function(event) {
-	var modals = document.querySelectorAll('.modal');
-	modals.forEach(function(modal) {
-	  if (event.target === modal) {
-		closeModal(modal.id);
-	  }
-	});
-  });
-  
+
+
+	function setFocusToFirstItemInModal(obj) {
+		// get list of all children elements in given object
+		var o = $(obj).find('*');
+
+		// set the focus to the first keyboard focusable item
+		o.filter(focusableElementsString).filter(':visible').first().focus();
+	}
+
+	function showModal(obj) {
+		jQuery('body').attr('aria-hidden', 'true'); // mark the main page as hidden
+		// jQuery('.modalOverlay').css('display', 'block'); // insert an overlay to prevent clicking and make a visual change to indicate the main apge is not available
+		jQuery('#' + obj).css('display', 'block'); // make the modal window visible
+		jQuery('#' + obj).attr('aria-hidden', 'false'); // mark the modal window as visible
+
+		// attach a listener to redirect the tab to the modal window if the user somehow gets out of the modal window
+		jQuery('body').on('focusin', 'body', function () {
+			setFocusToFirstItemInModal('#' + obj);
+		})
+		console.log('#' + obj)
+		// save current focus
+		focusedElementBeforeModal = jQuery(':focus');
+
+		setFocusToFirstItemInModal('#' + obj);
+	}
+
+	function hideModal() {
+		jQuery('.modal').css('display', 'none'); // hide the modal window
+		jQuery('.modal').attr('aria-hidden', 'true'); // mark the modal window as hidden
+		jQuery(' body').attr('aria-hidden', 'false'); // mark the main page as visible
+
+		// remove the listener which redirects tab keys in the main content area to the modal
+		jQuery('body').off('focusin', ' body');
+
+		// set focus back to element that had it before the modal was opened
+		focusedElementBeforeModal.focus();
+	}
+});

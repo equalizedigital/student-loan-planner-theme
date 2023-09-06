@@ -39,8 +39,11 @@
     position: absolute;
     top: 15px;
     right: 15px;
-}
-
-.close-btn:hover {
-    cursor: pointer;
+    -webkit-appearance: none;
+    background: transparent;
+    padding: 0;
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
 }

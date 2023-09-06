@@ -1,5 +1,9 @@
 .full-width-columns-background-block {
     background: #625089;
+    .link {
+        display: inline-flex;
+        margin: 40px 0 0;
+    }
 }
 
 .full-width-columns-background-block .full-width-columns-background-container {
@@ -24,27 +28,38 @@
         -webkit-appearance: none;
         border: none;
         background: transparent;
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0;
     }
 }
 
-.full-width-columns-background-container__video img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    &.play {
-        max-width: 53px;
-        max-height: 53px;
-        margin: 0 auto;
-        top: 50%;
-        transform: translate(0px, -50%);
-        cursor: pointer;
+.full-width-columns-background-container__video {
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        &.play {
+            max-width: 53px;
+            max-height: 53px;
+            margin: 0 auto;
+            top: 50%;
+            transform: translate(0px, -50%);
+            cursor: pointer;
+        }
     }
+   
 }
+
 
 .full-width-columns-background-container__video iframe {
     display: flex;

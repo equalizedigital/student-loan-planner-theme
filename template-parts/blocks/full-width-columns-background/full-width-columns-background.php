@@ -37,6 +37,7 @@ $title = get_field('title');
 $content = get_field('content');
 $image = get_field('image');
 $youtube_video_id = get_field('youtube_video_id');
+$link = get_field('link');
  
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
@@ -44,9 +45,14 @@ $youtube_video_id = get_field('youtube_video_id');
 		<div class="full-width-columns-background-container-content">
 			<h2 class="title"><?php echo $title; ?></h2>
 			<div class="content"><?php echo $content; ?></div>
+			<?php if($link): ?>
+			<div class="link">
+				<a href="<?php _e($link['url']); ?>" class="btn"><?php _e($link['title']); ?></a>
+			</div>
+			<?php endif; ?>
 		</div>
 		<div class="full-width-columns-background-container__video" >
-			<button class="modal-btn full-width-columns-background-container__video__button" data-modal="modal1"  onclick="playVideo();" aria-label="Open Video" id="play-iframe">
+			<button class="modal-btn full-width-columns-background-container__video__button" data-modal="modal1" aria-label="Open Video" id="play-iframe">
 				<?php if($image): ?>
 					<img src="<?php _e($image['url']); ?>" alt="<?php _e($image['alt']); ?>">	
 				<?php endif; ?>
@@ -56,11 +62,11 @@ $youtube_video_id = get_field('youtube_video_id');
 	</div>
 </section>
 
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">
+<div id="modal1" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content" >
+    <button class="close-btn">
 		<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
-	</span>
+	</button>
     <div id="player"></div>
   </div>
 </div>
@@ -76,16 +82,27 @@ function onYouTubeIframeAPIReady() {
         width: '640',
         videoId: '<?php echo $youtube_video_id; ?>',
         events: {
-            // 'onReady': onPlayerReady,
+            'onReady': onPlayerReady,
             // 'onStateChange': onPlayerStateChange
         }
     });
 }
-
+function onPlayerReady(event) {                                        
+        event.target.pauseVideo();
+      }
 function playVideo() {
-    player.playVideo();
+    player.pauseVideo();
 	document.getElementById("thumbnail").style.display = "none";
 	document.getElementById("play-iframe").style.display = "none";
 }
+jQuery(function ($) {
+
+	$(document).ready(function () {
+
+		jQuery('.modal .close-btn').click(function(e) {
+			player.pauseVideo();
+		});
+	});
+});
 
 </script>
