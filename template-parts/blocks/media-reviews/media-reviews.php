@@ -58,7 +58,7 @@ endif;
 					$number_of_reviews = get_sub_field('number_of_reviews');
 				?>
 				<div class="media-reviews-container-review-items-item">
-					<a href="<?php echo esc_url($link); ?>" aria-label="<?php echo $logo['alt']; ?>. <?php echo $stars; ?> out of 5. <?php echo $number_of_reviews; ?> Reviews">
+					<a href="<?php echo esc_url($link); ?>" aria-label="<?php echo $logo['alt']; ?>. <?php echo $stars; ?> out of 5 stars. <?php echo $number_of_reviews; ?> reviews.">
 						<figure>
 							<?php if(!empty($logo)): ?>
 								<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt']; ?>">
