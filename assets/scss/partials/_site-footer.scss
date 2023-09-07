@@ -38,6 +38,9 @@
         font-style: normal;
         font-weight: 300;
         line-height: 19px;
+        br {
+            display: none;
+        }
 
         a {
             text-decoration: underline;
@@ -103,8 +106,8 @@
 
         &.active {
             position: relative;
-            margin-bottom: 10px;
-            padding-bottom: 17px;
+            // margin-bottom: 10px;
+            // padding-bottom: 17px;
 
             &:after {
                 content: '';
@@ -140,6 +143,7 @@
     .widget-title+div {
         @include media("<tablet") {
             max-height: 0px;
+            display: none;
             overflow: hidden;
             transition: all .6s;
             border-bottom: 1px solid rgba(161, 165, 165, 0.5);
@@ -147,7 +151,8 @@
 
         &.active {
             @include media("<tablet") {
-                max-height: 100vh;
+                max-height: 300px;
+                display: block;
                 padding-bottom: 20px;
             }
         }

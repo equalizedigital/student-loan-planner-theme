@@ -277,8 +277,21 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Find all elements with class .widget-title
 	const widgetTitles = document.querySelectorAll('.widget-title');
 
+
 	widgetTitles.forEach(title => {
+		title.setAttribute('tabindex', '0');
 		// Add click event listener to each .widget-title
+		
+		title.addEventListener('keypress', function () {
+			// Check if there's a next sibling element
+			this.classList.toggle('active');
+			let sibling = this.nextElementSibling;
+			if (sibling) {
+				// Add class to the sibling
+				this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+
+			}
+		});
 		title.addEventListener('click', function () {
 			// Check if there's a next sibling element
 			this.classList.toggle('active');
