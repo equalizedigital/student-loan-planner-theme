@@ -38,29 +38,48 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
         <div class="tabbed-content__tabs">
             <div class="tabbed-content__row">
 				<div class="tabbed-content__row_container">
-				<?php 
-				$rows = get_field('tab_content');
-				if( $rows ) {
-					echo '<ul class="tabbed-content__nav-list">';
-					foreach( $rows as $key => $row ) {
-							echo '<li class="tabbed-content__nav-item">';
-							?>
-							<button data-link="tab-<?php echo $key; ?>" class="<?php if($key == 0){echo 'active'; } ?> ">
-								<span class="icon">
-									<?php 
-									if( $row['tab_icon'] ): ?>
-										<img src="<?php echo $row['tab_icon']; ?>" alt="<?php echo $row['tab_title']; ?> icon">
-										<img src="<?php echo $row['tab_icon_hover_state']; ?>" alt="<?php echo $row['tab_title']; ?> hover state">
-									<?php endif; ?>
-								</span>
-								<div class="text"><?php echo $row['tab_title']; ?></div>
-							</button>
-							<?php
-						echo '</li>';
+					<?php 
+					$rows = get_field('tab_content');
+					if( $rows ) {
+						echo '<ul class="tabbed-content__nav-list" role="tablist" aria-labelledby="tablist-1">';
+						foreach( $rows as $key => $row ) {
+								echo '<li class="tabbed-content__nav-item">';
+								?>
+								<button 
+								data-link="tab-<?php echo $key; ?>" 
+								class="<?php if($key == 0){echo 'active'; } ?> " 
+								type="button" 
+								role="tab" 
+								tabindex="<?php if($key == 0){echo ''; } else {echo '-1';} ?>"
+								aria-selected="<?php if($key == 0){echo 'true'; } else {echo 'false';} ?>" 
+								aria-controls="tab-<?php echo $key; ?>">
+									<span class="icon">
+										<?php 
+										if( $row['tab_icon'] ): ?>
+											<img src="<?php echo $row['tab_icon']; ?>" alt="<?php echo $row['tab_title']; ?> icon" aria-hidden="true">
+											<img src="<?php echo $row['tab_icon_hover_state']; ?>" alt="<?php echo $row['tab_title']; ?> hover state" aria-hidden="true">
+										<?php endif; ?>
+									</span>
+									<div class="text"><?php echo $row['tab_title']; ?></div>
+								</button>
+								<?php
+							echo '</li>';
+						}
+						echo '</ul>';
 					}
-					echo '</ul>';
-				}
-				?>
+					?>
+					<div class="tablet_chevron">
+					<svg xmlns="http://www.w3.org/2000/svg" width="97" height="91" viewBox="0 0 97 91" fill="none">
+  <rect x="97" y="91" width="97" height="91" transform="rotate(-180 97 91)" fill="url(#paint0_linear_1229_724)"/>
+  <path d="M76.6211 53.2427L84.2424 45.6213L76.6211 38" stroke="white" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="paint0_linear_1229_724" x1="133" y1="117.731" x2="167.5" y2="117.731" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#625089"/>
+      <stop offset="1" stop-color="#625089" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
+					</div>
 				</div>
 				
                 <div class="tabbed-content__content">
@@ -71,7 +90,11 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 						foreach( $tabbed_content as $key => $row ) {
 							$link = $row['link'];
 							?>
-							<div id="tab-<?php echo $key; ?>" class="tabbed-content__content__pane <?php if($key == 0){echo 'tabbed-content__content__pane--active'; } ?>">
+							<div 
+								role="tabpanel" 
+								aria-labelledby="tab-<?php echo $key; ?>" 
+								id="tab-<?php echo $key; ?>" 
+								class="tabbed-content__content__pane <?php if($key == 0){echo 'tabbed-content__content__pane--active'; } ?>">
 
 								<span class="tabbed-content__content__text">
 									<h3>

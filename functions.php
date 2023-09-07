@@ -86,6 +86,7 @@ add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
  */
 function eqd_gutenberg_scripts() {
 	wp_enqueue_script( 'theme-editor', get_template_directory_uri() . '/assets/js/editor.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_template_directory() . '/assets/js/editor.js' ), true );
+	wp_enqueue_script( 'theme-editor-js', get_template_directory_uri() . '/assets/js/global-min.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
 }
 add_action( 'enqueue_block_editor_assets', 'eqd_gutenberg_scripts' );
 
