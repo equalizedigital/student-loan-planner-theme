@@ -267,8 +267,14 @@ header.site-header {
 
 							.menu-column {
 								@include media("<tablet") {
-									padding: 36px 24px;
+									padding: 0 24px;
 									background: white;
+									&:nth-child(1){
+										padding-top: 36px;
+									}
+									&:nth-last-child(1){
+										padding-bottom: 36px;
+									}
 								}
 
 								.menu-column_title {
@@ -664,10 +670,8 @@ body {
 
 // Mobile Bottom Context	
 .menu_bottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	position: relative;
+    margin: 0 -24px;
 
 	@include media(">tablet") {
 		display: none;
