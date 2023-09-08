@@ -147,7 +147,8 @@
 			? $("#header-top").toggle()
 			: $("#header-top").slideToggle();
 
-		$(".primary-navigation").slideToggle();
+		$(".primary-navigation").toggleClass("active");
+
 		$("html, body").animate({ scrollTop: $(window).scrollTop() }, 100);
 		$("html").toggleClass("overflow-hidden");
 	});
