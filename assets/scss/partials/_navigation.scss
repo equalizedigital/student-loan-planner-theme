@@ -391,7 +391,9 @@ header.site-header {
 							}
 
 							.sub_menu {
-								display: grid;
+								@include media(">tablet") {
+									display: grid;
+								}
 
 								@include media("<=mobile_menu") {
 
