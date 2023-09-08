@@ -269,7 +269,7 @@ header.site-header {
 								@include media("<tablet") {
 									padding: 0 24px;
 									background: white;
-									&:nth-child(1){
+									&:nth-child(3){
 										padding-top: 36px;
 									}
 									&:nth-last-child(1){
