@@ -52,6 +52,8 @@ jQuery(function ($) {
 	});
 });
 
+
+
 window.addEventListener("load", function () {
 	let firstTab = null;
 	let lastTab = null;
@@ -101,7 +103,7 @@ window.addEventListener("load", function () {
 				// Remove active class from all items before adding to the new one
 				tabButtons.forEach(btn => btn.classList.remove('active'));
 				tabButtons.forEach(btn => btn.setAttribute('aria-selected', 'false'));
-				tabButtons.forEach(btn => btn.setAttribute('tabindex','-1'));
+				tabButtons.forEach(btn => btn.setAttribute('tabindex', '-1'));
 
 				let panes = document.querySelectorAll('.tabbed-content__content__pane');
 				panes.forEach(element => {
@@ -116,32 +118,17 @@ window.addEventListener("load", function () {
 					});
 				}
 
-				 
-
 				// Add active class to the clicked button
 				button.classList.add('active');
 
 				button.setAttribute('aria-selected', 'true');
-        		button.removeAttribute('tabindex');
+				button.removeAttribute('tabindex');
 			});
 		});
 	}
 
-	function moveFocusToTab(currentTab) {
-		var currentTab = document.getElementById(`${currentTab}`);
-		var firstFocusableElement = currentTab.querySelector('input, button, select, textarea, a[href], [tabindex]:not([tabindex="-1"])');
-
-		if (firstFocusableElement) {
-			firstFocusableElement.focus();
-		}
-	}
-
 	function moveFocusToPreviousTab(button) {
-		
-
-		// Get the value of the data-target attribute
-		// let targetClass = button.getAttribute('data-link');
-		if(currentTab == 0){
+		if (currentTab == 0) {
 			currentTab = 0
 		} else {
 			currentTab--;
@@ -149,57 +136,16 @@ window.addEventListener("load", function () {
 
 		nextTab = 'tab-' + currentTab;
 
-		// Remove active class from all items before adding to the new one
-		// tabButtons.forEach(btn => btn.classList.remove('active'));
-
-		let panes = document.querySelectorAll('.tabbed-content__content__pane');
-		panes.forEach(element => {
-			// element.classList.remove('tabbed-content__content__pane--active');
-		});
-
-		// If a class that matches the data attribute exists, add the active class
-		// if (targetClass) {
-			let targetElements = document.querySelectorAll('#' + nextTab);
-			console.log(targetElements)
-			targetElements.forEach(element => {
-				// element.classList.add('tabbed-content__content__pane--active');
-			});
-		// }
-
-		// Add active class to the clicked button
 		var button = document.querySelector(`button[data-link="${nextTab}"]`);
-		// button.classList.add('active')
-
 		button.focus();
 
 	}
 
 	function moveFocusToNextTab(button) {
 		currentTab++;
-
-		// Get the value of the data-target attribute
-		// let targetClass = button.getAttribute('data-link');
-
 		nextTab = 'tab-' + currentTab;
 
-		// Remove active class from all items before adding to the new one
-		// tabButtons.forEach(btn => btn.classList.remove('active'));
-
-		let panes = document.querySelectorAll('.tabbed-content__content__pane');
-		panes.forEach(element => {
-			// element.classList.remove('tabbed-content__content__pane--active');
-		});
-
-		// If a class that matches the data attribute exists, add the active class
-		let targetElements = document.querySelectorAll('#' + nextTab);
-		console.log(targetElements)
-		targetElements.forEach(element => {
-			// element.classList.add('tabbed-content__content__pane--active');
-		});
-
-		// Add active class to the clicked button
 		var button = document.querySelector(`button[data-link="${nextTab}"]`);
-		// button.classList.add('active')
 		button.focus();
 
 	}
@@ -281,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	widgetTitles.forEach(title => {
 		title.setAttribute('tabindex', '0');
 		// Add click event listener to each .widget-title
-		
+
 		title.addEventListener('keypress', function () {
 			// Check if there's a next sibling element
 			this.classList.toggle('active');

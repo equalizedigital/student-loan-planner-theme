@@ -7,11 +7,18 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 ?>
 
 <div id="main-navigation">
+    <button type="button" id="nav-icon" title="Mobile Menu" aria-controls="primary-navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <div class="left-side">
         <div class="main-logo">
             <?php has_custom_logo() ? the_custom_logo() : '<a href="' . esc_url( home_url() ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>' ?>
         </div>
-        <nav class="primary-navigation">
+        <nav class="primary-navigation" id="primary-navigation">
             <h2 class="screen-reader-text">
                 <?php _e('Primary Navigation'); ?>
             </h2>
@@ -28,22 +35,28 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
                     
                     ?>
 
-                    <li class="<?php echo $columns ? 'has-submenus' : ''; echo " submenu-column__$number_of_columns"; ?>">
+                    <li class="main-nav-link-li <?php echo $columns ? 'has-submenus' : ''; echo " submenu-column__$number_of_columns"; ?>">
 
                         <?php if('#' === $link['url']) { ?>
                             <button aria-label="<?php echo $link['title']; ?>" type="button" class="menu-item-main-link" data-toggle="<?php echo $link['title']; ?>" aria-expanded="false">
-                                <?php echo $link['title']; ?>
+                                <?php _e($link['title']); ?>
                                 <span class="chevron">
                                     <img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
                                 </span>
                             </button>
+                            <span class="menu-item-rel">
+                                <button class="dropdown-toggle" aria-expanded="false" aria-label="<?php echo $link['title']; ?>: submenu" aria-haspopup="true"></button>
+                            </span>
                         <?php } else { ?>
                             <a href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>" class="menu-item-main-link">
-                                <?php echo $link['title']; ?>
+                                <?php _e($link['title']); ?>
                                 <span class="chevron">
                                     <img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
                                 </span>
                             </a>
+                            <span class="menu-item-rel">
+                                <button class="dropdown-toggle" aria-expanded="false" aria-label="<?php echo $link['title']; ?>: submenu" aria-haspopup="true"></button>
+                            </span>
                         <?php } ?>
                         
                         <?php if( is_array( $columns ) && 0 < count( $columns ) ) { ?>
@@ -89,13 +102,13 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
                 endif; ?>            
             </ul>
 
-            <div class="search-popup">
+            <div class="search-popup" id="search-modal">
                 <form action="/" method="get">
                     <div class="under_line">
                         <img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search" aria-hidden="true">
                         <div class="input-group">
-                            <label for="search">Search for tools, occupations, resources, etc....</label>
-                            <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" />
+                            <label for="modal_search">Search for tools, occupations, resources, etc....</label>
+                            <input type="text" name="s" id="modal_search" value="<?php the_search_query(); ?>" />
                         </div>
                     </div>
                     <button class="btn" type="submit">Search</button>
@@ -106,7 +119,9 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
             </div>
 
             <div class="menu_desktop">
-                <button class="menu_search_btn" id="menu_search_btn"><img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search"></button>
+                <button class="menu_search_btn" id="menu_search_btn" aria-haspopup="dialog" aria-controls="search-modal" aria-expanded="false">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search">
+                </button>
                 <a href="#" class="btn">Get Help</a>
             </div>
 
@@ -126,10 +141,5 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
         </nav>
     </div>
 
-    <button type="button" id="nav-icon" title="Mobile Menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+    
 </div>

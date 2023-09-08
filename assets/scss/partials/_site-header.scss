@@ -16,7 +16,7 @@
 	z-index: 100;
 	position: relative;
 	@include media("<tablet") {
-	    margin: 8px 10px;
+	    margin: 8px 0;
 	}
 
 	h1.site-title,

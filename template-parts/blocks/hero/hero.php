@@ -39,7 +39,7 @@ $subtitle = get_field('subtitle');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="hero-container">
-		<h1 class="title"><?php echo $title; ?></h1>
+		<h2 class="title"><?php echo $title; ?></h2>
 		<span class="subtitle"><?php echo $subtitle; ?></span>
 	</div>
 </section>
