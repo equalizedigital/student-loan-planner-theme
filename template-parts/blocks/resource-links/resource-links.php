@@ -67,7 +67,7 @@ $title = get_field('title');
 						<?php if($row['manual_link']): ?>
 							<a class="resource-links-container-links-link-button" href="<?php echo $manual_link_url; ?>">
 								<?php
-								echo $icon?"<img src='$icon'></img>":'';
+								echo $icon?"<img src='$icon' aria-hidden='true'></img>":'';
 								echo $manual_link_text?"<span class=\"text\">$manual_link_text</span>":'';
 								?>
 							</a>
@@ -75,7 +75,7 @@ $title = get_field('title');
 							<button data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>">
 								<?php
 								if(!empty($icon)){
-									echo $icon?"<img src='$icon'></img>":'';
+									echo $icon?"<img src='$icon' aria-hidden='true'></img>":'';
 								}
 								if(!empty($link)){
 								echo $link?"<span class=\"text\">$link</span>":'';
