@@ -105,16 +105,19 @@
 
 		$mainLinks.on("click", function (e) {
 			e.preventDefault();
-			$(this).toggleClass("active");
-			$(this).parent().toggleClass("active");
-
-			// Toggle class on the sibling with class .sub_menu
-			var $siblingSubMenu = $(this).siblings(".sub_menu");
-			if ($siblingSubMenu.length) {
-				$siblingSubMenu.toggleClass("active");
+			if($(this).hasClass('menu-item-no-drop') == false){
+				$(this).toggleClass("active");
+				$(this).parent().toggleClass("active");
+	
+				// Toggle class on the sibling with class .sub_menu
+				var $siblingSubMenu = $(this).siblings(".sub_menu");
+				if ($siblingSubMenu.length) {
+					$siblingSubMenu.toggleClass("active");
+				}
+	
+				$sideHeader.toggleClass('site-header-active');
 			}
 
-			$sideHeader.toggleClass('site-header-active');
 		});
 	}
 
@@ -393,7 +396,8 @@
 					$(this).closest('.menu-column').prev().find(`li`).eq(aIndex).find('a').focus()
 				}
 				if ($(this).is('.menu-item-main-link')) {
-					if ($(this).closest('.main-nav-link-li').prev().find('.dropdown-toggle')) {
+
+					if ($(this).closest('.main-nav-link-li').prev().find('.dropdown-toggle').length != 0) {
 						$(this).closest('.main-nav-link-li').prev().find('.dropdown-toggle').focus();
 					} else {
 						$(this).closest('.main-nav-link-li').prev().find('.menu-item-main-link').focus();
@@ -406,7 +410,6 @@
 					} else {
 						$(this).closest('.main-nav-link-li').prev().find('.menu-item-main-link').focus();
 					}
-
 				}
 
 				break;
@@ -419,8 +422,14 @@
 				if ($(this).is('.menu-item a')) {
 					$(this).closest('.menu-column').next().find(`li`).eq(aIndex).find('a').focus()
 				}
+
 				if ($(this).is('.menu-item-main-link')) {
-					$(this).siblings(".menu-item-rel").find('.dropdown-toggle').focus();
+
+					if ($(this).siblings(".menu-item-rel").find('.dropdown-toggle').length != 0) {
+						$(this).siblings(".menu-item-rel").find('.dropdown-toggle').focus();
+					} else {
+						$(this).closest('.main-nav-link-li').next().find('.menu-item-main-link').focus();
+					}
 				}
 
 				if ($(this).is('.dropdown-toggle')) {

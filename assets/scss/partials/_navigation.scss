@@ -113,6 +113,7 @@ header.site-header {
 							font-weight: 700;
 							line-height: 30px;
 							width: 100%;
+							padding: 0;
 						}
 
 						&:focus-visible {
@@ -270,7 +271,7 @@ header.site-header {
 
 							.menu-column {
 								@include media("<tablet") {
-									padding: 0 24px;
+									padding: 20px 24px;
 									background: white;
 									&:nth-child(3){
 										padding-top: 36px;
