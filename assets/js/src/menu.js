@@ -105,7 +105,6 @@
 
 		$mainLinks.on("click", function (e) {
 			e.preventDefault();
-			console.log($(this).hasClass('menu-item-no-drop'));
 			if($(this).hasClass('menu-item-no-drop') == false){
 				$(this).toggleClass("active");
 				$(this).parent().toggleClass("active");
