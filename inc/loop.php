@@ -79,6 +79,25 @@ function eqd_entry_header() {
 add_action( 'tha_entry_top', 'eqd_entry_header' );
 
 /**
+ * Single Title
+ */
+function eqd_single_header() {
+	if(is_single()){
+		if ( eqd_has_action( 'tha_entry_top' ) ) {
+			echo '<header class="entry-header">';
+				echo '<div class="entry-header-container">';
+					if ( function_exists('yoast_breadcrumb') ) {
+						yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+					}
+					tha_entry_top();
+				echo '</div>';
+			echo '</header>';
+		}
+	}
+}
+add_action( 'tha_single_header', 'eqd_single_header' );
+
+/**
  * Entry header in content
  *
  * @param string $output Outout.

@@ -74,32 +74,34 @@ input[type="search"] {
 
 	.content-sidebar {
 
-		.site-main {
-			float: left;
-			width: 768px / 1168px * 100%;
-		}
-
-		.sidebar-primary {
-			float: right;
-			width: 335px / 1168px * 100%;
-		}
-
 		@supports( display: $grid ) {
-			.content-area {
+			.site-main {
 				display: grid;
-				grid-template-columns: 1fr 300px;
+    			grid-template-columns: repeat(12, 1fr);
 				grid-column-gap: $grid-gap;
 			}
 
-			.site-main {
-				float: none;
-				width: 100%;
-				max-width: $content-width;
+			.entry-header {
+				grid-column-start: 1;
+				grid-column-end: 13;
+
+				background-color: brand-color('tertiary');
+				.entry-header-container{
+					margin: 0 auto;
+					padding: 0 $container-padding;
+				}
+			}
+
+			.site-main-article-content {
+				grid-column-start: 1;
+    			grid-column-end: 9;
+				z-index: 2;
 			}
 
 			.sidebar-primary {
-				float: none;
-				width: 100%;
+				grid-column-start: 9;
+			    grid-column-end: 13;
+				z-index: 1;
 			}
 		}
 	}
