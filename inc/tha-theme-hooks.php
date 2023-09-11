@@ -234,6 +234,13 @@ function tha_content_while_after() {
 }
 
 /**
+ * Single Header.
+ */
+function tha_single_header() {
+	do_action( 'tha_single_header' );
+}
+
+/**
  * Semantic <entry> hooks
  *
  * $tha_supports[] = 'entry';

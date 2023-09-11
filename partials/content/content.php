@@ -10,12 +10,6 @@
 
 echo '<article class="' . esc_attr( join( ' ', get_post_class() ) ) . '">';
 
-if ( eqd_has_action( 'tha_entry_top' ) ) {
-	echo '<header class="entry-header">';
-	tha_entry_top();
-	echo '</header>';
-}
-
 echo '<div class="entry-content">';
 tha_entry_content_before();
 the_content();
