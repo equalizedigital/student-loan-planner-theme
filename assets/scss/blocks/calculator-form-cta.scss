@@ -1,4 +1,4 @@
-.block.calculator-form-cta-block {
+.calculator-form-cta-block {
     background-color: brand-color('tertiary');
     padding: 78px 0;
 
@@ -7,8 +7,11 @@
         margin: 0 auto;
         padding: 0 $container-padding;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:  1fr;
         gap: 120px;
+        @include media(">tablet") {
+            grid-template-columns: 1fr 1fr;
+        }
 
         .calculator-form-cta-block-container {
 

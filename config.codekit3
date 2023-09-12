@@ -2479,6 +2479,21 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/scss\/blocks\/accordion.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/accordion.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/block-loader.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3797,6 +3812,14 @@
       "oAP" : "\/template-parts\/blocks\/tabbed-content\/tabbed-content.php",
       "oF" : 0
     },
+    "\/vendor\/autoload.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/autoload.php",
+      "oF" : 0
+    },
     "\/vendor\/bin\/phpcbf" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3811,6 +3834,54 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/vendor\/bin\/phpcs",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_classmap.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/autoload_classmap.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_namespaces.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/autoload_namespaces.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_psr4.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/autoload_psr4.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_real.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/autoload_real.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_static.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/autoload_static.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/ClassLoader.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/ClassLoader.php",
       "oF" : 0
     },
     "\/vendor\/composer\/installed.json" : {
@@ -3835,6 +3906,14 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/vendor\/composer\/InstalledVersions.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/LICENSE" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/composer\/LICENSE",
       "oF" : 0
     },
     "\/vendor\/dealerdirect\/phpcodesniffer-composer-installer\/composer.json" : {
@@ -5205,6 +5284,14 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/vendor\/squizlabs\/php_codesniffer\/bin\/phpcs.bat",
+      "oF" : 0
+    },
+    "\/vendor\/squizlabs\/php_codesniffer\/CodeSniffer.conf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/vendor\/squizlabs\/php_codesniffer\/CodeSniffer.conf",
       "oF" : 0
     },
     "\/vendor\/squizlabs\/php_codesniffer\/CodeSniffer.conf.dist" : {
