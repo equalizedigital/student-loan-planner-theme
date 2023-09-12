@@ -39,16 +39,14 @@ $form_code = get_field('form_code');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="form-column-container">
-		
 		<div class="form-column-container-columns">
 			<div class="form-column-container-columns__text">
-			<h2 class="title" style="max-width:<?php echo $title_max_width_desktop ? $title_max_width_desktop:''; ?>%;"><?php echo $title; ?></h2>
-		<span class="$copy"><?php echo $$copy; ?></span>
+				<h2 class="title"><?php echo $title; ?></h2>
+				<span class="$copy"><?php echo $copy; ?></span>
 			</div>
 			<div class="form-column-container-columns__form">
-			<?php echo $form_code; ?>
+				<?php echo $form_code; ?>
 			</div>
 		</div>
 	</div>
-		
 </section>

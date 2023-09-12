@@ -213,3 +213,22 @@ input {
 		}
 	}
 }
+
+div.wpforms-container {
+	
+	.wpforms-form {
+		.wpforms-field-label {}
+
+		.wpforms-field-label {
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 22px;
+		}
+		input[type=text]{
+			border-radius: 4px;
+			border: 1px solid var(--Dark-Gray, #A1A5A5);
+			background: #FFF;
+		}
+	}
+}
