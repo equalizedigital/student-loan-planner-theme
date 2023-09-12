@@ -30,7 +30,6 @@ class Loader_Gutenberg
 			$imagetime = filemtime( $image );
 			$image_src = get_template_directory_uri() . '/template-parts/blocks/' . str_replace( 'acf/', '', $block_name ) . '/' . $block_image;
 			$output = '<img src="' . $image_src .  '?v=' . $imagetime . '" />';
-			var_dump($output);
 		else:
 			$output = '<div class="block-editor-inserter__preview-content-missing">' . __( 'No preview available', '' ) . '</div>';
 		endif;

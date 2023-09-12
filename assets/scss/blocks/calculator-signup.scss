@@ -61,3 +61,21 @@
         }
     }
 }
+
+.calculator-signup-container-content-list-item {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 20px;
+    color: #FFF;
+}
+
+.calculator-signup-container-content-list-item h3 {
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    margin: 0;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.calculator-signup-container-content-list-item span.content {}

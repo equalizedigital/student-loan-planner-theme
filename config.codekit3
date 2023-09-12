@@ -2494,6 +2494,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/calculator-form-cta.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/calculator-form-cta.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/calculator-signup.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -2609,6 +2624,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/query-loop.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/resource-blocks.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/resource-blocks.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -3360,21 +3390,63 @@
       "oF" : 1,
       "pg" : 0
     },
-    "\/template-parts\/blocks\/calculator-signup\/block.json" : {
+    "\/template-parts\/blocks\/calculator-form-cta\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
-      "oAP" : "\/template-parts\/blocks\/calculator-signup\/block-min.json",
+      "oAP" : "\/template-parts\/blocks\/calculator-form-cta\/block-min.json",
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/calculator-signup\/calculator-signup.php" : {
+    "\/template-parts\/blocks\/calculator-form-cta\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 43652,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/calculator-form-cta\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/calculator-form-cta\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/calculator-signup\/calculator-signup.php",
+      "oAP" : "\/template-parts\/blocks\/calculator-form-cta\/template.php",
       "oF" : 0
+    },
+    "\/template-parts\/blocks\/calculator-signup-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/calculator-signup-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/calculator-signup-block\/calculator-signup.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/calculator-signup-block\/calculator-signup.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/calculator-signup-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 118281,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/calculator-signup-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/template-parts\/blocks\/featured-in\/block.json" : {
       "ft" : 524288,
@@ -3390,6 +3462,35 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/featured-in\/featured-in.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/form-column\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/form-column\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/form-column\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 70614,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/form-column\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/form-column\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/form-column\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/full-width-columns-background\/block.json" : {
@@ -3421,20 +3522,62 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/template-parts\/blocks\/hero\/block.json" : {
+    "\/template-parts\/blocks\/hero-block\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
-      "oAP" : "\/template-parts\/blocks\/hero\/block-min.json",
+      "oAP" : "\/template-parts\/blocks\/hero-block\/block-min.json",
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/hero\/hero.php" : {
+    "\/template-parts\/blocks\/hero-block\/hero.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/hero\/hero.php",
+      "oAP" : "\/template-parts\/blocks\/hero-block\/hero.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/hero-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 39150,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/hero-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/image-text-columns-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/image-text-columns-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 119063,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/image-text-columns-block\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/media-reviews-slider\/block.json" : {
@@ -3499,6 +3642,35 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/query-loop\/query-loop.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/resource-blocks\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/resource-blocks\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/resource-blocks\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 178426,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/resource-blocks\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/resource-blocks\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/resource-blocks\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/resource-links\/block.json" : {

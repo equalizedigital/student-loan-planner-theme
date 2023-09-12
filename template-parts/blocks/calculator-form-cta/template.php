@@ -1,7 +1,7 @@
 <?php
 
 /**
- * hero Block Template.
+ * calculator-form-cta Block Template.
  *
  * @param	 array $block The block settings and attributes.
  * @param	 string $content The block inner HTML (empty).
@@ -15,13 +15,13 @@ if( isset( $block['data']['preview_image_help'] )  ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'hero-block-' . $block['id'];
+$id = 'calculator-form-cta-block-' . $block['id'];
 if (!empty($block['anchor'])) :
 	$id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block hero-block';
+$className = 'block calculator-form-cta-block';
 if (!empty($block['className'])) :
 	$className .= ' ' . $block['className'];
 endif;
@@ -34,12 +34,16 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 // Load values and assing defaults.
 $title = get_field('title');
-$subtitle = get_field('subtitle');
-
+$form_code = get_field('form_code');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<div class="hero-container">
+
+	<?= $is_preview ? '<span class="block-badge">' . $block['title'] . '</span>' : '' ?>
+
+	<div class="container">
+	<header class="calculator-form-cta-block-container">
 		<h2 class="title"><?php echo $title; ?></h2>
-		<span class="subtitle"><?php echo $subtitle; ?></span>
+	</header>
+	<span class="form"><?php echo $form_code; ?></span>
 	</div>
 </section>
