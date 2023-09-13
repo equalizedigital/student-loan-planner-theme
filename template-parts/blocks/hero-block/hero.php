@@ -41,17 +41,17 @@ $title_max_width_desktop = get_field( 'title_max_width_desktop' );
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="hero-container">
 		<?php if ( is_front_page() ) : ?>
-			<h2 class="title" style="max-width:<?php echo wp_kses_post( $title_max_width_desktop ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+			<h2 class="title" style="max-width:<?php echo wp_kses_post( !empty($title_max_width_desktop) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
 				<?php echo wp_kses_post( $acf_title ); ?>
 			</h2>
 		<?php else : ?>
-			<h1 class="title" style="max-width:<?php echo wp_kses_post( $title_max_width_desktop ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+			<h1 class="title" style="max-width:<?php echo wp_kses_post( !empty($title_max_width_desktop) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
 				<?php echo wp_kses_post( $acf_title ); ?>
 			</h1>
 		<?php endif; ?>
 		<span class="subtitle"><?php echo wp_kses_post( $subtitle ); ?></span>
 	</div>
-	<?php if ( $background_image ) : ?>
+	<?php if ( !empty($background_image) ) : ?>
 		<?php echo wp_get_attachment_image( $background_image, 'full' ); ?>
 	<?php endif; ?>
 </section>
