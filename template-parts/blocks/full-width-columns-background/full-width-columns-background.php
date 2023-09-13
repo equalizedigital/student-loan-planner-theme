@@ -1,74 +1,88 @@
 <?php
-
 /**
- * full-width-columns-background Block Template.
+ * Full-width-columns-background Block Template.
  *
- * @param	 array $block The block settings and attributes.
- * @param	 string $content The block inner HTML (empty).
- * @param	 bool $is_preview True during AJAX preview.
- * @param	 (int|string) $post_id The post ID this block is saved to.
+ * @param    array $block The block settings and attributes.
+ * @param    string $content The block inner HTML (empty).
+ * @param    bool $is_preview True during AJAX preview.
+ * @param    (int|string) $post_id The post ID this block is saved to.
+ * @package Full-width-columns-background
  */
 
-if( isset( $block['data']['preview_image_help'] )  ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+if ( isset( $block['data']['preview_image_help'] ) ) :
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'full-width-columns-background-block-' . $block['id'];
-if (!empty($block['anchor'])) :
-	$id = $block['anchor'];
+$block_id = 'full-width-columns-background-block-' . $block['id'];
+if ( ! empty( $block['anchor'] ) ) :
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block full-width-columns-background-block';
-if (!empty($block['className'])) :
-	$className .= ' ' . $block['className'];
+$class_name = 'block full-width-columns-background-block';
+if ( ! empty( $block['className'] ) ) :
+	$class_name .= ' ' . $block['className'];
 endif;
 
-if (!empty($block['align'])) :
-	$className .= ' align' . $block['align'];
+if ( ! empty( $block['align'] ) ) :
+	$class_name .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title = get_field('title');
-$content = get_field('content');
-$image = get_field('image');
-$youtube_video_id = get_field('youtube_video_id');
-$link = get_field('link');
- 
+$acf_title                          = get_field( 'title' );
+$content                            = get_field( 'content' );
+$image                              = get_field( 'image' );
+$youtube_video_id                   = get_field( 'youtube_video_id' );
+$acf_link                           = get_field( 'link' );
+$reverse_order_of_image_and_content = get_field( 'reverse_order_of_image_and_content' );
+$make_content_fit_in_container      = get_field( 'make_content_fit_in_container' );
+$modal_button                       = get_field( 'modal_button' );
+
+if ( ! empty( $reverse_order_of_image_and_content ) ) :
+	$class_name .= ' reverse_order_' . $reverse_order_of_image_and_content;
+endif;
+
+if ( ! empty( $make_content_fit_in_container ) ) :
+	$class_name .= ' containerize_' . $make_content_fit_in_container;
+endif;
 ?>
-<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="full-width-columns-background-container">
 		<div class="full-width-columns-background-container-content">
-			<h2 class="title"><?php echo $title; ?></h2>
-			<div class="content"><?php echo $content; ?></div>
-			<?php if($link): ?>
+			<h2 class="title"><?php echo wp_kses_post( $acf_title ); ?></h2>
+			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
+			<?php if ( $modal_button ) : ?>
+				<button class="btn modal-btn" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
+			<?php endif; ?>
+			<?php if ( $acf_link ) : ?>
 			<div class="link">
-				<a href="<?php _e($link['url']); ?>" class="btn"><?php _e($link['title']); ?></a>
+				<a href="<?php echo wp_kses_post( $acf_link['url'] ); ?>" class="btn"><?php echo wp_kses_post( $acf_link['title'] ); ?></a>
 			</div>
 			<?php endif; ?>
 		</div>
 		<div class="full-width-columns-background-container__video" >
 			<button class="modal-btn full-width-columns-background-container__video__button" data-modal="modal1" aria-label="Open Video" id="play-iframe">
-				<?php if($image): ?>
-					<img src="<?php _e($image['url']); ?>" alt="<?php _e($image['alt']); ?>">	
+				<?php if ( $image ) : ?>
+					<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
 				<?php endif; ?>
-				<img class=" play"  src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
+				<img class=" play"  src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>
 		</div>
 	</div>
 </section>
 
 <div id="modal1" class="modal" role="dialog" aria-modal="true">
-  <div class="modal-content" >
-    <button class="close-btn">
-		<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+	<div class="modal-content" >
+	<button class="close-btn">
+		<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
 	</button>
-    <div id="player"></div>
-  </div>
+	<div id="player"></div>
+	</div>
 </div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
@@ -77,21 +91,21 @@ $link = get_field('link');
 let player;
 
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '390',
-        width: '640',
-        videoId: '<?php echo $youtube_video_id; ?>',
-        events: {
-            'onReady': onPlayerReady,
-            // 'onStateChange': onPlayerStateChange
-        }
-    });
+	player = new YT.Player('player', {
+		height: '390',
+		width: '640',
+		videoId: '<?php echo wp_kses_post( $youtube_video_id ); ?>',
+		events: {
+			'onReady': onPlayerReady,
+			// 'onStateChange': onPlayerStateChange
+		}
+	});
 }
 function onPlayerReady(event) {                                        
-        event.target.pauseVideo();
-      }
+		event.target.pauseVideo();
+		}
 function playVideo() {
-    player.pauseVideo();
+	player.pauseVideo();
 	document.getElementById("thumbnail").style.display = "none";
 	document.getElementById("play-iframe").style.display = "none";
 }

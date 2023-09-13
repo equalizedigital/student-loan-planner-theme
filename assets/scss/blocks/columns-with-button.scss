@@ -1,0 +1,44 @@
+.columns-with-button-block {
+    padding: 93px 0;
+
+
+    &-container {
+        max-width: 1168px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 115px;
+        @include media(">tablet") {
+            grid-template-columns: 0.6fr 1fr;
+        }
+
+        &-content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 20px;
+
+            &__title {
+                color: #625089;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 40px;
+                /* 114.286% */
+                margin: 0;
+            }
+
+            &__rating {
+                color: #000;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1;
+                /* 538.462% */
+                text-decoration-line: underline;
+            }
+        }
+    }
+}

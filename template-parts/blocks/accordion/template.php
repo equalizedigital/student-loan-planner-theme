@@ -78,13 +78,12 @@ $acf_copy  = get_field( 'copy' );
 	</div>
 </section>
 
-
+<?php if ( get_field( 'use_schema_data' ) ) : ?>
 <script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "FAQPage",
 		"mainEntity": [
-		<?php if ( get_field( 'use_schema_data' ) ) : ?>
 			<?php
 			if ( have_rows( 'accordion' ) ) :
 				while ( have_rows( 'accordion' ) ) :
