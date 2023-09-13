@@ -383,3 +383,26 @@ jQuery(function ($) {
 		focusedElementBeforeModal.focus();
 	}
 });
+
+
+window.addEventListener("load", function () {
+	// resource links
+	const accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
+	if (accordionButtons) {
+		// Accordion
+		accordionButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const contentId = button.getAttribute('aria-controls');
+				const content = document.getElementById(contentId);
+
+				if (button.getAttribute('aria-expanded') === 'true') {
+					button.setAttribute('aria-expanded', 'false');
+					content.classList.remove('active-content');
+				} else {
+					button.setAttribute('aria-expanded', 'true');
+					content.classList.add('active-content');
+				}
+			});
+		});
+	}
+});

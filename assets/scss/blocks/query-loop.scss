@@ -1,7 +1,10 @@
 .query-loop-container {
-    margin: 0 auto;
+    margin: 0 auto 50px;
     max-width: $container-width;
     padding: 0 $container-padding;
+    @include media(">tablet") {
+        margin: 0  auto 150px;
+    }
 
     &-header {
         display: flex;

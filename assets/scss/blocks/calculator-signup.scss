@@ -1,10 +1,10 @@
 .calculator-signup-block {
     background: #625089;
     padding: 0;
-    margin: 50px 0;
+    margin: 0 0;
 
     @include media(">tablet") {
-        margin: 150px 0;
+        margin: 0 0;
     }
 }
 
@@ -37,6 +37,12 @@
             width: 70vw;
         }
 
+        &-list {
+            margin: 30px 0 0;
+            display: grid;
+            gap: 30px;
+        }
+
         .title {
             color: #FFF;
             font-size: 35px;
@@ -51,13 +57,34 @@
                 line-height: 40px;
             }
         }
-
+        a {
+            color: #fff;
+        }
         .text {
             color: #FFF;
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 28px; // 155.556%
+            line-height: 28px; 
+            
         }
     }
 }
+
+.calculator-signup-container-content-list-item {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 20px;
+    color: #FFF;
+}
+
+.calculator-signup-container-content-list-item h3 {
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    margin: 0;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.calculator-signup-container-content-list-item span.content {}

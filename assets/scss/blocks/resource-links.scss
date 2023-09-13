@@ -1,8 +1,12 @@
 .resource-links {
+
     &-container {
-        margin: 0 auto;
         max-width: $container-width;
         padding: 0 $container-padding;
+        margin: 50px auto;
+        @include media(">tablet") {
+            margin: 150px auto 0;
+        }
 
         &-links {
             display: flex;
