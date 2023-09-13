@@ -33,15 +33,18 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 // Load values and assing defaults.
 $title = get_field('title');
+$link = get_field('link');
 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="query-loop-container">
 		<header class="query-loop-container-header">
 			<h2 class="title"><?php echo $title; ?></h2>
-			<div class="link">
-				<a href=""></a>
-			</div>
+			<?php if($link): ?>
+				<div class="link">
+					<a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
+				</div>
+			<?php endif; ?>
 		</header>
 		<div class="query-loop-container-loop">
 

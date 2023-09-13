@@ -24,6 +24,12 @@
                 margin: 0 0 20px;
             }
         }
+        .link{
+           
+            @include media("<tablet") {
+                display: none;
+            }
+        }
     }
 
     &-loop {
