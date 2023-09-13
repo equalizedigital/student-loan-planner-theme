@@ -38,7 +38,7 @@ $subtitle                = get_field( 'subtitle' );
 $background_image        = get_field( 'background_image' );
 $title_max_width_desktop = get_field( 'title_max_width_desktop' );
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="hero-container">
 		<?php if ( is_front_page() ) : ?>
 			<h2 class="title" style="max-width:<?php echo wp_kses_post( $title_max_width_desktop ? $title_max_width_desktop . '%' : 'none' ); ?>;">
