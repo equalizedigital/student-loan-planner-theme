@@ -406,3 +406,59 @@ window.addEventListener("load", function () {
 		});
 	}
 });
+
+
+// team highlight
+window.addEventListener("load", function () {
+
+	function checkIsTabletSize() {
+		var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+		teamHighlightFunctionality(windowWidth);
+	}
+
+	// Initial check on page load
+	checkIsTabletSize();
+
+	// Listen for window resize events and recheck
+	window.addEventListener('resize', checkIsTabletSize);
+
+	function teamHighlightFunctionality(windowWidth) {
+		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
+		if (highlightButton) {
+
+			let items = document.querySelectorAll('.team-hightlight-block-container-team-hightlight-member');
+
+			if(windowWidth <= 768){
+				items.forEach(function (item) {
+					item.tabIndex = -1;
+				});
+				items[0].tabIndex = 0;
+			} else {
+				items.forEach(function (item) {
+					item.tabIndex = 0;
+				});
+			}
+
+			highlightButton.addEventListener('click', function () {
+				// Remove the "hidden" class and add an "animate" class for each item
+				items.forEach(function (item) {
+					item.classList.remove('hidden');
+					item.classList.add('animate');
+					item.tabIndex = 0;
+				});
+				items[0].focus()
+				// Hide the "Show All" button with a fade-out effect
+				this.classList.add('hidden');
+				this.tabIndex = -1;
+
+				// After the animation is complete, remove the "animate" class
+				setTimeout(function () {
+					items.forEach(function (item) {
+						item.classList.remove('animate');
+					});
+				}, 500); // Adjust the timeout value to match your CSS transition duration
+			});
+		}
+	}
+});
