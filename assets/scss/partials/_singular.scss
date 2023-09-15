@@ -13,8 +13,8 @@
 	@import "entry-content";
 }
 
-.entry-content > *,
-.block-area > * {
+.entry-content>*,
+.block-area>* {
 
 	//margin: $block-margin 0;
 	max-width: 100%;
@@ -29,13 +29,14 @@
 
 	&.alignwide,
 	&.alignfull {
-		margin-left: calc( 50% - 50vw );
-		margin-right: calc( 50% - 50vw );
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
 		max-width: 100vw;
 		width: 100vw;
 	}
 
 	@include media("<tablet") {
+
 		.alignleft,
 		.alignright {
 			float: none;
@@ -58,13 +59,13 @@
 			}
 
 			.content & {
-				margin-left: ( $content-width - $grid-width ) / 2;
-				margin-right: ( $content-width - $grid-width ) / 2;
+				margin-left: ($content-width - $grid-width ) / 2;
+				margin-right: ($content-width - $grid-width ) / 2;
 
 				&.wp-block-group,
 				&.has-background {
-					margin-left: ( $content-width - $grid-width - 32px ) / 2;
-					margin-right: ( $content-width - $grid-width - 32px ) / 2;
+					margin-left: ($content-width - $grid-width - 32px) / 2;
+					margin-right: ($content-width - $grid-width - 32px) / 2;
 				}
 			}
 		}
@@ -72,9 +73,10 @@
 
 	.content-sidebar &,
 	.sidebar-content & {
+
 		&.alignwide,
 		&.alignfull {
-			max-width: calc( 100% + 32px );
+			max-width: calc(100% + 32px);
 			margin-left: -16px;
 			margin-right: -16px;
 		}
@@ -82,13 +84,13 @@
 
 	&.wp-block-quote,
 	&.post-listing-block {
-		margin-top: calc( 2 * #{$block-margin});
-		margin-bottom: calc( 2 * #{$block-margin});
+		margin-top: calc(2 * #{$block-margin});
+		margin-bottom: calc(2 * #{$block-margin});
 	}
 
 }
 
-.entry-content > .alignfull {
+.entry-content>.alignfull {
 
 	&:first-child {
 		// margin-top: -40px;
@@ -130,13 +132,13 @@ img.wprm-comment-rating {
 				position: relative;
 			}
 
-			&.staff > article {
-				background: rgba( brand-color( 'primary' ), .05 );
-				border-left: 2px solid brand-color( 'primary' );
+			&.staff>article {
+				background: rgba(brand-color('primary'), .05);
+				border-left: 2px solid brand-color('primary');
 			}
 		}
 
-		& > li {
+		&>li {
 			border-radius: 3px;
 			overflow: hidden;
 			margin-bottom: 15px;
@@ -152,7 +154,7 @@ img.wprm-comment-rating {
 				text-decoration: none;
 
 				&:hover {
-					color: brand-color( 'primary' );
+					color: brand-color('primary');
 				}
 			}
 
@@ -171,7 +173,7 @@ img.wprm-comment-rating {
 				text-decoration: none;
 
 				&:hover {
-					color: brand-color( 'primary' );
+					color: brand-color('primary');
 				}
 			}
 		}
@@ -217,8 +219,7 @@ img.wprm-comment-rating {
 
 .comment-navigation {
 
-	a {
-	}
+	a {}
 }
 
 .comment-respond {
@@ -231,7 +232,7 @@ img.wprm-comment-rating {
 	.comment-form-cookies-consent input {
 		width: auto;
 
-		& + label {
+		&+label {
 			display: inline;
 		}
 	}
@@ -242,3 +243,116 @@ img.wprm-comment-rating {
 	}
 
 }
+
+
+/* Single Institutianal Contact
+--------------------------------------------- */
+
+
+.contact-hero {
+	background: #625089;
+	&-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: center;
+		padding: 106px 24px 70px;
+		max-width: 1168px;
+		margin: 0 auto;
+		gap: 60px 116px;
+		@include media(">tablet") {
+			grid-template-columns: 1fr 1fr;
+		}
+		&__content {
+			.entry-title {
+				color: white;
+				font-size: 35px;
+				font-style: normal;
+				font-weight: 700;
+				line-height: 1.4;
+				margin: 0 0 10px;
+				@include media(">tablet") {
+					font-size: 45px;line-height: 55px;
+				}
+			}
+			.info {
+				color: white;
+				font-size: 18px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1.2;
+				display: flex;
+			}
+		}
+	}
+	.contact-hero-container__image {
+		position: relative;
+		min-height: 240px;
+		max-width: 450px;
+		display: flex;
+		@include media("<tablet") {
+		order: 2;
+		min-height: 50vw;
+		}
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			border-radius: 10px;
+			overflow: hidden;
+			@include media("<tablet") {
+			}
+		}
+	}
+}
+
+
+
+.slp-contact-info {
+    max-width: 1168px;
+    margin: 0px auto 0;
+    padding: 0 24px 160px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 116px;
+	@include media(">tablet") {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.slp-contact-info-details {
+    padding: 150px 0 0;
+	@include media(">tablet") {
+		padding: 200px 0 0;
+	}
+}
+
+.slp-contact-info-loop {
+    padding: 72px 0 0;
+	h2 {
+		color: #000;
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 25px; /* 125% */
+	}
+}
+
+.slp-contact-info-details .title {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px; /* 125% */
+}
+
+.detail {
+    margin-bottom: 20px;
+    color: var(--Black, #000);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
+}
+
+ 

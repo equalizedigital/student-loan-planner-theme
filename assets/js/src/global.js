@@ -295,7 +295,7 @@ jQuery(function ($) {
 			cancelElement = o.filter(".modal .close-btn")
 
 			// close the modal window
-			cancelElement.click();
+			hideModal();
 			evt.preventDefault();
 		}
 
@@ -435,9 +435,12 @@ window.addEventListener("load", function () {
 				});
 				items[0].tabIndex = 0;
 			} else {
-				items.forEach(function (item) {
-					item.tabIndex = 0;
-				});
+				if (!document.querySelector('.team-hightlight-block-styling-1')) {
+					items.forEach(function (item) {
+						item.tabIndex = 0;
+					});
+				}
+				
 			}
 
 			highlightButton.addEventListener('click', function () {

@@ -33,8 +33,12 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$acf_title = get_field( 'title' );
+$acf_title                   = get_field( 'title' );
+$acf_use_alternative_styling = get_field( 'use_alternative_styling' );
 
+if ( ! empty( $acf_use_alternative_styling ) ) :
+	$class_name .= ' team-hightlight-block-styling-' . $acf_use_alternative_styling;
+endif;
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="team-hightlight-block-container">
@@ -58,21 +62,28 @@ $acf_title = get_field( 'title' );
 					if ( get_row_index() > 4 ) {
 						echo 'hidden'; }
 					?>
-					" tabindex="0">
-						<figure class="team-hightlight-block-container-team-hightlight-member__photo">
-						<?php
-						$thumbnail_id = get_post_thumbnail_id( $member->ID );
-						if ( $thumbnail_id ) {
-							$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-							$featured_image_url = $image_url[0];
-							echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
-						}
-						?>
-						</figure>
-						<div class="team-hightlight-block-container-team-hightlight-member__content">
-							<span class="title"><?php echo wp_kses_post( get_the_title( $member->ID ) ); ?></span>
-							<span class="job"><?php the_field( 'job_title', $member->ID ); ?></span>
-						</div>
+					" 
+					>
+						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
+							<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>" aria-label="Open Video">
+						<?php endif; ?>
+							<figure class="team-hightlight-block-container-team-hightlight-member__photo">
+								<?php
+								$thumbnail_id = get_post_thumbnail_id( $member->ID );
+								if ( $thumbnail_id ) {
+									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+									$featured_image_url = $image_url[0];
+									echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
+								}
+								?>
+							</figure>
+							<div class="team-hightlight-block-container-team-hightlight-member__content">
+								<span class="title"><?php echo wp_kses_post( get_the_title( $member->ID ) ); ?></span>
+								<span class="job"><?php the_field( 'job_title', $member->ID ); ?></span>
+							</div>
+						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
+							</button>
+						<?php endif; ?>
 					</li>
 					<?php
 					// End loop.
@@ -82,6 +93,7 @@ $acf_title = get_field( 'title' );
 			endif;
 			?>
 		</ul>
+		<?php if ( empty( $acf_use_alternative_styling ) ) : ?>
 		<div class="team-hightlight-block-container-team-hightlight__load_more">
 			<button class="load">
 				<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?></div>
@@ -92,6 +104,55 @@ $acf_title = get_field( 'title' );
 				</span>
 			</button>
 		</div>
+		<?php endif; ?>
 		
 	</div>
 </section>
+
+
+<?php
+if ( have_rows( 'team' ) ) :
+
+	// Loop through rows.
+	while ( have_rows( 'team' ) ) :
+		the_row();
+		$member = get_sub_field( 'member' );
+		?>
+		<div id="modal<?php echo wp_kses_post( get_row_index() ); ?>" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">
+			<div class="modal-content" >
+			<button class="close-btn">
+				<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+			</button>
+				<div class="modal_content">
+					<div class="modal_image">
+						<figure>
+							<?php
+								$thumbnail_id = get_post_thumbnail_id( $member->ID );
+								if ( $thumbnail_id ) {
+									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+									$featured_image_url = $image_url[0];
+									echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
+								}
+								?>
+						</figure>
+					</div>
+					<div class="modal_text">
+						<span class="title">
+							<?php echo wp_kses_post( $member->post_title ); ?>
+						</span>
+						<span class="job">
+							<?php the_field( 'job_title', $member->ID ); ?>
+						</span>
+						<span class="content">
+							<?php echo wp_kses_post( $member->post_content ); ?>
+						</span>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<?php
+	endwhile;
+endif;
+?>
