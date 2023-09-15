@@ -230,5 +230,27 @@ div.wpforms-container {
 			border: 1px solid var(--Dark-Gray, #A1A5A5);
 			background: #FFF;
 		}
+		button[type=submit].wpforms-submit{
+			@include style('callout', 5, true);
+			background-color: brand-color('primary');
+			padding: 13px 24px;
+			text-decoration: none;
+			border: 1px solid transparent;
+			color: $black;
+			text-align: center;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 15px;
+			min-width: 148px;
+			border-radius: 4px;
+			cursor: pointer;
+		
+			&:hover {
+				background-color: brand-color('primary', 'darken');
+				border-color: brand-color('primary');
+				background: transparent;
+			}
+		}
 	}
 }
