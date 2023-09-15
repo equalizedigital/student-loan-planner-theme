@@ -68,3 +68,77 @@ function eqd_entry_date() {
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 	echo '<p class="entry-date">' . $output . '</p>';
 }
+
+
+/**
+ * Single Title
+ */
+
+function eqd_tha_footer_cta() {
+	// Load values and assing defaults.
+	$enable = get_field( 'enable' );
+	$title  = get_field( 'title' );
+	$copy   = get_field( 'copy' );
+	if ( get_field( 'image' ) ) {
+		$image = get_field( 'image' );
+	}
+	if ( $enable ) :
+		?>
+
+<section class="block calculator-signup-block">
+	<div class="calculator-signup-container">
+		<figure class="calculator-signup-container-image">
+			<?php if ( ! empty( $image ) ) : ?>
+			<img src="<?php echo $image['url']; ?>" alt="signup image">
+			<?php endif; ?>
+		</figure>
+
+		<div class="calculator-signup-container-content">
+			<h2 class="title"><?php echo $title; ?></h2>
+			<div class="text"><?php echo $copy; ?></div>
+
+			<?php
+			$list = get_field( 'list' );
+			if ( $list ) {
+				echo '<div class="calculator-signup-container-content-list">';
+				foreach ( $list as $row ) {
+					if ( ! empty( $row['image'] ) ) {
+						$image = $row['image']['url'];
+					}
+					if ( ! empty( $row['image'] ) ) {
+						$imageAlt = $row['image']['alt'];
+					}
+					$title   = $row['title'];
+					$context = $row['context'];
+
+					echo '<div class="calculator-signup-container-content-list-item">';
+					if ( ! empty( $image ) ) {
+						echo "<img src='$image' alt='$imageAlt'></img>";
+					}
+					echo '<div class="calculator-signup-container-content-list-item-content">';
+					if ( ! empty( $title ) ) {
+						echo '<h3>';
+							echo $title;
+						echo '</h3>';
+					}
+					if ( ! empty( $context ) ) {
+						echo '<span class="content">';
+							echo $context;
+						echo '</span>';
+					}
+					echo '</div>';
+					echo '</div>';
+				}
+				echo '</div>';
+			}
+			?>
+		</div>
+	</div>
+</section>
+
+		<?php
+	endif;
+}
+add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
+
+

@@ -8,6 +8,8 @@
  * @license      GPL-2.0+
  **/
 
+tha_footer_cta();
+
 echo '</div>'; // .site-inner
 
 tha_footer_before();

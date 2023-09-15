@@ -31,12 +31,17 @@
 
     &-content {
         padding: 42px 24px;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         @include media(">tablet") {
             padding: 80px 115px;
             width: 70vw;
         }
-
+        .btn{
+            margin-top: 20px;
+            display: inline-block;
+        }
         &-list {
             margin: 30px 0 0;
             display: grid;

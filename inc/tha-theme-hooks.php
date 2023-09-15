@@ -331,6 +331,13 @@ function tha_sidebar_bottom() {
 }
 
 /**
+ * Footer CTA.
+ */
+function tha_footer_cta() {
+	do_action( 'tha_footer_cta' );
+}
+
+/**
  * Semantic <footer> hooks
  *
  * $tha_supports[] = 'footer';
