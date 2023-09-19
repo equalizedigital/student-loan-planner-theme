@@ -76,9 +76,7 @@ input[type="search"] {
 
 		@supports( display: $grid ) {
 			.site-main {
-				display: grid;
-    			grid-template-columns: repeat(12, 1fr);
-				grid-column-gap: $grid-gap;
+
 			}
 
 			.entry-header {
@@ -92,10 +90,24 @@ input[type="search"] {
 				}
 			}
 
+			.side-main-article-container {
+				max-width: $container-width;
+				margin: 0 auto;
+				padding: 0 $container-padding;
+				display: grid;
+    			grid-template-columns: repeat(12, 1fr);
+				grid-column-gap: $grid-gap;
+			}
+
 			.site-main-article-content {
 				grid-column-start: 1;
     			grid-column-end: 9;
 				z-index: 2;
+
+				&.site-main-article-content__full-width {
+					grid-column-start: 1;
+					grid-column-end: 13;
+				}
 			}
 
 			.sidebar-primary {

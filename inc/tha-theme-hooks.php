@@ -331,11 +331,19 @@ function tha_sidebar_bottom() {
 }
 
 /**
+ * Page Header.
+ */
+function tha_page_header() {
+	do_action( 'tha_page_header' );
+}
+
+/**
  * Footer CTA.
  */
 function tha_footer_cta() {
 	do_action( 'tha_footer_cta' );
 }
+
 
 /**
  * Semantic <footer> hooks
