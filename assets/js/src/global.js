@@ -429,7 +429,7 @@ window.addEventListener("load", function () {
 
 			let items = document.querySelectorAll('.team-hightlight-block-container-team-hightlight-member');
 
-			if(windowWidth <= 768){
+			if (windowWidth <= 768) {
 				items.forEach(function (item) {
 					item.tabIndex = -1;
 				});
@@ -440,7 +440,7 @@ window.addEventListener("load", function () {
 						item.tabIndex = 0;
 					});
 				}
-				
+
 			}
 
 			highlightButton.addEventListener('click', function () {
@@ -464,4 +464,212 @@ window.addEventListener("load", function () {
 			});
 		}
 	}
+});
+
+
+
+// 
+
+window.addEventListener('DOMContentLoaded', () => {
+	const toc_container = document.querySelectorAll('.toc_container');
+	if (toc_container) {
+
+		// Get all <h2> elements within .toc_container
+		const tocContainer = document.querySelector('.toc_container');
+		const h2Elements = tocContainer.querySelectorAll('h2');
+
+		// Create an empty array to store the IDs
+		const uniqueIds = [];
+
+		// Iterate through <h2> elements and add unique ids
+		h2Elements.forEach((h2Element, index) => {
+			// Generate a unique id based on the index
+			const uniqueId = `toc_${index + 1}`;
+
+			// Add the unique id as the id attribute of the <h2> element
+			h2Element.id = uniqueId;
+			// h2Element.setAttribute('tabindex', '0');
+
+			// Push the unique ID into the array
+			uniqueIds.push(uniqueId);
+		});
+
+		// Create a navigation menu
+		const nav = document.querySelector('.toc-nav');
+		const ul = document.createElement('ul');
+
+		// Create links to the unique IDs
+		uniqueIds.forEach((uniqueId) => {
+			const li = document.createElement('li');
+			const a = document.createElement('a');
+
+			// Set the link's href attribute to point to the corresponding ID
+			a.href = `#${uniqueId}`;
+			a.textContent = document.querySelector(`#${uniqueId}`).textContent;
+
+			// Append the link to the list item and the list item to the navigation menu
+			li.appendChild(a);
+			ul.appendChild(li);
+		});
+
+		// Append the navigation menu to the page
+		nav.appendChild(ul);
+
+		const tocNav = document.querySelector('.toc-nav');
+		const contentsNavMobile = document.querySelector('.contents-nav-mobile-menu');
+		const contentsNavSidebar = document.querySelector('.toc_content_load_point');
+
+		// Check if both elements exist before appending
+		if (tocNav && contentsNavMobile) {
+			// Create a clone of the .toc-nav element without moving it
+			const tocNavClone = tocNav.cloneNode(true);
+
+			// Append the inner contents of the clone to the .contents-nav-mobile-menu element
+			while (tocNavClone.firstChild) {
+				contentsNavMobile.appendChild(tocNavClone.firstChild);
+			}
+		}
+
+		// Check if both elements exist before appending
+		if (contentsNavSidebar) {
+			// Create a clone of the .toc-nav element without moving it
+			const tocNavClone = tocNav.cloneNode(true);
+
+			// Append the inner contents of the clone to the .contents-nav-mobile-menu element
+			while (tocNavClone.firstChild) {
+				contentsNavSidebar.appendChild(tocNavClone.firstChild);
+			}
+		}
+
+
+		let activeListItem = null;
+		let activeListItemMobile = null;
+		let activeListItemSidebar = null;
+		let toc_content_load_point = document.querySelector('.toc_content_load_point');
+		const observer = new IntersectionObserver(entries => {
+
+			entries.forEach(entry => {
+				const id = entry.target.getAttribute('id');
+
+				if (entry.intersectionRatio > 0) {
+					// Remove 'active' class from the currently active list item
+					if (activeListItemMobile) {
+						activeListItemMobile.classList.remove('active');
+					}
+					if (activeListItem) {
+						activeListItem.classList.remove('active');
+					}
+					if (activeListItemSidebar) {
+						activeListItemSidebar.classList.remove('active');
+					}
+
+					// Add 'active' class to the one corresponding to the current entry
+					const listItem = document.querySelector(`.toc-nav li a[href="#${id}"]`).parentElement;
+					const listItemMobile = document.querySelector(`.contents-nav-mobile-menu li a[href="#${id}"]`).parentElement;
+
+					if (toc_content_load_point) {
+						const listItemSidebar = document.querySelector(`.toc_content_load_point li a[href="#${id}"]`).parentElement;
+
+						listItemSidebar.classList.add('active');
+						activeListItemSidebar = listItemSidebar;
+
+					}
+
+					listItem.classList.add('active');
+					listItemMobile.classList.add('active');
+
+					// Set the current list item as the active one
+					activeListItem = listItem;
+					activeListItemMobile = listItemMobile;
+
+				}
+			});
+
+		});
+
+		// Track all sections that have an `id` applied
+		const targetElements = document.querySelectorAll('.toc_container h2');
+		targetElements.forEach(element => {
+			observer.observe(element);
+		});
+
+
+
+
+		window.addEventListener('scroll', function () {
+			// Get the .inner-hero element and its bottom position relative to the viewport
+			var heroElement = document.querySelector('.inner-hero');
+			if (heroElement) {
+				var heroBottom = heroElement.getBoundingClientRect().bottom;
+				// Get the .contents-nav-mobile element
+				var navElement = document.querySelector('.contents-nav-mobile');
+				var siteHeader = document.querySelector('.site-header');
+
+
+				// Check if the scroll is past the .inner-hero
+				if (heroBottom < 0) {
+					navElement.classList.add('scroll_active');
+					siteHeader.classList.add('scroll_active');
+				} else {
+					navElement.classList.remove('scroll_active');
+					siteHeader.classList.remove('scroll_active');
+				}
+			}
+
+		});
+
+
+
+		// click toc menu links	
+		const elementsWithHref = document.querySelectorAll('.contents-nav-mobile-menu a, .toc-nav a');
+
+		// Add a click event listener to each element
+		elementsWithHref.forEach(element => {
+			element.addEventListener('click', event => {
+				// Get the href value
+				const hrefValue = element.getAttribute('href');
+
+				// Find the target element using the href value
+				const targetElement = document.querySelector(hrefValue);
+
+				// Check if the target element exists
+				if (targetElement) {
+					// Set the focus on the target element
+					targetElement.focus();
+					let contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
+					contentsNavMobileClicker.classList.toggle('active');
+				}
+			});
+		});
+
+
+		// menu
+		// Get a reference to the elements
+		const dropdownSelect = document.querySelector('.contents-nav-mobile-header-dropdown-select');
+		const contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
+
+		// Add a click event listener to toggle the class
+		dropdownSelect.addEventListener('click', () => {
+			contentsNavMobileClicker.classList.toggle('active');
+		});
+	}
+
+});
+
+
+
+// vendor information block
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionButton = document.querySelector('.vendor_information_block_container_column_two_link_more_info');
+	if(accordionButton){
+		accordionButton.addEventListener('click', function(e) {
+			const controlledElementId = this.getAttribute('aria-controls');
+			const targetElement = document.getElementById(controlledElementId);
+			if(targetElement) {
+				e.target.classList.toggle('active_btn'); // Replace 'your-class-name' with the class you want to add
+				targetElement.toggleAttribute('hidden');
+			}
+		});
+	}
+
 });

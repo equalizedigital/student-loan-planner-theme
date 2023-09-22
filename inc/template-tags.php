@@ -148,7 +148,7 @@ add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
  */
 
 function eqd_tha_page_header() {
-	if(!is_single()){
+	if ( ! is_single() && ! is_front_page() ) {
 		// Load values and assing defaults.
 		$page_id = get_the_ID();
 
@@ -180,7 +180,7 @@ function eqd_tha_page_header() {
 
 				<?php if ( ! empty( $link ) ) : ?>
 					<span class="link">
-						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn"><?php echo $link['title']?$link['title']:''; ?></a>
+						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn"><?php echo $link['title'] ? $link['title'] : ''; ?></a>
 					</span>
 				<?php endif; ?>
 
@@ -196,3 +196,28 @@ function eqd_tha_page_header() {
 	}
 }
 add_action( 'tha_page_header', 'eqd_tha_page_header' );
+
+/**
+ * Single Sar Bar
+ */
+add_action( 'tha_single_sidebar', 'eqd_single_sidebar' );
+
+function eqd_single_sidebar() {
+	// Standard Format.
+	if ( is_single() OR ! is_front_page() ) {
+		if ( get_field( 'post_format_style' ) != 'full-width' ) :
+			?>
+			<div class="sidebar_container">
+				<div class="sidebar_social">
+					<?php echo '<span>Share:</span> ' . do_shortcode( '[shared_counts]' ); ?>
+				</div>
+				<div class="toc_content_load_point_sidebar">
+					<h2 class="toc_content_load_point_sidebar__title">Table of Contents</h2>
+					<div class="toc_content_load_point"></div>
+				</div>
+			</div>
+			<?php
+
+		endif;
+	}
+}

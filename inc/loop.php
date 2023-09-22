@@ -81,7 +81,7 @@ add_action( 'tha_entry_top', 'eqd_entry_header' );
  * Single Title
  */
 function eqd_single_header() {
-	if ( is_single() ) {
+	if ( is_single()  ) {
 		// Load values and assing defaults.
 		$page_id = get_the_ID();
 

@@ -1,0 +1,73 @@
+.recommended-posts-block-block {
+    margin: 80px 0;
+
+    .recommended_posts_block_block {
+
+        &_container_header__title {
+            color: #625089;
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 35px; // 140%
+            margin: 0 0 30px;
+        }
+
+        &_container_loop {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+
+            @include media(">desktop") {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            li {
+                list-style: none;
+                padding: 0;
+                display: flex;
+            }
+        }
+
+        &_container_loop_item {
+            display: grid;
+            text-decoration: none;
+            align-items: center;
+            gap: 24px;
+            grid-template-columns: 106px auto;
+            border-radius: 10px;
+            border: 1px solid #D9D9D9;
+            overflow: hidden;
+            padding: 0px 10px 0px 0;
+            width: 100%;
+
+            &:hover {
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+                .recommended_posts_block_block_container_loop_item_text h2 {
+                    color: brand-color('tertiary');
+                }
+            }
+
+            &_image img {
+                width: 106px;
+                height: 107px;
+                flex-shrink: 0;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            &_text {
+                h2 {
+                    color: #000;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px; // 150%
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+
+}

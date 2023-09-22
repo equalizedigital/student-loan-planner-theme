@@ -66,49 +66,49 @@ function eqd_page_layout_metabox() {
 
 	acf_add_local_field_group(
 		array(
-			'key' => 'group_5dd714b369526',
-			'title' => 'Page Layout',
-			'fields' => array(
+			'key'                   => 'group_5dd714b369526',
+			'title'                 => 'Page Layout',
+			'fields'                => array(
 				array(
-					'key' => 'field_5dd715a02eaf0',
-					'label' => 'Page Layout',
-					'name' => 'eqd_page_layout',
-					'type' => 'select',
-					'instructions' => '',
-					'required' => 0,
+					'key'               => 'field_5dd715a02eaf0',
+					'label'             => 'Page Layout',
+					'name'              => 'eqd_page_layout',
+					'type'              => 'select',
+					'instructions'      => '',
+					'required'          => 0,
 					'conditional_logic' => 0,
-					'wrapper' => array(
+					'wrapper'           => array(
 						'width' => '',
 						'class' => '',
-						'id' => '',
+						'id'    => '',
 					),
-					'choices' => $choices,
-					'default_value' => array(),
-					'allow_null' => 1,
-					'multiple' => 0,
-					'ui' => 0,
-					'return_format' => 'value',
-					'ajax' => 0,
-					'placeholder' => '',
+					'choices'           => $choices,
+					'default_value'     => array(),
+					'allow_null'        => 1,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'return_format'     => 'value',
+					'ajax'              => 0,
+					'placeholder'       => '',
 				),
 			),
-			'location' => array(
+			'location'              => array(
 				array(
 					array(
-						'param' => 'post_type',
+						'param'    => 'post_type',
 						'operator' => '==',
-						'value' => 'page',
+						'value'    => 'page',
 					),
 				),
 			),
-			'menu_order' => 0,
-			'position' => 'side',
-			'style' => 'default',
-			'label_placement' => 'top',
+			'menu_order'            => 0,
+			'position'              => 'side',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
 			'instruction_placement' => 'label',
-			'hide_on_screen' => '',
-			'active' => true,
-			'description' => '',
+			'hide_on_screen'        => '',
+			'active'                => true,
+			'description'           => '',
 		)
 	);
 }
@@ -182,7 +182,6 @@ function eqd_widgets_init() {
 			)
 		)
 	);
-
 }
 add_action( 'widgets_init', 'eqd_widgets_init' );
 
@@ -294,4 +293,106 @@ function eqd_return_content_sidebar() {
  */
 function eqd_return_content() {
 	return 'content';
+}
+
+
+
+add_action( 'tha_single_fullwidth', 'eqd_single_fullwidth_content' );
+
+/**
+ * Output footer widget area.
+ */
+function eqd_single_fullwidth_content() {
+
+	if ( is_single() || ! is_front_page() ) {
+
+		if ( get_field( 'post_format_style' ) !== 'full-width' ) :
+			?>
+
+			<span class="hero_featured_image">
+				<?php
+				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+				if ( $featured_image ) {
+					?>
+					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
+				<?php } ?>
+				<div class="hero_featured_image_data">
+					<?php
+					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
+						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+					}
+					$post_data = get_the_content( get_the_ID() );
+					$time_read = estimateReadingTime( esc_html( $post_data ) );
+
+					?>
+
+					<?php echo ( $time_read['minutes'] ); ?> Min Read |  <?php echo wp_kses_post( $output ); ?>
+				</div>
+			</span>
+
+			<div class="site-main-article__author-data">
+				<div class="article_author">
+					<?php
+					$id = get_field( 'post_reviewed_by', get_the_ID() );
+
+					$author_info = get_field( 'job_title', "user_$id" );
+
+					?>
+					<span class="entry-author">
+						<a href="<?php echo esc_url( get_author_posts_url( $id ) ); ?>" aria-hidden="true" tabindex="-1">
+							<?php echo get_avatar( $id, 40 ); ?>
+						</a>
+						<span class="entry-info">
+							<span>
+								Written By <a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $id ) ) ); ?>">
+								<?php echo get_the_author(); ?></a>
+							</span>
+							<span class="entry-data">
+								<?php
+								echo wp_kses_post( $author_info );
+								?>
+							</span>
+						</span>
+					</span>
+				</div>
+				<div class="reviewed_author">
+						<?php
+						$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
+						$profile_picture   = get_avatar( $review_by_auth_id, 64 );
+						$user_info         = get_userdata( $review_by_auth_id );
+						$first_name        = $user_info->first_name;
+						$last_name         = $user_info->last_name;
+						$nickname          = $user_info->nickname;
+						?>
+					<div class="profile">
+						<?php echo $profile_picture; ?>
+					</div>
+					<div class="author_info">
+					Reviewed By
+					<?php
+					if ( $first_name && $last_name ) {
+						echo $first_name . ' ' . $last_name;
+					} else {
+						echo $nickname;
+					}
+					?>
+					</div>
+				</div>
+			</div>
+
+			<section class="site-main-article__author-data-editorial_statement">
+				<div class="site-main-article__author-data-editorial_statement-container">
+					<div class="site-main-article__author-data-editorial_statement-container__title"><h2>Editorial Ethics at Student Loan Planner</h2></div>
+					<div class="site-main-article__author-data-editorial_statement-container__copy">
+						<p>
+						At Student Loan Planner, we follow a strict <a href="">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our 
+						<button class="modal-btn btn-style-link" data-modal="modal_disclosure" aria-label="Open Modal">advertising disclosure</button> to learn more.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<?php
+		endif;
+	}
 }
