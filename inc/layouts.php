@@ -308,14 +308,15 @@ function eqd_single_fullwidth_content() {
 
 		if ( get_field( 'post_format_style' ) !== 'full-width' ) :
 			?>
-
-			<span class="hero_featured_image">
 				<?php
 				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
 				if ( $featured_image ) {
 					?>
+			<span class="hero_featured_image">
+				
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
-				<?php } ?>
+				
+
 				<div class="hero_featured_image_data">
 					<?php
 					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
@@ -329,6 +330,7 @@ function eqd_single_fullwidth_content() {
 					<?php echo ( $time_read['minutes'] ); ?> Min Read |  <?php echo wp_kses_post( $output ); ?>
 				</div>
 			</span>
+			<?php } ?>
 
 			<div class="site-main-article__author-data">
 				<div class="article_author">
