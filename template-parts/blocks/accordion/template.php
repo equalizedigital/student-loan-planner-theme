@@ -33,18 +33,9 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$acf_title = get_field( 'title' );
-$acf_copy  = get_field( 'copy' );
-
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="accordion-block-container">
-		<header class="accordion-block-container-header">
-			<h2 class="accordion-block-container-header__title"><?php echo esc_attr( $acf_title ); ?></h2>
-			<div class="accordion-block-container-header__copy">
-				<?php echo esc_attr( $acf_copy ); ?>
-			</div>
-		</header>
 		<div class="accordion-block-container-accordion">
 		<?php
 		if ( have_rows( 'accordion' ) ) :
