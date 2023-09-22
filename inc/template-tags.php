@@ -75,6 +75,7 @@ function eqd_entry_date() {
  */
 
 function eqd_tha_footer_cta() {
+	if (get_post_type() != 'slp_contacts') {
 	// Load values and assing defaults.
 
 	$cta_title = get_field( 'field_6504bca294980', 'option' );
@@ -153,6 +154,8 @@ function eqd_tha_footer_cta() {
 
 		<?php
 	endif;
+}
+
 }
 add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
 

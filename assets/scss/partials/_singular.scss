@@ -433,13 +433,18 @@ img.wprm-comment-rating {
 			padding: 200px 0 0;
 		}
 
+		p{
+			margin: 0;
+		}
+		.detail {margin-bottom: 30px;}
+
 		.title {
 			color: #000;
 			font-size: 20px;
 			font-style: normal;
 			font-weight: 700;
 			line-height: 25px;
-			/* 125% */
+			margin: 0 0 5px;
 		}
 	}
 
