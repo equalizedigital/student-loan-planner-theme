@@ -68,8 +68,15 @@ tha_content_before();
                         <?php 
                         $post_terms = get_the_terms( $post->ID, 'slp_state' );
                         if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
+                            $numItems = count($post_terms);
+                            $i = 0;
                             foreach( $post_terms as $term ) {
-                                echo esc_html( $term->name );
+                                if(++$i === $numItems) {
+                                    echo "<span>". esc_html( $term->name ) . "</span> ";
+                                } else {
+                                    echo "<span>". esc_html( $term->name ) . ",</span> ";
+                                }
+                                
                             }
                         }
                         ?>
