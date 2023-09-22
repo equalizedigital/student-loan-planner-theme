@@ -407,7 +407,7 @@ function eqd_single_after_related_post() {
 						'post_type' => 'post',
 						'posts_per_page' => 3,
 						'post__in' => $select_posts_to_showcase,
-						'orderby' => 'date',
+						'orderby' => 'post__in',
 						'order' => 'DESC',
 					);
 				} else {

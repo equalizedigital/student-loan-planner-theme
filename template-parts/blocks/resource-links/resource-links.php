@@ -187,7 +187,8 @@ $title = get_field('title');
 
 									$args = array(
 										'post_type' => 'post', 
-										'post__in' => 	$selected_posts
+										'post__in' => 	$selected_posts,
+										'orderby' => 'post__in',
 									);
 
 								} else {

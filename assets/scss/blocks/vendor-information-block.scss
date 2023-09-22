@@ -44,6 +44,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             &.btn {
                 display: flex;
                 flex-wrap: wrap;
@@ -66,14 +67,16 @@
                 gap: 14px;
                 align-items: center;
                 justify-content: center;
+
                 span {
                     display: inline-flex;
                     transform: rotate(180deg);
                 }
-                &.active_btn{
+
+                &.active_btn {
                     span {
                         transform: rotate(0deg);
-                    }  
+                    }
                 }
 
             }
@@ -127,22 +130,22 @@
 
 
     }
-}
 
-.cover {
-    background: white;
-    height: 100%;
-    overflow: hidden;
-    mix-blend-mode: color;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-}
+    .cover {
+        background: white;
+        height: 100%;
+        overflow: hidden;
+        mix-blend-mode: color;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+    }
 
-.rating-stars {
-    position: relative;
-    gap: 10px;
-    display: grid;
+    .rating-stars {
+        position: relative;
+        gap: 10px;
+        display: inline-flex;
+    }
 }

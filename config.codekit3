@@ -2614,6 +2614,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/media-reviews-global.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/media-reviews-global.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/media-reviews-slider.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3795,6 +3810,22 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/template.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/media-reviews-global\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/media-reviews-global\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/media-reviews-global\/media-reviews-global.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/media-reviews-global\/media-reviews-global.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/media-reviews-slider\/block.json" : {
