@@ -471,12 +471,12 @@ window.addEventListener("load", function () {
 // 
 
 window.addEventListener('DOMContentLoaded', () => {
-	const toc_container = document.querySelectorAll('.toc_container');
-	if (toc_container) {
+	let toc_container = document.querySelectorAll('.toc_container');
+	if (toc_container .length > 0) {
 
 		// Get all <h2> elements within .toc_container
-		const tocContainer = document.querySelector('.toc_container');
-		const h2Elements = tocContainer.querySelectorAll('h2');
+		let tocContainer = document.querySelector('.toc_container');
+		let h2Elements = tocContainer.querySelectorAll('h2');
 
 		// Create an empty array to store the IDs
 		const uniqueIds = [];

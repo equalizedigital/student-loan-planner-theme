@@ -95,7 +95,7 @@ $title = get_field('title');
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-<script>console.log('ddd')
+<script>
 jQuery('.media-reviews-slider-block-container-slider').slick({
     infinite: true,
     speed: 700,

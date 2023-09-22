@@ -76,13 +76,27 @@ function eqd_entry_date() {
 
 function eqd_tha_footer_cta() {
 	// Load values and assing defaults.
-	$enable = get_field( 'enable' );
-	$title  = get_field( 'title' );
-	$copy   = get_field( 'copy' );
+
+	$cta_title = get_field( 'field_6504bca294980', 'option' );
+	$copy  = get_field( 'copy', 'option' );
+	if ( get_field( 'image', 'option' ) ) {
+		$image = get_field( 'image', 'option' );
+	}
+
+	// Override.
+	if ( get_field( 'field_6504bca294980', get_the_ID() ) ) {
+		$cta_title = get_field( 'cta_title', get_the_ID() );
+	}
+	if ( get_field( 'copy' ) ) {
+		$copy = get_field( 'copy' );
+	}
 	if ( get_field( 'image' ) ) {
 		$image = get_field( 'image' );
 	}
-	if ( $enable ) :
+	// Individual page.
+	$disable = get_field( 'disable' );
+	if ( $disable ) :
+
 		?>
 
 	<section class="block calculator-signup-block">
@@ -94,11 +108,12 @@ function eqd_tha_footer_cta() {
 			</figure>
 
 			<div class="calculator-signup-container-content">
-				<h2 class="title"><?php echo $title; ?></h2>
+				<h2 class="title"><?php echo $cta_title; ?></h2>
 				<div class="text"><?php echo $copy; ?></div>
 
 				<?php
-				$list = get_field( 'list' );
+				$list = get_field( 'list', 'option' );
+				// $list = get_field( 'list' );
 				if ( $list ) {
 					echo '<div class="calculator-signup-container-content-list">';
 					foreach ( $list as $row ) {
