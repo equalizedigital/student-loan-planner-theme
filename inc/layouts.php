@@ -304,7 +304,7 @@ add_action( 'tha_single_fullwidth', 'eqd_single_fullwidth_content' );
  */
 function eqd_single_fullwidth_content() {
 
-	if ( is_single() || ! is_front_page() ) {
+	if ( is_single() && get_post_type() == 'post' ) {
 
 		if ( get_field( 'post_format_style' ) !== 'full-width' ) :
 			?>
