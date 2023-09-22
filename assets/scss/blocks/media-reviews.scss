@@ -148,6 +148,7 @@
                     @include media(">tablet") {
                         gap: 0;
                         grid-template-columns: 0.5fr 1fr;
+                        gap: 0 40px;
                     }
     
                     .info {
