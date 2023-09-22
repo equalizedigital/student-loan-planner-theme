@@ -1,6 +1,4 @@
 .accordion-block {
-    padding: 150px 0;
-
     &-container {
         margin: 0 auto;
         padding: 0 24px;
@@ -58,6 +56,17 @@
                 display: flex;
                 width: 100%;
                 text-align: left;
+                justify-content: space-between;
+
+                .chevron{
+                    transform: rotate(180deg);
+                }
+                &[aria-expanded="true"]{
+                    .chevron{
+                        transform: rotate(0deg);
+                    }
+                }
+
             }
         }
     }

@@ -63,6 +63,11 @@ $acf_copy  = get_field( 'copy' );
 					aria-controls="a<?php echo wp_kses_post( get_row_index() ); ?>"
 					>
 					<?php echo wp_kses_post( $button_title ); ?>
+					<span class="chevron">
+						<svg width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 0.5L6.50008 6.00008L12.0002 0.5" stroke="#82BC46"/>
+						</svg>
+					</span>
 					</button>
 				</h3>
 				<div id="a<?php echo wp_kses_post( get_row_index() ); ?>" class="accordion-block-container-accordion__content accordion-block-container-prose">
