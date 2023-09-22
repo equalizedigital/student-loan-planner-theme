@@ -43,7 +43,7 @@ if ( get_field( 'image' ) ) {
 	<div class="calculator-signup-container">
 		<figure class="calculator-signup-container-image">
 			<?php if ( ! empty( $image ) ) : ?>
-			<img src="<?php echo $image['url']; ?>" alt="signup image">
+			<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
 			<?php endif; ?>
 		</figure>
 
