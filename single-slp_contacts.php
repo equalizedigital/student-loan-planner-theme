@@ -55,8 +55,15 @@ tha_content_before();
                         <?php 
                         $post_terms = get_the_terms( $post->ID, 'slp_eligible_professions' );
                         if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
+                            $numItems = count($post_terms);
+                            $i = 0;
                             foreach( $post_terms as $term ) {
-                                echo esc_html( $term->name ) . '<span>,</span> ';
+                                
+                                if(++$i === $numItems) {
+                                    echo esc_html( $term->name ) . '';
+                                } else {
+                                    echo esc_html( $term->name ) . '<span>,</span> ';
+                                }
                             }
                         }
                         ?>
