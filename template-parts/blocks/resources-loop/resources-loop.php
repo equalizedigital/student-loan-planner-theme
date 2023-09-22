@@ -65,7 +65,8 @@ if (!$featured_image_url) {
 				$args = array(
 					'post_type' => 'post', 
 					'posts_per_page' => 3, 
-					'post__in' => 	$selected_posts
+					'post__in' => 	$selected_posts,
+					'orderby' => 'post__in',
 				);
 
 				$query = new WP_Query($args);

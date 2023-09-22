@@ -1,12 +1,17 @@
-.media-reviews-block {
+.media-reviews-global-block {
     background: #F7F7F7;
+    padding: 50px 0;
+    margin: 50px 0 0;
     color: black;
-    padding-bottom: 100px;
-
+    @include media(">tablet") {
+        padding: 153px 0 0;
+        margin: 0;
+    }
     &-purple{
         color: white;
+        padding-bottom: 90px;
         background-color: brand-color('tertiary');
-        .media-reviews-container {
+        .media-reviews-global-container {
             >h2.title {
                 color: white;
             }
@@ -19,7 +24,7 @@
     }
 
     &_with_author_images{
-        .media-reviews-container-review-items-loop{
+        .media-reviews-global-container-review-items-loop{
             display: grid;
             grid-template-columns: repeat(1,1fr);  
             border-top: 1px solid #D9D9D9;
@@ -28,17 +33,11 @@
             }
             
 
-            .media-reviews-container-review-items-loop-item{
+            .media-reviews-global-container-review-items-loop-item{
                 border: none;
                 border-top: none!important;
                 border-right: 1px solid #D9D9D9;
                 border-bottom: 1px solid #D9D9D9;
-                padding-right: 60px;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                
                 &:nth-child(even){
                     border-right: none;
                     @include media(">tablet") {
@@ -52,11 +51,10 @@
         }
     }
 
-    .media-reviews-container {
+    .media-reviews-global-container {
         margin: 0 auto;
         max-width: $container-width;
         padding: 0 $container-padding;
-        padding-top: 90px;
         > .title {
             font-size: 35px;
             font-weight: 700;
@@ -98,7 +96,7 @@
         display: flex;
     }
  
-    .media-reviews-container-review-items {
+    .media-reviews-global-container-review-items {
         display: grid;
         grid-template-columns: 1fr;
         gap: 40px 0;
@@ -109,7 +107,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin:  0 0;
+            margin: 70px 0 0;
         }
         &-item {
             a {
@@ -130,7 +128,7 @@
         }
     
         &-loop{
-
+            padding-top: 90px;
             &-item {
                 border-bottom: 1px solid #D9D9D9;
                 padding: 23px 0;
