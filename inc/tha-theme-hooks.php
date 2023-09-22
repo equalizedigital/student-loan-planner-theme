@@ -331,11 +331,33 @@ function tha_sidebar_bottom() {
 }
 
 /**
+ * Page Header.
+ */
+function tha_page_header() {
+	do_action( 'tha_page_header' );
+}
+
+/**
+ * Single Sidebar.
+ */
+function tha_single_sidebar() {
+	do_action( 'tha_single_sidebar' );
+}
+
+/**
+ * Single Page End.
+ */
+function tha_single_page_end() {
+	do_action( 'tha_single_page_end' );
+}
+
+/**
  * Footer CTA.
  */
 function tha_footer_cta() {
 	do_action( 'tha_footer_cta' );
 }
+
 
 /**
  * Semantic <footer> hooks
@@ -365,4 +387,13 @@ function tha_footer_top() {
  */
 function tha_footer_bottom() {
 	do_action( 'tha_footer_bottom' );
+}
+
+
+
+/**
+ * Single Full Width Content.
+ */
+function tha_single_fullwidth() {
+	do_action( 'tha_single_fullwidth' );
 }

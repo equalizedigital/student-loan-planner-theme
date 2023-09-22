@@ -14,8 +14,8 @@
 
 .modal-content {
     background-color: #ffffff;
-    margin: 15% auto;
-    
+    margin: 87px auto ;
+    max-height: 100vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background: #FFF;
@@ -24,6 +24,7 @@
     width: 100%;
     position: relative;
     padding: 70px 10px;
+    overflow: auto;
     @include media(">tablet") {
         padding: 70px;
     }
@@ -31,6 +32,23 @@
     iframe {
         max-width: 100%;
         width: 100%;
+    }
+
+    .modal_copy {
+        padding: 50px 100px;
+        @include media("<tablet") {
+        padding: 50px 24px;
+        }
+    }
+    
+    .modal_copy_title {
+        color: black;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 30px; 
+        display: flex;
+        margin: 0 0 20px;
     }
 }
 

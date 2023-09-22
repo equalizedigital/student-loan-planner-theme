@@ -39,7 +39,6 @@ function eqd_default_loop() {
 		tha_entry_after();
 
 	endif;
-
 }
 add_action( 'tha_content_loop', 'eqd_default_loop' );
 
@@ -82,20 +81,120 @@ add_action( 'tha_entry_top', 'eqd_entry_header' );
  * Single Title
  */
 function eqd_single_header() {
-	if(is_single()){
-		if ( eqd_has_action( 'tha_entry_top' ) ) {
-			echo '<header class="entry-header">';
-				echo '<div class="entry-header-container">';
-					if ( function_exists('yoast_breadcrumb') ) {
-						yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-					}
-					tha_entry_top();
-				echo '</div>';
-			echo '</header>';
+	if ( is_single()  ) {
+		// Load values and assing defaults.
+		$page_id = get_the_ID();
+
+		$subtitle                = get_field( 'subtitle', $page_id );
+		$background_image        = get_field( 'background_image', $page_id );
+		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
+		$link                    = get_field( 'link' );
+		$container_class         = '';
+		if ( get_field( 'post_format_style' ) == 'full-width' ) {
+			$container_class .= 'hero_relative';
 		}
+		?>
+		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
+			<div class="inner-hero-container">
+				<?php
+				// Breadcrumbs
+				if ( get_field( 'post_format_style' ) != 'full-width' ) {
+					if ( function_exists( 'yoast_breadcrumb' ) ) {
+						yoast_breadcrumb( '<span id="breadcrumbs_top">', '</span>' );
+					}
+				}
+				?>
+
+				<?php
+				// Title
+				?>
+				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+					<?php echo wp_kses_post( get_the_title() ); ?>
+				</h1>
+
+				<?php
+				// post author data
+				if ( get_field( 'post_format_style' ) == 'full-width' ) {
+					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
+						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+					}
+					$id = get_the_author_meta( 'ID' );
+					?>
+					<span class="entry-author">
+						<a href="<?php echo esc_url( get_author_posts_url( $id ) ); ?>" aria-hidden="true" tabindex="-1">
+							<?php echo get_avatar( $id, 40 ); ?>
+						</a>
+						<span class="entry-info">
+							<span>
+								Written By <a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $id ) ) ); ?>">
+								<?php echo get_the_author(); ?></a>
+							</span>
+							<span class="entry-data"><?php echo wp_kses_post( $output ); ?></span>
+						</span>
+					</span>
+					<?php
+				}
+				?>
+
+				<?php
+				// optional subtitle
+				?>
+				<span class="subtitle">
+					<?php echo wp_kses_post( $subtitle ); ?>
+				</span>
+
+				<?php // optional link ?>
+				<?php if ( ! empty( $link ) ) : ?>
+					<span class="link">
+						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn">
+							<?php echo $link['title'] ? $link['title'] : ''; ?>
+						</a>
+					</span>
+				<?php endif; ?>
+
+			</div>
+			
+			<?php
+			// Background image.
+			if ( get_field( 'post_format_style' ) == 'full-width' ) :
+				?>
+				<span class="hero_image">
+					<?php if ( ! empty( $background_image['ID'] ) ) : ?>
+						<?php echo wp_get_attachment_image( $background_image['ID'], 'full' ); ?>
+					<?php endif; ?>
+
+					<?php
+					$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+					if ( $featured_image ) {
+						?>
+						<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
+					<?php } ?>
+				</span>
+			<?php endif; ?>
+		</header>
+
+		<?php if ( get_field( 'post_format_style' ) === 'full-width' ) : ?>
+			<section class="header_editorial_statement">
+				<div class="header_editorial_statement-container">
+					<div class="header_editorial_statement-container__title">
+						<h2>
+						Editorial Ethics at Student Loan Planner
+						</h2>
+					</div>
+					<div class="header_editorial_statement-container__copy">
+						<p>
+						At Student Loan Planner, we follow a strict <a href="">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our <button class="modal-btn btn-style-link" data-modal="modal_disclosure" aria-label="Open Modal">advertising disclosure</button> to learn more.
+						</p>
+					</div>
+				</div>
+			</section>
+		<?php endif; ?>
+
+		<?php
 	}
 }
 add_action( 'tha_single_header', 'eqd_single_header' );
+
 
 /**
  * Entry header in content

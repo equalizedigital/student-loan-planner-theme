@@ -71,7 +71,7 @@ function eqd_entry_date() {
 
 
 /**
- * Single Title
+ * Footer CTA
  */
 
 function eqd_tha_footer_cta() {
@@ -85,56 +85,56 @@ function eqd_tha_footer_cta() {
 	if ( $enable ) :
 		?>
 
-<section class="block calculator-signup-block">
-	<div class="calculator-signup-container">
-		<figure class="calculator-signup-container-image">
-			<?php if ( ! empty( $image ) ) : ?>
-			<img src="<?php echo $image['url']; ?>" alt="signup image">
-			<?php endif; ?>
-		</figure>
+	<section class="block calculator-signup-block">
+		<div class="calculator-signup-container">
+			<figure class="calculator-signup-container-image">
+				<?php if ( ! empty( $image ) ) : ?>
+				<img src="<?php echo $image['url']; ?>" alt="signup image">
+				<?php endif; ?>
+			</figure>
 
-		<div class="calculator-signup-container-content">
-			<h2 class="title"><?php echo $title; ?></h2>
-			<div class="text"><?php echo $copy; ?></div>
+			<div class="calculator-signup-container-content">
+				<h2 class="title"><?php echo $title; ?></h2>
+				<div class="text"><?php echo $copy; ?></div>
 
-			<?php
-			$list = get_field( 'list' );
-			if ( $list ) {
-				echo '<div class="calculator-signup-container-content-list">';
-				foreach ( $list as $row ) {
-					if ( ! empty( $row['image'] ) ) {
-						$image = $row['image']['url'];
-					}
-					if ( ! empty( $row['image'] ) ) {
-						$imageAlt = $row['image']['alt'];
-					}
-					$title   = $row['title'];
-					$context = $row['context'];
+				<?php
+				$list = get_field( 'list' );
+				if ( $list ) {
+					echo '<div class="calculator-signup-container-content-list">';
+					foreach ( $list as $row ) {
+						if ( ! empty( $row['image'] ) ) {
+							$image = $row['image']['url'];
+						}
+						if ( ! empty( $row['image'] ) ) {
+							$imageAlt = $row['image']['alt'];
+						}
+						$title   = $row['title'];
+						$context = $row['context'];
 
-					echo '<div class="calculator-signup-container-content-list-item">';
-					if ( ! empty( $image ) ) {
-						echo "<img src='$image' alt='$imageAlt'></img>";
+						echo '<div class="calculator-signup-container-content-list-item">';
+						if ( ! empty( $image ) ) {
+							echo "<img src='$image' alt='$imageAlt'></img>";
+						}
+						echo '<div class="calculator-signup-container-content-list-item-content">';
+						if ( ! empty( $title ) ) {
+							echo '<h3>';
+								echo $title;
+							echo '</h3>';
+						}
+						if ( ! empty( $context ) ) {
+							echo '<span class="content">';
+								echo $context;
+							echo '</span>';
+						}
+						echo '</div>';
+						echo '</div>';
 					}
-					echo '<div class="calculator-signup-container-content-list-item-content">';
-					if ( ! empty( $title ) ) {
-						echo '<h3>';
-							echo $title;
-						echo '</h3>';
-					}
-					if ( ! empty( $context ) ) {
-						echo '<span class="content">';
-							echo $context;
-						echo '</span>';
-					}
-					echo '</div>';
 					echo '</div>';
 				}
-				echo '</div>';
-			}
-			?>
+				?>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
 		<?php
 	endif;
@@ -142,3 +142,82 @@ function eqd_tha_footer_cta() {
 add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
 
 
+
+/**
+ * Page Header
+ */
+
+function eqd_tha_page_header() {
+	if ( ! is_single() && ! is_front_page() ) {
+		// Load values and assing defaults.
+		$page_id = get_the_ID();
+
+		$acf_title               = get_field( 'title', $page_id );
+		$subtitle                = get_field( 'subtitle', $page_id );
+		$background_image        = get_field( 'background_image', $page_id );
+		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
+		$link                    = get_field( 'link' );
+		?>
+		<header class="inner-hero">
+			<div class="inner-hero-container">
+				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+					<?php
+					if ( is_page() ) {
+						echo wp_kses_post( get_the_title() );
+					}
+					if ( is_archive() ) {
+						echo wp_kses_post( get_the_archive_title() );
+					}
+					if ( is_404() ) {
+						echo '404';
+					}
+					?>
+				</h1>
+				
+				<span class="subtitle">
+					<?php echo wp_kses_post( $subtitle ); ?>
+				</span>
+
+				<?php if ( ! empty( $link ) ) : ?>
+					<span class="link">
+						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn"><?php echo $link['title'] ? $link['title'] : ''; ?></a>
+					</span>
+				<?php endif; ?>
+
+			</div>
+			<span class="hero_image">
+				<?php if ( ! empty( $background_image['ID'] ) ) : ?>
+					<?php echo wp_get_attachment_image( $background_image['ID'], 'full' ); ?>
+				<?php endif; ?>
+			</span>
+		</header>
+
+		<?php
+	}
+}
+add_action( 'tha_page_header', 'eqd_tha_page_header' );
+
+/**
+ * Single Sar Bar
+ */
+add_action( 'tha_single_sidebar', 'eqd_single_sidebar' );
+
+function eqd_single_sidebar() {
+	// Standard Format.
+	if ( is_single() && get_post_type() == 'post' ) {
+		if ( get_field( 'post_format_style' ) != 'full-width' ) :
+			?>
+			<div class="sidebar_container">
+				<div class="sidebar_social">
+					<?php echo '<span>Share:</span> ' . do_shortcode( '[shared_counts]' ); ?>
+				</div>
+				<div class="toc_content_load_point_sidebar">
+					<h2 class="toc_content_load_point_sidebar__title">Table of Contents</h2>
+					<div class="toc_content_load_point"></div>
+				</div>
+			</div>
+			<?php
+
+		endif;
+	}
+}

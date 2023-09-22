@@ -18,9 +18,8 @@
 	cursor: pointer;
 
 	&:hover {
-		background-color: brand-color('primary', 'darken');
 		border-color: brand-color('primary');
-		background: transparent;
+		background: white;
 	}
 
 	svg {
