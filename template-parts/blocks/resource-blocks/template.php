@@ -39,8 +39,6 @@ $blocks = get_field('blocks');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 
-	<?= $is_preview ? '<span class="block-badge">' . $block['title'] . '</span>' : '' ?>
-
 	<header class="resource-blocks-block-container">
 		<h2 class="title"><?php echo $title; ?></h2>
 		<span class="subtitle"><?php echo $subcopy; ?></span>

@@ -38,8 +38,6 @@ $form_code = get_field('form_code');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 
-	<?= $is_preview ? '<span class="block-badge">' . $block['title'] . '</span>' : '' ?>
-
 	<div class="container">
 	<header class="calculator-form-cta-block-container">
 		<h2 class="title"><?php echo $title; ?></h2>
