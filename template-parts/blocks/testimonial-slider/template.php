@@ -74,7 +74,8 @@ $acf_title = get_field( 'title' );
 									</svg>
 								<?php endfor; ?>
 
-								<div class="cover" style="width:<?php echo 100 - round( ( $rating / 5 ) * 100 ); ?>%;"></div>
+
+								<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
 							</div>
 						</blockquote>
 					</div>

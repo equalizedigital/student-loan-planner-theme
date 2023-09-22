@@ -76,12 +76,11 @@
     .star {
         display: inline-grid;
         position: relative;
-        gap: 10px;
         grid-template-columns: repeat(5,1fr);
         svg {
             width: auto;
             fill: #F19E3E;
-            
+            width: 25px;
         }
         
     }
