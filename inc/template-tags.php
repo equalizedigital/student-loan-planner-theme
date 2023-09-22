@@ -95,7 +95,7 @@ function eqd_tha_footer_cta() {
 	}
 	// Individual page.
 	$disable = get_field( 'disable' );
-	if ( $disable ) :
+	if ( !$disable ) :
 
 		?>
 
