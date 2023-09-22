@@ -44,7 +44,6 @@ $acf_copy        = get_field( 'copy' );
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="columns-with-button-block-container">
 		<div class="columns-with-button-block-container-content">
-			<?php echo $_SERVER['QUERY_STRING']; ?>
 			<h2 class="columns-with-button-block-container-content__title"><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<a href="<?php echo wp_kses_post( $acf_link_url ); if(isset( $_SERVER['QUERY_STRING'] ) && !empty( $_SERVER['QUERY_STRING'] )){ echo "&#63;".$_SERVER['QUERY_STRING']; } ?>" class="columns-with-button-block-container-content__button btn">
 				<?php echo wp_kses_post( $acf_link_title ); ?>
