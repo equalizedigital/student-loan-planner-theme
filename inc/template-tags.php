@@ -222,7 +222,7 @@ add_action( 'tha_single_sidebar', 'eqd_single_sidebar' );
 
 function eqd_single_sidebar() {
 	// Standard Format.
-	if ( is_single() && get_post_type() == 'post' ) {
+	// if ( is_single() && get_post_type() == 'post' ) {
 		if ( get_field( 'post_format_style' ) != 'full-width' ) :
 			?>
 			<div class="sidebar_container">
@@ -237,5 +237,5 @@ function eqd_single_sidebar() {
 			<?php
 
 		endif;
-	}
+	// }
 }
