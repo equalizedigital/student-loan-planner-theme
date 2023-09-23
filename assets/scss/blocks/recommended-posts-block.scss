@@ -48,12 +48,15 @@
                 }
             }
 
-            &_image img {
-                width: 106px;
-                height: 107px;
-                flex-shrink: 0;
-                object-fit: cover;
-                object-position: center;
+            &_image {
+                min-height: 100px;
+                img {
+                    width: 106px;
+                    height: 107px;
+                    flex-shrink: 0;
+                    object-fit: cover;
+                    object-position: center;
+                }
             }
 
             &_text {
