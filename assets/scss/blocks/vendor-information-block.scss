@@ -70,12 +70,12 @@
 
                 span {
                     display: inline-flex;
-                    transform: rotate(180deg);
+                    transform: rotate(0deg);
                 }
 
                 &.active_btn {
                     span {
-                        transform: rotate(0deg);
+                        transform: rotate(180deg);
                     }
                 }
 

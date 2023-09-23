@@ -124,7 +124,7 @@ $accordion_content = get_field( 'accordion_content' );
 				</button>
 			</div>
 		</div>
-		<div class="vendor_information_block_container_more_info" id="vendor_information_block_container_column_two_link_more_info_btn_<?php echo time(); ?>">
+		<div class="vendor_information_block_container_more_info" hidden id="vendor_information_block_container_column_two_link_more_info_btn_<?php echo time(); ?>">
 			Payment flexibility and consistently low rates make Earnest a top lender Student Loan Planner® readers use when refinancing student loans. Earnest also services its own loans and has a Rate Match program that matches competitors' contractual interest rates. If you refinance $100,000 or more, you can get a $1000 bonus ($500 Earnest bonus + $500 from Student Loan Planner®). 
 			<a href="">*See Earnest disclosures</a>
 		</div>
