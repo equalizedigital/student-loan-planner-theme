@@ -660,16 +660,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // vendor information block
 document.addEventListener('DOMContentLoaded', function() {
-    const accordionButton = document.querySelector('.vendor_information_block_container_column_two_link_more_info');
-	if(accordionButton){
-		accordionButton.addEventListener('click', function(e) {
-			const controlledElementId = this.getAttribute('aria-controls');
-			const targetElement = document.getElementById(controlledElementId);
-			if(targetElement) {
-				e.target.classList.toggle('active_btn'); // Replace 'your-class-name' with the class you want to add
-				targetElement.toggleAttribute('hidden');
-			}
+    const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
+
+	if(accordionButton.length > 0){
+
+		accordionButton.forEach(element => {
+
+			element.addEventListener('click', event => {
+				const controlledElementId = event.target.getAttribute('aria-controls');
+				const targetElement = document.getElementById(controlledElementId);
+				if(targetElement) {
+					event.target.classList.toggle('active_btn'); // Replace 'your-class-name' with the class you want to add
+					targetElement.toggleAttribute('hidden');
+				}
+			});
+
 		});
+
 	}
 
 });
