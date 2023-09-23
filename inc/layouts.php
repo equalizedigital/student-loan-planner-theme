@@ -357,8 +357,7 @@ function eqd_single_fullwidth_content() {
 						</span>
 					</span>
 				</div>
-				<div class="reviewed_author">
-						<?php
+				<?php
 						$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 						$profile_picture   = get_avatar( $review_by_auth_id, 64 );
 						$user_info         = get_userdata( $review_by_auth_id );
@@ -366,9 +365,14 @@ function eqd_single_fullwidth_content() {
 						$last_name         = $user_info->last_name;
 						$nickname          = $user_info->nickname;
 						?>
+						<?php if($review_by_auth_id): ?>
+
+				<div class="reviewed_author">
+						
 					<div class="profile">
 						<?php echo $profile_picture; ?>
 					</div>
+					
 					<div class="author_info">
 					Reviewed By
 					<?php
@@ -380,6 +384,8 @@ function eqd_single_fullwidth_content() {
 					?>
 					</div>
 				</div>
+				<?php endif; ?>
+
 			</div>
 
 			<section class="site-main-article__author-data-editorial_statement">

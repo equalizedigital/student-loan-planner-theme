@@ -58,7 +58,7 @@ function eqd_single_after_entry() {
  **/
 function eqd_single_after_entry_content() {
 	?>
-
+	<?php if ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) : ?>
 <section class="refinance_lender_section">
 	<header class="title">
 		<h2 class="title">Refinance student loans, get a bonus in 2023</h2>
@@ -70,7 +70,7 @@ function eqd_single_after_entry_content() {
 		<th>Offer</th>
 		<th>Learn more</th>
 	</tr>
-	<?php if ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) : ?>
+
 		<?php
 		while ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) :
 			the_row();
@@ -114,12 +114,12 @@ function eqd_single_after_entry_content() {
 			</tr>
 
 		<?php endwhile; ?>
-	<?php endif; ?>
 	
 	</table>
 	</div>
 </section>
 
+<?php endif; ?>
 
 
 	<?php
@@ -312,8 +312,7 @@ function eqd_single_after_entry_author_info() {
 			</span>
 		</div>
 
-		<div class="article_footer_data_author_reviewed_author">
-			<?php
+		<?php
 			$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 			$profile_picture   = get_avatar( $review_by_auth_id, 64 );
 			$user_info         = get_userdata( $review_by_auth_id );
@@ -321,21 +320,26 @@ function eqd_single_after_entry_author_info() {
 			$last_name         = $user_info->last_name;
 			$nickname          = $user_info->nickname;
 			?>
-			<div class="article_footer_data_author_profile">
-				<?php echo $profile_picture; ?>
-			</div>
-			<div class="article_footer_data_author_author_info">
-			Reviewed By
-				<span class="name">
-					<?php
-					if ( $first_name && $last_name ) {
-						echo $first_name . ' ' . $last_name;
-					} else {
-						echo $nickname;
-					}
-					?>
-				</span>
-			</div>
+			<?php if($review_by_auth_id): ?>
+		<div class="article_footer_data_author_reviewed_author">
+			
+				<div class="article_footer_data_author_profile">
+					<?php echo $profile_picture; ?>
+				</div>
+
+				
+				<div class="article_footer_data_author_author_info">
+				Reviewed By
+					<span class="name">
+						<?php
+						if ( $first_name && $last_name ) {
+							echo $first_name . ' ' . $last_name;
+						} else {
+							echo $nickname;
+						}
+						?>
+					</span>
+				</div>
 			<div class="article_footer_data_author_socials">
 			<?php
 			if ( ! empty( get_user_meta( $review_by_auth_id, 'twitter', true ) ) ) {
@@ -361,6 +365,8 @@ function eqd_single_after_entry_author_info() {
 			}
 			?>
 			</div>
+			<?php endif; ?>
+
 		</div>
 	</div>
 	
