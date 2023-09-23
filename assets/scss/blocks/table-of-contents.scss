@@ -13,6 +13,9 @@
         .toc-nav-container {
             display: none;
         }
+        .table-of-contents-block-container-main{
+            grid-template-columns: 1fr;
+        }
     }
 
     .table-of-contents-block-container-main {
