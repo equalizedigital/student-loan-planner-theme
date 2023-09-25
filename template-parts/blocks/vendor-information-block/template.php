@@ -33,20 +33,25 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-// Load values and assing defaults.
-$acf_title         = get_field( 'title' );
-$company_name      = get_field( 'company_name' );
-$logo              = get_field( 'logo' );
-$rating            = get_field( 'rating' );
-$review_url        = get_field( 'review_url' );
-$heading           = get_field( 'heading' );
-$features_list     = get_field( 'features_list' );
-$website_url       = get_field( 'website_url' );
-$button_subtext    = get_field( 'button_subtext' );
-$accordion_content = get_field( 'accordion_content' );
+$select_institutional_contact = get_field( 'select_institutional_contact' );
+$logo                         = get_field( 'company_logo', $select_institutional_contact );
+$rating                       = get_field( 'rating', $select_institutional_contact );
+$review_url                   = get_field( 'review_url', $select_institutional_contact );
+$heading                      = get_field( 'heading', $select_institutional_contact );
+$website                  = get_field( 'website', $select_institutional_contact );
+$button_subtext               = get_field( 'button_subtext', $select_institutional_contact );
+$features_list                = get_field( 'features_list', $select_institutional_contact );
+$about                        = get_field( 'about', $select_institutional_contact );
+$more_info_content            = get_field( 'more_info_content', $select_institutional_contact );
+$show_about                   = get_field( 'show_about' );
+$show_states                  = get_field( 'show_states' );
+$show_degrees                 = get_field( 'show_degrees' );
+$show_contact                 = get_field( 'show_contact' );
+$show_feature_list            = get_field( 'show_feature_list' );
+
+
 
 $time_stamp = time() . wp_rand( 0, 23 );
-
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
@@ -89,7 +94,67 @@ $time_stamp = time() . wp_rand( 0, 23 );
 		</div>
 
 			<div class="vendor_information_block_container_column_two">
+
+				<?php if ( $show_about ) : ?>
+					<h4 class="vendor_information_block_container_column_two_title">About:</h4>
+					<div class="vendor_information_block_container_column_two_text_repeater">
+						<?php echo wp_kses_post( $about ); ?>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( $show_degrees ) : ?>
+					<h4 class="vendor_information_block_container_column_two_title">Degrees that qualify:</h4>
+					<div class="vendor_information_block_container_column_two_text_repeater">
+						<p>
+						<?php
+						$post_terms = get_the_terms( $select_institutional_contact, 'slp_eligible_professions' );
+						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
+							$numItems = count( $post_terms );
+							$i        = 0;
+							foreach ( $post_terms as $term ) {
+
+								if ( ++$i === $numItems ) {
+									echo esc_html( $term->name ) . '';
+								} else {
+									echo esc_html( $term->name ) . '<span>,</span> ';
+								}
+							}
+						}
+						?>
+						</p>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( $show_states ) : ?>
+					<h4 class="vendor_information_block_container_column_two_title">Eligible states:</h4>
+					<div class="vendor_information_block_container_column_two_text_repeater">
+					<p>
+					<?php
+						$post_terms = get_the_terms( $select_institutional_contact, 'slp_state' );
+					if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
+						$numItems = count( $post_terms );
+						$i        = 0;
+						foreach ( $post_terms as $term ) {
+							if ( ++$i === $numItems ) {
+								echo '<span>' . esc_html( $term->name ) . '</span> ';
+							} else {
+								echo '<span>' . esc_html( $term->name ) . ',</span> ';
+							}
+						}
+					}
+					?>
+					</p>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( $show_contact ) : ?>
+					<h4 class="vendor_information_block_container_column_two_title">Contact:</h4>
+					<div class="vendor_information_block_container_column_two_text_repeater">
+						<?php echo wp_kses_post( $about ); ?>
+					</div>
+				<?php endif; ?>
 				
+				<?php if ( $show_feature_list ) : ?>
 				<h4 class="vendor_information_block_container_column_two_title"><?php echo wp_kses_post( $heading ); ?></h4>
 				<div class="vendor_information_block_container_column_two_text_repeater">
 					<?php
@@ -106,19 +171,20 @@ $time_stamp = time() . wp_rand( 0, 23 );
 					}
 					?>
 				</div>
+				<?php endif; ?>
 
 				<div class="vendor_information_block_container_column_two_link">
-					<?php if ( ! empty( $website_url['url'] ) ) : ?>
-						<a href="<?php echo wp_kses_post( $website_url['url'] ); ?>" class="vendor_information_block_container_column_two_link btn">
-							Visit SoFi
+					<?php if ( ! empty( $website['url'] ) ) : ?>
+						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn">
+							<?php  echo wp_kses_post($website['title']); ?>
 							<span class="svg">
-							<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"/>
-								<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"/>
-							</svg>
+								<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"/>
+									<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"/>
+								</svg>
 							</span>
 							<span class="subtext">
-							<?php echo wp_kses_post( $button_subtext ); ?>
+								<?php echo wp_kses_post( $button_subtext ); ?>
 							</span>
 						</a>
 					<?php endif; ?>
@@ -140,7 +206,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 			</div>
 
 			<div class="vendor_information_block_container_more_info" hidden id="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>">
-				<?php echo wp_kses_post( $accordion_content ); ?>
+				<?php echo wp_kses_post( $more_info_content ); ?>
 			</div>
 		
 	</div>
