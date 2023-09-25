@@ -57,6 +57,7 @@ endif;
 					// Get sub-field values
 					$link              = get_sub_field( 'link' );
 					$logo              = get_sub_field( 'logo' );
+					$logo_white        = get_sub_field( 'logo_white' );
 					$stars             = get_sub_field( 'stars' );
 					$number_of_reviews = get_sub_field( 'number_of_reviews' );
 					?>
@@ -64,7 +65,10 @@ endif;
 					<a href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo $logo['alt']; ?>. <?php echo $stars; ?> out of 5 stars. <?php echo $number_of_reviews; ?> reviews.">
 						<figure>
 							<?php if ( ! empty( $logo ) ) : ?>
-								<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt']; ?>">
+								<img src="<?php echo $logo['url']; ?>" class="image" alt="<?php echo $logo['alt']; ?>">
+							<?php endif; ?>
+							<?php if ( ! empty( $logo_white ) ) : ?>
+								<img src="<?php echo $logo_white['url']; ?>" class="image-white" alt="<?php echo $logo_white['alt']; ?>">
 							<?php endif; ?>
 						</figure>
 						<div class="rating-stars">

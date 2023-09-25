@@ -26,8 +26,16 @@
             background: rgba($color: white, $alpha: .050)!important;
             border: 1px solid rgba($color: white, $alpha: .2)!important;
          }
+         .image-white{
+            display: block!important;
+         }
+         .image{
+            display: none;
+         }
 
     }
+
+    
 
     &_with_author_images{
         .media-reviews-global-container-review-items-loop{
@@ -116,6 +124,9 @@
             margin: 70px 0 0;
         }
         &-item {
+            .image-white{
+                display: none;
+             }
             a {
                 text-decoration: none;
                 display: flex;
