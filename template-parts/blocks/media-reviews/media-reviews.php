@@ -107,7 +107,13 @@ endif;
 							</div>
 
 							<div class="content">
-								<?php the_content(); ?>
+								<p>
+								<?php 
+								$content = get_the_content();
+								$content = '"'.$content.'"';
+								echo wp_strip_all_tags(apply_filters('the_content', $content));
+								 ?>
+								</p>
 							</div>
 
 						</blockquote>
