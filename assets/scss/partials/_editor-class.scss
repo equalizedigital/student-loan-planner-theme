@@ -43,3 +43,34 @@
         color: var(--WCAG-Green, #547C2D);
     }
 }
+.headline-lines{
+    position: relative;
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+    @include media("<tablet") {
+        margin-bottom: 40px;
+    }
+
+    &:after {
+        content: close-quote;
+        position: absolute;
+        top: 50%;
+        left: -60px;
+        width: 40px;
+        background: white;
+        height: 2px;
+        transform: translate(0%, 60%);
+    }
+
+    &:before {
+        content: close-quote;
+        position: absolute;
+        top: 50%;
+        right: -60px;
+        width: 40px;
+        background: white;
+        height: 2px;
+        transform: translate(0%, 50%);
+    }
+}
