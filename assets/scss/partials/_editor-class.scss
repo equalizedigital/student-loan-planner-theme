@@ -31,3 +31,15 @@
         display: none!important;
     }
 }
+
+.text-decoration-none{
+   a{
+    text-decoration: none;
+   }
+}
+
+.link-green{
+    a{
+        color: var(--WCAG-Green, #547C2D);
+    }
+}
