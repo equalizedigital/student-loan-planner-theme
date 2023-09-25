@@ -2659,6 +2659,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/podcast-list.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/podcast-list.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/podcast-trio.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3572,19 +3587,6 @@
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/accordion\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 93848,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/accordion\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/accordion\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3600,19 +3602,6 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
-    },
-    "\/template-parts\/blocks\/calculator-form-cta\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 43652,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/calculator-form-cta\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/template-parts\/blocks\/calculator-form-cta\/template.php" : {
       "cB" : 0,
@@ -3638,19 +3627,6 @@
       "oAP" : "\/template-parts\/blocks\/calculator-signup-block\/calculator-signup.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/calculator-signup-block\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 118281,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/calculator-signup-block\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/columns-with-button\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3658,19 +3634,6 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
-    },
-    "\/template-parts\/blocks\/columns-with-button\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 135893,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/columns-with-button\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/template-parts\/blocks\/columns-with-button\/template.php" : {
       "cB" : 0,
@@ -3704,19 +3667,6 @@
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/form-column\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 70614,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/form-column\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/form-column\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3741,19 +3691,6 @@
       "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/full-width-columns-background\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 144936,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/hero-block\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3770,19 +3707,6 @@
       "oAP" : "\/template-parts\/blocks\/hero-block\/hero.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/hero-block\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 39150,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/hero-block\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/image-text-columns-block\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3790,19 +3714,6 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
-    },
-    "\/template-parts\/blocks\/image-text-columns-block\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 119063,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/template-parts\/blocks\/image-text-columns-block\/template.php" : {
       "cB" : 0,
@@ -3860,6 +3771,22 @@
       "oAP" : "\/template-parts\/blocks\/media-reviews\/media-reviews.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/podcast-list-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/podcast-list-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/podcast-list-block\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/podcast-list-block\/template.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/podcast-trio\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3900,19 +3827,6 @@
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/recommended-posts-block\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 262895,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/recommended-posts-block\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/recommended-posts-block\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3928,19 +3842,6 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
-    },
-    "\/template-parts\/blocks\/resource-blocks\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 178426,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/resource-blocks\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/template-parts\/blocks\/resource-blocks\/template.php" : {
       "cB" : 0,
@@ -4022,19 +3923,6 @@
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/table-of-contents\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 93848,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/table-of-contents\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/table-of-contents\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -4050,19 +3938,6 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
-    },
-    "\/template-parts\/blocks\/team-hightlight\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 174116,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/team-hightlight\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/template-parts\/blocks\/team-hightlight\/template.php" : {
       "cB" : 0,
@@ -4080,19 +3955,6 @@
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/testimonial-slider\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 122223,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/testimonial-slider\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/testimonial-slider\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -4108,19 +3970,6 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
-    },
-    "\/template-parts\/blocks\/vendor-information-block\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 133642,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/vendor-information-block\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/template-parts\/blocks\/vendor-information-block\/template.php" : {
       "cB" : 0,

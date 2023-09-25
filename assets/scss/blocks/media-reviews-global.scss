@@ -21,6 +21,12 @@
         div.number_of_stars{
             color: white;
         }
+
+         .media-reviews-global-container-review-items-item a:hover{
+            background: rgba($color: white, $alpha: .050)!important;
+            border: 1px solid rgba($color: white, $alpha: .2)!important;
+         }
+
     }
 
     &_with_author_images{
@@ -117,8 +123,14 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-
-                .stars {} // This is empty but left here for clarity or future use.
+                border-radius: 10px;
+                padding: 20px 10px;
+                min-width: 90%;
+                border: 1px solid transparent;
+                &:hover {
+                    background: rgba($color: black, $alpha: .050);
+                    border: 1px solid rgba($color: black, $alpha: .2);
+                }
             }
             .rating-stars {
                 position: relative;
