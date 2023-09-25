@@ -37,7 +37,7 @@ $copy  = get_field( 'copy' );
 if ( get_field( 'image' ) ) {
 	$image = get_field( 'image' );
 }
-
+$link = get_field('link');
 ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
 	<div class="calculator-signup-container">
@@ -51,6 +51,19 @@ if ( get_field( 'image' ) ) {
 			<h2 class="title"><?php echo $title; ?></h2>
 			<div class="text"><?php echo $copy; ?></div>
 
+
+			<?php 
+			
+			if ( ! empty( $link ) ) {
+				$url = $link['url'];
+				$title = $link['title'];
+				echo '<span class="content">';
+				echo "<a href=\"$url\" class=\"btn\">";
+					echo $title;
+				echo '</a>';
+				echo '</span>';
+			}
+			?>
 			<?php
 			$list = get_field( 'list' );
 			if ( $list ) {
@@ -64,6 +77,7 @@ if ( get_field( 'image' ) ) {
 					}
 					$title   = $row['title'];
 					$context = $row['context'];
+					
 
 					echo '<div class="calculator-signup-container-content-list-item">';
 					if ( ! empty( $image ) ) {
@@ -80,6 +94,7 @@ if ( get_field( 'image' ) ) {
 							echo $context;
 						echo '</span>';
 					}
+					
 					echo '</div>';
 					echo '</div>';
 				}

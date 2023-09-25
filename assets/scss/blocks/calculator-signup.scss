@@ -17,14 +17,21 @@
 .calculator-signup-container {
     margin: 0 auto;
     display: flex;
+    position: relative;
 
     @include media("<tablet") {
         flex-direction: column;
     }
 
     &-image {
+        margin: 0;
         @include media(">tablet") {
-            width: 40vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            width: 40%;
         }
 
         img {
@@ -43,6 +50,7 @@
         @include media(">tablet") {
             padding: 72px 90px;
             width: 70vw;
+            margin-left: 40%;
         }
         .btn{
             margin-top: 20px;

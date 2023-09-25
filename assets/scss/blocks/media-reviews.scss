@@ -3,34 +3,37 @@
     color: black;
     padding-bottom: 100px;
 
-    &-purple{
+    &-purple {
         color: white;
         background-color: brand-color('tertiary');
+
         .media-reviews-container {
             >h2.title {
                 color: white;
             }
         }
+
         .title,
         span.reviews_amount,
-        div.number_of_stars{
+        div.number_of_stars {
             color: white;
         }
     }
 
-    &_with_author_images{
-        .media-reviews-container-review-items-loop{
+    &_with_author_images {
+        .media-reviews-container-review-items-loop {
             display: grid;
-            grid-template-columns: repeat(1,1fr);  
+            grid-template-columns: repeat(1, 1fr);
             border-top: 1px solid #D9D9D9;
-            @include media(">tablet") {
-                grid-template-columns: repeat(2,1fr); 
-            }
-            
 
-            .media-reviews-container-review-items-loop-item{
+            @include media(">tablet") {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .media-reviews-container-review-items-loop-item {
                 border: none;
-                border-top: none!important;
+                border-top: none !important;
                 border-right: 1px solid #D9D9D9;
                 border-bottom: 1px solid #D9D9D9;
                 padding-right: 60px;
@@ -38,13 +41,15 @@
                 justify-content: center;
                 display: flex;
                 flex-direction: column;
-                
-                &:nth-child(even){
+
+                &:nth-child(even) {
                     border-right: none;
+
                     @include media(">tablet") {
                         padding: 53px 59px;
                     }
                 }
+
                 blockquote {
                     align-items: center;
                 }
@@ -57,7 +62,8 @@
         max-width: $container-width;
         padding: 0 $container-padding;
         padding-top: 90px;
-        > .title {
+
+        >.title {
             font-size: 35px;
             font-weight: 700;
             line-height: 40px;
@@ -68,7 +74,7 @@
 
             @include media("<tablet") {
                 font-size: 25px;
-                line-height: 35px; 
+                line-height: 35px;
             }
         }
     }
@@ -76,13 +82,14 @@
     .star {
         display: inline-grid;
         position: relative;
-        grid-template-columns: repeat(5,1fr);
+        grid-template-columns: repeat(5, 1fr);
+
         svg {
             width: auto;
             fill: #F19E3E;
             width: 25px;
         }
-        
+
     }
 
     .cover {
@@ -96,20 +103,23 @@
         bottom: 0;
         display: flex;
     }
- 
+
     .media-reviews-container-review-items {
         display: grid;
         grid-template-columns: 1fr;
         gap: 40px 0;
+
         @include media(">tablet") {
             grid-template-columns: 1fr 1fr 1fr;
         }
+
         &-read {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin:  0 0;
+            margin: 70px 0 0;
         }
+
         &-item {
             a {
                 text-decoration: none;
@@ -118,45 +128,51 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
+               
 
-                .stars {} // This is empty but left here for clarity or future use.
             }
+
             .rating-stars {
                 position: relative;
                 gap: 10px;
                 display: grid;
             }
         }
-    
-        &-loop{
+
+        &-loop {
 
             &-item {
                 border-bottom: 1px solid #D9D9D9;
                 padding: 23px 0;
+
                 @include media(">tablet") {
                     padding: 50px 0;
                 }
-                &:nth-child(1){
+
+                &:nth-child(1) {
                     border-top: 1px solid #D9D9D9;
                 }
+
                 blockquote {
                     display: grid;
                     grid-template-columns: 1fr;
                     gap: 20px;
                     margin: 0;
+
                     @include media(">tablet") {
                         gap: 0;
                         grid-template-columns: 0.5fr 1fr;
                         gap: 0 40px;
                     }
-    
+
                     .info {
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
+
                         .rating-stars {
                             position: relative;
-                           
+
                         }
 
                         .attachment-medium_large {
@@ -167,39 +183,45 @@
                             object-fit: cover;
                             object-position: center;
                         }
-    
+
                         h3.title {
-                            
+
                             font-size: 24px;
                             font-style: normal;
                             font-weight: 600;
-                            line-height: 21px; 
+                            line-height: 21px;
                             margin: 0;
                         }
-    
-                        .location, .date {
-                            
+
+                        .location,
+                        .date {
+
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 400;
-                            line-height: 20px; 
-    
+                            line-height: 20px;
+
                             &.date {
                                 font-style: italic;
                             }
                         }
-    
-                        .rating {} // This is empty but left here for clarity or future use.
+
+                        .rating {}
+
+                        // This is empty but left here for clarity or future use.
                     }
-    
-                    .content {} // This is empty but left here for clarity or future use.
+
+                    .content {}
+
+                    // This is empty but left here for clarity or future use.
                 }
             }
         }
     }
 
-    .number_of_stars, .reviews_amount {
-        
+    .number_of_stars,
+    .reviews_amount {
+
         text-align: center;
 
         &.number_of_stars {
