@@ -312,41 +312,39 @@ function eqd_single_fullwidth_content() {
 				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
 				if ( $featured_image ) {
 					?>
-			<span class="hero_featured_image">
-				
+				<span class="hero_featured_image">
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
-				
+					<div class="hero_featured_image_data">
+						<?php
+						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
+							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+						}
+						$post_data = get_the_content( get_the_ID() );
+						$time_read = estimateReadingTime( esc_html( $post_data ) );
 
-				<div class="hero_featured_image_data">
-					<?php
-					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
-						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-					}
-					$post_data = get_the_content( get_the_ID() );
-					$time_read = estimateReadingTime( esc_html( $post_data ) );
+						?>
 
-					?>
-
-					<?php echo ( $time_read['minutes'] ); ?> Min Read |  <?php echo wp_kses_post( $output ); ?>
-				</div>
-			</span>
+						<?php echo ( $time_read['minutes'] ); ?> Min Read |  <?php echo wp_kses_post( $output ); ?>
+					</div>
+				</span>
 			<?php } ?>
 
 			<div class="site-main-article__author-data">
 				<div class="article_author">
 					<?php
 					$id = get_field( 'post_reviewed_by', get_the_ID() );
+					$id_post_editor = get_field( 'post_editor', get_the_ID() );
+					$edit_auth_id = $id_post_editor['ID'];
 
-					$author_info = get_field( 'job_title', "user_$id" );
-
+					$author_info = get_field( 'job_title', "user_$edit_auth_id" );
 					?>
 					<span class="entry-author">
-						<a href="<?php echo esc_url( get_author_posts_url( $id ) ); ?>" aria-hidden="true" tabindex="-1">
-							<?php echo get_avatar( $id, 40 ); ?>
+						<a href="<?php echo esc_url( get_author_posts_url( $edit_auth_id ) ); ?>" aria-hidden="true" tabindex="-1">
+							<?php echo get_avatar( $edit_auth_id, 40 ); ?>
 						</a>
 						<span class="entry-info">
 							<span>
-								Written By <a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $id ) ) ); ?>">
+								Written By <a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $edit_auth_id ) ) ); ?>">
 								<?php echo get_the_author(); ?></a>
 							</span>
 							<span class="entry-data">
