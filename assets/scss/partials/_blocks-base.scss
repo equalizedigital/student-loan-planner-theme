@@ -215,7 +215,7 @@ input {
 }
 
 div.wpforms-container {
-	
+
 	.wpforms-form {
 		.wpforms-field-label {}
 
@@ -225,12 +225,14 @@ div.wpforms-container {
 			font-weight: 600;
 			line-height: 22px;
 		}
-		input[type=text]{
+
+		input[type=text] {
 			border-radius: 4px;
 			border: 1px solid var(--Dark-Gray, #A1A5A5);
 			background: #FFF;
 		}
-		button[type=submit].wpforms-submit{
+
+		button[type=submit].wpforms-submit {
 			@include style('callout', 5, true);
 			background-color: brand-color('primary');
 			padding: 13px 24px;
@@ -245,7 +247,7 @@ div.wpforms-container {
 			min-width: 148px;
 			border-radius: 4px;
 			cursor: pointer;
-		
+
 			&:hover {
 				background-color: brand-color('primary', 'darken');
 				border-color: brand-color('primary');
@@ -253,4 +255,50 @@ div.wpforms-container {
 			}
 		}
 	}
+}
+
+
+
+
+
+.wp-block-table {
+
+
+	table {
+		thead {
+			border-bottom: 1px solid #A1A5A5;
+		}
+	
+		th {
+			background: var(--Purple, #625089);
+			color: #fff;
+			border-color: white;
+		}
+		border-color: #A1A5A5;
+		figure {
+			border-color: #A1A5A5;
+		}
+	
+		th {
+			border: 1px solid #A1A5A5;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 18px;
+			/* 128.571% */
+			padding: 18px 20px;
+			text-align: left;
+		}
+	
+		td {
+			border: 1px solid #A1A5A5;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 300;
+			line-height: 18px;
+			padding: 10px 20px;
+		}
+	}
+
+	
 }

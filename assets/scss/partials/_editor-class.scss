@@ -74,3 +74,14 @@
         transform: translate(0%, 50%);
     }
 }
+
+.list-2col{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 40px;
+    @include media(">tablet") {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
