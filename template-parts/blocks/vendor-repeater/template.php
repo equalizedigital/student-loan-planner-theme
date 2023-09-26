@@ -237,7 +237,10 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				</tr>
 				<!-- tr -->
 				<tr>
-					<?php $link = get_sub_field( 'link' ); ?>
+					<?php $link = get_sub_field( 'link' ); 
+					if(!empty($link['url'])):
+					?>
+
 					<td>
 						<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn">
 							<?php  echo wp_kses_post($link['title']); ?>
@@ -249,6 +252,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							</span>
 						</a>
 					</td>
+					<?php endif; ?>
 				</tr>
 			</tbody>
 		</table>
