@@ -269,6 +269,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                  
                     }
                 }
 
@@ -302,6 +303,8 @@
             &-featured-link {
                 display: flex;
                 position: relative;
+                background: #000;
+                border-radius: 10px;
 
                 .title {
                     position: absolute;
@@ -325,6 +328,7 @@
                     justify-content: center;
                     border-radius: 10px;
                     overflow: hidden;
+                    width: 100%;
 
                     img {
                         width: 100%;

@@ -26,6 +26,9 @@ header.site-header {
 		max-width: 1225px;
 		margin: 0 auto;
 		padding: 0 25px;
+		@include media(">tablet") {
+			overflow: auto;
+		}
 	}
 }
 
@@ -43,6 +46,9 @@ header.site-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		@include media(">tablet") {
+			padding: 8px 0;
+		}
 
 		&:after {
 			@include media("<tablet") {

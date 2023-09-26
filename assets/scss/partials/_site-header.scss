@@ -8,13 +8,15 @@
 }
 
 .title-area {
-	float: left;
-	width: 100%;
-	max-width: 300px;
-	text-align: left;
-	margin: 8px auto;
-	z-index: 100;
-	position: relative;
+    float: left;
+    width: 100%;
+    max-width: 170px;
+    text-align: left;
+    z-index: 100;
+    position: relative;
+    margin: 19px auto 11px;
+    margin-right: 100px;
+
 	@include media("<tablet") {
 	    margin: 8px 0;
 	}
