@@ -1,6 +1,6 @@
 <?php
 /**
- * Podcast-list Block Template.
+ * Accordion Block Template.
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -9,19 +9,19 @@
  * @package Block
  */
 
-if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
-	return;
-endif;
+// if ( isset( $block['example']['attributes']['data']['preview_image_help'] ) ) :
+// 	esc_attr( Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] ) );
+// 	return;
+// endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$classid = 'podcast-list-block-' . $block['id'];
+$classid = 'accordion-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
 	$classid = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$class_name = 'block podcast-list-block';
+$class_name = 'block accordion-block';
 if ( ! empty( $block['className'] ) ) :
 	$class_name .= ' ' . $block['className'];
 endif;
@@ -35,21 +35,21 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 // Load values and assing defaults.
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
-	<div class="podcast-list-block-container">
-		<div class="podcast-list-block-container-podcast-list">
+	<div class="accordion-block-container">
+		<div class="accordion-block-container-accordion">
 		<?php
-		if ( have_rows( 'podcast-list' ) ) :
-			while ( have_rows( 'podcast-list' ) ) :
+		if ( have_rows( 'accordion' ) ) :
+			while ( have_rows( 'accordion' ) ) :
 				the_row();
 				// Get sub-field values.
 				$button_title = get_sub_field( 'button_title' );
 				$content      = get_sub_field( 'content' );
 				?>
 
-				<h3 class="podcast-list-block-container-podcast-list__heading">
+				<h3 class="accordion-block-container-accordion__heading">
 					<button
 					type="button"
-					class="podcast-list-block-container-podcast-list__button"
+					class="accordion-block-container-accordion__button"
 					aria-expanded="false"
 					aria-controls="a<?php echo wp_kses_post( get_row_index() ); ?>"
 					>
@@ -61,7 +61,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					</span>
 					</button>
 				</h3>
-				<div id="a<?php echo wp_kses_post( get_row_index() ); ?>" class="podcast-list-block-container-podcast-list__content podcast-list-block-container-prose">
+				<div id="a<?php echo wp_kses_post( get_row_index() ); ?>" class="accordion-block-container-accordion__content accordion-block-container-prose">
 					<?php echo wp_kses_post( $content ); ?>
 				</div>
 
@@ -73,4 +73,36 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 		
 	</div>
 </section>
- 
+
+<?php if ( get_field( 'use_schema_data' ) ) : ?>
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": [
+			<?php
+			if ( have_rows( 'accordion' ) ) :
+				while ( have_rows( 'accordion' ) ) :
+					the_row();
+					// Get sub-field values.
+					$button_title = get_sub_field( 'button_title' );
+					$content      = get_sub_field( 'content' );
+
+					$data_string = "{
+					\"@type\": \"Question\",
+					\"name\": \"$button_title\",
+					\"acceptedAnswer\": {
+					  \"@type\": \"Answer\",
+					  \"text\": \"$content\"
+					}
+				  },";
+					echo esc_attr( $data_string );
+
+				endwhile;
+		endif;
+			?>
+		]
+	}
+	</script>
+
+<?php endif; ?>

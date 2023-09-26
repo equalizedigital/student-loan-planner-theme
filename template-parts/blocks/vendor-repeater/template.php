@@ -14,6 +14,7 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 	return;
 endif;
 
+
 // Create id attribute allowing for custom 'anchor' value.
 $classid = 'vendor-repeater-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :

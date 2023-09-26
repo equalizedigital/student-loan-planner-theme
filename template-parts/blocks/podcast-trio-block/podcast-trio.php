@@ -9,10 +9,10 @@
  * @param	 (int|string) $post_id The post ID this block is saved to.
  */
 
-if( isset( $block['data']['preview_image_help'] )  ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
-	return;
-endif;
+// if( isset( $block['example']['attributes']['data']['preview_image_help'] )  ) :
+// 	echo Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] );
+// 	return;
+// endif;
 
 // Create id attribute allowing for custom 'anchor' value.
 $id = 'podcast-trio-block-' . $block['id'];
@@ -34,6 +34,8 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 
 // Load values and assing defaults.
 $title = get_field('title');
+
+echo "ddd";
 
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
