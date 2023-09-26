@@ -3596,12 +3596,12 @@
       "oAP" : "\/sidebar.php",
       "oF" : 0
     },
-    "\/single-slp_contacts.php" : {
+    "\/single-institution-contacts.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/single-slp_contacts.php",
+      "oAP" : "\/single-institution-contacts.php",
       "oF" : 0
     },
     "\/single.php" : {
