@@ -468,14 +468,14 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .inner-hero {
 	background-color: brand-color('tertiary');
-	padding: 86px 0;
+	padding: 60px 0;
 	position: relative;
 	grid-column-start: 1;
 	grid-column-end: 13;
 
 
 	@include media(">tablet") {
-		padding: 121px 0;
+		padding: 86px 0;
 	}
 
 	&:after {
