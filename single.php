@@ -372,6 +372,45 @@ function eqd_single_after_entry_author_info() {
 	<?php
 }
 
+add_action( 'tha_content_while_after', 'eqd_single_after_entry_block_disclosure', 7 );
+
+/**
+ * Block Disclosure
+ *
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
+ **/
+function eqd_single_after_entry_block_disclosure() {
+		if ( has_block( 'acf/vendor-repeater' ) ) { 
+			?>
+			<section class="vendor_disclosure">
+				<h2 class="vendor_disclosure_title">Disclosures</h2>
+				<ol class="vendor_disclosure_ol">
+					
+
+					<?php
+					if ( have_rows( 'vendors','option' ) ) :
+						while ( have_rows( 'vendors','option' ) ) :
+							the_row();
+							$disclosure_content = get_sub_field( 'disclosure_content' );
+							?>
+								<li class="vendor_disclosure_ol_li" id="sup_disclosure_<?php echo get_row_index(); ?>">
+									<sup><?php echo get_row_index(); ?></sup> 
+									<?php echo wp_kses_post($disclosure_content); ?>
+								</li>
+							<?php
+						endwhile;
+					endif;
+					?>
+
+				</ol>
+			</section>
+			<?php
+		}
+}
+
 
 
 add_action( 'tha_single_page_end', 'eqd_single_after_related_post', 10 );

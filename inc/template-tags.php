@@ -235,23 +235,19 @@ function eqd_single_sidebar() {
 	// Standard Format.
 	if ( is_single() && get_post_type() == 'post' ) {
 		if ( get_field( 'post_format_style' ) != 'full-width' ) :
-			
 			?>
 			<div class="sidebar_container">
 				<div class="sidebar_social">
 					<?php echo '<span>Share:</span> ' . do_shortcode( '[shared_counts]' ); ?>
 				</div>
 				<?php if ( has_block( 'acf/table-of-contents' ) ) { ?>
-				<div class="toc_content_load_point_sidebar">
-					<h2 class="toc_content_load_point_sidebar__title">Table of Contents</h2>
-					<div class="toc_content_load_point"></div>
-				</div>
+					<div class="toc_content_load_point_sidebar">
+						<h2 class="toc_content_load_point_sidebar__title">Table of Contents</h2>
+						<div class="toc_content_load_point"></div>
+					</div>
 				<?php } ?>
 			</div>
 			<?php
-			
-
-
 		endif;
 	}
 }

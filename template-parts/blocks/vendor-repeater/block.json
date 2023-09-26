@@ -1,0 +1,18 @@
+{
+	"name": "acf/vendor-repeater",
+	"title": "vendor repeater",
+	"category": "text",
+	"icon": "star",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview_image_help": "screenshot.png"
+			}
+		}
+	}
+}
