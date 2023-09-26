@@ -235,6 +235,8 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_author_info', 7 )
  * @license      GPL-2.0+
  **/
 function eqd_single_after_entry_author_info() {
+	global $post;
+
 	$id          = get_the_author_meta( 'ID' );
 	$id_post_editor = get_field( 'post_editor', get_the_ID() );
 
@@ -246,6 +248,7 @@ function eqd_single_after_entry_author_info() {
 	$nickname    = $user_info->nickname;
 
 	?>
+
 	<div class="article_footer_data">
 
 		<div class="article_footer_data_author">
