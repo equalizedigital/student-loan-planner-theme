@@ -40,7 +40,12 @@
 
 .link-green{
     a{
-        color: var(--WCAG-Green, #547C2D);
+        color: brand-color('primary');
+    }
+}
+.link-wcag-green{
+    a{
+        color: brand-color('secondary');
     }
 }
 .headline-lines{
