@@ -150,6 +150,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						while ( have_rows( 'vendors','option' ) ) :
 							the_row();
 							$link = get_sub_field( 'link' );
+							if(!empty($link['url'])):
 							?>
 							<td>
 								<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn">
@@ -164,6 +165,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								</a>
 							</td>
 							<?php
+							endif;
 						endwhile;
 					endif;
 					?>
