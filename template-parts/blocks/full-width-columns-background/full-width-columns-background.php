@@ -66,12 +66,14 @@ endif;
 			<?php endif; ?>
 		</div>
 		<div class="full-width-columns-background-container__video" >
-			<button class="modal-btn full-width-columns-background-container__video__button" data-modal="modal1" aria-label="Open Video" id="play-iframe">
-				<?php if ( $image ) : ?>
-					<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
-				<?php endif; ?>
-				<img class=" play"  src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
+			<?php if ( $image ) : ?>
+				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
+			<?php endif; ?>
+			<?php if(!empty($youtube_video_id)): ?>
+			<button class="modal-btn full-width-columns-background-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
+				<img class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
@@ -82,6 +84,7 @@ endif;
 		<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
 	</button>
 	<div id="player"></div>
+	<div class="iframe_capture" tabindex="0"></div>
 	</div>
 </div>
 
@@ -102,17 +105,16 @@ function onYouTubeIframeAPIReady() {
 	});
 }
 function onPlayerReady(event) {                                        
-		event.target.pauseVideo();
-		}
+	event.target.pauseVideo();
+}
 function playVideo() {
 	player.pauseVideo();
 	document.getElementById("thumbnail").style.display = "none";
 	document.getElementById("play-iframe").style.display = "none";
 }
+
 jQuery(function ($) {
-
 	$(document).ready(function () {
-
 		jQuery('.modal .close-btn').click(function(e) {
 			player.pauseVideo();
 		});

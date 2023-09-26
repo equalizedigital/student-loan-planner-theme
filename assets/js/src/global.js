@@ -260,6 +260,13 @@ jQuery(function ($) {
 	// store the item that has focus before opening the modal window
 	var focusedElementBeforeModal;
 
+	$(document).ready(function() {
+		$('.iframe_capture').on('focus', function() {
+			// Shift focus to another element, for example, an element with the ID 'desiredElementId'
+			$(this).closest('.close-btn').focus();
+		});
+	});
+
 	$(document).ready(function () {
 		jQuery('.modal-btn').click(function (event) {
 			modalId = $(event.currentTarget).data('modal')
@@ -271,7 +278,6 @@ jQuery(function ($) {
 		jQuery('.modal .close-btnButton').click(function (e) {
 			hideModal();
 		});
-
 
 		jQuery('.modal').keydown(function (event) {
 			trapTabKey($(this), event);
