@@ -394,11 +394,13 @@ function eqd_single_after_entry_block_disclosure() {
 					if ( have_rows( 'vendors','option' ) ) :
 						while ( have_rows( 'vendors','option' ) ) :
 							the_row();
+							$company_title = get_sub_field( 'company_title' );
 							$disclosure_content = get_sub_field( 'disclosure_content' );
+							// $company_title
+							$result = preg_replace('/<p>/', '<p><b>'.$company_title.':</b> ', $disclosure_content, 1);
 							?>
 								<li class="vendor_disclosure_ol_li" id="sup_disclosure_<?php echo get_row_index(); ?>">
-									<sup><?php echo get_row_index(); ?></sup> 
-									<?php echo wp_kses_post($disclosure_content); ?>
+									<?php echo wp_kses_post($result); ?>
 								</li>
 							<?php
 						endwhile;

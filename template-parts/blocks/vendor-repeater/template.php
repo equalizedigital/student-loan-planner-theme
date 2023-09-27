@@ -86,7 +86,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							<td>
 								<div class="cashback_dollar"><?php echo wp_kses_post($cashback_amount); ?></div>
 								<span class="cashback">
-								Cashback<a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a>
+								Cashback<a href="#sup_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosure"><sup><?php echo get_row_index(); ?></sup></a>
 								</span>
 							</td>
 							<?php
