@@ -431,44 +431,69 @@ window.addEventListener("load", function () {
 
 	function teamHighlightFunctionality(windowWidth) {
 		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
+		let highlightButtonText = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button .text')
+		
+
 		if (highlightButton) {
-
 			let items = document.querySelectorAll('.team-hightlight-block-container-team-hightlight-member');
+			let initText = highlightButtonText.innerText;
+			if(items.length >= 4){
 
-			if (windowWidth <= 768) {
-				items.forEach(function (item) {
-					item.tabIndex = -1;
-				});
-				items[0].tabIndex = 0;
-			} else {
-				if (!document.querySelector('.team-hightlight-block-styling-1')) {
+				let tabOpen = false;
+
+				if (windowWidth <= 768) {
 					items.forEach(function (item) {
+						item.tabIndex = -1;
+					});
+					items[0].tabIndex = 0;
+				} else {
+					if (!document.querySelector('.team-hightlight-block-styling-1')) {
+						items.forEach(function (item) {
+							item.tabIndex = 0;
+						});
+					}
+
+				}
+
+				highlightButton.addEventListener('click', function () {
+					// Remove the "hidden" class and add an "animate" class for each item
+					items.forEach(function (item) {
+						
+						if(tabOpen){
+							item.classList.add('hidden');
+							item.classList.remove('animate');
+
+						} else {
+							item.classList.remove('hidden');
+							item.classList.add('animate');
+						}
+						
 						item.tabIndex = 0;
 					});
-				}
+					for (var i = 0; i < 4 && i < items.length; i++) {
+						items[i].classList.remove('hidden');
+					}
+					items[0].focus()
+					// Hide the "Show All" button with a fade-out effect
+					this.classList.add('active');
+					this.tabIndex = -1;
+
+					tabOpen == false? highlightButtonText.innerText = 'Show Less': highlightButtonText.innerText = initText;
+
+					// After the animation is complete, remove the "animate" class
+					setTimeout(function () {
+						items.forEach(function (item) {
+							tabOpen? item.classList.remove('animate') : item.classList.add('animate');
+						});
+					}, 500); 
+
+					tabOpen? tabOpen = false: tabOpen = true;
+				});
 
 			}
 
-			highlightButton.addEventListener('click', function () {
-				// Remove the "hidden" class and add an "animate" class for each item
-				items.forEach(function (item) {
-					item.classList.remove('hidden');
-					item.classList.add('animate');
-					item.tabIndex = 0;
-				});
-				items[0].focus()
-				// Hide the "Show All" button with a fade-out effect
-				this.classList.add('hidden');
-				this.tabIndex = -1;
-
-				// After the animation is complete, remove the "animate" class
-				setTimeout(function () {
-					items.forEach(function (item) {
-						item.classList.remove('animate');
-					});
-				}, 500); // Adjust the timeout value to match your CSS transition duration
-			});
 		}
+
 	}
 });
 

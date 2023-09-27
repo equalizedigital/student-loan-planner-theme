@@ -3864,19 +3864,6 @@
       "oAP" : "\/template-parts\/blocks\/podcast-trio-block\/podcast-trio.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/podcast-trio-block\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 39536,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/podcast-trio-block\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/template-parts\/blocks\/query-loop\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
