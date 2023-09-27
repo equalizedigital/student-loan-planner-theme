@@ -65,7 +65,7 @@ $recommended_posts  = get_field( 'recommended_posts' );
 							<?php 
 							if (has_post_thumbnail($post_id)) {
 								$image_url = get_the_post_thumbnail_url($post_id);
-								echo "<img src='$image_url' aria-hidden=\"true\" and role=\"presentation\" />";
+								echo "<img src='$image_url' aria-hidden=\"true\" role=\"presentation\" />";
 							}
 							?>
 						</div>

@@ -77,14 +77,14 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 						<?php if(!empty($row['manual_link'])): ?>
 							<a class="resource-links-nav-container-links-link-button" href="<?php echo $link['url']; ?>">
 								<?php
-									echo $icon?"<img aria-hidden=\"true\" and role=\"presentation\" src='$icon' aria-hidden='true'></img>":'';
+									echo $icon?"<img aria-hidden=\"true\" role=\"presentation\" src='$icon' aria-hidden='true'></img>":'';
 									echo "<span class=\"text\">$link_title</span>";
 								?>
 							</a>
 						<?php else: ?>
 						<a class="resource-links-nav-container-links-link-button" href="<?php echo $link; ?>">
 							<?php
-								echo $icon?"<img aria-hidden=\"true\" and role=\"presentation\" src='$icon' aria-hidden='true'></img>":'';
+								echo $icon?"<img aria-hidden=\"true\" role=\"presentation\" src='$icon' aria-hidden='true'></img>":'';
 								echo "<span class=\"text\">$name</span>";
 							?>
 						</a>
