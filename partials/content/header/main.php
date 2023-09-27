@@ -126,7 +126,7 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
                 <button class="menu_search_btn" id="menu_search_btn" aria-haspopup="dialog" aria-controls="search-modal" aria-expanded="false">
                     <img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search">
                 </button>
-                <a href="#" class="btn">Get Help</a>
+                <a href="https://www.studentloanplanner.com/hire-student-loan-help/" class="btn">Get Help</a>
             </div>
 
             <div class="menu_bottom">

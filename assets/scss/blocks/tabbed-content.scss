@@ -294,22 +294,12 @@
 
 
 
-                    @include media(">tablet") {
+                    @include media(">desktop") {
                         position: absolute;
                         top: 220px;
                         right: -125px;
                         min-width: 0;
                     }
-
-                    // &:nth-child(2) {
-                    //     top: 220px;
-                    //     right: -125px;
-                    // }
-
-                    // &:nth-child(3) {
-                    //     top: 330px;
-                    //     right: -115px;
-                    // }
 
                     &_text {
                         color: black;
@@ -322,10 +312,13 @@
                             color: brand-color('secondary');
                         }
                         a{
-                            color: brand-color('secondary');
                             text-decoration: none;
                             font-size: inherit;
                             font-weight: inherit;
+                            &:hover{
+                                color: brand-color('tertiary');
+                                text-decoration: underline;
+                            }
                         }
                     }
 
