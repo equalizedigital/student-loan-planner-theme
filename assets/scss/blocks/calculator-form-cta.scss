@@ -8,7 +8,7 @@
         padding: 0 $container-padding;
         display: grid;
         grid-template-columns:  1fr;
-        gap: 120px;
+        gap: 20px 120px;
         @include media(">tablet") {
             grid-template-columns: 1fr 1fr;
         }
