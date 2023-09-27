@@ -78,6 +78,7 @@
         }
 
         .cashback_dollar {
+            font-family: Source Sans Pro,sans-serif;
             color: #625089;
             text-align: center;
             font-size: 35px;
@@ -93,6 +94,11 @@
             font-style: normal;
             font-weight: 600;
             line-height: 20px;
+            a{
+                text-decoration: none;
+                color: inherit;
+                font-weight: inherit;
+            }
         }
 
         .title {
@@ -112,6 +118,7 @@
             font-weight: 400;
             line-height: 20px;
             max-width: 160px;
+            margin: 0 auto;
         }
 
     }
@@ -192,6 +199,7 @@
         }
 
         .cashback_dollar {
+            font-family: Source Sans Pro,sans-serif;
             color: #625089;
             text-align: center;
             font-size: 35px;
@@ -269,22 +277,34 @@ section.vendor_disclosure {
     }
 
     .vendor_disclosure_ol {
-        list-style: none;
+        // list-style: none;
+        list-style-position: outside;
         color: var(--Black, #000);
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
         line-height: 24px;
+        padding-left: 20px;
 
         li {
             display: flex;
             align-items: flex-start;
             margin-bottom: 20px;
+            display: list-item;
 
             sup {
                 display: inline;
                 font-weight: bold;
             }
+            
+        }
+        li::marker {
+            font-weight: 700;
+            vertical-align: super;
+            font-size: 80%;
+        }
+        a {
+            color: var(--WCAG-Green, #547C2D);
         }
     }
 
