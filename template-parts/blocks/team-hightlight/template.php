@@ -55,23 +55,21 @@ endif;
 				// Loop through rows.
 				while ( have_rows( 'team' ) ) :
 					the_row();
-					$member = get_sub_field( 'member' );
-					$author = get_field('post_author',$member->ID);
-					$author_id  =$author->ID;
+
+					$member    = get_sub_field( 'member' );
+					$author    = get_field( 'post_author', $member->ID );
+					$author_id = $author->ID;
 					?>
 					<li class="team-hightlight-block-container-team-hightlight-member 
 					<?php
 					if ( get_row_index() > 4 ) {
 						echo 'hidden'; }
 					?>
-					" 
-					>
-
-					
+					">
 						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
 							<?php if ( ! empty( $author_id ) ) : ?>
 								<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>" class="team-hightlight-block-container-team-hightlight-member__button">
-							<?php else: ?>
+							<?php else : ?>
 								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>" aria-label="Open Video">
 							<?php endif; ?>
 						<?php endif; ?>
@@ -87,14 +85,16 @@ endif;
 								?>
 							</figure>
 							<div class="team-hightlight-block-container-team-hightlight-member__content">
+								<?php if(!empty($member->ID)): ?>
 								<span class="title"><?php echo wp_kses_post( get_the_title( $member->ID ) ); ?></span>
+								<?php endif; ?>
 								<span class="job"><?php the_field( 'job_title', $member->ID ); ?></span>
 							</div>
 
 							<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
 								<?php if ( ! empty( $author_id ) ) : ?>
 									</a>
-								<?php else: ?>
+								<?php else : ?>
 									</button>
 								<?php endif; ?>
 							<?php endif; ?>
@@ -107,9 +107,11 @@ endif;
 			endif;
 			?>
 		</ul>
-		<?php if ( empty( $acf_use_alternative_styling ) ) : ?>
+		<?php if ( empty( $acf_use_alternative_styling ) ) : 
+			if($number_of_items >= 4):
+			?>
 		<div class="team-hightlight-block-container-team-hightlight__load_more">
-			<button class="load">
+			<button class="load" aria-label="Show All Consultants" aria-expanded aria-controls>
 				<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?></div>
 				<span class="arrow">
 					<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
@@ -118,7 +120,9 @@ endif;
 				</span>
 			</button>
 		</div>
-		<?php endif; ?>
+		<?php 
+			endif;
+		endif; ?>
 		
 	</div>
 </section>
@@ -142,12 +146,12 @@ if ( have_rows( 'team' ) ) :
 						<figure>
 							<?php
 								$thumbnail_id = get_post_thumbnail_id( $member->ID );
-								if ( $thumbnail_id ) {
-									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-									$featured_image_url = $image_url[0];
-									echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
-								}
-								?>
+							if ( $thumbnail_id ) {
+								$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+								$featured_image_url = $image_url[0];
+								echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
+							}
+							?>
 						</figure>
 					</div>
 					<div class="modal_text">
