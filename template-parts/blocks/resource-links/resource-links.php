@@ -126,7 +126,7 @@ $title = get_field('title');
 								$icon = $row['icon']['url'];
 							}
 							?>
-								<li class="dropdown-li" data-resourcelink="resource-link-<?php echo $key; ?>">
+								<li class="dropdown-li" data-resourcelink="resource-link-<?php echo $key; ?>" tabindex="0">
 									<img src="<?php echo $icon; ?>" />
 									<?php _e($link); ?>
 								</li>
@@ -165,7 +165,7 @@ $title = get_field('title');
 					?>
 					<div id="resource-link-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key==0?'resource-links-loop-container-item--active':''; ?>">
 						<header class="resource-links-loop-container-header">
-							<h2 class="title"><?php echo $link; ?></h2>
+							<h2 class="title" tabindex="0"><?php echo $link; ?></h2>
 						</header>
 						<div class="resource-links-loop-container-content">
 							<div class="resource-links-loop-container-content-featured">

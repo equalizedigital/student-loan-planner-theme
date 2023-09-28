@@ -388,8 +388,6 @@ function eqd_single_after_entry_block_disclosure() {
 			<section class="vendor_disclosure">
 				<h2 class="vendor_disclosure_title">Disclosures</h2>
 				<ol class="vendor_disclosure_ol">
-					
-
 					<?php
 					if ( have_rows( 'vendors','option' ) ) :
 						while ( have_rows( 'vendors','option' ) ) :
