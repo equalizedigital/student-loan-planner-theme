@@ -119,7 +119,7 @@
                 &.active {
                     display: grid;
                 }
-
+                
                 li {
                     display: flex;
                     align-items: center;
@@ -127,6 +127,13 @@
                     gap: 20px;
                     padding: 10px 15px;
                     border-bottom: 1px solid var(--dark-gray, #A1A5A5);
+                }
+                a{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    text-decoration: none;
                 }
 
                 img {
