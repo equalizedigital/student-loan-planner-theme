@@ -59,6 +59,7 @@ endif;
 					$member    = get_sub_field( 'member' );
 					$author    = get_field( 'post_author', $member->ID );
 					$author_id = $author->ID;
+					$author_name = get_userdata($author->ID);
 					?>
 					<li class="team-hightlight-block-container-team-hightlight-member 
 					<?php
@@ -66,9 +67,10 @@ endif;
 						echo 'hidden'; }
 					?>
 					">
+					
 						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
 							<?php if ( ! empty( $author_id ) ) : ?>
-								<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>" class="team-hightlight-block-container-team-hightlight-member__button">
+								<a href="<?php echo get_site_url() . '/author/'.$author_name->user_nicename; ?>" class="team-hightlight-block-container-team-hightlight-member__button">
 							<?php else : ?>
 								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>" aria-label="Open Video">
 							<?php endif; ?>
@@ -147,7 +149,7 @@ if ( have_rows( 'team' ) ) :
 							<?php
 								$thumbnail_id = get_post_thumbnail_id( $member->ID );
 							if ( $thumbnail_id ) {
-								$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+								$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'large' );
 								$featured_image_url = $image_url[0];
 								echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
 							}
@@ -162,7 +164,7 @@ if ( have_rows( 'team' ) ) :
 							<?php the_field( 'job_title', $member->ID ); ?>
 						</span>
 						<span class="content">
-							<?php echo wp_kses_post( $member->post_content ); ?>
+							<?php echo wpautop(wp_kses_post( $member->post_content )); ?>
 						</span>
 					</div>
 				</div>
