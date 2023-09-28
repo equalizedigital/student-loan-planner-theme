@@ -181,38 +181,170 @@ window.addEventListener("load", function () {
 					targetElements.forEach(element => {
 						element.classList.add('resource-links-loop-container-item--active');
 					});
-
 				}
 
 				// Add active class to the clicked button
 				button.classList.add('active');
-
-
-				let firstLink = document.getElementById(targetClass).querySelector('a');
+				let firstLink = document.getElementById(targetClass).querySelector('.title');
 				if (firstLink) {
 					firstLink.focus();
 				}
-
 			});
+
+		});
+
+		tabButtons.forEach(button => {
+			// Add a click event listener to each button
+			button.addEventListener('keydown', onKeydown);
 		});
 
 		document.querySelectorAll('#resource-links-dropdown').forEach(function (element) {
 			element.addEventListener('click', function () {
 				this.classList.toggle('active');
 				var target = document.querySelector('.resource-links-dropdown-list');
-				target.classList.add('active');
+				target.classList.toggle('active');
+				target.focus();
 			});
 		});
 
 		document.querySelectorAll('.dropdown-li').forEach(function (element) {
-			element.addEventListener('click', function () {
-				var target = document.getElementById('resource-links-dropdown');
-				var button = document.querySelector('.resource-links-dropdown-list');
+			element.addEventListener('click', function (event) {
+				let target = document.getElementById('resource-links-dropdown');
+				let button = document.querySelector('.resource-links-dropdown-list');
+
 				button.classList.remove('active');
 				target.innerHTML = element.innerHTML;
-				document.getElementById('resource-links-dropdown').classList.remove('active');
+				target.classList.remove('active');
 			});
+
+			element.addEventListener('keydown', function (event) {
+				if(event.keyCode == 13){
+
+					let target = document.getElementById('resource-links-dropdown');
+					let dropdown = document.querySelector('.resource-links-dropdown-list');
+
+					dropdown.classList.remove('active');
+					target.innerHTML = element.innerHTML;
+					target.classList.remove('active');
+
+					// Get the value of the data-target attribute
+					let targetClass = event.target.getAttribute('data-resourcelink');
+					// Remove active class from all items before adding to the new one
+					tabButtons.forEach(btn => btn.classList.remove('active'));
+
+					let panes = document.querySelectorAll('.resource-links-loop-container-item');
+					panes.forEach(element => {
+						element.classList.remove('resource-links-loop-container-item--active');
+					});
+
+					// If a class that matches the data attribute exists, add the active class
+					if (targetClass) {
+						let targetElements = document.querySelectorAll('#' + targetClass);
+						targetElements.forEach(element => {
+							element.classList.add('resource-links-loop-container-item--active');
+						});
+					}
+
+					// Add active class to the clicked button
+					// button.classList.add('active');
+					let firstLink = document.getElementById(targetClass).querySelector('a');
+					if (firstLink) {
+						firstLink.focus();
+					}
+				}
+
+			});
+
+			
 		});
+
+		document.querySelector('#resource-links-dropdown').addEventListener('keydown', function (event){
+			if(event.key == 'ArrowDown'){
+				let firstLink = document.querySelector('.resource-links-dropdown-list .dropdown-li');
+				if (firstLink) {
+					firstLink.focus();
+				}
+			}
+		});
+
+		document.querySelectorAll('.dropdown-li').forEach(button => {
+			// Add a click event listener to each button
+			button.addEventListener('keydown', onKeydownDropdown);
+		});
+
+		
+		function onKeydownDropdown(event) {
+			
+			var tgt = event.currentTarget;
+			console.log(tgt)
+			switch (event.key) {
+			  case 'ArrowUp':
+				moveFocusToPreviousTabDropdown(tgt);
+				break;
+		
+			  case 'ArrowDown':
+				moveFocusToNextTabDropdown(tgt);
+				break;
+			  default:
+				break;
+			}
+		
+		}
+
+
+		function onKeydown(event) {
+			
+			var tgt = event.currentTarget;
+
+			switch (event.key) {
+			  case 'ArrowLeft':
+				moveFocusToPreviousTab(tgt);
+				break;
+		
+			  case 'ArrowRight':
+				moveFocusToNextTab(tgt);
+				break;
+
+			  default:
+				break;
+			}
+		
+		}
+
+		function moveFocusToNextTabDropdown(event){
+			console.log(Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event))
+			let currentIndex = Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event);
+			if (currentIndex !== -1 && currentIndex < document.querySelectorAll('.dropdown-li').length - 1) {
+				document.querySelectorAll('.dropdown-li')[currentIndex + 1].focus();
+			}
+		}
+
+		function moveFocusToPreviousTabDropdown(event){
+			let currentIndex = Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event);
+			if (currentIndex !== -1 && currentIndex < document.querySelectorAll('.dropdown-li').length - 1) {
+				if(currentIndex - 1 != -1){
+					document.querySelectorAll('.dropdown-li')[currentIndex - 1].focus();
+				} else {
+					let focusItem = document.getElementById('resource-links-dropdown')
+				focusItem.focus();
+				}
+				
+			} 
+		}
+
+		function moveFocusToNextTab(event){
+			let currentIndex = Array.from(tabButtons).indexOf(event);
+			if (currentIndex !== -1 && currentIndex < tabButtons.length - 1) {
+				tabButtons[currentIndex + 1].focus();
+			}
+		}
+
+		function moveFocusToPreviousTab(event){
+			let currentIndex = Array.from(tabButtons).indexOf(event);
+			if (currentIndex !== -1 && currentIndex < tabButtons.length - 1) {
+				tabButtons[currentIndex - 1].focus();
+			}
+		}
 	}
 
 });
