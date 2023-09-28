@@ -49,9 +49,6 @@ $coalition_map = new RqD_Doctor_Map();
 			<?php echo $coalition_map->states_select(); ?>
 			<div class="doctor-mortgages-block-results-container">
 			</div>
-			<a href="<?php echo get_permalink( 8 ); ?>" class="doctor-mortgages-block-cta">
-				<?php _e( 'Best Physician Mortgage Loans in Texas', 'eqd' ); ?>
-			</a>
 		</div>
 	</div>
 

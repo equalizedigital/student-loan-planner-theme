@@ -85,7 +85,8 @@ class RqD_Doctor_Map{
             'state' => [
                 'name' => $state,
                 'abbreviation' => $this->convert_state($state),
-                'slug' => strtolower(str_replace(' ','-',$state))
+                'slug' => strtolower(str_replace(' ','-',$state)),
+                'link' => get_term_link($state, 'slp_state')
             ]
         ];
         
