@@ -7,13 +7,15 @@
             display: grid;
             grid-template-columns: 1fr ;
             @include media(">tablet") {
-                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: repeat(3, auto);
+                justify-content: center;
             }
             &_item {
                 text-decoration: none;
                 text-align: center;
                 padding: 45px 38px;
                 border-radius: 10px;
+                max-width: 380px;
                 &_text {
 
                     text-align: center;
