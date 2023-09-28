@@ -131,6 +131,9 @@
                         border: none;
                         background: transparent;
                         text-decoration: none;
+                        display: flex;
+                        flex-direction: column;
+                        cursor: pointer;
                     }
 
                     &__content {
@@ -254,7 +257,7 @@
 
         img {
             width: 100%;
-            border-radius: 10px;
+            // border-radius: 10px;
             object-fit: cover;
             object-position: center;
             max-width: 500px;
