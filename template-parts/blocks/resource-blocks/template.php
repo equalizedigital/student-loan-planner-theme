@@ -48,7 +48,7 @@ $blocks = get_field('blocks');
 	<?php 
 		 
 		if( $blocks ) {
-			echo '<div class="resource-blocks-block-container-list-item">';
+			echo '<ul class="resource-blocks-block-container-list-item">';
 			foreach( $blocks as $row ) {
 				if(!empty($row['link'])){
 					$link = $row['link']['url'];
@@ -59,16 +59,16 @@ $blocks = get_field('blocks');
 				if(!empty($row['subcopy'])){
 					$subcopy = $row['subcopy'];
 				}
-				echo '<div class="resource-blocks-block-container-list-item__block">';
+				echo '<li class="resource-blocks-block-container-list-item__block">';
 					echo "<a href=\"$link\">";
 					?>
 						<h3 class="title"><?php _e($title); ?></h3>
 						<p><?php _e($subcopy); ?></p>
 					<?php
 					echo "</a>";
-				echo '</div>';
+				echo '</li>';
 			}
-			echo '</div>';
+			echo '</ul>';
 		}
 		?>
 	</div>
