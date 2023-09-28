@@ -27,10 +27,6 @@ class RqD_Doctor_Map{
             $state = $terms[0];
         }
 
-        if(strlen($state) == 2){
-            $state = $this->convert_state($state);
-        }
-
         $args = array(
             'post_type' => 'slp_contacts',
             'posts_per_page' => -1,
