@@ -227,7 +227,7 @@ $title = get_field('title');
 
 										?>
 											<a class="resource-links-loop-container-content-loop-item" href="<?php echo $link; ?>">
-												<div class="category"><?php echo $category; ?></div>
+												<div class="category"><?php echo !empty($category)? $category:'Category'; ?></div>
 												<h3 class="title"><?php echo $title; ?></h3>
 												<div class="author">
 													<figure>
