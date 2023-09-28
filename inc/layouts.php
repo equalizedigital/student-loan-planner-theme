@@ -332,6 +332,7 @@ function eqd_single_fullwidth_content() {
 			<div class="site-main-article__author-data">
 				<div class="article_author">
 					<?php
+					$post_author = get_the_author();
 					$id = get_field( 'post_reviewed_by', get_the_ID() );
 					$id_post_editor = get_field( 'post_editor', get_the_ID() );
 					$edit_auth_id = $id_post_editor['ID'];
@@ -344,8 +345,13 @@ function eqd_single_fullwidth_content() {
 						</a>
 						<span class="entry-info">
 							<span>
-								Written By <a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $edit_auth_id ) ) ); ?>">
-								<?php echo get_the_author(); ?></a>
+								<?php echo !empty($id_post_editor)? "Edited by": "Written By"; ?>
+
+								<a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $edit_auth_id ) ) ); ?>">
+									<?php 
+									echo !empty($id_post_editor)? $id_post_editor['user_firstname'] . ' '.$id_post_editor['user_lastname']: get_the_author();
+									?>
+								</a>
 							</span>
 							<span class="entry-data">
 								<?php
