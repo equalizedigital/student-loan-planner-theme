@@ -125,11 +125,30 @@ $title = get_field('title');
 							if(!empty($row['icon'])){
 								$icon = $row['icon']['url'];
 							}
+							if(!empty($row['manual_link'])){
+								$manual_link 		= $row['manual_link'];
+								$manual_link_text = $manual_link['title'];
+								$manual_link_url = $manual_link['url'];
+							}
 							?>
+
+							<?php if($row['manual_link']): ?>
+							<li class="dropdown-li">
+							<a  href="<?php echo $manual_link_url; ?>">
+								<?php
+								echo $icon?"<img src='$icon' aria-hidden='true'></img>":'';
+								echo $manual_link_text?"<span class=\"text\">$manual_link_text</span>":'';
+								?>
+							</a>
+							</li>
+							<?php else: ?>
 								<li class="dropdown-li" data-resourcelink="resource-link-<?php echo $key; ?>" tabindex="0">
 									<img src="<?php echo $icon; ?>" />
 									<?php _e($link); ?>
 								</li>
+							<?php endif; ?>
+
+								
 							<?php
 						}
 					}
