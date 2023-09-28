@@ -776,6 +776,10 @@ img.wprm-comment-rating {
 			color: inherit;
 			text-decoration: underline;
 			color: var(--WCAG-Green, #547C2D);
+			cursor: pointer;
+			&:hover{
+				text-decoration: none;
+			}
 		}
 	}
 }
@@ -843,6 +847,10 @@ img.wprm-comment-rating {
 			color: inherit;
 			text-decoration: underline;
 			color: var(--WCAG-Green, #547C2D);
+			cursor: pointer;
+			&:hover{
+				text-decoration: none;
+			}
 		}
 	}
 

@@ -401,12 +401,17 @@ jQuery(function ($) {
 
 	$(document).ready(function () {
 		jQuery('.modal-btn').click(function (event) {
+			var isExpanded = $(this).attr('aria-expanded') === 'true';
+
 			modalId = $(event.currentTarget).data('modal')
-			showModal(modalId);
+			showModal(modalId);	
+			$(this).attr('aria-expanded', !isExpanded);
 		});
+
 		jQuery('.modal .close-btn').click(function (e) {
 			hideModal();
 		});
+
 		jQuery('.modal .close-btnButton').click(function (e) {
 			hideModal();
 		});
@@ -414,6 +419,7 @@ jQuery(function ($) {
 		jQuery('.modal').keydown(function (event) {
 			trapTabKey($(this), event);
 		})
+
 		jQuery('.modal').keydown(function (event) {
 			trapEscapeKey($(this), event);
 		})
@@ -502,7 +508,7 @@ jQuery(function ($) {
 		jQuery('body').on('focusin', 'body', function () {
 			setFocusToFirstItemInModal('#' + obj);
 		})
-		console.log('#' + obj)
+		// console.log('#' + obj)
 		// save current focus
 		focusedElementBeforeModal = jQuery(':focus');
 
@@ -516,6 +522,8 @@ jQuery(function ($) {
 
 		// remove the listener which redirects tab keys in the main content area to the modal
 		jQuery('body').off('focusin', ' body');
+
+        jQuery('.modal').attr('aria-hidden', 'true');
 
 		// set focus back to element that had it before the modal was opened
 		focusedElementBeforeModal.focus();

@@ -134,7 +134,7 @@ function eqd_single_after_entry_modals() {
 			the_row();
 			$lender_disclosure = get_sub_field( 'lender_disclosure', 'option' );
 			?>
-			<div id="modal_disclosure_<?php echo get_row_index(); ?>" class="modal" role="dialog" aria-modal="true">
+			<div id="modal_disclosure_<?php echo get_row_index(); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
 				<div class="modal-content" >
 				<button class="close-btn">
 					<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
@@ -158,7 +158,7 @@ function advertising_disclosure() {
 	<?php
 	$disclosure_content = get_field( 'advertising_disclosure', 'option' );
 	?>
-	<div id="modal_disclosure" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">
+	<div id="modal_disclosure" class="modal team-hightlight-block-modal" aria-hidden="true" role="dialog" aria-modal="true">
 		<div class="modal-content" >
 		<button class="close-btn">
 			<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
