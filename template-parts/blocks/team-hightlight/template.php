@@ -79,7 +79,7 @@ endif;
 							<figure class="team-hightlight-block-container-team-hightlight-member__photo">
 								<?php
 								$thumbnail_id = get_post_thumbnail_id( $member->ID );
-								if ( $thumbnail_id ) {
+								if ( !empty( $member->ID) ) {
 									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
 									$featured_image_url = $image_url[0];
 									echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
