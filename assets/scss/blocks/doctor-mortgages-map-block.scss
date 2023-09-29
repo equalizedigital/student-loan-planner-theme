@@ -1,0 +1,193 @@
+.doctor-mortgages-block {
+	background-color: brand-color('tertiary');
+	.doctor-mortgages-block-wrap {
+		margin: 0 auto;
+		max-width: $container-width;
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		grid-column-gap: 100px;
+		h2 {
+			color: inherit;
+		}
+		#d3-map {
+			// display: none;
+			path.us-state {
+				fill: $cream;
+				stroke: brand-color('tertiary');
+				&:hover {
+					fill: $black;
+					cursor: pointer;
+				}
+			}
+			rect.us-state {
+				fill: $cream;
+				stroke: brand-color('tertiary');
+				&:hover {
+					fill: $black;
+					cursor: pointer;
+				}
+			}
+			path.us-state.active {
+				fill: brand-color('primary');
+				cursor: pointer;
+			}
+			rect.us-state.active {
+				fill: brand-color('primary');
+				cursor: pointer;
+			}
+			.us-state-label {
+				font-size: 10px;
+				font-weight: 400;
+				line-height: 26px; 
+			}
+			.us-state-isolabel.hover {
+				fill: $black;
+			}
+			.us-state-label.hover {
+				fill: $white;
+			}
+			.us-territory.FG {
+				display: none;
+			}
+			#us-state-label-FG {
+				display: none;
+			}
+			.us-territory.PW {
+				display: none;
+			}
+			#us-state-label-PW {
+				display: none;
+			}
+			.us-territory.MH {
+				display: none;
+			}
+			#us-state-label-MH {
+				display: none;
+			}
+			.us-territory.FM {
+				display: none;
+			}
+			#us-state-label-FM {
+				display: none;
+			}
+		}
+	}
+	.doctor-mortgages-block-main {
+		h2 {
+			color: $white;
+			font-size: 35px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 40px; /* 114.286% */
+		}
+		p.doctor-mortgages-block-text {
+			color: $white;
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 28px;
+			margin-bottom: 40px;
+		}
+	}
+	.doctor-mortgages-block-sidebar {
+		border-radius: 10px;
+		box-shadow: 0px 15px 27px 0px rgba(161, 165, 165, 0.25);
+		background-color: $white;
+		padding: 30px;
+		font-size: 16px;
+		select {
+			border-radius: 4px;
+			border: 1px solid #A1A5A5;
+			background:$white;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 24px;
+			// remove arrow
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='8' viewBox='0 0 13 8' fill='none'%3E%3Cpath d='M1.45605 1.48535L6.48542 6.51472L11.5148 1.48535' stroke='%2382BC46' stroke-linecap='round'/%3E%3C/svg%3E");	
+			background-repeat: no-repeat;
+			background-position: right 10px center;
+			padding-right: 30px;
+		}
+		h2 {
+			color: brand-color('tertiary');
+			font-size: 35px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 40px;
+			margin-top: 40px; 
+		}
+		h3 {
+			margin-bottom: 8px;
+			color: $black;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 25px;
+			text-decoration: none;
+		}
+		a.link{
+			text-decoration: underline;
+			color: brand-color('secondary');
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 28px;
+			&:hover {
+				color: brand-color('tertiary');
+			}
+		}
+		a {
+			color: brand-color('tertiary');
+		}
+	}
+	.doctor-mortgages-block-select {
+		height: 42px;
+		border-radius: 0px;
+		border: none;
+		color: $black;
+		font-weight: 300;
+		padding: 10px !important;
+		&:focus {
+			border-radius: 0px;
+		}
+	}
+	.doctor-mortgages-block-results-result {
+		border-bottom: solid 1px #fff;
+		padding: 17px 0 0;
+	}
+	a.doctor-mortgages-block-cta {
+		width: 100%;
+		height: 45px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 10px;
+		background: brand-color('primary');
+		color: $black;
+		font-size: 15px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 70px;
+		text-decoration: none;
+		margin-top: 40px;
+		&:hover {
+			background:none;
+			color: brand-color('primary');
+			border: 2px solid brand-color('primary');
+		}
+	}
+
+	@media (max-width: 768px) {
+		.doctor-mortgages-block-wrap{
+			display: block;
+			padding: 0 25px;
+		}
+		#d3-map {
+			display: none;
+		}
+	}
+
+}

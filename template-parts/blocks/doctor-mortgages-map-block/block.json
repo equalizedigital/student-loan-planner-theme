@@ -1,0 +1,20 @@
+{
+	"name": "acf/doctor-mortgages-map-block",
+	"title": "Doctor Mortgages Map",
+	"category": "text",
+	"script": "file:./doctor-mortgages-map-block.js",
+	"style": "file:./doctor-mortgages-map-block.css",
+	"icon": "site",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "doctor-mortgages-map-block.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview_image_help": "screenshot.png"
+			}
+		}
+	}
+}

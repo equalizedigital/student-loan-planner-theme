@@ -30,6 +30,7 @@ require_once get_template_directory() . '/inc/blocks.php';
 require_once get_template_directory() . '/inc/fonts.php';
 require_once get_template_directory() . '/inc/login-logo.php';
 require_once get_template_directory() . '/inc/social-links.php';
+require_once get_template_directory() . '/inc/map-block-functionality.php';
 
 // Plugin Support.
 require_once get_template_directory() . '/inc/pwa.php';
@@ -77,6 +78,16 @@ function eqd_scripts() {
 	);
 
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), filemtime( get_template_directory() . '/assets/css/main.css' ) );
+
+	wp_enqueue_script( 'doctor-mortgages-map-block', get_stylesheet_directory_uri() . '/template-parts/blocks/doctor-mortgages-map-block/doctor-mortgages-map-block.js', array( 'jquery' ), filemtime( get_template_directory() . '/template-parts/blocks/doctor-mortgages-map-block/doctor-mortgages-map-block.js' ), true );
+	wp_localize_script(
+		'doctor-mortgages-map-block',
+		'rwc_base_vars',
+		array(
+			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+		)
+	);
 
 }
 add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
