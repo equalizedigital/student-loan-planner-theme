@@ -118,9 +118,8 @@ if ( have_rows( 'testimonials' ) ) :
 		jQuery('.testimonial-slider-block-container-testimonial-slider').slick({
 			infinite: true,
 			speed: 700,
-			autoplay:true,
-			autoplaySpeed: 2000,
 			arrows:false,
+			fade: true,
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
