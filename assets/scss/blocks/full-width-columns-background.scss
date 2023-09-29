@@ -62,6 +62,11 @@
             @include media(">tablet") {
                 padding: 106px 80px;
                 width: 50%;
+                padding: 90px 20px 70px;
+                width: 50%;
+                max-width: 500px;
+                margin: 0 auto;
+
             }
 
             .title {
