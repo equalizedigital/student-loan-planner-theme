@@ -102,7 +102,7 @@ class RqD_Doctor_Map{
             <label for="state" class="screen-reader-text">Choose a state:</label>
             <select name="state" class="doctor-mortgages-block-select">
             <?php foreach ($terms as $term){ ?>
-                    <option value="<?php echo $term->slug; ?>"><?php echo $this->convert_state($term->name); ?></option>
+                    <option value="<?php echo $term->name; ?>"><?php echo $this->convert_state($term->name); ?></option>
                 <?php
             } ?>
             </select>

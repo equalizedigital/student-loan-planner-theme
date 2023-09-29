@@ -70,7 +70,7 @@
 			};
 
 			$( ".doctor-mortgages-block-select" ).change(function() {
-				var state = $('option:selected',this).text();
+				var state = $('option:selected',this).val();
 				rwc_coalition_map_ajax(state);
 			});
 	
