@@ -214,7 +214,7 @@ input {
 	}
 }
 
-div.wpforms-container {
+.wpforms-container {
 
 	.wpforms-form {
 		textarea {
@@ -228,8 +228,6 @@ div.wpforms-container {
 			color: inherit;
 			font-weight: 400;
 		}
-
-		.wpforms-field-label {}
 
 		.wpforms-field-label {
 			font-size: 18px;
