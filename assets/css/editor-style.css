@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Brand Color
  *
@@ -331,11 +332,23 @@ input {
   background: transparent;
 }
 
+div.wpforms-container .wpforms-form textarea {
+  min-height: 250px;
+  border-radius: 4px;
+  border: 1px solid var(--Dark-Gray, #A1A5A5);
+  background: #FFF;
+}
+div.wpforms-container .wpforms-form .wpforms-required-label {
+  color: inherit;
+  font-weight: 400;
+}
 div.wpforms-container .wpforms-form .wpforms-field-label {
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 22px;
+  font-family: Source Sans Pro, sans-serif;
+  margin-bottom: 10px;
 }
 div.wpforms-container .wpforms-form input[type=text] {
   border-radius: 4px;
@@ -361,13 +374,20 @@ div.wpforms-container .wpforms-form button[type=submit].wpforms-submit {
   font-weight: 400;
   line-height: 15px;
   min-width: 148px;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
 div.wpforms-container .wpforms-form button[type=submit].wpforms-submit:hover {
   background-color: #82BC46;
   border-color: #82BC46;
   background: transparent;
+}
+div.wpforms-container .wpforms-form button[type=submit].wpforms-submit:focus {
+  outline: 2px solid blue;
+}
+div.wpforms-container .wpforms-form input:focus,
+div.wpforms-container .wpforms-form textarea:focus {
+  outline: 2px solid blue;
 }
 
 .wp-block-table table {
@@ -426,7 +446,15 @@ div.wpforms-container .wpforms-form button[type=submit].wpforms-submit:hover {
   line-height: 15px;
   min-width: 148px;
   cursor: pointer;
+  border-radius: 4px;
+}
+.btn.br-ten,
+.wp-block-button__link.br-ten {
   border-radius: 10px;
+}
+.btn.white-focus:focus,
+.wp-block-button__link.white-focus:focus {
+  outline: 2px solid white;
 }
 .btn:hover,
 .wp-block-button__link:hover {
@@ -3634,6 +3662,7 @@ ul.wp-block-gallery li, ul.blocks-gallery-grid li, ol.wp-block-gallery li, ol.bl
 .team-hightlight-block-styling-1 .team-hightlight-block-container-team-hightlight-member__photo {
   justify-content: flex-start;
   margin: 0;
+  width: 100%;
 }
 .team-hightlight-block-styling-1 .team-hightlight-block-container-team-hightlight-member__photo img {
   width: 100%;
@@ -3710,6 +3739,10 @@ ul.wp-block-gallery li, ul.blocks-gallery-grid li, ol.wp-block-gallery li, ol.bl
   border: none;
   background: transparent;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0;
 }
 .team-hightlight-block-container-team-hightlight-member__content {
   padding: 5px 20px;
@@ -3814,7 +3847,6 @@ ul.wp-block-gallery li, ul.blocks-gallery-grid li, ol.wp-block-gallery li, ol.bl
 }
 .team-hightlight-block-modal .modal_image img {
   width: 100%;
-  border-radius: 10px;
   object-fit: cover;
   object-position: center;
   max-width: 500px;
@@ -4493,7 +4525,8 @@ header.testimonial-slider-block-container-header {
 }
 @media (min-width: 769px) {
   .detailed_links_block_container_items {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
   }
 }
 .detailed_links_block_container_items_item {
@@ -4501,6 +4534,7 @@ header.testimonial-slider-block-container-header {
   text-align: center;
   padding: 45px 38px;
   border-radius: 10px;
+  max-width: 380px;
 }
 .detailed_links_block_container_items_item_text {
   text-align: center;
@@ -4891,10 +4925,12 @@ section.vendor_disclosure .vendor_disclosure_ol a {
 
 .link-green a {
   color: #82BC46;
+  font-weight: inherit;
 }
 
 .link-wcag-green a {
   color: #547C2D;
+  font-weight: inherit;
 }
 
 .headline-lines {
@@ -4938,6 +4974,21 @@ section.vendor_disclosure .vendor_disclosure_ol a {
   .list-2col {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.color-reverse-content-block ul {
+  list-style: none;
+}
+.color-reverse-content-block ul li::before {
+  content: "•"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #82BC46; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+.color-reverse-content-block .link-green a:hover {
+  color: white;
 }
 
 /*# sourceMappingURL=editor-style.css.map */

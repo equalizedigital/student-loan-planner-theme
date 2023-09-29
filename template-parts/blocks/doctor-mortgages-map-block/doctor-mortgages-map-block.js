@@ -36,8 +36,8 @@
 						'</a>';
 						$('.doctor-mortgages-block-results-container').after(button);
 						$('.us-state').removeClass('active');
-						$('.'+response_json.state.name).addClass('active');
-						$(`.doctor-mortgages-block-select option[value='${response_json.state.slug}']`).prop('selected', true);
+						$('.'+response_json.state.abbreviation).addClass('active');
+						$(`.doctor-mortgages-block-select option[value='${response_json.state.abbreviation}']`).prop('selected', true);
 
 						$('.doctor-mortgages-block-results-result-tab-button').click(function(){
 							var parent = $(this).parent().parent();
