@@ -32,7 +32,7 @@
 							$('.doctor-mortgages-block-cta').remove();
 						}
 						let button = '<a href="'+response_json.state.link+'" class="doctor-mortgages-block-cta">Best Physician Mortgage Loans in'+
-						' '+response_json.state.name+
+						' '+response_json.state.abbreviation+
 						'</a>';
 						$('.doctor-mortgages-block-results-container').after(button);
 						$('.us-state').removeClass('active');
