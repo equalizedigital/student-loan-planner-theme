@@ -73,6 +73,14 @@
       "oF" : 0,
       "pg" : 0
     },
+    "\/assets\/css\/editor-style.css.map" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/css\/editor-style.css.map",
+      "oF" : 0
+    },
     "\/assets\/css\/main.css" : {
       "aP" : 0,
       "bl" : 0,
@@ -2569,6 +2577,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/doctor-mortgages-map-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/doctor-mortgages-map-block.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/featured-in.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3447,6 +3470,14 @@
       "oAP" : "\/inc\/loop.php",
       "oF" : 0
     },
+    "\/inc\/map-block-functionality.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/inc\/map-block-functionality.php",
+      "oF" : 0
+    },
     "\/inc\/navigation.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3569,7 +3600,7 @@
     },
     "\/screenshot.png" : {
       "ft" : 32768,
-      "iS" : 307259,
+      "iS" : 90721,
       "oA" : 0,
       "oAP" : "\/screenshot.png",
       "oF" : 0,
@@ -3703,6 +3734,46 @@
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/detailed-links\/template.php",
       "oF" : 0
+    },
+    "\/template-parts\/blocks\/doctor-mortgages-map-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/doctor-mortgages-map-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/doctor-mortgages-map-block\/doctor-mortgages-map-block.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/doctor-mortgages-map-block-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/template-parts\/blocks\/doctor-mortgages-map-block\/doctor-mortgages-map-block.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/doctor-mortgages-map-block\/doctor-mortgages-map-block.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/doctor-mortgages-map-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 118281,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/doctor-mortgages-map-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/template-parts\/blocks\/featured-in\/block.json" : {
       "ft" : 524288,
