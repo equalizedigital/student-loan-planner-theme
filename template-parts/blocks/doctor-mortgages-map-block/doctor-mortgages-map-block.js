@@ -32,12 +32,12 @@
 							$('.doctor-mortgages-block-cta').remove();
 						}
 						let button = '<a href="'+response_json.state.link+'" class="doctor-mortgages-block-cta">Best Physician Mortgage Loans in'+
-						' '+response_json.state.name+
+						' '+response_json.state.abbreviation+
 						'</a>';
 						$('.doctor-mortgages-block-results-container').after(button);
 						$('.us-state').removeClass('active');
-						$('.'+response_json.state.name).addClass('active');
-						$(`.doctor-mortgages-block-select option[value='${response_json.state.slug}']`).prop('selected', true);
+						$('.'+response_json.state.abbreviation).addClass('active');
+						$(`.doctor-mortgages-block-select option[value='${response_json.state.abbreviation}']`).prop('selected', true);
 
 						$('.doctor-mortgages-block-results-result-tab-button').click(function(){
 							var parent = $(this).parent().parent();
@@ -70,7 +70,7 @@
 			};
 
 			$( ".doctor-mortgages-block-select" ).change(function() {
-				var state = $('option:selected',this).text();
+				var state = $('option:selected',this).val();
 				rwc_coalition_map_ajax(state);
 			});
 	

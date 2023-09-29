@@ -45,7 +45,7 @@ class RqD_Doctor_Map{
 
         ob_start();
         if ( $the_query->have_posts() ) { ?>
-            <h2><?php echo $state; ?></h2>
+            <h2><?php echo $this->convert_state($state); ?></h2>
             <div class="doctor-mortgages-block-results">
                 <?php while ( $the_query->have_posts() ) { $the_query->the_post(); 
                     $fields = get_fields();
@@ -79,8 +79,8 @@ class RqD_Doctor_Map{
         $data = [
             'html' => $html,
             'state' => [
-                'name' => $state,
-                'abbreviation' => $this->convert_state($state),
+                'name' => $this->convert_state( $state ),
+                'abbreviation' => $state,
                 'slug' => strtolower(str_replace(' ','-',$state)),
                 'link' => get_term_link($state, 'slp_state')
             ]
@@ -102,7 +102,7 @@ class RqD_Doctor_Map{
             <label for="state" class="screen-reader-text">Choose a state:</label>
             <select name="state" class="doctor-mortgages-block-select">
             <?php foreach ($terms as $term){ ?>
-                    <option value="<?php echo $term->slug; ?>"><?php echo $term->name; ?></option>
+                    <option value="<?php echo $term->name; ?>"><?php echo $this->convert_state($term->name); ?></option>
                 <?php
             } ?>
             </select>
