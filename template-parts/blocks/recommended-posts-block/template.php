@@ -40,9 +40,9 @@ $recommended_posts  = get_field( 'recommended_posts' );
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="recommended_posts_block_block_container">
-		<header class="recommended_posts_block_block_container_header">
+		<div class="recommended_posts_block_block_container_header">
 			<h2 class="recommended_posts_block_block_container_header__title"><?php echo esc_attr( $acf_title ); ?></h2>
-		</header>
+		</div>
 
 		<ul class="recommended_posts_block_block_container_loop">
 
