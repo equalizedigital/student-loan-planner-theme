@@ -90,6 +90,7 @@ button.tab-block-container__heading__button:hover {
         border-bottom: 1px solid white;
         display: grid;
         padding-bottom: 34px;
+        gap: 0 70px;
         @include media(">tablet") {
             padding: 0;
             grid-template-columns: 1fr auto;
