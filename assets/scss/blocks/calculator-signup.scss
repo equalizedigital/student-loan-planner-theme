@@ -48,7 +48,7 @@
         flex-direction: column;
         justify-content: center;
         @include media(">tablet") {
-            padding: 72px 90px;
+            padding: 80px 90px;
             width: 70vw;
             max-width: 650px;
             margin: 0 auto 0 40%;
