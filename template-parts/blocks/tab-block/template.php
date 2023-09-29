@@ -61,9 +61,33 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				endif;
 				?>
 			</div>
+			<div class="tab-block-container-tab-block_header-buttons_mobile">
+				<select class="tab-block-container-tab-block_header-buttons_mobile_select">
+					<?php
+					if ( have_rows( 'accordion' ) ) :
+						while ( have_rows( 'accordion' ) ) :
+							the_row();
+							$button_title = get_sub_field( 'button_title' );
+							$content      = get_sub_field( 'content' );
+							?>
+
+								<option
+								class="tab-block-container__heading__button "
+								aria-expanded="<?php echo get_row_index() === 1? "true":'false'; ?>"
+								aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
+								>
+									<?php echo wp_kses_post( $button_title ); ?>
+								</option>
+
+							<?php
+						endwhile;
+					endif;
+					?>
+				</select>
+			</div>
 		
 			<div class="tab-block-container-tab-block_content">
-			<div class="tab-block-container-tab-block_content_items">
+				<div class="tab-block-container-tab-block_content_items">
 
 				<?php
 				if ( have_rows( 'accordion' ) ) :
@@ -80,36 +104,31 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 									$title = get_sub_field( 'title' );
 									$url   = get_sub_field( 'url' );
 									?>
-
 									<div class="tab-block-container-tab-block_content_items_item_container">
-										<div class="tab-block-container-tab-block_content_items_item_container_heading">
+										<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>">
 											<div class="tab-block-container-tab-block_content_items_item_container_heading_date">
 												<?php  echo wp_kses_post($date); ?>
 											</div>
 											<div class="tab-block-container-tab-block_content_items_item_container_heading_title">
 												<?php  echo wp_kses_post($title); ?>
 											</div>
-										</div>
+										</a>
 										<div class="tab-block-container-tab-block_content_items_item_container_heading_link">
 											<a href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>" class="link btn btn-dark-bg">
 												Listen Now
 											</a>
 										</div>
 									</div>
-
-										
-
 									<?php
 								endwhile;
 							endif;
 							?>
 							</div>
-
 						<?php
 					endwhile;
 				endif;
 				?>
-						</div>
+				</div>
 
 			</div>
 

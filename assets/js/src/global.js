@@ -582,6 +582,7 @@ window.addEventListener("load", function () {
 					button.setAttribute('aria-expanded', 'true');
 					content.classList.add('active-content');
 				}
+
 			});
 		});
 
@@ -608,15 +609,22 @@ window.addEventListener("load", function () {
 				} else {
 					return; // If it's none of the arrow keys, exit
 				}
-
-				
 			});
-
-			
 		});
 
-		 
+		const selectElement = document.querySelector('.tab-block-container-tab-block_header-buttons_mobile_select');
 
+		selectElement.addEventListener('change', function() {
+			const selectedOption = selectElement.options[selectElement.selectedIndex];
+			const ariaControlsValue = selectedOption.getAttribute('aria-controls');
+			
+			const content = document.getElementById(ariaControlsValue);
+
+			removeAllActiveState();
+
+			content.classList.add('active-content');
+					
+		});
 
 	}
 });
