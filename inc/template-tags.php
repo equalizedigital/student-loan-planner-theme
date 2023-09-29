@@ -75,29 +75,36 @@ function eqd_entry_date() {
  */
 
 function eqd_tha_footer_cta() {
-	if (get_post_type() != 'slp_contacts') {
-	// Load values and assing defaults.
+	if ( get_post_type() != 'slp_contacts' ) {
+		// Load values and assing defaults.
 
-	$cta_title = get_field( 'field_6504bca294980', 'option' );
-	$copy  = get_field( 'copy', 'option' );
-	if ( get_field( 'image', 'option' ) ) {
-		$image = get_field( 'image', 'option' );
-	}
+		$cta_title = get_field( 'field_6504bca294980', 'option' );
+		$copy      = get_field( 'copy', 'option' );
 
-	// Override.
-	if ( get_field( 'field_6504bca294980', get_the_ID() ) ) {
-		$cta_title = get_field( 'cta_title', get_the_ID() );
-	}
-	if ( get_field( 'copy' ) ) {
-		$copy = get_field( 'copy' );
-	}
-	if ( get_field( 'image' ) ) {
-		$image = get_field( 'image' );
-	}
-	// Individual page.
-	$disable = get_field( 'disable' );
-	if ( !$disable ) :
+		if ( get_field( 'image', 'option' ) ) {
+			$image = get_field( 'image', 'option' );
+		}
+		if ( get_field( 'link','option' ) ) {
+			$link = get_field( 'link','option' );
+		}
 
+		// Override.
+		if ( get_field( 'field_6504bca294980', get_the_ID() ) ) {
+			$cta_title = get_field( 'cta_title', get_the_ID() );
+		}
+		if ( get_field( 'copy' ) ) {
+			$copy = get_field( 'copy' );
+		}
+		if ( get_field( 'link' ) ) {
+			$link = get_field( 'link' );
+		}
+		if ( get_field( 'image' ) ) {
+			$image = get_field( 'image' );
+		}
+		// Individual page.
+		$disable = get_field( 'disable' );
+
+		if ( ! $disable ) :
 		?>
 
 	<section class="block calculator-signup-block">
@@ -111,6 +118,9 @@ function eqd_tha_footer_cta() {
 			<div class="calculator-signup-container-content">
 				<h2 class="title"><?php echo $cta_title; ?></h2>
 				<div class="text"><?php echo $copy; ?></div>
+				<div class="link">
+					<a class="btn" href="<?php echo wp_kses_post( $link['url'] ); ?>"><?php echo wp_kses_post( $link['title'] ); ?></a>
+				</div>
 
 				<?php
 				$list = get_field( 'list', 'option' );
@@ -126,7 +136,6 @@ function eqd_tha_footer_cta() {
 						}
 						$title   = $row['title'];
 						$context = $row['context'];
-					
 
 						echo '<div class="calculator-signup-container-content-list-item">';
 						if ( ! empty( $image ) ) {
@@ -143,9 +152,7 @@ function eqd_tha_footer_cta() {
 								echo $context;
 							echo '</span>';
 						}
-						
 
-						
 						echo '</div>';
 						echo '</div>';
 					}
@@ -156,10 +163,9 @@ function eqd_tha_footer_cta() {
 		</div>
 	</section>
 
-		<?php
+			<?php
 	endif;
-}
-
+	}
 }
 add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
 
@@ -197,14 +203,14 @@ function eqd_tha_page_header() {
 				</h1>
 				
 				<span class="subtitle">
-					<?php 
+					<?php
 					if ( is_archive() ) {
-						echo wp_kses_post( get_field('title_copy','option') );
+						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
 					} else {
 						echo wp_kses_post( $subtitle );
 					}
 
-					 ?>
+					?>
 				</span>
 
 				<?php if ( ! empty( $link ) ) : ?>
