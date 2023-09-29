@@ -572,7 +572,6 @@ window.addEventListener("load", function () {
 	function teamHighlightFunctionality(windowWidth) {
 		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
 		let highlightButtonText = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button .text')
-		
 
 		if (highlightButton) {
 			let items = document.querySelectorAll('.team-hightlight-block-container-team-hightlight-member');
@@ -582,8 +581,12 @@ window.addEventListener("load", function () {
 				let tabOpen = false;
 
 				if (windowWidth <= 768) {
-					items.forEach(function (item) {
-						item.tabIndex = -1;
+					items.forEach(function (item, index) {
+						if(index < 4) {
+							item.tabIndex = 0;
+						} else {
+							item.tabIndex = -1;
+						}
 					});
 					items[0].tabIndex = 0;
 				} else {
@@ -602,21 +605,32 @@ window.addEventListener("load", function () {
 						if(tabOpen){
 							item.classList.add('hidden');
 							item.classList.remove('animate');
+							items.forEach(function (item, index) {
+								if(index < 4) {
+									item.tabIndex = 0;
+								} else {
+									item.tabIndex = -1;
+								}
+							});
 
 						} else {
 							item.classList.remove('hidden');
 							item.classList.add('animate');
 						}
 						
-						item.tabIndex = 0;
+						// item.tabIndex = 0;
 					});
+					
+					var currentState = this.getAttribute('aria-expanded') === 'true';
+					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
+
 					for (var i = 0; i < 4 && i < items.length; i++) {
 						items[i].classList.remove('hidden');
 					}
+
 					items[0].focus()
 					// Hide the "Show All" button with a fade-out effect
 					this.classList.add('active');
-					this.tabIndex = -1;
 
 					tabOpen == false? highlightButtonText.innerText = 'Show Less': highlightButtonText.innerText = initText;
 
