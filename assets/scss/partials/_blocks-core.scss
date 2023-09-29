@@ -21,6 +21,12 @@
 		border-radius: 10px;	
 	}
 
+	&.white-focus{
+		&:focus{
+			outline: 2px solid white;
+		}
+	}
+
 	&:hover {
 		border-color: brand-color('primary');
 		background: white;

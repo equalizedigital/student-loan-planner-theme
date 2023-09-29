@@ -204,7 +204,7 @@ function eqd_single_after_entry_primary_category() {
 
 		<div class="single_post_questionnaire">
 			<div class="single_post_questionnaire__icon">
-				<img src="<?php echo wp_kses_post( $icon['url'] ); ?>" alt="<?php echo wp_kses_post( $icon['alt'] ); ?>">
+				<img aria-hidden="true" src="<?php echo wp_kses_post( $icon['url'] ); ?>" alt="<?php echo wp_kses_post( $icon['alt'] ); ?>">
 			</div>
 			<div class="single_post_questionnaire__title">
 				<h2><?php echo wp_kses_post( $title ); ?></h2>
@@ -212,7 +212,7 @@ function eqd_single_after_entry_primary_category() {
 			<div class="single_post_questionnaire__text"><?php echo wp_kses_post( $paragraph ); ?></div>
 			<div class="single_post_questionnaire__link">
 				<?php if ( ! empty( $link['url'] ) ) : ?>
-				<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn"><?php echo wp_kses_post( $link['title'] ); ?></a>
+				<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn white-focus"><?php echo wp_kses_post( $link['title'] ); ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
