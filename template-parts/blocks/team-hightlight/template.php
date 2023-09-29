@@ -47,7 +47,7 @@ endif;
 			<h2 class="team-hightlight-block-container-header__title"><?php echo esc_attr( $acf_title ); ?></h2>
 		</header>
 
-		<ul class="team-hightlight-block-container-team-hightlight">
+		<ul class="team-hightlight-block-container-team-hightlight" id="team-hightlight-block-container-team-hightlight">
 			<?php
 			$number_of_items = 0;
 			if ( have_rows( 'team' ) ) :
@@ -113,7 +113,7 @@ endif;
 			if($number_of_items >= 4):
 			?>
 		<div class="team-hightlight-block-container-team-hightlight__load_more">
-			<button class="load" aria-label="Show All Consultants" aria-expanded aria-controls>
+			<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="team-hightlight-block-container-team-hightlight">
 				<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?></div>
 				<span class="arrow">
 					<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
