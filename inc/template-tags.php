@@ -119,7 +119,7 @@ function eqd_tha_footer_cta() {
 				<h2 class="title"><?php echo $cta_title; ?></h2>
 				<div class="text"><?php echo $copy; ?></div>
 				<div class="link">
-					<a class="btn" href="<?php echo wp_kses_post( $link['url'] ); ?>"><?php echo wp_kses_post( $link['title'] ); ?></a>
+					<a class="btn btn-dark-bg" href="<?php echo wp_kses_post( $link['url'] ); ?>"><?php echo wp_kses_post( $link['title'] ); ?></a>
 				</div>
 
 				<?php
