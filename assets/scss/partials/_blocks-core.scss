@@ -16,6 +16,7 @@
 	min-width: 148px;
 	cursor: pointer;
 	border-radius: 4px;
+	color: black;
 
 	&.br-ten{
 		border-radius: 10px;	
@@ -24,6 +25,14 @@
 	&.white-focus{
 		&:focus{
 			outline: 2px solid white;
+		}
+	}
+
+	&.btn-dark-bg {
+		&:hover {
+			border-color: brand-color('primary');
+			color: white;
+			background-color: transparent;
 		}
 	}
 
@@ -37,10 +46,10 @@
 	}
 
 	&:not(.has-text-color) {
-		color: black;
+		// color: black;
 
 		&:hover {
-			color: black;
+			// color: black;
 		}
 	}
 

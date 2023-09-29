@@ -61,7 +61,7 @@ endif;
 			<?php endif; ?>
 			<?php if ( $acf_link ) : ?>
 			<div class="link">
-				<a href="<?php echo wp_kses_post( $acf_link['url'] ); ?>" class="btn"><?php echo wp_kses_post( $acf_link['title'] ); ?></a>
+				<a href="<?php echo wp_kses_post( $acf_link['url'] ); ?>" class="btn btn-dark-bg"><?php echo wp_kses_post( $acf_link['title'] ); ?></a>
 			</div>
 			<?php endif; ?>
 		</div>

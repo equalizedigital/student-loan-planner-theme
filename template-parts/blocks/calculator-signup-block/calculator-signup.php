@@ -50,15 +50,12 @@ $link = get_field('link');
 		<div class="calculator-signup-container-content">
 			<h2 class="title"><?php echo $title; ?></h2>
 			<div class="text"><?php echo $copy; ?></div>
-
-
 			<?php 
-			
 			if ( ! empty( $link ) ) {
 				$url = $link['url'];
 				$title = $link['title'];
 				echo '<span class="content">';
-				echo "<a href=\"$url\" class=\"btn\">";
+				echo "<a href=\"$url\" class=\"btn btn-dark-bg\">";
 					echo $title;
 				echo '</a>';
 				echo '</span>';
