@@ -199,8 +199,8 @@ function eqd_single_after_entry_primary_category() {
 		$title            = get_field( 'heading', $category_id );
 		$paragraph        = get_field( 'paragraph', $category_id );
 		$link             = get_field( 'link', $category_id );
-		if(!empty($title)):
-		?>
+		if ( ! empty( $title ) ) :
+			?>
 
 		<div class="single_post_questionnaire">
 			<div class="single_post_questionnaire__icon">
@@ -211,13 +211,13 @@ function eqd_single_after_entry_primary_category() {
 			</div>
 			<div class="single_post_questionnaire__text"><?php echo wp_kses_post( $paragraph ); ?></div>
 			<div class="single_post_questionnaire__link">
-				<?php if(!empty($link['url'])): ?>
+				<?php if ( ! empty( $link['url'] ) ) : ?>
 				<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn"><?php echo wp_kses_post( $link['title'] ); ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
 
-		<?php
+			<?php
 		endif;
 	}
 }
@@ -237,16 +237,14 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_author_info', 7 )
 function eqd_single_after_entry_author_info() {
 	global $post;
 
-	$id          = get_the_author_meta( 'ID' );
+	$id             = get_the_author_meta( 'ID' );
 	$id_post_editor = get_field( 'post_editor', get_the_ID() );
-
-	$author_url  = get_author_posts_url( $id_post_editor['ID'] );
-	$author_name = get_the_author_meta( 'display_name', $id_post_editor['ID'] );
-	$user_info   = get_userdata( $id_post_editor['ID'] );
-	$first_name  = $user_info->first_name;
-	$last_name   = $user_info->last_name;
-	$nickname    = $user_info->nickname;
-
+	$author_url     = get_author_posts_url( $id_post_editor['ID'] );
+	$author_name    = get_the_author_meta( 'display_name', $id_post_editor['ID'] );
+	$user_info      = get_userdata( $id_post_editor['ID'] );
+	$first_name     = $user_info->first_name;
+	$last_name      = $user_info->last_name;
+	$nickname       = $user_info->nickname;
 
 	?>
 
@@ -256,17 +254,13 @@ function eqd_single_after_entry_author_info() {
 
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-					<a href="<?php echo get_site_url() . '/author/'.$user_info->user_nicename; ?>" aria-hidden="true" >
+					<a href="<?php echo get_site_url() . '/author/' . $user_info->user_nicename; ?>" aria-hidden="true" >
 						<?php echo get_avatar( $id_post_editor['ID'], 40 ); ?>
 					</a>
 					<div class="author_name">
 					<?php
-					if ( $first_name && $last_name ) {
-						echo $first_name . ' ' . $last_name;
-					} else {
-						echo $nickname;
-					}
-					?>
+							echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author();
+							?>
 					</div>
 					<ul class="author_socials">
 						<?php
@@ -306,11 +300,7 @@ function eqd_single_after_entry_author_info() {
 						<a href="<?php echo $author_url; ?>">
 							Read More from 
 							<?php
-							if ( $first_name && $last_name ) {
-								echo $first_name . ' ' . $last_name;
-							} else {
-								echo $nickname;
-							}
+							echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author();
 							?>
 						<span class="arrow">
 						<svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none">
@@ -325,14 +315,14 @@ function eqd_single_after_entry_author_info() {
 
 		<?php
 			$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
-			
-			$profile_picture   = get_avatar( $review_by_auth_id, 64 );
-			$user_info         = get_userdata( $review_by_auth_id );
-			$first_name        = $user_info->first_name;
-			$last_name         = $user_info->last_name;
-			$nickname          = $user_info->nickname;
-			?>
-			<?php if($review_by_auth_id): ?>
+
+			$profile_picture = get_avatar( $review_by_auth_id, 64 );
+			$user_info       = get_userdata( $review_by_auth_id );
+			$first_name      = $user_info->first_name;
+			$last_name       = $user_info->last_name;
+			$nickname        = $user_info->nickname;
+		?>
+			<?php if ( $review_by_auth_id ) : ?>
 
 			<div class="article_footer_data_author_reviewed_author">
 				<div class="article_footer_data_author_profile">
@@ -388,32 +378,32 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_block_disclosure'
  * @license      GPL-2.0+
  **/
 function eqd_single_after_entry_block_disclosure() {
-		if ( has_block( 'acf/vendor-repeater' ) ) { 
-			?>
+	if ( has_block( 'acf/vendor-repeater' ) ) {
+		?>
 			<section class="vendor_disclosure">
 				<h2 class="vendor_disclosure_title">Disclosures</h2>
 				<ol class="vendor_disclosure_ol">
-					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
-							the_row();
-							$company_title = get_sub_field( 'company_title' );
-							$disclosure_content = get_sub_field( 'disclosure_content' );
-							// $company_title
-							$result = preg_replace('/<p>/', '<p><b>'.$company_title.':</b> ', $disclosure_content, 1);
-							?>
+				<?php
+				if ( have_rows( 'vendors', 'option' ) ) :
+					while ( have_rows( 'vendors', 'option' ) ) :
+						the_row();
+						$company_title      = get_sub_field( 'company_title' );
+						$disclosure_content = get_sub_field( 'disclosure_content' );
+						// $company_title
+						$result = preg_replace( '/<p>/', '<p><b>' . $company_title . ':</b> ', $disclosure_content, 1 );
+						?>
 								<li class="vendor_disclosure_ol_li" id="sup_disclosure_<?php echo get_row_index(); ?>">
-									<?php echo wp_kses_post($result); ?>
+								<?php echo wp_kses_post( $result ); ?>
 								</li>
 							<?php
 						endwhile;
 					endif;
-					?>
+				?>
 
 				</ol>
 			</section>
 			<?php
-		}
+	}
 }
 
 
@@ -429,84 +419,83 @@ add_action( 'tha_single_page_end', 'eqd_single_after_related_post', 10 );
  * @license      GPL-2.0+
  **/
 function eqd_single_after_related_post() {
-	$term = get_queried_object();
+	$term    = get_queried_object();
 	$post_id = get_the_ID(); // Assuming you're in the loop
 
-	$primary_category = get_primary_category_id($post_id);
-	
-	$show_related_posts = get_field('show_related_posts', 'category_'.$primary_category);
-	$select_posts_to_showcase = get_field('select_posts_to_showcase', 'category_'.$primary_category);
-	
-	if($show_related_posts):
-	?>
+	$primary_category = get_primary_category_id( $post_id );
+
+	$show_related_posts       = get_field( 'show_related_posts', 'category_' . $primary_category );
+	$select_posts_to_showcase = get_field( 'select_posts_to_showcase', 'category_' . $primary_category );
+
+	if ( $show_related_posts ) :
+		?>
 	<section class="single_related_posts">
 		<div class="single_related_posts_container">
 			<header class="single_related_posts_header">
 				<h2 class="title">More on Physician Mortgages</h2>
 				<div class="single_related_posts_header_link">
-					<a href="<?php echo get_category_link($primary_category); ?>" class="btn" aria-label="More <?php echo get_cat_name($primary_category); ?> posts">More Posts</a>
+					<a href="<?php echo get_category_link( $primary_category ); ?>" class="btn" aria-label="More <?php echo get_cat_name( $primary_category ); ?> posts">More Posts</a>
 				</div>
 			</header>
 			<div class="single_related_posts_loop">
 			<!-- select three posts manually -->
 
 			<?php
-				if(!empty($select_posts_to_showcase)){
-					$args = array(
-						'post_type' => 'post',
-						'posts_per_page' => 3,
-						'post__in' => $select_posts_to_showcase,
-						'orderby' => 'post__in',
-						'order' => 'DESC',
-					);
-				} else {
-					$args = array(
-						'post_type' => 'post',
-						'posts_per_page' => 3,
-						'cat' => $primary_category,  // Category ID
-						'orderby' => 'date',
-						'order' => 'DESC',
-					);
-				}
+			if ( ! empty( $select_posts_to_showcase ) ) {
+				$args = array(
+					'post_type'      => 'post',
+					'posts_per_page' => 3,
+					'post__in'       => $select_posts_to_showcase,
+					'orderby'        => 'post__in',
+					'order'          => 'DESC',
+				);
+			} else {
+				$args = array(
+					'post_type'      => 'post',
+					'posts_per_page' => 3,
+					'cat'            => $primary_category,  // Category ID
+					'orderby'        => 'date',
+					'order'          => 'DESC',
+				);
+			}
 
-			
-				$query = new WP_Query($args);
-			
+				$query = new WP_Query( $args );
+
 				$posts_array = array();
-				if ($query->have_posts()) {
-					while ($query->have_posts()) {
-						$query->the_post();
-						$author_email = get_the_author_meta('user_email');
-						?>
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$author_email = get_the_author_meta( 'user_email' );
+					?>
 						<div class="single_related_posts_loop_item">
 							<div class="single_related_posts_loop_item_image">
-								<?php 
-								if (has_post_thumbnail()) {
-									the_post_thumbnail('large');  // 'full' will display the full image. You can use other sizes like 'thumbnail', 'medium', 'large', etc.
-								}
-								?>
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail( 'large' );  // 'full' will display the full image. You can use other sizes like 'thumbnail', 'medium', 'large', etc.
+							}
+							?>
 							</div>
 							<h3 class="single_related_posts_loop_item_title"><?php the_title(); ?></h3>
 							<div class="single_related_posts_loop_item_info">
 								<div class="single_related_posts_loop_item_info_profile_image">
-									<?php echo get_avatar($author_email, 96); ?>
+								<?php echo get_avatar( $author_email, 96 ); ?>
 								</div>
 								<div class="single_related_posts_loop_item_info_author">
-									<?php echo get_the_author(); ?>
+								<?php echo get_the_author(); ?>
 								</div>
 							</div>
 						</div>
 						<?php
 
-					}
-					wp_reset_postdata();
 				}
+				wp_reset_postdata();
+			}
 			?>
 
 			</div>
 		</div>
 	</section>
-	<?php
+		<?php
 	endif;
 }
 // Build the page.

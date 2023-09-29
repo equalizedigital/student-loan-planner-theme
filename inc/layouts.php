@@ -332,12 +332,11 @@ function eqd_single_fullwidth_content() {
 			<div class="site-main-article__author-data">
 				<div class="article_author">
 					<?php
-					$post_author = get_the_author();
-					$id = get_field( 'post_reviewed_by', get_the_ID() );
+					$post_author    = get_the_author();
+					$id             = get_field( 'post_reviewed_by', get_the_ID() );
 					$id_post_editor = get_field( 'post_editor', get_the_ID() );
-					$edit_auth_id = $id_post_editor['ID'];
-
-					$author_info = get_field( 'job_title', "user_$edit_auth_id" );
+					$edit_auth_id   = $id_post_editor['ID'];
+					$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
 					?>
 					<span class="entry-author">
 						<a href="<?php echo esc_url( get_author_posts_url( $edit_auth_id ) ); ?>" aria-hidden="true" tabindex="-1">
@@ -345,11 +344,11 @@ function eqd_single_fullwidth_content() {
 						</a>
 						<span class="entry-info">
 							<span>
-								<?php echo !empty($id_post_editor)? "Edited by": "Written By"; ?>
+								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : 'Written By'; ?>
 
 								<a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $edit_auth_id ) ) ); ?>">
-									<?php 
-									echo !empty($id_post_editor)? $id_post_editor['user_firstname'] . ' '.$id_post_editor['user_lastname']: get_the_author();
+									<?php
+									echo ! empty( $id_post_editor ) ? $id_post_editor['user_firstname'] . ' ' . $id_post_editor['user_lastname'] : get_the_author();
 									?>
 								</a>
 							</span>
@@ -368,24 +367,24 @@ function eqd_single_fullwidth_content() {
 						$first_name        = $user_info->first_name;
 						$last_name         = $user_info->last_name;
 						$nickname          = $user_info->nickname;
-						?>
-						<?php if($review_by_auth_id): ?>
+				?>
+						<?php if ( $review_by_auth_id ) : ?>
 
 				<div class="reviewed_author">
 						
 					<div class="profile">
-						<?php echo $profile_picture; ?>
+							<?php echo $profile_picture; ?>
 					</div>
 					
 					<div class="author_info">
 					Reviewed By
-					<?php
-					if ( $first_name && $last_name ) {
-						echo $first_name . ' ' . $last_name;
-					} else {
-						echo $nickname;
-					}
-					?>
+							<?php
+							if ( $first_name && $last_name ) {
+								echo $first_name . ' ' . $last_name;
+							} else {
+								echo $nickname;
+							}
+							?>
 					</div>
 				</div>
 				<?php endif; ?>
