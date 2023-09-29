@@ -15,7 +15,11 @@
 	line-height: 15px;
 	min-width: 148px;
 	cursor: pointer;
-	border-radius: 10px;
+	border-radius: 4px;
+
+	&.br-ten{
+		border-radius: 10px;	
+	}
 
 	&:hover {
 		border-color: brand-color('primary');
