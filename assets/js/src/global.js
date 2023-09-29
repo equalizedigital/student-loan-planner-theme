@@ -554,6 +554,74 @@ window.addEventListener("load", function () {
 });
 
 
+window.addEventListener("load", function () {
+	// resource links
+	const podcastlinkblockButtons = document.querySelectorAll('.tab-block-container__heading__button');
+	if (podcastlinkblockButtons) {
+		function removeAllActiveState() {
+			podcastlinkblockButtons.forEach(btn => {
+				const contentId = btn.getAttribute('aria-controls');
+				const content = document.getElementById(contentId);
+				content.classList.remove('active-content');
+				btn.setAttribute('aria-expanded', 'false');
+			});
+		}
+
+		// Accordion
+		podcastlinkblockButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const contentId = button.getAttribute('aria-controls');
+				const content = document.getElementById(contentId);
+
+				removeAllActiveState();
+
+				if (button.getAttribute('aria-expanded') === 'true') {
+					button.setAttribute('aria-expanded', 'false');
+					content.classList.remove('active-content');
+				} else {
+					button.setAttribute('aria-expanded', 'true');
+					content.classList.add('active-content');
+				}
+			});
+		});
+
+		podcastlinkblockButtons.forEach((button, index) => {
+			button.addEventListener('keydown', function(e) {
+				let targetIndex;
+
+				console.log(e.keyCode)
+				if (e.keyCode === 40) {
+					const contentId = button.getAttribute('aria-controls');
+					const contentElement = document.getElementById(contentId);
+					if (contentElement) {
+						contentElement.focus();
+					}
+				}
+				
+				// Key codes for Left (37) and Right (39) arrow keys
+				if (e.keyCode === 37) { // Left Arrow
+					targetIndex = (index - 1 + podcastlinkblockButtons.length) % podcastlinkblockButtons.length;
+					podcastlinkblockButtons[targetIndex].focus();
+				} else if (e.keyCode === 39) { // Right Arrow
+					targetIndex = (index + 1) % podcastlinkblockButtons.length;
+					podcastlinkblockButtons[targetIndex].focus();
+				} else {
+					return; // If it's none of the arrow keys, exit
+				}
+
+				
+			});
+
+			
+		});
+
+		 
+
+
+	}
+});
+
+
 // team highlight
 window.addEventListener("load", function () {
 
