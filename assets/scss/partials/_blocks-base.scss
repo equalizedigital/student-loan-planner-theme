@@ -263,7 +263,7 @@ input {
 			&:hover {
 				background-color: brand-color('primary', 'darken');
 				border-color: brand-color('primary');
-				background: transparent;
+				background: white;
 			}
 			&:focus{
 				outline: 2px solid blue;
