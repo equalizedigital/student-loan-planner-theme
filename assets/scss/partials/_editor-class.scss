@@ -22,39 +22,42 @@
 
 .hide-on-tablet {
     @include media("<tablet") {
-        display: none!important;
+        display: none !important;
     }
 }
 
-.hide-on-desktop{
+.hide-on-desktop {
     @include media(">tablet") {
-        display: none!important;
+        display: none !important;
     }
 }
 
-.text-decoration-none{
-   a{
-    text-decoration: none;
-   }
+.text-decoration-none {
+    a {
+        text-decoration: none;
+    }
 }
 
-.link-green{
-    a{
+.link-green {
+    a {
         color: brand-color('primary');
         font-weight: inherit;
     }
 }
-.link-wcag-green{
-    a{
+
+.link-wcag-green {
+    a {
         color: brand-color('secondary');
         font-weight: inherit;
     }
 }
-.headline-lines{
+
+.headline-lines {
     position: relative;
     display: inline-flex;
     margin-left: auto;
     margin-right: auto;
+
     @include media("<tablet") {
         margin-bottom: 40px;
     }
@@ -82,10 +85,11 @@
     }
 }
 
-.list-2col{
+.list-2col {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0 40px;
+
     @include media(">tablet") {
         grid-template-columns: 1fr 1fr;
     }
@@ -94,21 +98,104 @@
 
 
 
-.color-reverse-content-block{
-    ul{
+.color-reverse-content-block {
+    ul {
         list-style: none;
     }
+
     ul li::before {
-        content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-        color: #82BC46; /* Change the color */
-        font-weight: bold; /* If you want it to be bold */
-        display: inline-block; /* Needed to add space between the bullet and the text */
-        width: 1em; /* Also needed for space (tweak if needed) */
-        margin-left: -1em; /* Also needed for space (tweak if needed) */
-      }
-      .link-green a{
-        &:hover{
+        content: "\2022";
+        /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color: #82BC46;
+        /* Change the color */
+        font-weight: bold;
+        /* If you want it to be bold */
+        display: inline-block;
+        /* Needed to add space between the bullet and the text */
+        width: 1em;
+        /* Also needed for space (tweak if needed) */
+        margin-left: -1em;
+        /* Also needed for space (tweak if needed) */
+    }
+
+    .link-green a {
+        &:hover {
             color: white;
         }
-      }
+    }
+}
+
+.blockquote-media-review {
+    max-width: 740px;
+    margin: 0px auto 10px!important;
+    padding: 100px 24px 50px;
+    display: grid;
+    gap: 27px;
+    background: var(--Purple, #625089);
+    position: relative;
+    margin: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50px);
+        background-image: url(../icons/utility/quote-circle.svg);
+        width: 100px;
+        height: 100px;
+        display: flex;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+    }
+
+    p {
+        color: #FFF;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 31px;
+        display: block;
+        max-width: 740px;
+    }
+
+    cite {
+        color: #FFF;
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 21px;
+        display: block;
+    }
+}
+
+
+
+.blockquote-iframe {
+    margin: -90px 0 120px;
+    background: #625089;
+    padding: 0 24px;
+
+    iframe {
+        max-width: 970px;
+        width: 100%;
+        margin: 0 auto 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        background: #fff;
+        border-radius: 10px;
+        min-height: 35vw;
+        position: relative;
+        // top: 80px;
+        box-shadow: 0px 15px 27px rgba(161, 165, 165, 0.25);
+    }
+
+    figure {
+        position: relative;
+        bottom: -90px;
+    }
 }
