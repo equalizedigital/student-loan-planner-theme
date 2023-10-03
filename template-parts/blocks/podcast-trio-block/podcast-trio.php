@@ -35,12 +35,12 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 // Load values and assing defaults.
 $title = get_field('title');
 
-echo "ddd";
-
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="podcast-trio-container">
+		<?php if(!empty($title)): ?>
 		<h2 class="title"><?php echo $title; ?></h2>
+		<?php endif; ?>
 		<?php 
 		$logo_images = get_field('logo_images');
 		if( $logo_images ) {

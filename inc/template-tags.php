@@ -179,15 +179,38 @@ function eqd_tha_page_header() {
 	if ( ! is_single() && ! is_front_page() ) {
 		// Load values and assing defaults.
 		$page_id = get_the_ID();
-
 		$acf_title               = get_field( 'title', $page_id );
+		$sub_heading                = get_field( 'sub_heading', $page_id );
 		$subtitle                = get_field( 'subtitle', $page_id );
 		$background_image        = get_field( 'background_image', $page_id );
 		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
+		$center_text = get_field( 'center_text', $page_id );
 		$link                    = get_field( 'link' );
+		$padding_size                    = get_field( 'padding_size', $page_id );
+		switch ($padding_size) {
+			case 'small':
+				$container_class .= ' inner-hero-small';
+				break;
+			case 'medium':
+				$container_class .= ' inner-hero-medium';
+				break;
+			case 'large':
+				$container_class .= ' inner-hero-large';
+				break;
+			
+			default:
+				break;
+		}
+		if ( $center_text ) {
+			$container_class .= ' inner-hero-center-text';
+		}
+
 		?>
-		<header class="inner-hero">
+		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
+				<?php if(!empty($sub_heading)): ?>
+					<div class="sub_heading"><?php  echo wp_kses_post($sub_heading); ?></div>
+				<?php endif; ?>
 				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
 					<?php
 					if ( is_page() ) {
@@ -231,6 +254,28 @@ function eqd_tha_page_header() {
 	}
 }
 add_action( 'tha_page_header', 'eqd_tha_page_header' );
+
+// Archive featured post
+// add_action( 'tha_page_header', 'eqd_tha_archive_featured_post' );
+function eqd_tha_archive_featured_post(){
+	?>
+	<section class="archive_featured_post">
+		<div class="archive_featured_post_container">
+			<div class="archive_featured_post_container_text">
+				<div class="archive_featured_post_container_text_date">Featured  |  July 12, 2023</div>
+				<h2 class="archive_featured_post_container_text_title">Principal Disability Insurance Review: Dependable Coverage for Physicians</h2>
+				<div class="archive_featured_post_container_text_author">
+					<div class="image"></div>
+					<div class="title">By Caitlin See</div>
+				</div>
+			</div>
+			<div class="archive_featured_post_container_featured_image">
+				image
+			</div>
+		</div>
+	</section>
+	<?php
+}
 
 /**
  * Single Sar Bar

@@ -84,8 +84,8 @@ function eqd_single_header() {
 	if( is_single()  ) {
 		// Load values and assing defaults.
 		$page_id = get_the_ID();
-
-		$subtitle                = get_field( 'subtitle', $page_id );
+		$title_copy = get_field('title_copy',$page_id);
+		
 		$background_image        = get_field( 'background_image', $page_id );
 		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
 		$link                    = get_field( 'link' );
