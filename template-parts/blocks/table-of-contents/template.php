@@ -49,10 +49,10 @@ if ( get_field( 'post_format_style',get_the_ID() ) == 'full-width' ) {
 				<InnerBlocks />
 			</div>
 			<div class="toc-nav-container">
-			<div class="toc-nav-sticky">
-			<div class="toc-nav_title">Table of Contents</div>
-			<nav class="toc-nav"></nav>
-			</div>
+				<div class="toc-nav-sticky">
+					<div class="toc-nav_title">Table of Contents</div>
+					<nav class="toc-nav"></nav>
+				</div>
 			</div>
 		</div>
 	</div>
