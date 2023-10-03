@@ -48,9 +48,12 @@
         flex-direction: column;
         justify-content: center;
         @include media(">tablet") {
-            padding: 80px 130px 80px 130px;
+            padding: 40px 65px;
             width: 70vw;
             margin: 0 auto 0 40%;
+        }
+        @include media(">desktop") {
+            padding: 80px 130px;
         }
         .btn{
             margin-top: 20px;
