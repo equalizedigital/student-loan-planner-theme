@@ -187,6 +187,7 @@ function eqd_tha_page_header() {
 		$center_text = get_field( 'center_text', $page_id );
 		$link                    = get_field( 'link' );
 		$padding_size                    = get_field( 'padding_size', $page_id );
+		$container_class;
 		switch ($padding_size) {
 			case 'small':
 				$container_class .= ' inner-hero-small';
