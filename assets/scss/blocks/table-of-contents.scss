@@ -1,3 +1,15 @@
+.page{
+    .table-of-contents-block.post_format_style-standard{
+        .toc-nav-container {
+            display: block;
+        }
+        .table-of-contents-block-container-main{
+            @include media(">tablet") {
+                grid-template-columns: 1fr 386px;
+            }
+        }
+    }
+}
 .table-of-contents-block {
 
     &.post_format_style-full-width {
@@ -30,11 +42,11 @@
         }
 
         .toc-nav {
-            position: sticky;
-            top: 2rem;
-            align-self: start;
         }
-
+        .toc-nav-sticky {
+            position: sticky;
+            top: 100px;
+        }
         .toc-nav-container {
             @include media("<tablet") {
                 display: none;
