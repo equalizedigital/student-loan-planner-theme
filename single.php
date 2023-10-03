@@ -467,7 +467,7 @@ function eqd_single_after_related_post() {
 					$query->the_post();
 					$author_email = get_the_author_meta( 'user_email' );
 					?>
-						<div class="single_related_posts_loop_item">
+						<a class="single_related_posts_loop_item" href="<?php echo get_the_permalink(); ?>">
 							<div class="single_related_posts_loop_item_image">
 							<?php
 							if ( has_post_thumbnail() ) {
@@ -484,7 +484,7 @@ function eqd_single_after_related_post() {
 								<?php echo get_the_author(); ?>
 								</div>
 							</div>
-						</div>
+						</a>
 						<?php
 
 				}

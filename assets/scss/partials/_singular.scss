@@ -1372,6 +1372,14 @@ html {
 		@include media(">tablet") {
 			grid-template-columns: 1fr 1fr 1fr;
 		}
+		&_item{
+			text-decoration: none;
+			&:hover{
+				.single_related_posts_loop_item_title{
+					text-decoration: underline;
+				}
+			}
+		}
 
 		&_item_image {
 			margin: 0 0 32px;
