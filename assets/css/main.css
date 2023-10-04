@@ -7426,11 +7426,11 @@ header.testimonial-slider-block-container-header {
   align-items: center;
   justify-content: center;
 }
-.vendor_information_block_container_column_two_link_more_info span {
+.vendor_information_block_container_column_two_link_more_info span.icon {
   display: inline-flex;
   transform: rotate(0deg);
 }
-.vendor_information_block_container_column_two_link_more_info.active_btn span {
+.vendor_information_block_container_column_two_link_more_info.active_btn span.icon {
   transform: rotate(180deg);
 }
 .vendor_information_block_container_column_two_link .subtext {

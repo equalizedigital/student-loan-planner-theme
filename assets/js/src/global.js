@@ -933,6 +933,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				if(targetElement) {
 					event.target.classList.toggle('active_btn'); // Replace 'your-class-name' with the class you want to add
 					targetElement.toggleAttribute('hidden');
+					const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
+					event.target.setAttribute('aria-expanded', !isExpanded);
+					// text toggle More Information and Less Information
+					const text = event.target.querySelector('.text');
+					if(text) {
+						text.innerText = isExpanded ? 'More Information' : 'Less Information';
+					}
 				}
 			});
 
