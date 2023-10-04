@@ -31,7 +31,7 @@
 						if ( $('.doctor-mortgages-block-cta').length ) {
 							$('.doctor-mortgages-block-cta').remove();
 						}
-						let button = '<a href="'+response_json.state.link+'" class="doctor-mortgages-block-cta" aria-label="'+response_json.state.name+'">Best Physician Mortgage Loans in'+
+						let button = '<a href="'+response_json.state.link+'" class="doctor-mortgages-block-cta" aria-label="Best Physician Mortgage Loans in '+response_json.state.name+'">Best Physician Mortgage Loans in'+
 						' '+response_json.state.abbreviation+
 						'</a>';
 						$('.doctor-mortgages-block-results-container').after(button);

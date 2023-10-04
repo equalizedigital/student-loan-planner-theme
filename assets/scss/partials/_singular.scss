@@ -1266,7 +1266,9 @@ section.refinance_lender_section {
 			display: none !important;
 		}
 	}
-
+	tr th {
+		font-size: 14px;
+	}
 	tr .td_content {
 		display: grid;
 		flex-direction: column;
