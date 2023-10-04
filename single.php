@@ -57,18 +57,37 @@ function eqd_single_after_entry() {
  * @license      GPL-2.0+
  **/
 function eqd_single_after_entry_content() {
+	$hide_section_per_category = false;
+	$categories               = get_the_category();
+	foreach ( $categories as $_category ) {
+		$hide_section_per_category = get_field( 'hide_student_loans_section', 'category_' . $_category->term_id );
+		if ( $hide_section_per_category ) {
+			break;
+		}
+	}
+	if ( $hide_section_per_category ) {
+		return;
+	}
+	$hide_section_per_page = get_field( 'hide_student_loans_section', get_the_ID() );
+	if ( $hide_section_per_page ) {
+		return;
+	}
 	?>
 	<?php if ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) : ?>
 <section class="refinance_lender_section">
 	<header class="title">
-		<h2 class="title">Refinance student loans, get a bonus in 2023</h2>
+		<?php
+		$current_year = date( 'Y' );
+			?>
+		<h2 class="title">Refinance student loans, get a bonus in <?php echo $current_year; ?></h2>
 	</header>
 	<div class="lender_info">
 	<table>
 	<tr class="header">
-		<th>Lender</th>
-		<th>Offer</th>
-		<th>Learn more</th>
+		<th class="sr-only" scope="col">Lender Name</th>
+		<th scope="col">Lender</th>
+		<th scope="col">Offer</th>
+		<th scope="col">Learn more</th>
 	</tr>
 
 		<?php
@@ -78,17 +97,12 @@ function eqd_single_after_entry_content() {
 			$link       = get_sub_field( 'learn_more_link' );
 			?>
 
-			<tr class="hidden-tr">
-				<th><?php the_sub_field( 'lender_name' ); ?></th>
-				<th></th>
-				<th></th>
-			</tr>
-
 			<tr class="data-tr">
+				<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
 				<td>
 					<div class="td_content">
 						<img src="<?php echo $logo_image['url']; ?>" alt="<?php echo $logo_image['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Open Modal">Disclosures<sup>1</sup></button>
+						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Open Modal">Disclosures<sup><?php echo get_row_index(); ?></sup></button>
 					</div>
 				</td>
 				<td>
@@ -103,9 +117,21 @@ function eqd_single_after_entry_content() {
 				</td>
 				<td>
 					<div class="td_content">
-						<div class="td_title">
-							<a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
-						</div>
+						<?php
+						if ( isset( $link['url'] ) ) :
+							?>
+							<div class="td_title">
+								<?php
+								$link_target = $link['target'] ? $link['target'] : '_self';
+									?>
+								<a href="<?php echo $link['url']; ?>"
+								class="btn"
+								aria-label="Disclosures for <?php echo get_sub_field('lender_name'); ?>"
+								target="<?php echo esc_attr( $link_target ); ?>">
+									<?php echo $link['title']; ?>
+								</a>
+							</div>
+						<?php endif; ?>
 						<div class="td_text">
 							<?php the_sub_field( 'learn_more_subtext' ); ?>
 						</div>
