@@ -482,7 +482,6 @@ img.wprm-comment-rating {
 
 	a.detail_link {
 		color: var(--WCAG-Green, #547C2D);
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
@@ -497,7 +496,6 @@ img.wprm-comment-rating {
 	.detail_end_link {
 		.link {
 			color: #000;
-			font-family: Source Sans Pro, sans-serif;
 			font-size: 15px;
 			font-style: normal;
 			font-weight: 400;
@@ -597,7 +595,6 @@ img.wprm-comment-rating {
 
 	.category {
 		color: var(--WCAG-Green, #547C2D);
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
@@ -608,7 +605,6 @@ img.wprm-comment-rating {
 
 	.title {
 		color: #000;
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 700;
@@ -631,7 +627,6 @@ img.wprm-comment-rating {
 	.author_recommended_posts_content_post-inf__link a {
 		text-decoration: none;
 		color: #000;
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 400;
@@ -644,7 +639,6 @@ img.wprm-comment-rating {
 
 	h2.author_recommended_posts_title {
 		color: var(--Purple, #625089);
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 35px;
 		font-style: normal;
 		font-weight: 700;
@@ -691,7 +685,6 @@ img.wprm-comment-rating {
 	
 	h2.post_title {
 		color: #000;
-		font-family: Source Sans Pro,sans-serif;
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 700;
@@ -710,7 +703,6 @@ img.wprm-comment-rating {
 	}
 	h2.author_latest_from_title {
 		color: var(--Purple, #625089);
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 35px;
 		font-style: normal;
 		font-weight: 700;
@@ -744,7 +736,6 @@ img.wprm-comment-rating {
 		text-decoration: none;
 		color: #000;
 		text-align: center;
-		font-family: Source Sans Pro,sans-serif;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 700;
@@ -756,7 +747,6 @@ img.wprm-comment-rating {
 		text-decoration: none;
 		color: #000;
 		text-align: center;
-		font-family: Source Sans Pro,sans-serif;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 700;
@@ -796,8 +786,16 @@ img.wprm-comment-rating {
 	grid-column-end: 13;
 
 
+
+
 	@include media(">tablet") {
 		padding: 86px 0;
+
+		min-height: 400px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
 	}
 
 	&:after {
@@ -867,7 +865,6 @@ img.wprm-comment-rating {
 
 	.sub_heading {
 		color: #FFF;
-		font-family: Source Sans Pro, sans-serif;
 		font-size: 20px;
 		font-style: normal;
 		font-weight: 600;
@@ -904,6 +901,8 @@ img.wprm-comment-rating {
 		margin: 0 auto;
 		padding: 0 $container-padding;
 		z-index: 2;
+		width: 100%;
+
 
 		>* {
 			position: relative;
@@ -1741,7 +1740,6 @@ html {
 
 		&_date {
 			color: var(--WCAG-Green, #547C2D);
-			font-family: Source Sans Pro, sans-serif;
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
@@ -1751,7 +1749,6 @@ html {
 
 		&_title {
 			color: #000;
-			font-family: Source Sans Pro, sans-serif;
 			font-size: 25px;
 			font-style: normal;
 			font-weight: 700;
@@ -1760,7 +1757,6 @@ html {
 
 		&_author .title {
 			color: #000;
-			font-family: Source Sans Pro, sans-serif;
 			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;

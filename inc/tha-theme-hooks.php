@@ -227,6 +227,13 @@ function tha_content_while_before() {
 }
 
 /**
+ * Content Before Container.
+ */
+function tha_content_before_container() {
+	do_action( 'tha_content_before_container' );
+}
+
+/**
  * Content While After.
  */
 function tha_content_while_after() {

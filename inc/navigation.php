@@ -222,7 +222,7 @@ function eqd_archive_paginated_navigation() {
 
 	// Previous Post Link.
 	if ( get_previous_posts_link() ) {
-		$label = __( '&#x000AB; <span class="screen-reader-text">Go to</span> Previous Page', 'eqd' );
+		$label = __( ' <span class="screen-reader-text">Go to</span> Previous', 'eqd' );
 		$link  = get_previous_posts_link( $label );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		printf( '<li class="pagination-previous">%s</li>' . "\n", $link );
@@ -281,7 +281,7 @@ function eqd_archive_paginated_navigation() {
 
 	// Next Post Link.
 	if ( get_next_posts_link() ) {
-		$label = __( '<span class="screen-reader-text">Go to</span> Next Page &#x000BB;', 'eqd' );
+		$label = __( '<span class="screen-reader-text">Go to</span> Next', 'eqd' );
 		$link  = get_next_posts_link( $label );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		printf( '<li class="pagination-next">%s</li>' . "\n", $link );
