@@ -33,6 +33,23 @@ function eqd_post_summary_title() {
 }
 
 /**
+ * Post Summary Title
+ */
+function eqd_post_author() {
+	?>
+		<div class="author_info">
+			<?php
+			$author_id = get_the_author_meta( 'ID' );
+			echo get_avatar( $author_id, 96 );
+			?>
+			<div class="author_name">
+				<?php echo get_the_author(); ?>
+			</div>
+		</div>
+	<?php
+}
+
+/**
  * Post Summary Image
  *
  * @param array $size Image size.
@@ -84,8 +101,8 @@ function eqd_tha_footer_cta() {
 		if ( get_field( 'image', 'option' ) ) {
 			$image = get_field( 'image', 'option' );
 		}
-		if ( get_field( 'link','option' ) ) {
-			$link = get_field( 'link','option' );
+		if ( get_field( 'link', 'option' ) ) {
+			$link = get_field( 'link', 'option' );
 		}
 
 		// Override.
@@ -105,7 +122,7 @@ function eqd_tha_footer_cta() {
 		$disable = get_field( 'disable' );
 
 		if ( ! $disable ) :
-		?>
+			?>
 
 	<section class="block calculator-signup-block">
 		<div class="calculator-signup-container">
@@ -177,18 +194,35 @@ add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
 
 function eqd_tha_page_header() {
 	if ( ! is_single() && ! is_front_page() ) {
+		
 		// Load values and assing defaults.
-		$page_id = get_the_ID();
+		$page_id                 = get_the_ID();
 		$acf_title               = get_field( 'title', $page_id );
-		$sub_heading                = get_field( 'sub_heading', $page_id );
+		$sub_heading             = get_field( 'sub_heading', $page_id );
 		$subtitle                = get_field( 'subtitle', $page_id );
-		$background_image        = get_field( 'background_image', $page_id );
+		
 		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
-		$center_text = get_field( 'center_text', $page_id );
+		$center_text             = get_field( 'center_text', $page_id );
 		$link                    = get_field( 'link' );
-		$padding_size                    = get_field( 'padding_size', $page_id );
+		$padding_size            = get_field( 'padding_size', $page_id );
 		$container_class;
-		switch ($padding_size) {
+
+		if ( is_archive() ) {
+			$term = get_queried_object();
+			$background_image        = get_field( 'background_image', $term );
+			if(!empty($background_image['url'])){
+				$bg_url = $background_image['url'];
+
+			}
+		} else {
+			$background_image        = get_field( 'background_image', $page_id );
+			$thumbnail_id = get_post_thumbnail_id( $page_id );
+			$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full', true );
+			$background_image = $thumbnail_url_array[0];
+			$bg_url = $background_image;
+		}
+
+		switch ( $padding_size ) {
 			case 'small':
 				$container_class .= ' inner-hero-small';
 				break;
@@ -198,7 +232,7 @@ function eqd_tha_page_header() {
 			case 'large':
 				$container_class .= ' inner-hero-large';
 				break;
-			
+
 			default:
 				break;
 		}
@@ -209,10 +243,11 @@ function eqd_tha_page_header() {
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
-				<?php if(!empty($sub_heading)): ?>
-					<div class="sub_heading"><?php  echo wp_kses_post($sub_heading); ?></div>
-				<?php endif; ?>
 				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+					<?php if ( ! empty( $sub_heading ) ) : ?>
+						<div class="sub_heading"><?php echo wp_kses_post( $sub_heading ); ?></div>
+					<?php endif; ?>
+
 					<?php
 					if ( is_page() ) {
 						echo wp_kses_post( get_the_title() );
@@ -229,11 +264,9 @@ function eqd_tha_page_header() {
 				<span class="subtitle">
 					<?php
 					if ( is_archive() ) {
-						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
 					} else {
 						echo wp_kses_post( $subtitle );
 					}
-
 					?>
 				</span>
 
@@ -244,11 +277,12 @@ function eqd_tha_page_header() {
 				<?php endif; ?>
 
 			</div>
+			<?php if ( ! empty( $bg_url) ) : ?>
 			<span class="hero_image">
-				<?php if ( ! empty( $background_image['ID'] ) ) : ?>
-					<?php echo wp_get_attachment_image( $background_image['ID'], 'full' ); ?>
-				<?php endif; ?>
+					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
 			</span>
+			<?php endif; ?>
+
 		</header>
 
 		<?php
@@ -258,7 +292,7 @@ add_action( 'tha_page_header', 'eqd_tha_page_header' );
 
 // Archive featured post
 // add_action( 'tha_page_header', 'eqd_tha_archive_featured_post' );
-function eqd_tha_archive_featured_post(){
+function eqd_tha_archive_featured_post() {
 	?>
 	<section class="archive_featured_post">
 		<div class="archive_featured_post_container">
