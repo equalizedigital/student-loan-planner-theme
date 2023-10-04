@@ -3375,6 +3375,14 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/author.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/author.php",
+      "oF" : 0
+    },
     "\/comments.php" : {
       "cB" : 0,
       "ft" : 8192,
