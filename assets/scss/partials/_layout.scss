@@ -23,7 +23,7 @@ input[type="search"] {
 	}
 
 	.content &>.wrap {
-		max-width: map-get($breakpoints, 'content-width');
+		// max-width: map-get($breakpoints, 'content-width');
 	}
 }
 
@@ -133,4 +133,11 @@ input[type="search"] {
 			}
 		}
 	}
+}
+
+// 404
+.not-found {
+    padding: 150px $container-padding;
+    max-width: $container-width;
+    margin: 0 auto;
 }
