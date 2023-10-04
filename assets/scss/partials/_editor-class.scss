@@ -125,7 +125,7 @@
     }
 }
 
-.blockquote-media-review {
+blockquote.wp-block-quote {
     max-width: 740px;
     margin: 0px auto 10px!important;
     padding: 100px 24px 50px;
@@ -135,7 +135,7 @@
     position: relative;
     margin: 0;
 
-    &::after {
+    &::before {
         content: '';
         position: absolute;
         top: 0;

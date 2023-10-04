@@ -38,7 +38,7 @@ $form_code = get_field('form_code');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 
-	<div class="container">
+	<div class="calculator-form-cta-container">
 	<header class="calculator-form-cta-block-container">
 		<h2 class="title"><?php echo $title; ?></h2>
 	</header>
