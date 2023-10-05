@@ -194,13 +194,12 @@ add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
 
 function eqd_tha_page_header() {
 	if ( ! is_single() && ! is_front_page() ) {
-		
+
 		// Load values and assing defaults.
-		$page_id                 = get_the_ID();
-		$acf_title               = get_field( 'title', $page_id );
-		$sub_heading             = get_field( 'sub_heading', $page_id );
-		$subtitle                = get_field( 'subtitle', $page_id );
-		
+		$page_id     = get_the_ID();
+		$acf_title   = get_field( 'title', $page_id );
+		$sub_heading = get_field( 'sub_heading', $page_id );
+		$subtitle    = get_field( 'subtitle', $page_id );
 		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
 		$center_text             = get_field( 'center_text', $page_id );
 		$link                    = get_field( 'link' );
@@ -208,18 +207,17 @@ function eqd_tha_page_header() {
 		$container_class;
 
 		if ( is_archive() ) {
-			$term = get_queried_object();
-			$background_image        = get_field( 'background_image', $term );
-			if(!empty($background_image['url'])){
+			$term             = get_queried_object();
+			$background_image = get_field( 'background_image', $term );
+			if ( ! empty( $background_image['url'] ) ) {
 				$bg_url = $background_image['url'];
-
 			}
 		} else {
-			$background_image        = get_field( 'background_image', $page_id );
-			$thumbnail_id = get_post_thumbnail_id( $page_id );
-			$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full', true );
-			$background_image = $thumbnail_url_array[0];
-			$bg_url = $background_image;
+			$background_image    = get_field( 'background_image', $page_id );
+			$thumbnail_id        = get_post_thumbnail_id( $page_id );
+			$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+			$background_image    = $thumbnail_url_array[0];
+			$bg_url              = $background_image;
 		}
 
 		switch ( $padding_size ) {
@@ -277,9 +275,9 @@ function eqd_tha_page_header() {
 				<?php endif; ?>
 
 			</div>
-			<?php if ( ! empty( $bg_url) ) : ?>
+			<?php if ( ! empty( $bg_url ) ) : ?>
 			<span class="hero_image">
-					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
+				<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
 			</span>
 			<?php endif; ?>
 
