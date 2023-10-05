@@ -425,7 +425,7 @@ img.wprm-comment-rating {
 
 	.contact-hero-container__image {
 		position: relative;
-		min-height: 240px;
+		min-height: 154px;
 		max-width: 450px;
 		display: flex;
 
@@ -551,7 +551,7 @@ img.wprm-comment-rating {
 		line-height: 28px;
 
 		@include media(">tablet") {
-			padding: 200px 0 0;
+			padding: 270px 0 0;
 		}
 
 		p {
