@@ -119,7 +119,7 @@ function eqd_single_after_entry_content() {
 						<div class="td_text">
 							<?php 
 							if( get_sub_field( 'offer_text' ) ) {
-								echo slp_append_superscript( the_sub_field( 'offer_text' ), get_row_index() );
+								echo slp_append_superscript( get_sub_field( 'offer_text' ), get_row_index() );
 							}
 							?>
 						</div>
@@ -144,7 +144,7 @@ function eqd_single_after_entry_content() {
 						<div class="td_text">
 							<?php 
 							if( get_sub_field( 'learn_more_subtext' ) ) {
-								echo slp_append_superscript( the_sub_field( 'learn_more_subtext' ), get_row_index() );
+								echo slp_append_superscript( get_sub_field( 'learn_more_subtext' ), get_row_index() );
 							?>
 						</div>
 					</div>
