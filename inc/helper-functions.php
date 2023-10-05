@@ -329,3 +329,24 @@ function slp_a_target( $value ) {
 
 	return ' target="' . $value . '"';
 }
+
+/**
+ * Appends a superscript at the end of each line in the provided HTML content.
+ *
+ * @param string $content         The original HTML content.
+ * @param string $superscriptText The text to be added as superscript. Default is 'TM'.
+ * 
+ * @return string Updated content with superscripts appended.
+ */
+function slp_append_superscript( $content, $superscript_text ) {
+	// Convert the superscript text to actual HTML tag.
+	$superscript = '<sup>' . $superscript_text . '</sup>';
+
+	// Replace each line break with the superscript followed by a line break.
+	$updated_content = str_replace( '<br>', $superscript . '<br>', $content );
+
+	// Additionally, add superscript to the end of the paragraph if needed.
+	$updated_content = str_replace( '</p>', $superscript . '</p>', $updated_content );
+
+	return $updated_content;
+}
