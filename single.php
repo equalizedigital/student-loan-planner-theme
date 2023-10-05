@@ -93,8 +93,9 @@ function eqd_single_after_entry_content() {
 		<?php
 		while ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) :
 			the_row();
-			$logo_image = get_sub_field( 'logo_image' );
-			$link       = get_sub_field( 'learn_more_link' );
+			$logo_image  = get_sub_field( 'logo_image' );
+			$link        = get_sub_field( 'learn_more_link' );
+			$superscript = "<sup>" . get_row_index() . "</sup>";
 			?>
 
 			<tr class="data-tr">
@@ -102,16 +103,25 @@ function eqd_single_after_entry_content() {
 				<td>
 					<div class="td_content">
 						<img src="<?php echo $logo_image['url']; ?>" alt="<?php echo $logo_image['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field('lender_name'); ?>">Disclosures<sup><?php echo get_row_index(); ?></sup></button>
+						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field('lender_name'); ?>">Disclosures<sup><?php echo $superscript; ?></sup></button>
 					</div>
 				</td>
 				<td>
 					<div class="td_content">
 						<div class="td_title">
-							<?php the_sub_field( 'offer' ); ?>
+							<?php 
+							if( get_sub_field( 'offer' ) ) {
+								the_sub_field( 'offer' );
+								echo $superscript;
+							}
+							?>
 						</div>
 						<div class="td_text">
-							<?php the_sub_field( 'offer_text' ); ?>
+							<?php 
+							if( get_sub_field( 'offer_text' ) ) {
+								echo slp_append_superscript( the_sub_field( 'offer_text' ), get_row_index() );
+							}
+							?>
 						</div>
 					</div>
 				</td>
@@ -123,7 +133,7 @@ function eqd_single_after_entry_content() {
 							<div class="td_title">
 								<?php
 								$link_target = $link['target'] ? $link['target'] : '_self';
-									?>
+								?>
 								<a href="<?php echo $link['url']; ?>"
 								class="btn"
 								target="<?php echo esc_attr( $link_target ); ?>">
@@ -132,7 +142,10 @@ function eqd_single_after_entry_content() {
 							</div>
 						<?php endif; ?>
 						<div class="td_text">
-							<?php the_sub_field( 'learn_more_subtext' ); ?>
+							<?php 
+							if( get_sub_field( 'learn_more_subtext' ) ) {
+								echo slp_append_superscript( the_sub_field( 'learn_more_subtext' ), get_row_index() );
+							?>
 						</div>
 					</div>
 				</td>
