@@ -1432,6 +1432,7 @@ section.refinance_lender_section {
 		justify-content: center;
 		gap: 20px;
 		list-style: none;
+		
 	}
 
 	.author_socials a {
@@ -1505,6 +1506,9 @@ section.refinance_lender_section {
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
+		li{
+			list-style: none;
+		}
 	}
 
 }

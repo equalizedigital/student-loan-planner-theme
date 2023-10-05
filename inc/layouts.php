@@ -339,18 +339,12 @@ function eqd_single_fullwidth_content() {
 					$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
 					?>
 					<span class="entry-author">
-						<a href="<?php echo esc_url( get_author_posts_url( $edit_auth_id ) ); ?>" aria-hidden="true" tabindex="-1">
 							<?php echo get_avatar( $edit_auth_id, 40 ); ?>
-						</a>
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : 'Written By'; ?>
 
-								<a href="<?php echo wp_kses_post( esc_url( get_author_posts_url( $edit_auth_id ) ) ); ?>">
-									<?php
-									echo ! empty( $id_post_editor ) ? $id_post_editor['user_firstname'] . ' ' . $id_post_editor['user_lastname'] : get_the_author();
-									?>
-								</a>
+								<?php  echo get_author_posts_link_by_id($edit_auth_id); ?>
 							</span>
 							<span class="entry-data">
 								<?php
@@ -378,13 +372,7 @@ function eqd_single_fullwidth_content() {
 					
 					<div class="author_info">
 					Reviewed By
-							<?php
-							if ( $first_name && $last_name ) {
-								echo $first_name . ' ' . $last_name;
-							} else {
-								echo $nickname;
-							}
-							?>
+					<?php  echo get_author_posts_link_by_id($review_by_auth_id); ?>
 					</div>
 				</div>
 				<?php endif; ?>
