@@ -1,10 +1,9 @@
 .media-reviews-global-block {
     background: #F7F7F7;
     padding: 50px 0;
-    margin: 50px 0 0;
+    margin:  0 0;
     color: black;
     @include media(">tablet") {
-        // padding: 153px 0 0;
         margin: 0;
     }
     &-purple{
