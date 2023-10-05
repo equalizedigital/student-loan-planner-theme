@@ -175,7 +175,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 
 				<div class="vendor_information_block_container_column_two_link">
 					<?php if ( ! empty( $website['url'] ) ) :
-						$target = $website['target'] ? $website['target'] : '_self';
+						$target = $website['target'] ? $website['target'] : '_blank';
 						$title = $website['title'] ? $website['title'] : 'Full ' . $heading . ' Review';
 						?>
 						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn" target="<?php echo esc_attr( $target ); ?>">
