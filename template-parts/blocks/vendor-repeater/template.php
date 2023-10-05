@@ -104,7 +104,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							?>
 							<td>
 								<div class="title">Variable</div>
-								<div class="text"><?php  echo wp_kses_post($variable); ?></div>
+								<div class="text"><?php  echo wp_kses_post($variable); ?><a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a></div>
 							</td>
 							<?php
 						endwhile;
@@ -120,8 +120,8 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							$fixed = get_sub_field( 'fixed' );
 							?>
 							<td>
-							<div class="title">Fixed</div>
-								<div class="text"><?php  echo wp_kses_post($fixed); ?></div>
+								<div class="title">Fixed</div>
+								<div class="text"><?php  echo wp_kses_post($fixed); ?><a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a></div>
 							</td>
 							<?php
 						endwhile;
@@ -137,7 +137,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							$amount = get_sub_field( 'amount' );
 							?>
 							<td>
-								<div class="text"><?php  echo wp_kses_post($amount); ?></div>
+								<div class="text"><?php  echo wp_kses_post($amount); ?><a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a></div>
 							</td>
 							<?php
 						endwhile;
