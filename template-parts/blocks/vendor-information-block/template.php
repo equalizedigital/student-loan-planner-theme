@@ -174,21 +174,20 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php endif; ?>
 
 				<div class="vendor_information_block_container_column_two_link">
-					<?php if ( ! empty( $website['url'] ) ) : ?>
-						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn">
-							<?php  echo wp_kses_post($website['title']); ?>
-							<span class="svg">
-								<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"/>
-									<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"/>
-								</svg>
-							</span>
-							<span class="subtext">
-								<?php echo wp_kses_post( $button_subtext ); ?>
-							</span>
+					<?php if ( ! empty( $website['url'] ) ) :
+						$target = $website['target'] ? $website['target'] : '_self';
+						$title = $website['title'] ? $website['title'] : 'Full ' . $heading . ' Review';
+						?>
+						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn" target="<?php echo esc_attr( $target ); ?>">
+							<?php  echo wp_kses_post($title); 
+							if ( ! empty( $button_subtext ) ) :
+								?>
+								<span class="subtext">
+									<?php echo wp_kses_post( $button_subtext ); ?>
+								</span>
+							<?php endif; ?>
 						</a>
 					<?php endif; ?>
-
 					<button 
 					class="vendor_information_block_container_column_two_link_more_info"
 					type="button"
