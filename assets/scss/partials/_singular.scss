@@ -1239,7 +1239,7 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 
 section.refinance_lender_section {
-	margin: 117px 0;
+	margin: 0 0 117px 0;
 
 	.lender_info {}
 
@@ -1767,4 +1767,7 @@ html {
 	}
 
 
+}
+article.type-post {
+	margin-bottom: 117px;
 }
