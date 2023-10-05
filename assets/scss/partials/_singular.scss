@@ -785,12 +785,8 @@ img.wprm-comment-rating {
 	grid-column-start: 1;
 	grid-column-end: 13;
 
-
-
-
 	@include media(">tablet") {
 		padding: 86px 0;
-
 		min-height: 400px;
 		display: flex;
 		flex-direction: column;
