@@ -359,3 +359,20 @@ a.facetwp-page.next {
 .remove-bottom-padding{
     padding-bottom: 0;
 }
+
+
+.left-border {
+    position: relative;
+    &:after {
+        content: close-quote;
+        position: absolute;
+        top: 0;
+        right: calc(100% + 30px);
+        width: 1px;
+        height: 100%;
+        background: #A1A5A5;
+        @include media("<tablet") {
+            display: none;
+        }
+    }
+}
