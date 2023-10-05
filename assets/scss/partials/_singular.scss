@@ -1262,6 +1262,7 @@ section.refinance_lender_section {
 	}
 
 	.header {
+		padding-bottom: 5px;
 		@include media("<tablet") {
 			display: none !important;
 		}
@@ -1290,6 +1291,11 @@ section.refinance_lender_section {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		font-family: $base-font;
+		sup{
+			top: 0;
+			font-size: .3em;
+		}
 	}
 
 	tr.data-tr .td_text {}

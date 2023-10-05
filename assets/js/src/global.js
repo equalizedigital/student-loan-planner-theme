@@ -931,8 +931,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				const controlledElementId = event.target.getAttribute('aria-controls');
 				const targetElement = document.getElementById(controlledElementId);
 				if(targetElement) {
-					event.target.classList.toggle('active_btn'); // Replace 'your-class-name' with the class you want to add
+					event.target.classList.toggle('active_btn');
 					targetElement.toggleAttribute('hidden');
+					const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
+					event.target.setAttribute('aria-expanded', !isExpanded);
+					event.target.innerHTML = isExpanded ? 'More Information <span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>' : 'Less Information<span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>';
 				}
 			});
 
