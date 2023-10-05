@@ -113,6 +113,16 @@ function eqd_archive_recommended_post() {
 								the_post_thumbnail();  // This will output the featured image with default settings
 							}
 							?>
+							<?php 
+							if ( is_tax( 'slp_occupation' ) ) {
+							$categories = get_the_category();
+							if ( ! empty( $categories ) ) {
+								?>
+								<div class="categories"><?php  echo wp_kses_post(  $categories[0]->name ); ?></div>
+								<?php
+							}
+							}
+							?>
 						</figure>
 						<div class="date">
 							<?php echo get_the_date();  // This will output the date the post was published ?>
