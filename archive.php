@@ -66,18 +66,121 @@ function eqd_archive_header() {
 
 	echo '<header class="' . esc_attr( join( ' ', $classes ) ) . '">';
 	do_action( 'eqd_archive_header_before' );
-	if ( ! empty( $title ) ) {
-		echo '<h1 class="archive-title">' . esc_html( wp_strip_all_tags( $title ) ) . '</h1>';
-	}
-	if ( ! empty( $subtitle ) ) {
-		echo '<h4>' . esc_html( wp_strip_all_tags( $subtitle ) ) . '</h4>';
-	}
+
+	echo '<h2 class="archive-title">Latest articles</h2>';
+ 
 	echo wp_kses_post( apply_filters( 'eqd_the_content', $description ) );
 	do_action( 'eqd_archive_header_after' );
 	echo '</header>';
 
 }
 add_action( 'tha_content_while_before', 'eqd_archive_header' );
+
+
+/**
+ * Archive Recommended Posts
+ */
+function eqd_archive_recommended_post() {
+	$term = get_queried_object();
+	$post_recommened = get_field('recommendedfeatured_posts',$term); 
+
+	if(!empty($post_recommened)):
+	?>
+	<section class="archive_template_recommended_post">
+		<div class="archive_template_recommended_post_header">
+			<h2 class="archive_template_recommended_post_header_title">Featured articles</h2>
+		</div>
+		<div class="archive_template_recommended_post_loop">
+			<?php
+			$args = array(
+				'post__in'       => $post_recommened,
+				'post_type'      => 'post',
+				'orderby'        => 'post__in', // This will preserve the order of IDs as you provided
+				'posts_per_page' => -1, // Get all posts matching the criteria
+			);
+
+			$the_query = new WP_Query( $args );
+
+			// The Loop
+			if ( $the_query->have_posts() ) {
+				while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					?>
+					<a class="archive_template_recommended_post_loop_item" href="<?php the_permalink( ); ?>">
+						<figure>
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail();  // This will output the featured image with default settings
+							}
+							?>
+							<?php 
+							if ( is_tax( 'slp_occupation' ) ) {
+							$categories = get_the_category();
+							if ( ! empty( $categories ) ) {
+								?>
+								<div class="categories"><?php  echo wp_kses_post(  $categories[0]->name ); ?></div>
+								<?php
+							}
+							}
+							?>
+						</figure>
+						<div class="date">
+							<?php echo get_the_date();  // This will output the date the post was published ?>
+						</div>
+						<h3 class="title"><?php  echo wp_kses_post(get_the_title()); ?></h3>
+						<div class="author">
+							<?php
+							$author_id = get_the_author_meta('ID');
+							echo get_avatar( $author_id, 96 );  
+							?>
+							<div class="author_name">
+								<?php echo get_the_author(); ?>
+							</div>
+						</div>
+						</a>
+					
+					<?php
+				}
+				/* Restore original Post Data */
+				wp_reset_postdata();
+			} else {
+				// No posts found
+				echo 'No posts found';
+			}
+			?>
+		</div>
+	</section>
+	<?php
+	endif;
+}
+add_action( 'tha_content_before_container', 'eqd_archive_recommended_post' );
+
+function eqd_archive_recommended_cta(){
+	$term = get_queried_object();
+	$cta = get_field('cta',$term); 
+
+	if($cta):
+?>
+<section class="archive_cta">
+	<div class="archive_cta_container">
+		<div class="archive_cta_container_figure">
+			<img src="<?php echo wp_kses_post($cta['image']['url']); ?>" alt="<?php echo wp_kses_post($cta['title']); ?>">
+		</div>
+		<div class="archive_cta_container_copy">
+			<h2 class="title"><?php echo wp_kses_post($cta['title']); ?></h2>
+			<div class="copy">
+				<?php echo wp_kses_post($cta['copy']); ?>
+			</div>
+			<div class="form">
+				<?php echo do_shortcode( $cta['form_code'] ); ?>
+			</div>
+		</div>
+	</div>
+</section>
+<?php
+endif;
+}
+add_action( 'tha_content_before_container', 'eqd_archive_recommended_cta' );
 
 // Build the page.
 require get_template_directory() . '/index.php';

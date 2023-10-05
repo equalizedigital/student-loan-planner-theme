@@ -206,7 +206,6 @@ blockquote.wp-block-quote {
 
 .facetwp_title_columns .facet-reset {
     color: #000;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
@@ -226,7 +225,6 @@ blockquote.wp-block-quote {
     border-radius: 0;
     padding: 0;
     color: #000;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -254,7 +252,6 @@ blockquote.wp-block-quote {
     background: #82BC46;
     color: var(--Black, #000);
     text-align: center;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -279,7 +276,6 @@ blockquote.wp-block-quote {
 
 .fwpl-item.facet_blogpost_loop_date {
     color: var(--WCAG-Green, #547C2D);
-    font-family: Source Sans Pro,sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -288,7 +284,6 @@ blockquote.wp-block-quote {
 
 .fwpl-item.facet_blogpost_loop_title a {
     color: #000;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -303,7 +298,6 @@ blockquote.wp-block-quote {
 
 .fwpl-item.facet_blogpost_loop_author {
     color: #000;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -312,7 +306,6 @@ blockquote.wp-block-quote {
 
 .fwpl-item.facet_blogpost_loop_author {
     color: #000;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -335,7 +328,6 @@ a.facetwp-page {
     text-decoration: none;
     color: #000;
     text-align: center;
-    font-family: Source Sans Pro,sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 700;
@@ -366,4 +358,21 @@ a.facetwp-page.next {
 }
 .remove-bottom-padding{
     padding-bottom: 0;
+}
+
+
+.left-border {
+    position: relative;
+    &:after {
+        content: close-quote;
+        position: absolute;
+        top: 0;
+        right: calc(100% + 30px);
+        width: 1px;
+        height: 100%;
+        background: #A1A5A5;
+        @include media("<tablet") {
+            display: none;
+        }
+    }
 }

@@ -28,6 +28,7 @@ tha_content_before();
 			tha_single_header();
 
 			echo "<div class='side-main-article-container'>";
+				tha_content_before_container();
 				echo "<div class=\"site-main-article-content $container_class\">";
 
 					tha_content_top();

@@ -102,7 +102,7 @@ function eqd_single_after_entry_content() {
 				<td>
 					<div class="td_content">
 						<img src="<?php echo $logo_image['url']; ?>" alt="<?php echo $logo_image['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Open Modal">Disclosures<sup><?php echo get_row_index(); ?></sup></button>
+						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field('lender_name'); ?>">Disclosures<sup><?php echo get_row_index(); ?></sup></button>
 					</div>
 				</td>
 				<td>
@@ -126,7 +126,6 @@ function eqd_single_after_entry_content() {
 									?>
 								<a href="<?php echo $link['url']; ?>"
 								class="btn"
-								aria-label="Disclosures for <?php echo get_sub_field('lender_name'); ?>"
 								target="<?php echo esc_attr( $link_target ); ?>">
 									<?php echo $link['title']; ?>
 								</a>
