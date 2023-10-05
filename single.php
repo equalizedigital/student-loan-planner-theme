@@ -396,7 +396,7 @@ function eqd_single_after_entry_author_info() {
 		?>
 			<?php if ( !empty($post_editor_by_auth_id) ) : ?>
 
-			<div class="article_footer_data_author_reviewed_author">
+			<div class="article_footer_data_author_reviewed_author editedby">
 				<div class="article_footer_data_author_profile">
 					<?php echo $profile_picture; ?>
 				</div>
@@ -419,12 +419,12 @@ function eqd_single_after_entry_author_info() {
 					<?php } ?>
 					<?php if ( ! empty( get_user_meta( $post_editor_by_auth_id['ID'], 'linkedin', true ) ) ) { ?>
 					<li>
-					<a href="<?php echo wp_kses_post( get_user_meta( $post_editor_by_auth_id['ID'], 'linkedin', true ) ); ?>">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-							<path d="M0.45864 5.32922H3.75985V16.0553H0.45864V5.32922ZM2.11092 0C3.16784 0 4.02408 0.865112 4.02408 1.93298C4.02408 3.00086 3.16784 3.86597 2.11092 3.86597C1.054 3.86597 0.197754 3.00086 0.197754 1.93298C0.197754 0.865112 1.054 0 2.11092 0Z" fill="black"/>
-							<path d="M5.83008 5.32993H8.99082V6.79656H9.05102C9.69655 5.68138 10.894 5.01903 12.1716 5.06634C15.5163 5.06634 16.1284 7.28657 16.1284 10.1725V16.056H12.8305V10.8416C12.8305 9.59804 12.8105 7.99623 11.118 7.99623C9.42562 7.99623 9.13799 9.34797 9.13799 10.7504V16.056H5.84346L5.83008 5.32993Z" fill="black"/>
-						</svg>
-					</a>
+						<a href="<?php echo wp_kses_post( get_user_meta( $post_editor_by_auth_id['ID'], 'linkedin', true ) ); ?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+								<path d="M0.45864 5.32922H3.75985V16.0553H0.45864V5.32922ZM2.11092 0C3.16784 0 4.02408 0.865112 4.02408 1.93298C4.02408 3.00086 3.16784 3.86597 2.11092 3.86597C1.054 3.86597 0.197754 3.00086 0.197754 1.93298C0.197754 0.865112 1.054 0 2.11092 0Z" fill="black"/>
+								<path d="M5.83008 5.32993H8.99082V6.79656H9.05102C9.69655 5.68138 10.894 5.01903 12.1716 5.06634C15.5163 5.06634 16.1284 7.28657 16.1284 10.1725V16.056H12.8305V10.8416C12.8305 9.59804 12.8105 7.99623 11.118 7.99623C9.42562 7.99623 9.13799 9.34797 9.13799 10.7504V16.056H5.84346L5.83008 5.32993Z" fill="black"/>
+							</svg>
+						</a>
 					</li>
 					<?php } ?>
 					</ul>
