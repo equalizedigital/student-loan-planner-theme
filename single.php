@@ -354,7 +354,7 @@ function eqd_single_after_entry_author_info() {
 					<?php echo $profile_picture; ?>
 				</div>
 				<div class="article_footer_data_author_author_info">
-				Reviewed By
+					Reviewed By
 					<span class="name">
 					<?php  echo get_author_posts_link_by_id($review_by_auth_id); ?>
 					</span>
