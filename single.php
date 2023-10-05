@@ -145,6 +145,7 @@ function eqd_single_after_entry_content() {
 							<?php 
 							if( get_sub_field( 'learn_more_subtext' ) ) {
 								echo slp_append_superscript( get_sub_field( 'learn_more_subtext' ), get_row_index() );
+							}
 							?>
 						</div>
 					</div>
