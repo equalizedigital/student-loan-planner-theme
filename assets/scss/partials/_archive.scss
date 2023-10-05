@@ -204,7 +204,25 @@ section.archive_template_recommended_post {
 
 	.archive_template_recommended_post_loop_item figure {
 		max-width: 100%;
-
+		position: relative;
+		.categories {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 10;
+			color: var(--Black, #000);
+			text-align: center;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 400;
+			background: #82BC46;
+			height: 39px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 12px;
+			border-radius: 0 10px 0 10px;
+		}
 		img {
 			height: 240px;
 			border-radius: 10px;
