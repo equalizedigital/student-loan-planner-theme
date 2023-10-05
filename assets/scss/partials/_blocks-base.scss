@@ -187,6 +187,7 @@ input {
 		.wpforms-field {
 			padding: 0;
 			margin: 0;
+			width: 100%;
 		}
 
 		button.wpforms-submit {
@@ -237,8 +238,8 @@ input {
 			margin-bottom: 10px;
 		}
 
-		input[type=text] {
-			border-radius: 4px;
+		input {
+			border-radius: 4px!important;
 			border: 1px solid var(--Dark-Gray, #A1A5A5);
 			background: #FFF;
 		}
@@ -256,7 +257,7 @@ input {
 			font-weight: 400;
 			line-height: 15px;
 			min-width: 58px;
-			border-radius: 10px;
+			border-radius: 4px;
 			cursor: pointer;
 
 			&:hover {
