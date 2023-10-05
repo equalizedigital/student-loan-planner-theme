@@ -7,7 +7,7 @@
       "uuidString" : "F098CAB6-68FD-4BF6-AE0A-27C6B360832B"
     }
   ],
-  "creatorBuild" : "34484",
+  "creatorBuild" : "34518",
   "files" : {
     "\/.github\/workflows\/develop.yml" : {
       "cB" : 0,
@@ -2480,7 +2480,7 @@
       "oA" : 0,
       "oAP" : "\/assets\/js\/global-min.js",
       "oF" : 0,
-      "sC" : 0,
+      "sC" : 3,
       "tS" : 0
     },
     "\/assets\/js\/src\/menu.js" : {
@@ -5090,9 +5090,6 @@
       "no-return-assign" : {
         "active" : 0,
         "optionString" : "'except-parens'"
-      },
-      "no-return-await" : {
-        "active" : 0
       },
       "no-script-url" : {
         "active" : 0

@@ -93,15 +93,23 @@ tha_content_before();
 						</ul>
 					</div>
 
+
+					<?php if(get_field( 'expertise', 'user_' . $curauth->ID )): ?>
 						<h2 class="title">Expertise</h2>
 						<div class="detail"><?php the_field( 'expertise', 'user_' . $curauth->ID ); ?></div>
+					<?php endif; ?>
 
+					<?php if(get_field( 'education', 'user_' . $curauth->ID )): ?>
 						<h2 class="title">Education</h2>
 						<div class="detail"><?php the_field( 'education', 'user_' . $curauth->ID ); ?></div>
+						<?php endif; ?>
 
+						<?php if(get_field( 'certifications', 'user_' . $curauth->ID )): ?>
 						<h2 class="title">Certifications</h2>
 						<div class="detail"><?php the_field( 'certifications', 'user_' . $curauth->ID ); ?></div>
-					   
+						<?php endif; ?>
+
+						<?php if(get_field( 'media_mentions', 'user_' . $curauth->ID )): ?>
 						<h2 class="title">Media Mentions</h2>
 						<div class="detail">
 						<?php
@@ -128,6 +136,7 @@ tha_content_before();
 
 						?>
 						</div>
+						
 						<div class="detail_end_link">
 							<a href="<?php echo get_post_type_archive_link( 'slp_press' ); ?>" class="link">View All
 								<span class="svg">
@@ -137,6 +146,8 @@ tha_content_before();
 								</span>
 							</a>
 						</div>
+						<?php endif; ?>
+
 						
 					</div>
 					<div class="slp-contact-info-loop">
@@ -145,13 +156,14 @@ tha_content_before();
 					</div>
 				</div>
 
+				<?php if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) : ?>
 				<div class="author_recommended_posts">
 					<h2 class="author_recommended_posts_title">Travis recommendations</h2>
 					<div class="author_recommended_posts_loop">
 
 					<?php
 						// Check rows existexists.
-					if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
+					
 						while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
 							the_row();
 							$post = get_sub_field( 'post' );
@@ -181,11 +193,12 @@ tha_content_before();
 								</div>
 								<?php
 							endwhile;
-						endif;
+						
 					?>
 					</div>
 
 				</div>
+				<?php endif; ?>
 
 				<div class="author_latest_from">
 					<h2 class="author_latest_from_title">The lastest from Travis</h2>
