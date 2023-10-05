@@ -63,6 +63,9 @@
                     &:nth-last-child(1) {
                         border-right: none;
                     }
+                    a {
+                        text-decoration: none;
+                    }
                 }
             }
         }
