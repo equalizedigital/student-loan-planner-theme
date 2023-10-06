@@ -136,7 +136,11 @@ if ( have_rows( 'team' ) ) :
 	// Loop through rows.
 	while ( have_rows( 'team' ) ) :
 		the_row();
-		$member = get_sub_field( 'member' );
+		$member      = get_sub_field( 'member' );
+		$booking_url = get_field('booking_url',$member->ID);
+
+		$words = explode(' ', trim($member->post_title));
+		$firstWord = $words[0];
 		?>
 		<div id="modal<?php echo wp_kses_post( get_row_index() ); ?>" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">
 			<div class="modal-content" >
@@ -166,6 +170,11 @@ if ( have_rows( 'team' ) ) :
 						<span class="content">
 							<?php echo wpautop(wp_kses_post( $member->post_content )); ?>
 						</span>
+						<div class="link">
+							<a href="<?php echo ($booking_url);?>" class="btn">
+								Book a Call with <?php echo wp_kses_post( $firstWord ); ?>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

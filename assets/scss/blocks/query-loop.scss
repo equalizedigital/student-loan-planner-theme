@@ -64,6 +64,13 @@
             @include media("<tablet") {
                 display: none;
             }
+            img{
+                @include media(">tablet") {
+                    height: 290px;
+                }
+                object-fit: cover;
+                border-radius: 10px;
+            }
         }
 
         .title {

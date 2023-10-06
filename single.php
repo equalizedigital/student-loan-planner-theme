@@ -58,7 +58,7 @@ function eqd_single_after_entry() {
  **/
 function eqd_single_after_entry_content() {
 	$hide_section_per_category = false;
-	$categories               = get_the_category();
+	$categories                = get_the_category();
 	foreach ( $categories as $_category ) {
 		$hide_section_per_category = get_field( 'hide_student_loans_section', 'category_' . $_category->term_id );
 		if ( $hide_section_per_category ) {
@@ -78,7 +78,7 @@ function eqd_single_after_entry_content() {
 	<header class="title">
 		<?php
 		$current_year = date( 'Y' );
-			?>
+		?>
 		<h2 class="title">Refinance student loans, get a bonus in <?php echo $current_year; ?></h2>
 	</header>
 	<div class="lender_info">
@@ -93,9 +93,8 @@ function eqd_single_after_entry_content() {
 		<?php
 		while ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) :
 			the_row();
-			$logo_image  = get_sub_field( 'logo_image' );
-			$link        = get_sub_field( 'learn_more_link' );
-			$superscript = "<sup>" . get_row_index() . "</sup>";
+			$logo_image = get_sub_field( 'logo_image' );
+			$link       = get_sub_field( 'learn_more_link' );
 			?>
 
 			<tr class="data-tr">
@@ -103,25 +102,16 @@ function eqd_single_after_entry_content() {
 				<td>
 					<div class="td_content">
 						<img src="<?php echo $logo_image['url']; ?>" alt="<?php echo $logo_image['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field('lender_name'); ?>">Disclosures<sup><?php echo $superscript; ?></sup></button>
+						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field( 'lender_name' ); ?>">Disclosures<sup><?php echo get_row_index(); ?></sup></button>
 					</div>
 				</td>
 				<td>
 					<div class="td_content">
 						<div class="td_title">
-							<?php 
-							if( get_sub_field( 'offer' ) ) {
-								the_sub_field( 'offer' );
-								echo $superscript;
-							}
-							?>
+							<?php the_sub_field( 'offer' ); ?>
 						</div>
 						<div class="td_text">
-							<?php 
-							if( get_sub_field( 'offer_text' ) ) {
-								echo slp_append_superscript( get_sub_field( 'offer_text' ), get_row_index() );
-							}
-							?>
+							<?php the_sub_field( 'offer_text' ); ?>
 						</div>
 					</div>
 				</td>
@@ -142,11 +132,7 @@ function eqd_single_after_entry_content() {
 							</div>
 						<?php endif; ?>
 						<div class="td_text">
-							<?php 
-							if( get_sub_field( 'learn_more_subtext' ) ) {
-								echo slp_append_superscript( get_sub_field( 'learn_more_subtext' ), get_row_index() );
-							}
-							?>
+							<?php the_sub_field( 'learn_more_subtext' ); ?>
 						</div>
 					</div>
 				</td>
@@ -278,12 +264,14 @@ function eqd_single_after_entry_author_info() {
 
 	$id             = get_the_author_meta( 'ID' );
 	$id_post_editor = get_field( 'post_editor', get_the_ID() );
-	$author_url     = get_author_posts_url( $id_post_editor['ID'] );
+	$author_url     = get_author_posts_url( get_the_author_meta( 'ID' ) );
+
 	$author_name    = get_the_author_meta( 'display_name', $id_post_editor['ID'] );
 	$user_info      = get_userdata( $id_post_editor['ID'] );
 	$first_name     = $user_info->first_name;
 	$last_name      = $user_info->last_name;
 	$nickname       = $user_info->nickname;
+	
 
 	?>
 
@@ -293,20 +281,16 @@ function eqd_single_after_entry_author_info() {
 
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-					<a href="<?php echo get_site_url() . '/author/' . $user_info->user_nicename; ?>" aria-hidden="true" >
-						<?php echo get_avatar( $id_post_editor['ID'], 40 ); ?>
-					</a>
+						<?php echo get_avatar( $id,64  ); ?>
 					<div class="author_name">
-					<?php
-							echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author();
-							?>
+					<?php echo  get_the_author($id); ?>
 					</div>
 					<ul class="author_socials">
 						<?php
-						if ( ! empty( get_user_meta( $id_post_editor['ID'], 'twitter', true ) ) ) {
+						if ( ! empty( get_user_meta( $id, 'twitter', true ) ) ) {
 							?>
 							<li>
-							<a href="<?php echo wp_kses_post( get_user_meta( $id_post_editor['ID'], 'twitter', true ) ); ?>">
+							<a href="<?php echo wp_kses_post( get_user_meta( $id, 'twitter', true ) ); ?>">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
 									<path d="M16 2.13735C15.4138 2.37735 14.7777 2.54075 14.1141 2.61224C14.7943 2.23948 15.3142 1.64203 15.5576 0.937348C14.9215 1.28458 14.2191 1.53479 13.4725 1.67267C12.8752 1.08543 12.0235 0.717773 11.0778 0.717773C9.26374 0.717773 7.79813 2.07607 7.79813 3.74586C7.79813 3.98586 7.82579 4.21565 7.88109 4.43522C5.15451 4.30756 2.73211 3.10245 1.11718 1.26926C0.835119 1.71862 0.674732 2.23948 0.674732 2.79096C0.674732 3.84288 1.25544 4.77224 2.13481 5.31352C1.59834 5.2982 1.08953 5.16033 0.647079 4.93565C0.647079 4.94586 0.647079 4.96118 0.647079 4.97139C0.647079 6.44203 1.78085 7.66245 3.27964 7.94331C3.00311 8.01479 2.71552 8.05054 2.41687 8.05054C2.20671 8.05054 2.00207 8.03011 1.79744 7.99437C2.21777 9.19948 3.42897 10.0727 4.86139 10.0982C3.73868 10.9101 2.32285 11.3952 0.785344 11.3952C0.519876 11.3952 0.259938 11.3799 0 11.3544C1.45455 12.2122 3.18009 12.7178 5.03284 12.7178C11.0722 12.7178 14.3685 8.1016 14.3685 4.09309C14.3685 3.96033 14.3685 3.83267 14.3574 3.6999C14.999 3.27097 15.5576 2.7399 15.9945 2.13224L16 2.13735Z" fill="black"/>
 								</svg>
@@ -316,10 +300,10 @@ function eqd_single_after_entry_author_info() {
 						}
 						?>
 						<?php
-						if ( ! empty( get_user_meta( $id_post_editor['ID'], 'linkedin', true ) ) ) {
+						if ( ! empty( get_user_meta( $id, 'linkedin', true ) ) ) {
 							?>
 							<li>
-							<a href="<?php echo wp_kses_post( get_user_meta( $id_post_editor['ID'], 'linkedin', true ) ); ?>">
+							<a href="<?php echo wp_kses_post( get_user_meta( $id, 'linkedin', true ) ); ?>">
 								<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
 									<path d="M0.45864 5.32922H3.75985V16.0553H0.45864V5.32922ZM2.11092 0C3.16784 0 4.02408 0.865112 4.02408 1.93298C4.02408 3.00086 3.16784 3.86597 2.11092 3.86597C1.054 3.86597 0.197754 3.00086 0.197754 1.93298C0.197754 0.865112 1.054 0 2.11092 0Z" fill="black"/>
 									<path d="M5.83008 5.32993H8.99082V6.79656H9.05102C9.69655 5.68138 10.894 5.01903 12.1716 5.06634C15.5163 5.06634 16.1284 7.28657 16.1284 10.1725V16.056H12.8305V10.8416C12.8305 9.59804 12.8105 7.99623 11.118 7.99623C9.42562 7.99623 9.13799 9.34797 9.13799 10.7504V16.056H5.84346L5.83008 5.32993Z" fill="black"/>
@@ -331,15 +315,16 @@ function eqd_single_after_entry_author_info() {
 						?>
 					</ul>
 				</div>
+
 				<span class="article_footer_data_author_entry-info">
 					<span class="article_footer_data_author_entry-data">
-						<?php the_author_meta( 'user_description', $id_post_editor['ID'] ); ?> </br>
+						<?php the_author_meta( 'user_description', $id ); ?> </br>
 					</span>
 					<div class="article_footer_data_author_entry-inf__link">
 						<a href="<?php echo $author_url; ?>">
 							Read More from 
 							<?php
-							echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author();
+							echo get_the_author($id);
 							?>
 						<span class="arrow">
 						<svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none">
@@ -349,6 +334,7 @@ function eqd_single_after_entry_author_info() {
 						</a>
 					</div>
 				</span>
+
 			</span>
 		</div>
 
@@ -368,35 +354,80 @@ function eqd_single_after_entry_author_info() {
 					<?php echo $profile_picture; ?>
 				</div>
 				<div class="article_footer_data_author_author_info">
-				Reviewed By
+					Reviewed By
 					<span class="name">
-						<?php
-						if ( $first_name && $last_name ) {
-							echo $first_name . ' ' . $last_name;
-						} else {
-							echo $nickname;
-						}
-						?>
+					<?php  echo get_author_posts_link_by_id($review_by_auth_id); ?>
 					</span>
 				</div>
 
-				<div class="article_footer_data_author_socials">
+				<ul class="article_footer_data_author_socials">
 					<?php if ( ! empty( get_user_meta( $review_by_auth_id, 'twitter', true ) ) ) { ?>
+					<li>
 					<a href="<?php echo wp_kses_post( get_user_meta( $review_by_auth_id, 'twitter', true ) ); ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
 							<path d="M16 2.13735C15.4138 2.37735 14.7777 2.54075 14.1141 2.61224C14.7943 2.23948 15.3142 1.64203 15.5576 0.937348C14.9215 1.28458 14.2191 1.53479 13.4725 1.67267C12.8752 1.08543 12.0235 0.717773 11.0778 0.717773C9.26374 0.717773 7.79813 2.07607 7.79813 3.74586C7.79813 3.98586 7.82579 4.21565 7.88109 4.43522C5.15451 4.30756 2.73211 3.10245 1.11718 1.26926C0.835119 1.71862 0.674732 2.23948 0.674732 2.79096C0.674732 3.84288 1.25544 4.77224 2.13481 5.31352C1.59834 5.2982 1.08953 5.16033 0.647079 4.93565C0.647079 4.94586 0.647079 4.96118 0.647079 4.97139C0.647079 6.44203 1.78085 7.66245 3.27964 7.94331C3.00311 8.01479 2.71552 8.05054 2.41687 8.05054C2.20671 8.05054 2.00207 8.03011 1.79744 7.99437C2.21777 9.19948 3.42897 10.0727 4.86139 10.0982C3.73868 10.9101 2.32285 11.3952 0.785344 11.3952C0.519876 11.3952 0.259938 11.3799 0 11.3544C1.45455 12.2122 3.18009 12.7178 5.03284 12.7178C11.0722 12.7178 14.3685 8.1016 14.3685 4.09309C14.3685 3.96033 14.3685 3.83267 14.3574 3.6999C14.999 3.27097 15.5576 2.7399 15.9945 2.13224L16 2.13735Z" fill="black"/>
 						</svg>
 					</a>
+					</li>
 					<?php } ?>
 					<?php if ( ! empty( get_user_meta( $review_by_auth_id, 'linkedin', true ) ) ) { ?>
+					<li>
 					<a href="<?php echo wp_kses_post( get_user_meta( $review_by_auth_id, 'linkedin', true ) ); ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
 							<path d="M0.45864 5.32922H3.75985V16.0553H0.45864V5.32922ZM2.11092 0C3.16784 0 4.02408 0.865112 4.02408 1.93298C4.02408 3.00086 3.16784 3.86597 2.11092 3.86597C1.054 3.86597 0.197754 3.00086 0.197754 1.93298C0.197754 0.865112 1.054 0 2.11092 0Z" fill="black"/>
 							<path d="M5.83008 5.32993H8.99082V6.79656H9.05102C9.69655 5.68138 10.894 5.01903 12.1716 5.06634C15.5163 5.06634 16.1284 7.28657 16.1284 10.1725V16.056H12.8305V10.8416C12.8305 9.59804 12.8105 7.99623 11.118 7.99623C9.42562 7.99623 9.13799 9.34797 9.13799 10.7504V16.056H5.84346L5.83008 5.32993Z" fill="black"/>
 						</svg>
 					</a>
+					</li>
 					<?php } ?>
+					</ul>
+			</div>
+
+		<?php endif; ?>
+		<?php
+
+
+		
+			$post_editor_by_auth_id = get_field( 'post_editor', get_the_ID() );
+			
+			$profile_picture = get_avatar( $post_editor_by_auth_id, 64 );
+			$user_info       = get_userdata( $post_editor_by_auth_id );
+
+		?>
+			<?php if ( !empty($post_editor_by_auth_id) ) : ?>
+
+			<div class="article_footer_data_author_reviewed_author editedby">
+				<div class="article_footer_data_author_profile">
+					<?php echo $profile_picture; ?>
 				</div>
+				<div class="article_footer_data_author_author_info">
+				Edited By
+					<span class="name">
+					<?php  echo get_author_posts_link_by_id($post_editor_by_auth_id['ID']); ?>
+					</span>
+				</div>
+
+				<ul class="article_footer_data_author_socials">
+					<?php if ( ! empty( get_user_meta( $post_editor_by_auth_id['ID'], 'twitter', true ) ) ) { ?>
+					<li>
+					<a href="<?php echo wp_kses_post( get_user_meta( $post_editor_by_auth_id['ID'], 'twitter', true ) ); ?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
+							<path d="M16 2.13735C15.4138 2.37735 14.7777 2.54075 14.1141 2.61224C14.7943 2.23948 15.3142 1.64203 15.5576 0.937348C14.9215 1.28458 14.2191 1.53479 13.4725 1.67267C12.8752 1.08543 12.0235 0.717773 11.0778 0.717773C9.26374 0.717773 7.79813 2.07607 7.79813 3.74586C7.79813 3.98586 7.82579 4.21565 7.88109 4.43522C5.15451 4.30756 2.73211 3.10245 1.11718 1.26926C0.835119 1.71862 0.674732 2.23948 0.674732 2.79096C0.674732 3.84288 1.25544 4.77224 2.13481 5.31352C1.59834 5.2982 1.08953 5.16033 0.647079 4.93565C0.647079 4.94586 0.647079 4.96118 0.647079 4.97139C0.647079 6.44203 1.78085 7.66245 3.27964 7.94331C3.00311 8.01479 2.71552 8.05054 2.41687 8.05054C2.20671 8.05054 2.00207 8.03011 1.79744 7.99437C2.21777 9.19948 3.42897 10.0727 4.86139 10.0982C3.73868 10.9101 2.32285 11.3952 0.785344 11.3952C0.519876 11.3952 0.259938 11.3799 0 11.3544C1.45455 12.2122 3.18009 12.7178 5.03284 12.7178C11.0722 12.7178 14.3685 8.1016 14.3685 4.09309C14.3685 3.96033 14.3685 3.83267 14.3574 3.6999C14.999 3.27097 15.5576 2.7399 15.9945 2.13224L16 2.13735Z" fill="black"/>
+						</svg>
+					</a>
+					</li>
+					<?php } ?>
+					<?php if ( ! empty( get_user_meta( $post_editor_by_auth_id['ID'], 'linkedin', true ) ) ) { ?>
+					<li>
+						<a href="<?php echo wp_kses_post( get_user_meta( $post_editor_by_auth_id['ID'], 'linkedin', true ) ); ?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+								<path d="M0.45864 5.32922H3.75985V16.0553H0.45864V5.32922ZM2.11092 0C3.16784 0 4.02408 0.865112 4.02408 1.93298C4.02408 3.00086 3.16784 3.86597 2.11092 3.86597C1.054 3.86597 0.197754 3.00086 0.197754 1.93298C0.197754 0.865112 1.054 0 2.11092 0Z" fill="black"/>
+								<path d="M5.83008 5.32993H8.99082V6.79656H9.05102C9.69655 5.68138 10.894 5.01903 12.1716 5.06634C15.5163 5.06634 16.1284 7.28657 16.1284 10.1725V16.056H12.8305V10.8416C12.8305 9.59804 12.8105 7.99623 11.118 7.99623C9.42562 7.99623 9.13799 9.34797 9.13799 10.7504V16.056H5.84346L5.83008 5.32993Z" fill="black"/>
+							</svg>
+						</a>
+					</li>
+					<?php } ?>
+					</ul>
 			</div>
 
 		<?php endif; ?>

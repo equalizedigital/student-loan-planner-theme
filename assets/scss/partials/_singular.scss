@@ -475,7 +475,7 @@ img.wprm-comment-rating {
 
 		.slp-contact-info-details {
 			@include media(">tablet") {
-				padding: 80px 0 0;
+				padding: 170px 0 0;
 			}
 		}
 	}
@@ -785,12 +785,8 @@ img.wprm-comment-rating {
 	grid-column-start: 1;
 	grid-column-end: 13;
 
-
-
-
 	@include media(">tablet") {
 		padding: 86px 0;
-
 		min-height: 400px;
 		display: flex;
 		flex-direction: column;
@@ -1262,6 +1258,7 @@ section.refinance_lender_section {
 	}
 
 	.header {
+		padding-bottom: 5px;
 		@include media("<tablet") {
 			display: none !important;
 		}
@@ -1290,6 +1287,11 @@ section.refinance_lender_section {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		font-family: $base-font;
+		sup{
+			top: 0;
+			font-size: .3em;
+		}
 	}
 
 	tr.data-tr .td_text {}
@@ -1410,6 +1412,10 @@ section.refinance_lender_section {
 		align-items: center;
 	}
 
+	&_author_reviewed_author.editedby {
+		margin: 60px 0 0;
+	}
+
 	&_author_entry-author_titles img.avatar {
 		width: 56px;
 		height: 56px;
@@ -1432,6 +1438,7 @@ section.refinance_lender_section {
 		justify-content: center;
 		gap: 20px;
 		list-style: none;
+		
 	}
 
 	.author_socials a {
@@ -1505,6 +1512,9 @@ section.refinance_lender_section {
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
+		li{
+			list-style: none;
+		}
 	}
 
 }
