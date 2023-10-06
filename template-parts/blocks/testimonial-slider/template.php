@@ -44,9 +44,9 @@ $acf_title = get_field( 'title' );
 		</header>
 		<div class="quote_icon">
 				<div class="icon">
-				<svg width="42" height="36" viewBox="0 0 42 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M10.0934 35.2C6.96003 35.2 4.59336 34.0667 2.99336 31.8C1.46003 29.4667 0.69336 26.2333 0.69336 22.1C0.69336 17.3667 1.86003 13.2 4.19336 9.6C6.52669 6 10.0934 3.03333 14.8934 0.699997L18.0934 7.1C15.0934 8.63333 12.8267 10.4 11.2934 12.4C9.82669 14.3333 9.09336 16.8 9.09336 19.8C9.29336 19.7333 9.62669 19.7 10.0934 19.7C12.2267 19.7 14.0267 20.3667 15.4934 21.7C17.0267 22.9667 17.7934 24.7333 17.7934 27C17.7934 29.5333 17.06 31.5333 15.5934 33C14.1267 34.4667 12.2934 35.2 10.0934 35.2ZM33.6934 35.2C30.56 35.2 28.1934 34.0667 26.5934 31.8C25.06 29.4667 24.2934 26.2333 24.2934 22.1C24.2934 17.3667 25.46 13.2 27.7934 9.6C30.1267 6 33.6934 3.03333 38.4934 0.699997L41.6934 7.1C38.6934 8.63333 36.4267 10.4 34.8934 12.4C33.4267 14.3333 32.6934 16.8 32.6934 19.8C32.8934 19.7333 33.2267 19.7 33.6934 19.7C35.8267 19.7 37.6267 20.3667 39.0934 21.7C40.6267 22.9667 41.3934 24.7333 41.3934 27C41.3934 29.5333 40.66 31.5333 39.1934 33C37.7267 34.4667 35.8934 35.2 33.6934 35.2Z" fill="white"/>
-				</svg>
+					<svg width="42" height="36" viewBox="0 0 42 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.0934 35.2C6.96003 35.2 4.59336 34.0667 2.99336 31.8C1.46003 29.4667 0.69336 26.2333 0.69336 22.1C0.69336 17.3667 1.86003 13.2 4.19336 9.6C6.52669 6 10.0934 3.03333 14.8934 0.699997L18.0934 7.1C15.0934 8.63333 12.8267 10.4 11.2934 12.4C9.82669 14.3333 9.09336 16.8 9.09336 19.8C9.29336 19.7333 9.62669 19.7 10.0934 19.7C12.2267 19.7 14.0267 20.3667 15.4934 21.7C17.0267 22.9667 17.7934 24.7333 17.7934 27C17.7934 29.5333 17.06 31.5333 15.5934 33C14.1267 34.4667 12.2934 35.2 10.0934 35.2ZM33.6934 35.2C30.56 35.2 28.1934 34.0667 26.5934 31.8C25.06 29.4667 24.2934 26.2333 24.2934 22.1C24.2934 17.3667 25.46 13.2 27.7934 9.6C30.1267 6 33.6934 3.03333 38.4934 0.699997L41.6934 7.1C38.6934 8.63333 36.4267 10.4 34.8934 12.4C33.4267 14.3333 32.6934 16.8 32.6934 19.8C32.8934 19.7333 33.2267 19.7 33.6934 19.7C35.8267 19.7 37.6267 20.3667 39.0934 21.7C40.6267 22.9667 41.3934 24.7333 41.3934 27C41.3934 29.5333 40.66 31.5333 39.1934 33C37.7267 34.4667 35.8934 35.2 33.6934 35.2Z" fill="white"/>
+					</svg>
 				</div>
 			</div>
 		<div class="testimonial-slider-block-container-testimonial-slider">
@@ -85,16 +85,28 @@ $acf_title = get_field( 'title' );
 
 			endif;
 			?>
-			 
-
 		</div>
+
 		<div class="testimonial-slider-block-container-testimonial-slider__slider-controls">
 			<button class="prev">Previous</button>
-			<span class="slide-counter"></span>
+			<span class="slide-counter">
+
+			<?php 
+			$repeater = get_field('testimonials');
+
+			if ($repeater) {
+				$count = count($repeater);
+				echo '1 of ' . $count;
+			} else {
+				echo 'No items in the repeater.';
+			}
+			?>
+			</span>
 			<button class="next">Next</button>
 		</div>
+
 		<div class="testimonial-slider-block-container-testimonial_read_more">
-			<a href="" class="btn">Read Our 2,400+ Reviews</a>
+			<a href="/testimonials" class="btn">Read Our 2,400+ Reviews</a>
 		</div>
 		
 		
@@ -115,20 +127,91 @@ if ( have_rows( 'testimonials' ) ) :
 
 <script>
 	jQuery(function() {
-		jQuery('.testimonial-slider-block-container-testimonial-slider').slick({
-			infinite: true,
-			speed: 700,
-			arrows:false,
-			fade: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
-			nextArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next"),
-			appendDots: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls__slider-controls"),
-			customPaging: function(slider, i) {
-				return '<span class="dot"></span>';
-			},
-		});
+
+
+		var rev = jQuery('.testimonial-slider-block-container-testimonial-slider');
+rev.on('init', function(event, slick, currentSlide) {
+	var
+	cur = jQuery(slick.$slides[slick.currentSlide]),
+	next = cur.next(),
+	next2 = cur.next().next(),
+	prev = cur.prev(),
+	prev2 = cur.prev().prev();
+	prev.addClass('slick-sprev');
+	next.addClass('slick-snext');  
+	prev2.addClass('slick-sprev2');
+	next2.addClass('slick-snext2');  
+	cur.removeClass('slick-snext').removeClass('slick-sprev').removeClass('slick-snext2').removeClass('slick-sprev2');
+	slick.$prev = prev;
+	slick.$next = next;
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+	console.log('beforeChange');
+	var
+	cur = jQuery(slick.$slides[nextSlide]);
+	console.log(slick.$prev, slick.$next);
+	slick.$prev.removeClass('slick-sprev');
+	slick.$next.removeClass('slick-snext');
+	slick.$prev.prev().removeClass('slick-sprev2');
+	slick.$next.next().removeClass('slick-snext2');
+	next = cur.next(),  
+	prev = cur.prev();
+	//prev2.prev().prev();
+	//next2.next().next();
+	prev.addClass('slick-sprev');
+	next.addClass('slick-snext');
+	prev.prev().addClass('slick-sprev2');
+	next.next().addClass('slick-snext2');
+	slick.$prev = prev;
+	slick.$next = next;
+	cur.removeClass('slick-next').removeClass('slick-sprev').removeClass('slick-next2').removeClass('slick-sprev2');
+});
+
+rev.slick({
+	speed: 1000,
+	arrows: true,
+	dots: false,
+	focusOnSelect: true,
+	prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
+	nextArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next"),
+	appendDots: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls__slider-controls"),
+	customPaging: function(slider, i) {
+		return '<span class="dot"></span>';
+	},
+	infinite: true,
+	centerMode: true,
+	slidesPerRow: 1,
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	centerPadding: '0',
+	swipe: true,
+	// customPaging: function(slider, i) {
+	// return '';
+	// },
+	/*infinite: false,*/
+});
+
+
+
+		// 	jQuery('.testimonial-slider-block-container-testimonial-slider').slick({
+
+		// 		centerMode: true,
+		// 		slidesToShow: 1,
+		// 		arrows: false, 
+		// 		dots: true,
+		// 		slidesToShow: 3,
+		// 		// autoplay: true,
+		// 		// autoplaySpeed: 5000,
+		// 		speed: 900,
+		// 		easing: 'easeOutSine',
+		// 		centerPadding: '0px',
+		// 		swipe: true,
+		// 		prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
+		// 		nextArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next"),
+		// 		appendDots: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls__slider-controls"),
+		// 		customPaging: function(slider, i) {
+		// 			return '<span class="dot"></span>';
+		// 		},
+		// 	});
 
 			jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev").click(function(){
 			slider.slick("slickPrev");
@@ -138,17 +221,17 @@ if ( have_rows( 'testimonials' ) ) :
 			slider.slick("slickNext");
 			});
 
-		var slider = jQuery(".testimonial-slider-block-container-testimonial-slider");
-		var slideCount = slider.slick("getSlick").slideCount;
-		var slideCounter = jQuery(".slide-counter");
 
-		slider.on("beforeChange", function(event, slick, currentSlide, nextSlide){
+		// var slider = jQuery(".testimonial-slider-block-container-testimonial-slider");
+		var slideCount = rev.slick("getSlick").slideCount;
+		var slideCounter = jQuery(".slide-counter");
+			// console.log(slideCounte)
+		rev.on("beforeChange", function(event, slick, currentSlide, nextSlide){
 			slideCounter.text(nextSlide + 1 + " of " + slideCount);
 		});
 
 		var slideCounte = jQuery(".slide").length;
-
-		jQuery(".slide-counter").append("1 of " + slideCounte);
+		// jQuery(".slide-counter").append("1 of " + slideCounte);
 });
 
 </script>
