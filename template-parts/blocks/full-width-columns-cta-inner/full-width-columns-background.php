@@ -57,7 +57,7 @@ endif;
 			<h2 class="title"><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
 			<?php if ( $modal_button ) : ?>
-				<button class="btn modal-btn" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
+				<button class="btn modal-btn" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
 			<?php endif; ?>
 			<?php if ( $acf_link ) : ?>
 			<div class="link">
