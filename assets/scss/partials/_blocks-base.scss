@@ -139,9 +139,16 @@ h1 {
 
 h2 {
 	@include style('title', 2);
-	font-style: normal;
+
+	color: brand-color('tertiary');
+	font-size: 35px;
 	font-weight: 700;
-	line-height: 55px;
+	line-height: 40px;
+
+	&.wp-block-heading {
+		margin-top: 59px
+	}
+
 }
 
 h3 {
@@ -220,7 +227,7 @@ input {
 .wpforms-container {
 
 	.wpforms-form .wpforms-list-2-columns ul li {
-		width: auto!important;
+		width: auto !important;
 	}
 
 	.wpforms-form {
@@ -232,7 +239,7 @@ input {
 		}
 
 		.wpforms-required-label {
-			color: inherit!important;
+			color: inherit !important;
 			font-weight: 400;
 		}
 
@@ -245,7 +252,7 @@ input {
 		}
 
 		input {
-			border-radius: 4px!important;
+			border-radius: 4px !important;
 			border: 1px solid var(--Dark-Gray, #A1A5A5);
 			background: #FFF;
 		}
@@ -271,17 +278,20 @@ input {
 				border-color: brand-color('primary');
 				background: white;
 			}
-			&:focus{
+
+			&:focus {
 				outline: 2px solid blue;
 			}
 		}
+
 		button#wpforms-submit-4730 {
 			min-width: 168px;
 			border-radius: 4px;
 		}
+
 		input,
-		textarea{
-			&:focus{
+		textarea {
+			&:focus {
 				outline: 2px solid blue;
 			}
 		}
