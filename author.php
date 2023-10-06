@@ -118,6 +118,7 @@ tha_content_before();
 							while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
 								the_row();
 								$press_post = get_sub_field( 'press_post' );
+								$press_company = get_sub_field('press_company');
 								?>
 								<div class="detail_link_content">
 								<a href="<?php  echo wp_kses_post($press_post['url']); ?>" class="detail_link">
@@ -125,6 +126,8 @@ tha_content_before();
 									 echo wp_kses_post($press_post['title']);
 									?>
 								</a>
+								<span class="press-company"> - <?php echo wp_kses_post($press_company); ?>
+								</span>
 								</div>
 								<?php
 
