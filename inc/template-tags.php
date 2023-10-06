@@ -122,7 +122,7 @@ function eqd_tha_footer_cta() {
 		$disable = get_field( 'disable' );
 
 		if ( ! $disable ) :
-			if (!is_author()) :
+			if (!is_author() && !is_archive() && !is_category() && !is_tax() ) :
 			?>
 
 	<section class="block calculator-signup-block">
@@ -264,6 +264,7 @@ function eqd_tha_page_header() {
 				<span class="subtitle">
 					<?php
 					if ( is_archive() ) {
+						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
 					} else {
 						echo wp_kses_post( $subtitle );
 					}
