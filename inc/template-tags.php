@@ -122,6 +122,7 @@ function eqd_tha_footer_cta() {
 		$disable = get_field( 'disable' );
 
 		if ( ! $disable ) :
+			if (!is_author()) :
 			?>
 
 	<section class="block calculator-signup-block">
@@ -181,6 +182,7 @@ function eqd_tha_footer_cta() {
 	</section>
 
 			<?php
+		endif;
 	endif;
 	}
 }
