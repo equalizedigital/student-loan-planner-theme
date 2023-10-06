@@ -120,10 +120,10 @@ tha_content_before();
 								$press_post = get_sub_field( 'press_post' );
 								?>
 								<div class="detail_link_content">
-								<a href="<?php the_permalink( $press_post->ID ); ?>" class="detail_link">
-																				<?php
-																				echo get_the_title( $press_post->ID );
-																				?>
+								<a href="<?php  echo wp_kses_post($press_post['url']); ?>" class="detail_link">
+									<?php
+									 echo wp_kses_post($press_post['title']);
+									?>
 								</a>
 								</div>
 								<?php
