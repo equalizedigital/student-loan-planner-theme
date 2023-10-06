@@ -264,6 +264,7 @@ function eqd_tha_page_header() {
 				<span class="subtitle">
 					<?php
 					if ( is_archive() ) {
+						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
 					} else {
 						echo wp_kses_post( $subtitle );
 					}
