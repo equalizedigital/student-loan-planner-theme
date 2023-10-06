@@ -302,17 +302,19 @@ section.archive_cta {
 			padding: 80px;
 		}
 
-	}
-
-	.archive_cta_container_figure {
-		position: relative;
-		display: flex;
 		.form {
 			width: 100%;
 			.wpforms-container-full{
 				margin: 0;
 			}
 		}
+
+	}
+
+	.archive_cta_container_figure {
+		position: relative;
+		display: flex;
+		
 	}
 
 	.archive_cta_container_copy .title {
