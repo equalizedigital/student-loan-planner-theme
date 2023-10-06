@@ -50,8 +50,9 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							<button
 							type="button"
 							class="tab-block-container__heading__button "
-							aria-expanded="<?php echo get_row_index() === 1? "true":'false'; ?>"
+							aria-selected="<?php echo get_row_index() === 1? "true":'false'; ?>"
 							aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
+							<?php echo get_row_index() > 1 ? 'tabindex="-1"' : ''; ?>
 							>
 								<?php echo wp_kses_post( $button_title ); ?>
 							</button>
@@ -73,7 +74,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 								<option
 								class="tab-block-container__heading__button "
-								aria-expanded="<?php echo get_row_index() === 1? "true":'false'; ?>"
+								aria-selected="<?php echo get_row_index() === 1? "true":'false'; ?>"
 								aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
 								>
 									<?php echo wp_kses_post( $button_title ); ?>
@@ -94,7 +95,11 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					while ( have_rows( 'accordion' ) ) :
 						the_row();
 						?>
-						<div class="tab-block-container-tab-block_content_items_item <?php echo get_row_index() === 1? "active-content":''; ?>" id="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>" tabindex="0">
+						<div
+						aria-labelledby="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
+						role="tabpanel"
+						class="tab-block-container-tab-block_content_items_item <?php echo get_row_index() === 1? "active-content":''; ?>"
+						id="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>">
 							
 							<?php
 							if ( have_rows( 'podcast_content' ) ) :
