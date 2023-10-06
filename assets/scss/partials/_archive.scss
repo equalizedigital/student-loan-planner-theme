@@ -309,6 +309,9 @@ section.archive_cta {
 		display: flex;
 		.form {
 			width: 100%;
+			.wpforms-container-full{
+				margin: 0;
+			}
 		}
 	}
 
