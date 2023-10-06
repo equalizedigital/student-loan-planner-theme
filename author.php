@@ -30,9 +30,7 @@ tha_content_before();
 			<header class="contact-hero hero-author">
 				<div class="contact-hero-container">
 					<figure class="contact-hero-container__image">
-						<?php
-						echo( get_avatar( $idf->ID, '360' ) );
-						?>
+						<img src="<?php echo( get_avatar_url(  $curauth->ID ) ); ?>" alt="">
 					</figure>
 					<div class="contact-hero-container__content">
 						<h2 class="entry-title">
