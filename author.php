@@ -30,7 +30,7 @@ tha_content_before();
 			<header class="contact-hero hero-author">
 				<div class="contact-hero-container">
 					<figure class="contact-hero-container__image">
-						<img src="<?php echo( get_avatar_url(  $curauth->ID ) ); ?>" alt="">
+						<img src="<?php echo( get_avatar_url( $curauth->ID ) ); ?>" alt="">
 					</figure>
 					<div class="contact-hero-container__content">
 						<h2 class="entry-title">
@@ -44,7 +44,7 @@ tha_content_before();
 							$link = get_field( 'consult_link', 'user_' . $curauth->ID );
 							?>
 						<div class="info_link">
-						<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn"><?php echo wp_kses_post( $link['title'] ); ?></a>
+						<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg"><?php echo wp_kses_post( $link['title'] ); ?></a>
 						</div>
 						<?php endif; ?>
 						
@@ -92,50 +92,50 @@ tha_content_before();
 					</div>
 
 
-					<?php if(get_field( 'expertise', 'user_' . $curauth->ID )): ?>
+					<?php if ( get_field( 'expertise', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Expertise</h2>
 						<div class="detail"><?php the_field( 'expertise', 'user_' . $curauth->ID ); ?></div>
 					<?php endif; ?>
 
-					<?php if(get_field( 'education', 'user_' . $curauth->ID )): ?>
+					<?php if ( get_field( 'education', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Education</h2>
 						<div class="detail"><?php the_field( 'education', 'user_' . $curauth->ID ); ?></div>
 						<?php endif; ?>
 
-						<?php if(get_field( 'certifications', 'user_' . $curauth->ID )): ?>
+						<?php if ( get_field( 'certifications', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Certifications</h2>
 						<div class="detail"><?php the_field( 'certifications', 'user_' . $curauth->ID ); ?></div>
 						<?php endif; ?>
 
-						<?php if(get_field( 'media_mentions', 'user_' . $curauth->ID )): ?>
+						<?php if ( get_field( 'media_mentions', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Media Mentions</h2>
 						<div class="detail">
-						<?php
-						// Check rows existexists.
-						if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
-							while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
-								the_row();
-								$press_post = get_sub_field( 'press_post' );
-								$press_company = get_sub_field('press_company');
-								?>
+							<?php
+							// Check rows existexists.
+							if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+								while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+									the_row();
+									$press_post    = get_sub_field( 'press_post' );
+									$press_company = get_sub_field( 'press_company' );
+									?>
 								<div class="detail_link_content">
-									<a href="<?php  echo wp_kses_post($press_post['url']); ?>" class="detail_link">
+									<a href="<?php echo wp_kses_post( $press_post['url'] ); ?>" class="detail_link">
 										<?php
-										echo wp_kses_post($press_post['title']);
+										echo wp_kses_post( $press_post['title'] );
 										?>
 									</a>
-									<span class="press-company"> - <?php echo wp_kses_post($press_company); ?>
+									<span class="press-company"> - <?php echo wp_kses_post( $press_company ); ?>
 								</span>
 								</div>
-								<?php
+									<?php
 
 
-								// End loop.
-							endwhile;
+									// End loop.
+								endwhile;
 
 						endif;
 
-						?>
+							?>
 						</div>
 						
 						<div class="detail_end_link">
@@ -153,7 +153,7 @@ tha_content_before();
 					</div>
 					<div class="slp-contact-info-loop">
 						<h3 class="title"><?php echo wp_kses_post( $idf['nickname'][0] ); ?></h3>
-						<?php echo wpautop($idf['custom_author_bio'][0]); ?>
+						<?php echo wpautop( $idf['custom_author_bio'][0] ); ?>
 					</div>
 				</div>
 
@@ -164,17 +164,17 @@ tha_content_before();
 
 					<?php
 						// Check rows existexists.
-					
-						while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
-							the_row();
-							$post = get_sub_field( 'post' );
+
+					while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
+						the_row();
+						$post = get_sub_field( 'post' );
 
 
-							$id_post_editor = get_field( 'post_editor', $post->ID );
-							$author_url     = get_author_posts_url( $post->ID );
-							$author_name    = get_the_author_meta( 'display_name', $post->ID );
+						$id_post_editor = get_field( 'post_editor', $post->ID );
+						$author_url     = get_author_posts_url( $post->ID );
+						$author_name    = get_the_author_meta( 'display_name', $post->ID );
 
-							?>
+						?>
 								<div class="author_recommended_posts_content">
 									<a href="<?php the_permalink( $post->ID ); ?>" class="author_recommended_posts_content_post">
 										<div class="category">Student Loan Forgiveness</div>
@@ -183,7 +183,7 @@ tha_content_before();
 									</a>
 									<div class="author">
 										<span class="author_recommended_posts_content_post-data">
-									<?php echo get_avatar( $id_post_editor['ID'], 40 ); ?>
+								<?php echo get_avatar( $id_post_editor['ID'], 40 ); ?>
 										</span>
 										<div class="author_recommended_posts_content_post-inf__link">
 											<a href="<?php echo $author_url; ?>">
@@ -192,47 +192,50 @@ tha_content_before();
 										</div>
 										</div>
 								</div>
-								<?php
+							<?php
 							endwhile;
-						
+
 					?>
 					</div>
 
 				</div>
 				<?php endif; ?>
 
-				<div class="author_latest_from">
-					<h2 class="author_latest_from_title">The lastest from Travis</h2>
 
-
-					<div class="loop">
-						<?php
-						$paged        = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-						$args         = array(
-							'author'         => $id_post_editor['ID'],
+				<?php
+				// $curauth->ID
+						$paged             = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+						$args              = array(
+							'author'         => 77,
 							'posts_per_page' => 9,
 							'paged'          => $paged,
 						);
-						$author_query = new WP_Query( $args );
+						$author_query_page = new WP_Query( $args );
 						?>
-						<?php if ( $author_query->have_posts() ) : ?>
+						<?php if ( $author_query_page->have_posts() ) : ?>
+
+				<div class="author_latest_from">
+					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $curauth->display_name ); ?></h2>
+
+
+					<div class="loop">
+						
 							<?php
-							while ( $author_query->have_posts() ) :
-								$author_query->the_post();
+							while ( $author_query_page->have_posts() ) :
+								$author_query_page->the_post();
 								?>
 								<div class="post">
-                                    <a class="post_link" href="<?php the_permalink(); ?>">
-                                        <div class="featured-image">
-                                            <?php the_post_thumbnail(); ?>
-                                        </div>
-    									<h2 class="post_title"><?php the_title(); ?></h2>
-                                    </a>
+									<a class="post_link" href="<?php the_permalink(); ?>">
+										<div class="featured-image">
+											<?php the_post_thumbnail(); ?>
+										</div>
+										<h2 class="post_title"><?php the_title(); ?></h2>
+									</a>
 								</div>
 							<?php endwhile; ?>
-						<?php endif; ?>
 						
 					</div>
-                    <div class="pagination">
+					<div class="pagination">
 							<?php
 							$big = 999999999; // need an unlikely integer
 							echo paginate_links(
@@ -240,14 +243,18 @@ tha_content_before();
 									'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
 									'format'    => '?paged=%#%',
 									'current'   => max( 1, get_query_var( 'paged' ) ),
-									'total'     => $author_query->max_num_pages,
+									'total'     => $author_query_page->max_num_pages,
+									'prev_text' => __( 'Prev', 'slp' ),
+									'next_text' => __( 'Next', 'slp' ),
 								)
 							);
 							?>
 						</div>
-                        
-						<?php wp_reset_postdata(); ?>
+						
+							<?php wp_reset_postdata(); ?>
 				</div>
+				<?php endif; ?>
+
 			
 			<?php
 				tha_content_bottom();
@@ -262,3 +269,6 @@ tha_content_before();
 			tha_content_after();
 
 			get_footer();
+
+
+			
