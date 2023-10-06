@@ -1,15 +1,15 @@
 .single {
-    .full-width-columns-background-block {
+    .full-width-columns-cta-inner-block {
         border-radius: 10px;
         overflow: hidden;
     }
-    .full-width-columns-background-block.reverse_order_1 .full-width-columns-background-container {
+    .full-width-columns-cta-inner-block.reverse_order_1 .full-width-columns-cta-inner-container {
         @include media(">tablet") {
             grid-template-columns: 1fr 1fr;
         }
     }
 }
-.full-width-columns-background-block {
+.full-width-columns-cta-inner-block {
     background: #625089;
 
     .link {
@@ -18,7 +18,7 @@
     }
 
     &.reverse_order_1 {
-        .full-width-columns-background-container {
+        .full-width-columns-cta-inner-container {
             display: grid;
             grid-template-columns: 1fr;
 
@@ -55,7 +55,7 @@
         }
     }
 
-    .full-width-columns-background-container {
+    .full-width-columns-cta-inner-container {
         margin: 0 auto;
         display: flex;
         width: 100%;
@@ -64,7 +64,7 @@
         flex-direction: column;
 
         @include media(">tablet") {
-            flex-direction: row;
+            flex-direction: row-reverse;
         }
 
         &-content {
@@ -104,6 +104,7 @@
 
             @include media(">tablet") {
                 width: 50%;
+                max-width: 420px;
             }
 
             &__button {
