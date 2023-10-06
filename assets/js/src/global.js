@@ -569,6 +569,15 @@ window.addEventListener("load", function () {
 		}
 
 		podcastlinkblockButtons.forEach((button, index) => {
+			// if click
+			button.addEventListener('click', function() {
+				removeAllActiveState();
+				button.focus();
+				button.removeAttribute('tabindex');
+				button.setAttribute('aria-selected', 'true');
+				let content = document.getElementById(button.getAttribute('aria-controls'));
+				content.classList.add('active-content');
+			});
 			button.addEventListener('keydown', function(e) {
 				let targetIndex;
 				// home and end keys
