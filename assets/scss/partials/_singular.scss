@@ -303,6 +303,11 @@ img.wprm-comment-rating {
 	a {}
 }
 
+.comment-form{
+	display: flex;
+    flex-wrap: wrap;
+}
+
 .comment-respond {
 	margin: 30px 0;
 
