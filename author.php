@@ -36,7 +36,7 @@ tha_content_before();
 					</figure>
 					<div class="contact-hero-container__content">
 						<h2 class="entry-title">
-							<?php echo wp_kses_post( $curauth->display_name ); ?>,<?php the_field( 'certifications', 'user_' . $curauth->ID ); ?>
+							<?php echo wp_kses_post( $curauth->display_name ); ?>
 						</h2>
 						<span class="info">
 							<?php the_field( 'job_title', 'user_' . $curauth->ID ); ?>
