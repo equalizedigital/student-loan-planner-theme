@@ -1,3 +1,7 @@
+    /* eslint-env jquery */
+
+
+
 // Sticky Header
 jQuery(function ($) {
 
@@ -218,7 +222,7 @@ window.addEventListener("load", function () {
 			});
 
 			element.addEventListener('keydown', function (event) {
-				if(event.keyCode == 13){
+				if (event.keyCode == 13) {
 
 					let target = document.getElementById('resource-links-dropdown');
 					let dropdown = document.querySelector('.resource-links-dropdown-list');
@@ -255,11 +259,11 @@ window.addEventListener("load", function () {
 
 			});
 
-			
+
 		});
 
-		document.querySelector('#resource-links-dropdown').addEventListener('keydown', function (event){
-			if(event.key == 'ArrowDown'){
+		document.querySelector('#resource-links-dropdown').addEventListener('keydown', function (event) {
+			if (event.key == 'ArrowDown') {
 				let firstLink = document.querySelector('.resource-links-dropdown-list .dropdown-li');
 				if (firstLink) {
 					firstLink.focus();
@@ -272,46 +276,46 @@ window.addEventListener("load", function () {
 			button.addEventListener('keydown', onKeydownDropdown);
 		});
 
-		
+
 		function onKeydownDropdown(event) {
-			
+
 			var tgt = event.currentTarget;
 			console.log(tgt)
 			switch (event.key) {
-			  case 'ArrowUp':
-				moveFocusToPreviousTabDropdown(tgt);
-				break;
-		
-			  case 'ArrowDown':
-				moveFocusToNextTabDropdown(tgt);
-				break;
-			  default:
-				break;
+				case 'ArrowUp':
+					moveFocusToPreviousTabDropdown(tgt);
+					break;
+
+				case 'ArrowDown':
+					moveFocusToNextTabDropdown(tgt);
+					break;
+				default:
+					break;
 			}
-		
+
 		}
 
 
 		function onKeydown(event) {
-			
+
 			var tgt = event.currentTarget;
 
 			switch (event.key) {
-			  case 'ArrowLeft':
-				moveFocusToPreviousTab(tgt);
-				break;
-		
-			  case 'ArrowRight':
-				moveFocusToNextTab(tgt);
-				break;
+				case 'ArrowLeft':
+					moveFocusToPreviousTab(tgt);
+					break;
 
-			  default:
-				break;
+				case 'ArrowRight':
+					moveFocusToNextTab(tgt);
+					break;
+
+				default:
+					break;
 			}
-		
+
 		}
 
-		function moveFocusToNextTabDropdown(event){
+		function moveFocusToNextTabDropdown(event) {
 			console.log(Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event))
 			let currentIndex = Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event);
 			if (currentIndex !== -1 && currentIndex < document.querySelectorAll('.dropdown-li').length - 1) {
@@ -319,27 +323,27 @@ window.addEventListener("load", function () {
 			}
 		}
 
-		function moveFocusToPreviousTabDropdown(event){
+		function moveFocusToPreviousTabDropdown(event) {
 			let currentIndex = Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event);
 			if (currentIndex !== -1 && currentIndex < document.querySelectorAll('.dropdown-li').length - 1) {
-				if(currentIndex - 1 != -1){
+				if (currentIndex - 1 != -1) {
 					document.querySelectorAll('.dropdown-li')[currentIndex - 1].focus();
 				} else {
 					let focusItem = document.getElementById('resource-links-dropdown')
-				focusItem.focus();
+					focusItem.focus();
 				}
-				
-			} 
+
+			}
 		}
 
-		function moveFocusToNextTab(event){
+		function moveFocusToNextTab(event) {
 			let currentIndex = Array.from(tabButtons).indexOf(event);
 			if (currentIndex !== -1 && currentIndex < tabButtons.length - 1) {
 				tabButtons[currentIndex + 1].focus();
 			}
 		}
 
-		function moveFocusToPreviousTab(event){
+		function moveFocusToPreviousTab(event) {
 			let currentIndex = Array.from(tabButtons).indexOf(event);
 			if (currentIndex !== -1 && currentIndex < tabButtons.length - 1) {
 				tabButtons[currentIndex - 1].focus();
@@ -352,35 +356,81 @@ window.addEventListener("load", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-	// Find all elements with class .widget-title
-	const widgetTitles = document.querySelectorAll('.widget-title');
+	if (window.innerWidth < 768) {
+		// Find all elements with class .widget-title
+		const widgetTitles = document.querySelectorAll('.widget-title');
 
+		// Get all sections with id pattern 'nav_menu-*'
+		var sections = document.querySelectorAll('[id^="nav_menu-"]');
 
-	widgetTitles.forEach(title => {
-		title.setAttribute('tabindex', '0');
-		// Add click event listener to each .widget-title
+		// Loop through each section
+		sections.forEach(function(section) {
+			// Extract the current id of the section
+			var sectionId = section.id;
 
-		title.addEventListener('keypress', function () {
-			// Check if there's a next sibling element
-			this.classList.toggle('active');
-			let sibling = this.nextElementSibling;
-			if (sibling) {
-				// Add class to the sibling
-				this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+			// Create a unique id by appending a suffix
+			var uniqueId = sectionId + '_footer';
 
+			// Get the menu-footer-container within the section
+			var menuFooterContainer = section.querySelector('.menu-footer-container');
+
+			if (menuFooterContainer) {
+				// Set the unique id to the menu-footer-container
+				menuFooterContainer.id = uniqueId;
 			}
 		});
-		title.addEventListener('click', function () {
-			// Check if there's a next sibling element
-			this.classList.toggle('active');
-			let sibling = this.nextElementSibling;
-			if (sibling) {
-				// Add class to the sibling
-				this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
 
+		var titles = document.querySelectorAll('h3.widget-title');
+
+		titles.forEach(function(title) {
+			// Find the sibling .menu-footer-container of the current title
+			var menuFooterContainer = title.nextElementSibling;
+
+			// Check if the next sibling is indeed a menu-footer-container
+			if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
+				// Get the id of the menu-footer-container
+				var containerId = menuFooterContainer.id;
+
+				// Set the aria-controls attribute of the title to the id of the menu-footer-container
+				title.setAttribute('aria-controls', containerId);
 			}
 		});
-	});
+
+
+		widgetTitles.forEach(title => {
+			title.setAttribute('tabindex', '0');
+			title.setAttribute('aria-expanded', 'false');
+			// Add click event listener to each .widget-title
+
+			title.addEventListener('keypress', function () {
+				// Check if there's a next sibling element
+				this.classList.toggle('active');
+				let sibling = this.nextElementSibling;
+				if (sibling) {
+					var isExpanded = title.getAttribute('aria-expanded') === 'true';
+					// Add class to the sibling
+					this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+
+				}
+			});
+			title.addEventListener('click', function () {
+				// Check if there's a next sibling element
+				this.classList.toggle('active');
+				let sibling = this.nextElementSibling;
+				if (sibling) {
+					var isExpanded = title.getAttribute('aria-expanded') === 'true';
+					// Add class to the sibling
+					this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+				}
+			});
+		});
+	}
+
+
+
+
 });
 
 
@@ -392,8 +442,8 @@ jQuery(function ($) {
 	// store the item that has focus before opening the modal window
 	var focusedElementBeforeModal;
 
-	$(document).ready(function() {
-		$('.iframe_capture').on('focus', function() {
+	$(document).ready(function () {
+		$('.iframe_capture').on('focus', function () {
 			// Shift focus to another element, for example, an element with the ID 'desiredElementId'
 			$(this).closest('.close-btn').focus();
 		});
@@ -404,7 +454,7 @@ jQuery(function ($) {
 			var isExpanded = $(this).attr('aria-expanded') === 'true';
 
 			modalId = $(event.currentTarget).data('modal')
-			showModal(modalId);	
+			showModal(modalId);
 			$(this).attr('aria-expanded', !isExpanded);
 		});
 
@@ -523,7 +573,7 @@ jQuery(function ($) {
 		// remove the listener which redirects tab keys in the main content area to the modal
 		jQuery('body').off('focusin', ' body');
 
-        jQuery('.modal').attr('aria-hidden', 'true');
+		jQuery('.modal').attr('aria-hidden', 'true');
 
 		// set focus back to element that had it before the modal was opened
 		focusedElementBeforeModal.focus();
@@ -557,7 +607,7 @@ window.addEventListener("load", function () {
 window.addEventListener("load", function () {
 	// resource links
 	const podcastlinkblockButtons = document.querySelectorAll('.tab-block-container-tab-block_header-buttons .tab-block-container__heading__button');
-	if (podcastlinkblockButtons) {
+	if (podcastlinkblockButtons.length) {
 		function removeAllActiveState() {
 			podcastlinkblockButtons.forEach(btn => {
 				const contentId = btn.getAttribute('aria-controls');
@@ -570,7 +620,7 @@ window.addEventListener("load", function () {
 
 		podcastlinkblockButtons.forEach((button, index) => {
 			// if click
-			button.addEventListener('click', function() {
+			button.addEventListener('click', function () {
 				removeAllActiveState();
 				button.focus();
 				button.removeAttribute('tabindex');
@@ -578,7 +628,7 @@ window.addEventListener("load", function () {
 				let content = document.getElementById(button.getAttribute('aria-controls'));
 				content.classList.add('active-content');
 			});
-			button.addEventListener('keydown', function(e) {
+			button.addEventListener('keydown', function (e) {
 				let targetIndex;
 				// home and end keys
 				if (e.keyCode === 36) { // Home
@@ -625,10 +675,10 @@ window.addEventListener("load", function () {
 
 		const selectElement = document.querySelector('.tab-block-container-tab-block_header-buttons_mobile_select');
 
-		selectElement.addEventListener('change', function() {
+		selectElement.addEventListener('change', function () {
 			const selectedOption = selectElement.options[selectElement.selectedIndex];
 			const ariaControlsValue = selectedOption.getAttribute('aria-controls');
-			
+
 			const content = document.getElementById(ariaControlsValue);
 
 			removeAllActiveState();
@@ -636,8 +686,6 @@ window.addEventListener("load", function () {
 			content.classList.add('active-content');
 			selectedOption.setAttribute('aria-selected', 'true');
 			selectedOption.setAttribute('tabindex', '0');
-			
-					
 		});
 
 	}
@@ -666,13 +714,13 @@ window.addEventListener("load", function () {
 		if (highlightButton) {
 			let items = document.querySelectorAll('.team-hightlight-block-container-team-hightlight-member');
 			let initText = highlightButtonText.innerText;
-			if(items.length >= 4){
+			if (items.length >= 4) {
 
 				let tabOpen = false;
 
 				if (windowWidth <= 768) {
 					items.forEach(function (item, index) {
-						if(index < 4) {
+						if (index < 4) {
 							item.tabIndex = 0;
 						} else {
 							item.tabIndex = -1;
@@ -691,12 +739,12 @@ window.addEventListener("load", function () {
 				highlightButton.addEventListener('click', function () {
 					// Remove the "hidden" class and add an "animate" class for each item
 					items.forEach(function (item) {
-						
-						if(tabOpen){
+
+						if (tabOpen) {
 							item.classList.add('hidden');
 							item.classList.remove('animate');
 							items.forEach(function (item, index) {
-								if(index < 4) {
+								if (index < 4) {
 									item.tabIndex = 0;
 								} else {
 									item.tabIndex = -1;
@@ -707,10 +755,10 @@ window.addEventListener("load", function () {
 							item.classList.remove('hidden');
 							item.classList.add('animate');
 						}
-						
+
 						// item.tabIndex = 0;
 					});
-					
+
 					var currentState = this.getAttribute('aria-expanded') === 'true';
 					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
 
@@ -722,16 +770,16 @@ window.addEventListener("load", function () {
 					// Hide the "Show All" button with a fade-out effect
 					this.classList.add('active');
 
-					tabOpen == false? highlightButtonText.innerText = 'Show Less': highlightButtonText.innerText = initText;
+					tabOpen == false ? highlightButtonText.innerText = 'Show Less' : highlightButtonText.innerText = initText;
 
 					// After the animation is complete, remove the "animate" class
 					setTimeout(function () {
 						items.forEach(function (item) {
-							tabOpen? item.classList.remove('animate') : item.classList.add('animate');
+							tabOpen ? item.classList.remove('animate') : item.classList.add('animate');
 						});
-					}, 500); 
+					}, 500);
 
-					tabOpen? tabOpen = false: tabOpen = true;
+					tabOpen ? tabOpen = false : tabOpen = true;
 				});
 
 			}
@@ -747,7 +795,7 @@ window.addEventListener("load", function () {
 
 window.addEventListener('DOMContentLoaded', () => {
 	let toc_container = document.querySelectorAll('.toc_container');
-	if (toc_container .length > 0) {
+	if (toc_container.length > 0) {
 
 		// Get all <h2> elements within .toc_container
 		let tocContainer = document.querySelector('.toc_container');
@@ -934,17 +982,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // vendor information block
-document.addEventListener('DOMContentLoaded', function() {
-    const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
+document.addEventListener('DOMContentLoaded', function () {
+	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
 
-	if(accordionButton.length > 0){
+	if (accordionButton.length > 0) {
 
 		accordionButton.forEach(element => {
 
 			element.addEventListener('click', event => {
 				const controlledElementId = event.target.getAttribute('aria-controls');
 				const targetElement = document.getElementById(controlledElementId);
-				if(targetElement) {
+				if (targetElement) {
 					event.target.classList.toggle('active_btn');
 					targetElement.toggleAttribute('hidden');
 					const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
