@@ -38,7 +38,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 	<div class="tab-block-container">
 		<div class="tab-block-container-tab-block">
 
-			<div class="tab-block-container-tab-block_header-buttons">
+			<div class="tab-block-container-tab-block_header-buttons" role="tablist">
 				<?php
 				if ( have_rows( 'accordion' ) ) :
 					while ( have_rows( 'accordion' ) ) :
@@ -52,6 +52,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							class="tab-block-container__heading__button "
 							aria-selected="<?php echo get_row_index() === 1? "true":'false'; ?>"
 							aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
+							role="tab"
 							<?php echo get_row_index() > 1 ? 'tabindex="-1"' : ''; ?>
 							>
 								<?php echo wp_kses_post( $button_title ); ?>
@@ -76,6 +77,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								class="tab-block-container__heading__button "
 								aria-selected="<?php echo get_row_index() === 1? "true":'false'; ?>"
 								aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
+								role="tab"
 								>
 									<?php echo wp_kses_post( $button_title ); ?>
 								</option>
