@@ -38,9 +38,9 @@ $title = get_field('title');
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 	<div class="podcast-trio-container">
-		<?php if(!empty($title)): ?>
-			<h2 class="title"><?php echo $title; ?></h2>
-		<?php endif; ?>
+			<?php if(!empty($title)): ?>
+				<h2 class="title"><?php echo $title; ?></h2>
+			<?php endif; ?>
 		<?php 
 		$logo_images = get_field('logo_images');
 		if( $logo_images ) {
