@@ -7,7 +7,7 @@
       "uuidString" : "F098CAB6-68FD-4BF6-AE0A-27C6B360832B"
     }
   ],
-  "creatorBuild" : "34518",
+  "creatorBuild" : "34484",
   "files" : {
     "\/.github\/workflows\/develop.yml" : {
       "cB" : 0,
@@ -3871,6 +3871,14 @@
       "oO" : 0,
       "oS" : 1
     },
+    "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/full-width-columns-background\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -5121,6 +5129,9 @@
       "no-return-assign" : {
         "active" : 0,
         "optionString" : "'except-parens'"
+      },
+      "no-return-await" : {
+        "active" : 0
       },
       "no-script-url" : {
         "active" : 0
