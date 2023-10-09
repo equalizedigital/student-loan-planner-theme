@@ -12,7 +12,7 @@
  * Theme Fonts URL
  */
 function eqd_theme_fonts_url() {
-	return false;
+	return 'https://use.typekit.net/hav0fds.css';
 }
 
 /**
@@ -30,7 +30,7 @@ function eqd_preconnect_font() {
 		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
 	}
 }
-add_action( 'wp_head', 'eqd_preconnect_font', 5 );
+//add_action( 'wp_head', 'eqd_preconnect_font', 5 );
 
 /**
  * Enqueue Frontend Fonts
@@ -41,7 +41,7 @@ function eqd_enqueue_frontend_fonts() {
 		return;
 	}
 
-	wp_enqueue_style( 'be-font', esc_url( $font_url ), array(), null, 'all' );
+	wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'eqd_enqueue_frontend_fonts' );
 
@@ -51,7 +51,7 @@ add_action( 'wp_enqueue_scripts', 'eqd_enqueue_frontend_fonts' );
 function eqd_enqueue_backend_fonts() {
 	$font_url = eqd_theme_fonts_url();
 	if ( ! empty( $font_url ) ) {
-		wp_enqueue_style( 'be-font', esc_url( $font_url ), array(), null, 'all' );
+		wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' );
 	}
 
 }
@@ -65,10 +65,10 @@ function eqd_fallback_font_js() {
 	<script>
 
 	var interval = null;
- 
+
 	function fontLoadListener() {
 		var hasLoaded = false;
- 
+
 		try {
 			hasLoaded = document.fonts.check('12px "Open Sans"');
 		} catch(error) {
