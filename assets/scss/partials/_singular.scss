@@ -1550,13 +1550,16 @@ section.refinance_lender_section {
 	margin-top: -60px;
 	margin-bottom: 40px;
 	z-index: 1;
-	grid-column-start: 10;
+	grid-column-start: 9;
 	grid-column-end: 13;
+	padding-left: 20px;
 
 	@include media("<tablet") {
 		display: none;
 	}
-
+.shared-counts-button {
+    padding: 0!important;
+}
 	.sidebar_social {
 		display: flex;
 		align-items: center;
