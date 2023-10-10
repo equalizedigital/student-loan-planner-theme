@@ -45,6 +45,7 @@ $about                        = get_field( 'about', $select_institutional_contac
 $contact_info                        = get_field( 'contact_info', $select_institutional_contact );
 $more_info_content            = get_field( 'more_info_content', $select_institutional_contact );
 $show_about                   = get_field( 'show_about' );
+$degrees_that_qualify         = get_field( 'degrees_that_qualify',$select_institutional_contact );
 $show_states                  = get_field( 'show_states' );
 $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
@@ -90,7 +91,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 			</div>
 			<?php endif; ?>
 
-			
+
 			<?php if ( ! empty( $review_url ) ) : ?>
 			<div class="vendor_information_block_container_column_one_read_review">
 				<a href="<?php echo wp_kses_post( $review_url ); ?>">
@@ -112,6 +113,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php if ( $show_degrees ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">Degrees that qualify:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
+						<?php echo wp_kses_post( $degrees_that_qualify ); ?>
 						<p>
 						<?php
 						$post_terms = get_the_terms( $select_institutional_contact, 'slp_eligible_professions' );
