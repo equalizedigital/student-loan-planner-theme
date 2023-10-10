@@ -54,7 +54,7 @@ endif;
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="full-width-columns-background-container">
 		<div class="full-width-columns-background-container-content">
-			<h2 class="title"><?php echo wp_kses_post( $acf_title ); ?></h2>
+			<h2 class="title "><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
 			<?php if ( $modal_button ) : ?>
 				<button class="btn modal-btn" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>

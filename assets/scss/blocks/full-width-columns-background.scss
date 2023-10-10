@@ -43,6 +43,12 @@
         }
     }
 
+    &.fwidth-title-medium{
+        .full-width-columns-background-container-content .title{
+            font-size: 25px; 
+        }
+    }
+
     &.containerize_1 {
         max-width: calc(100% - 48px);
         margin: 0 auto;
@@ -91,6 +97,7 @@
                     font-size: 25px;
                     line-height: 35px;
                 }
+
             }
 
             .content {

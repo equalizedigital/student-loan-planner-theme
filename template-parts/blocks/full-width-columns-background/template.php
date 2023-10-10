@@ -45,7 +45,7 @@ $modal_button                       = get_field( 'modal_button' );
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="full-width-columns-cta-inner-container">
 		<div class="full-width-columns-cta-inner-container-content">
-			<h2 class="title"><?php echo wp_kses_post( $acf_title ); ?></h2>
+			<h2 class="title <?php echo !empty(get_field('title_size'))?'title_medium':'';  ?> "><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
 			<?php if ( $modal_button ) : ?>
 				<button class="btn modal-btn" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
