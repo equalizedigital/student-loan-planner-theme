@@ -44,7 +44,7 @@ $title = get_field('title');
 			<?php echo $title; ?>
 		</h2>
 
-		<div class="resource-links-container-links">
+		<div class="resource-links-container-links" role="tablist">
 			<?php 
 			$links = get_field('links');
 			if( $links ) {
@@ -72,7 +72,7 @@ $title = get_field('title');
 								?>
 							</a>
 						<?php else: ?>
-							<button data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>">
+							<button role="tab" id="button-tab-<?php echo $key; ?>" data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>">
 								<?php
 								if(!empty($icon)){
 									echo $icon?"<img src='$icon' aria-hidden='true'></img>":'';
@@ -114,7 +114,7 @@ $title = get_field('title');
 					?>
 
 				</button>
-				<ul class="resource-links-dropdown-list">
+				<ul class="resource-links-dropdown-list" role="tablist">
 					<?php 
 					$links = get_field('links');
 					if( $links ) {
@@ -142,7 +142,7 @@ $title = get_field('title');
 							</a>
 							</li>
 							<?php else: ?>
-								<li class="dropdown-li" data-resourcelink="resource-link-<?php echo $key; ?>" tabindex="0">
+								<li class="dropdown-li" role="tab" id="button-tab-<?php echo $key; ?>" data-resourcelink="resource-link-<?php echo $key; ?>" tabindex="0">
 									<img src="<?php echo $icon; ?>" />
 									<?php _e($link); ?>
 								</li>
@@ -182,7 +182,7 @@ $title = get_field('title');
 					}
 					
 					?>
-					<div id="resource-link-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key==0?'resource-links-loop-container-item--active':''; ?>">
+					<div id="resource-link-<?php echo $key; ?>" role="tabpanel" aria-labelledby="button-tab-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key==0?'resource-links-loop-container-item--active':''; ?>">
 						<header class="resource-links-loop-container-header">
 							<h2 class="title" tabindex="0"><?php echo $link; ?></h2>
 						</header>
