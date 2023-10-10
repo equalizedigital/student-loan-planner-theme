@@ -8,14 +8,14 @@
         left: calc(50% - -30px);
 
         transform: translate(0%, -50%) rotate(90deg);
-        display: flex;
         background: #A1A5A5;
         width: 1px;
         height: 100%;
-
+        display: none;
         @include media(">tablet") {
             height: 244px;
             transform: translate(0%, -50%);
+            display: flex;
         }
     }
 }
