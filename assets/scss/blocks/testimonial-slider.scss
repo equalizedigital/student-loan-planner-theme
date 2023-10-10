@@ -171,7 +171,7 @@ h2.testimonial-slider-block-container-header__title {
         opacity: 0;
         width: 100% !important;
         transform: translate3d(0, 0, 0);
-        transition: transform 1s, opacity 1s;
+        transition: transform .4s, opacity .4s;
     }
 
     .slick-snext,
