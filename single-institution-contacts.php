@@ -33,12 +33,7 @@ tha_content_before();
 					</figure>
 					<div class="contact-hero-container__content">
 						<h2 class="entry-title">
-							<?php 
-							echo wp_kses_post( get_the_title() );
-							if ( get_field( 'institution_name' ) ) {
-								echo ' at ' . get_field( 'institution_name' );
-							}
-							?>
+							<?php echo wp_kses_post( get_the_title() ); ?>
 						</h2>
 						<span class="info"><?php the_field('job_title'); ?>, NMLS # <?php the_field('mls'); ?></span>
 					</div>
