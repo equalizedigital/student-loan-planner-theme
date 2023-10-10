@@ -38,10 +38,11 @@ $logo                         = get_field( 'company_logo', $select_institutional
 $rating                       = get_field( 'rating', $select_institutional_contact );
 $review_url                   = get_field( 'review_url', $select_institutional_contact );
 $heading                      = get_field( 'heading', $select_institutional_contact );
-$website                  = get_field( 'website', $select_institutional_contact );
+$website                      = get_field( 'website', $select_institutional_contact );
 $button_subtext               = get_field( 'button_subtext', $select_institutional_contact );
 $features_list                = get_field( 'features_list', $select_institutional_contact );
 $about                        = get_field( 'about', $select_institutional_contact );
+$contact_info                        = get_field( 'contact_info', $select_institutional_contact );
 $more_info_content            = get_field( 'more_info_content', $select_institutional_contact );
 $show_about                   = get_field( 'show_about' );
 $show_states                  = get_field( 'show_states' );
@@ -65,6 +66,8 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php endif; ?>
 			</div>
 
+			<?php if ( ! empty( $rating ) ) : ?>
+
 			<div class="vendor_information_block_container_column_one_rating">
 				<div class="rating">
 					<?php $rating ? $rating : $rating = 0; ?>
@@ -83,14 +86,18 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<div class="text">
 					<?php echo wp_kses_post( $rating ); ?> out of 5
 				</div>
-			</div>
 
+			</div>
+			<?php endif; ?>
+
+			
+			<?php if ( ! empty( $review_url ) ) : ?>
 			<div class="vendor_information_block_container_column_one_read_review">
 				<a href="<?php echo wp_kses_post( $review_url ); ?>">
 					Read Review 
 				</a>
 			</div>
-
+			<?php endif; ?>
 		</div>
 
 			<div class="vendor_information_block_container_column_two">
@@ -150,7 +157,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php if ( $show_contact ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">Contact:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
-						<?php echo wp_kses_post( $about ); ?>
+						<?php echo wp_kses_post( $contact_info ); ?>
 					</div>
 				<?php endif; ?>
 				
@@ -174,12 +181,17 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php endif; ?>
 
 				<div class="vendor_information_block_container_column_two_link">
-					<?php if ( ! empty( $website['url'] ) ) :
+					<?php
+					if ( ! empty( $website['url'] ) ) :
 						$target = $website['target'] ? $website['target'] : '_blank';
-						$title = $website['title'] ? $website['title'] : 'Full ' . $heading . ' Review';
+						$title  = $website['title'] ? $website['title'] : 'Full ' . $heading . ' Review';
 						?>
 						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn" target="<?php echo esc_attr( $target ); ?>">
-							<?php  echo wp_kses_post($title); 
+							<?php
+							if ( ! empty( $title ) ) {
+								echo wp_kses_post( $title );
+							}
+
 							if ( ! empty( $button_subtext ) ) :
 								?>
 								<span class="subtext">
