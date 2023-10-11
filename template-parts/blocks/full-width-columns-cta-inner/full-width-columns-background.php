@@ -57,7 +57,7 @@ endif;
 			<h2 class="title "><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
 			<?php if ( $modal_button ) : ?>
-				<button class="btn modal-btn" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
+				<button class="btn modal-btn btn-dark-bg" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
 			<?php endif; ?>
 			<?php if ( $acf_link ) : ?>
 			<div class="link">
@@ -70,7 +70,7 @@ endif;
 				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
 			<?php endif; ?>
 			<?php if(!empty($youtube_video_id)): ?>
-			<button class="modal-btn full-width-columns-background-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
+			<button class="modal-btn btn-dark-bg full-width-columns-background-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
 				<img class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>
 			<?php endif; ?>
