@@ -39,7 +39,7 @@ $acf_link_title  = $acf_link['title'];
 $acf_link_url    = $acf_link['url'];
 $acf_rating_text = get_field( 'rating_text' );
 $acf_copy        = get_field( 'copy' );
-
+ 
 ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="columns-with-button-block-container">
