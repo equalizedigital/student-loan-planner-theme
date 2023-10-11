@@ -201,11 +201,25 @@ function eqd_tha_page_header() {
 			$category = get_the_category()[0];
 			$cat_id   = $category->term_id;
 
+			$alternative_title       = get_field( 'alternative_title', 'category_' . $cat_id );
 			$sub_heading             = get_field( 'sub_heading', 'category_' . $cat_id );
 			$subtitle                = get_field( 'subtitle', 'category_' . $cat_id );
 			$title_max_width_desktop = get_field( 'title_max_width_desktop', 'category_' . $cat_id );
-			$link                    = get_field( 'link', 'category_' . $cat_id );
+			$heading_link            = get_field( 'heading_link', 'category_' . $cat_id );
 			$background_image        = get_field( 'background_image', 'category_' . $cat_id );
+			if ( ! empty( $background_image['url'] ) ) {
+				$bg_url = $background_image['url'];
+			}
+		} elseif( is_tax()){
+			$term = get_queried_object();
+			$term_id = $term->term_id;
+
+			$alternative_title       = get_field( 'alternative_title', 'category_' . $term_id );
+			$sub_heading             = get_field( 'sub_heading', 'category_' . $term_id );
+			$subtitle                = get_field( 'subtitle', 'category_' . $term_id );
+			$title_max_width_desktop = get_field( 'title_max_width_desktop', 'category_' . $term_id );
+			$heading_link            = get_field( 'heading_link', 'category_' . $term_id );
+			$background_image        = get_field( 'background_image', 'category_' . $term_id );
 			if ( ! empty( $background_image['url'] ) ) {
 				$bg_url = $background_image['url'];
 			}
@@ -213,11 +227,12 @@ function eqd_tha_page_header() {
 
 			// Load values and assing defaults.
 			$page_id                 = get_the_ID();
+			$alternative_title             = get_field( 'alternative_title', $page_id );
 			$sub_heading             = get_field( 'sub_heading', $page_id );
 			$subtitle                = get_field( 'subtitle', $page_id );
 			$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
 			$center_text             = get_field( 'center_text', $page_id );
-			$link                    = get_field( 'link' );
+			$heading_link                    = get_field( 'heading_link' );
 			$padding_size            = get_field( 'padding_size', $page_id );
 
 			$container_class = null;
@@ -238,6 +253,7 @@ function eqd_tha_page_header() {
 				$bg_url = $background_image;
 			}
 		}
+
 
 		switch ( $padding_size ) {
 			case 'small':
@@ -268,15 +284,20 @@ function eqd_tha_page_header() {
 					<?php endif; ?>
 
 					<?php
-					if ( is_page() ) {
-						echo wp_kses_post( get_the_title() );
+					if(!empty( $alternative_title )){
+						echo wp_kses_post($alternative_title  );
+					} else {
+						if ( is_page() ) {
+							echo wp_kses_post( get_the_title() );
+						}
+						if ( is_archive() ) {
+							echo wp_kses_post( get_the_archive_title() );
+						}
+						if ( is_404() ) {
+							echo 'Not found, error 404';
+						}
 					}
-					if ( is_archive() ) {
-						echo wp_kses_post( get_the_archive_title() );
-					}
-					if ( is_404() ) {
-						echo 'Not found, error 404';
-					}
+					
 					?>
 				</h1>
 				
@@ -291,9 +312,9 @@ function eqd_tha_page_header() {
 					?>
 				</span>
 
-				<?php if ( ! empty( $link ) ) : ?>
+				<?php if ( ! empty( $heading_link ) ) : ?>
 					<span class="link">
-						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $link['title'] ? $link['title'] : ''; ?></a>
+						<a href="<?php echo $heading_link['url'] ? $heading_link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? $heading_link['title'] : ''; ?></a>
 					</span>
 				<?php endif; ?>
 
