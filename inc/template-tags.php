@@ -278,35 +278,44 @@ function eqd_tha_page_header() {
 			<div class="inner-hero-container">
 					
 				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
-					
-					<?php if ( ! empty( $sub_heading ) ) : ?>
-						<div class="sub_heading"><?php echo wp_kses_post( $sub_heading ); ?></div>
-					<?php endif; ?>
+					<?php if ( is_search() ) : 
+						$search_term = get_search_query();
+						?>
+						Search: <?php  echo wp_kses_post($search_term ); ?>
+					<?php else: ?>
 
-					<?php
-					if(!empty( $alternative_title )){
-						echo wp_kses_post($alternative_title  );
-					} else {
-						if ( is_page() ) {
-							echo wp_kses_post( get_the_title() );
+						<?php if ( ! empty( $sub_heading ) ) : ?>
+							<div class="sub_heading"><?php echo wp_kses_post( $sub_heading ); ?></div>
+						<?php endif; ?>
+
+						<?php
+						if(!empty( $alternative_title )){
+							echo wp_kses_post($alternative_title  );
+						} else {
+							if ( is_page() ) {
+								echo wp_kses_post( get_the_title() );
+							}
+							if ( is_archive() ) {
+								echo wp_kses_post( get_the_archive_title() );
+							}
+							if ( is_404() ) {
+								echo 'Not found, error 404';
+							}
 						}
-						if ( is_archive() ) {
-							echo wp_kses_post( get_the_archive_title() );
-						}
-						if ( is_404() ) {
-							echo 'Not found, error 404';
-						}
-					}
-					
-					?>
+						
+						?>
+					<?php endif; ?>
 				</h1>
 				
 				<span class="subtitle">
 					<?php
+					if ( !is_search() ) {
+
 					if(!empty($subtitle)){
 						echo wp_kses_post( $subtitle );
 					} else {
 						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+					}
 					}
 					 
 					?>
@@ -319,11 +328,16 @@ function eqd_tha_page_header() {
 				<?php endif; ?>
 
 			</div>
-			<?php if ( ! empty( $bg_url ) ) : ?>
+			<?php 
+			if ( !is_search() ) {
+			if ( ! empty( $bg_url ) ) : ?>
 				<span class="hero_image">
 					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
 				</span>
-			<?php endif; ?>
+			<?php 
+				endif; 
+			}
+			?>
 
 		</header>
 

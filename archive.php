@@ -67,8 +67,9 @@ function eqd_archive_header() {
 	echo '<header class="' . esc_attr( join( ' ', $classes ) ) . '">';
 	do_action( 'eqd_archive_header_before' );
 
-	echo '<h2 class="archive-title">Latest articles</h2>';
- 
+	if ( !is_search() ) {
+		echo '<h2 class="archive-title">Latest articles</h2>';
+	}
 	echo wp_kses_post( apply_filters( 'eqd_the_content', $description ) );
 	do_action( 'eqd_archive_header_after' );
 	echo '</header>';
