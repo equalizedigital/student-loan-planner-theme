@@ -370,17 +370,3 @@ img {
 	}
 
 }
-
-// Global Focus
-button:focus-within, button:focus,  
-.button:focus-within, .button:focus, 
-a:focus-within, a:focus,
-a:focus-within, a:focus,
-input:focus {
-    outline: 2px solid blue;
-    outline-offset: 2px;
-    text-decoration: none;
-	.is-style-white {
-		outline: 2px solid $white;
-	}
-}
