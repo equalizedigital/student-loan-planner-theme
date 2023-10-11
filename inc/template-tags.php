@@ -122,8 +122,8 @@ function eqd_tha_footer_cta() {
 		$disable = get_field( 'disable' );
 
 		if ( ! $disable ) :
-			if (!is_author() && !is_archive() && !is_category() && !is_tax() ) :
-			?>
+			if ( ! is_author() && ! is_archive() && ! is_category() && ! is_tax() ) :
+				?>
 
 	<section class="block calculator-signup-block">
 		<div class="calculator-signup-container">
@@ -181,7 +181,7 @@ function eqd_tha_footer_cta() {
 		</div>
 	</section>
 
-			<?php
+				<?php
 		endif;
 	endif;
 	}
@@ -197,31 +197,46 @@ add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
 function eqd_tha_page_header() {
 	if ( ! is_single() && ! is_front_page() ) {
 
-		// Load values and assing defaults.
-		$page_id     = get_the_ID();
-		$acf_title   = get_field( 'title', $page_id );
-		$sub_heading = get_field( 'sub_heading', $page_id );
-		$subtitle    = get_field( 'subtitle', $page_id );
-		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
-		$center_text             = get_field( 'center_text', $page_id );
-		$link                    = get_field( 'link' );
-		$padding_size            = get_field( 'padding_size', $page_id );
-		$container_class = null;
+		if ( is_category() ) {
+			$category = get_the_category()[0];
+			$cat_id   = $category->term_id;
 
-		if ( is_archive() ) {
-			$term             = get_queried_object();
-			$background_image = get_field( 'background_image', $term );
+			$sub_heading             = get_field( 'sub_heading', 'category_' . $cat_id );
+			$subtitle                = get_field( 'subtitle', 'category_' . $cat_id );
+			$title_max_width_desktop = get_field( 'title_max_width_desktop', 'category_' . $cat_id );
+			$link                    = get_field( 'link', 'category_' . $cat_id );
+			$background_image        = get_field( 'background_image', 'category_' . $cat_id );
 			if ( ! empty( $background_image['url'] ) ) {
 				$bg_url = $background_image['url'];
 			}
 		} else {
-			$background_image    = get_field( 'background_image', $page_id );
-			$thumbnail_id        = get_post_thumbnail_id( $page_id );
-			$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-			if(isset( $thumbnail_url_array[0]) ){
-				$background_image    = $thumbnail_url_array[0];
+
+			// Load values and assing defaults.
+			$page_id                 = get_the_ID();
+			$sub_heading             = get_field( 'sub_heading', $page_id );
+			$subtitle                = get_field( 'subtitle', $page_id );
+			$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
+			$center_text             = get_field( 'center_text', $page_id );
+			$link                    = get_field( 'link' );
+			$padding_size            = get_field( 'padding_size', $page_id );
+
+			$container_class = null;
+
+			if ( is_archive() ) {
+				$term             = get_queried_object();
+				$background_image = get_field( 'background_image', $term );
+				if ( ! empty( $background_image['url'] ) ) {
+					$bg_url = $background_image['url'];
+				}
+			} else {
+				$background_image    = get_field( 'background_image', $page_id );
+				$thumbnail_id        = get_post_thumbnail_id( $page_id );
+				$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+				if ( isset( $thumbnail_url_array[0] ) ) {
+					$background_image = $thumbnail_url_array[0];
+				}
+				$bg_url = $background_image;
 			}
-			$bg_url              = $background_image;
 		}
 
 		switch ( $padding_size ) {
@@ -245,7 +260,9 @@ function eqd_tha_page_header() {
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
+					
 				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+					
 					<?php if ( ! empty( $sub_heading ) ) : ?>
 						<div class="sub_heading"><?php echo wp_kses_post( $sub_heading ); ?></div>
 					<?php endif; ?>
@@ -265,25 +282,26 @@ function eqd_tha_page_header() {
 				
 				<span class="subtitle">
 					<?php
-					if ( is_archive() ) {
-						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
-					} else {
+					if(!empty($subtitle)){
 						echo wp_kses_post( $subtitle );
+					} else {
+						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
 					}
+					 
 					?>
 				</span>
 
 				<?php if ( ! empty( $link ) ) : ?>
 					<span class="link">
-						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn"><?php echo $link['title'] ? $link['title'] : ''; ?></a>
+						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $link['title'] ? $link['title'] : ''; ?></a>
 					</span>
 				<?php endif; ?>
 
 			</div>
 			<?php if ( ! empty( $bg_url ) ) : ?>
-			<span class="hero_image">
-				<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
-			</span>
+				<span class="hero_image">
+					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
+				</span>
 			<?php endif; ?>
 
 		</header>
