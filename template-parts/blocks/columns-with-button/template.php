@@ -50,13 +50,13 @@ $acf_copy        = get_field( 'copy' );
 			</a>
 			<div class="columns-with-button-block-container-content__rating">
 				<?php
-				if(!empty($row['acf_rating_text']['url'])){
-					echo '<a href="' . $row['acf_rating_text']['url'] . '">';
+				if(!empty($acf_rating_text['url'])){
+					echo '<a href="' . $acf_rating_text['url'] . '">';
 				}
 				?>
-				<?php echo $row['acf_rating_text']['title']; ?>
+				<?php echo $acf_rating_text['title']; ?>
 				<?php
-				if(!empty($row['acf_rating_text']['url'])){
+				if(!empty($acf_rating_text['url'])){
 					echo '</a>';
 				}
 				?>
