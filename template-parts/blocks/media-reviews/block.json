@@ -1,12 +1,13 @@
 {
 	"name": "acf/media-reviews-block",
-	"title": "Media Reviews block",
-	"description": "A block to display media reviews",
+	"title": "Stacked Testimonials block",
+	"description": "A block to display stacked testimonials with a background image.",
 	"category": "custom-blocks",
 	"icon": "star-half",
 	"keywords": [
 		"media",
-		"reviews"
+		"reviews",
+		"testimonials"
 	],
 	"acf": {
 		"mode": "preview",
