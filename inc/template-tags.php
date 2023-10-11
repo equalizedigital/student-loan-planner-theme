@@ -311,28 +311,6 @@ function eqd_tha_page_header() {
 }
 add_action( 'tha_page_header', 'eqd_tha_page_header' );
 
-// Archive featured post
-// add_action( 'tha_page_header', 'eqd_tha_archive_featured_post' );
-function eqd_tha_archive_featured_post() {
-	?>
-	<section class="archive_featured_post">
-		<div class="archive_featured_post_container">
-			<div class="archive_featured_post_container_text">
-				<div class="archive_featured_post_container_text_date">Featured  |  July 12, 2023</div>
-				<h2 class="archive_featured_post_container_text_title">Principal Disability Insurance Review: Dependable Coverage for Physicians</h2>
-				<div class="archive_featured_post_container_text_author">
-					<div class="image"></div>
-					<div class="title">By Caitlin See</div>
-				</div>
-			</div>
-			<div class="archive_featured_post_container_featured_image">
-				image
-			</div>
-		</div>
-	</section>
-	<?php
-}
-
 /**
  * Single Sar Bar
  */

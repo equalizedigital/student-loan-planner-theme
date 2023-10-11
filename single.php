@@ -228,9 +228,11 @@ function eqd_single_after_entry_primary_category() {
 			?>
 
 		<div class="single_post_questionnaire">
+			<?php if(!empty($icon['url'])): ?>
 			<div class="single_post_questionnaire__icon">
 				<img aria-hidden="true" src="<?php echo wp_kses_post( $icon['url'] ); ?>" alt="<?php echo wp_kses_post( $icon['alt'] ); ?>">
 			</div>
+			<?php endif; ?>
 			<div class="single_post_questionnaire__title">
 				<h2><?php echo wp_kses_post( $title ); ?></h2>
 			</div>

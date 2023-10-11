@@ -88,7 +88,16 @@ function eqd_archive_recommended_post() {
 	?>
 	<section class="archive_template_recommended_post">
 		<div class="archive_template_recommended_post_header">
-			<h2 class="archive_template_recommended_post_header_title">Featured articles</h2>
+			<h2 class="archive_template_recommended_post_header_title">
+				
+				<?php 
+				if(is_tax()){
+					echo "Recommended Resources for ". $term->name;
+				} else {
+					echo 'Featured articles';
+				}
+				?>
+			</h2>
 		</div>
 		<div class="archive_template_recommended_post_loop">
 			<?php
