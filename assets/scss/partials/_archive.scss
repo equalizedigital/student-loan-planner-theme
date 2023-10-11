@@ -179,7 +179,13 @@ section.archive_template_recommended_post {
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 	}
-
+	.author_name {
+		color: #000;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 70px; 
+	}
 	.archive_template_recommended_post_loop_item {
 		border-bottom: 1px solid #D9D9D9;
 		padding-bottom: 30px;
