@@ -228,9 +228,11 @@ function eqd_single_after_entry_primary_category() {
 			?>
 
 		<div class="single_post_questionnaire">
+			<?php if(!empty($icon['url'])): ?>
 			<div class="single_post_questionnaire__icon">
 				<img aria-hidden="true" src="<?php echo wp_kses_post( $icon['url'] ); ?>" alt="<?php echo wp_kses_post( $icon['alt'] ); ?>">
 			</div>
+			<?php endif; ?>
 			<div class="single_post_questionnaire__title">
 				<h2><?php echo wp_kses_post( $title ); ?></h2>
 			</div>
@@ -502,7 +504,7 @@ function eqd_single_after_related_post() {
 	<section class="single_related_posts">
 		<div class="single_related_posts_container">
 			<header class="single_related_posts_header">
-				<h2 class="title">More on Physician Mortgages</h2>
+				<h2 class="title">More on <?php echo get_cat_name( $primary_category ); ?></h2>
 				<div class="single_related_posts_header_link">
 					<a href="<?php echo get_category_link( $primary_category ); ?>" class="btn" aria-label="More <?php echo get_cat_name( $primary_category ); ?> posts">More Posts</a>
 				</div>

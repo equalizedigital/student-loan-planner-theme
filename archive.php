@@ -88,7 +88,16 @@ function eqd_archive_recommended_post() {
 	?>
 	<section class="archive_template_recommended_post">
 		<div class="archive_template_recommended_post_header">
-			<h2 class="archive_template_recommended_post_header_title">Featured articles</h2>
+			<h2 class="archive_template_recommended_post_header_title">
+				
+				<?php 
+				if(is_tax()){
+					echo "Recommended Resources for ". $term->name;
+				} else {
+					echo 'Featured articles';
+				}
+				?>
+			</h2>
 		</div>
 		<div class="archive_template_recommended_post_loop">
 			<?php
@@ -163,9 +172,12 @@ function eqd_archive_recommended_cta(){
 ?>
 <section class="archive_cta">
 	<div class="archive_cta_container">
+		<?php if(!empty($cta['image'])): ?>
 		<div class="archive_cta_container_figure">
 			<img src="<?php echo wp_kses_post($cta['image']['url']); ?>" alt="<?php echo wp_kses_post($cta['title']); ?>">
 		</div>
+		<?php endif; ?>
+		<?php if(!empty($cta['title'])): ?>
 		<div class="archive_cta_container_copy">
 			<h2 class="title"><?php echo wp_kses_post($cta['title']); ?></h2>
 			<div class="copy">
@@ -175,6 +187,7 @@ function eqd_archive_recommended_cta(){
 				<?php echo do_shortcode( $cta['form_code'] ); ?>
 			</div>
 		</div>
+		<?php endif; ?>
 	</div>
 </section>
 <?php
