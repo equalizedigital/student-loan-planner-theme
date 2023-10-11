@@ -80,8 +80,7 @@ html .editor-styles-wrapper input {
   background-color: #fff; }
 
 html .editor-styles-wrapper a {
-  cursor: pointer;
-  text-decoration: none; }
+  cursor: pointer; }
 
 /*
 Add resize handle to div and flip it around to get to be able to move to the left

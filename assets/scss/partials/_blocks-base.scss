@@ -15,24 +15,32 @@ body {
  * @link https://webaim.org/resources/linkcontrastchecker/
  */
 a {
-	color: black;
-
-	// font-size: 13px;
+	color: var(--WCAG-Green, #547C2D);
 	font-style: normal;
 	font-weight: 400;
-	// line-height: 13px; 
-	text-decoration-line: underline;
-
-
+	text-decoration: underline;
 	@extend %transition;
-
-	&:hover {
+	&:hover,
+	&:focus {
 		text-decoration: none;
 		color: brand-color('tertiary');
 	}
-
 	svg {
 		@extend %transition;
+	}
+}
+
+// Global Focus
+button:focus-within, button:focus,  
+.button:focus-within, .button:focus, 
+a:focus-within, a:focus,
+a:focus-within, a:focus,
+input:focus {
+    outline: 2px solid blue;
+    outline-offset: 2px;
+    text-decoration: none;
+	.is-style-white {
+		outline: 2px solid $white;
 	}
 }
 
