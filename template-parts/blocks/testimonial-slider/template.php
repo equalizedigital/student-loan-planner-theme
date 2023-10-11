@@ -106,7 +106,7 @@ $acf_title = get_field( 'title' );
 		</div>
 
 		<div class="testimonial-slider-block-container-testimonial_read_more">
-			<a href="/testimonials" class="btn">Read Our 2,400+ Reviews</a>
+			<a href="/testimonials" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
 		</div>
 		
 		
