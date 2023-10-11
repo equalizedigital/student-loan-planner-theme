@@ -58,8 +58,10 @@ endif;
 
 					$member    = get_sub_field( 'member' );
 					$author    = get_field( 'post_author', $member->ID );
-					$author_id = $author->ID;
-					$author_name = get_userdata($author->ID);
+					if(isset($author->ID)){
+						$author_id = $author->ID;
+						$author_name = get_userdata($author->ID);
+					}
 					?>
 					<li class="team-hightlight-block-container-team-hightlight-member 
 					<?php

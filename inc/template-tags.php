@@ -206,7 +206,7 @@ function eqd_tha_page_header() {
 		$center_text             = get_field( 'center_text', $page_id );
 		$link                    = get_field( 'link' );
 		$padding_size            = get_field( 'padding_size', $page_id );
-		$container_class;
+		$container_class = null;
 
 		if ( is_archive() ) {
 			$term             = get_queried_object();
@@ -218,7 +218,9 @@ function eqd_tha_page_header() {
 			$background_image    = get_field( 'background_image', $page_id );
 			$thumbnail_id        = get_post_thumbnail_id( $page_id );
 			$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-			$background_image    = $thumbnail_url_array[0];
+			if(isset( $thumbnail_url_array[0]) ){
+				$background_image    = $thumbnail_url_array[0];
+			}
 			$bg_url              = $background_image;
 		}
 
