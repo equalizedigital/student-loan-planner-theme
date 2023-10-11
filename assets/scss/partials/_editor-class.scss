@@ -304,8 +304,11 @@ blockquote.wp-block-quote {
 }
 .facetwp-template {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr ;
     gap: 60px 20px;
+    @include media(">tablet") {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 .fwpl-item.facet_blogpost_loop_author {
