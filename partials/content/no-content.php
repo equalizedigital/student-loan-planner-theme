@@ -10,7 +10,7 @@
 
 echo '<section class="no-results not-found">';
 
-echo '<header class="entry-header"><h1 class="entry-title">' . esc_html__( 'Nothing Found', 'eqd' ) . '</h1></header>';
+echo '<header class="entry-header"><h2 class="entry-title">' . esc_html__( 'Oops! We can\'t find that page.', 'eqd' ) . '</h2></header>';
 echo '<div class="entry-content">';
 
 if ( is_search() ) {

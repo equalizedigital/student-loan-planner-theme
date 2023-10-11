@@ -258,7 +258,7 @@ function eqd_tha_page_header() {
 						echo wp_kses_post( get_the_archive_title() );
 					}
 					if ( is_404() ) {
-						echo '404';
+						echo 'Not found, error 404';
 					}
 					?>
 				</h1>
