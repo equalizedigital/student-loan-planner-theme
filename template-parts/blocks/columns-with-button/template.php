@@ -49,11 +49,21 @@ $acf_copy        = get_field( 'copy' );
 				<?php echo wp_kses_post( $acf_link_title ); ?>
 			</a>
 			<div class="columns-with-button-block-container-content__rating">
-				<?php echo wp_kses_post( $acf_rating_text ); ?>
+				<?php
+				if(!empty($row['acf_rating_text']['url'])){
+					echo '<a href="' . $row['acf_rating_text']['url'] . '">';
+				}
+				?>
+				<?php echo $row['acf_rating_text']['title']; ?>
+				<?php
+				if(!empty($row['acf_rating_text']['url'])){
+					echo '</a>';
+				}
+				?>
 			</div>
 		</div>
 		<div class="columns-with-button-block-container-content-right">
-			<?php echo wp_kses_post( $acf_copy ); ?>
+				<?php echo wp_kses_post( $acf_copy ); ?>
 		</div>
 	</div>
 </section>
