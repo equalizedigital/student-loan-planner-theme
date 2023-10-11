@@ -399,6 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		widgetTitles.forEach(title => {
 			title.setAttribute('tabindex', '0');
+			title.setAttribute('role', 'button');
 			title.setAttribute('aria-expanded', 'false');
 			// Add click event listener to each .widget-title
 
