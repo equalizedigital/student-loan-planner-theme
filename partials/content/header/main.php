@@ -29,7 +29,7 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 					$link = $item['link'];
 					$columns = $item['columns'];
 					$number_of_columns = $item['number_of_columns'];
-					
+					$current_url = home_url( $_SERVER['REQUEST_URI'] );
 					?>
 
 					<li class="main-nav-link-li <?php echo $columns ? 'has-submenus' : ''; echo " submenu-column__$number_of_columns"; ?>">
@@ -47,7 +47,8 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 								</span>
 							<?php } ?>
 						<?php } else { ?>
-							<a href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>" class="menu-item-main-link <?php if( empty($columns) ) { _e('menu-item-no-drop'); } ?>">
+							
+							<a href="<?php echo $link['url']; ?>" <?php if ( $link['url'] == $current_url ) {echo 'aria-current="page"';} ?> target="<?php echo $link['target']; ?>" class="menu-item-main-link <?php if( empty($columns) ) { _e('menu-item-no-drop'); } ?>">
 								<?php _e($link['title']); ?>
 								<span class="chevron">
 									<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
@@ -62,12 +63,19 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 						
 						<?php if( is_array( $columns ) && 0 < count( $columns ) ) { ?>
 							<div class="sub_menu" id="<?php echo $link['title'] . '-submenu'; ?>">
-								<button class="sub_menu_back">
+								<button class="sub_menu_back" aria-label="Back to Menu">
 									<span class="sub_menu_back__icon"></span>
 									<span class="sub_menu_back__text"><?php _e('Back to All'); ?></span>
 								</button>
+								<button type="button" class="nav-icon open" title="Mobile Menu" aria-controls="primary-navigation" aria-expanded="false">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+								</button>
+
 								<div class="sub_menu_dropdown__title">
-								<?php _e($link['title']); ?>
+									<?php _e($link['title']); ?>
 								</div>
 								
 							<?php foreach( $columns as $column ) {
@@ -103,13 +111,13 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 				endif; ?>            
 			</ul>
 
-			<div class="search-popup" id="search-modal">
+			<div class="search-popup" id="search-modal" role="dialog" aria-modal="true">
 				<form action="/" method="get">
 					<div class="under_line">
 						<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search" aria-hidden="true">
 						<div class="input-group">
-							<label for="modal_search">Search for tools, occupations, resources, etc....</label>
 							<input type="text" name="s" id="modal_search" value="<?php the_search_query(); ?>" />
+							<label for="modal_search">Search for tools, occupations, resources, etc....</label>
 						</div>
 					</div>
 					<button class="btn" type="submit">Search</button>
@@ -130,8 +138,8 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 				<div class="mobile_search">
 					<form action="/" method="get">
 						<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search">
+						<input type="text" name="s" placeholder="" id="search" value="<?php the_search_query(); ?>" />
 						<label for="search">Search for tools, occupations, resources, etc....</label>
-						<input type="text" name="s" placeholder="Search for tools, occupations, resources, etc...." id="search" value="<?php the_search_query(); ?>" />
 					</form>
 				</div>
 				<div class="mobile_help_btn">
