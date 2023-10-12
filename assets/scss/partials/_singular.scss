@@ -1431,7 +1431,8 @@ section.refinance_lender_section {
 .article_footer_data {
 	background: var(--Light-Gray, #F7F7F7);
 	padding: 55px 30px;
-	margin-bottom: 71px;
+    max-width: 1168px;
+    margin: 0 auto 71px;
 
 	&_author_entry-author_titles {
 		display: flex;
