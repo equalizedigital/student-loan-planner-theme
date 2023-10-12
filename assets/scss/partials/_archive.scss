@@ -90,7 +90,15 @@
 
 
 // Archive Loop
-
+.search{
+	.site-main-article-content {
+		.archive-post-listing {
+			@include media(">tablet") {
+				gap: 0 20px;
+			}
+		}
+	}
+}
 .archive {
 	.site-main-article-content {
 		max-width: 1168px;
@@ -98,7 +106,9 @@
 		padding: 0 24px;
 
 		.archive-post-listing {
-			grid-template-columns: repeat(3, 1fr);
+			@include media(">tablet") {
+				grid-template-columns: repeat(3, 1fr);
+			}
 
 			img {
 				border-radius: 10px;
