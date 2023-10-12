@@ -502,8 +502,12 @@ function eqd_single_after_related_post() {
 
 	$show_related_posts       = get_field( 'show_related_posts', 'category_' . $primary_category );
 	$select_posts_to_showcase = get_field( 'select_posts_to_showcase', 'category_' . $primary_category );
+	$disable_related_posts    =  get_field( 'disable_related_posts' ,$post_id);
+	
+	if ( $show_related_posts ):
+	 if ( !$disable_related_posts ) :
+	 
 
-	if ( $show_related_posts ) :
 		?>
 	<section class="single_related_posts">
 		<div class="single_related_posts_container">
@@ -572,6 +576,7 @@ function eqd_single_after_related_post() {
 		</div>
 	</section>
 		<?php
+		endif;
 	endif;
 }
 // Build the page.
