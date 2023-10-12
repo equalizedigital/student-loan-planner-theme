@@ -93,6 +93,7 @@
 .search{
 	.site-main-article-content {
 		.archive-post-listing {
+			gap: 0;
 			@include media(">tablet") {
 				gap: 0 20px;
 			}

@@ -11,6 +11,9 @@
     }
 }
 .table-of-contents-block {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $container-padding;
 
     &.post_format_style-full-width {
         .table-of-contents-block-container-main {
