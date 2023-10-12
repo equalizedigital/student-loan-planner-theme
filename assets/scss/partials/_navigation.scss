@@ -206,6 +206,7 @@ header.site-header {
 								.sub_menu {
 									@include media(">tablet") {
 										grid-template-columns: repeat(3, 1fr);
+										gap: 0 15px;
 									}
 								}
 							}
@@ -663,6 +664,11 @@ body {
 * "Hamburger Icon Animation"
 */
 .nav-icon {
+	display: inline-block;
+
+	@include media(">tablet") {
+		display: none;
+	}
 	span {
 		background: white !important;
 	}
