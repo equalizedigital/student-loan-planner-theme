@@ -405,7 +405,11 @@ function eqd_single_after_entry_author_info() {
 				<div class="article_footer_data_author_author_info">
 				Edited By
 					<span class="name">
-					<?php  echo get_author_posts_link_by_id($post_editor_by_auth_id['ID']); ?>
+					<?php  
+					echo get_author_posts_link_by_id($post_editor_by_auth_id['ID']); 
+					
+					
+					?>
 					</span>
 				</div>
 
