@@ -355,9 +355,7 @@ window.addEventListener("load", function () {
 document.addEventListener('DOMContentLoaded', function () {
 
 	function footerMenuFunctions() {
-		if (window.innerWidth < 768) {
-
-
+		
 			// Find all elements with class .widget-title
 			const widgetTitles = document.querySelectorAll('.widget-title');
 			// Get all sections with id pattern 'nav_menu-*'
@@ -374,17 +372,31 @@ document.addEventListener('DOMContentLoaded', function () {
 					// Set the unique id to the menu-footer-container
 					menuFooterContainer.id = uniqueId;
 				}
+				 menuFooterContainer = section.querySelector('.menu-home-footer-container');
+				if (menuFooterContainer) {
+					// Set the unique id to the menu-home-footer-container
+					menuFooterContainer.id = uniqueId;
+				}
+				 menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
+				if (menuFooterContainer) {
+					// Set the unique id to the menu-footer-privacy-container
+					menuFooterContainer.id = uniqueId;
+				}
 			});
 
-			var titles = document.querySelectorAll('h3.widget-title');
-			titles.forEach(function (title) {
-				// Find the sibling .menu-footer-container of the current title
+			widgetTitles.forEach(function (title) {
 				var menuFooterContainer = title.nextElementSibling;
-				// Check if the next sibling is indeed a menu-footer-container
+				console.log(menuFooterContainer)
 				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
-					// Get the id of the menu-footer-container
 					var containerId = menuFooterContainer.id;
-					// Set the aria-controls attribute of the title to the id of the menu-footer-container
+					title.setAttribute('aria-controls', containerId);
+				}
+				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-home-footer-container')) {
+					var containerId = menuFooterContainer.id;
+					title.setAttribute('aria-controls', containerId);
+				}
+				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-privacy-container')) {
+					var containerId = menuFooterContainer.id;
 					title.setAttribute('aria-controls', containerId);
 				}
 			});
@@ -420,10 +432,9 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				});
 			});
-
-		}
+		
 	}
-	
+
 	let widgetTitlesRespo = document.querySelectorAll('.widget-title');
 	
 	window.addEventListener('resize', function () {
@@ -434,13 +445,14 @@ document.addEventListener('DOMContentLoaded', function () {
 				title.removeAttribute('tabindex');
 				title.removeAttribute('role');
 				title.removeAttribute('aria-expanded');
+				title.removeAttribute('aria-controls');
 			});
 		}
 	});
 
-	footerMenuFunctions()
-
-
+	if (window.innerWidth < 768) {
+		footerMenuFunctions()
+	}
 });
 
 
