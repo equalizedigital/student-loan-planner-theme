@@ -1,4 +1,4 @@
-    /* eslint-env jquery */
+/* eslint-env jquery */
 
 
 
@@ -280,7 +280,6 @@ window.addEventListener("load", function () {
 		function onKeydownDropdown(event) {
 
 			var tgt = event.currentTarget;
-			console.log(tgt)
 			switch (event.key) {
 				case 'ArrowUp':
 					moveFocusToPreviousTabDropdown(tgt);
@@ -316,7 +315,6 @@ window.addEventListener("load", function () {
 		}
 
 		function moveFocusToNextTabDropdown(event) {
-			console.log(Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event))
 			let currentIndex = Array.from(document.querySelectorAll('.dropdown-li')).indexOf(event);
 			if (currentIndex !== -1 && currentIndex < document.querySelectorAll('.dropdown-li').length - 1) {
 				document.querySelectorAll('.dropdown-li')[currentIndex + 1].focus();
@@ -356,82 +354,105 @@ window.addEventListener("load", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-	if (window.innerWidth < 768) {
-		// Find all elements with class .widget-title
-		const widgetTitles = document.querySelectorAll('.widget-title');
-
-		// Get all sections with id pattern 'nav_menu-*'
-		var sections = document.querySelectorAll('[id^="nav_menu-"]');
-
-		// Loop through each section
-		sections.forEach(function(section) {
-			// Extract the current id of the section
-			var sectionId = section.id;
-
-			// Create a unique id by appending a suffix
-			var uniqueId = sectionId + '_footer';
-
-			// Get the menu-footer-container within the section
-			var menuFooterContainer = section.querySelector('.menu-footer-container');
-
-			if (menuFooterContainer) {
-				// Set the unique id to the menu-footer-container
-				menuFooterContainer.id = uniqueId;
-			}
-		});
-
-		var titles = document.querySelectorAll('h3.widget-title');
-
-		titles.forEach(function(title) {
-			// Find the sibling .menu-footer-container of the current title
-			var menuFooterContainer = title.nextElementSibling;
-
-			// Check if the next sibling is indeed a menu-footer-container
-			if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
-				// Get the id of the menu-footer-container
-				var containerId = menuFooterContainer.id;
-
-				// Set the aria-controls attribute of the title to the id of the menu-footer-container
-				title.setAttribute('aria-controls', containerId);
-			}
-		});
-
-
-		widgetTitles.forEach(title => {
-			title.setAttribute('tabindex', '0');
-			title.setAttribute('role', 'button');
-			title.setAttribute('aria-expanded', 'false');
-			// Add click event listener to each .widget-title
-
-			title.addEventListener('keypress', function () {
-				// Check if there's a next sibling element
-				this.classList.toggle('active');
-				let sibling = this.nextElementSibling;
-				if (sibling) {
-					var isExpanded = title.getAttribute('aria-expanded') === 'true';
-					// Add class to the sibling
-					this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
-					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-
+	function footerMenuFunctions() {
+		
+			// Find all elements with class .widget-title
+			const widgetTitles = document.querySelectorAll('.widget-title');
+			// Get all sections with id pattern 'nav_menu-*'
+			var sections = document.querySelectorAll('[id^="nav_menu-"]');
+			// Loop through each section
+			sections.forEach(function (section) {
+				// Extract the current id of the section
+				var sectionId = section.id;
+				// Create a unique id by appending a suffix
+				var uniqueId = sectionId + '_footer';
+				// Get the menu-footer-container within the section
+				var menuFooterContainer = section.querySelector('.menu-footer-container');
+				if (menuFooterContainer) {
+					// Set the unique id to the menu-footer-container
+					menuFooterContainer.id = uniqueId;
+				}
+				 menuFooterContainer = section.querySelector('.menu-home-footer-container');
+				if (menuFooterContainer) {
+					// Set the unique id to the menu-home-footer-container
+					menuFooterContainer.id = uniqueId;
+				}
+				 menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
+				if (menuFooterContainer) {
+					// Set the unique id to the menu-footer-privacy-container
+					menuFooterContainer.id = uniqueId;
 				}
 			});
-			title.addEventListener('click', function () {
-				// Check if there's a next sibling element
-				this.classList.toggle('active');
-				let sibling = this.nextElementSibling;
-				if (sibling) {
-					var isExpanded = title.getAttribute('aria-expanded') === 'true';
-					// Add class to the sibling
-					this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
-					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+
+			widgetTitles.forEach(function (title) {
+				var menuFooterContainer = title.nextElementSibling;
+				console.log(menuFooterContainer)
+				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
+					var containerId = menuFooterContainer.id;
+					title.setAttribute('aria-controls', containerId);
+				}
+				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-home-footer-container')) {
+					var containerId = menuFooterContainer.id;
+					title.setAttribute('aria-controls', containerId);
+				}
+				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-privacy-container')) {
+					var containerId = menuFooterContainer.id;
+					title.setAttribute('aria-controls', containerId);
 				}
 			});
-		});
+
+
+			widgetTitles.forEach(title => {
+				title.setAttribute('tabindex', '0');
+				title.setAttribute('role', 'button');
+				title.setAttribute('aria-expanded', 'false');
+				// Add click event listener to each .widget-title
+
+				title.addEventListener('keypress', function () {
+					// Check if there's a next sibling element
+					this.classList.toggle('active');
+					let sibling = this.nextElementSibling;
+					if (sibling) {
+						var isExpanded = title.getAttribute('aria-expanded') === 'true';
+						// Add class to the sibling
+						this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+						this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+
+					}
+				});
+				title.addEventListener('click', function () {
+					// Check if there's a next sibling element
+					this.classList.toggle('active');
+					let sibling = this.nextElementSibling;
+					if (sibling) {
+						var isExpanded = title.getAttribute('aria-expanded') === 'true';
+						// Add class to the sibling
+						this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+						this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+					}
+				});
+			});
+		
 	}
 
+	let widgetTitlesRespo = document.querySelectorAll('.widget-title');
+	
+	window.addEventListener('resize', function () {
+		if (window.innerWidth < 768) {
+			footerMenuFunctions()
+		} else {
+			widgetTitlesRespo.forEach(title => {
+				title.removeAttribute('tabindex');
+				title.removeAttribute('role');
+				title.removeAttribute('aria-expanded');
+				title.removeAttribute('aria-controls');
+			});
+		}
+	});
 
-
-
+	if (window.innerWidth < 768) {
+		footerMenuFunctions()
+	}
 });
 
 
@@ -500,7 +521,6 @@ jQuery(function ($) {
 
 		// if tab or shift-tab pressed
 		if (evt.which == 9) {
-			console.log(obj)
 			// get list of all children elements in given object
 			var o = obj.find('*');
 
@@ -559,7 +579,6 @@ jQuery(function ($) {
 		jQuery('body').on('focusin', 'body', function () {
 			setFocusToFirstItemInModal('#' + obj);
 		})
-		// console.log('#' + obj)
 		// save current focus
 		focusedElementBeforeModal = jQuery(':focus');
 
