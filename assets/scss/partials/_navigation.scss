@@ -4,12 +4,20 @@
 ---------------------------------------------------------------------------------------------------- */
 header.site-header {
 	&.site-header-active {
-		.title-area {
+		&:after {
 			opacity: 0;
 			visibility: hidden;
 		}
 
+		.title-area {
+			opacity: 0;
+			visibility: hidden;
+
+		}
+
 		#nav-icon {
+			z-index: 100;
+
 			span {
 				background-color: white;
 			}
@@ -26,6 +34,7 @@ header.site-header {
 		max-width: 1225px;
 		margin: 0 auto;
 		padding: 0 25px;
+
 		@include media(">tablet") {
 			overflow: auto;
 		}
@@ -36,6 +45,20 @@ header.site-header {
 
 .site-header {
 	position: relative;
+
+	@include media("<tablet") {
+		&:after {
+			content: close-quote;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 70px;
+			background: #fff;
+			z-index: 110;
+		}
+	}
+
 	&.scroll_active {
 		@include media("<tablet") {
 			z-index: 1;
@@ -94,6 +117,10 @@ header.site-header {
 					align-items: center;
 					gap: 28px;
 
+					@media screen and (max-width:900px) and (min-width:768px) {
+						gap: 10px;
+					}
+
 					li:not(:last-child) {
 						ul li {
 							margin-bottom: 10px;
@@ -130,13 +157,18 @@ header.site-header {
 							&::after {
 								content: "";
 								position: absolute;
-								left: 0;
+								left: -10px;
+								right: -10px;
+								top: 50%;
+								transform: translate(0%, -50%);
 								bottom: 0;
-								background: blue;
-								width: 100%;
-								height: 5px;
+								border: 2px solid blue;
+								width: auto;
+								height: 50%;
+
 								@include media("<tablet") {
-									background: brand-color('primary');
+									height: 100%;
+									// background: brand-color('primary');
 								}
 							}
 						}
@@ -237,6 +269,11 @@ header.site-header {
 								margin: 24px 24px 0;
 								padding: 0;
 
+								display: inline-flex;
+								width: auto;
+								min-width: 0;
+								align-self: flex-start;
+
 								@include media(">tablet") {
 									display: none;
 
@@ -281,10 +318,12 @@ header.site-header {
 								@include media("<tablet") {
 									padding: 20px 24px;
 									background: white;
-									&:nth-child(3){
+
+									&:nth-child(3) {
 										padding-top: 36px;
 									}
-									&:nth-last-child(1){
+
+									&:nth-last-child(1) {
 										padding-bottom: 36px;
 									}
 								}
@@ -458,8 +497,6 @@ header.site-header {
 							}
 						}
 
-						&:focus-visible {}
-
 						&:after {
 							display: none;
 						}
@@ -511,6 +548,7 @@ header.site-header {
 				height: 100vh;
 				padding: 20px 30px;
 				display: none;
+
 				@include media("<tablet") {
 					padding: 90px 24px 0;
 					background-color: brand-color('tertiary');
@@ -520,9 +558,10 @@ header.site-header {
 					overflow-y: auto;
 				}
 
-				&.active{
+				&.active {
 					display: flex;
 					flex-direction: column;
+					z-index: 110;
 				}
 
 				>ul {
@@ -558,6 +597,7 @@ header.site-header {
 							display: flex;
 							align-items: center;
 							justify-content: center;
+
 							img {
 								width: 100%;
 							}
@@ -622,7 +662,13 @@ body {
 /*
 * "Hamburger Icon Animation"
 */
+.nav-icon {
+	span {
+		background: white !important;
+	}
+}
 
+.nav-icon,
 #nav-icon {
 	width: 30px;
 	height: 30px;
@@ -633,7 +679,7 @@ body {
 	background-color: transparent;
 	border: none;
 	margin: 0;
-	z-index: 9999;
+	z-index: 1110;
 	top: 18px;
 	right: 24px;
 
@@ -690,7 +736,7 @@ body {
 // Mobile Bottom Context	
 .menu_bottom {
 	position: relative;
-    margin: 0 -24px;
+	margin: 0 -24px;
 	margin-top: auto;
 
 	@include media(">tablet") {
@@ -732,7 +778,22 @@ body {
 		label {
 			position: absolute;
 			top: 0;
-			left: -9999px;
+			left: 0;
+			color: white;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.4;
+			background: transparent;
+			border: none;
+			padding: 24px 0;
+			padding-left: 40px;
+			transition: all .3s;
+		}
+
+		input:focus+label {
+			padding: 0 0 0 40px;
+			font-size: 12px;
 		}
 
 		input {
@@ -794,10 +855,6 @@ body {
 }
 
 .search-popup {
-	&.active {
-		display: flex;
-	}
-
 	display: none;
 	position: absolute;
 	top: 0;
@@ -808,6 +865,10 @@ body {
 	background: #fff;
 	z-index: 1000;
 	min-height: 71px;
+
+	&.active {
+		display: flex;
+	}
 
 	&.input-active {
 		label {
@@ -869,7 +930,9 @@ body {
 		}
 	}
 
-
+	input:focus+label {
+		top: -20px;
+	}
 
 	label {
 		color: #000;
@@ -877,6 +940,7 @@ body {
 		font-style: normal;
 		font-weight: 400;
 		line-height: 1;
+		transition: all .3s;
 	}
 
 	.under_line {
