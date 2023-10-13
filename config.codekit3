@@ -3881,29 +3881,34 @@
       "oAP" : "\/template-parts\/blocks\/form-column\/template.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/full-width-columns-background\/block.json" : {
+    "\/template-parts\/blocks\/full-width-columns-background-block\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
-      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/block-min.json",
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background-block\/block-min.json",
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php" : {
+    "\/template-parts\/blocks\/full-width-columns-background-block\/full-width-columns-background.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/full-width-columns-background.php",
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background-block\/full-width-columns-background.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/full-width-columns-background\/template.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/full-width-columns-background\/template.php",
-      "oF" : 0
+    "\/template-parts\/blocks\/full-width-columns-background-block\/screenshot.jpg" : {
+      "ft" : 16384,
+      "iS" : 322466,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-background-block\/screenshot.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/template-parts\/blocks\/full-width-columns-cta-inner\/block.json" : {
       "ft" : 524288,
@@ -3919,6 +3924,27 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/full-width-columns-cta-inner\/full-width-columns-background.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/full-width-columns-cta-inner\/screenshot.jpg" : {
+      "ft" : 16384,
+      "iS" : 374607,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-cta-inner\/screenshot.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/full-width-columns-cta-inner\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/full-width-columns-cta-inner\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/hero-block\/block.json" : {

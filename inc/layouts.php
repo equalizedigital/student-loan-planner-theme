@@ -311,7 +311,7 @@ function eqd_single_fullwidth_content() {
 				<?php
 				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
 				if ( $featured_image ) {
-					?>
+				?>
 				<span class="hero_featured_image">
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
 					<div class="hero_featured_image_data">
@@ -328,7 +328,7 @@ function eqd_single_fullwidth_content() {
 						<?php echo ( $time_read['minutes'] ); ?> Min Read |  <?php echo wp_kses_post( $output ); ?>
 					</div>
 				</span>
-			<?php } ?>
+			<?php } else { echo "</br>";} ?>
 
 			<div class="site-main-article__author-data">
 				<div class="article_author">

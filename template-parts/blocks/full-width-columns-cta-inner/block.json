@@ -1,16 +1,26 @@
 {
-	"name": "acf/full-width-columns-background-block",
-	"title": "Full Width Columns Background Block",
-	"description": "Full Width Columns Background Block",
+	"name": "acf/full-width-columns-cta-inner",
+	"title": "Full Width Columns CTA Inner",
+	"description": "Full Width Columns CTA Inner",
 	"category": "custom-blocks",
-	"icon": "columns",
+	"icon": "align-full-width",
 	"keywords": [
+		"full",
+		"width",
 		"columns",
-		"full width",
-		"background"
+		"cta",
+		"inner"
 	],
 	"acf": {
 		"mode": "preview",
-		"renderTemplate": "full-width-columns-background.php"
+		"renderTemplate": "template.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview_image_help": "screenshot.jpg"
+			}
+		}
 	}
 }
