@@ -74,7 +74,8 @@ function eqd_single_after_entry_content() {
 	}
 	?>
 	<?php if ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) : ?>
-<section class="refinance_lender_section">
+
+	<section class="refinance_lender_section">
 	<header class="title">
 		<?php
 		$current_year = date( 'Y' );
