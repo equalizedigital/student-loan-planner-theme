@@ -133,14 +133,18 @@ header.site-header {
 						font-size: 15px;
 						font-style: normal;
 						font-weight: 400;
-						line-height: 1.4;
+						line-height: 1;
 						text-decoration: none;
 						padding: 30px 0 30px;
 						display: flex;
 						background: transparent;
 						border: none;
 						display: inline-flex;
-
+						
+						align-items: center;
+						@include media(">tablet") {
+							height: 80px;
+						}
 						@include media("<tablet") {
 							color: white;
 							font-size: 23px;
