@@ -336,20 +336,22 @@ function eqd_single_fullwidth_content() {
 					$post_author    = get_the_author();
 					$id             = get_field( 'post_reviewed_by', get_the_ID() );
 					$id_post_editor = get_field( 'post_editor', get_the_ID() );
-					$edit_auth_id   = $id_post_editor['ID'];
-					$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
+					if(!empty($id_post_editor)){
+						$edit_auth_id   = $id_post_editor['ID'];
+						$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
+					}
+					
 					?>
 					<span class="entry-author">
-							<?php echo get_avatar( $edit_auth_id, 40 ); ?>
+							<?php echo !empty($edit_auth_id)? get_avatar( $edit_auth_id, 40 ):''; ?>
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : 'Written By'; ?>
-
-								<?php  echo get_author_posts_link_by_id($edit_auth_id); ?>
+								<?php echo ! empty($edit_auth_id)?get_author_posts_link_by_id($edit_auth_id):$post_author; ?>
 							</span>
 							<span class="entry-data">
 								<?php
-								echo wp_kses_post( $author_info );
+								echo !empty($author_info)?wp_kses_post( $author_info ):'';
 								?>
 							</span>
 						</span>
