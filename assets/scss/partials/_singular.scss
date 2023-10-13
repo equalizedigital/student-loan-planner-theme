@@ -1039,6 +1039,10 @@ img.wprm-comment-rating {
 		@include media("<tablet") {
 			flex-direction: column;
 		}
+		.article_author{
+			display: flex;
+			align-items: center;
+		}
 	}
 
 	.entry-author {

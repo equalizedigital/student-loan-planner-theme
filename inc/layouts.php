@@ -316,6 +316,7 @@ function eqd_single_fullwidth_content() {
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
 					<div class="hero_featured_image_data">
 						<?php
+						$output = '';
 						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
 							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 						}
@@ -335,20 +336,22 @@ function eqd_single_fullwidth_content() {
 					$post_author    = get_the_author();
 					$id             = get_field( 'post_reviewed_by', get_the_ID() );
 					$id_post_editor = get_field( 'post_editor', get_the_ID() );
-					$edit_auth_id   = $id_post_editor['ID'];
-					$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
+					if(!empty($id_post_editor)){
+						$edit_auth_id   = $id_post_editor['ID'];
+						$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
+					}
+					
 					?>
 					<span class="entry-author">
-							<?php echo get_avatar( $edit_auth_id, 40 ); ?>
+							<?php echo !empty($edit_auth_id)? get_avatar( $edit_auth_id, 40 ):''; ?>
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : 'Written By'; ?>
-
-								<?php  echo get_author_posts_link_by_id($edit_auth_id); ?>
+								<?php echo ! empty($edit_auth_id)?get_author_posts_link_by_id($edit_auth_id):$post_author; ?>
 							</span>
 							<span class="entry-data">
 								<?php
-								echo wp_kses_post( $author_info );
+								echo !empty($author_info)?wp_kses_post( $author_info ):'';
 								?>
 							</span>
 						</span>
@@ -356,11 +359,14 @@ function eqd_single_fullwidth_content() {
 				</div>
 				<?php
 						$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
-						$profile_picture   = get_avatar( $review_by_auth_id, 64 );
-						$user_info         = get_userdata( $review_by_auth_id );
-						$first_name        = $user_info->first_name;
-						$last_name         = $user_info->last_name;
-						$nickname          = $user_info->nickname;
+						if($review_by_auth_id != false){
+							$profile_picture   = get_avatar( $review_by_auth_id, 64 );
+							$user_info         = get_userdata( $review_by_auth_id );
+							$first_name        = $user_info->first_name;
+							$last_name         = $user_info->last_name;
+							$nickname          = $user_info->nickname;
+						}
+
 				?>
 						<?php if ( $review_by_auth_id ) : ?>
 
