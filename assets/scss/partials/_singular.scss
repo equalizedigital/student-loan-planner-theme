@@ -150,6 +150,7 @@ img.wprm-comment-rating {
 		margin: 0 0 32px;
 		list-style: none;
 	}
+
 	.no-comments {
 		margin-bottom: 60px;
 	}
@@ -267,8 +268,8 @@ img.wprm-comment-rating {
 		&.depth-1 {
 			// border-bottom: 1px solid #D9D9D9;
 			margin-top: 45px;
-    		border-top: 1px solid #D9D9D9;
-    		padding-top: 45px;
+			border-top: 1px solid #D9D9D9;
+			padding-top: 45px;
 		}
 
 		&.has-children {
@@ -309,9 +310,9 @@ img.wprm-comment-rating {
 	a {}
 }
 
-.comment-form{
+.comment-form {
 	display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .comment-respond {
@@ -399,7 +400,12 @@ img.wprm-comment-rating {
 		margin: 0 auto;
 		gap: 60px 116px;
 
+		@include media(">desktop") {
+			gap: 60px 116px;
+		}
+
 		@include media(">tablet") {
+			gap: 60px 40px;
 			grid-template-columns: 1fr 1fr;
 		}
 
@@ -472,7 +478,12 @@ img.wprm-comment-rating {
 	grid-template-columns: 1fr;
 	gap: 0 116px;
 
+	@include media(">desktop") {
+		gap: 0 116px;
+	}
+
 	@include media(">tablet") {
+		gap: 0 40px;
 		grid-template-columns: 1fr 1fr;
 	}
 
@@ -481,6 +492,10 @@ img.wprm-comment-rating {
 		margin-bottom: 80px;
 		padding: 0;
 
+		
+		@include media(">desktop") {
+			grid-template-columns: 360px 1fr;
+		}
 		@include media(">tablet") {
 			grid-template-columns: 360px 1fr;
 		}
@@ -490,13 +505,14 @@ img.wprm-comment-rating {
 				padding: 170px 0 90px;
 			}
 		}
-		.slp-contact-info-loop{
-			h3{
+
+		.slp-contact-info-loop {
+			h3 {
 				color: #000;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: 25px; 
+				font-size: 20px;
+				font-style: normal;
+				font-weight: 700;
+				line-height: 25px;
 			}
 		}
 	}
@@ -513,6 +529,7 @@ line-height: 25px;
 	.detail_link_content {
 		margin: 10px 0 10px;
 	}
+
 	.press-company {
 		margin-left: 5px;
 	}
@@ -672,8 +689,9 @@ line-height: 25px;
 
 	.author_recommended_posts_loop {
 		display: grid;
-		grid-template-columns: 1fr ;
+		grid-template-columns: 1fr;
 		gap: 20px;
+
 		@include media(">tablet") {
 			grid-template-columns: 1fr 1fr 1fr;
 		}
@@ -696,9 +714,9 @@ line-height: 25px;
 
 // author posts
 .author_latest_from {
-    max-width: 1168px;
-    margin: 0 auto;
-    padding: 0 24px;
+	max-width: 1168px;
+	margin: 0 auto;
+	padding: 0 24px;
 
 	a.post_link img {
 		display: flex;
@@ -706,25 +724,27 @@ line-height: 25px;
 		border-radius: 10px;
 		object-fit: cover;
 	}
-	
+
 	h2.post_title {
 		color: #000;
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 700;
-		line-height: 24px; /* 133.333% */
+		line-height: 24px;
+		/* 133.333% */
 		margin: 0;
 		min-height: 90px;
 	}
-	
+
 	a.post_link {
 		text-decoration: none;
 	}
-	
+
 	.featured-image {
 		margin: 0 0 30px;
 		min-height: 240px;
 	}
+
 	h2.author_latest_from_title {
 		color: var(--Purple, #625089);
 		font-size: 35px;
@@ -732,17 +752,18 @@ line-height: 25px;
 		font-weight: 700;
 		line-height: 40px;
 	}
-	
-	 .loop {
+
+	.loop {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 60px 20px;
+
 		@include media(">tablet") {
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 	}
-	
-	 .loop .post {
+
+	.loop .post {
 		border-bottom: 1px solid #eee;
 	}
 
@@ -755,7 +776,7 @@ line-height: 25px;
 		text-align: unset;
 		gap: 15px;
 	}
-	
+
 	.pagination a {
 		text-decoration: none;
 		color: #000;
@@ -763,10 +784,11 @@ line-height: 25px;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 700;
-		line-height: 18px; /* 112.5% */
+		line-height: 18px;
+		/* 112.5% */
 		border-bottom: 2px solid #fff;
 	}
-	
+
 	span.page-numbers.current {
 		text-decoration: none;
 		color: #000;
@@ -776,26 +798,31 @@ line-height: 25px;
 		font-weight: 700;
 		border-bottom: 2px solid #82BC46;
 	}
-	
+
 	a.next.page-numbers {
 		color: #000;
 		text-align: center;
 		font-size: 15px;
 		font-style: normal;
-		font-weight: 400;border-bottom: 2px solid #fff;
-		line-height: 70px; /* 466.667% */
+		font-weight: 400;
+		border-bottom: 2px solid #fff;
+		line-height: 70px;
+		/* 466.667% */
 		margin-left: 10px;
 	}
-	a.prev.page-numbers{
+
+	a.prev.page-numbers {
 		color: #000;
 		text-align: center;
-		font-size: 15px;border-bottom: 2px solid #fff;
+		font-size: 15px;
+		border-bottom: 2px solid #fff;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 70px; /* 466.667% */
+		line-height: 70px;
+		/* 466.667% */
 		margin-right: 10px;
 	}
-	
+
 }
 
 
@@ -959,7 +986,8 @@ line-height: 25px;
 				// font-size: 24px;
 				// line-height: 24px;
 			}
-			a{
+
+			a {
 				color: inherit;
 			}
 
@@ -1286,13 +1314,16 @@ section.refinance_lender_section {
 
 	.header {
 		padding-bottom: 5px;
+
 		@include media("<tablet") {
 			display: none !important;
 		}
 	}
+
 	tr th {
 		font-size: 14px;
 	}
+
 	tr .td_content {
 		display: grid;
 		flex-direction: column;
@@ -1315,7 +1346,8 @@ section.refinance_lender_section {
 		align-items: center;
 		justify-content: center;
 		font-family: $base-font;
-		sup{
+
+		sup {
 			top: 0;
 			font-size: .3em;
 		}
@@ -1431,8 +1463,8 @@ section.refinance_lender_section {
 .article_footer_data {
 	background: var(--Light-Gray, #F7F7F7);
 	padding: 55px 30px;
-    max-width: 1168px;
-    margin: 0 auto 71px;
+	max-width: 1168px;
+	margin: 0 auto 71px;
 
 	&_author_entry-author_titles {
 		display: flex;
@@ -1466,7 +1498,7 @@ section.refinance_lender_section {
 		justify-content: center;
 		gap: 20px;
 		list-style: none;
-		
+
 	}
 
 	.author_socials a {
@@ -1540,7 +1572,8 @@ section.refinance_lender_section {
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
-		li{
+
+		li {
 			list-style: none;
 		}
 	}
@@ -1561,9 +1594,11 @@ section.refinance_lender_section {
 	@include media("<tablet") {
 		display: none;
 	}
-.shared-counts-button {
-    padding: 0!important;
-}
+
+	.shared-counts-button {
+		padding: 0 !important;
+	}
+
 	.sidebar_social {
 		display: flex;
 		align-items: center;
@@ -1810,6 +1845,7 @@ html {
 
 
 }
+
 article.type-post {
 	margin-bottom: 117px;
 }
