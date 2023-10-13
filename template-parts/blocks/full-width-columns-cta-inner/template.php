@@ -9,8 +9,9 @@
  * @package full-width-columns-cta-inner
  */
 
-if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+// var_dump($block['example']['attributes']['data']['preview_image_help']);
+if ( isset( $block['example']['attributes']['data']['preview_image_help'] ) ) :
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
