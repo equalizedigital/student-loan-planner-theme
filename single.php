@@ -456,6 +456,10 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_block_disclosure'
  **/
 function eqd_single_after_entry_block_disclosure() {
 	if ( has_block( 'acf/vendor-repeater' ) ) {
+		$hide_section_per_page = get_field( 'hide_student_loans_section', get_the_ID() );
+		if ( $hide_section_per_page ) {
+			return;
+		}
 		?>
 			<section class="vendor_disclosure">
 				<h2 class="vendor_disclosure_title">Disclosures</h2>
