@@ -359,11 +359,14 @@ function eqd_single_fullwidth_content() {
 				</div>
 				<?php
 						$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
-						$profile_picture   = get_avatar( $review_by_auth_id, 64 );
-						$user_info         = get_userdata( $review_by_auth_id );
-						$first_name        = $user_info->first_name;
-						$last_name         = $user_info->last_name;
-						$nickname          = $user_info->nickname;
+						if($review_by_auth_id != false){
+							$profile_picture   = get_avatar( $review_by_auth_id, 64 );
+							$user_info         = get_userdata( $review_by_auth_id );
+							$first_name        = $user_info->first_name;
+							$last_name         = $user_info->last_name;
+							$nickname          = $user_info->nickname;
+						}
+
 				?>
 						<?php if ( $review_by_auth_id ) : ?>
 

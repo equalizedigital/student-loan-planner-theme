@@ -348,10 +348,12 @@ function eqd_single_after_entry_author_info() {
 			$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 
 			$profile_picture = get_avatar( $review_by_auth_id, 64 );
-			$user_info       = get_userdata( $review_by_auth_id );
-			$first_name      = $user_info->first_name;
-			$last_name       = $user_info->last_name;
-			$nickname        = $user_info->nickname;
+			if($review_by_auth_id != false){
+				$user_info       = get_userdata( $review_by_auth_id );
+				$first_name      = $user_info->first_name;
+				$last_name       = $user_info->last_name;
+				$nickname        = $user_info->nickname;
+			}
 		?>
 			<?php if ( $review_by_auth_id ) : ?>
 
@@ -362,7 +364,7 @@ function eqd_single_after_entry_author_info() {
 				<div class="article_footer_data_author_author_info">
 					Reviewed By
 					<span class="name">
-					<?php  echo get_author_posts_link_by_id($review_by_auth_id); ?>
+						<?php echo get_author_posts_link_by_id($review_by_auth_id); ?>
 					</span>
 				</div>
 
