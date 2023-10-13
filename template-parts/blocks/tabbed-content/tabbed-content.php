@@ -41,7 +41,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 					<?php
 					$rows = get_field( 'tab_content' );
 					if ( $rows ) {
-						echo '<ul class="tabbed-content__nav-list" role="tablist" aria-labelledby="tablist-1">';
+						echo '<ul class="tabbed-content__nav-list" role="tablist" aria-label="Tab List">';
 						foreach ( $rows as $key => $row ) {
 								echo '<li class="tabbed-content__nav-item">';
 							?>
