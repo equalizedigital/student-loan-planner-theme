@@ -316,6 +316,7 @@ function eqd_single_fullwidth_content() {
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
 					<div class="hero_featured_image_data">
 						<?php
+						$output = '';
 						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
 							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 						}
