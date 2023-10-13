@@ -153,7 +153,11 @@ tha_content_before();
 						
 					</div>
 					<div class="slp-contact-info-loop">
-						<h2 class="title">More About <?php echo wp_kses_post( $idf['nickname'][0] ); ?></h2>
+						<h2 class="title">More About <?php 
+						$words = explode(' ', $idf['nickname'][0]);
+						$firstWord = $words[0];
+
+						echo wp_kses_post( $firstWord ); ?></h2>
 						<?php echo wpautop( $idf['custom_author_bio'][0] ); ?>
 					</div>
 				</div>
