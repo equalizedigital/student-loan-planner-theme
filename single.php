@@ -217,7 +217,11 @@ add_action( 'tha_content_after', 'advertising_disclosure', 7 );
  **/
 function eqd_single_after_entry_primary_category() {
 	$post_id             = get_the_ID(); 
-	$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
+	if (function_exists('yoast_get_primary_term_id')) {
+		$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
+	} else {
+		return;
+	}
 	if ( $primary_category_id ) {
 		$primary_category = get_term( $primary_category_id );
 		$category_id      = 'category_' . $primary_category->term_id;
