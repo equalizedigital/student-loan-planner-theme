@@ -202,14 +202,20 @@ $time_stamp = time() . wp_rand( 0, 23 );
 							<?php endif; ?>
 						</a>
 					<?php endif; ?>
+					<?php if(!empty($more_info_content)): ?>
 					<button 
 					class="vendor_information_block_container_column_two_link_more_info"
 					type="button"
 					aria-label="More Information about <?php echo $heading; ?>"
 					aria-expanded="false"
 					aria-controls="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>"
-					>More Information<span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>
+					>
+						More Information
+						<span>
+							<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg>
+						</span>
 					</button>
+					<?php endif; ?>
 				</div>
 			</div>
 
