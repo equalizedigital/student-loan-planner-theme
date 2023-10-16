@@ -90,11 +90,11 @@ $acf_title = get_field( 'title' );
 			<button class="prev" aria-label="Go to previous testimonial">Previous</button>
 			<span class="slide-counter">
 
-			<?php 
-			$repeater = get_field('testimonials');
+			<?php
+			$repeater = get_field( 'testimonials' );
 
-			if ($repeater) {
-				$count = count($repeater);
+			if ( $repeater ) {
+				$count = count( $repeater );
 				echo '1 of ' . $count;
 			} else {
 				echo 'No items in the repeater.';
@@ -116,14 +116,14 @@ $acf_title = get_field( 'title' );
 <?php
 
 function my_enqueue_block_editor_assets() {
-        wp_enqueue_script(
-            'testimonial-slider-script', // Handle for the script.
-            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'
-        );
+		wp_enqueue_script(
+			'testimonial-slider-script', // Handle for the script.
+			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'
+		);
 		wp_enqueue_style( 'my-custom-stylesheet-handle', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.0.0', 'all' );
 		wp_enqueue_style( 'my-custom-stylesheet-handle', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.0.0', 'all' );
 }
-add_action('enqueue_block_editor_assets', 'my_enqueue_block_editor_assets');
+add_action( 'enqueue_block_editor_assets', 'my_enqueue_block_editor_assets' );
 
 
 	// Check rows existexists.
@@ -138,117 +138,95 @@ if ( have_rows( 'testimonials' ) ) :
 
 <script>
 	jQuery(function() {
-
-
 		var rev = jQuery('.testimonial-slider-block-container-testimonial-slider');
-rev.on('init', function(event, slick, currentSlide) {
-	var
-	cur = jQuery(slick.$slides[slick.currentSlide]),
-	next = cur.next(),
-	next2 = cur.next().next(),
-	prev = cur.prev(),
-	prev2 = cur.prev().prev();
-	prev.addClass('slick-sprev');
-	next.addClass('slick-snext');  
-	prev2.addClass('slick-sprev2');
-	next2.addClass('slick-snext2');  
-	cur.removeClass('slick-snext').removeClass('slick-sprev').removeClass('slick-snext2').removeClass('slick-sprev2');
-	slick.$prev = prev;
-	slick.$next = next;
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-	console.log('beforeChange');
-	var
-	cur = jQuery(slick.$slides[nextSlide]);
-	console.log(slick.$prev, slick.$next);
-	slick.$prev.removeClass('slick-sprev');
-	slick.$next.removeClass('slick-snext');
-	slick.$prev.prev().removeClass('slick-sprev2');
-	slick.$next.next().removeClass('slick-snext2');
-	next = cur.next(),  
-	prev = cur.prev();
-	//prev2.prev().prev();
-	//next2.next().next();
-	prev.addClass('slick-sprev');
-	next.addClass('slick-snext');
-	prev.prev().addClass('slick-sprev2');
-	next.next().addClass('slick-snext2');
-	slick.$prev = prev;
-	slick.$next = next;
-	cur.removeClass('slick-next').removeClass('slick-sprev').removeClass('slick-next2').removeClass('slick-sprev2');
-});
+		rev.on('init', function(event, slick, currentSlide) {
+			var
+			cur = jQuery(slick.$slides[slick.currentSlide]),
+			next = cur.next(),
+			next2 = cur.next().next(),
+			prev = cur.prev(),
+			prev2 = cur.prev().prev();
+			prev.addClass('slick-sprev');
+			next.addClass('slick-snext');  
+			prev2.addClass('slick-sprev2');
+			next2.addClass('slick-snext2');  
+			cur.removeClass('slick-snext').removeClass('slick-sprev').removeClass('slick-snext2').removeClass('slick-sprev2');
+			slick.$prev = prev;
+			slick.$next = next;
+		}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+			console.log('beforeChange');
+			var
+			cur = jQuery(slick.$slides[nextSlide]);
+			console.log(slick.$prev, slick.$next);
+			slick.$prev.removeClass('slick-sprev');
+			slick.$next.removeClass('slick-snext');
+			slick.$prev.prev().removeClass('slick-sprev2');
+			slick.$next.next().removeClass('slick-snext2');
+			next = cur.next(),  
+			prev = cur.prev();
+			//prev2.prev().prev();
+			//next2.next().next();
+			prev.addClass('slick-sprev');
+			next.addClass('slick-snext');
+			prev.prev().addClass('slick-sprev2');
+			next.next().addClass('slick-snext2');
+			slick.$prev = prev;
+			slick.$next = next;
+			cur.removeClass('slick-next').removeClass('slick-sprev').removeClass('slick-next2').removeClass('slick-sprev2');
+		});
 
-rev.slick({
-	speed: 1000,
-	arrows: true,
-	dots: false,
-	focusOnSelect: true,
-	prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
-	nextArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next"),
-	appendDots: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls__slider-controls"),
-	customPaging: function(slider, i) {
-		return '<span class="dot"></span>';
-	},
-	infinite: true,
-	centerMode: true,
-	slidesPerRow: 1,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	centerPadding: '0',
-	swipe: true,
-	// customPaging: function(slider, i) {
-	// return '';
-	// },
-	/*infinite: false,*/
-});
+		rev.slick({
+			speed: 1000,
+			arrows: true,
+			dots: false,
+			focusOnSelect: true,
+			prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
+			nextArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next"),
+			appendDots: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls__slider-controls"),
+			customPaging: function(slider, i) {
+				return '<span class="dot"></span>';
+			},
+			infinite: true,
+			centerMode: true,
+			slidesPerRow: 1,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			centerPadding: '0',
+			swipe: true,
+			// customPaging: function(slider, i) {
+			// return '';
+			// },
+			/*infinite: false,*/
+		});
 
+		// Handle click event on slick arrows
+		jQuery('.testimonial-slider-block-container-testimonial-slider__slider-controls .next').on('click', function() {
+			// Wait for the slick transition to complete
+			setTimeout(function() {
+				// Find the next slide's blockquote and add tabindex
+				var $nextBlockquote = jQuery('.slick-current').find('.testimonial-slider-block-container-testimonial-slider-testimonial__content');
+				$nextBlockquote.attr('tabindex', '-1').focus();
 
-
-		// 	jQuery('.testimonial-slider-block-container-testimonial-slider').slick({
-
-		// 		centerMode: true,
-		// 		slidesToShow: 1,
-		// 		arrows: false, 
-		// 		dots: true,
-		// 		slidesToShow: 3,
-		// 		// autoplay: true,
-		// 		// autoplaySpeed: 5000,
-		// 		speed: 900,
-		// 		easing: 'easeOutSine',
-		// 		centerPadding: '0px',
-		// 		swipe: true,
-		// 		prevArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev"),
-		// 		nextArrow: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next"),
-		// 		appendDots: jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls__slider-controls"),
-		// 		customPaging: function(slider, i) {
-		// 			return '<span class="dot"></span>';
-		// 		},
-		// 	});
-
-			// jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev").click(function(){
-			// 	slider.slick("slickPrev");
-			// });
-		
-			// jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next").click(function(){
-			// 	slider.slick("slickNext");
-			// });
-
-
-				// Handle click event on slick arrows
-				jQuery('.testimonial-slider-block-container-testimonial-slider__slider-controls .next').on('click', function() {
-					// Wait for the slick transition to complete
-					setTimeout(function() {
-						// Find the next slide's blockquote and add tabindex
-						var $nextBlockquote = jQuery('.slick-current').find('.testimonial-slider-block-container-testimonial-slider-testimonial__content');
-						$nextBlockquote.attr('tabindex', '-1').focus();
-
-						// When the blockquote loses focus, remove the tabindex attribute
-						$nextBlockquote.on('blur', function() {
-							jQuery(this).removeAttr('tabindex');
-						});
-					}, 300); // Assuming 300ms as the slick transition time, adjust if needed
+				// When the blockquote loses focus, remove the tabindex attribute
+				$nextBlockquote.on('blur', function() {
+					jQuery(this).removeAttr('tabindex');
 				});
+			}, 300); // Assuming 300ms as the slick transition time, adjust if needed
+		});
 
+		jQuery('.testimonial-slider-block-container-testimonial-slider__slider-controls .prev').on('click', function() {
+			// Wait for the slick transition to complete
+			setTimeout(function() {
+				// Find the prev slide's blockquote and add tabindex
+				var $prevBlockquote = jQuery('.slick-current').prev().find('.testimonial-slider-block-container-testimonial-slider-testimonial__content');
+				$prevBlockquote.attr('tabindex', '-1').focus();
 
+				// When the blockquote loses focus, remove the tabindex attribute
+				$prevBlockquote.on('blur', function() {
+					jQuery(this).removeAttr('tabindex');
+				});
+			}, 300); // Assuming 300ms as the slick transition time, adjust if needed
+		});
 
 		// var slider = jQuery(".testimonial-slider-block-container-testimonial-slider");
 		var slideCount = rev.slick("getSlick").slideCount;
