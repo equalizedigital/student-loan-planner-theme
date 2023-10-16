@@ -2,7 +2,12 @@
 --------------------------------------------- */
 
 body {
-	@include style( 'body', $size: 5, $base: true );
+	@include style('body', $size: 5, $base: true);
+	color: black;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 28px;
 }
 
 /**
@@ -10,16 +15,32 @@ body {
  * @link https://webaim.org/resources/linkcontrastchecker/
  */
 a {
-	color: #4242FF;
+	color: var(--WCAG-Green, #547C2D);
+	font-style: normal;
+	font-weight: 400;
 	text-decoration: underline;
 	@extend %transition;
-
-	&:hover {
+	&:hover,
+	&:focus {
 		text-decoration: none;
+		color: brand-color('tertiary');
 	}
-
 	svg {
 		@extend %transition;
+	}
+}
+
+// Global Focus
+button:focus-within, button:focus,  
+.button:focus-within, .button:focus, 
+a:focus-within, a:focus,
+a:focus-within, a:focus,
+input:focus {
+    outline: 2px solid blue;
+    outline-offset: 2px;
+    text-decoration: none;
+	.is-style-white {
+		outline: 2px solid $white;
 	}
 }
 
@@ -81,16 +102,16 @@ p {
 
 	&.large,
 	&.has-large-font-size {
-		@include style( 'body', 3 );
+		@include style('body', 3);
 	}
 
 	&.has-normal-font-size {
-		@include style( 'body', 5 );
+		@include style('body', 5);
 	}
 
 	&.small,
 	&.has-small-font-size {
-		@include style( 'body', 7 );
+		@include style('body', 7);
 	}
 }
 
@@ -103,31 +124,240 @@ h3,
 h4,
 h5,
 h6 {
-	@include style( 'title', null, true );
+	@include style('title', null, true);
 	margin: 0 0 16px;
+	color: $black;
 
 	a {
 		color: $text_dark;
 
 		&:hover {
-			color: brand-color( 'primary' );
+			color: brand-color('primary');
 			text-decoration: none;
 		}
 	}
 }
 
 h1 {
-	@include style( 'display', 4, true );
+	@include style('title', 1);
+	font-style: normal;
+	font-weight: 700;
+	line-height: 70px;
 }
 
 h2 {
-	@include style( 'title', 3 );
+	@include style('title', 2);
+
+	color: brand-color('tertiary');
+	font-size: 35px;
+	font-weight: 700;
+	line-height: 40px;
+
+	&.wp-block-heading {
+		margin-top: 59px
+	}
+
 }
 
 h3 {
-	@include style( 'title', 5 );
+	@include style('title', 3);
+	font-style: normal;
+	font-weight: 700;
+	line-height: 40px;
 }
 
-h4, h5, h6 {
-	@include style( 'title', 7 );
+h4 {
+	@include style('title', 4);
+	font-style: normal;
+	font-weight: 700;
+}
+
+h5 {
+	@include style('title', 5);
+	font-style: normal;
+	font-weight: 700;
+}
+
+h6 {
+	@include style('title', 6);
+	font-style: normal;
+	font-weight: 700;
+}
+
+label {
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+input {
+	border-radius: 4px;
+	background: #FFF;
+	border: none;
+}
+
+.block .wpforms-container-full {
+	.wpforms-form {
+		.wpforms-field {
+			padding: 0;
+			margin: 0;
+			width: 100%;
+		}
+
+		button.wpforms-submit {
+			@include style('callout', 5, true);
+			background-color: brand-color('primary');
+			padding: 13px 24px;
+			text-decoration: none;
+			border: 1px solid transparent;
+			color: $black;
+			text-align: center;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 15px;
+			min-width: 148px;
+			border-radius: 4px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: brand-color('primary', 'darken');
+				border-color: brand-color('primary');
+				background: transparent;
+			}
+		}
+	}
+}
+
+
+
+.wpforms-container {
+
+	.wpforms-form .wpforms-list-2-columns ul li {
+		width: auto !important;
+	}
+
+	.wpforms-form {
+		textarea {
+			min-height: 250px;
+			border-radius: 4px;
+			border: 1px solid var(--Dark-Gray, #A1A5A5);
+			background: #FFF;
+		}
+
+		.wpforms-required-label {
+			color: inherit !important;
+			font-weight: 400;
+		}
+
+		.wpforms-field-label {
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 22px;
+			margin-bottom: 10px;
+		}
+
+		input {
+			border-radius: 4px !important;
+			border: 1px solid var(--Dark-Gray, #A1A5A5);
+			background: #FFF;
+		}
+
+		button[type=submit].wpforms-submit {
+			@include style('callout', 5, true);
+			background-color: brand-color('primary');
+			padding: 13px 24px;
+			text-decoration: none;
+			border: 1px solid transparent;
+			color: $black;
+			text-align: center;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 15px;
+			min-width: 58px;
+			border-radius: 4px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: brand-color('primary', 'darken');
+				border-color: brand-color('primary');
+				background: white;
+			}
+
+			&:focus {
+				outline: 2px solid blue;
+			}
+		}
+
+		button#wpforms-submit-4730 {
+			min-width: 168px;
+			border-radius: 4px;
+		}
+
+		input,
+		textarea {
+			&:focus {
+				outline: 2px solid blue;
+			}
+		}
+	}
+}
+
+
+
+
+
+.wp-block-table {
+
+
+	table {
+		thead {
+			border-bottom: 1px solid #A1A5A5;
+		}
+
+		th {
+			background: var(--Purple, #625089);
+			color: #fff;
+			border-color: white;
+		}
+
+		border-color: #A1A5A5;
+
+		figure {
+			border-color: #A1A5A5;
+		}
+
+		th {
+			border: 1px solid #A1A5A5;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 18px;
+			/* 128.571% */
+			padding: 18px 20px;
+			text-align: left;
+		}
+
+		td {
+			border: 1px solid #A1A5A5;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 300;
+			line-height: 18px;
+			padding: 10px 20px;
+		}
+	}
+
+
+}
+
+.anww-external-link-icon {
+	position: absolute;
+	width: 1px;
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+	white-space: nowrap;
 }

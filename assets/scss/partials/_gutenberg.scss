@@ -84,4 +84,11 @@ ul, ol {
 	@include form_style();
 }
 
+.grid-middle-line {
+    position: relative;
+}
+
+
 @import "entry-content";
+
+

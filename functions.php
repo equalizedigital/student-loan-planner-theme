@@ -30,11 +30,15 @@ require_once get_template_directory() . '/inc/blocks.php';
 require_once get_template_directory() . '/inc/fonts.php';
 require_once get_template_directory() . '/inc/login-logo.php';
 require_once get_template_directory() . '/inc/social-links.php';
+require_once get_template_directory() . '/inc/map-block-functionality.php';
 
 // Plugin Support.
 require_once get_template_directory() . '/inc/pwa.php';
 require_once get_template_directory() . '/inc/shared-counts.php';
 require_once get_template_directory() . '/inc/wordpress-seo.php';
+
+// Blocks
+require_once(get_template_directory() . '/inc/class-gutenberg-loader.php');
 
 /**
  * Enqueue scripts and styles.
@@ -75,6 +79,16 @@ function eqd_scripts() {
 
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), filemtime( get_template_directory() . '/assets/css/main.css' ) );
 
+	wp_enqueue_script( 'doctor-mortgages-map-block', get_stylesheet_directory_uri() . '/template-parts/blocks/doctor-mortgages-map-block/doctor-mortgages-map-block.js', array( 'jquery' ), filemtime( get_template_directory() . '/template-parts/blocks/doctor-mortgages-map-block/doctor-mortgages-map-block.js' ), true );
+	wp_localize_script(
+		'doctor-mortgages-map-block',
+		'rwc_base_vars',
+		array(
+			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+		)
+	);
+
 }
 add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
 
@@ -83,6 +97,7 @@ add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
  */
 function eqd_gutenberg_scripts() {
 	wp_enqueue_script( 'theme-editor', get_template_directory_uri() . '/assets/js/editor.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_template_directory() . '/assets/js/editor.js' ), true );
+	wp_enqueue_script( 'theme-editor-js', get_template_directory_uri() . '/assets/js/global-min.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
 }
 add_action( 'enqueue_block_editor_assets', 'eqd_gutenberg_scripts' );
 
@@ -208,22 +223,32 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 				array(
 					'name'  => __( 'Primary', 'eqd' ),
 					'slug'  => 'primary',
-					'color' => '#24509A',
-				),
-				array(
-					'name'  => __( 'Primary Background', 'eqd' ),
-					'slug'  => 'primary-bg',
-					'color' => '#E9EDF4',
+					'color' => '#82BC46',
 				),
 				array(
 					'name'  => __( 'Secondary', 'eqd' ),
 					'slug'  => 'secondary',
-					'color' => '#FEC72D',
+					'color' => '#547C2D',
 				),
 				array(
-					'name'  => __( 'Secondary Background', 'eqd' ),
-					'slug'  => 'secondary-bg',
-					'color' => '#FEF9EA',
+					'name'  => __( 'Tertiary', 'eqd' ),
+					'slug'  => 'tertiary',
+					'color' => '#625089',
+				),
+				array(
+					'name'  => __( 'text_dark', 'eqd' ),
+					'slug'  => 'text_dark',
+					'color' => '#1D1F20',
+				),
+				array(
+					'name'  => __( 'text_medium', 'eqd' ),
+					'slug'  => 'text_medium',
+					'color' => '#737373',
+				),
+				array(
+					'name'  => __( 'cream', 'eqd' ),
+					'slug'  => 'cream',
+					'color' => '#fffde9',
 				),
 				array(
 					'name'  => __( 'Grey', 'eqd' ),
@@ -257,3 +282,4 @@ function eqd_template_hierarchy( $template ) {
 	return $template;
 }
 add_filter( 'template_include', 'eqd_template_hierarchy' );
+

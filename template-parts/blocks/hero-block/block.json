@@ -1,0 +1,15 @@
+{
+	"name": "acf/hero-block",
+	"title": "Hero Block",
+	"description": "A custom hero block.",
+	"category": "custom-blocks",
+	"icon": "superhero-alt",
+	"keywords": [
+		"hero",
+		"block"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "hero.php"
+	}
+}

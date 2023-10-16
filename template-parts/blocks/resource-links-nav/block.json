@@ -1,0 +1,17 @@
+{
+	"name": "acf/resource-links-nav",
+	"title": "Resource Links Nav",
+	"description": "A custom block for displaying a list of links to resources.",
+	"category": "custom-blocks",
+	"icon": "menu",
+	"keywords": [
+		"resource",
+		"links",
+		"nav"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}
+

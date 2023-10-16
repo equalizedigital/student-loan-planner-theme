@@ -1,0 +1,15 @@
+{
+	"name": "acf/calculator-signup-block",
+	"title": "Calculator Signup Block",
+	"description": "Calculator Signup Block",
+	"category": "custom-blocks",
+	"icon": "calculator",
+	"keywords": [
+		"calculator",
+		"signup"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "calculator-signup.php"
+	}
+}

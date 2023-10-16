@@ -1,0 +1,17 @@
+{
+	"name": "acf/table-of-contents",
+	"title": "Table of Contents",
+	"description": "Table of Contents block.",
+	"category": "custom-blocks",
+	"icon": "list-view",
+	"keywords": [
+		"table",
+		"of",
+		"contents",
+		"toc"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

@@ -1,0 +1,87 @@
+.table-of-contents-block{
+    .accordion-block-container{
+        padding: 0;
+    }
+}
+.accordion-block {
+    &-container {
+        margin: 0 auto;
+        padding: 0 24px;
+        max-width: 1168px;
+
+        &-header {
+            margin: 0 0 40px;
+
+            &__title {
+                color: #625089;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 40px;
+            }
+
+            &__copy {
+                color: var(--Black, #000);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 28px;
+            }
+        }
+
+        .accordion-block-container-accordion__content {
+            padding: 20px 20px 0;
+            display: none;
+            color: var(--Black, #000);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+
+
+            &.active-content {
+                display: block;
+            }
+
+        }
+
+        .accordion-block-container-accordion__heading {
+            margin: 0;
+            border-bottom: 1px solid #D9D9D9;
+            display: flex;
+
+            &:first-child {
+                border-top: 1px solid #D9D9D9;
+            }
+
+            .accordion-block-container-accordion__button {
+                color: #000;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 20px 20px;
+                display: flex;
+                width: 100%;
+                text-align: left;
+                justify-content: space-between;
+
+                .chevron {
+                    transform: rotate(0deg);
+                }
+
+                &[aria-expanded="true"] {
+                    color: var(--WCAG-Green, #547C2D);
+
+                    .chevron {
+                        transform: rotate(180deg);
+                    }
+                }
+
+            }
+        }
+    }
+}

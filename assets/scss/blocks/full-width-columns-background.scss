@@ -1,0 +1,168 @@
+.single {
+    .full-width-columns-background-block {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .full-width-columns-background-block.reverse_order_1 .full-width-columns-background-container {
+        @include media(">tablet") {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+.full-width-columns-background-block {
+    background: #625089;
+
+    .link {
+        display: inline-flex;
+        margin: 20px 0 0;
+    }
+
+    &.reverse_order_1 {
+        .full-width-columns-background-container {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            @include media(">tablet") {
+                grid-template-columns: 0.5fr 1fr;
+            }
+
+            &-content {
+                order: 2;
+                width: 100%;
+                padding: 28px 20px;
+
+                @include media(">tablet") {
+                    padding: 48px 10px;
+                }
+            }
+
+            &__video {
+                width: 100%;
+                min-height: 200px;
+            }
+        }
+    }
+
+    &.fwidth-title-medium{
+        .full-width-columns-background-container-content .title{
+            font-size: 25px; 
+        }
+    }
+
+    &.containerize_1 {
+        max-width: calc(100% - 48px);
+        margin: 0 auto;
+        border-radius: 10px;
+        overflow: hidden;
+
+        @include media(">tablet") {
+
+            max-width: 970px;
+        }
+    }
+
+    .full-width-columns-background-container {
+        margin: 0 auto;
+        display: flex;
+        width: 100%;
+        // max-width: $container-width;
+
+        flex-direction: column;
+
+        @include media(">tablet") {
+            flex-direction: row;
+        }
+
+        &-content {
+            padding: 45px $container-padding;
+
+            @include media(">tablet") {
+                padding: 106px 80px;
+                width: 50%;
+                padding: 90px 20px 70px;
+                width: 50%;
+                max-width: 500px;
+                margin: 0 auto;
+
+            }
+
+            .title {
+                color: white;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 40px;
+
+                @include media("<tablet") {
+                    font-size: 25px;
+                    line-height: 35px;
+                }
+
+            }
+
+            .content {
+                color: #fff;
+            }
+        }
+
+        &__video {
+            position: relative;
+            min-height: 300px;
+
+            @include media(">tablet") {
+                width: 50%;
+            }
+
+            &__button {
+                -webkit-appearance: none;
+                border: none;
+                background: transparent;
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 0;
+                max-width: 53px;
+                max-height: 53px;
+                margin: 0 auto;
+                top: 50%;
+                transform: translate(0px, -50%);
+                cursor: pointer;
+                transition: all .3s;
+                transform-origin: center;
+                &:hover{
+                    transform: scale(1.2) translate(0px, -50%);
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+
+                &.play {
+                    max-width: 53px;
+                    max-height: 53px;
+                    margin: 0 auto;
+                    top: 50%;
+                    transform: translate(0px, -50%);
+                    cursor: pointer;
+                }
+            }
+
+            iframe {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                min-height: 300px;
+            }
+        }
+    }
+}

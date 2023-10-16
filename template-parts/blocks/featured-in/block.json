@@ -1,0 +1,20 @@
+{
+	"name": "acf/featured-in-block",
+	"title": "Featured In Block",
+	"description": "A block to display a list of logos of companies that have featured your product or service.",
+	"category": "custom-blocks",
+	"icon": "screenoptions",
+	"keywords": [
+		"featured",
+		"featured in",
+		"featured in block",
+		"featured in logos",
+		"featured in logos block",
+		"featured in logos list",
+		"featured in logos list block"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "featured-in.php"
+	}
+}

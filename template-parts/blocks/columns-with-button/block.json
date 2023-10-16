@@ -1,0 +1,15 @@
+{
+	"name": "acf/columns-with-button",
+	"title": "Columns with button",
+	"description": "Columns with button",
+	"category": "custom-blocks",
+	"icon": "columns",
+	"keywords": [
+		"columns",
+		"button"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

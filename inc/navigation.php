@@ -37,6 +37,27 @@ function eqd_site_header() {
 }
 add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 
+
+function slp_header_main() {
+	get_template_part('partials/content/header/main');
+}
+add_action( 'slp_main_menu', 'slp_header_main' );
+
+
+function slp_cta_button() { 
+	$slp_cta = get_field('cta_header', 'option');
+	if(isset($slp_cta)) : ?>
+		<div class="cta-header">
+			<a href="<?php echo esc_attr($slp_cta['url']); ?>" <?php echo esc_html(slp_a_target($slp_cta['target'])); ?>>
+				<?php echo esc_html($slp_cta['title']); ?>
+			</a>
+		</div>
+	<?php 
+	endif;
+}
+
+
+
 /**
  * Nav Extras
  *
@@ -46,7 +67,11 @@ add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 function eqd_nav_extras( $menu, $args ) {
 
 	if ( 'primary' === $args->theme_location ) {
-		$menu .= '<li class="menu-item search">' . eqd_search_toggle() . '</li>';
+		$menu .= '<li class="menu-item search menu-item-extra">' . eqd_search_toggle() . '</li>';
+	}
+
+	if ( 'primary' === $args->theme_location ) {
+		$menu .= '<li class="menu-item help menu-item-extra">' . eqd_help_btn() . '</li>';
 	}
 
 	if ( 'secondary' === $args->theme_location ) {
@@ -55,7 +80,7 @@ function eqd_nav_extras( $menu, $args ) {
 
 	return $menu;
 }
-/* add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 ); */
+add_filter( 'wp_nav_menu_items', 'eqd_nav_extras', 10, 2 ); 
 
 /**
  * Search toggle
@@ -79,10 +104,20 @@ function eqd_search_toggle() {
 }
 
 /**
+ * help btn
+ */
+function eqd_help_btn() {
+	$output  = '<button aria-label="Get Help" class="btn">';
+	$output .= esc_html('Get Help');
+	$output .= '</button>';
+	return $output;
+}
+
+/**
  * Mobile menu toggle
  */
 function eqd_mobile_menu_toggle() {
-	$output  = '<button aria-label="Menu" class="menu-toggle">';
+	$output  = '<button aria-label="Menu" class="menu-toggle ">';
 	$output .= eqd_icon(
 		array(
 			'icon' => 'menu',
@@ -187,7 +222,7 @@ function eqd_archive_paginated_navigation() {
 
 	// Previous Post Link.
 	if ( get_previous_posts_link() ) {
-		$label = __( '&#x000AB; <span class="screen-reader-text">Go to</span> Previous Page', 'eqd' );
+		$label = __( ' <span class="screen-reader-text">Go to</span> Previous', 'eqd' );
 		$link  = get_previous_posts_link( $label );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		printf( '<li class="pagination-previous">%s</li>' . "\n", $link );
@@ -246,7 +281,7 @@ function eqd_archive_paginated_navigation() {
 
 	// Next Post Link.
 	if ( get_next_posts_link() ) {
-		$label = __( '<span class="screen-reader-text">Go to</span> Next Page &#x000BB;', 'eqd' );
+		$label = __( '<span class="screen-reader-text">Go to</span> Next', 'eqd' );
 		$link  = get_next_posts_link( $label );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
 		printf( '<li class="pagination-next">%s</li>' . "\n", $link );

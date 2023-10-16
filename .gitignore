@@ -1,5 +1,6 @@
 # Exclude these files from the git repo
 .sass-cache/
+vendor/
 #.codekit-config.json
 #config.codekit
 #config.codekit3

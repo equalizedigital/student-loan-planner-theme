@@ -10,11 +10,11 @@
 		}
 
 		@if 1 == $size {
-			@include font-sizes( 49px, 53px, 66px );
+			@include font-sizes( 49px, 53px, 70px );
 		} @else if 2 == $size {
-			@include font-sizes( 44px, 46px, 53px );
+			@include font-sizes( 44px, 46px, 45px );
 		} @else if 3 == $size {
-			@include font-sizes( 34px, 38px, 44px );
+			@include font-sizes( 34px, 38px, 35px );
 		} @else if 4 == $size {
 			@include font-sizes( 30px, 34px, 38px );
 		}
@@ -29,17 +29,17 @@
 		}
 
 		@if 1 == $size {
-			@include font-sizes( 44px, 46px, 49px );
+			@include font-sizes( 44px, 46px, 70px );
 		} @else if 2 == $size {
-			@include font-sizes( 34px, 36px, 38px );
+			@include font-sizes( 34px, 36px, 45px );
 		} @else if 3 == $size {
-			@include font-sizes( 27px, 28px, 30px );
+			@include font-sizes( 27px, 28px, 35px );
 		} @else if 4 == $size {
-			@include font-sizes( 24px, 25px, 27px );
+			@include font-sizes( 24px, 25px, 25px );
 		} @else if 5 == $size {
-			@include font-sizes( 22px, 23px, 24px );
+			@include font-sizes( 22px, 23px, 20px );
 		} @else if 6 == $size {
-			@include font-sizes( 20px, 21px, 22px );
+			@include font-sizes( 20px, 21px, 16px );
 		}
 
 	} @else if 'subtitle' == $type {

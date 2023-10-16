@@ -1,0 +1,132 @@
+.resources-loop-reverse-block {
+        &-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 100px 0;
+    
+            &-header {
+                .title {
+                    color: brand-color('tertiary');
+                    font-size: 35px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 40px;
+                    margin-bottom: 40px;
+                }
+            }
+            &-content {
+                display: grid;
+                gap: 110px;
+                grid-template-columns: 1fr 1fr;
+                
+                &-featured {
+                    order: 2;
+                }
+                &-loop-item {
+                    border-bottom: 1px solid #D9D9D9;
+                    padding: 0 20px 20px;
+                    text-decoration: none;
+                    &:nth-child(1){
+                        padding-top: 20px;
+                        border-top: 1px solid #D9D9D9;   
+                    }
+    
+                    .author {
+                        display: flex;
+                        gap: 13px;
+                        align-items: center;
+                        justify-content: flex-start;
+    
+                        figure {
+                            max-width: 30px;
+                            max-height: 30px;
+                            overflow: hidden;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+    
+                    .category {
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.4;
+                        margin-bottom: 5px;
+                    }
+    
+                    .title {
+                        color: #000;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 24px;
+                    }
+    
+                    .author_data {
+                        color: #000;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1;
+                    }
+    
+    
+                }
+    
+                &-featured-link {
+                    display: flex;
+                    position: relative;
+    
+                    .title {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        color: #FFF;
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 30px;
+                        margin: 20px;
+                    }
+    
+                    figure {
+                        min-height: 200px;
+                        height: 510px;
+                        max-height: 510px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 10px;
+                        overflow: hidden;
+    
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+    
+                    &:before {
+                        content: '';
+                        border-radius: 10px;
+                        background: linear-gradient(180deg, rgba(0, 0, 0, 0%) 0%, #000 100%), #d3d3d300 -177.294px -102.595px / 145.326% 134.116% no-repeat;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        top: 50%;
+                    }
+                }
+    
+                &-loop {
+                    display: grid;
+                    gap: 20px;
+                }
+            }
+        }
+    }

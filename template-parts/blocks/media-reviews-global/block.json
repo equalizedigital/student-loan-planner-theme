@@ -1,0 +1,16 @@
+{
+	"name": "acf/media-reviews-global-block",
+	"title": "Media Reviews Global Block",
+	"description": "Media Reviews Global Block",
+	"category": "custom-blocks",
+	"icon": "star-filled",
+	"keywords": [
+		"media",
+		"reviews",
+		"global"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "media-reviews-global.php"
+	}
+}

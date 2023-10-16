@@ -1,0 +1,72 @@
+.hero {
+
+    &-block {
+        background: brand-color('tertiary');
+        padding: 60px 0;
+        position: relative;
+
+        @include media(">tablet") {
+            padding: 160px 0; 
+        }
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, brand-color('tertiary'), transparent);
+            z-index: 1;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+            max-width: 70%;
+        }
+    }
+
+    &-container {
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+        position: relative;
+        z-index: 2;
+
+        .title {
+            color: white;
+            font-style: normal;
+            font-weight: 700;
+            margin: 0 0 18px;
+            font-size: 35px;
+            line-height: 40px;
+            min-width: 100%;
+            @include media(">tablet") {
+                line-height: 70px;
+                font-size: 70px;
+                min-width: unset;
+            }
+        }
+
+        .subtitle {
+            color: white;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+
+            @include media(">tablet") {
+                font-size: 24px;
+                line-height: 24px;
+            }
+
+        }
+    }
+}

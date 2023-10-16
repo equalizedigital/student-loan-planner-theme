@@ -12,7 +12,7 @@
  * Post Comments
  */
 function eqd_comments() {
-	if ( is_single() && ( comments_open() || get_comments_number() ) ) {
+	if ( is_single() && ( comments_open(get_the_ID()) || get_comments_number() ) ) {
 		comments_template();
 	}
 }

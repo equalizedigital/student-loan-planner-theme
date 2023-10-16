@@ -1,0 +1,15 @@
+{
+	"name": "acf/testimonial-slider",
+	"title": "Testimonial Slider",
+	"description": "A testimonial slider block.",
+	"category": "custom-blocks",
+	"icon": "testimonial",
+	"keywords": [
+		"testimonial",
+		"slider"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "acf/image-text-columns-block",
+	"title": "Image Text Columns Block",
+	"description" : "A block that displays a row of columns with an image and text.",
+	"category": "custom-blocks",
+	"icon": "format-image",
+	"keywords": [
+		"image",
+		"text",
+		"columns"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

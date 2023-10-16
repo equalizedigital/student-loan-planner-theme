@@ -1,0 +1,15 @@
+{
+	"name": "acf/vendor-repeater",
+	"title": "Vendor Repeater",
+	"description": "A custom block for displaying vendor information.",
+	"category": "custom-blocks",
+	"icon": "building",
+	"keywords": [
+		"vendor",
+		"repeater"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

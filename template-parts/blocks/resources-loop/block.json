@@ -1,0 +1,15 @@
+{
+	"name": "acf/resources-loop-block",
+	"title": "Resources Loop Block",
+	"description": "A block that displays a loop of resources.",
+	"category": "custom-blocks",
+	"icon": "update-alt",
+	"keywords": [
+		"resources",
+		"loop"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "resources-loop.php"
+	}
+}

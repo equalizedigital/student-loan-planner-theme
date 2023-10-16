@@ -1,0 +1,16 @@
+{
+	"name": "acf/podcast-trio-block",
+	"title": "Podcast Trio Block",
+	"description": "A block that displays a trio of podcast episodes.",
+	"category": "custom-blocks",
+	"icon": "microphone",
+	"keywords": [
+		"podcast",
+		"episodes",
+		"trio"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "podcast-trio.php"
+	}
+}

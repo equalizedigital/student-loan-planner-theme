@@ -1,0 +1,16 @@
+{
+	"name": "acf/media-reviews-block",
+	"title": "Stacked Testimonials Block",
+	"description": "A block to display stacked testimonials with a background image.",
+	"category": "custom-blocks",
+	"icon": "star-half",
+	"keywords": [
+		"media",
+		"reviews",
+		"testimonials"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "media-reviews.php"
+	}
+}

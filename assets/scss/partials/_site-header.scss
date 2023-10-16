@@ -8,11 +8,20 @@
 }
 
 .title-area {
-	float: left;
-	width: 100%;
-	max-width: 300px;
-	text-align: left;
-	margin: 8px auto;
+    float: left;
+    width: 100%;
+    max-width: 170px;
+    text-align: left;
+    z-index: 1100;
+    position: relative;
+    margin: 19px auto 11px;
+    margin-right: 100px;
+	@media screen and (max-width:900px) and (min-width:768px) {
+		margin-right: 20px;
+	}
+	@include media("<tablet") {
+	    margin: 8px 0;
+	}
 
 	h1.site-title,
 	p.site-title {
@@ -23,10 +32,18 @@
 		a {
 			color: $text_medium;
 			text-decoration: none;
+			background-image: url('../images/SLP-Logo.png');
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			font-size: 0px;
+			width: 154px;
+			height: 50px;
+			display: flex;
 		}
 	}
 
-/*
+	/*
 	.site-title a {
 		background: url(../images/logo.svg) no-repeat center;
 		background-size: contain;
@@ -44,7 +61,7 @@
 /* Admin Bar
 --------------------------------------------- */
 
-@include media(">782px" ) {
+@include media(">782px") {
 	.admin-bar .site-container {
 		padding-top: 32px;
 	}
@@ -63,7 +80,7 @@ body {
 
 	.site-header {
 
-		@supports( position: sticky ) {
+		@supports(position: sticky) {
 			position: sticky;
 			top: 0;
 			transition: transform 0.3s;
@@ -73,7 +90,7 @@ body {
 
 	&.admin-bar {
 		.site-header {
-			@supports( position: sticky ) {
+			@supports(position: sticky) {
 				top: 32px;
 
 				@include media("<=782px") {
@@ -87,7 +104,7 @@ body {
 
 		.site-header {
 
-			@supports( position: sticky ) {
+			@supports(position: sticky) {
 				transform: translateY(-100%);
 			}
 		}

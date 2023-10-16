@@ -1,0 +1,15 @@
+{
+	"name": "acf/featured-post",
+	"title": "Featured Post",
+	"description": "Display a post.",
+	"category": "custom-blocks",
+	"icon": "admin-post",
+	"keywords": [
+		"post",
+		"featured"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

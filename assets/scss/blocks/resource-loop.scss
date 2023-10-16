@@ -1,0 +1,161 @@
+.resources-loop-block {
+    &-container {
+        margin: 0 auto;
+        max-width: $container-width;
+        padding: 100px $container-padding 148px;
+        @include media("<tablet") {
+            padding: 90px $container-padding 40px;
+        }
+
+        &-header {
+            .title {
+                color: brand-color('tertiary');
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 40px;
+                margin-bottom: 40px;
+                
+            }
+        }
+
+        &-content {
+            display: grid;
+            gap: 53px 20px;
+            grid-template-columns: 1fr;
+
+            @include media(">tablet") {
+                grid-template-columns: 1fr 0.71fr;
+            }
+
+            &-loop-item {
+                border-bottom: 1px solid #D9D9D9;
+                padding: 0 20px 20px;
+                text-decoration: none;
+                &:hover{
+                    .title{
+                        color: brand-color('tertiary');
+                    }
+                }
+
+                .author {
+                    display: flex;
+                    gap: 13px;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    figure {
+                        max-width: 30px;
+                        max-height: 30px;
+                        overflow: hidden;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                .category {
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 1.4;
+                    margin-bottom: 5px;
+                    color: brand-color('secondary');
+                    @include media("<tablet") {
+                        font-size: 14px;
+                    }
+
+                }
+
+                .title {
+                    color: #000;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px;
+
+                    @include media("<tablet") {
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                }
+
+                .author_data {
+                    color: #000;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 1;
+                }
+
+
+            }
+
+            &-featured-link {
+                display: flex;
+                position: relative;
+                background-color: #000;
+                border-radius: 10px;
+
+                .title {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    color: #FFF;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 30px;
+                    margin: 20px;
+
+                    @include media("<tablet") {
+                        font-size: 16px;
+                        line-height: 20px; 
+                    }
+                }
+
+                figure {
+                    min-height: 200px;
+                    height: 510px;
+                    max-height: 510px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    width: 100%;
+                    @include media("<tablet") {
+                        min-height: 200px;
+                        height: 260px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                &:before {
+                    content: '';
+                    border-radius: 10px;
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0%) 0%, #000 100%), #d3d3d300 -177.294px -102.595px / 145.326% 134.116% no-repeat;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    top: 50%;
+                }
+            }
+
+            &-loop {
+                display: grid;
+                gap: 20px;
+            }
+        }
+    }
+}

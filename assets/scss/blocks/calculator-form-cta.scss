@@ -1,0 +1,73 @@
+.calculator-form-cta-block {
+    background-color: brand-color('tertiary');
+    padding: 78px 0;
+
+    .calculator-form-cta-container {
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+        display: grid;
+        grid-template-columns:  1fr;
+        gap: 20px 120px;
+        @include media(">tablet") {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .calculator-form-cta-block-container {
+
+            .title {
+                color: #FFF;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 40px;
+            }
+        }
+
+        .form {
+            .wpforms-container {
+                // Customize the form container as needed
+                margin: 0;
+                form {
+                    // Customize the form styles
+
+                    .wpforms-field-container {
+                        display: flex;
+                        gap: 20px;
+
+                        .wpforms-field {
+                            // Customize individual form fields
+
+                            &-label {
+                                color: #FFF;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 1.2;
+                            }
+
+                            &-medium {
+                                max-width: 100%;
+                                border-radius: 4px;
+                                background: #FFF;
+                                border: none;
+                            }
+
+                            &-required {
+                                /* Set your desired color */
+                            }
+                        }
+                    }
+
+                    .wpforms-submit-container {
+                        // Customize the submit button container styles
+
+                        button.wpforms-submit {
+                            &:hover {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

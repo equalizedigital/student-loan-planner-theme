@@ -1,0 +1,16 @@
+{
+	"name": "acf/team-hightlight",
+	"title": "Team Hightlight",
+	"description": "A block to highlight a team member",
+	"category": "custom-blocks",
+	"icon": "businessperson",
+	"keywords": [
+		"team",
+		"member",
+		"highlight"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

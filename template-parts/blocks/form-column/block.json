@@ -1,0 +1,15 @@
+{
+	"name": "acf/form-column",
+	"title": "Form Column",
+	"description": "A form column block.",
+	"category": "custom-blocks",
+	"icon": "feedback",
+	"keywords": [
+		"form",
+		"column"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

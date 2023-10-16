@@ -1,0 +1,15 @@
+{
+	"name": "acf/resource-blocks",
+	"title": "Resource Blocks",
+	"description": "A custom block for displaying resources.",
+	"category": "custom-blocks",
+	"icon": "media-document",
+	"keywords": [
+		"resource",
+		"resources"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

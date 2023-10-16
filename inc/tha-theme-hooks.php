@@ -162,6 +162,13 @@ function tha_header_bottom() {
 }
 
 /**
+ * Header Main
+ */
+function slp_main_menu() {
+	do_action( 'slp_main_menu' );
+}
+
+/**
  * Semantic <content> hooks
  *
  * $tha_supports[] = 'content';
@@ -220,10 +227,24 @@ function tha_content_while_before() {
 }
 
 /**
+ * Content Before Container.
+ */
+function tha_content_before_container() {
+	do_action( 'tha_content_before_container' );
+}
+
+/**
  * Content While After.
  */
 function tha_content_while_after() {
 	do_action( 'tha_content_while_after' );
+}
+
+/**
+ * Single Header.
+ */
+function tha_single_header() {
+	do_action( 'tha_single_header' );
 }
 
 /**
@@ -317,6 +338,35 @@ function tha_sidebar_bottom() {
 }
 
 /**
+ * Page Header.
+ */
+function tha_page_header() {
+	do_action( 'tha_page_header' );
+}
+
+/**
+ * Single Sidebar.
+ */
+function tha_single_sidebar() {
+	do_action( 'tha_single_sidebar' );
+}
+
+/**
+ * Single Page End.
+ */
+function tha_single_page_end() {
+	do_action( 'tha_single_page_end' );
+}
+
+/**
+ * Footer CTA.
+ */
+function tha_footer_cta() {
+	do_action( 'tha_footer_cta' );
+}
+
+
+/**
  * Semantic <footer> hooks
  *
  * $tha_supports[] = 'footer';
@@ -344,4 +394,13 @@ function tha_footer_top() {
  */
 function tha_footer_bottom() {
 	do_action( 'tha_footer_bottom' );
+}
+
+
+
+/**
+ * Single Full Width Content.
+ */
+function tha_single_fullwidth() {
+	do_action( 'tha_single_fullwidth' );
 }

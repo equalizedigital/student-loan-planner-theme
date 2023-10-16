@@ -1,0 +1,17 @@
+{
+	"name": "acf/accordion",
+	"title": "Accordion",
+	"description": "A simple accordion field.",
+	"category": "custom-blocks",
+	"icon": "arrow-down-alt2",
+	"keywords": [
+		"accordion",
+		"toggle",
+		"collapse",
+		"expand"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

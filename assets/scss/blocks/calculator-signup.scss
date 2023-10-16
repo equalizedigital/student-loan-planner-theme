@@ -1,0 +1,114 @@
+.table-of-contents-block{
+    .calculator-signup-block {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
+.calculator-signup-block {
+    background: #625089;
+    padding: 0;
+    margin: 0 0;
+
+    @include media(">tablet") {
+        margin: 0 0;
+    }
+}
+
+.calculator-signup-container {
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+
+    @include media("<tablet") {
+        flex-direction: column;
+    }
+
+    &-image {
+        margin: 0;
+        @include media(">tablet") {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            width: 40%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &-content {
+        padding: 42px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include media(">tablet") {
+            padding: 40px 65px;
+            width: 70vw;
+            margin: 0 auto 0 40%;
+        }
+        @include media(">desktop") {
+            padding: 80px 130px;
+        }
+        .btn{
+            margin-top: 20px;
+            display: inline-block;
+        }
+        &-list {
+            margin: 30px 0 0;
+            display: grid;
+            gap: 30px;
+        }
+
+        .title {
+            color: #FFF;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+            font-size: 25px;
+            line-height: 30px;
+
+            @include media(">tablet") {
+                font-size: 35px;
+                line-height: 40px;
+            }
+        }
+        a {
+        }
+        .text {
+            color: #FFF;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px; 
+            
+        }
+    }
+}
+
+.calculator-signup-container-content-list-item {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 20px;
+    color: #FFF;
+    a{
+        color: white;
+    }
+}
+
+.calculator-signup-container-content-list-item h3 {
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    margin: 0;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.calculator-signup-container-content-list-item span.content {}

@@ -1,0 +1,83 @@
+.resource-blocks-block {
+    padding: 90px 0;
+    display: grid;
+    gap: 80px;
+
+    &-container {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+        text-align: center;
+
+        h2 {
+            color: brand-color('tertiary');
+            text-align: center;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+        }
+
+        .subtitle {
+            color: black;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+        }
+    }
+
+    &-container-list {
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+
+        &-item {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            list-style: none;
+            padding: 0!important;
+
+            @include media(">tablet") {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            a {
+                border: 1px solid var(--Dark-Gray, #A1A5A5);
+                display: grid;
+                text-decoration: none;
+                padding: 45px;
+                border-radius: 10px;
+                min-height: 220px;
+
+                &:focus,
+                &:hover {
+                    background: #82BC46;
+                    border-color: #82BC46;
+                }
+
+            }
+
+            .title {
+                color: #000;
+                text-align: center;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 25px;
+            }
+
+            p {
+                color: var(--Black, #000);
+                text-align: center;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,333 @@
+.tabbed-content-block {
+    padding-bottom: 95px;
+    overflow: hidden;
+
+    .tabbed-content {
+        &__row_container {
+            background: #625089;
+            // margin-top: -1px;
+            position: relative;
+            @include media("<tablet") {
+                padding-right: 40px;
+            }
+            .tablet_chevron {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: flex;
+                @include media(">tablet") {
+                    display: none;
+                }
+            }
+        }
+
+        &__nav-list {
+            margin: 0;
+            display: flex;
+            list-style: none;
+            margin: 0 auto;
+            overflow: auto;
+            max-width: $container-width;
+            padding: 0;
+            @include media(">tablet") {
+                padding: 0 $container-padding;
+            }
+        }
+
+        &__nav-item {
+            padding: 0;
+            display: flex;
+            min-width: 182px;
+            @include media(">tablet") {
+                min-width: 137px;
+            }
+
+            &:nth-child(1){
+                button {
+                    @include media("<tablet") {
+                        border-radius: 0 10px 0 0;
+                    }
+                }
+            }
+
+            button {
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 16px;
+                color: white;
+                padding: 10px 20px;
+                gap: 5px;
+                display: flex;
+                align-items: center;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                position: relative;
+                border-radius: 10px 10px 0 0;
+
+                @include media(">tablet") {
+                    padding: 15px 15px;
+                    gap: 15px;
+                }
+                &:hover{
+                    &:after{
+                        opacity: 1;
+                    }
+                }
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0px 2px blue inset;
+                }
+                &:after{
+                    opacity: 0;
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    background: #82BC46;
+                    width: 100%;
+                    height: 5px;
+                }
+
+                @include media("<tablet") {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                &.active {
+                    background-color: white;
+                    color: black;
+                    
+                    .icon {
+                        img{
+                            &:nth-child(1) {
+                                opacity: 0;
+                            }
+                            &:nth-child(2) {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                .text {
+                    max-width: 195px;
+                    text-align: left;
+                }
+
+                .icon {
+                    max-width: 28px;
+                    width: 100%;
+                    display: flex;
+                    position: relative;
+                    width: 100%;
+                    height: 28px;
+                    height: 23px;
+                    @include media(">tablet") {
+                        height: 28px;
+                    }
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        object-fit: contain;
+                        object-position: center;
+                        height: 100%;
+                        width: 100%;
+
+                        &:nth-child(2) {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__content {
+            padding: 46px 0;
+            max-width: $container-width;
+            margin: 0 auto;
+
+            @include media(">tablet") {
+                padding: 127px $container-padding 50px;
+            }
+
+            &__pane {
+                display: none;
+
+                &--active {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+
+                    @include media(">tablet") {
+                        gap: 124px;
+                        grid-template-columns: 0.6fr 1fr;
+                    }
+                }
+            }
+
+            &__text {
+                @include media(">tablet") {
+                    padding-top: 70px;
+                }
+            }
+
+            h3 {
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 40px;
+                color: brand-color('tertiary');
+            }
+
+            .review {
+                color: #000;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1;
+                text-decoration-line: underline;
+                margin-top: 28px;
+            }
+
+            .link {
+                margin: 20px 0 0;
+                display: flex;
+
+                a {}
+            }
+
+
+            &__text {
+                padding: 50px $container-padding 0;
+            }
+
+            &__image {
+                max-width: 510px;
+                margin: 0 auto;
+                position: relative;
+
+                figure {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .image_name {
+                    position: absolute;
+                    top: 100px;
+                    left: -58px;
+                    border-radius: 10px;
+                    background: #FFF;
+                    box-shadow: 0px 15px 27px 0px rgba(161, 165, 165, 0.25);
+                    max-width: 188px;
+                    width: 100%;
+                    min-height: 70px;
+                    display: grid;
+                    align-items: center;
+                    padding: 12px;
+                    justify-content: center;
+                    text-align: center;
+
+                    @include media("<tablet") {
+                        left: -18px;
+                    }
+
+                    .title {
+                        color: black;
+                        text-align: center;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 18px;
+                    }
+
+                    .occupation {
+                        color: black;
+                        text-align: center;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 18px;
+                    }
+                }
+
+                .image_info {
+
+                    @include media("<tablet") {
+                        display: flex;
+                        overflow: auto;
+                        position: absolute;
+                        bottom: -65px;
+                        left: 0;
+                        right: 0;
+                        gap: 17px;
+                        padding: 0 24px;
+                        padding-bottom: 30px;
+
+                    }
+                }
+
+                .image_info_item {
+                    border-radius: 10px;
+                    background: #FFF;
+                    box-shadow: 0px 15px 27px 0px rgba(161, 165, 165, 0.25);
+                    max-width: 240px;
+                    width: 100%;
+                    min-height: 70px;
+                    position: static;
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    gap: 13px;
+                    padding: 15px 21px;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 240px;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+
+
+
+                    @include media(">desktop") {
+                        position: absolute;
+                        top: 220px;
+                        right: -125px;
+                        min-width: 0;
+                    }
+
+                    &_text {
+                        color: black;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 18px;
+
+                        span {
+                            color: brand-color('secondary');
+                        }
+                        a{
+                            text-decoration: none;
+                            font-size: inherit;
+                            font-weight: inherit;
+                            &:hover{
+                                color: brand-color('tertiary');
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                }
+
+
+
+            }
+        }
+    }
+
+}

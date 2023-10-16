@@ -1,0 +1,15 @@
+{
+	"name": "acf/tabbed-content-block",
+	"title": "Tabbed Content Block",
+	"description": "A block that allows you to add tabbed content to a page.",
+	"category": "custom-blocks",
+	"icon": "table-row-after",
+	"keywords": [
+		"tabbed",
+		"content"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "tabbed-content.php"
+	}
+}

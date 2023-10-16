@@ -1,0 +1,16 @@
+{
+	"name": "acf/media-reviews-slider-block",
+	"title": "media reviews slider block",
+	"description": "Media reviews slider block.",
+	"category": "custom-blocks",
+	"icon": "star-empty",
+	"keywords": [
+		"media",
+		"reviews",
+		"slider"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "media-reviews-slider.php"
+	}
+}

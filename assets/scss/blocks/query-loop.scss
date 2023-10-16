@@ -1,0 +1,117 @@
+.query-loop-container {
+    margin: 0 auto 50px;
+    max-width: $container-width;
+    padding: 0 $container-padding;
+    @include media(">tablet") {
+        margin: 0  auto 150px;
+    }
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+            color: #625089;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+            margin: 0 0 40px;
+
+            @include media("<tablet") {
+                font-size: 25px;
+                line-height: 40px;
+                margin: 0 0 20px;
+            }
+        }
+        .link{
+           
+            @include media("<tablet") {
+                display: none;
+            }
+        }
+    }
+
+    &-loop {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        @include media(">tablet") {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    &-loop-item {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        border-bottom: 1px solid #D9D9D9;
+        padding-bottom: 20px;
+
+
+        &:nth-child(1) {
+            >figure {
+                display: flex;
+                @include media("<tablet") {
+                    margin-bottom: 18px;
+                }
+            }
+        }
+
+        >figure {
+            display: flex;
+            @include media("<tablet") {
+                display: none;
+            }
+            img{
+                @include media(">tablet") {
+                    height: 290px;
+                }
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+
+        .title {
+            color: #000;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+            margin: 33px 0 20px;
+
+            @include media("<tablet") {
+                font-size: 16px;
+                line-height: 20px;
+                margin: 0 0 10px;
+            }
+        }
+
+        .author {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: auto;
+
+            &_data {
+                color: #000;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1;
+            }
+
+            figure {
+                overflow: hidden;
+                max-width: 30px;
+                max-height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

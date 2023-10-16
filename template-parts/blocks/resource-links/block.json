@@ -1,0 +1,15 @@
+{
+	"name": "acf/resource-links-block",
+	"title": "Resource Links Block",
+	"description": "A block that displays a list of links to resources.",
+	"category": "custom-blocks",
+	"icon": "admin-links",
+	"Keywords": [ 
+		"resource",
+		"links"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "resource-links.php"
+	}
+}

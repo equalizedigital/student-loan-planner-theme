@@ -1,0 +1,15 @@
+{
+	"name": "acf/tab-block",
+	"title": "Podcast Tabs",
+	"description": "A block that displays a tabbed interface for podcast episodes.",
+	"category": "custom-blocks",
+	"icon": "microphone",
+	"keywords": [
+		"podcast",
+		"tabs"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}

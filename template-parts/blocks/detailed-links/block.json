@@ -1,0 +1,17 @@
+{
+	"name": "acf/detailed-links",
+	"title": "Detailed Links",
+	"description": "A block that allows you to add a list of links with a title and description.",
+	"category": "custom-blocks",
+	"icon": "admin-links",
+	"keywords": [
+		"link",
+		"links",
+		"list",
+		"navigation"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}
