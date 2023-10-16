@@ -12,6 +12,7 @@
         width: 1px;
         height: 100%;
         display: none;
+
         @include media(">tablet") {
             height: 244px;
             transform: translate(0%, -50%);
@@ -102,15 +103,19 @@
     ul {
         list-style: none;
     }
+
     ol {
         list-style: none;
+
         &::before {
             display: none;
         }
     }
-    li{
+
+    li {
         position: relative;
     }
+
     li::before {
         content: "\2022";
         color: #82BC46;
@@ -132,7 +137,7 @@
 
 blockquote.wp-block-quote {
     max-width: 740px;
-    margin: 0px auto 10px!important;
+    margin: 0px auto 10px !important;
     padding: 100px 24px 50px;
     display: grid;
     gap: 27px;
@@ -215,7 +220,8 @@ blockquote.wp-block-quote {
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
-    line-height: 16px; /* 100% */
+    line-height: 16px;
+    /* 100% */
     background: transparent;
     border: none;
     cursor: pointer;
@@ -234,7 +240,8 @@ blockquote.wp-block-quote {
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 100% */
+    line-height: 16px;
+    /* 100% */
     cursor: pointer;
     width: auto;
 }
@@ -246,17 +253,19 @@ blockquote.wp-block-quote {
 .facet_blogpost_loop {
     position: relative;
     border-radius: 10px 10px 0 0;
-    overflow: hidden;
+    overflow: visible;
     border-bottom: 1px solid #D9D9D9;
     padding-bottom: 20px;
 
 
 }
-.fwpl-layout.el-hkhimk{
+
+.fwpl-layout.el-hkhimk {
     @include media("<tablet") {
-        grid-template-columns: repeat(1, 1fr)!important;
+        grid-template-columns: repeat(1, 1fr) !important;
     }
 }
+
 .fwpl-item.facet_blogpost_loop_category {
     position: absolute;
     top: 0;
@@ -267,8 +276,9 @@ blockquote.wp-block-quote {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 1; /* 500% */
-    padding: 13px  15px;
+    line-height: 1;
+    /* 500% */
+    padding: 13px 15px;
     border-radius: 0 0px 0px 10px;
 }
 
@@ -277,10 +287,18 @@ blockquote.wp-block-quote {
     color: inherit;
 }
 
-.fwpl-item.facet_blogpost_loop_image img {
-    height: 240px;
-    object-fit: cover;
-    object-position: center;
+.fwpl-item.facet_blogpost_loop_image {
+    a {
+        display: flex;
+
+    }
+
+    img {
+        height: 240px;
+        object-fit: cover;
+        display: flex;
+        object-position: center;
+    }
 }
 
 .fwpl-item.facet_blogpost_loop_image {
@@ -292,7 +310,8 @@ blockquote.wp-block-quote {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.4; /* 500% */
+    line-height: 1.4;
+    /* 500% */
 }
 
 .fwpl-item.facet_blogpost_loop_title a {
@@ -300,7 +319,8 @@ blockquote.wp-block-quote {
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    text-decoration: none; /* 133.333% */
+    text-decoration: none;
+    /* 133.333% */
     line-height: 24px;
 }
 
@@ -308,10 +328,12 @@ blockquote.wp-block-quote {
     margin: 0 0 30px;
     min-height: 60px;
 }
+
 .facetwp-template {
     display: grid;
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
     gap: 60px 20px;
+
     @include media(">tablet") {
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -322,10 +344,12 @@ blockquote.wp-block-quote {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 1; /* 500% */
+    line-height: 1;
+    /* 500% */
     display: flex;
     align-items: center;
     gap: 20px;
+
     img {
         border-radius: 50%;
         height: 30px;
@@ -338,7 +362,8 @@ blockquote.wp-block-quote {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 1; /* 500% */
+    line-height: 1;
+    /* 500% */
 }
 
 .fwpl-layout.el-hkhimk {
@@ -364,13 +389,17 @@ a.facetwp-page {
     padding: 0;
     min-width: 25px;
     margin: 0 5px;
-    &.prev,&.next{
+
+    &.prev,
+    &.next {
         font-weight: 400;
     }
 }
+
 a.facetwp-page.prev {
     margin-right: 30px;
 }
+
 a.facetwp-page.next {
     margin-left: 30px;
 }
@@ -382,16 +411,18 @@ a.facetwp-page.next {
 }
 
 
-.remove-top-padding{
+.remove-top-padding {
     padding-top: 0;
 }
-.remove-bottom-padding{
+
+.remove-bottom-padding {
     padding-bottom: 0;
 }
 
 
 .left-border {
     position: relative;
+
     &:after {
         content: close-quote;
         position: absolute;
@@ -400,6 +431,7 @@ a.facetwp-page.next {
         width: 1px;
         height: 100%;
         background: #A1A5A5;
+
         @include media("<tablet") {
             display: none;
         }
