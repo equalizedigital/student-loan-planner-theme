@@ -87,6 +87,8 @@ h2.testimonial-slider-block-container-header__title {
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 20px;
+        flex-direction: column;
     }
 
     .stars {

@@ -67,16 +67,15 @@ $acf_title = get_field( 'title' );
 							<span class="title"><?php echo wp_kses_post( get_the_title( $id_post ) ); ?></span>
 							<span class="date"><span><?php the_field( 'location', $id_post ); ?></span>|<span><?php the_field( 'date', $id_post ); ?></span></span>
 							<span class="rating">
-							<div class="stars">
+								<div class="stars" aria-hidden="true">
 								<?php for ( $i = 0; $i < 5; $i++ ) : ?>
 									<svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M7.77387 0.881322C8.07577 -0.034611 9.37143 -0.0346103 9.67334 0.881322L10.9884 4.8711C11.1236 5.28107 11.5065 5.55805 11.9382 5.55805H16.1631C17.1353 5.55805 17.5357 6.80498 16.7453 7.37105L13.3521 9.80121C12.9966 10.0558 12.8478 10.5119 12.9847 10.9273L14.2866 14.877C14.5894 15.7958 13.5411 16.5663 12.7546 16.003L9.30586 13.5331C8.95773 13.2838 8.48948 13.2838 8.14134 13.5331L4.69265 16.003C3.90614 16.5663 2.8578 15.7958 3.16065 14.877L4.46254 10.9273C4.59944 10.5119 4.4506 10.0558 4.09507 9.80121L0.701879 7.37105C-0.0885191 6.80498 0.311942 5.55805 1.28414 5.55805H5.50903C5.94069 5.55805 6.32363 5.28107 6.45876 4.8711L7.77387 0.881322Z" fill="#F19E3E"/>
 									</svg>
 								<?php endfor; ?>
-
-
 								<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
 							</div>
+							<?php echo $rating; ?> out of 5 stars.
 						</blockquote>
 					</div>
 					<?php
@@ -88,7 +87,7 @@ $acf_title = get_field( 'title' );
 		</div>
 
 		<div class="testimonial-slider-block-container-testimonial-slider__slider-controls">
-			<button class="prev">Previous</button>
+			<button class="prev" aria-label="Go to previous testimonial">Previous</button>
 			<span class="slide-counter">
 
 			<?php 
@@ -102,11 +101,11 @@ $acf_title = get_field( 'title' );
 			}
 			?>
 			</span>
-			<button class="next">Next</button>
+			<button class="next" aria-label="Go to next testimonial">Next</button>
 		</div>
 
 		<div class="testimonial-slider-block-container-testimonial_read_more">
-			<a href="/testimonials" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
+			<a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
 		</div>
 		
 		
@@ -225,13 +224,30 @@ rev.slick({
 		// 		},
 		// 	});
 
-			jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev").click(function(){
-			slider.slick("slickPrev");
-			});
+			// jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .prev").click(function(){
+			// 	slider.slick("slickPrev");
+			// });
 		
-			jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next").click(function(){
-			slider.slick("slickNext");
-			});
+			// jQuery(".testimonial-slider-block-container-testimonial-slider__slider-controls .next").click(function(){
+			// 	slider.slick("slickNext");
+			// });
+
+
+				// Handle click event on slick arrows
+				jQuery('.testimonial-slider-block-container-testimonial-slider__slider-controls .next').on('click', function() {
+					// Wait for the slick transition to complete
+					setTimeout(function() {
+						// Find the next slide's blockquote and add tabindex
+						var $nextBlockquote = jQuery('.slick-current').find('.testimonial-slider-block-container-testimonial-slider-testimonial__content');
+						$nextBlockquote.attr('tabindex', '-1').focus();
+
+						// When the blockquote loses focus, remove the tabindex attribute
+						$nextBlockquote.on('blur', function() {
+							jQuery(this).removeAttr('tabindex');
+						});
+					}, 300); // Assuming 300ms as the slick transition time, adjust if needed
+				});
+
 
 
 		// var slider = jQuery(".testimonial-slider-block-container-testimonial-slider");
