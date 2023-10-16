@@ -41,11 +41,7 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 									<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
 								</span>
 							</button>
-							<?php if( !empty($columns) ) { ?>
-								<span class="menu-item-rel">
-									<button class="dropdown-toggle" aria-expanded="false" aria-label="<?php echo $link['title']; ?>: submenu" aria-haspopup="true"></button>
-								</span>
-							<?php } ?>
+							
 						<?php } else { ?>
 							
 							<a href="<?php echo $link['url']; ?>" <?php if ( $link['url'] == $current_url ) {echo 'aria-current="page"';} ?> target="<?php echo $link['target']; ?>" class="menu-item-main-link <?php if( empty($columns) ) { _e('menu-item-no-drop'); } ?>">
@@ -54,11 +50,7 @@ $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() &
 									<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
 								</span>
 							</a>
-							<?php if( !empty($columns) ) { ?>
-								<span class="menu-item-rel">
-									<button class="dropdown-toggle" aria-expanded="false" aria-label="<?php echo $link['title']; ?>: submenu" aria-haspopup="true"></button>
-								</span>
-							<?php } ?>
+							
 						<?php } ?>
 						
 						<?php if( is_array( $columns ) && 0 < count( $columns ) ) { ?>
