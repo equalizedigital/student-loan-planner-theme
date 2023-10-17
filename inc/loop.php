@@ -89,7 +89,8 @@ function eqd_single_header() {
 		$subtitle        = get_field( 'subtitle', $page_id );
 		$background_image        = get_field( 'background_image', $page_id );
 		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
-		$link                    = get_field( 'link' );
+		$link                    = get_field( 'single_post_link', $page_id );
+		
 		$container_class         = '';
 		if ( get_field( 'post_format_style' ) == 'full-width' ) {
 			$container_class .= 'hero_relative';
@@ -145,7 +146,8 @@ function eqd_single_header() {
 				</span>
 
 				<?php // optional link ?>
-				<?php if ( ! empty( $link ) ) : ?>
+				<?php
+				if ( ! empty( $link ) ) : ?>
 					<span class="link">
 						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn">
 							<?php echo $link['title'] ? $link['title'] : ''; ?>

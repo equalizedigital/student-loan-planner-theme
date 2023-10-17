@@ -284,9 +284,11 @@ function eqd_tha_page_header() {
 					
 				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
 					<?php if ( is_search() ) : 
+						// Search
 						$search_term = get_search_query();
 						?>
 						Search: <?php  echo wp_kses_post($search_term ); ?>
+
 					<?php else: ?>
 
 						<?php if ( ! empty( $sub_heading ) ) : ?>
@@ -294,6 +296,10 @@ function eqd_tha_page_header() {
 						<?php endif; ?>
 
 						<?php
+						$current_term = get_queried_object();
+						if ( $current_term->taxonomy !== 'occupation') {
+							echo 'Resources for ';
+						}
 						if(!empty( $alternative_title )){
 							echo wp_kses_post($alternative_title  );
 						} else {
