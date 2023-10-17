@@ -261,6 +261,9 @@ section.archive_template_recommended_post {
 		font-style: normal;
 		font-weight: 700;
 		line-height: 24px;
+		@include media(">tablet") {
+			min-height: 70px;
+		}
 	}
 
 	.author {
