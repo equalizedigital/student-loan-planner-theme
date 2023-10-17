@@ -122,6 +122,9 @@
 				font-style: normal;
 				font-weight: 700;
 				line-height: 24px;
+				@include media(">tablet") {
+				min-height: 98px;
+				}
 
 				a {
 					font-weight: inherit;
