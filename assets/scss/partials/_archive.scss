@@ -306,6 +306,13 @@ section.archive_cta {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		@include media(">tablet") {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 
 	.archive_cta_container_copy {
@@ -316,7 +323,7 @@ section.archive_cta {
 		padding: $container-padding;
 
 		@include media(">tablet") {
-			padding: 80px;
+			padding: 40px 80px;
 		}
 
 		.form {
