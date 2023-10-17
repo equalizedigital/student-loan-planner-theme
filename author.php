@@ -30,7 +30,8 @@ tha_content_before();
 			<header class="contact-hero hero-author">
 				<div class="contact-hero-container">
 					<figure class="contact-hero-container__image">
-						<img src="<?php echo( get_avatar_url( $curauth->ID ) ); ?>" alt="">
+						<?php $avatar_url = get_avatar_url($curauth->ID, array("size"=>360)); ?>
+						<img src="<?php echo $avatar_url; ?>" alt="<?php echo wp_kses_post( $curauth->display_name ); ?>">
 					</figure>
 					<div class="contact-hero-container__content">
 						<h1 class="entry-title">
@@ -164,7 +165,7 @@ tha_content_before();
 
 				<?php if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) : ?>
 				<div class="author_recommended_posts">
-					<h2 class="author_recommended_posts_title">Travis recommendations</h2>
+					<h2 class="author_recommended_posts_title"><?php echo wp_kses_post( $firstWord ); ?> recommends</h2>
 					<div class="author_recommended_posts_loop">
 
 					<?php
@@ -173,8 +174,6 @@ tha_content_before();
 					while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
 						the_row();
 						$post = get_sub_field( 'post' );
-
-
 						$id_post_editor = get_field( 'post_editor', $post->ID );
 						$author_url     = get_author_posts_url( $post->ID );
 						$author_name    = get_the_author_meta( 'display_name', $post->ID );
