@@ -34,13 +34,16 @@
             .media-reviews-container-review-items-loop-item {
                 border: none;
                 border-top: none !important;
-                border-right: 1px solid #D9D9D9;
+               
                 border-bottom: 1px solid #D9D9D9;
                 padding-right: 60px;
                 align-items: center;
                 justify-content: center;
                 display: flex;
                 flex-direction: column;
+                @include media(">tablet") {
+                    border-right: 1px solid #D9D9D9;
+                }
 
                 &:nth-child(even) {
                     border-right: none;
