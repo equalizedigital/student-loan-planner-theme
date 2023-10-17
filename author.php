@@ -164,7 +164,7 @@ tha_content_before();
 
 				<?php if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) : ?>
 				<div class="author_recommended_posts">
-					<h2 class="author_recommended_posts_title">Travis recommendations</h2>
+					<h2 class="author_recommended_posts_title"><?php echo wp_kses_post( $firstWord ); ?> recommends</h2>
 					<div class="author_recommended_posts_loop">
 
 					<?php
@@ -173,8 +173,6 @@ tha_content_before();
 					while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
 						the_row();
 						$post = get_sub_field( 'post' );
-
-
 						$id_post_editor = get_field( 'post_editor', $post->ID );
 						$author_url     = get_author_posts_url( $post->ID );
 						$author_name    = get_the_author_meta( 'display_name', $post->ID );
