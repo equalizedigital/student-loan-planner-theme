@@ -1,7 +1,7 @@
 {
-	"name": "acf/vendor-information-block",
-	"title": "Vendor Information Block",
-	"description": "A block to display vendor information",
+	"name": "acf/featured-institution",
+	"title": "Featured Institution",
+	"description": "A block that displays information from an Institutional Contact post.",
 	"category": "custom-blocks",
 	"icon": "building",
 	"keywords": [
