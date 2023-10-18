@@ -207,41 +207,36 @@ tha_content_before();
 
 
 				<?php
-				// $curauth->ID
-						$paged             = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-						$args              = array(
-							'author'         => 77,
-							'posts_per_page' => 9,
-							'paged'          => $paged,
-						);
-						$author_query_page = new WP_Query( $args );
-						?>
-						<?php if ( $author_query_page->have_posts() ) : ?>
+				$paged             = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+				$args              = array(
+					'author'         => 77,
+					'posts_per_page' => 9,
+					'paged'          => $paged,
+				);
+				$author_query_page = new WP_Query( $args );
+				?>
+				<?php if ( $author_query_page->have_posts() ) : ?>
 
-				<div class="author_latest_from">
+				<div class="author_latest_from" id="author_latest_from">
 					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $curauth->display_name ); ?></h2>
-
-
 					<div class="loop">
-						
-							<?php
-							while ( $author_query_page->have_posts() ) :
-								$author_query_page->the_post();
-								?>
-								<div class="post">
-									<a class="post_link" href="<?php the_permalink(); ?>">
-										<div class="featured-image">
-											<?php the_post_thumbnail(); ?>
-										</div>
-										<h2 class="post_title"><?php the_title(); ?></h2>
-									</a>
+					<?php
+					while ( $author_query_page->have_posts() ) :
+						$author_query_page->the_post();
+						?>
+						<div class="post">
+							<a class="post_link" href="<?php the_permalink(); ?>">
+								<div class="featured-image">
+									<?php the_post_thumbnail(); ?>
 								</div>
-							<?php endwhile; ?>
-						
+								<h3 class="post_title"><?php the_title(); ?></h3>
+							</a>
+						</div>
+					<?php endwhile; ?>
 					</div>
 					<div class="pagination">
 							<?php
-							$big = 999999999; // need an unlikely integer
+							$big = 999999999; 
 							echo paginate_links(
 								array(
 									'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
@@ -257,7 +252,25 @@ tha_content_before();
 						
 							<?php wp_reset_postdata(); ?>
 				</div>
+
+				<script>
+					document.addEventListener("DOMContentLoaded", function() {
+						var paginationLinks = document.querySelectorAll('.pagination a');
+
+						paginationLinks.forEach(function(link) {
+							link.addEventListener('click', function(e) {
+								e.preventDefault();
+								var newUrl = link.getAttribute('href') + '#author_latest_from';
+								window.location.href = newUrl;
+							});
+						});
+					});
+
+				</script>
 				<?php endif; ?>
+
+
+
 
 			
 			<?php
