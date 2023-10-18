@@ -44,7 +44,7 @@
             &:hover {
                 box-shadow: 0px 15px 27px rgba(161, 165, 165, 0.25);
                 border-color: transparent;
-                .recommended_posts_block_block_container_loop_item_text h2 {
+                .recommended_posts_block_block_container_loop_item_text span {
                     color: brand-color('tertiary');
                     text-decoration: underline;
                 }
@@ -62,7 +62,7 @@
             }
 
             &_text {
-                h2 {
+                span {
                     color: #000;
                     font-size: 16px;
                     font-style: normal;
