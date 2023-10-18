@@ -311,7 +311,7 @@ function eqd_single_fullwidth_content() {
 				<?php
 				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
 				if ( $featured_image ) {
-				?>
+					?>
 				<span class="hero_featured_image">
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
 					<div class="hero_featured_image_data">
@@ -322,10 +322,13 @@ function eqd_single_fullwidth_content() {
 						}
 						$post_data = get_the_content( get_the_ID() );
 						?>
-						<?php echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, " Min Read"; ?> |  <?php echo wp_kses_post( $output ); ?>
+						<?php echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, ' Min Read'; ?> |  <?php echo wp_kses_post( $output ); ?>
 					</div>
 				</span>
-			<?php } else { echo "</br>";} ?>
+					<?php
+				} else {
+					echo '</br>';}
+				?>
 
 			<div class="site-main-article__author-data">
 				<div class="article_author">
@@ -333,36 +336,40 @@ function eqd_single_fullwidth_content() {
 					$post_author    = get_the_author();
 					$id             = get_field( 'post_reviewed_by', get_the_ID() );
 					$id_post_editor = get_field( 'post_editor', get_the_ID() );
-					if(!empty($id_post_editor)){
-						$edit_auth_id   = $id_post_editor['ID'];
-						$author_info    = get_field( 'job_title', "user_$edit_auth_id" );
+
+					$id_meta        = get_the_author_meta( 'ID' );
+					$id_post_editor = get_field( 'post_editor', get_the_ID() );
+					$user_info_ID   = get_userdata( $id_meta );
+					$author_url_id  = get_author_posts_url( $id_meta );
+
+					if ( ! empty( $id_post_editor ) ) {
+						$edit_auth_id = $id_post_editor['ID'];
+						$author_info  = get_field( 'job_title', "user_$edit_auth_id" );
 					}
-					
 					?>
 					<span class="entry-author">
-							<?php echo !empty($edit_auth_id)? get_avatar( $edit_auth_id, 40 ):''; ?>
+						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 40 ) : get_avatar( $id_meta, 40 ); ?>
+
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : 'Written By'; ?>
-								<?php echo ! empty($edit_auth_id)?get_author_posts_link_by_id($edit_auth_id):$post_author; ?>
+								<?php echo ! empty( $edit_auth_id ) ? get_author_posts_link_by_id( $edit_auth_id ) : get_author_posts_link_by_id( $id_meta ); ?>
 							</span>
 							<span class="entry-data">
-								<?php
-								echo !empty($author_info)?wp_kses_post( $author_info ):'';
-								?>
+								<?php echo ! empty( $author_info ) ? wp_kses_post( $author_info ) : ''; ?>
 							</span>
 						</span>
 					</span>
 				</div>
 				<?php
 						$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
-						if($review_by_auth_id != false){
-							$profile_picture   = get_avatar( $review_by_auth_id, 64 );
-							$user_info         = get_userdata( $review_by_auth_id );
-							$first_name        = $user_info->first_name;
-							$last_name         = $user_info->last_name;
-							$nickname          = $user_info->nickname;
-						}
+				if ( $review_by_auth_id != false ) {
+					$profile_picture = get_avatar( $review_by_auth_id, 64 );
+					$user_info       = get_userdata( $review_by_auth_id );
+					$first_name      = $user_info->first_name;
+					$last_name       = $user_info->last_name;
+					$nickname        = $user_info->nickname;
+				}
 
 				?>
 						<?php if ( $review_by_auth_id ) : ?>
@@ -375,7 +382,7 @@ function eqd_single_fullwidth_content() {
 					
 					<div class="author_info">
 					Reviewed By
-					<?php  echo get_author_posts_link_by_id($review_by_auth_id); ?>
+							<?php echo get_author_posts_link_by_id( $review_by_auth_id ); ?>
 					</div>
 				</div>
 				<?php endif; ?>
