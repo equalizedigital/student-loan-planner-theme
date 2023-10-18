@@ -1,15 +1,17 @@
-.page{
-    .table-of-contents-block.post_format_style-standard{
+.page {
+    .table-of-contents-block.post_format_style-standard {
         .toc-nav-container {
             display: block;
         }
-        .table-of-contents-block-container-main{
+
+        .table-of-contents-block-container-main {
             @include media(">tablet") {
                 grid-template-columns: 1fr 386px;
             }
         }
     }
 }
+
 .table-of-contents-block {
     max-width: $container-width;
     margin: 0 auto;
@@ -18,23 +20,47 @@
     &.post_format_style-full-width {
         .table-of-contents-block-container-main {
             display: flex;
+
+            .acf-innerblocks-container{
+                >h2:nth-child(1){
+                    margin-top: 0;
+                }
+            }
+
+            .toc_container {
+                @include media(">tablet") {
+                    max-width: calc(100% - 190px);
+                }
+            }
+
+            .toc-nav-container {
+                display: none;
+
+                @include media(">tablet") {
+                    display: block;
+                    padding-left: 20px;
+                    margin-left: 20px;
+                }
+            }
         }
 
-        .toc-nav-container {
-            display: block;
-        }
+
+
+
     }
-    &.post_format_style-standard{
+
+    &.post_format_style-standard {
         .toc-nav-container {
             display: none;
         }
-        .table-of-contents-block-container-main{
+
+        .table-of-contents-block-container-main {
             grid-template-columns: 1fr;
         }
     }
 
     .table-of-contents-block-container-main {
-        display: grid;
+        display: block;
 
         @include media(">tablet") {
             grid-template-columns: 1fr 386px;
@@ -44,12 +70,11 @@
             max-width: 740px;
         }
 
-        .toc-nav {
-        }
         .toc-nav-sticky {
             position: sticky;
             top: 100px;
         }
+
         .toc-nav-container {
             @include media("<tablet") {
                 display: none;
@@ -74,8 +99,6 @@
         }
 
         .toc-nav {
-
-
             ul {
                 padding: 0;
                 margin: 0;
@@ -87,9 +110,10 @@
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 20px;
+                line-height: 1.3em;
                 text-decoration: none;
                 transition: all 50ms ease-in-out;
+                display: block;
             }
 
             a:hover,
