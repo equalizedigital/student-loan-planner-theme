@@ -200,7 +200,7 @@ add_action( 'tha_footer_cta', 'eqd_tha_footer_cta' );
  */
 
 function eqd_tha_page_header() {
-	if ( ! is_single() && ! is_front_page() ) {
+	if ( ! is_single() ) {
 
 		if ( is_category() ) {
 			$category = get_the_category()[0];
@@ -296,9 +296,11 @@ function eqd_tha_page_header() {
 						<?php endif; ?>
 
 						<?php
-						$current_term = get_queried_object();
-						if ( $current_term->taxonomy !== 'occupation') {
-							echo 'Resources for ';
+						if ( is_tax() ) {
+							$current_term = get_queried_object();
+							if ( $current_term->taxonomy !== 'occupation') {
+								echo 'Resources for ';
+							}
 						}
 						if(!empty( $alternative_title )){
 							echo wp_kses_post($alternative_title  );
