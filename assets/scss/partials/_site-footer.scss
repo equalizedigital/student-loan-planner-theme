@@ -8,6 +8,7 @@
     a {
         text-decoration: none;
         color: inherit;
+        font-size: 14px;
         &:hover{
             text-decoration: underline;
         }
@@ -24,9 +25,8 @@
     }
 
     .wrap {
-        max-width: 1145px;
+        max-width: 1225px;
         margin: 0 auto;
-
         padding: 0 25px;
     }
 
@@ -216,7 +216,7 @@
         @include media("<tablet") {
             gap: 0px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
         }
     }
 

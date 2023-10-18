@@ -9,8 +9,40 @@
 /* Entry Content
 --------------------------------------------- */
 
+.content-sidebar{
+
+}
+
+.content{
+	.entry-content {
+		max-width: 740px;
+	}
+}
+
+.full-width-content{
+	.entry-content {
+		max-width: $container-width;
+	}
+}
+
 .entry-content {
 	@import "entry-content";
+	max-width: $container-width;
+	padding: 30px $container-padding;
+	margin: 0 auto;
+	@include media(">tablet") {
+		padding: 100px $container-padding;
+	}
+
+	.alignfull {
+		max-width: unset!important;
+		width: 100vw!important;
+		position: relative;
+		left: 50%!important;
+		right: 50%!important;
+		margin-left: -50vw!important;
+		margin-right: -50vw!important;
+	}
 }
 
 .entry-content>*,
@@ -401,11 +433,12 @@ img.wprm-comment-rating {
 		margin: 0 auto;
 		gap: 60px 116px;
 
-		
+
 		@include media(">tablet") {
 			gap: 60px 40px;
 			grid-template-columns: 1fr 1fr;
 		}
+
 		@include media(">desktop") {
 			gap: 60px 116px;
 		}
@@ -496,7 +529,7 @@ img.wprm-comment-rating {
 		border-bottom: 1px solid #D9D9D9;
 		margin-bottom: 80px;
 		padding: 0;
-		
+
 		@include media(">tablet") {
 			grid-template-columns: 360px 1fr;
 		}
@@ -1043,7 +1076,8 @@ img.wprm-comment-rating {
 		@include media("<tablet") {
 			flex-direction: column;
 		}
-		.article_author{
+
+		.article_author {
 			display: flex;
 			align-items: center;
 		}
