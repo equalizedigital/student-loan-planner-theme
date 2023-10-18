@@ -63,14 +63,14 @@ $recommended_posts  = get_field( 'recommended_posts' );
 					<a class="recommended_posts_block_block_container_loop_item" href="<?php the_permalink(); ?>">
 						<div class="recommended_posts_block_block_container_loop_item_image">
 							<?php 
-							if (has_post_thumbnail($post_id)) {
-								$image_url = get_the_post_thumbnail_url($post_id);
+							if (has_post_thumbnail()) {
+								$image_url = get_the_post_thumbnail_url();
 								echo "<img src='$image_url' aria-hidden=\"true\" role=\"presentation\" />";
 							}
 							?>
 						</div>
 						<div class="recommended_posts_block_block_container_loop_item_text">
-							<h2><?php echo get_the_title(); ?></h2>
+							<span><?php echo get_the_title(); ?></h2>
 						</div>
 					</a>
 				</li>
