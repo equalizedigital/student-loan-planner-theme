@@ -3683,12 +3683,12 @@
       "oAP" : "\/sidebar.php",
       "oF" : 0
     },
-    "\/single-institution-contacts.php" : {
+    "\/single-slp_contacts.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/single-institution-contacts.php",
+      "oAP" : "\/single-slp_contacts.php",
       "oF" : 0
     },
     "\/single.php" : {
@@ -3832,6 +3832,22 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/featured-in\/featured-in.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/featured-institution\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/featured-institution\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/featured-institution\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/featured-institution\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/featured-post\/block.json" : {
@@ -4202,22 +4218,6 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/testimonial-slider\/template.php",
-      "oF" : 0
-    },
-    "\/template-parts\/blocks\/vendor-information-block\/block.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/template-parts\/blocks\/vendor-information-block\/block-min.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
-    },
-    "\/template-parts\/blocks\/vendor-information-block\/template.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/vendor-information-block\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/vendor-repeater\/block.json" : {
