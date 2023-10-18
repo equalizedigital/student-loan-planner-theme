@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			widgetTitles.forEach(function (title) {
 				var menuFooterContainer = title.nextElementSibling;
-				console.log(menuFooterContainer)
+				// console.log(menuFooterContainer)
 				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
 					var containerId = menuFooterContainer.id;
 					title.setAttribute('aria-controls', containerId);
@@ -409,6 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				// Add click event listener to each .widget-title
 
 				title.addEventListener('keypress', function () {
+					
 					// Check if there's a next sibling element
 					this.classList.toggle('active');
 					let sibling = this.nextElementSibling;
@@ -420,7 +421,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 					}
 				});
+
 				title.addEventListener('click', function () {
+					console.log('eeee')
 					// Check if there's a next sibling element
 					this.classList.toggle('active');
 					let sibling = this.nextElementSibling;

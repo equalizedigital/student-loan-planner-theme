@@ -218,6 +218,10 @@ function eqd_output_footer_widgets() {
 		</div>
 		<?php
 	}
+	?>
+	 
+
+	<?php
 }
 
 /**
