@@ -1,0 +1,35 @@
+.taxonomy-select-block {
+    &-list{
+        list-style-type: none;
+        padding-left: 0 !important;
+        display: grid;
+        gap: 0px 20px;
+        padding: 5px 0px;
+        @include media(">550px") {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include media(">tablet") {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px 20px;
+            padding: 10px 0px;
+        }
+        &-item{
+            &-link {
+                color: var(--Black, #000);
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                gap: 15px;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+                border-radius: 5px;
+                padding: 10px 0px;
+                &:hover, &:focus {
+                    color: brand-color('tertiary');
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

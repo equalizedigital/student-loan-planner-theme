@@ -1,7 +1,7 @@
 <?php
 
 /**
- * resource-links-nav Block Template.
+ * Taxonomy Select Block Template.
  *
  * @param	 array $block The block settings and attributes.
  * @param	 string $content The block inner HTML (empty).
@@ -15,13 +15,13 @@ if( isset( $block['data']['preview_image_help'] )  ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'resource-links-nav-block-' . $block['id'];
+$id = 'taxonomy-select-block-' . $block['id'];
 if (!empty($block['anchor'])) :
 	$id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block resource-links-nav-block';
+$className = 'block taxonomy-select-block';
 if (!empty($block['className'])) :
 	$className .= ' ' . $block['className'];
 endif;
@@ -30,72 +30,44 @@ if (!empty($block['align'])) :
 	$className .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
-
+$className       = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$taxonomy        = get_field( 'select_taxonomy' );
+$taxonomy_value  = ( isset( $taxonomy['value'] ) ) ? $taxonomy['value'] : null;
+$taxonomy_label  = ( isset( $taxonomy['label'] ) ) ? $taxonomy['label'] : '';
+$terms           = ( $taxonomy_value ) ? get_field( 'select_' . $taxonomy_value ) : null;
+$more_link       = get_field( 'more_link' );
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<div class="resource-links-nav-container">
 
-		<div class="resource-links-nav-container-links">
-			<?php 
-			$links = get_field('links');
-
-			if( $links ) {
-				foreach( $links as $key => $row ) {
-					// icon
-					if(!empty($row['icon'])){
-						$icon = $row['icon']['url'];
-					}	
-
-					// term
-					if(!empty($row['category'])){
-						$term = get_term($row['category']);
-					}
-					if(!empty($row['tags'])){
-						$term = get_term($row['tags']);
-					}
-					if(!empty($row['occupations'])){
-						$term = get_term($row['occupations']);
-					}
-					if(!empty($row['state'])){
-						$term = get_term($row['state']);
-					}
-					if(!empty($row['press_category'])){
-						$term = get_term($row['press_category']);
-					}
-
-					$link = get_term_link($term->term_id);
-
-					if(!empty($row['manual_link'])){
-						$link = $row['manual_link'];
-						$link_title =$link['title'];
-					}
-					
-					$name = $term->name;
-					?>
-					<div class="resource-links-nav-container-links-link ">
-						<?php if(!empty($row['manual_link'])): ?>
-							<a class="resource-links-nav-container-links-link-button" href="<?php echo $link['url']; ?>">
-								<?php
-									echo $icon?"<img aria-hidden=\"true\" role=\"presentation\" src='$icon' aria-hidden='true'></img>":'';
-									echo "<span class=\"text\">$link_title</span>";
-								?>
-							</a>
-						<?php else: ?>
-						<a class="resource-links-nav-container-links-link-button" href="<?php echo $link; ?>">
-							<?php
-								echo $icon?"<img aria-hidden=\"true\" role=\"presentation\" src='$icon' aria-hidden='true'></img>":'';
-								echo "<span class=\"text\">$name</span>";
-							?>
-						</a>
-						<?php endif; ?>
-
-					</div>
-
-					<?php
-				}
+	<?php 
+	if ( $terms ) {
+		echo '<ul class="taxonomy-select-block-list">';
+		foreach ($terms as $term ) {
+			$icon = get_field( 'taxonomy_icon', $taxonomy_value . '_' . $term );
+			$icon_url = ( $icon ) ? $icon['url'] : null;
+			$term_object = get_term( $term, $taxonomy_value );
+			if( isset( $term_object->name ) ) {
+				?>
+				<li class="taxonomy-select-block-list-item">
+					<a class="taxonomy-select-block-list-item-link" href="<?php echo get_term_link( $term_object ); ?>">
+						<?php echo ( $icon_url ) ? '<img src="' . $icon_url . '" alt="" aria-hidden="true" />' : null; ?>
+						<?php echo $term_object->name; ?>
+					</a>
+				</li>
+				<?php
 			}
+		}
+		if( $more_link ) {
 			?>
-		</div>
-	</div>
+			<li class="taxonomy-select-block-list-item">
+				<a class="taxonomy-select-block-list-item-link" href="<?php echo $more_link; ?>">
+					<img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/assets/icons/icon-more.svg" alt="" aria-hidden="true" />
+					More <?php echo $taxonomy_label; ?>
+				</a>
+			</li>
+			<?php
+		}
+		echo '</ul>';
+	}
+	?>
 </section>
