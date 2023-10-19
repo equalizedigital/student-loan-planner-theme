@@ -1,7 +1,7 @@
 <?php
 
 /**
- * resource-links-nav Block Template.
+ * Taxonomy Select Block Template.
  *
  * @param	 array $block The block settings and attributes.
  * @param	 string $content The block inner HTML (empty).
@@ -15,13 +15,13 @@ if( isset( $block['data']['preview_image_help'] )  ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'resource-links-nav-block-' . $block['id'];
+$id = 'taxonomy-select-block-' . $block['id'];
 if (!empty($block['anchor'])) :
 	$id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block resource-links-nav-block';
+$className = 'block taxonomy-select-block';
 if (!empty($block['className'])) :
 	$className .= ' ' . $block['className'];
 endif;
@@ -32,11 +32,73 @@ endif;
 
 $className = apply_filters( 'loader_block_class', $className, $block, $post_id );
 
+$taxonomy  = get_field( 'select_taxonomy' );
+$terms     = ( $taxonomy ) ? get_field( 'select_' . $taxonomy ) : null;
+$more_link = get_field( 'more_link' );
+
+/*
+select_category
+select_post_tag
+select_slp_occupation
+more_link
+
+taxonomy-select-block
+*/
+
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+
+	<?php 
+	//var_dump( $taxonomy );
+	//var_dump( $terms );
+	if ( $terms ) {
+		echo '<ul>';
+		foreach ($terms as $term ) {
+			//var_dump( $term );
+
+			$icon = get_field( 'taxonomy_icon', $taxonomy . '_' . $term );
+			$icon_url = ( $icon ) ? $icon['url'] : null;
+			
+			$term_object = get_term( $term, $taxonomy );
+			//var_dump( $term_object );
+
+			if( isset( $term_object->name ) ) {
+				?>
+				<li>
+					<a href="<?php echo get_term_link( $term_object ); ?>">
+						<?php echo ( $icon_url ) ? '<img src="' . $icon_url . '" />' : null; ?>
+						<?php echo $term_object->name; ?>
+					</a>
+				</li>
+				<?php
+			}
+			?>
+
+			<?php
+		}
+
+		if( $more_link ) {
+			?>
+			<li>
+				<a href="<?php echo $more_link; ?>">
+					More
+				</a>
+			</li>
+			<?php
+		}
+
+		echo '</ul>';
+	}
+	?>
+
+
 	<div class="resource-links-nav-container">
 
 		<div class="resource-links-nav-container-links">
+
+			
+
+
 			<?php 
 			$links = get_field('links');
 
