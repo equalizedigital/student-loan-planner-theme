@@ -283,3 +283,26 @@ function eqd_template_hierarchy( $template ) {
 }
 add_filter( 'template_include', 'eqd_template_hierarchy' );
 
+/**
+ * Custom function to modify the ACF post object field query.
+ *
+ * This function checks if the field being queried is named 'recommended_posts'.
+ * If so, it modifies the query to search for post titles only and ignores the content.
+ *
+ * @param array $args    The original query arguments.
+ * @param array $field   Information about the ACF field.
+ * @param int   $post_id The ID of the current post being edited, if applicable.
+ *
+ * @return array The modified query arguments.
+ */
+function custom_acf_post_object_query( $args, $field, $post_id ) {
+	// Check if the field being queried is named 'recommended_posts'.
+	if ($field['name'] === 'recommended_posts') {
+		// Modify the query to search for post titles only.
+		$args['post_type'] = 'post';
+		$args['s'] = ''; // Clear any previous search query.
+		$args['search_columns'] = array('post_title');
+	}
+	return $args;
+}
+add_filter('acf/fields/post_object/query', 'custom_acf_post_object_query', 10, 3);
