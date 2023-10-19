@@ -1,7 +1,7 @@
 {
 	"name": "acf/calculator-signup-block",
-	"title": "Calculator Signup Block",
-	"description": "Calculator Signup Block",
+	"title": "Email Opt-in",
+	"description": "Email Opt-in block",
 	"category": "custom-blocks",
 	"icon": "calculator",
 	"keywords": [
