@@ -11,6 +11,5 @@
 	"acf": {
 		"mode": "preview",
 		"renderTemplate": "template.php"
-	},
-	"script": "npp-blocks"
+	}
 }
