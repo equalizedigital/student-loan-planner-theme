@@ -97,11 +97,11 @@ input[type="search"] {
 		.side-main-article-container {
 			max-width: $container-width;
 			margin: 0 auto;
+			padding: 0 $container-padding;
 			display: flex;
 			flex-direction: column;
 
 			@include media(">tablet") {
-				padding: 0 $container-padding;
 				display: grid;
 				grid-template-columns: repeat(12, 1fr);
 				grid-column-gap: $grid-gap;

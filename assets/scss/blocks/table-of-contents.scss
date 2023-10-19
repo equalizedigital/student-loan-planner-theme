@@ -11,11 +11,21 @@
         }
     }
 }
+.single {
+    .content-sidebar{
+        .table-of-contents-block{
+            @include media("<tablet") {
+                padding: 0;
+            }
+        }
+    }
+}
 
 .table-of-contents-block {
     max-width: $container-width;
     margin: 0 auto;
-    padding: 0 $container-padding;
+    @include media(">tablet") {
+    }
 
     &.post_format_style-full-width {
         .table-of-contents-block-container-main {
@@ -43,10 +53,6 @@
                 }
             }
         }
-
-
-
-
     }
 
     &.post_format_style-standard {
@@ -67,7 +73,11 @@
         }
 
         .toc_container {
-            max-width: 740px;
+            width: 100%;
+            @include media(">tablet") {
+                max-width: 740px;
+            
+            }
         }
 
         .toc-nav-sticky {
