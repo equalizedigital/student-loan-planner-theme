@@ -138,7 +138,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 
 					<button 
 					class="vendor-information-block-container-column-two-link-more-info"
-					aria-label="More Information about <?php echo $heading; ?>"
+					aria-label="More Information about <?php echo $company_name; ?>"
 					aria-expanded="false"
 					aria-controls="vendor-information-block-container-column-two-link-more-info-btn-<?php echo $time_stamp; ?>"
 					>
