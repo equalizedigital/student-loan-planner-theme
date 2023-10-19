@@ -1002,11 +1002,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
-	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
+	//const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
+	const accordionButton = document.querySelectorAll('.vendor-information-block-container-column-two-link-more-info');
 
 	if (accordionButton.length > 0) {
 
@@ -1016,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				const controlledElementId = event.target.getAttribute('aria-controls');
 				const targetElement = document.getElementById(controlledElementId);
 				if (targetElement) {
-					event.target.classList.toggle('active_btn');
+					event.target.classList.toggle('active-btn');
 					targetElement.toggleAttribute('hidden');
 					const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
 					event.target.setAttribute('aria-expanded', !isExpanded);
