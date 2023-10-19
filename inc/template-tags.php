@@ -232,14 +232,13 @@ function eqd_tha_page_header() {
 
 			// Load values and assing defaults.
 			$page_id                 = get_the_ID();
-			$alternative_title             = get_field( 'alternative_title', $page_id );
+			$alternative_title       = get_field( 'alternative_title', $page_id );
 			$sub_heading             = get_field( 'sub_heading', $page_id );
 			$subtitle                = get_field( 'subtitle', $page_id );
 			$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
 			$center_text             = get_field( 'center_text', $page_id );
-			$heading_link                    = get_field( 'heading_link' );
+			$heading_link            = get_field( 'heading_link' );
 			$padding_size            = get_field( 'padding_size', $page_id );
-
 			$container_class = null;
 
 			if ( is_archive() ) {
@@ -259,7 +258,6 @@ function eqd_tha_page_header() {
 			}
 		}
 
-
 		switch ( $padding_size ) {
 			case 'small':
 				$container_class .= ' inner-hero-small';
@@ -274,6 +272,7 @@ function eqd_tha_page_header() {
 			default:
 				break;
 		}
+
 		if ( $center_text ) {
 			$container_class .= ' inner-hero-center-text';
 		}
@@ -283,12 +282,12 @@ function eqd_tha_page_header() {
 			<div class="inner-hero-container">
 					
 				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+					
 					<?php if ( is_search() ) : 
 						// Search
 						$search_term = get_search_query();
 						?>
 						Search: <?php  echo wp_kses_post($search_term ); ?>
-
 					<?php else: ?>
 
 						<?php if ( ! empty( $sub_heading ) ) : ?>
@@ -323,14 +322,12 @@ function eqd_tha_page_header() {
 				<span class="subtitle">
 					<?php
 					if ( !is_search() ) {
-
-					if(!empty($subtitle)){
-						echo wp_kses_post( $subtitle );
-					} else {
-						echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+						if(!empty($subtitle)){
+							echo wp_kses_post( $subtitle );
+						} else {
+							echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+						}
 					}
-					}
-					 
 					?>
 				</span>
 
@@ -341,9 +338,10 @@ function eqd_tha_page_header() {
 				<?php endif; ?>
 
 			</div>
+
 			<?php 
 			if ( !is_search() ) {
-			if ( ! empty( $bg_url ) ) : ?>
+				if ( ! empty( $bg_url ) ) : ?>
 				<span class="hero_image">
 					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
 				</span>
