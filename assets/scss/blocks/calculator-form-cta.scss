@@ -63,7 +63,10 @@
                         // Customize the submit button container styles
 
                         button.wpforms-submit {
-                            &:hover {}
+                            &:hover {
+                                background-color: transparent;
+                                color: white;
+                            }
                         }
                     }
                 }
