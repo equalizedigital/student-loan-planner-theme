@@ -50,6 +50,10 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 
 		<div class="vendor-information-block-container-column-one">
 
+			<?php if ( $company_name ) { ?>
+				<h3 class="screen-reader-text"><?php echo esc_html( $company_name ); ?></h3>
+			<?php } ?>
+
 			<div class="vendor-information-block-container-column-one-image">
 				<?php
 				if ( $logo ) {
