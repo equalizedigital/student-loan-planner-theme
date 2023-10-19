@@ -17,10 +17,13 @@
 	cursor: pointer;
 	border-radius: 4px;
 	color: black;
-
+	&:focus{
+		color: black;
+	}
 
 	&.br-ten{
 		border-radius: 10px;	
+		outline: 2px solid blue;
 	}
 
 	&.white-focus{
@@ -36,6 +39,7 @@
 			background-color: transparent;
 		}
 		&:focus{
+			color: black;
 			outline: 2px solid white;
 		}
 	}

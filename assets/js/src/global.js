@@ -423,7 +423,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				});
 
 				title.addEventListener('click', function () {
-					console.log('eeee')
 					// Check if there's a next sibling element
 					this.classList.toggle('active');
 					let sibling = this.nextElementSibling;
@@ -603,13 +602,19 @@ jQuery(function ($) {
 	}
 });
 
-
-window.addEventListener("load", function () {
+(function() {
+	
+window.addEventListener("DOMContentLoaded", function () {
 	// resource links
-	const accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
-	if (accordionButtons) {
+	let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
+	
+	console.log(accordionButtons,accordionButtons.length,'ed')
+
+	if (accordionButtons.length > 0) {
 		// Accordion
 		accordionButtons.forEach(button => {
+			console.log(accordionButtons)
+
 			button.addEventListener('click', () => {
 				const contentId = button.getAttribute('aria-controls');
 				const content = document.getElementById(contentId);
@@ -624,7 +629,9 @@ window.addEventListener("load", function () {
 			});
 		});
 	}
-});
+},false);
+})();
+
 
 
 window.addEventListener("load", function () {
@@ -1007,7 +1014,6 @@ window.addEventListener('DOMContentLoaded', () => {
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
 	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
-
 	if (accordionButton.length > 0) {
 
 		accordionButton.forEach(element => {
