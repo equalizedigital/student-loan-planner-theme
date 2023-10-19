@@ -260,24 +260,30 @@
             }
     
             &-link {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                
     
-                @include media("<tablet") {
-                    flex-direction: column;
+                @include media(">desktop") {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    //flex-direction: column;
+                    flex-direction: row;
                 }
     
                 &.btn {
+                    width: 100%;
                     display: flex;
                     flex-wrap: wrap;
-                    max-width: 240px;
                     text-align: center;
                     justify-content: center;
                     flex-direction: column;
+                    @include media(">tablet") {
+                        max-width: 185px;
+                    }
                 }
     
                 &-more-info {
+                    width: 100%;
                     background: transparent;
                     -webkit-appearance: none;
                     border: none;
@@ -295,6 +301,7 @@
                     border-radius: 5px;
                     margin-top: 20px;
                     @include media(">tablet") {
+                        width: auto;
                         margin-top: 0;
                     }
                     &:hover, &:focus{
