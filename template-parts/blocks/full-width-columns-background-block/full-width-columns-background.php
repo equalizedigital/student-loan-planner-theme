@@ -39,15 +39,9 @@ $image                              = get_field( 'image' );
 $youtube_video_id                   = get_field( 'youtube_video_id' );
 $acf_link                           = get_field( 'link' );
 $reverse_order_of_image_and_content = get_field( 'reverse_order_of_image_and_content' );
-$make_content_fit_in_container      = get_field( 'make_content_fit_in_container' );
-$modal_button                       = get_field( 'modal_button' );
 
 if ( ! empty( $reverse_order_of_image_and_content ) ) :
 	$class_name .= ' reverse_order_' . $reverse_order_of_image_and_content;
-endif;
-
-if ( ! empty( $make_content_fit_in_container ) ) :
-	$class_name .= ' containerize_' . $make_content_fit_in_container;
 endif;
 ?>
 
@@ -56,9 +50,7 @@ endif;
 		<div class="full-width-columns-background-container-content">
 			<h2 class="title "><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
-			<?php if ( $modal_button ) : ?>
-				<button class="btn modal-btn btn-dark-bg" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
-			<?php endif; ?>
+
 			<?php if ( $acf_link ) : ?>
 			<div class="link">
 				<a href="<?php echo wp_kses_post( $acf_link['url'] ); ?>" class="btn btn-dark-bg"><?php echo wp_kses_post( $acf_link['title'] ); ?></a>
@@ -100,7 +92,6 @@ function onYouTubeIframeAPIReady() {
 		videoId: '<?php echo wp_kses_post( $youtube_video_id ); ?>',
 		events: {
 			'onReady': onPlayerReady,
-			// 'onStateChange': onPlayerStateChange
 		}
 	});
 }

@@ -9,6 +9,7 @@
         }
     }
 }
+
 .full-width-columns-background-block {
     background: #625089;
 
@@ -49,9 +50,9 @@
         }
     }
 
-    &.containerize_1 {
+    &.aligncenter {
         max-width: calc(100% - 48px);
-        margin: 0 auto;
+        margin: 0 auto!important;
         border-radius: 10px;
         overflow: hidden;
 
@@ -126,6 +127,7 @@
                 padding: 0;
                 max-width: 53px;
                 max-height: 53px;
+                width: 54px;
                 margin: 0 auto;
                 top: 50%;
                 transform: translate(0px, -50%);
