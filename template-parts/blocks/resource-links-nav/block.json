@@ -1,7 +1,7 @@
 {
-	"name": "acf/resource-links-nav",
-	"title": "Resource Links Nav",
-	"description": "A custom block for displaying a list of links to resources.",
+	"name": "acf/taxonomy-select",
+	"title": "Taxonomy Select",
+	"description": "A custom block for displaying a list of links to taxonomy terms.",
 	"category": "custom-blocks",
 	"icon": "menu",
 	"keywords": [
@@ -10,8 +10,7 @@
 		"nav"
 	],
 	"acf": {
-		"mode": "preview",
+		"mode": "edit",
 		"renderTemplate": "template.php"
 	}
 }
-
