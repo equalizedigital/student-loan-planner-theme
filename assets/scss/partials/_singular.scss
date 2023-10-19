@@ -432,7 +432,13 @@ img.wprm-comment-rating {
 		max-width: 1168px;
 		margin: 0 auto;
 		gap: 60px 116px;
-
+		@include media("<tablet") {
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: flex-start;
+			padding: 40px 24px 40px;
+			gap: 20px;
+		}
 
 		@include media(">tablet") {
 			gap: 60px 40px;
@@ -445,6 +451,9 @@ img.wprm-comment-rating {
 
 
 		&__content {
+			@include media("<tablet") {
+				width: 100%;
+			}
 			.entry-title {
 				color: white;
 				font-size: 35px;
@@ -483,7 +492,9 @@ img.wprm-comment-rating {
 
 		@include media("<tablet") {
 			order: 2;
-			min-height: 50vw;
+			min-height: 0;
+			width: 100%;
+			max-width: 200px;
 		}
 
 		img {
@@ -498,7 +509,9 @@ img.wprm-comment-rating {
 			object-fit: cover;
 			object-position: center;
 
-			@include media("<tablet") {}
+			@include media("<tablet") {
+				position: relative;
+			}
 		}
 	}
 }
@@ -617,7 +630,7 @@ img.wprm-comment-rating {
 
 
 	&-details {
-		padding: 150px 0 0;
+		padding: 40px 0 0;
 		margin-bottom: 20px;
 		color: var(--Black, #000);
 		font-size: 16px;
@@ -648,7 +661,12 @@ img.wprm-comment-rating {
 	}
 
 	&-loop {
-		padding: 72px 0 0;
+		padding:  0 0;
+
+		@include media(">tablet") {
+			padding: 72px 0 0;
+		
+		}
 
 		h2 {
 			color: #000;
