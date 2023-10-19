@@ -1,0 +1,15 @@
+{
+	"name": "acf/vendor-information",
+	"title": "Vendor Information",
+	"description": "A custom block for displaying vendor information.",
+	"category": "custom-blocks",
+	"icon": "building",
+	"keywords": [
+		"vendor",
+		"information"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	}
+}
