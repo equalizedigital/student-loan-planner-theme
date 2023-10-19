@@ -116,21 +116,7 @@ $acf_title = get_field( 'title' );
  
 <?php 
 if (is_admin()) {
-	function my_enqueue_block_editor_assets() {
-
-		// if ( has_block( 'acf/testimonial-slider' ) ) {
-			// The post has the testimonial-slider block.
-			wp_enqueue_script(
-				'testimonial-slider-script', // Handle for the script.
-				'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'
-			);
-			wp_enqueue_style( 'my-custom-stylesheet-handle', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.0.0', 'all' );
-			wp_enqueue_style( 'my-custom-stylesheet-handle', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.0.0', 'all' );
-	
-	
-	   
-	}
-	add_action( 'enqueue_block_editor_assets', 'my_enqueue_block_editor_assets' );
+	add_action( 'enqueue_block_editor_assets', 'testimonial_slider_assets' );
 } else{
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>

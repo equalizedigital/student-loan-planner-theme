@@ -218,7 +218,11 @@ tha_content_before();
 				<?php if ( $author_query_page->have_posts() ) : ?>
 
 				<div class="author_latest_from" id="author_latest_from">
-					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $curauth->display_name ); ?></h2>
+					<?php 
+					$words = explode(' ', $curauth->display_name);
+					$firstWord = $words[0];
+					?>
+					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $firstWord ); ?></h2>
 					<div class="loop">
 					<?php
 					while ( $author_query_page->have_posts() ) :
