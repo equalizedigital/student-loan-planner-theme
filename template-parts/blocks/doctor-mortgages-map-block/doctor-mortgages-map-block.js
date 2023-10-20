@@ -24,17 +24,20 @@
 					data: { action: 'rwc_doctor_map_ajax', nonce: rwc_base_vars.nonce, state: state  }
 				}).done(function( response ) {
 					if( true === response.success ) {
-			
 						let response_json = $.parseJSON( response.data );
 	
 						$('.doctor-mortgages-block-results-container').html(response_json.html);
+
 						if ( $('.doctor-mortgages-block-cta').length ) {
 							$('.doctor-mortgages-block-cta').remove();
 						}
-						let button = '<a href="'+response_json.state.link+'" class="doctor-mortgages-block-cta" aria-label="Best Physician Mortgage Loans in '+response_json.state.name+'">Best Physician Mortgage Loans in'+
-						' '+response_json.state.abbreviation+
-						'</a>';
-						$('.doctor-mortgages-block-results-container').after(button);
+
+						if(response_json.state.link != null){
+							let button = '<a href="'+response_json.state.link.url+'" class="doctor-mortgages-block-cta" aria-label="Best Physician Mortgage Loans in '+response_json.state.name+'">Best Physician Mortgage Loans in'+
+						' '+response_json.state.abbreviation+'</a>';
+							$('.doctor-mortgages-block-results-container').after(button);
+						}
+						
 						$('.us-state').removeClass('active');
 						$('.'+response_json.state.abbreviation).addClass('active');
 						$(`.doctor-mortgages-block-select option[value='${response_json.state.abbreviation}']`).prop('selected', true);
@@ -58,8 +61,6 @@
 						}
 						$('.doctor-mortgages-block-results-result-tab-button').first().addClass('active');	
 						$('.doctor-mortgages-block-results-result-panel').first().toggle();
-	
-						//console.log(response_json);
 			
 					} else {
 						console.log(response);

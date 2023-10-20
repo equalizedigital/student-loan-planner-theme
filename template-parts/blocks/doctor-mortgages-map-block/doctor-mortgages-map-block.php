@@ -47,8 +47,7 @@ $coalition_map = new RqD_Doctor_Map();
 		</div>
 		<div class="doctor-mortgages-block-sidebar">
 			<?php echo $coalition_map->states_select(); ?>
-			<div class="doctor-mortgages-block-results-container">
-			</div>
+			<div class="doctor-mortgages-block-results-container" aria-live="polite"></div>
 		</div>
 	</div>
 
