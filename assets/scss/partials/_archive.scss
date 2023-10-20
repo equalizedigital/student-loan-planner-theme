@@ -2,7 +2,10 @@
 --------------------------------------------- */
 
 .archive-description {
-	margin-top: 90px;
+	margin-top: 45px;
+	@include media(">tablet") {
+		margin-top: 90px;
+	}
 
 	.archive-title {
 		color: var(--Purple, #625089);
