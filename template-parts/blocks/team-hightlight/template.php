@@ -84,8 +84,12 @@ endif;
 								if ( !empty( $member->ID) ) {
 									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
 									$featured_image_url = $image_url[0];
-									echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
-								}
+									if(!empty($featured_image_url)){
+										echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
+									} else {
+										echo wp_kses_post( '<img style="object-fit: contain;padding:10px;" src="/wp-content/themes/student-loan-planner-theme/assets/images/SLP-Logo.png" alt="' . get_the_title( $member->ID ) . '">' );
+									}
+								}  
 								?>
 							</figure>
 							<div class="team-hightlight-block-container-team-hightlight-member__content">
