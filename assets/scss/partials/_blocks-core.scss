@@ -33,7 +33,7 @@
 	}
 
 	&.btn-dark-bg {
-		&:hover {
+		&:hover, &:focus {
 			border-color: brand-color('primary');
 			color: white;
 			background-color: transparent;
@@ -44,7 +44,7 @@
 		}
 	}
 
-	&:hover {
+	&:hover, &:focus {
 		border-color: brand-color('primary');
 		background: white;
 	}

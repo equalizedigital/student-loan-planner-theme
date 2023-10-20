@@ -20,10 +20,12 @@ a {
 	font-weight: 400;
 	text-decoration: underline;
 	@extend %transition;
-	&:hover,
-	&:focus {
+	&:hover {
 		text-decoration: none;
 		color: brand-color('tertiary');
+	}
+	&:focus {
+		text-decoration: none;
 	}
 	svg {
 		@extend %transition;
@@ -51,7 +53,7 @@ strong {
 ol,
 ul {
 	margin: 0;
-	padding: 0;
+	margin: 0 0 16px;
 }
 
 code,
