@@ -1,10 +1,14 @@
 .vendor_repeater_block {
     &_container_items {
         overflow: scroll;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     &_container_items_table {
         border: 1px solid #D9D9D9;
         display: table;
+        
 
         @include media("<tablet") {
             display: none;
