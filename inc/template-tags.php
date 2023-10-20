@@ -281,7 +281,7 @@ function eqd_tha_page_header() {
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
 					
-				<h1 class="title" style="max-width:<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? $title_max_width_desktop . '%' : 'none' ); ?>;">
+				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
 					
 					<?php if ( is_search() ) : 
 						// Search

@@ -1016,7 +1016,7 @@ img.wprm-comment-rating {
 			font-size: 35px;
 			line-height: 40px;
 			min-width: 100%;
-			// margin: 0 0 90px;
+			max-width: 560px;
 
 			@include media(">tablet") {
 				line-height: 70px;
