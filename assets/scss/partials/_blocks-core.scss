@@ -44,7 +44,7 @@
 		}
 	}
 
-	&:hover {
+	&:hover, &:focus {
 		border-color: brand-color('primary');
 		background: white;
 	}
