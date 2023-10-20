@@ -20,10 +20,12 @@ a {
 	font-weight: 400;
 	text-decoration: underline;
 	@extend %transition;
-	&:hover,
-	&:focus {
+	&:hover {
 		text-decoration: none;
 		color: brand-color('tertiary');
+	}
+	&:focus {
+		text-decoration: none;
 	}
 	svg {
 		@extend %transition;
