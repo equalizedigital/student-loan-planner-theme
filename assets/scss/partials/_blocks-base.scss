@@ -149,12 +149,9 @@ h1 {
 
 h2 {
 	@include style('title', 2);
-
 	color: brand-color('tertiary');
-	font-size: 35px;
 	font-weight: 700;
 	line-height: 40px;
-
 	&.wp-block-heading {
 		margin-top: 59px
 	}
