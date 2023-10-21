@@ -42,7 +42,7 @@ endif;
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="team-hightlight-block-container">
-
+	
 		<header class="team-hightlight-block-container-header">
 			<h2 class="team-hightlight-block-container-header__title"><?php echo esc_attr( $acf_title ); ?></h2>
 		</header>
@@ -74,7 +74,7 @@ endif;
 							<?php if ( ! empty( $author_id ) ) : ?>
 								<a href="<?php echo get_site_url() . '/author/'.$author_name->user_nicename; ?>" class="team-hightlight-block-container-team-hightlight-member__button">
 							<?php else : ?>
-								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>" aria-label="Open Video">
+								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>-<?php echo esc_attr( $classid ); ?>" aria-label="Open Video">
 							<?php endif; ?>
 						<?php endif; ?>
 						
@@ -84,8 +84,12 @@ endif;
 								if ( !empty( $member->ID) ) {
 									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
 									$featured_image_url = $image_url[0];
-									echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
-								}
+									if(!empty($featured_image_url)){
+										echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
+									} else {
+										echo wp_kses_post( '<img style="object-fit: contain;padding:10px;" src="/wp-content/themes/student-loan-planner-theme/assets/images/SLP-Logo.png" alt="' . get_the_title( $member->ID ) . '">' );
+									}
+								}  
 								?>
 							</figure>
 							<div class="team-hightlight-block-container-team-hightlight-member__content">
@@ -143,7 +147,7 @@ if ( have_rows( 'team' ) ) :
 		$words       = explode( ' ', trim( $member->post_title ) );
 		$firstWord   = $words[0];
 		?>
-		<div id="modal<?php echo wp_kses_post( get_row_index() ); ?>" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">
+		<div id="modal<?php echo wp_kses_post( get_row_index() ); ?>-<?php echo esc_attr( $classid ); ?>" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">
 			<div class="modal-content" >
 			<button class="close-btn">
 				<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">

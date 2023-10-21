@@ -2,7 +2,10 @@
 --------------------------------------------- */
 
 .archive-description {
-	margin-top: 90px;
+	margin-top: 45px;
+	@include media(">tablet") {
+		margin-top: 90px;
+	}
 
 	.archive-title {
 		color: var(--Purple, #625089);
@@ -175,9 +178,12 @@
 // Recommended Posts
 
 section.archive_template_recommended_post {
-	padding: 89px $container-padding;
+	padding: 89px $container-padding 50px;
 	max-width: $container-width;
 	margin: 0 auto;
+	@include media(">tablet") {
+		padding: 89px $container-padding;
+	}
 
 	.archive_template_recommended_post_header_title {
 		color: #625089;
