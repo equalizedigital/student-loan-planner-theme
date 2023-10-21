@@ -28,10 +28,10 @@
 .entry-content {
 	@import "entry-content";
 	max-width: $container-width;
-	padding: 30px 0;
+	// padding: 30px 0;
 	margin: 0 auto;
 	@include media(">tablet") {
-		padding: 100px $container-padding;
+		// padding: 100px $container-padding;
 	}
 
 	.alignfull {
