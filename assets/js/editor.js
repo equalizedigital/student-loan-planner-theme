@@ -52,3 +52,27 @@ wp.hooks.addFilter(
 	return settings;
 	}
 );
+
+/**
+ * Reorders the Gutenberg block categories to prioritize a given category.
+ *
+ * @param {string} customSlug - The slug of the category to be placed at the top.
+ */
+function eqdReorderBlockCategories(customSlug) {
+    const { getCategories, setCategories } = wp.blocks;
+
+    // Find the category with the given slug
+    const customCategory = getCategories().find(category => category.slug === customSlug);
+
+    // Get all other categories excluding the custom one
+    const otherCategories = getCategories().filter(category => category.slug !== customSlug);
+
+    // If the custom category exists, reorder the categories list
+    if (customCategory) {
+        setCategories([customCategory, ...otherCategories]);
+    }
+}
+
+// Example usage: prioritize the 'custom-blocks' category
+eqdReorderBlockCategories('custom-blocks');
+
