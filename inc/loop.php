@@ -186,7 +186,7 @@ function eqd_single_header() {
 					</div>
 					<div class="header_editorial_statement-container__copy">
 						<p>
-						At Student Loan Planner, we follow a strict <a href="https://studentloanstg.wpengine.com/editorial-ethics-policy/">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our <button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
+						At Student Loan Planner, we follow a strict <a href="<?php echo esc_url( get_site_url( null, '/editorial-ethics-policy/' ) ); ?>">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our <button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
 						</p>
 					</div>
 				</div>
