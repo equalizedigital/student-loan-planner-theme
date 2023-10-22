@@ -102,31 +102,55 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						role="tabpanel"
 						class="tab-block-container-tab-block_content_items_item <?php echo get_row_index() === 1? "active-content":''; ?>"
 						id="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>">
-							
+
 							<?php
-							if ( have_rows( 'podcast_content' ) ) :
-								while ( have_rows( 'podcast_content' ) ) :
+							if ( have_rows( 'category' ) ) :
+								while ( have_rows( 'category' ) ) :
 									the_row();
-									$date  = get_sub_field( 'date' );
-									$title = get_sub_field( 'title' );
-									$url   = get_sub_field( 'url' );
 									?>
-									<div class="tab-block-container-tab-block_content_items_item_container">
-										<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>">
-											<div class="tab-block-container-tab-block_content_items_item_container_heading_date">
-												<?php  echo wp_kses_post($date); ?>
+									<div class="tab-block-container-tab-block_content_items_item_category">
+									<?php
+
+									if( get_sub_field( 'title' ) ) {
+										echo '<h3 class="tab-block-container-tab-block_content_items_item_category_title">';
+											$icon  = get_sub_field( 'icon' );
+											if( ! empty( $icon ) ): ?>
+												<img src="<?php echo esc_url( $icon['url'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" aria-hidden="true" />
+											<?php endif;
+											the_sub_field( 'title' );
+										echo '</h3>';
+									}
+
+									if ( have_rows( 'podcast_content' ) ) :
+										while ( have_rows( 'podcast_content' ) ) :
+											the_row();
+											$date  = get_sub_field( 'date' );
+											$title = get_sub_field( 'title' );
+											$url   = get_sub_field( 'url' );
+											?>
+											<div class="tab-block-container-tab-block_content_items_item_container">
+												<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>">
+													<div class="tab-block-container-tab-block_content_items_item_container_heading_date">
+														<?php  echo wp_kses_post($date); ?>
+													</div>
+													<div class="tab-block-container-tab-block_content_items_item_container_heading_title">
+														<?php  echo wp_kses_post($title); ?>
+													</div>
+												</a>
+												<div class="tab-block-container-tab-block_content_items_item_container_heading_link">
+													<a href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>" class="link btn btn-dark-bg">
+														Listen Now
+													</a>
+												</div>
 											</div>
-											<div class="tab-block-container-tab-block_content_items_item_container_heading_title">
-												<?php  echo wp_kses_post($title); ?>
-											</div>
-										</a>
-										<div class="tab-block-container-tab-block_content_items_item_container_heading_link">
-											<a href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>" class="link btn btn-dark-bg">
-												Listen Now
-											</a>
-										</div>
+											<?php
+										endwhile;
+									endif;
+
+									?>
 									</div>
 									<?php
+		
 								endwhile;
 							endif;
 							?>
