@@ -264,6 +264,7 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		);
 
 		remove_theme_support( 'widgets-block-editor' );
+		remove_theme_support( 'core-block-patterns' );
 
 	}
 endif;
