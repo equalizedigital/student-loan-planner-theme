@@ -1,6 +1,6 @@
 {
 	"name": "acf/recommended-posts-block",
-	"title": "Recommended Posts Block",
+	"title": "Recommended Posts",
 	"description": "Show a list of recommended posts based on the current post's categories.",
 	"category": "custom-blocks",
 	"icon": "thumbs-up",
