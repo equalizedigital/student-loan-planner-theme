@@ -167,9 +167,13 @@ img.wprm-comment-rating {
 	}
 
 	.comment img {
-		width: 56px;
-		height: 56px;
+	
 		border-radius: 50%;
+		max-width: 56px;
+		@include media(">tablet") {
+			width: 56px;
+		height: 56px;
+		}
 	}
 
 	.img-thumbnail {

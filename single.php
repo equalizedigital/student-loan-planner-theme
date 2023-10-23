@@ -542,6 +542,7 @@ function eqd_single_after_related_post() {
 					'post__in'       => $select_posts_to_showcase,
 					'orderby'        => 'post__in',
 					'order'          => 'DESC',
+					'post_status'    => 'publish',
 				);
 			} else {
 				$args = array(
@@ -550,6 +551,7 @@ function eqd_single_after_related_post() {
 					'cat'            => $primary_category,  // Category ID
 					'orderby'        => 'date',
 					'order'          => 'DESC',
+					'post_status'    => 'publish',
 				);
 			}
 
