@@ -1,7 +1,7 @@
 {
 	"name": "acf/query-loop-block",
-	"title": "Query Loop",
-	"description": "A block that allows you to query and loop through posts, pages, or custom post types.",
+	"title": "Posts by Author",
+	"description": "A block that allows you to display the most recent post by selected authors.",
 	"category": "custom-blocks",
 	"icon": "update",
 	"keywords": [
