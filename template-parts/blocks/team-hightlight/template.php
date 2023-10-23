@@ -56,12 +56,14 @@ endif;
 				while ( have_rows( 'team' ) ) :
 					the_row();
 
-					$member    = get_sub_field( 'member' );
-					$author    = get_field( 'post_author', $member->ID );
-					if(isset($author->ID)){
-						$author_id = $author->ID;
-						$author_name = get_userdata($author->ID);
+					$member = get_sub_field( 'member' );
+					$author = get_field( 'post_author', $member->ID );
+					if ( !is_null($author->ID) ) {
+						$author_id   = $author->ID;
+						$author_name = get_userdata( $author->ID );
 					}
+			 
+
 					?>
 					<li class="team-hightlight-block-container-team-hightlight-member 
 					<?php
@@ -71,8 +73,8 @@ endif;
 					">
 					
 						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
-							<?php if ( ! empty( $author_id ) ) : ?>
-								<a href="<?php echo get_site_url() . '/author/'.$author_name->user_nicename; ?>" class="team-hightlight-block-container-team-hightlight-member__button">
+							<?php if ( !is_null($author->ID) ) : ?>
+								<a href="<?php echo get_site_url() . '/author/' . $author_name->user_nicename; ?>" class="team-hightlight-block-container-team-hightlight-member__button">
 							<?php else : ?>
 								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>-<?php echo esc_attr( $classid ); ?>" aria-label="Open Video">
 							<?php endif; ?>
@@ -81,26 +83,26 @@ endif;
 							<figure class="team-hightlight-block-container-team-hightlight-member__photo">
 								<?php
 								$thumbnail_id = get_post_thumbnail_id( $member->ID );
-								if ( !empty( $member->ID) ) {
+								if ( ! empty( $member->ID ) ) {
 									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
 									$featured_image_url = $image_url[0];
-									if(!empty($featured_image_url)){
+									if ( ! empty( $featured_image_url ) ) {
 										echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
 									} else {
 										echo wp_kses_post( '<img style="object-fit: contain;padding:10px;" src="/wp-content/themes/student-loan-planner-theme/assets/images/SLP-Logo.png" alt="' . get_the_title( $member->ID ) . '">' );
 									}
-								}  
+								}
 								?>
 							</figure>
 							<div class="team-hightlight-block-container-team-hightlight-member__content">
-								<?php if(!empty($member->ID)): ?>
+								<?php if ( ! empty( $member->ID ) ) : ?>
 								<span class="title"><?php echo wp_kses_post( get_the_title( $member->ID ) ); ?></span>
 								<?php endif; ?>
 								<span class="job"><?php the_field( 'job_title', $member->ID ); ?></span>
 							</div>
 
 							<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
-								<?php if ( ! empty( $author_id ) ) : ?>
+								<?php if ( !is_null($author->ID) ) : ?>
 									</a>
 								<?php else : ?>
 									</button>
@@ -115,22 +117,24 @@ endif;
 			endif;
 			?>
 		</ul>
-		<?php if ( empty( $acf_use_alternative_styling ) ) : 
-			if($number_of_items >= 4):
-			?>
-		<div class="team-hightlight-block-container-team-hightlight__load_more">
-			<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="team-hightlight-block-container-team-hightlight">
-				<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?></div>
-				<span class="arrow">
-					<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
-						<path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/>
-					</svg>
-				</span>
-			</button>
-		</div>
-		<?php 
+		<?php
+		if ( empty( $acf_use_alternative_styling ) ) :
+			if ( $number_of_items >= 4 ) :
+				?>
+				<div class="team-hightlight-block-container-team-hightlight__load_more">
+					<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="team-hightlight-block-container-team-hightlight">
+						<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?></div>
+						<span class="arrow">
+							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+								<path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/>
+							</svg>
+						</span>
+					</button>
+				</div>
+				<?php
 			endif;
-		endif; ?>
+		endif;
+		?>
 		
 	</div>
 </section>
@@ -138,20 +142,19 @@ endif;
 
 <?php
 if ( have_rows( 'team' ) ) :
-
-	// Loop through rows.
 	while ( have_rows( 'team' ) ) :
 		the_row();
 		$member      = get_sub_field( 'member' );
-		$booking_url = get_field( 'booking_url',$member->ID );
+		$booking_url = get_field( 'booking_url', $member->ID );
 		$words       = explode( ' ', trim( $member->post_title ) );
-		$firstWord   = $words[0];
+		$first_word   = $words[0];
 		?>
+
 		<div id="modal<?php echo wp_kses_post( get_row_index() ); ?>-<?php echo esc_attr( $classid ); ?>" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">
 			<div class="modal-content" >
-			<button class="close-btn">
-				<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
-			</button>
+				<button class="close-btn">
+					<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+				</button>
 				<div class="modal_content">
 					<div class="modal_image">
 						<figure>
@@ -178,13 +181,12 @@ if ( have_rows( 'team' ) ) :
 						<?php if ( $booking_url ) { ?>
 							<div class="link">
 								<a href="<?php echo esc_url( $booking_url ); ?>" class="btn">
-									Book a Call with <?php echo esc_html( $firstWord ); ?>
+									Book a Call with <?php echo esc_html( $first_word ); ?>
 								</a>
 							</div>
 						<?php } ?>
 					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 

@@ -90,7 +90,7 @@ function eqd_single_header() {
 		$background_image        = get_field( 'background_image', $page_id );
 		$title_max_width_desktop = get_field( 'title_max_width_desktop', $page_id );
 		$link                    = get_field( 'single_post_link', $page_id );
-		
+		$output = null;
 		$container_class         = '';
 		if ( get_field( 'post_format_style' ) == 'full-width' ) {
 			$container_class .= 'hero_relative';
