@@ -11,7 +11,9 @@
 }
 
 .full-width-columns-background-block {
-    background: #625089;
+    background: brand-color('tertiary');
+    border-radius: 10px;
+    overflow: hidden;
 
     .link {
         display: inline-flex;
