@@ -147,13 +147,12 @@
 
 blockquote.wp-block-quote {
     max-width: 740px;
-    margin: 0px auto 10px !important;
+    margin: 60px auto 10px !important;
     padding: 100px 24px 50px;
     display: grid;
     gap: 27px;
     background: var(--Purple, #625089);
     position: relative;
-    margin: 0;
 
     &::before {
         content: '';
