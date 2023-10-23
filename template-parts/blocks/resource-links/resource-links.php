@@ -183,9 +183,7 @@ $title = get_field('title');
 					
 					?>
 					<div id="resource-link-<?php echo $key; ?>" role="tabpanel" aria-labelledby="button-tab-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key==0?'resource-links-loop-container-item--active':''; ?>">
-						<header class="resource-links-loop-container-header">
-							<h2 class="title" tabindex="0"><?php echo $link; ?></h2>
-						</header>
+						
 						<div class="resource-links-loop-container-content">
 							<div class="resource-links-loop-container-content-featured">
 								<div class="resource-links-loop-container-content-featured-link">
@@ -194,75 +192,82 @@ $title = get_field('title');
 											<img src="<?php echo esc_url($featured_image); ?>" alt="Post Featured Image">
 										<?php endif; ?>
 									</figure>
-									<h3 class="title"><?php echo $link; ?></h3>
 								</div>
 							</div>
 
 							<div class="resource-links-loop-container-content-loop">
-
+								<header class="resource-links-loop-container-header">
+									<h3 class="title" tabindex="0"><?php echo $link; ?></h3>
+								</header>
+								<ul class="resource-links-loop-container-content-loop-ul">
 								<?php
 
-								if($selected_posts){
+									if($selected_posts){
 
-									$args = array(
-										'post_type' => 'post', 
-										'post__in' => 	$selected_posts,
-										'orderby' => 'post__in',
-									);
+										$args = array(
+											'post_type' => 'post', 
+											'post__in' => 	$selected_posts,
+											'orderby' => 'post__in',
+										);
 
-								} else {
-									$args = array(
-										'post_type' => 'post', 
-										'posts_per_page' => 3, 
-										'cat' => $category,
-									);
-								}
-
-								$query = new WP_Query($args);
-
-								if ($query->have_posts()) {
-									while ($query->have_posts()) {
-										$query->the_post();
-										
-										// Get categories
-										$categories = get_the_category();
-										if ($categories) {
-											$category = $categories[0]->name; // Assuming you want only the first category if there are multiple
-										} else {
-											$category = '';
-										}
-										
-										// Get title
-										$title = get_the_title();
-
-										$link = get_the_permalink();
-										
-										// Get author image (assuming you're using Gravatar)
-										$author_email = get_the_author_meta('user_email');
-										$author_image_url = get_avatar_url($author_email, array('size' => 96));
-										
-										// Get author name
-										$author_name = get_the_author();
-
-										?>
-											<a class="resource-links-loop-container-content-loop-item" href="<?php echo $link; ?>">
-												<h3 class="title"><?php echo $title; ?></h3>
-												<div class="author">
-													<figure>
-													<?php echo '<img src="' . esc_url($author_image_url) . '" alt="' . esc_attr($author_name) . '">'; ?>
-													</figure>
-													<div class="author_data">
-														By <?php echo $author_name; ?>
-													</div>
-												</div>
-											</a>
-										<?php
+									} else {
+										$args = array(
+											'post_type' => 'post', 
+											'posts_per_page' => 3, 
+											'cat' => $category,
+										);
 									}
-									wp_reset_postdata(); // Reset post data to ensure there's no interference with other loops
-								} else {
-									echo 'No posts found for this custom post type.';
-								}
-								?>
+
+									$query = new WP_Query($args);
+
+									if ($query->have_posts()) {
+										while ($query->have_posts()) {
+											$query->the_post();
+											
+											// Get categories
+											$categories = get_the_category();
+											if ($categories) {
+												$category = $categories[0]->name; // Assuming you want only the first category if there are multiple
+											} else {
+												$category = '';
+											}
+											
+											// Get title
+											$title = get_the_title();
+
+											$link = get_the_permalink();
+											
+											// Get author image (assuming you're using Gravatar)
+											$author_email = get_the_author_meta('user_email');
+											$author_image_url = get_avatar_url($author_email, array('size' => 96));
+											
+											// Get author name
+											$author_name = get_the_author();
+
+											?>
+											<li class="resource-links-loop-container-content-loop-ul-li">
+
+												<a class="resource-links-loop-container-content-loop-item" href="<?php echo $link; ?>">
+													<p class="title"><?php echo $title; ?></p>
+													<div class="author">
+														<figure>
+														<?php echo '<img src="' . esc_url($author_image_url) . '" alt="' . esc_attr($author_name) . '">'; ?>
+														</figure>
+														<div class="author_data">
+															By <?php echo $author_name; ?>
+														</div>
+													</div>
+												</a>
+											</li>
+
+											<?php
+										}
+										wp_reset_postdata(); // Reset post data to ensure there's no interference with other loops
+									} else {
+										echo 'No posts found for this custom post type.';
+									}
+									?>
+								</ul>
 							</div>
 						</div>
 					</div>
