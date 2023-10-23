@@ -612,6 +612,7 @@ img.wprm-comment-rating {
 		margin: 0 0 60px;
 		list-style: none;
 		gap: 20px;
+		padding: 0;
 
 		a {
 			display: flex;
@@ -1652,6 +1653,16 @@ section.refinance_lender_section {
 
 /* Sidebar
 --------------------------------------------- */
+.archive {
+	.sidebar_container{
+		@include media("<tablet") {
+			display: block;
+		}
+		@media screen and(max-width:1200px) and (min-width:768px) {
+			margin-right: 20px;
+		}
+	}
+}
 .sidebar_container {
 	position: relative;
 	margin-top: -60px;

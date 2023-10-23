@@ -4,6 +4,7 @@
         max-width: $container-width;
         padding: 0 $container-padding;
         margin: 50px auto;
+
         @include media(">tablet") {
             margin: 150px auto 0;
         }
@@ -65,8 +66,9 @@
                 position: relative;
                 width: 100%;
                 min-width: 327px;
+
                 @include media(">tablet") {
-                display: none;
+                    display: none;
                 }
 
                 .field {
@@ -119,7 +121,7 @@
                 &.active {
                     display: grid;
                 }
-                
+
                 li {
                     display: flex;
                     align-items: center;
@@ -128,7 +130,8 @@
                     padding: 10px 15px;
                     border-bottom: 1px solid var(--dark-gray, #A1A5A5);
                 }
-                a{
+
+                a {
                     display: flex;
                     align-items: center;
                     justify-content: flex-start;
@@ -195,6 +198,7 @@
             font-weight: 700;
             line-height: 40px;
             margin-bottom: 40px;
+
             @include media("<tablet") {
                 text-align: left;
             }
@@ -209,9 +213,10 @@
     &-container {
         max-width: 1120px;
         margin: 0 auto;
-        
+
         max-width: $container-width;
         padding: 0 $container-padding;
+
         @include media(">tablet") {
             padding: 100px $container-padding;
         }
@@ -226,6 +231,7 @@
 
         &-header {
             display: none;
+
             .title {
                 color: brand-color('tertiary');
                 font-size: 35px;
@@ -234,6 +240,7 @@
                 line-height: 40px;
                 margin-bottom: 40px;
             }
+
             @include media(">tablet") {
                 display: block;
             }
@@ -242,7 +249,8 @@
         &-content {
             display: grid;
             gap: 53px;
-            grid-template-columns:  1fr;
+            grid-template-columns: 1fr;
+
             @include media(">tablet") {
                 grid-template-columns: 1fr 1fr;
                 gap: 110px;
@@ -253,18 +261,15 @@
             }
 
             &-loop-item {
-                border-bottom: 1px solid #D9D9D9;
-                padding: 0 20px 20px;
+        
+                padding: 0 20px ;
                 text-decoration: none;
                 display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+                flex-direction: column;
+                justify-content: center;
 
-                &:nth-child(1) {
-                    padding-top: 20px;
-                    border-top: 1px solid #D9D9D9;
-                }
+
+            
 
                 .author {
                     display: flex;
@@ -280,7 +285,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                  
+
                     }
                 }
 
@@ -365,6 +370,21 @@
             &-loop {
                 display: grid;
                 gap: 20px;
+                align-items: flex-start;
+                &-ul{
+                    list-style: none;
+                    padding: 0!important;
+                    margin: 0;
+                    &-li{
+                        padding:  20px 0!important;
+
+                        border-top: 1px solid #D9D9D9;
+                        &:nth-child(1) {
+                            padding-top:20px !important;
+                            border-top: 1px solid #D9D9D9;
+                        }
+                    }
+                }
             }
         }
     }

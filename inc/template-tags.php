@@ -137,7 +137,7 @@ function eqd_tha_footer_cta() {
 				<h2 class="title"><?php echo $cta_title; ?></h2>
 				<div class="text"><?php echo $copy; ?></div>
 
-				<?php if(!empty($link['url'])): ?>
+				<?php if ( ! empty( $link['url'] ) ) : ?>
 				<div class="link">
 					<a class="btn btn-dark-bg" href="<?php echo wp_kses_post( $link['url'] ); ?>">
 						<?php echo wp_kses_post( $link['title'] ); ?>
@@ -215,8 +215,8 @@ function eqd_tha_page_header() {
 			if ( ! empty( $background_image['url'] ) ) {
 				$bg_url = $background_image['url'];
 			}
-		} elseif( is_tax()){
-			$term = get_queried_object();
+		} elseif ( is_tax() ) {
+			$term    = get_queried_object();
 			$term_id = $term->term_id;
 
 			$alternative_title       = get_field( 'alternative_title', 'category_' . $term_id );
@@ -239,7 +239,7 @@ function eqd_tha_page_header() {
 			$center_text             = get_field( 'center_text', $page_id );
 			$heading_link            = get_field( 'heading_link' );
 			$padding_size            = get_field( 'padding_size', $page_id );
-			$container_class = null;
+			$container_class         = null;
 
 			if ( is_archive() ) {
 				$term             = get_queried_object();
@@ -283,12 +283,13 @@ function eqd_tha_page_header() {
 					
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
 					
-					<?php if ( is_search() ) : 
+					<?php
+					if ( is_search() ) :
 						// Search
 						$search_term = get_search_query();
 						?>
-						Search: <?php  echo wp_kses_post($search_term ); ?>
-					<?php else: ?>
+						Search: <?php echo wp_kses_post( $search_term ); ?>
+					<?php else : ?>
 
 						<?php if ( ! empty( $sub_heading ) ) : ?>
 							<div class="sub_heading"><?php echo wp_kses_post( $sub_heading ); ?></div>
@@ -297,12 +298,12 @@ function eqd_tha_page_header() {
 						<?php
 						if ( is_tax() ) {
 							$current_term = get_queried_object();
-							if ( $current_term->taxonomy !== 'occupation') {
+							if ( $current_term->taxonomy !== 'occupation' ) {
 								echo 'Resources for ';
 							}
 						}
-						if(!empty( $alternative_title )){
-							echo wp_kses_post($alternative_title  );
+						if ( ! empty( $alternative_title ) ) {
+							echo wp_kses_post( $alternative_title );
 						} else {
 							if ( is_page() ) {
 								echo wp_kses_post( get_the_title() );
@@ -314,15 +315,15 @@ function eqd_tha_page_header() {
 								echo 'Not found, error 404';
 							}
 						}
-						
+
 						?>
 					<?php endif; ?>
 				</h1>
 				
 				<span class="subtitle">
 					<?php
-					if ( !is_search() ) {
-						if(!empty($subtitle)){
+					if ( ! is_search() ) {
+						if ( ! empty( $subtitle ) ) {
 							echo wp_kses_post( $subtitle );
 						} else {
 							echo wp_kses_post( get_field( 'title_copy', 'option' ) );
@@ -339,14 +340,15 @@ function eqd_tha_page_header() {
 
 			</div>
 
-			<?php 
-			if ( !is_search() ) {
-				if ( ! empty( $bg_url ) ) : ?>
+			<?php
+			if ( ! is_search() ) {
+				if ( ! empty( $bg_url ) ) :
+					?>
 				<span class="hero_image">
 					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
 				</span>
-			<?php 
-				endif; 
+					<?php
+				endif;
 			}
 			?>
 

@@ -42,7 +42,7 @@ $website                      = get_field( 'website', $select_institutional_cont
 $button_subtext               = get_field( 'button_subtext', $select_institutional_contact );
 $features_list                = get_field( 'features_list', $select_institutional_contact );
 $about                        = get_field( 'about', $select_institutional_contact );
-$contact_info                        = get_field( 'contact_info', $select_institutional_contact );
+$contact_info                 = get_field( 'contact_info', $select_institutional_contact );
 $more_info_content            = get_field( 'more_info_content', $select_institutional_contact );
 $show_about                   = get_field( 'show_about' );
 $degrees_that_qualify         = get_field( 'degrees_that_qualify',$select_institutional_contact );
@@ -52,11 +52,13 @@ $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
 
 
-
 $time_stamp = time() . wp_rand( 0, 23 );
+
+
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
+	<h3 class="screen-reader-text"><?php echo get_the_title($select_institutional_contact); ?></h3>
 	<div class="vendor_information_block_container">
 
 		<div class="vendor_information_block_container_column_one">
@@ -88,15 +90,6 @@ $time_stamp = time() . wp_rand( 0, 23 );
 					<?php echo wp_kses_post( $rating ); ?> out of 5
 				</div>
 
-			</div>
-			<?php endif; ?>
-
-
-			<?php if ( ! empty( $review_url ) ) : ?>
-			<div class="vendor_information_block_container_column_one_read_review">
-				<a href="<?php echo wp_kses_post( $review_url ); ?>">
-					Read Review 
-				</a>
 			</div>
 			<?php endif; ?>
 		</div>
