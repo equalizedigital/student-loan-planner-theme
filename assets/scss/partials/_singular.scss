@@ -181,6 +181,9 @@ img.wprm-comment-rating {
 	.comment-list {
 		margin: 0 0 32px;
 		list-style: none;
+		li:first-child {
+			border-top: 0px;
+		}
 	}
 
 	.no-comments {
