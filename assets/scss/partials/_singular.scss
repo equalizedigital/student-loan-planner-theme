@@ -1658,7 +1658,7 @@ section.refinance_lender_section {
 		@include media("<tablet") {
 			display: block;
 		}
-		@media screen and(max-width:1200px) and (min-height:768px) {
+		@media screen and(max-width:1200px) and (min-width:768px) {
 			margin-right: 20px;
 		}
 	}
