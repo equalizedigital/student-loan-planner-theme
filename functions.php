@@ -264,6 +264,7 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		);
 
 		remove_theme_support( 'widgets-block-editor' );
+		remove_theme_support( 'core-block-patterns' );
 
 	}
 endif;
@@ -306,3 +307,41 @@ function custom_acf_post_object_query( $args, $field, $post_id ) {
 	return $args;
 }
 add_filter('acf/fields/post_object/query', 'custom_acf_post_object_query', 10, 3);
+
+/**
+ * Filters the query arguments for the 'recommendedfeatured_posts' ACF Post Object field.
+ * The filter limits the displayed posts to those associated with the currently edited/viewed term
+ * for the taxonomies: 'category', 'post_tag', and 'slp_occupation'.
+ *
+ * @param array $args   The WP_Query arguments.
+ * @param array $field  The field settings.
+ * @param int   $post_id The post ID (or term ID, depending on context).
+ * 
+ * @return array Modified query arguments.
+ */
+function npp_filter_post_object_query( $args, $field, $post_id ) {
+	// Check if this is the specific field we want to modify.
+	if ( 'recommendedfeatured_posts' === $field['name'] ) {
+		
+		// Check if it's a term ID and extract the ID.
+		if ( strpos( $post_id, 'term_' ) === 0 ) {
+			$term_id = str_replace( 'term_', '', $post_id );
+			$term = get_term( $term_id );
+
+			// Check if term belongs to the specified taxonomies.
+			if ( $term instanceof WP_Term && in_array( $term->taxonomy, [ 'category', 'post_tag', 'slp_occupation' ], true ) ) {
+				$args['tax_query'] = [
+					[
+						'taxonomy' => $term->taxonomy,
+						'field'    => 'term_id',
+						'terms'    => $term->term_id,
+						'operator' => 'IN',
+					],
+				];
+			}
+		}
+	}
+
+	return $args;
+}
+add_filter( 'acf/fields/post_object/query', 'npp_filter_post_object_query', 10, 3 );

@@ -181,6 +181,9 @@ img.wprm-comment-rating {
 	.comment-list {
 		margin: 0 0 32px;
 		list-style: none;
+		li:first-child {
+			border-top: 0px;
+		}
 	}
 
 	.no-comments {
@@ -1525,9 +1528,16 @@ section.refinance_lender_section {
 	margin: 0 auto 71px;
 
 	&_author_entry-author_titles {
-		display: flex;
-		gap: 20px;
+		display: grid;
+		grid-template-columns: auto 1fr;
 		align-items: center;
+		gap: 20px;
+		
+		@include media(">tablet") {
+			display: flex;
+			
+			align-items: center;
+		}
 	}
 
 	&_author_reviewed_author.editedby {
@@ -1545,18 +1555,21 @@ section.refinance_lender_section {
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 600;
-		line-height: 70px;
+		//line-height: 70px;
 		/* 388.889% */
 	}
 
 	.author_socials {
-		margin-left: auto;
+		margin-left: 0;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		padding-inline-start: 0px;
 		gap: 20px;
 		list-style: none;
-
+		@include media(">tablet") {
+			margin-left: auto;
+			justify-content: center;
+		}
 	}
 
 	.author_socials a {

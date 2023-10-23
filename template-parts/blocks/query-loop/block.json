@@ -1,6 +1,6 @@
 {
 	"name": "acf/query-loop-block",
-	"title": "Query Loop Block",
+	"title": "Query Loop",
 	"description": "A block that allows you to query and loop through posts, pages, or custom post types.",
 	"category": "custom-blocks",
 	"icon": "update",

@@ -1,6 +1,6 @@
 {
 	"name": "acf/resource-blocks",
-	"title": "Resource Blocks",
+	"title": "Resource",
 	"description": "A custom block for displaying resources.",
 	"category": "custom-blocks",
 	"icon": "media-document",

@@ -1,6 +1,6 @@
 {
 	"name": "acf/resources-loop-block",
-	"title": "Resources Loop Block",
+	"title": "Resources Loop",
 	"description": "A block that displays a loop of resources.",
 	"category": "custom-blocks",
 	"icon": "update-alt",

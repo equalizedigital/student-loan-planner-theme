@@ -385,6 +385,9 @@ blockquote.wp-block-quote {
     padding: 70px 0;
     align-items: center;
     justify-content: center;
+    .eqd-pr-pagination & {
+        padding: 0;
+    }
 }
 
 a.facetwp-page {

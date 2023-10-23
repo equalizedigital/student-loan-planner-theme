@@ -1,6 +1,6 @@
 {
 	"name": "acf/resource-links-block",
-	"title": "Resource Links Block",
+	"title": "Resource Links",
 	"description": "A block that displays a list of links to resources.",
 	"category": "custom-blocks",
 	"icon": "admin-links",

@@ -1,6 +1,6 @@
 {
 	"name": "acf/image-text-columns-block",
-	"title": "Image Text Columns Block",
+	"title": "Image Text Columns",
 	"description" : "A block that displays a row of columns with an image and text.",
 	"category": "custom-blocks",
 	"icon": "format-image",

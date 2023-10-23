@@ -1,6 +1,6 @@
 {
 	"name": "acf/resources-loop-reverse-block",
-	"title": "Resources Loop Reverse Block",
+	"title": "Resources Loop Reverse",
 	"description": "A block that displays a list of resources in reverse order.",
 	"category": "custom-blocks",
 	"icon": "backup",
