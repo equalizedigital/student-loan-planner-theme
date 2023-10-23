@@ -29,6 +29,9 @@
                     color: brand-color('tertiary');
                     text-decoration: underline;
                 }
+                img {
+                    min-height: 33px;
+                }
             }
         }
     }
