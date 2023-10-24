@@ -351,7 +351,6 @@
 			return;
 		}
 		let aIndex;
-
 		switch (e.keyCode) {
 
 			case 9: // tab key
@@ -363,7 +362,6 @@
 					$('.sub_menu_back').focus()
 				}
 
-
 				if($(this).is('#close-search')){
 					e.preventDefault();
 					$('.under_line .input-group input').focus()
@@ -374,6 +372,20 @@
 						//Focus previous input
 						e.preventDefault();
 					 }
+				}
+				if ($(this).is('.menu-item a')) {
+					// All focusable elements inside .sub_menu
+					var focusableElems = $(this).closest('.main-nav-link-li').find('.menu-item-main-link').siblings('.sub_menu').find('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+					let thisElement = $(this).closest('.main-nav-link-li').find('.menu-item-main-link');
+					// Last focusable element
+					var lastElem = focusableElems[focusableElems.length - 1];
+					// If we're on the last element and the shift key isn't held down (backward tabbing)
+					if (e.target === lastElem && !e.shiftKey) {
+						e.preventDefault(); // Prevent default tab behavior
+						thisElement.attr('aria-expanded', 'false');
+						thisElement.focus();
+						thisElement.siblings('.sub_menu').removeClass('open')
+					}
 				}
 				
 				break;
@@ -387,6 +399,14 @@
 				$('.dropdown-toggle.toggled-on').removeClass('toggled-on');
 				$('.sub-menu').removeClass('toggled-on');
 				$('.dropdown-toggle.toggled-on').attr('aria-expanded', $(this).attr('aria-expanded') === 'false' ? 'true' : 'false');
+
+				if ($(this).is('.menu-item a')) {
+					if ($(this).closest('.main-nav-link-li').find('.menu-item-main-link')) {
+						$(this).closest('.main-nav-link-li').find('.menu-item-main-link').attr('aria-expanded', 'false');
+						$(this).closest('.main-nav-link-li').find('.menu-item-main-link').focus();
+						$(this).closest('.main-nav-link-li').find('.menu-item-main-link').siblings('.sub_menu').removeClass('open')
+					}
+				}
 
 				break;
 
@@ -421,6 +441,7 @@
 				e.preventDefault();
 				e.stopPropagation();
 				aIndex = $(this).index();
+
 
 				if ($(this).is('.menu-item a')) {
 					$(this).closest('.menu-column').next().find(`li`).eq(aIndex).find('a').focus()
@@ -495,6 +516,8 @@
 				}
 
 				break;
+
+				
 
 		}
 	});
