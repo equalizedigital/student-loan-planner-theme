@@ -103,7 +103,7 @@ function eqd_single_after_entry_content() {
 				<td>
 					<div class="td_content">
 						<img src="<?php echo $logo_image['url']; ?>" alt="<?php echo $logo_image['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field( 'lender_name' ); ?>">Disclosures<sup><?php echo get_row_index(); ?></sup></button>
+						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field( 'lender_name' ); ?>">Disclosures</button>
 					</div>
 				</td>
 				<td>
