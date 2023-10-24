@@ -1,3 +1,8 @@
+.block-editor-block-list__block{
+     .resource-blocks-block-container-list-item a {
+        height: auto;
+    }
+}
 .resource-blocks-block {
     padding: 90px 0;
     display: grid;
@@ -44,6 +49,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            &__block{
+                padding: 0!important;
+            }
+
             a {
                 border: 1px solid var(--Dark-Gray, #A1A5A5);
                 display: grid;
@@ -51,6 +60,7 @@
                 padding: 45px;
                 border-radius: 10px;
                 height: 100%;
+
                 &:focus,
                 &:hover {
                     background: #82BC46;
