@@ -214,6 +214,15 @@ header.site-header {
 									}
 								}
 							}
+							&.submenu-column__single_menu {
+								.sub-menu {
+									@include media(">tablet") {
+										grid-template-columns: repeat(3, 1fr);
+										gap: 0 15px;
+										display: grid;
+									}
+								}
+							}
 						}
 
 						.sub_menu {
