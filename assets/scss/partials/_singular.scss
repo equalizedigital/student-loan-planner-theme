@@ -1042,7 +1042,7 @@ img.wprm-comment-rating {
 			@include media(">tablet") {
 				line-height: 70px;
 				font-size: 70px;
-				min-width: unset;
+				min-width: 95%;
 			}
 		}
 
@@ -1116,6 +1116,10 @@ img.wprm-comment-rating {
 			flex-direction: column;
 		}
 
+		&.site-main-article__author-data_editor{
+			gap: 20px;
+		}
+
 		.article_author {
 			display: flex;
 			align-items: center;
@@ -1123,7 +1127,6 @@ img.wprm-comment-rating {
 	}
 	.auth-editor-container {
 		display: flex;
-		
 		gap: 20px;
 		@include media("<tablet") {
 			flex-wrap: wrap;
@@ -1222,6 +1225,7 @@ img.wprm-comment-rating {
 		border-radius: 50%;
 		width: 45px;
 		height: 45px;
+		max-width: 45px;
 	}
 
 	.author_info {

@@ -116,6 +116,10 @@ header.site-header {
 					display: flex;
 					align-items: center;
 					gap: 28px;
+					padding: 0;
+					@media screen and (max-width:1150px) and (min-width:900px) {
+						gap: 10px;
+					}
 
 					@media screen and (max-width:900px) and (min-width:768px) {
 						gap: 10px;

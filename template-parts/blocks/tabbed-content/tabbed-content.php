@@ -90,15 +90,15 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 					?>
 					<div class="tablet_chevron">
 					<svg xmlns="http://www.w3.org/2000/svg" width="97" height="91" viewBox="0 0 97 91" fill="none">
-	<rect x="97" y="91" width="97" height="91" transform="rotate(-180 97 91)" fill="url(#paint0_linear_1229_724)"/>
-	<path d="M76.6211 53.2427L84.2424 45.6213L76.6211 38" stroke="white" stroke-linecap="round"/>
-	<defs>
-	<linearGradient id="paint0_linear_1229_724" x1="133" y1="117.731" x2="167.5" y2="117.731" gradientUnits="userSpaceOnUse">
-		<stop stop-color="#625089"/>
-		<stop offset="1" stop-color="#625089" stop-opacity="0"/>
-	</linearGradient>
-	</defs>
-</svg>
+						<rect x="97" y="91" width="97" height="91" transform="rotate(-180 97 91)" fill="url(#paint0_linear_1229_724)"/>
+						<path d="M76.6211 53.2427L84.2424 45.6213L76.6211 38" stroke="white" stroke-linecap="round"/>
+						<defs>
+						<linearGradient id="paint0_linear_1229_724" x1="133" y1="117.731" x2="167.5" y2="117.731" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#625089"/>
+							<stop offset="1" stop-color="#625089" stop-opacity="0"/>
+						</linearGradient>
+						</defs>
+					</svg>
 					</div>
 				</div>
 				
@@ -139,7 +139,11 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 											echo '<a href="' . $row['rating']['url'] . '">';
 										}
 										?>
-										<?php echo $row['rating']['title']; ?>
+										<?php 
+										if(!empty($row['rating']['title'])){
+										echo $row['rating']['title']; 
+										}
+										?>
 										<?php
 										if(!empty($row['rating']['url'])){
 											echo '</a>';
