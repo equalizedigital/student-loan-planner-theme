@@ -162,7 +162,7 @@ header.site-header {
 						&:focus-visible {
 							outline: none;
 
-							&::after {
+							&::before {
 								content: "";
 								position: absolute;
 								left: -10px;
