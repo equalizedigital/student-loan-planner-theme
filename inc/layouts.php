@@ -334,30 +334,46 @@ function eqd_single_fullwidth_content() {
 					echo '</br>';}
 				?>
 
+
 			<div class="site-main-article__author-data">
+
+				<div class="auth-editor-container">
 				<div class="article_author">
 					<?php
-					$post_author    = get_the_author();
-					$id             = get_field( 'post_reviewed_by', get_the_ID() );
-					$id_post_editor = get_field( 'post_editor', get_the_ID() );
-
+					// Author
 					$id_meta        = get_the_author_meta( 'ID' );
-					$id_post_editor = get_field( 'post_editor', get_the_ID() );
 					$user_info_ID   = get_userdata( $id_meta );
 					$author_url_id  = get_author_posts_url( $id_meta );
+					?>
+					<span class="entry-author">
+						<?php echo get_avatar( $id_meta, 40 ); ?>
+
+						<span class="entry-info">
+							<span>
+								Written By <?php echo get_author_posts_link_by_id( $id_meta ); ?>
+							</span>
+						</span>
+					</span>
+				</div>
+
+				<div class="article_author">
+					<?php
+					// Author
+					$id_post_editor = get_field( 'post_editor', get_the_ID() );
 
 					if ( ! empty( $id_post_editor ) ) {
 						$edit_auth_id = $id_post_editor['ID'];
 						$author_info  = get_field( 'job_title', "user_$edit_auth_id" );
 					}
+					
 					?>
 					<span class="entry-author">
-						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 40 ) : get_avatar( $id_meta, 40 ); ?>
+						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 40 ) : ''; ?>
 
 						<span class="entry-info">
 							<span>
-								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : 'Written By'; ?>
-								<?php echo ! empty( $edit_auth_id ) ? get_author_posts_link_by_id( $edit_auth_id ) : get_author_posts_link_by_id( $id_meta ); ?>
+								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : ''; ?>
+								<?php echo ! empty( $edit_auth_id ) ? get_author_posts_link_by_id( $edit_auth_id ) : ''; ?>
 							</span>
 							<span class="entry-data">
 								<?php echo ! empty( $author_info ) ? wp_kses_post( $author_info ) : ''; ?>
@@ -365,8 +381,11 @@ function eqd_single_fullwidth_content() {
 						</span>
 					</span>
 				</div>
+				</div>
+
 				<?php
-						$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
+				// Reviewed By
+				$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 				if ( $review_by_auth_id != false ) {
 					$profile_picture = get_avatar( $review_by_auth_id, 64 );
 					$user_info       = get_userdata( $review_by_auth_id );
@@ -376,17 +395,16 @@ function eqd_single_fullwidth_content() {
 				}
 
 				?>
-						<?php if ( $review_by_auth_id ) : ?>
+				<?php if ( $review_by_auth_id ) : ?>
 
 				<div class="reviewed_author">
 						
 					<div class="profile">
-							<?php echo $profile_picture; ?>
+						<?php echo $profile_picture; ?>
 					</div>
 					
 					<div class="author_info">
-					Reviewed By
-							<?php echo get_author_posts_link_by_id( $review_by_auth_id ); ?>
+						Reviewed By <?php echo get_author_posts_link_by_id( $review_by_auth_id ); ?>
 					</div>
 				</div>
 				<?php endif; ?>
@@ -395,10 +413,11 @@ function eqd_single_fullwidth_content() {
 
 			<section class="site-main-article__author-data-editorial_statement">
 				<div class="site-main-article__author-data-editorial_statement-container">
-					<div class="site-main-article__author-data-editorial_statement-container__title"><h2>Editorial Ethics at Student Loan Planner</h2></div>
+					<div class="site-main-article__author-data-editorial_statement-container__title">
+						<h2>Editorial Ethics at Student Loan Planner</h2>
+					</div>
 					<div class="site-main-article__author-data-editorial_statement-container__copy">
-						<p>
-						At Student Loan Planner, we follow a strict <a href="<?php echo esc_url( get_site_url( null, '/editorial-ethics-policy/' ) ); ?>">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our 
+						<p>At Student Loan Planner, we follow a strict <a href="<?php echo esc_url( get_site_url( null, '/editorial-ethics-policy/' ) ); ?>">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our 
 						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
 						</p>
 					</div>

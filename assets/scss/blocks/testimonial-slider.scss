@@ -1,5 +1,18 @@
 .testimonial-slider-block {
+    &-container{
+        &-header__title {
+            color: white;
+            text-align: center;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+            
+            margin: 0;
+        }
+    }
     &-container-testimonial-slider-testimonial {
+        
         &__content {
             .content {
                 color: #000;
@@ -18,7 +31,7 @@
                 font-style: normal;
                 font-weight: 600;
                 line-height: 21px;
-                /* 87.5% */
+                
                 margin: 0 0 20px;
                 display: block;
             }
@@ -37,16 +50,7 @@
                 gap: 10px;
             }
 
-            &-header__title {
-                color: white;
-                text-align: center;
-                font-size: 35px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 40px;
-                /* 114.286% */
-                margin: 0;
-            }
+           
         }
     }
 
