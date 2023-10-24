@@ -27,24 +27,10 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 
 			if ( $menu_items and is_array( $menu_items ) ) :
 				foreach ( $menu_items as $item ) {
-					$link         = $item['link'];
-					$columns      = $item['columns'];
-					$column_count = count( $columns );
-					$current_url  = home_url( $_SERVER['REQUEST_URI'] );
-
-					switch ( $column_count ) {
-						case 1:
-							$number_of_columns = 'one column';
-							break;
-						case 2:
-							$number_of_columns = 'two column';
-							break;
-						case 3:
-							$number_of_columns = 'three column';
-							break;
-						default:
-							$number_of_columns = 'one column';
-					}
+					$link              = $item['link'];
+					$columns           = $item['columns'];
+					$number_of_columns = $item['number_of_columns'];
+					$current_url       = home_url( $_SERVER['REQUEST_URI'] );
 					?>
 
 					<li class="main-nav-link-li 
@@ -54,7 +40,7 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 					?>
 					">
 					
-						<?php if ( isset( $link[ 'url'] ) && '#' === $link['url'] ) { ?>
+						<?php if ( '#' === $link['url'] ) { ?>
 							<button aria-label="<?php echo $link['title']; ?>" type="button" class="menu-item-main-link 
 															<?php
 															if ( empty( $columns ) ) {

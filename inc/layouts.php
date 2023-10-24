@@ -335,10 +335,10 @@ function eqd_single_fullwidth_content() {
 				?>
 
 
-			<div class="site-main-article__author-data">
 
+			<div class="site-main-article__author-data <?php if( !empty(get_field( 'post_editor', get_the_ID() )) ){ echo "site-main-article__author-data_editor"; } ?>">
 				<div class="auth-editor-container">
-				<div class="article_author">
+					<div class="article_author">
 					<?php
 					// Author
 					$id_meta        = get_the_author_meta( 'ID' );
@@ -347,7 +347,6 @@ function eqd_single_fullwidth_content() {
 					?>
 					<span class="entry-author">
 						<?php echo get_avatar( $id_meta, 40 ); ?>
-
 						<span class="entry-info">
 							<span>
 								Written By <?php echo get_author_posts_link_by_id( $id_meta ); ?>

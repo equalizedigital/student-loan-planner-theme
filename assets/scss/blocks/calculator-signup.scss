@@ -1,13 +1,16 @@
-.table-of-contents-block{
+.table-of-contents-block {
     .calculator-signup-block {
         border-radius: 10px;
-        overflow: hidden;
+
     }
 }
+
 .calculator-signup-block {
     background: #625089;
     padding: 0;
     margin: 0 0;
+    border-radius: 10px;
+    overflow: hidden;
 
     @include media(">tablet") {
         margin: 0 0;
@@ -25,13 +28,14 @@
 
     &-image {
         margin: 0;
+
         @include media(">tablet") {
             position: absolute;
             top: 0;
             left: 0;
             bottom: 0;
             display: flex;
-            width: 40%;
+            width: 35%;
         }
 
         img {
@@ -47,18 +51,23 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
         @include media(">tablet") {
             padding: 40px 65px;
             width: 70vw;
-            margin: 0 auto 0 40%;
+            margin: 0 auto 0 35%;
+            min-height: 400px;
         }
+
         @include media(">desktop") {
-            padding: 80px 130px;
+            padding: 40px 10%;
         }
-        .btn{
+
+        .btn {
             margin-top: 20px;
             display: inline-block;
         }
+
         &-list {
             margin: 30px 0 0;
             display: grid;
@@ -79,15 +88,16 @@
                 line-height: 40px;
             }
         }
-        a {
-        }
+
+        a {}
+
         .text {
             color: #FFF;
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 28px; 
-            
+            line-height: 28px;
+
         }
     }
 }
@@ -97,7 +107,8 @@
     grid-template-columns: 30px 1fr;
     gap: 20px;
     color: #FFF;
-    a{
+
+    a {
         color: white;
     }
 }
