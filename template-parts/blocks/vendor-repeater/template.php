@@ -68,7 +68,11 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							$company_logo = get_sub_field( 'company_logo' );
 							?>
 							<td>
-								<h3><img src="<?php  echo wp_kses_post($company_logo['url']); ?>" alt="<?php  echo wp_kses_post($company_logo['alt']); ?>"></h3>
+								<?php if( $company_logo ) { ?>
+								<h3>
+									<img src="<?php  echo wp_kses_post($company_logo['url']); ?>" alt="<?php  echo wp_kses_post($company_logo['alt']); ?>">
+								</h3>
+								<?php } ?>
 							</td>
 							<?php
 						endwhile;
