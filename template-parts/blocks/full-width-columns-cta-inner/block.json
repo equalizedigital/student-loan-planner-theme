@@ -14,13 +14,6 @@
 	"acf": {
 		"mode": "preview",
 		"renderTemplate": "template.php"
-	},
-	"example": {
-		"attributes": {
-			"mode": "preview",
-			"data": {
-				"preview_image_help": "screenshot.jpg"
-			}
-		}
 	}
+	
 }

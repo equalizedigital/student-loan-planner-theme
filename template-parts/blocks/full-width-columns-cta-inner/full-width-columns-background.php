@@ -9,8 +9,8 @@
  * @package Full-width-columns-background
  */
 
-if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+ if ( !empty( $block['example']['attributes']['data']['preview_image_help'] ) ) :
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
