@@ -157,10 +157,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 										<img src="<?php echo $row['image']['url']; ?>" alt="">
 										<?php endif; ?>
 									</figure>
-									<div class="image_name">
-										<div class="title"><?php echo $row['name']; ?></div>
-										<div class="occupation"><?php echo $row['occupation']; ?></div>
-									</div>
+									
 									<div class="image_info">
 										<?php
 										$ctas = $row['ctas'];
