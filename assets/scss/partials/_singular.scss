@@ -1123,7 +1123,6 @@ img.wprm-comment-rating {
 	}
 	.auth-editor-container {
 		display: flex;
-		
 		gap: 20px;
 		@include media("<tablet") {
 			flex-wrap: wrap;
@@ -1222,6 +1221,7 @@ img.wprm-comment-rating {
 		border-radius: 50%;
 		width: 45px;
 		height: 45px;
+		max-width: 45px;
 	}
 
 	.author_info {
