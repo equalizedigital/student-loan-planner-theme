@@ -59,88 +59,119 @@ function eqd_single_after_entry() {
 function eqd_single_after_entry_content() {
 	$hide_section_per_category = false;
 	$categories                = get_the_category();
+
+	// hide option
 	foreach ( $categories as $_category ) {
 		$hide_section_per_category = get_field( 'hide_student_loans_section', 'category_' . $_category->term_id );
 		if ( $hide_section_per_category ) {
 			break;
 		}
 	}
+
+	// hide option
 	if ( $hide_section_per_category ) {
 		return;
 	}
+
+	// hide option
 	$hide_section_per_page = get_field( 'hide_student_loans_section', get_the_ID() );
 	if ( $hide_section_per_page ) {
 		return;
 	}
 	?>
-	<?php if ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) : ?>
+	<?php if ( have_rows( 'vendors','option' ) ) :?>
 
 	<section class="refinance_lender_section">
-	<header class="title">
-		<?php
-		$current_year = date( 'Y' );
-		?>
-		<h2 class="title">Refinance student loans, get a bonus in <?php echo $current_year; ?></h2>
-	</header>
+
+		<header class="title">
+			<?php $current_year = gmdate( 'Y' ); ?>
+			<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post( $current_year ); ?></h2>
+		</header>
+
 	<div class="lender_info">
-	<table>
-	<tr class="header">
-		<th class="sr-only" scope="col">Lender Name</th>
-		<th scope="col">Lender</th>
-		<th scope="col">Offer</th>
-		<th scope="col">Learn more</th>
-	</tr>
+		<table>
+			<tr class="header">
+				<th class="sr-only" scope="col">Lender Name</th>
+				<th scope="col">Lender</th>
+				<th scope="col">Offer</th>
+				<th scope="col">Learn more</th>
+			</tr>
 
-		<?php
-		while ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) :
-			the_row();
-			$logo_image = get_sub_field( 'logo_image' );
-			$link       = get_sub_field( 'learn_more_link' );
-			?>
+			<?php
+			while ( have_rows( 'vendors','option' ) ) :
+				the_row();
+				
+				$company_title = get_sub_field( 'company_title' );
+				$company_logo = get_sub_field( 'company_logo' );
+				$cashback_amount = get_sub_field( 'cashback_amount' );
+				$variable = get_sub_field( 'variable' );
 
-			<tr class="data-tr">
+				?>
+
+				<tr class="data-tr">
 				<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
 				<td>
 					<div class="td_content">
-						<img src="<?php echo $logo_image['url']; ?>" alt="<?php echo $logo_image['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo get_sub_field( 'lender_name' ); ?>">Disclosures</button>
+						<img src="<?php echo $company_logo['url']; ?>" alt="<?php echo $company_logo['alt']; ?>">
+						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo $company_title; ?>">Disclosures</button>
 					</div>
 				</td>
 				<td>
 					<div class="td_content">
 						<div class="td_title">
-							<?php the_sub_field( 'offer' ); ?>
+						<?php 
+						$cashback_amount = get_sub_field( 'cashback_amount' );
+						echo wp_kses_post($cashback_amount); ?> Bonus
 						</div>
 						<div class="td_text">
-							<?php the_sub_field( 'offer_text' ); ?>
+							<?php $amount = get_sub_field( 'amount' ); ?>
+							<?php  echo wp_kses_post($amount); ?>
 						</div>
 					</div>
 				</td>
 				<td>
-					<div class="td_content">
-						<?php
-						if ( isset( $link['url'] ) ) :
-							?>
-							<div class="td_title">
+				<div class="td_title">
 								<?php
-								$link_target = $link['target'] ? $link['target'] : '_self';
-								?>
-								<a href="<?php echo $link['url']; ?>"
-								class="btn"
-								target="<?php echo esc_attr( $link_target ); ?>">
-									<?php echo $link['title']; ?>
+								$link = get_sub_field( 'link' );
+								if(!empty($link['url'])): ?>
+								<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+								<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn" <?php echo !empty($link['target'])? wp_kses_post("target='".$link['target']."'"):''; ?>>
+									<?php  echo wp_kses_post($link['title']); ?>
+									<?php if(empty($link['target'])): ?>
+										<span class="svg">
+											<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
+												<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"></path>
+											</svg>
+										</span>
+									<?php endif; ?>
 								</a>
-							</div>
-						<?php endif; ?>
-						<div class="td_text">
-							<?php the_sub_field( 'learn_more_subtext' ); ?>
-						</div>
+								<?php endif; ?>
+								</div>
+					<div class="td_content">
+
+							
+
+
+
+								<div class="td_text">
+									<?php $fixed = get_sub_field( 'fixed' ); ?>
+									<div>Fixed <?php  echo wp_kses_post($fixed); ?></div>
+
+									<?php $variable = get_sub_field( 'variable' ); ?>
+									Variable <?php echo wp_kses_post($variable); ?>
+									<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
+								</div>
 					</div>
 				</td>
 			</tr>
 
-		<?php endwhile; ?>
+
+			<?php
+			endwhile;
 	
+		?>
+
 	</table>
 	</div>
 </section>
@@ -154,11 +185,11 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_content', 7 );
 
 function eqd_single_after_entry_modals() {
 	?>
-	<?php if ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) : ?>
+	<?php if ( have_rows( 'vendors', 'option' ) ) : ?>
 		<?php
-		while ( have_rows( 'build_refinance_student_loans_section', 'option' ) ) :
+		while ( have_rows( 'vendors', 'option' ) ) :
 			the_row();
-			$lender_disclosure = get_sub_field( 'lender_disclosure', 'option' );
+			$full_disclosure_content = get_sub_field( 'full_disclosure_content', 'option' );
 			?>
 			<div id="modal_disclosure_<?php echo get_row_index(); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
 				<div class="modal-content" >
@@ -166,7 +197,7 @@ function eqd_single_after_entry_modals() {
 					<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
 				</button>
 				<div class="content">
-					<?php echo wp_kses_post( $lender_disclosure ); ?>
+					<?php echo wp_kses_post( $full_disclosure_content ); ?>
 				</div>
 				</div>
 			</div>
