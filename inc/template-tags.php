@@ -121,8 +121,6 @@ function eqd_tha_footer_cta() {
 		// Individual page.
 		$disable = get_field( 'disable' );
 
-		var_dump( $disable );
-
 		if ( ! $disable ) :
 			if ( ( ! is_author() && ! is_archive() && ! is_category() && ! is_tax() ) || is_archive( 'eqd-featured-press' ) ) :
 				?>
