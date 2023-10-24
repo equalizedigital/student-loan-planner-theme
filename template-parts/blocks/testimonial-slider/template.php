@@ -65,7 +65,15 @@ $acf_title = get_field( 'title' );
 						<blockquote class="testimonial-slider-block-container-testimonial-slider-testimonial__content">
 							<span class="content"><?php echo wp_kses_post( $testimonial->post_content ); ?></span>
 							<span class="title"><?php echo wp_kses_post( get_the_title( $id_post ) ); ?></span>
-							<span class="date"><span><?php the_field( 'location', $id_post ); ?></span>|<span><?php the_field( 'date', $id_post ); ?></span></span>
+							<span class="date">
+								<span>
+									<?php the_field( 'location', $id_post ); ?>
+								</span>
+								 <?php if(!empty(get_field( 'date', $id_post ))){ echo '|'; } ?>
+								<span>
+									<?php the_field( 'date', $id_post ); ?>
+								</span>
+							</span>
 							<span class="rating">
 								<div class="stars" aria-hidden="true">
 								<?php for ( $i = 0; $i < 5; $i++ ) : ?>
@@ -75,7 +83,8 @@ $acf_title = get_field( 'title' );
 								<?php endfor; ?>
 								<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
 							</div>
-							<?php echo $rating; ?> out of 5 stars.
+							<span class="screen-reader-text"><?php echo $rating; ?> out of 5 stars.</span>
+
 						</blockquote>
 					</div>
 					<?php

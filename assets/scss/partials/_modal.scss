@@ -32,6 +32,9 @@
     iframe {
         max-width: 100%;
         width: 100%;
+        @include media(">tablet") {
+            min-height: 490px;
+        }
     }
 
     .modal_copy {
