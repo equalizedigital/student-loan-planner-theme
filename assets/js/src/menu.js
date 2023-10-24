@@ -72,7 +72,7 @@
 			});
 		});
 
-		if ($(window).innerWidth() >= 768) {
+		if ($(window).innerWidth() >= 1070) {
 			$('#menu_search_btn').on('click', function() {
 				var $popup = $('.search-popup');
 				if ($popup.length) {
@@ -104,7 +104,7 @@
 	});
 
 
-	if ($(window).innerWidth() <= 768) {
+	if ($(window).innerWidth() <= 1070) {
 		var $mainLinks = $(".menu-item-main-link");
 		var $sideHeader = $('.site-header');
 
@@ -246,11 +246,11 @@
 			}
 		}
 
-		if ($(window).width() > 768) {
+		if ($(window).width() > 1070) {
 			$('.zight-tab-content-nav .ul').css('display', 'flex');
 		}
 
-		if ($(window).width() <= 768) {
+		if ($(window).width() <= 1070) {
 			mobileToggle.next().hide();
 		}
 	});
