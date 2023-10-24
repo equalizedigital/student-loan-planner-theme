@@ -12,13 +12,5 @@
 	"acf": {
 		"mode": "preview",
 		"renderTemplate": "full-width-columns-background.php"
-	},
-	"example": {
-		"attributes": {
-			"mode": "preview",
-			"data": {
-				"preview_image_help": "screenshot.jpg"
-			}
-		}
 	}
 }
