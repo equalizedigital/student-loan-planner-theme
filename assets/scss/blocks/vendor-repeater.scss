@@ -1,9 +1,11 @@
 .vendor_repeater_block {
     &_container_items {
-        overflow: scroll;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include media(">tablet") {
+            overflow: scroll;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
     &_container_items_table {
         border: 1px solid #D9D9D9;
@@ -18,7 +20,7 @@
             display: none;
         }
         .btn {
-            min-width: 190px;
+            min-width: 180px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -57,7 +59,7 @@
                 }
 
                 td {
-                    padding: 15px 15px;
+                    padding: 10px 4px;
                     text-align: center;
                     border-bottom: 1px solid #D9D9D9;
                     border-right: 1px solid #D9D9D9;
