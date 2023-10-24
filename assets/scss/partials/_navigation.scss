@@ -207,6 +207,15 @@ header.site-header {
 									@include media(">tablet") {
 										grid-template-columns: .65fr .35fr;
 									}
+									.menu-column:nth-child(4){
+										.sub-menu{
+											@include media(">tablet") {
+												grid-template-columns: repeat(2, 1fr);
+												gap: 0 15px;
+												display: grid;
+											}
+										}
+									}
 								}
 							}
 
