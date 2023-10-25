@@ -489,8 +489,9 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_block_disclosure'
  **/
 function eqd_single_after_entry_block_disclosure() {
 	if ( has_block( 'acf/vendor-repeater' ) ) {
-		$hide_section_per_page = get_field( 'hide_student_loans_section', get_the_ID() );
-		if ( $hide_section_per_page ) {
+		// $hide_section_per_page   = get_field( 'hide_student_loans_section', get_the_ID() );
+		$hide_table_section_only = get_field( 'hide_table_section_only', get_the_ID() );
+		if ( $hide_table_section_only ) {
 			return;
 		}
 		?>
