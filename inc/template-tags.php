@@ -367,19 +367,56 @@ add_action( 'tha_single_sidebar', 'eqd_single_sidebar' );
 function eqd_single_sidebar() {
 	// Standard Format.
 	if ( is_single() && get_post_type() == 'post' ) {
-		if ( get_field( 'post_format_style' ) != 'full-width' ) :
+		if ( get_field( 'post_format_style' ) == 'standard' ) :
 			?>
 			<div class="sidebar_container">
 				<div class="sidebar_social">
 					<?php echo '<span>Share:</span> ' . do_shortcode( '[shared_counts]' ); ?>
 				</div>
-				<?php if ( has_block( 'acf/table-of-contents' ) ) { ?>
 					<div class="toc_content_load_point_sidebar">
 						<h2 class="toc_content_load_point_sidebar__title">Table of Contents</h2>
 						<div class="toc_content_load_point"></div>
 					</div>
-				<?php } ?>
 			</div>
+			<?php 
+			// echo has_block( 'acf/table-of-contents' );
+			if ( !has_block( 'acf/table-of-contents' ) ) : ?>
+				
+			<?php 
+			// placeholder.
+			 ?>
+			<div class="toc-nav placeholder"></div>
+			<?php // mobile nav ?>
+			<div class="contents-nav-mobile">
+				<div class="contents-nav-mobile-header">
+					<button class="contents-nav-mobile-header-dropdown-select">
+						<span class="dropdown">
+						<div class="open">
+							<svg width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 1L26 1" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							<path d="M1 1L3 1" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							<path d="M6 8L26 8" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							<path d="M1 8L3 8" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							<path d="M6 15L26 15" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							<path d="M1 15L3 15" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							</svg>
+						</div>
+						<span class="close">
+							<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1.72168 1.01477L17.9851 17.2782" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							<path d="M1.72168 17.9854L17.9851 1.7219" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+							</svg>
+						</span>
+						</span>
+						<span class="text">Jump to</span>
+					</button>
+					<div class="cta-btn">
+						<a href="" class="btn">Get Help</a>
+					</div>
+				</div>
+				<div class="contents-nav-mobile-menu"></div>
+			</div>
+			<?php endif; ?>
 			<?php
 		endif;
 	}
