@@ -21,6 +21,12 @@
     }
 }
 
+.toc-nav {
+    &.placeholder{
+        display: none;
+    }
+}
+
 .table-of-contents-block {
     max-width: $container-width;
     margin: 0 auto;
@@ -109,6 +115,7 @@
         }
 
         .toc-nav {
+          
             ul {
                 padding: 0;
                 margin: 0;

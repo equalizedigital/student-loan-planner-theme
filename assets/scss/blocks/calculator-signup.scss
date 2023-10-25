@@ -5,6 +5,20 @@
     }
 }
 
+.post_type_layout_standard {
+	.calculator-signup-container-content {
+       @include media(">tablet") {
+        min-height: 230px;
+       }
+    }
+    .calculator-signup-container-content .title {
+       @include media(">tablet") {
+        font-size: 25px;
+        line-height: 30px;
+       }
+    }
+}
+
 .calculator-signup-block {
     background: #625089;
     padding: 0;

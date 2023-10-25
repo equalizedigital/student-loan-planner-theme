@@ -87,12 +87,9 @@
 }
 
 .list-2col {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0 40px;
-
+    padding: 0;
     @include media(">tablet") {
-        grid-template-columns: 1fr 1fr;
+        columns: 2;
     }
     li {
         width: 100%;
