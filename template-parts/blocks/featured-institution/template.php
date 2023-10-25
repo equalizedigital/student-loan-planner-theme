@@ -50,13 +50,10 @@ $show_states                  = get_field( 'show_states' );
 $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
-
-
+$block_id            = get_field( 'block_id' );
 $time_stamp = time() . wp_rand( 0, 23 );
-
-
 ?>
-<section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo !empty($block_id)?  $block_id:esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
 	<h3 class="screen-reader-text"><?php echo get_the_title($select_institutional_contact); ?></h3>
 	<div class="vendor_information_block_container">

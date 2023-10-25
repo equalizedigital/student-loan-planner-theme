@@ -79,6 +79,9 @@ function eqd_clean_body_classes( $classes ) {
 		'admin-bar',
 		'logged-in',
 		'wp-embed-responsive',
+		'content-sidebar',
+		'content',
+		'full-width-content',
 	);
 
 	// AdThrive Classes.
