@@ -35,7 +35,7 @@ header.site-header {
 		margin: 0 auto;
 		padding: 0 25px;
 
-		@include media(">tablet") {
+		@include media(">1070px") {
 			overflow: auto;
 		}
 	}
@@ -46,7 +46,7 @@ header.site-header {
 .site-header {
 	position: relative;
 
-	@include media("<tablet") {
+	@include media("<1070px") {
 		&:after {
 			content: close-quote;
 			position: absolute;
@@ -60,7 +60,7 @@ header.site-header {
 	}
 
 	&.scroll_active {
-		@include media("<tablet") {
+		@include media("<1070px") {
 			z-index: 1;
 		}
 	}
@@ -71,7 +71,7 @@ header.site-header {
 		align-items: center;
 
 		&:after {
-			@include media("<tablet") {
+			@include media("<1070px") {
 				content: close-quote;
 				position: absolute;
 				top: 0;
@@ -86,7 +86,7 @@ header.site-header {
 			display: flex;
 			width: 100%;
 
-			@include media(">=tablet") {}
+			@include media(">=1070px") {}
 
 			.main-logo {
 				display: flex;
@@ -99,15 +99,15 @@ header.site-header {
 				justify-content: space-between;
 				width: 100%;
 
-				@include media("<medium") {
+				@include media("<1070px") {
 					position: static;
 				}
 
 				@include media("<large") {}
 
-				@include media("<medium") {}
+				@include media("<1070px") {}
 
-				@include media("<=mobile_menu") {
+				@include media("<=1070px") {
 					display: none;
 				}
 
@@ -117,13 +117,6 @@ header.site-header {
 					align-items: center;
 					gap: 28px;
 					padding: 0;
-					@media screen and (max-width:1150px) and (min-width:900px) {
-						gap: 10px;
-					}
-
-					@media screen and (max-width:900px) and (min-width:768px) {
-						gap: 10px;
-					}
 
 					li:not(:last-child) {
 						ul li {
@@ -146,10 +139,10 @@ header.site-header {
 						display: inline-flex;
 						
 						align-items: center;
-						@include media(">tablet") {
+						@include media(">1070px") {
 							height: 80px;
 						}
-						@include media("<tablet") {
+						@include media("<1070px") {
 							color: white;
 							font-size: 23px;
 							font-style: normal;
@@ -174,7 +167,7 @@ header.site-header {
 								width: auto;
 								height: 50%;
 
-								@include media("<tablet") {
+								@include media("<1070px") {
 									height: 100%;
 									// background: brand-color('primary');
 								}
@@ -185,7 +178,7 @@ header.site-header {
 					>li {
 						list-style: none;
 
-						@include media("<tablet") {
+						@include media("<1070px") {
 							width: 100%;
 						}
 
@@ -196,7 +189,7 @@ header.site-header {
 						}
 
 						.chevron {
-							@include media(">tablet") {
+							@include media(">1070px") {
 								display: none;
 							}
 						}
@@ -204,12 +197,12 @@ header.site-header {
 						&.has-submenus {
 							&.submenu-column__two {
 								.sub_menu {
-									@include media(">tablet") {
+									@include media(">1070px") {
 										grid-template-columns: .65fr .35fr;
 									}
 									.menu-column:nth-child(4){
 										.sub-menu{
-											@include media(">tablet") {
+											@include media(">1070px") {
 												grid-template-columns: repeat(2, 1fr);
 												gap: 0 15px;
 												display: grid;
@@ -221,7 +214,7 @@ header.site-header {
 
 							&.submenu-column__three {
 								.sub_menu {
-									@include media(">tablet") {
+									@include media(">1070px") {
 										grid-template-columns: repeat(3, 1fr);
 										gap: 0 15px;
 									}
@@ -229,7 +222,7 @@ header.site-header {
 							}
 							&.submenu-column__single_menu {
 								.sub-menu {
-									@include media(">tablet") {
+									@include media(">1070px") {
 										grid-template-columns: repeat(3, 1fr);
 										gap: 0 15px;
 										display: grid;
@@ -252,7 +245,7 @@ header.site-header {
 							margin: 0 auto;
 							padding: 31px 51px;
 
-							@include media("<tablet") {
+							@include media("<1070px") {
 								padding: 0;
 								background-color: brand-color('tertiary');
 							}
@@ -282,7 +275,7 @@ header.site-header {
 								display: flex;
 								padding: 45px 24px;
 
-								@include media(">tablet") {
+								@include media(">1070px") {
 									display: none;
 								}
 							}
@@ -301,7 +294,7 @@ header.site-header {
 								min-width: 0;
 								align-self: flex-start;
 
-								@include media(">tablet") {
+								@include media(">1070px") {
 									display: none;
 
 								}
@@ -342,7 +335,7 @@ header.site-header {
 							}
 
 							.menu-column {
-								@include media("<tablet") {
+								@include media("<1070px") {
 									padding: 20px 24px;
 									background: white;
 
@@ -369,7 +362,7 @@ header.site-header {
 										opacity: 0;
 										visibility: hidden;
 
-										@include media("<tablet") {
+										@include media("<1070px") {
 											display: none;
 										}
 									}
@@ -450,13 +443,13 @@ header.site-header {
 									width: 100%;
 									height: 5px;
 
-									@include media("<tablet") {
+									@include media("<1070px") {
 										display: none;
 									}
 
 								}
 
-								@include media('>=medium') {
+								@include media('>=1070px') {
 
 									&::before {
 										transform: rotate(-135deg);
@@ -467,11 +460,11 @@ header.site-header {
 							}
 
 							.sub_menu {
-								@include media(">tablet") {
+								@include media(">1070px") {
 									display: grid;
 								}
 
-								@include media("<=mobile_menu") {
+								@include media("<=1070px") {
 
 									&.open {
 										// display: flex;
@@ -513,7 +506,7 @@ header.site-header {
 						align-items: center;
 						justify-content: center;
 
-						@include media("<tablet") {
+						@include media("<1070px") {
 							display: none;
 						}
 
@@ -556,7 +549,7 @@ header.site-header {
 			align-items: center;
 			padding: 30px 0 20px;
 
-			@include media("<=mobile_menu") {
+			@include media("<=1070px") {
 				display: none;
 			}
 
@@ -577,12 +570,12 @@ header.site-header {
 				padding: 20px 30px;
 				display: none;
 
-				@include media("<tablet") {
+				@include media("<1070px") {
 					padding: 90px 24px 0;
 					background-color: brand-color('tertiary');
 				}
 
-				@include media("<=mobile_menu") {
+				@include media("<=1070px") {
 					overflow-y: auto;
 				}
 
@@ -596,13 +589,13 @@ header.site-header {
 					flex-direction: column;
 					align-items: flex-start;
 
-					@include media("<tablet") {
+					@include media("<1070px") {
 						margin-top: 71px;
 					}
 
 					>li {
 
-						@include media(">tablet") {
+						@include media(">1070px") {
 							display: flex;
 							flex-direction: column;
 							align-items: flex-start;
@@ -630,7 +623,7 @@ header.site-header {
 								width: 100%;
 							}
 
-							@include media(">tablet") {
+							@include media(">1070px") {
 								display: none;
 							}
 						}
@@ -681,7 +674,7 @@ body {
 	}
 }
 
-@include media(">mobile_menu") {
+@include media(">1070px") {
 	#nav-icon {
 		display: none;
 	}
@@ -693,7 +686,7 @@ body {
 .nav-icon {
 	display: inline-block;
 
-	@include media(">tablet") {
+	@include media(">1070px") {
 		display: none;
 	}
 	span {
@@ -781,7 +774,7 @@ body {
 	margin: 0 -24px;
 	margin-top: auto;
 
-	@include media(">tablet") {
+	@include media(">1070px") {
 		display: none;
 	}
 
@@ -870,7 +863,7 @@ body {
 	align-items: center;
 	gap: 30px;
 
-	@include media(">tablet") {
+	@include media(">1070px") {
 		display: flex;
 	}
 
