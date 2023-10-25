@@ -149,7 +149,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php if ( $show_contact ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">Contact:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
-						<?php echo wp_kses_post( $contact_info ); ?>
+						<a href="<?php echo get_the_permalink($select_institutional_contact); ?>"><?php echo get_the_title($select_institutional_contact); ?></a>
 					</div>
 				<?php endif; ?>
 				
@@ -173,36 +173,24 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php endif; ?>
 
 				<div class="vendor_information_block_container_column_two_link">
-					<?php
-					if ( ! empty( $website['url'] ) ) :
-						$target = $website['target'] ? $website['target'] : '_blank';
-						$title  = $website['title'] ? $website['title'] : 'Full ' . $heading . ' Review';
-						?>
-						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn" target="<?php echo esc_attr( $target ); ?>">
-							<?php
-							if ( ! empty( $title ) ) {
-								echo wp_kses_post( $title );
-							}
 
-							if ( ! empty( $button_subtext ) ) :
-								?>
-								<span class="subtext">
-									<?php echo wp_kses_post( $button_subtext ); ?>
-								</span>
-							<?php endif; ?>
+					<?php
+					if ( ! empty(get_field('review_url',$select_institutional_contact))  ) :
+						?>
+						<a href="<?php echo get_field('review_url',$select_institutional_contact); ?>" class="vendor_information_block_container_column_two_link btn">
+							<?php echo "Full ".get_the_title($select_institutional_contact)." Review"; ?>
 						</a>
 					<?php endif; ?>
+
 					<?php if(!empty($more_info_content)): ?>
 
 						<button 
 						class="vendor_information_block_container_column_two_link_more_info"
 						type="button"
-						aria-label="More Information about <?php echo $heading; ?>"
+						aria-label="More Information about <?php echo get_the_title($select_institutional_contact); ?>"
 						aria-expanded="false"
 						aria-controls="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>"
-						>
-							More Information
-							<span>
+						>More Information<span>
 								<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg>
 							</span>
 						</button>

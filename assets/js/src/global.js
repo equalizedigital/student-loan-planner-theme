@@ -386,7 +386,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			widgetTitles.forEach(function (title) {
 				var menuFooterContainer = title.nextElementSibling;
-				// console.log(menuFooterContainer)
 				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
 					var containerId = menuFooterContainer.id;
 					title.setAttribute('aria-controls', containerId);
@@ -608,12 +607,10 @@ window.addEventListener("DOMContentLoaded", function () {
 	// resource links
 	let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
 	
-	console.log(accordionButtons,accordionButtons.length,'ed')
 
 	if (accordionButtons.length > 0) {
 		// Accordion
 		accordionButtons.forEach(button => {
-			console.log(accordionButtons)
 
 			button.addEventListener('click', () => {
 				const contentId = button.getAttribute('aria-controls');
@@ -824,12 +821,22 @@ window.addEventListener("load", function () {
 // 
 
 window.addEventListener('DOMContentLoaded', () => {
+	
+	let toc_container_entry_content = document.querySelectorAll('.post_type_layout_standard .entry-content');
 	let toc_container = document.querySelectorAll('.toc_container');
-	if (toc_container.length > 0) {
+
+	if (toc_container.length > 0 || toc_container_entry_content.length>0) {
 
 		// Get all <h2> elements within .toc_container
-		let tocContainer = document.querySelector('.toc_container');
-		let h2Elements = tocContainer.querySelectorAll('h2');
+		let tocContainer;
+		let h2Elements;
+		if (toc_container.length > 0) {
+			 tocContainer = document.querySelector('.toc_container');
+			 h2Elements = tocContainer.querySelectorAll('h2');
+		} else if(toc_container_entry_content.length>0){
+			 tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
+			 h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
+		}
 
 		// Create an empty array to store the IDs
 		const uniqueIds = [];
@@ -899,6 +906,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
+		
 		const observer = new IntersectionObserver(entries => {
 
 			entries.forEach(entry => {
