@@ -367,7 +367,13 @@ add_action( 'tha_single_sidebar', 'eqd_single_sidebar' );
 function eqd_single_sidebar() {
 	// Standard Format.
 	if ( is_single() && get_post_type() == 'post' ) {
-		if ( get_field( 'post_format_style' ) == 'standard' ) :
+		$layout_style = get_field( 'post_format_style' );
+
+		if( empty( $layout_style ) ) {
+			$layout_style = 'standard';
+		}
+
+		if ( get_field( 'post_format_style' ) == 'standard' || $layout_style == true ) :
 			?>
 			<div class="sidebar_container">
 				<div class="sidebar_social">
