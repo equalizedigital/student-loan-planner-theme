@@ -173,25 +173,15 @@ $time_stamp = time() . wp_rand( 0, 23 );
 				<?php endif; ?>
 
 				<div class="vendor_information_block_container_column_two_link">
-					<?php
-					if ( ! empty( $website['url'] ) ) :
-						$target = $website['target'] ? $website['target'] : '_blank';
-						$title  = $website['title'] ? $website['title'] : 'Full ' . $heading . ' Review';
-						?>
-						<a href="<?php echo wp_kses_post( $website['url'] ); ?>" class="vendor_information_block_container_column_two_link btn" target="<?php echo esc_attr( $target ); ?>">
-							<?php
-							if ( ! empty( $title ) ) {
-								echo wp_kses_post( $title );
-							}
 
-							if ( ! empty( $button_subtext ) ) :
-								?>
-								<span class="subtext">
-									<?php echo wp_kses_post( $button_subtext ); ?>
-								</span>
-							<?php endif; ?>
+					<?php
+					if ( ! empty(get_field('review_url',$select_institutional_contact))  ) :
+						?>
+						<a href="<?php echo get_field('review_url',$select_institutional_contact); ?>" class="vendor_information_block_container_column_two_link btn">
+							<?php echo "Full ".get_the_title($select_institutional_contact)." Review"; ?>
 						</a>
 					<?php endif; ?>
+
 					<?php if(!empty($more_info_content)): ?>
 
 						<button 
