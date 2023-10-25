@@ -347,29 +347,29 @@ function npp_filter_post_object_query( $args, $field, $post_id ) {
 add_filter( 'acf/fields/post_object/query', 'npp_filter_post_object_query', 10, 3 );
 
 function modify_post_object_query( $args, $field, $post_id ) {
-    // Check if the parent block is 'acf/recommended-posts-block'
-    if ( isset($field['parent']) && $field['parent'] == 'block_acf/recommended-posts-block' ) {
-        // If there's a search term, modify the query to search by title only
-        if( isset($args['s']) ) {
-            // Set search term to a variable
-            $search_term = $args['s'];
+	// Check if the parent block is 'acf/recommended-posts-block'
+	if ( isset($field['parent']) && $field['parent'] == 'block_acf/recommended-posts-block' ) {
+		// If there's a search term, modify the query to search by title only
+		if( isset($args['s']) ) {
+			// Set search term to a variable
+			$search_term = $args['s'];
 
-            // Modify the query
-            unset($args['s']); // Remove default search
-            $args['post_title_like'] = $search_term; // Add title search
-        }
-    }
+			// Modify the query
+			unset($args['s']); // Remove default search
+			$args['post_title_like'] = $search_term; // Add title search
+		}
+	}
 
-    // Return the modified arguments
-    return $args;
+	// Return the modified arguments
+	return $args;
 }
-//add_filter('acf/fields/post_object/query', 'modify_post_object_query', 10, 3);
+add_filter('acf/fields/post_object/query', 'modify_post_object_query', 10, 3);
 
 function title_like_posts_where( $where, $wp_query ) {
-    global $wpdb;
-    if ( $post_title_like = $wp_query->get('post_title_like') ) {
-        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
-    }
-    return $where;
+	global $wpdb;
+	if ( $post_title_like = $wp_query->get('post_title_like') ) {
+		$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
+	}
+	return $where;
 }
-//add_filter('posts_where', 'title_like_posts_where', 10, 2);
+add_filter('posts_where', 'title_like_posts_where', 10, 2);
