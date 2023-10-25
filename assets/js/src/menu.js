@@ -236,12 +236,12 @@
 	var ifToClick = true;
 	$(window).on("resize", function () {
 		if (nav.hasClass("menu-mobile-open")) {
-			if ($(window).width() > 880 && ifToClick) {
+			if ($(window).width() > 1070 && ifToClick) {
 				navIcon.click();
 				nav.removeClass("menu-mobile-open");
 				$("html").removeClass("overflow-hidden");
 				ifToClick = false;
-			} else if ($(window).width() <= 880 && !ifToClick) {
+			} else if ($(window).width() <= 1070 && !ifToClick) {
 				ifToClick = true;
 			}
 		}
