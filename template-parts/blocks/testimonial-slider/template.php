@@ -74,6 +74,7 @@ $acf_title = get_field( 'title' );
 									<?php the_field( 'date', $id_post ); ?>
 								</span>
 							</span>
+							<?php if(!empty($rating)): ?>
 							<span class="rating">
 								<div class="stars" aria-hidden="true">
 								<?php for ( $i = 0; $i < 5; $i++ ) : ?>
@@ -84,6 +85,7 @@ $acf_title = get_field( 'title' );
 								<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
 							</div>
 							<span class="screen-reader-text"><?php echo $rating; ?> out of 5 stars.</span>
+							<?php endif; ?>
 
 						</blockquote>
 					</div>
