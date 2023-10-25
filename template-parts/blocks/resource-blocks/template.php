@@ -57,17 +57,19 @@ $blocks = get_field('blocks');
 				if(!empty($row['subcopy'])){
 					$subcopy = $row['subcopy'];
 				}
-				if(!empty($row['title'])){
-					$title = $row['title'];
+			
+
 					echo '<li class="resource-blocks-block-container-list-item__block">';
 						echo "<a href=\"$link\">";
-						?>
+						if(!empty($row['title'])){
+							$title = $row['title'];
+							?>
 							<h3 class="title"><?php _e($title); ?></h3>
+						<?php  } ?>
 							<p><?php _e($subcopy); ?></p>
 						<?php
 						echo "</a>";
 					echo '</li>';
-				}
 
 			}
 			echo '</ul>';
