@@ -822,10 +822,10 @@ window.addEventListener("load", function () {
 
 window.addEventListener('DOMContentLoaded', () => {
 	
-	let toc_container_entry_content = document.querySelectorAll('.post_type_layout_standard .entry-content');
+	let toc_container_entry_content = document.querySelectorAll('.single .post_type_layout_standard .entry-content');
 	let toc_container = document.querySelectorAll('.toc_container');
 
-	if (toc_container.length > 0 || toc_container_entry_content.length>0) {
+	if (toc_container.length > 0 || toc_container_entry_content.length > 0) {
 
 		// Get all <h2> elements within .toc_container
 		let tocContainer;
