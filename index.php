@@ -11,14 +11,15 @@
 get_header();
 
 $container_class = null;
-
 if ( get_field( 'post_format_style' ) == 'full-width' ) {
-	$container_class .= 'site-main-article-content__full-width';
+	$container_class .=  ' site-main-article-content__full-width';
 }
 
+$container_class .= ' post_type_layout_' . get_field( 'post_format_style' ) . ' ';
+// var_dump($container_class);
 tha_content_before();
 
-	echo '<div class="' . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
+	echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
 		tha_content_wrap_before();
 
 		tha_page_header();

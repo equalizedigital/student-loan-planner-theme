@@ -9,17 +9,15 @@
 /* Entry Content
 --------------------------------------------- */
 
-.content-sidebar{
+.content-sidebar {}
 
-}
-
-.content{
+.content {
 	.entry-content {
 		max-width: 1120px;
 	}
 }
 
-.full-width-content{
+.full-width-content {
 	.entry-content {
 		max-width: $container-width;
 	}
@@ -30,22 +28,23 @@
 	max-width: $container-width;
 	// padding: 30px 0;
 	margin: 0 auto;
+
 	@include media(">tablet") {
 		// padding: 100px $container-padding;
 	}
 
 	.alignfull {
-		max-width: unset!important;
-		width: 100vw!important;
+		max-width: unset !important;
+		width: 100vw !important;
 		position: relative;
-		left: 50%!important;
-		right: 50%!important;
-		margin-left: -50vw!important;
-		margin-right: -50vw!important;
+		left: 50% !important;
+		right: 50% !important;
+		margin-left: -50vw !important;
+		margin-right: -50vw !important;
 	}
 }
 
-.content-sidebar{
+.content-sidebar {
 	.entry-content {
 		.alignfull {
 			// max-width: unset!important;
@@ -58,6 +57,7 @@
 		}
 	}
 }
+
 .entry-content>*,
 .block-area>* {
 
@@ -180,12 +180,13 @@ img.wprm-comment-rating {
 	}
 
 	.comment img {
-	
+
 		border-radius: 50%;
 		max-width: 56px;
+
 		@include media(">tablet") {
 			width: 56px;
-		height: 56px;
+			height: 56px;
 		}
 	}
 
@@ -198,6 +199,7 @@ img.wprm-comment-rating {
 	.comment-list {
 		margin: 0 0 32px;
 		list-style: none;
+
 		li:first-child {
 			border-top: 0px;
 		}
@@ -452,6 +454,7 @@ img.wprm-comment-rating {
 		max-width: 1168px;
 		margin: 0 auto;
 		gap: 60px 116px;
+
 		@include media("<tablet") {
 			display: flex;
 			flex-direction: column-reverse;
@@ -474,6 +477,7 @@ img.wprm-comment-rating {
 			@include media("<tablet") {
 				width: 100%;
 			}
+
 			.entry-title {
 				color: white;
 				font-size: 35px;
@@ -548,6 +552,7 @@ img.wprm-comment-rating {
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 0 116px;
+
 	@include media(">tablet") {
 		padding: 0 24px 160px;
 		gap: 0 40px;
@@ -682,11 +687,11 @@ img.wprm-comment-rating {
 	}
 
 	&-loop {
-		padding:  0 0;
+		padding: 0 0;
 
 		@include media(">tablet") {
 			padding: 72px 0 0;
-		
+
 		}
 
 		h2 {
@@ -902,6 +907,19 @@ img.wprm-comment-rating {
 
 /*  Inner Page Hero
 --------------------------------------------- */
+.post_type_layout_standard {
+	
+}
+
+.post_type_layout_full-width {
+	.inner-hero-container .title {
+		@include media(">tablet") {
+			min-width: auto;
+			max-width: 650px;
+		}
+	}
+}
+
 .inner-hero {
 	background-color: brand-color('tertiary');
 	padding: 60px 0;
@@ -1116,7 +1134,7 @@ img.wprm-comment-rating {
 			flex-direction: column;
 		}
 
-		&.site-main-article__author-data_editor{
+		&.site-main-article__author-data_editor {
 			gap: 20px;
 		}
 
@@ -1125,18 +1143,22 @@ img.wprm-comment-rating {
 			align-items: center;
 		}
 	}
+
 	.auth-editor-container {
 		display: flex;
 		gap: 20px;
+
 		@include media("<tablet") {
 			flex-wrap: wrap;
 		}
 	}
+
 	.entry-author {
 		display: flex;
-		
+
 		align-items: center;
 		gap: 20px;
+
 		@include media("<tablet") {
 			flex-wrap: wrap;
 		}
@@ -1234,7 +1256,8 @@ img.wprm-comment-rating {
 		font-style: normal;
 		font-weight: 400;
 		line-height: 16px;
-		a{
+
+		a {
 			color: inherit;
 		}
 	}
@@ -1565,10 +1588,10 @@ section.refinance_lender_section {
 		grid-template-columns: auto 1fr;
 		align-items: center;
 		gap: 20px;
-		
+
 		@include media(">tablet") {
 			display: flex;
-			
+
 			align-items: center;
 		}
 	}
@@ -1599,6 +1622,7 @@ section.refinance_lender_section {
 		padding-inline-start: 0px;
 		gap: 20px;
 		list-style: none;
+
 		@include media(">tablet") {
 			margin-left: auto;
 			justify-content: center;
@@ -1687,15 +1711,17 @@ section.refinance_lender_section {
 /* Sidebar
 --------------------------------------------- */
 .archive {
-	.sidebar_container{
+	.sidebar_container {
 		@include media("<tablet") {
 			display: block;
 		}
+
 		@media screen and(max-width:1200px) and (min-width:768px) {
 			margin-right: 20px;
 		}
 	}
 }
+
 .sidebar_container {
 	position: relative;
 	margin-top: -60px;
@@ -1868,7 +1894,7 @@ html {
 			}
 		}
 
-		&_item_info_author{
+		&_item_info_author {
 			color: black;
 		}
 
