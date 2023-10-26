@@ -1021,6 +1021,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
+	
 	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
 	if (accordionButton.length > 0) {
 
