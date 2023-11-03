@@ -1043,6 +1043,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 
+	const tabletChevron = document.querySelectorAll('.tablet_chevron');
+	if (tabletChevron.length > 0) {
 
 	document.querySelector('.tablet_chevron').addEventListener('click', function() {
 		var list = document.querySelector('.tabbed-content__nav-list');
@@ -1064,6 +1066,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			nextItem.classList.add('active');
 		}
 	});
+	}
 
 });
  
