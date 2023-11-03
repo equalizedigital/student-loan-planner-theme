@@ -14,6 +14,10 @@
                 position: absolute;
                 bottom: 0;
                 right: 0;
+                border: none;
+                -webkit-appearance: none;
+                background-color: transparent;
+                padding: 0;
                 display: flex;
                 @include media(">tablet") {
                     display: none;

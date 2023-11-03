@@ -1043,4 +1043,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 
+
+	document.querySelector('.tablet_chevron').addEventListener('click', function() {
+		var list = document.querySelector('.tabbed-content__nav-list');
+		var items = list.querySelectorAll('.tabbed-content__nav-item');
+		
+		// Find the currently active item
+		var activeItem = list.querySelector('.active');
+		var activeIndex = Array.from(items).indexOf(activeItem);
+		
+		// Determine the next item to scroll into view
+		var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
+		
+		if (nextItem) {
+			// Scroll the next item into view
+			nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+			
+			// Update the active class if needed
+			activeItem.classList.remove('active');
+			nextItem.classList.add('active');
+		}
+	});
+
 });
+ 
