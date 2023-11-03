@@ -77,6 +77,10 @@
             padding: 40px 10%;
         }
 
+        @include media(">1600px") {
+            padding: 80px 10%;
+        }
+
         .btn {
             margin-top: 20px;
             display: inline-block;

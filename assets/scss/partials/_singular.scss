@@ -41,6 +41,7 @@
 		right: 50% !important;
 		margin-left: -50vw !important;
 		margin-right: -50vw !important;
+		border-radius: 0;
 	}
 }
 
@@ -1410,22 +1411,23 @@ img.wprm-comment-rating {
 section.refinance_lender_section {
 	margin: 0 0 117px 0;
 
-	.lender_info {}
-
 	.lender_info table {
 		width: 100%;
 	}
-
 
 	.lender_info tr {
 		display: grid;
 		width: 100%;
 		grid-template-columns: 1fr;
-		margin: 27px 0;
 		border-bottom: 1px solid #D9D9D9;
-		padding-bottom: 27px;
+		padding-bottom: 10px;
+		margin: 15px 0;
+
 
 		@include media(">tablet") {
+		margin: 27px 0;
+		padding-bottom: 27px;
+
 			grid-template-columns: 1fr 1.2fr 1fr;
 		}
 	}
@@ -1518,12 +1520,15 @@ section.refinance_lender_section {
 
 	header .title {
 		color: #625089;
-		font-size: 35px;
+		font-size: 30px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
 		margin: 0 0 46px;
-		text-align: center;
+		@include media(">tablet") {
+			text-align: center;
+			font-size: 35px;
+		}
 	}
 
 }
@@ -1993,4 +1998,7 @@ html {
 
 article.type-post {
 	margin-bottom: 117px;
+	+ .refinance_lender_section {
+		margin-top: -67px;
+	}
 }
