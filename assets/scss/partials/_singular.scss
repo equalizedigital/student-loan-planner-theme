@@ -1831,6 +1831,11 @@ section.refinance_lender_section {
 			text-decoration: none;
 			position: relative;
 
+			&:hover{
+				text-decoration: underline;
+				color: var(--WCAG-Green, #547C2D);
+			}
+
 			&:after {
 				content: '';
 				position: absolute;
@@ -1841,6 +1846,7 @@ section.refinance_lender_section {
 				background: var(--WCAG-Green, #547C2D);
 				opacity: 0;
 			}
+
 		}
 
 	}
