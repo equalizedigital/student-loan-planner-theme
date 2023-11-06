@@ -1692,6 +1692,7 @@ section.refinance_lender_section {
 		display: flex;
 		align-items: center;
 		gap: 20px;
+		flex-wrap: wrap;
 
 		span.name {
 			text-decoration: underline;
