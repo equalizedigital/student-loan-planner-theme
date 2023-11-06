@@ -733,7 +733,7 @@ window.addEventListener("load", function () {
 
 	// Listen for window resize events and recheck
 	window.addEventListener('resize', checkIsTabletSize);
-
+	
 	function teamHighlightFunctionality(windowWidth) {
 		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
 		let highlightButtonText = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button .text')
