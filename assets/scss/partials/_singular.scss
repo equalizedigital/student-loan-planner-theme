@@ -909,7 +909,7 @@ img.wprm-comment-rating {
 /*  Inner Page Hero
 --------------------------------------------- */
 .post_type_layout_standard {
-	.entry-content{
+	.entry-content {
 		padding: 40px 24px;
 	}
 }
@@ -1427,8 +1427,8 @@ section.refinance_lender_section {
 
 
 		@include media(">tablet") {
-		margin: 27px 0;
-		padding-bottom: 27px;
+			margin: 27px 0;
+			padding-bottom: 27px;
 
 			grid-template-columns: 1fr 1.2fr 1fr;
 		}
@@ -1527,6 +1527,7 @@ section.refinance_lender_section {
 		font-weight: 700;
 		line-height: 40px;
 		margin: 0 0 46px;
+
 		@include media(">tablet") {
 			text-align: center;
 			font-size: 35px;
@@ -1812,6 +1813,9 @@ section.refinance_lender_section {
 			margin: 27px 0 42px;
 			padding: 0;
 			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
 		}
 
 		li {
@@ -1830,8 +1834,9 @@ section.refinance_lender_section {
 			line-height: 20px;
 			text-decoration: none;
 			position: relative;
+			display: block;
 
-			&:hover{
+			&:hover {
 				text-decoration: underline;
 				color: var(--WCAG-Green, #547C2D);
 			}
@@ -2006,7 +2011,8 @@ html {
 
 article.type-post {
 	margin-bottom: 117px;
-	+ .refinance_lender_section {
+
+	+.refinance_lender_section {
 		margin-top: -67px;
 	}
 }

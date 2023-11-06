@@ -826,7 +826,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	let toc_container = document.querySelectorAll('.toc_container');
 
 	if (toc_container.length > 0 || toc_container_entry_content.length > 0) {
-
+		
 		// Get all <h2> elements within .toc_container
 		let tocContainer;
 		let h2Elements;
@@ -906,12 +906,13 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
+
+		
 		
 		const observer = new IntersectionObserver(entries => {
-
+			console.log(observer)
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
-
 				if (entry.intersectionRatio > 0) {
 					// Remove 'active' class from the currently active list item
 					if (activeListItemMobile) {
@@ -923,6 +924,7 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (activeListItemSidebar) {
 						activeListItemSidebar.classList.remove('active');
 					}
+					
 
 					// Add 'active' class to the one corresponding to the current entry
 					const listItem = document.querySelector(`.toc-nav li a[href="#${id}"]`).parentElement;
@@ -948,14 +950,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		});
 
+
 		// Track all sections that have an `id` applied
-		const targetElements = document.querySelectorAll('.toc_container h2');
+		let targetElements;
+		if (toc_container.length > 0) {
+			 targetElements = document.querySelectorAll('.toc_container h2');
+		} else if( toc_container_entry_content.length > 0 ) {
+			 targetElements = document.querySelectorAll('.single .post_type_layout_standard .entry-content h2');
+		}
+
 		targetElements.forEach(element => {
 			observer.observe(element);
 		});
-
-
-
 
 		window.addEventListener('scroll', function () {
 			// Get the .inner-hero element and its bottom position relative to the viewport
@@ -978,8 +984,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 
 		});
-
-
 
 		// click toc menu links	
 		const elementsWithHref = document.querySelectorAll('.contents-nav-mobile-menu a, .toc-nav a');
