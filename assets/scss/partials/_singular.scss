@@ -445,6 +445,14 @@ img.wprm-comment-rating {
 				grid-template-columns: 360px 1fr;
 			}
 		}
+		.contact-hero-container__content {
+			@include media("<tablet") {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
 	}
 
 	&-container {
@@ -520,6 +528,7 @@ img.wprm-comment-rating {
 			min-height: 0;
 			width: 100%;
 			max-width: 200px;
+			margin: 0 auto;
 		}
 
 		img {
