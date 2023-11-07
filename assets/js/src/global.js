@@ -764,6 +764,7 @@ window.addEventListener("load", function () {
 				}
 
 				highlightButton.addEventListener('click', function () {
+					console.log('eee')
 					// Remove the "hidden" class and add an "animate" class for each item
 					items.forEach(function (item) {
 
@@ -797,7 +798,7 @@ window.addEventListener("load", function () {
 					// Hide the "Show All" button with a fade-out effect
 					this.classList.add('active');
 
-					tabOpen == false ? highlightButtonText.innerText = 'Show Less' : highlightButtonText.innerText = initText;
+					tabOpen == false ? highlightButtonText.innerText = 'Show Fewer' : highlightButtonText.innerText = initText;
 
 					// After the animation is complete, remove the "animate" class
 					setTimeout(function () {
@@ -901,12 +902,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 
-
 		let activeListItem = null;
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
-
 		
 		
 		const observer = new IntersectionObserver(entries => {
