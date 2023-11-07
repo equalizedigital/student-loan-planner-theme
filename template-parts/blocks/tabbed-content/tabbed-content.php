@@ -154,7 +154,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								<div class="tabbed-content__content__image">
 									<figure>
 										<?php if ( ! empty( $row['image'] ) ) : ?>
-										<img src="<?php echo $row['image']['url']; ?>" alt="">
+											<img src="<?php echo $row['image']['url']; ?>" class="tabbed-content__content__image_img" alt="<?php echo $row['title']; ?>">
 										<?php endif; ?>
 									</figure>
 									
