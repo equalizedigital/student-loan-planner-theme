@@ -1472,19 +1472,20 @@ section.refinance_lender_section {
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
-		/* 114.286% */
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-family: $base-font;
 
+		.btn{
+			font-size: 15px;
+    		line-height: 20px;
+		}
 		sup {
 			top: 0;
 			font-size: .3em;
 		}
 	}
-
-	tr.data-tr .td_text {}
 
 	tr .td_text {
 		color: black;
