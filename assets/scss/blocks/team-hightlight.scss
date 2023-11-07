@@ -45,8 +45,11 @@
             grid-template-columns: 1fr;
             border: none;
             max-height: none;
+           
 
-            @include media(">tablet") {}
+            @include media("<tablet") {
+                border-radius: 0;
+            }
         }
 
         .team-hightlight-block-container-header__title {
