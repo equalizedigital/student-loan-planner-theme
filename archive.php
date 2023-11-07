@@ -86,6 +86,7 @@ function eqd_archive_recommended_post() {
 	$post_recommened = get_field('recommendedfeatured_posts',$term); 
 
 	if(!empty($post_recommened)):
+		if (!is_paged()) :
 	?>
 	<section class="archive_template_recommended_post">
 		<div class="archive_template_recommended_post_header">
@@ -162,6 +163,8 @@ function eqd_archive_recommended_post() {
 	</section>
 	<?php
 	endif;
+	endif;
+
 }
 add_action( 'tha_content_before_container', 'eqd_archive_recommended_post' );
 
@@ -170,6 +173,7 @@ function eqd_archive_recommended_cta(){
 	$cta = get_field('cta',$term); 
 
 	if($cta):
+		if(!is_paged()):
 ?>
 <section class="archive_cta">
 	<div class="archive_cta_container">
@@ -192,6 +196,7 @@ function eqd_archive_recommended_cta(){
 	</div>
 </section>
 <?php
+endif;
 endif;
 }
 add_action( 'tha_content_before_container', 'eqd_archive_recommended_cta' );

@@ -733,7 +733,7 @@ window.addEventListener("load", function () {
 
 	// Listen for window resize events and recheck
 	window.addEventListener('resize', checkIsTabletSize);
-
+	
 	function teamHighlightFunctionality(windowWidth) {
 		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
 		let highlightButtonText = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button .text')
@@ -764,6 +764,7 @@ window.addEventListener("load", function () {
 				}
 
 				highlightButton.addEventListener('click', function () {
+					console.log('eee')
 					// Remove the "hidden" class and add an "animate" class for each item
 					items.forEach(function (item) {
 
@@ -797,7 +798,7 @@ window.addEventListener("load", function () {
 					// Hide the "Show All" button with a fade-out effect
 					this.classList.add('active');
 
-					tabOpen == false ? highlightButtonText.innerText = 'Show Less' : highlightButtonText.innerText = initText;
+					tabOpen == false ? highlightButtonText.innerText = 'Show Fewer' : highlightButtonText.innerText = initText;
 
 					// After the animation is complete, remove the "animate" class
 					setTimeout(function () {
@@ -822,11 +823,11 @@ window.addEventListener("load", function () {
 
 window.addEventListener('DOMContentLoaded', () => {
 	
-	let toc_container_entry_content = document.querySelectorAll('.post_type_layout_standard .entry-content');
+	let toc_container_entry_content = document.querySelectorAll('.single .post_type_layout_standard .entry-content');
 	let toc_container = document.querySelectorAll('.toc_container');
 
-	if (toc_container.length > 0 || toc_container_entry_content.length>0) {
-
+	if (toc_container.length > 0 || toc_container_entry_content.length > 0) {
+		
 		// Get all <h2> elements within .toc_container
 		let tocContainer;
 		let h2Elements;
@@ -901,17 +902,16 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 
-
 		let activeListItem = null;
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
 		
+		
 		const observer = new IntersectionObserver(entries => {
-
+			console.log(observer)
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
-
 				if (entry.intersectionRatio > 0) {
 					// Remove 'active' class from the currently active list item
 					if (activeListItemMobile) {
@@ -923,6 +923,7 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (activeListItemSidebar) {
 						activeListItemSidebar.classList.remove('active');
 					}
+					
 
 					// Add 'active' class to the one corresponding to the current entry
 					const listItem = document.querySelector(`.toc-nav li a[href="#${id}"]`).parentElement;
@@ -948,14 +949,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		});
 
+
 		// Track all sections that have an `id` applied
-		const targetElements = document.querySelectorAll('.toc_container h2');
+		let targetElements;
+		if (toc_container.length > 0) {
+			 targetElements = document.querySelectorAll('.toc_container h2');
+		} else if( toc_container_entry_content.length > 0 ) {
+			 targetElements = document.querySelectorAll('.single .post_type_layout_standard .entry-content h2');
+		}
+
 		targetElements.forEach(element => {
 			observer.observe(element);
 		});
-
-
-
 
 		window.addEventListener('scroll', function () {
 			// Get the .inner-hero element and its bottom position relative to the viewport
@@ -978,8 +983,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 
 		});
-
-
 
 		// click toc menu links	
 		const elementsWithHref = document.querySelectorAll('.contents-nav-mobile-menu a, .toc-nav a');
@@ -1021,6 +1024,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
+	
 	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
 	if (accordionButton.length > 0) {
 
@@ -1042,4 +1046,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 
+	const tabletChevron = document.querySelectorAll('.tablet_chevron');
+	if (tabletChevron.length > 0) {
+
+	document.querySelector('.tablet_chevron').addEventListener('click', function() {
+		var list = document.querySelector('.tabbed-content__nav-list');
+		var items = list.querySelectorAll('.tabbed-content__nav-item');
+		
+		// Find the currently active item
+		var activeItem = list.querySelector('.active');
+		var activeIndex = Array.from(items).indexOf(activeItem);
+		
+		// Determine the next item to scroll into view
+		var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
+		
+		if (nextItem) {
+			// Scroll the next item into view
+			nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+			
+			// Update the active class if needed
+			activeItem.classList.remove('active');
+			nextItem.classList.add('active');
+		}
+	});
+	}
+
 });
+ 

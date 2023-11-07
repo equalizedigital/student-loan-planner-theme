@@ -137,10 +137,10 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 				<?php if( $more_information ): ?>
 
 					<button 
-					class="vendor-information-block-container-column-two-link-more-info"
+					class="vendor_information_block_container_column_two_link_more_info"
 					aria-label="More Information about <?php echo $company_name; ?>"
 					aria-expanded="false"
-					aria-controls="vendor-information-block-container-column-two-link-more-info-btn-<?php echo $time_stamp; ?>"
+					aria-controls="vendor_information_block_container_column_two_link_more_info-btn-<?php echo $time_stamp; ?>"
 					>
 						More Information
 						<span>
@@ -152,7 +152,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 			</div>
 		</div>
 
-		<div class="vendor-information-block-container-more-info" hidden id="vendor-information-block-container-column-two-link-more-info-btn-<?php echo $time_stamp; ?>">
+		<div class="vendor-information-block-container-more-info" hidden id="vendor_information_block_container_column_two_link_more_info-btn-<?php echo $time_stamp; ?>">
 			<?php echo wp_kses_post( $more_information ); ?>
 		</div>
 	</div>

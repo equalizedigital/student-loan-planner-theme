@@ -265,6 +265,9 @@
             max-width: 160px;
             margin: 0 auto;
             display: inline-flex;
+            @include media("<tablet") {
+                margin: 0;
+            }
         }
     }
 }
