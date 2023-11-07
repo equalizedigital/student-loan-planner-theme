@@ -67,6 +67,7 @@
 
             @include media("<tablet") {
                 flex-direction: column;
+                margin-top: 20px;
             }
 
             &.btn {

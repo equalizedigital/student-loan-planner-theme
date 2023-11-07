@@ -125,7 +125,7 @@ function eqd_tha_footer_cta() {
 			if ( ( ! is_author() && ! is_archive() && ! is_category() && ! is_tax() ) || is_archive( 'eqd-featured-press' ) ) :
 				?>
 
-	<section class="block calculator-signup-block">
+	<section class="block calculator-signup-block calculator-signup-container-footer">
 		<div class="calculator-signup-container">
 			<figure class="calculator-signup-container-image">
 				<?php if ( ! empty( $image ) ) : ?>
@@ -372,8 +372,7 @@ function eqd_single_sidebar() {
 		if( empty( $layout_style ) ) {
 			$layout_style = 'standard';
 		}
-
-		if ( get_field( 'post_format_style' ) == 'standard' || $layout_style == true ) :
+		if ( get_field( 'post_format_style' ) == 'standard' || $layout_style == true && get_field( 'post_format_style' ) != 'full-width' ) :
 			?>
 			<div class="sidebar_container">
 				<div class="sidebar_social">

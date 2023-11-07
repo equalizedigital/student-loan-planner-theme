@@ -187,7 +187,10 @@ tha_content_before();
 									</a>
 									<div class="author">
 										<span class="author_recommended_posts_content_post-data">
-								<?php echo get_avatar( $id_post_editor['ID'], 40 ); ?>
+										<?php 
+										$author_id = get_the_author_meta('ID');
+										echo get_avatar( $author_id, 96 );  
+										?>
 										</span>
 										<div class="author_recommended_posts_content_post-inf__link">
 											<a href="<?php echo $author_url; ?>">

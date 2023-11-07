@@ -39,7 +39,7 @@ if(get_field('image')){
 }
 
 ?>
-<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> ">
 	<div class="calculator-signup-container">
 		<figure class="calculator-signup-container-image">
 			<?php if(!empty($image)): ?>
