@@ -64,10 +64,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            margin-top: 20px;
             @include media("<tablet") {
                 flex-direction: column;
-                margin-top: 20px;
             }
 
             &.btn {
