@@ -78,7 +78,7 @@
 
         &-content {
             padding: 45px $container-padding;
-            text-align: center;
+            // text-align: center;
             @include media(">tablet") {
                 padding: 106px 80px;
                 width: 50%;
