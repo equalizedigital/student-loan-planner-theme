@@ -764,7 +764,6 @@ window.addEventListener("load", function () {
 				}
 
 				highlightButton.addEventListener('click', function () {
-					console.log('eee')
 					// Remove the "hidden" class and add an "animate" class for each item
 					items.forEach(function (item) {
 
@@ -909,7 +908,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		
 		
 		const observer = new IntersectionObserver(entries => {
-			console.log(observer)
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
 				if (entry.intersectionRatio > 0) {
