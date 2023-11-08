@@ -1,7 +1,9 @@
 .page {
     .table-of-contents-block.post_format_style-standard {
         .toc-nav-container {
-            display: block;
+            @include media(">tablet") {
+                display: block;
+            }
         }
 
         .table-of-contents-block-container-main {
