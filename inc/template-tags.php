@@ -426,3 +426,93 @@ function eqd_single_sidebar() {
 		endif;
 	}
 }
+
+
+function prevent_auto_tag_scroll_delayed(){
+
+	$layout_style_check = get_field( 'post_format_style' );
+
+	if( empty( $layout_style_check ) ) {
+		$layout_style_check = 'standard';
+	}
+	
+	if($layout_style_check != 'standard'){
+		return;
+	}
+
+?>
+
+<script>
+	let hashStore;
+
+    if (window.location.hash) {
+		hashStore = window.location.hash;
+		// window.location.hash = '';
+		history.replaceState(null, null, window.location.pathname + window.location.search);
+		window.scrollTo(0, 0);
+		observeH2Elements();
+	}
+
+	function allH2HaveIds() {
+		setTimeout(() => {
+			const urlWithoutHash = hashStore.replace('#', '');
+			var element = document.getElementById(urlWithoutHash);
+			location.hash = hashStore;
+			// element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+		}, 900);
+
+	}
+
+	// Set up a MutationObserver to watch for changes in ID attributes on h2 elements
+	function observeH2Elements() {
+		const h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content > h2');
+		let observedElementsCount = 0;
+		let elementsWithIdCount = 0;
+
+		// Callback function to execute when mutations are observed
+		const callback = function(mutationsList, observer) {
+			for (const mutation of mutationsList) {
+			if (mutation.type === 'attributes' && mutation.attributeName === 'id') {
+				const target = mutation.target;
+				if (target.id) {
+				console.log(`An ID was added to: `, target);
+				elementsWithIdCount++;
+				// Check if all h2 elements have an ID
+				if (elementsWithIdCount === observedElementsCount) {
+					allH2HaveIds();
+					observer.disconnect(); // Optionally stop observing if no further changes are needed
+				}
+				}
+			}
+			}
+		};
+
+		// Create an observer instance linked to the callback function
+		const observer = new MutationObserver(callback);
+
+		// Options for the observer (which mutations to observe)
+		const config = { attributes: true };
+
+		// Start observing each h2 element for configured mutations
+		h2Elements.forEach((h2) => {
+			if (!h2.id) { // Only observe h2 elements without an ID
+			observedElementsCount++;
+			observer.observe(h2, config);
+			} else {
+			// Element already has an ID
+			elementsWithIdCount++;
+			}
+		});
+
+		// If all h2 elements already have an ID, we call the function directly
+		if (elementsWithIdCount === observedElementsCount) {
+			allH2HaveIds();
+		}
+	}
+</script>
+
+<?php
+}
+
+add_action( 'tha_page_header', 'prevent_auto_tag_scroll_delayed', 10 );

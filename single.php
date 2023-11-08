@@ -149,19 +149,14 @@ function eqd_single_after_entry_content() {
 								<?php endif; ?>
 								</div>
 					<div class="td_content">
+						<div class="td_text">
+							<?php $fixed = get_sub_field( 'fixed' ); ?>
+							<div>Fixed <?php  echo wp_kses_post($fixed); ?></div>
 
-							
-
-
-
-								<div class="td_text">
-									<?php $fixed = get_sub_field( 'fixed' ); ?>
-									<div>Fixed <?php  echo wp_kses_post($fixed); ?></div>
-
-									<?php $variable = get_sub_field( 'variable' ); ?>
-									Variable <?php echo wp_kses_post($variable); ?>
-									<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
-								</div>
+							<?php $variable = get_sub_field( 'variable' ); ?>
+							Variable <?php echo wp_kses_post($variable); ?>
+							<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
+						</div>
 					</div>
 				</td>
 			</tr>
@@ -620,3 +615,4 @@ function eqd_single_after_related_post() {
 }
 // Build the page.
 require get_template_directory() . '/index.php';
+
