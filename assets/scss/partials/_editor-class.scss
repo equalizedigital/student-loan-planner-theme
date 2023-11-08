@@ -147,6 +147,14 @@
     }
 }
 
+.post_type_layout_standard {
+    blockquote{
+        &.wp-block-quote {
+            margin-bottom: 20px;
+        }
+    }
+}
+
 blockquote{
     &.wp-block-quote {
         &.is-style-plain {

@@ -20,27 +20,35 @@ a {
 	font-weight: 400;
 	text-decoration: underline;
 	@extend %transition;
+
 	&:hover {
 		text-decoration: none;
 		color: brand-color('tertiary');
 	}
+
 	&:focus {
 		text-decoration: none;
 	}
+
 	svg {
 		@extend %transition;
 	}
 }
 
 // Global Focus
-button:focus-within, button:focus,  
-.button:focus-within, .button:focus, 
-a:focus-within, a:focus,
-a:focus-within, a:focus,
+button:focus-within,
+button:focus,
+.button:focus-within,
+.button:focus,
+a:focus-within,
+a:focus,
+a:focus-within,
+a:focus,
 input:focus {
-    outline: 2px solid blue;
-    outline-offset: 2px;
-    text-decoration: none;
+	outline: 2px solid blue;
+	outline-offset: 2px;
+	text-decoration: none;
+
 	.is-style-white {
 		outline: 2px solid $white;
 	}
@@ -152,6 +160,7 @@ h2 {
 	color: brand-color('tertiary');
 	font-weight: 700;
 	line-height: 40px;
+
 	&.wp-block-heading {
 		margin-top: 59px
 	}
@@ -310,7 +319,7 @@ input {
 
 
 .wp-block-table {
-margin-bottom: 20px;
+	margin-bottom: 20px;
 
 	table {
 		thead {
@@ -362,11 +371,15 @@ margin-bottom: 20px;
 }
 
 iframe {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 .wptb-preview-table {
 	tr:nth-child(1) {
-		background-color: #625089!important;
+		background-color: #625089 !important;
 	}
+}
+
+.di-calculator .di-table_results {
+	box-shadow: none !important;
 }
