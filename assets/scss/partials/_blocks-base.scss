@@ -364,3 +364,9 @@ margin-bottom: 20px;
 iframe {
     max-width: 100%;
 }
+
+.wptb-preview-table {
+	tr:nth-child(1) {
+		background-color: #625089!important;
+	}
+}
