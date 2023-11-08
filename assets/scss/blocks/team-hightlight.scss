@@ -2,7 +2,7 @@
     padding: 40px 0 20px;
 
     @include media(">tablet") {
-        padding: 100px 0 150px;
+        padding: 100px 0 50px;
     }
 
     &-styling-1 {
@@ -72,12 +72,9 @@
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
-                border-radius: 0px;
 
                 @include media(">tablet") {
                     height: 220px;
-                // border-radius: 10px;
-
                 }
             }
         }
