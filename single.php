@@ -313,15 +313,15 @@ function eqd_single_after_entry_author_info() {
 	?>
 
 	<div class="article_footer_data">
-
 		<div class="article_footer_data_author">
-
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-						<?php echo get_avatar( $id,64  ); ?>
+					<?php echo get_avatar( $id,64  ); ?>
+
 					<div class="author_name">
 						<?php echo get_the_author($id); ?>
 					</div>
+
 					<ul class="author_socials">
 						<?php
 						if ( ! empty( get_user_meta( $id, 'twitter', true ) ) ) {
@@ -355,7 +355,10 @@ function eqd_single_after_entry_author_info() {
 
 				<span class="article_footer_data_author_entry-info">
 					<span class="article_footer_data_author_entry-data">
-						<?php the_author_meta( 'user_description', $id ); ?> </br>
+						<?php 
+						$yoast_meta_description = get_user_meta( 4 );
+						 echo wp_kses_post($yoast_meta_description['wpseo_metadesc'][0]);
+						?>
 					</span>
 					<div class="article_footer_data_author_entry-inf__link">
 						<a href="<?php echo $author_url_id; ?>">
