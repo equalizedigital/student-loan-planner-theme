@@ -741,9 +741,11 @@ window.addEventListener("load", function () {
 		if (highlightButton) {
 			let items = document.querySelectorAll('.team-hightlight-block-container-team-hightlight-member');
 			let initText = highlightButtonText.innerText;
+			let tabOpen = false;
+			
 			if (items.length >= 4) {
 
-				let tabOpen = false;
+				
 
 				if (windowWidth <= 768) {
 					items.forEach(function (item, index) {
