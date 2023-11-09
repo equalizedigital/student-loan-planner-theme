@@ -12,7 +12,7 @@
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 15px;
+	line-height: 25px;
 	min-width: 148px;
 	cursor: pointer;
 	border-radius: 4px;
@@ -248,6 +248,10 @@ img {
 		padding-left: 16px;
 		padding-right: 16px;
 	}
+
+	img{
+		margin-bottom: 20px;
+	}
 }
 
 .wp-block-gallery ul {
@@ -318,6 +322,18 @@ img {
 
 .has-white-background-color {
 	background-color: $white;
+}
+
+.margin-0{
+	margin: 0;
+}
+
+.wptb-cell .wptb-ph-element a {
+    color: var(--WCAG-Green, #547C2D)!important;
+}
+
+.wp-block-embed-youtube {
+    margin-bottom: 24px;
 }
 
 /* Group

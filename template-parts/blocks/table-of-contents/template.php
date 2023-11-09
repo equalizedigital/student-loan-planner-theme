@@ -40,6 +40,7 @@ if ( get_field( 'post_format_style',get_the_ID() ) == 'full-width' ) {
 } else {
 	$class_name .= ' post_format_style-standard';
 }
+$header_main_link = get_field( 'header_main_link', 'option' );
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="table-of-contents-block-container">
@@ -82,7 +83,11 @@ if ( get_field( 'post_format_style',get_the_ID() ) == 'full-width' ) {
 			<span class="text">Jump to</span>
 		</button>
 		<div class="cta-btn">
-			<a href="" class="btn">Get Help</a>
+			<?php if ( ! empty( $header_main_link ) ) : ?>
+				<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
+					<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
+				</a>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="contents-nav-mobile-menu"></div>

@@ -919,7 +919,7 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 40px 24px;
+		padding: 40px auto;
 	}
 }
 
@@ -941,7 +941,7 @@ img.wprm-comment-rating {
 	width: 100%;
 
 	@include media(">tablet") {
-		padding: 86px 0;
+		padding: 60px 0;
 		min-height: 280px;
 		display: flex;
 		flex-direction: column;
@@ -1081,7 +1081,7 @@ img.wprm-comment-rating {
 			color: white;
 			font-style: normal;
 			font-weight: 400;
-			font-size: 16px;
+			font-size: 22px;
 			line-height: 26px;
 			max-width: 550px;
 			display: flex;
@@ -1472,19 +1472,20 @@ section.refinance_lender_section {
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
-		/* 114.286% */
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-family: $base-font;
 
+		.btn{
+			font-size: 15px;
+    		line-height: 20px;
+		}
 		sup {
 			top: 0;
 			font-size: .3em;
 		}
 	}
-
-	tr.data-tr .td_text {}
 
 	tr .td_text {
 		color: black;

@@ -178,7 +178,7 @@ $time_stamp = time() . wp_rand( 0, 23 );
 					if ( ! empty(get_field('review_url',$select_institutional_contact))  ) :
 						?>
 						<a href="<?php echo get_field('review_url',$select_institutional_contact); ?>" class="vendor_information_block_container_column_two_link btn">
-							<?php echo "Full ".get_the_title($select_institutional_contact)." Review"; ?>
+							<?php echo "Full ".get_field('institution_name',$select_institutional_contact)." Review"; ?>
 						</a>
 					<?php endif; ?>
 

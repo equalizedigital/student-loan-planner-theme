@@ -26,6 +26,7 @@ $container_class .= ' post_type_layout_' . $layout_style . ' ';
 tha_content_before();
 
 	echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
+		
 		tha_content_wrap_before();
 
 		tha_page_header();
@@ -58,5 +59,6 @@ tha_content_before();
 	echo '</div>';
 
 tha_content_after();
+
 
 get_footer();

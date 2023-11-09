@@ -64,10 +64,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            margin-top: 20px;
             @include media("<tablet") {
                 flex-direction: column;
-                margin-top: 20px;
             }
 
             &.btn {
@@ -88,11 +87,12 @@
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 70px;
+                line-height: 20px;
                 display: flex;
                 gap: 14px;
                 align-items: center;
                 justify-content: center;
+                margin-left: auto;
 
                 span {
                     display: inline-flex;
@@ -325,11 +325,10 @@
                 .subtext {
                     color: #000;
                     text-align: center;
-                    font-size: 12px;
+                    font-size: 16px;
                     font-style: normal;
                     font-weight: 300;
-                    line-height: 13px;
-                    //108.333%
+                    line-height: 20px;
                 }
             }
     
