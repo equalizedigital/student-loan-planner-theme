@@ -20,9 +20,16 @@ echo '<head>';
 	tha_head_bottom();
 echo '</head>';
 
-echo '<body class="' . esc_attr( join( ' ', get_body_class() ) ) . '" id="top">';
+if ( is_post_type_archive( 'eqd-featured-press' ) ) {
+	$body_classes = 'press-archive-page';
+}
+
+echo '<body class="'. $body_classes . ' ' . esc_attr( join( ' ', get_body_class() ) ) . '" id="top">';
 wp_body_open();
 tha_body_top();
+
+
+
 echo '<div class="site-container">';
 	echo '<a class="skip-link screen-reader-text" href="#main-content">' . esc_html__( 'Skip to content', 'eqd' ) . '</a>';
 
