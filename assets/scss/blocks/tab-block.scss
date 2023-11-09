@@ -115,7 +115,7 @@ button.tab-block-container__heading__button:hover {
 
     .tab-block-container-tab-block_content_items_item_container:nth-last-child(1) {
         //border: none;
-        padding-bottom: 0;
+        // padding-bottom: 0;
         @include media(">tablet") {
             padding-bottom: 0;
         }
