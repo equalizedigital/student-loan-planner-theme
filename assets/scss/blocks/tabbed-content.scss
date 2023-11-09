@@ -41,7 +41,7 @@
         &__nav-item {
             padding: 0;
             display: flex;
-            min-width: 182px;
+            min-width: 120px;
             @include media(">tablet") {
                 min-width: 137px;
             }

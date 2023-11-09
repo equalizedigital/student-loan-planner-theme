@@ -313,15 +313,15 @@ function eqd_single_after_entry_author_info() {
 	?>
 
 	<div class="article_footer_data">
-
 		<div class="article_footer_data_author">
-
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-						<?php echo get_avatar( $id,64  ); ?>
+					<?php echo get_avatar( $id,64  ); ?>
+
 					<div class="author_name">
 						<?php echo get_the_author($id); ?>
 					</div>
+
 					<ul class="author_socials">
 						<?php
 						if ( ! empty( get_user_meta( $id, 'twitter', true ) ) ) {
@@ -355,7 +355,10 @@ function eqd_single_after_entry_author_info() {
 
 				<span class="article_footer_data_author_entry-info">
 					<span class="article_footer_data_author_entry-data">
-						<?php the_author_meta( 'user_description', $id ); ?> </br>
+						<?php 
+						$yoast_meta_description = get_user_meta( 4 );
+						 echo wp_kses_post($yoast_meta_description['wpseo_metadesc'][0]);
+						?>
 					</span>
 					<div class="article_footer_data_author_entry-inf__link">
 						<a href="<?php echo $author_url_id; ?>">
@@ -398,27 +401,7 @@ function eqd_single_after_entry_author_info() {
 					</span>
 				</div>
 
-				<ul class="article_footer_data_author_socials">
-					<?php if ( ! empty( get_user_meta( $review_by_auth_id, 'twitter', true ) ) ) { ?>
-					<li>
-					<a href="<?php echo wp_kses_post( get_user_meta( $review_by_auth_id, 'twitter', true ) ); ?>">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
-							<path d="M16 2.13735C15.4138 2.37735 14.7777 2.54075 14.1141 2.61224C14.7943 2.23948 15.3142 1.64203 15.5576 0.937348C14.9215 1.28458 14.2191 1.53479 13.4725 1.67267C12.8752 1.08543 12.0235 0.717773 11.0778 0.717773C9.26374 0.717773 7.79813 2.07607 7.79813 3.74586C7.79813 3.98586 7.82579 4.21565 7.88109 4.43522C5.15451 4.30756 2.73211 3.10245 1.11718 1.26926C0.835119 1.71862 0.674732 2.23948 0.674732 2.79096C0.674732 3.84288 1.25544 4.77224 2.13481 5.31352C1.59834 5.2982 1.08953 5.16033 0.647079 4.93565C0.647079 4.94586 0.647079 4.96118 0.647079 4.97139C0.647079 6.44203 1.78085 7.66245 3.27964 7.94331C3.00311 8.01479 2.71552 8.05054 2.41687 8.05054C2.20671 8.05054 2.00207 8.03011 1.79744 7.99437C2.21777 9.19948 3.42897 10.0727 4.86139 10.0982C3.73868 10.9101 2.32285 11.3952 0.785344 11.3952C0.519876 11.3952 0.259938 11.3799 0 11.3544C1.45455 12.2122 3.18009 12.7178 5.03284 12.7178C11.0722 12.7178 14.3685 8.1016 14.3685 4.09309C14.3685 3.96033 14.3685 3.83267 14.3574 3.6999C14.999 3.27097 15.5576 2.7399 15.9945 2.13224L16 2.13735Z" fill="black"/>
-						</svg>
-					</a>
-					</li>
-					<?php } ?>
-					<?php if ( ! empty( get_user_meta( $review_by_auth_id, 'linkedin', true ) ) ) { ?>
-					<li>
-					<a href="<?php echo wp_kses_post( get_user_meta( $review_by_auth_id, 'linkedin', true ) ); ?>">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-							<path d="M0.45864 5.32922H3.75985V16.0553H0.45864V5.32922ZM2.11092 0C3.16784 0 4.02408 0.865112 4.02408 1.93298C4.02408 3.00086 3.16784 3.86597 2.11092 3.86597C1.054 3.86597 0.197754 3.00086 0.197754 1.93298C0.197754 0.865112 1.054 0 2.11092 0Z" fill="black"/>
-							<path d="M5.83008 5.32993H8.99082V6.79656H9.05102C9.69655 5.68138 10.894 5.01903 12.1716 5.06634C15.5163 5.06634 16.1284 7.28657 16.1284 10.1725V16.056H12.8305V10.8416C12.8305 9.59804 12.8105 7.99623 11.118 7.99623C9.42562 7.99623 9.13799 9.34797 9.13799 10.7504V16.056H5.84346L5.83008 5.32993Z" fill="black"/>
-						</svg>
-					</a>
-					</li>
-					<?php } ?>
-					</ul>
+				
 			</div>
 
 		<?php endif; ?>
