@@ -261,14 +261,14 @@
             }
     
             &-link {
-                
-    
                 @include media(">desktop") {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     //flex-direction: column;
                     flex-direction: row;
+                    display: grid;
+                    grid-template-columns: auto auto;
                 }
     
                 &.btn {
@@ -279,7 +279,7 @@
                     justify-content: center;
                     flex-direction: column;
                     @include media(">tablet") {
-                        max-width: 185px;
+                        // max-width: 185px;
                     }
                 }
                 &-more-info {
