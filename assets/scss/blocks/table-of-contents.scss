@@ -316,6 +316,9 @@
         display: inline-flex;
         justify-content: flex-end;
         align-items: center;
+        .btn, .wp-block-button__link{
+            min-width: 48px;
+        }
     }
 
     .contents-nav-mobile-header-dropdown-select .text {
