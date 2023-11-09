@@ -1,6 +1,7 @@
 .tabbed-content-block {
     padding-bottom: 95px;
     overflow: hidden;
+    z-index: 10;
 
     .tabbed-content {
         &__row_container {
