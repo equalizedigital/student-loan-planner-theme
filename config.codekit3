@@ -3720,6 +3720,19 @@
       "oO" : 0,
       "oS" : 1
     },
+    "\/template-parts\/blocks\/accordion\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 7422,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/accordion\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/template-parts\/blocks\/accordion\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3735,6 +3748,19 @@
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
+    },
+    "\/template-parts\/blocks\/calculator-form-cta\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 10000,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/calculator-form-cta\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/template-parts\/blocks\/calculator-form-cta\/template.php" : {
       "cB" : 0,
