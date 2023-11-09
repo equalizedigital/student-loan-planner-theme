@@ -368,7 +368,7 @@ function eqd_single_sidebar() {
 	// Standard Format.
 	if ( is_single() && get_post_type() == 'post' ) {
 		$layout_style = get_field( 'post_format_style' );
-
+		$header_main_link = get_field( 'header_main_link', 'option' );
 		if( empty( $layout_style ) ) {
 			$layout_style = 'standard';
 		}
@@ -416,7 +416,11 @@ function eqd_single_sidebar() {
 						<span class="text">Jump to</span>
 					</button>
 					<div class="cta-btn">
-						<a href="" class="btn">Get Help</a>
+						<?php if ( ! empty( $header_main_link ) ) : ?>
+							<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
+								<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
+							</a>
+						<?php endif; ?>
 					</div>
 				</div>
 				<div class="contents-nav-mobile-menu"></div>
