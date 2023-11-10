@@ -94,6 +94,10 @@
                 justify-content: center;
                 margin-left: auto;
 
+                @include media("<tablet") {
+                    margin: 30px auto 0;
+                }
+
                 span {
                     display: inline-flex;
                     transform: rotate(0deg);
