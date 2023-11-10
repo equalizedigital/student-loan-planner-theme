@@ -932,6 +932,14 @@ img.wprm-comment-rating {
 	}
 }
 
+.home {
+	.inner-hero{
+		@include media(">tablet") {
+			padding: 132px 0;
+		}
+	}
+}
+
 .inner-hero {
 	background-color: brand-color('tertiary');
 	padding: 60px 0;
