@@ -16,6 +16,7 @@
         }
 
         .team-hightlight-block-container-team-hightlight-member__photo img{
+            border-radius: 10px;
             @include media("<tablet") {
                 height: 33vw;
             }
