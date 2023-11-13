@@ -152,6 +152,9 @@
     blockquote{
         &.wp-block-quote {
             margin-bottom: 20px;
+            p {
+                text-align: left;
+            }
         }
     }
 }
