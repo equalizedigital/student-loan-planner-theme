@@ -90,7 +90,8 @@
     padding: 0;
 
     @include media(">tablet") {
-        columns: 2;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     li {
