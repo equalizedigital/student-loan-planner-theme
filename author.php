@@ -111,14 +111,19 @@ tha_content_before();
 
 						<?php if ( get_field( 'media_mentions', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Media Mentions</h2>
+						
 						<div class="detail">
 							<?php
 							// Check rows existexists.
+							$mentions = 0;
 							if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
 								while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
 									the_row();
 									$press_post    = get_sub_field( 'press_post' );
 									$press_company = get_sub_field( 'press_company' );
+									if($mentions > 2) {
+										continue;
+									}
 									?>
 								<div class="detail_link_content">
 									<a href="<?php echo wp_kses_post( $press_post['url'] ); ?>" class="detail_link">
@@ -131,24 +136,30 @@ tha_content_before();
 								</div>
 									<?php
 
-
+									++$mentions;
 									// End loop.
 								endwhile;
 
-						endif;
+							endif;
 
 							?>
 						</div>
 						
+						<?php if($mentions > 2): ?>
 						<div class="detail_end_link">
-							<a href="<?php echo get_post_type_archive_link( 'slp_press' ); ?>" class="link">View All
-								<span class="svg">
-								<svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M10.3536 4.35355C10.5488 4.15829 10.5488 3.84171 10.3536 3.64645L7.17157 0.464465C6.97631 0.269203 6.65973 0.269203 6.46447 0.464466C6.2692 0.659728 6.2692 0.97631 6.46447 1.17157L9.29289 4L6.46447 6.82843C6.2692 7.02369 6.2692 7.34027 6.46447 7.53553C6.65973 7.7308 6.97631 7.7308 7.17157 7.53553L10.3536 4.35355ZM4.37114e-08 4.5L10 4.5L10 3.5L-4.37114e-08 3.5L4.37114e-08 4.5Z" fill="#82BC46"/>
-								</svg>
-								</span>
-							</a>
+							<div class="td_content">
+								<button class="btn-text modal-btn link" data-modal="modal_media_mentions" aria-label="Disclosures for Media Mentions">
+									View All
+									<span class="svg">
+										<svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10.3536 4.35355C10.5488 4.15829 10.5488 3.84171 10.3536 3.64645L7.17157 0.464465C6.97631 0.269203 6.65973 0.269203 6.46447 0.464466C6.2692 0.659728 6.2692 0.97631 6.46447 1.17157L9.29289 4L6.46447 6.82843C6.2692 7.02369 6.2692 7.34027 6.46447 7.53553C6.65973 7.7308 6.97631 7.7308 7.17157 7.53553L10.3536 4.35355ZM4.37114e-08 4.5L10 4.5L10 3.5L-4.37114e-08 3.5L4.37114e-08 4.5Z" fill="#82BC46"/>
+										</svg>
+									</span>
+								</button>
+							</div>
 						</div>
+						<?php endif; ?>
+
 						<?php endif; ?>
 
 						
@@ -276,7 +287,44 @@ tha_content_before();
 				</script>
 				<?php endif; ?>
 
+				<div id="modal_media_mentions" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+					<div class="modal-content" >
+						<button class="close-btn">
+							<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+						</button>
+						<div class="content">
+						<h2 class="title">Media Mentions</h2>
+						<?php
+							// Check rows existexists.
+							$mentions = 0;
+							if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+								while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+									the_row();
+									$press_post    = get_sub_field( 'press_post' );
+									$press_company = get_sub_field( 'press_company' );
+									?>
+								<div class="detail_link_content">
+									<a href="<?php echo wp_kses_post( $press_post['url'] ); ?>" class="detail_link">
+										<?php
+										echo wp_kses_post( $press_post['title'] );
+										?>
+									</a>
+									<span class="press-company"> - <?php echo wp_kses_post( $press_company ); ?>
+								</span>
+								</div>
+									<?php
 
+									++$mentions;
+									// End loop.
+								endwhile;
+
+							endif;
+
+							?>
+					</div>
+				</div>
+
+			</div>
 
 
 			

@@ -413,7 +413,7 @@ function eqd_single_fullwidth_content() {
 			<section class="site-main-article__author-data-editorial_statement">
 				<div class="site-main-article__author-data-editorial_statement-container">
 					<div class="site-main-article__author-data-editorial_statement-container__title">
-						<h2>Editorial Ethics at Student Loan Planner</h2>
+						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
 					</div>
 					<div class="site-main-article__author-data-editorial_statement-container__copy">
 						<p>At Student Loan Planner, we follow a strict <a href="<?php echo esc_url( get_site_url( null, '/editorial-ethics-policy/' ) ); ?>">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our 
