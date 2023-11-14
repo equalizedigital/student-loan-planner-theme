@@ -9,6 +9,8 @@
  * @package Block
  */
 
+
+
 if ( isset( $block['data']['preview_image_help'] ) ) :
 	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
@@ -51,7 +53,7 @@ $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
 $block_id            = get_field( 'block_id' );
-$time_stamp = $block_id . wp_rand( 0, 23 );
+$time_stamp = my_acf_block_unique_id() . wp_rand( 0, 23 );
 ?>
 <section id="<?php echo !empty($block_id)?  $block_id:esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
