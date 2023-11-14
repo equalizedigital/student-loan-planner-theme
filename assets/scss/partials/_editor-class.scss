@@ -487,3 +487,7 @@ a.facetwp-page.next {
         }
     }
 }
+
+html .wptb-table-container, .wptb-table-container .wptb-table-container-matrix, .wptb-preview-table{
+    overflow: auto !important;
+}
