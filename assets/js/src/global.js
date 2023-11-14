@@ -407,19 +407,19 @@ document.addEventListener('DOMContentLoaded', function () {
 				title.setAttribute('aria-expanded', 'false');
 				// Add click event listener to each .widget-title
 
-				title.addEventListener('keypress', function () {
+				// title.addEventListener('keypress', function () {
 					
-					// Check if there's a next sibling element
-					this.classList.toggle('active');
-					let sibling = this.nextElementSibling;
-					if (sibling) {
-						var isExpanded = title.getAttribute('aria-expanded') === 'true';
-						// Add class to the sibling
-						this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
-						this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+				// 	// Check if there's a next sibling element
+				// 	this.classList.toggle('active');
+				// 	let sibling = this.nextElementSibling;
+				// 	if (sibling) {
+				// 		var isExpanded = title.getAttribute('aria-expanded') === 'true';
+				// 		// Add class to the sibling
+				// 		this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+				// 		this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 
-					}
-				});
+				// 	}
+				// });
 
 				title.addEventListener('click', function () {
 					// Check if there's a next sibling element
@@ -988,21 +988,38 @@ window.addEventListener('DOMContentLoaded', () => {
 		// Add a click event listener to each element
 		elementsWithHref.forEach(element => {
 			element.addEventListener('click', event => {
+				event.preventDefault(); // Prevent the default anchor behavior
+		
 				// Get the href value
 				const hrefValue = element.getAttribute('href');
-
+		
 				// Find the target element using the href value
 				const targetElement = document.querySelector(hrefValue);
-
+		
 				// Check if the target element exists
 				if (targetElement) {
 					// Set the focus on the target element
 					targetElement.focus();
+					
+					// Toggle the contents-nav-mobile class
 					let contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
 					contentsNavMobileClicker.classList.toggle('active');
+					
+					// Calculate the position to scroll to
+					const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+					const offsetPosition = elementTop - 100;
+		
+					// Scroll to the desired position
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: 'smooth'
+					});
 				}
 			});
 		});
+		
+
+		
 
 
 		// menu
