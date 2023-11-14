@@ -111,14 +111,19 @@ tha_content_before();
 
 						<?php if ( get_field( 'media_mentions', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Media Mentions</h2>
+						
 						<div class="detail">
 							<?php
 							// Check rows existexists.
+							$mentions = 0;
 							if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
 								while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
 									the_row();
 									$press_post    = get_sub_field( 'press_post' );
 									$press_company = get_sub_field( 'press_company' );
+									if($mentions > 2) {
+										continue;
+									}
 									?>
 								<div class="detail_link_content">
 									<a href="<?php echo wp_kses_post( $press_post['url'] ); ?>" class="detail_link">
@@ -131,15 +136,16 @@ tha_content_before();
 								</div>
 									<?php
 
-
+									++$mentions;
 									// End loop.
 								endwhile;
 
-						endif;
+							endif;
 
 							?>
 						</div>
 						
+						<?php if($mentions > 2): ?>
 						<div class="detail_end_link">
 							<div class="td_content">
 								<button class="btn-text modal-btn link" data-modal="modal_media_mentions" aria-label="Disclosures for Media Mentions">
@@ -152,6 +158,8 @@ tha_content_before();
 								</button>
 							</div>
 						</div>
+						<?php endif; ?>
+
 						<?php endif; ?>
 
 						
@@ -280,14 +288,42 @@ tha_content_before();
 				<?php endif; ?>
 
 				<div id="modal_media_mentions" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-				<div class="modal-content" >
-				<button class="close-btn">
-					<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
-				</button>
-				<div class="content">
-					<?php echo wp_kses_post( $full_disclosure_content ); ?>
+					<div class="modal-content" >
+						<button class="close-btn">
+							<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+						</button>
+						<div class="content">
+						<h2 class="title">Media Mentions</h2>
+						<?php
+							// Check rows existexists.
+							$mentions = 0;
+							if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+								while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+									the_row();
+									$press_post    = get_sub_field( 'press_post' );
+									$press_company = get_sub_field( 'press_company' );
+									?>
+								<div class="detail_link_content">
+									<a href="<?php echo wp_kses_post( $press_post['url'] ); ?>" class="detail_link">
+										<?php
+										echo wp_kses_post( $press_post['title'] );
+										?>
+									</a>
+									<span class="press-company"> - <?php echo wp_kses_post( $press_company ); ?>
+								</span>
+								</div>
+									<?php
+
+									++$mentions;
+									// End loop.
+								endwhile;
+
+							endif;
+
+							?>
+					</div>
 				</div>
-				</div>
+
 			</div>
 
 
