@@ -16,6 +16,7 @@
         }
 
         .team-hightlight-block-container-team-hightlight-member__photo img{
+            border-radius: 10px;
             @include media("<tablet") {
                 height: 33vw;
             }
@@ -30,7 +31,7 @@
             font-size: 14px;
             font-style: normal;
             font-weight: 400;
-            line-height: 28px;
+            line-height: 1.4;
             text-align: left;
         }
 

@@ -90,7 +90,8 @@
     padding: 0;
 
     @include media(">tablet") {
-        columns: 2;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     li {
@@ -151,6 +152,9 @@
     blockquote{
         &.wp-block-quote {
             margin-bottom: 20px;
+            p {
+                text-align: left;
+            }
         }
     }
 }
