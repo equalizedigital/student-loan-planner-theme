@@ -180,9 +180,7 @@ function eqd_single_header() {
 			<section class="header_editorial_statement">
 				<div class="header_editorial_statement-container">
 					<div class="header_editorial_statement-container__title">
-						<h2>
-						Editorial Ethics at Student Loan Planner
-						</h2>
+						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
 					</div>
 					<div class="header_editorial_statement-container__copy">
 						<p>
