@@ -51,7 +51,7 @@ $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
 $block_id            = get_field( 'block_id' );
-$time_stamp = time() . wp_rand( 0, 23 );
+$time_stamp = $block_id . wp_rand( 0, 23 );
 ?>
 <section id="<?php echo !empty($block_id)?  $block_id:esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
