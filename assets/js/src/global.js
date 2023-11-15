@@ -164,7 +164,7 @@ window.addEventListener("load", function () {
 	const tabbedContent = document.querySelector('.resource-links-container');
 	if (tabbedContent) {
 		// Grab all buttons with the class tabbed-content__nav-item
-		const tabButtons = document.querySelectorAll('.resource-links-container-links-link-button , .dropdown-li');
+		const tabButtons = document.querySelectorAll('button.resource-links-container-links-link-button , .dropdown-li');
 
 		tabButtons.forEach(button => {
 			// Add a click event listener to each button
