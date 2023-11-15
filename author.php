@@ -241,8 +241,32 @@ tha_content_before();
 					<?php
 					while ( $author_query_page->have_posts() ) :
 						$author_query_page->the_post();
+
+						// Assuming you have the post ID
+						$post_id = get_the_ID();
+
+						// Get the post categories
+						$categories = get_the_category($post_id);
+
+						// Check if categories exist for the post
+						
+
+
 						?>
 						<div class="post">
+							
+							<?php
+							if (!empty($categories)) {
+								// Retrieve the name of the first category
+								$category_name = $categories[0]->name;
+								
+								?>
+								<span class="post-tax-category">
+									<a href="<?php echo get_the_permalink( $category_name->term_id ); ?>"><?php echo $category_name; ?></a>
+								</span>
+								<?php
+							}
+							?>
 							<a class="post_link" href="<?php the_permalink(); ?>">
 								<div class="featured-image">
 									<?php the_post_thumbnail(); ?>
