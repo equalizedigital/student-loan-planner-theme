@@ -11,5 +11,11 @@
 	"acf": {
 		"mode": "preview",
 		"renderTemplate": "tabbed-content.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/tabbed-content/screenshot.png"
+		}
 	}
 }
