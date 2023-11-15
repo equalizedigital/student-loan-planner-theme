@@ -176,21 +176,6 @@ function eqd_single_header() {
 			<?php endif; ?>
 		</header>
 
-		<?php if ( get_field( 'post_format_style' ) === 'full-width' ) : ?>
-			<section class="header_editorial_statement">
-				<div class="header_editorial_statement-container">
-					<div class="header_editorial_statement-container__title screen-reader-text">
-						<h2 class="">Editorial Ethics at Student Loan Planner</h2>
-					</div>
-					<div class="header_editorial_statement-container__copy">
-						<p>
-							At Student Loan Planner, we follow a strict <a href="<?php echo esc_url( get_site_url( null, '/editorial-ethics-policy/' ) ); ?>">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our <button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
-						</p>
-					</div>
-				</div>
-			</section>
-		<?php endif; ?>
-
 		<?php
 	}
 }
