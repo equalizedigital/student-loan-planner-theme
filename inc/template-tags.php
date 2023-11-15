@@ -121,6 +121,14 @@ function eqd_tha_footer_cta() {
 		// Individual page.
 		$disable = get_field( 'disable' );
 
+		
+		$term = get_queried_object();
+		$hide_footer_cta = get_field( 'hide_footer_cta',  'category_' . $term->term_id );
+
+		if ( $hide_footer_cta ) {
+			return;
+		}
+
 		if ( ! $disable ) :
 			if ( ( ! is_author() && ! is_archive() && ! is_category() && ! is_tax() ) || is_archive( 'eqd-featured-press' ) ) :
 				?>
