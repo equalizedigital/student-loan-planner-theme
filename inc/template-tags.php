@@ -125,22 +125,25 @@ function eqd_tha_footer_cta() {
 		
 
 
+		if(is_single(  )){
 
 		// Assuming you have the post ID
-$post_id = get_the_ID();
+		$post_id = get_the_ID();
 
-// Get the post categories
-$categories = get_the_category($post_id);
+		// Get the post categories
+		$categories = get_the_category($post_id);
 
-// Check if categories exist for the post
-if (!empty($categories)) {
-    // Retrieve the name of the first category
-    $category_id = $categories[0]->term_id;
-	$hide_footer_cta = get_field( 'hide_footer_cta',  'category_' . $category_id );
-			if ( $hide_footer_cta ) {
-			return;
+		// Check if categories exist for the post
+		if (!empty($categories)) {
+			// Retrieve the name of the first category
+			$category_id = $categories[0]->term_id;
+			$hide_footer_cta = get_field( 'hide_footer_cta',  'category_' . $category_id );
+					if ( $hide_footer_cta ) {
+					return;
+				}
 		}
-}
+	}
+
 
 
 		if ( ! $disable ) :
