@@ -445,6 +445,7 @@ img.wprm-comment-rating {
 				grid-template-columns: 360px 1fr;
 			}
 		}
+
 		.contact-hero-container__content {
 			@include media("<tablet") {
 				width: 100%;
@@ -856,6 +857,28 @@ img.wprm-comment-rating {
 
 	.loop .post {
 		border-bottom: 1px solid #eee;
+		position: relative;
+
+		.post-tax-category {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 10020;
+
+			a {
+				background: #82BC46;
+				color: var(--Black, #000);
+				text-align: center;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1;
+				padding: 13px 15px;
+				display: flex;
+				border-radius: 0px 10px 0px 10px;
+				text-decoration: none;
+			}
+		}
 	}
 
 	.pagination {
@@ -936,7 +959,7 @@ img.wprm-comment-rating {
 }
 
 .home {
-	.inner-hero{
+	.inner-hero {
 		@include media(">tablet") {
 			padding: 132px 0;
 		}
@@ -1488,10 +1511,11 @@ section.refinance_lender_section {
 		justify-content: center;
 		font-family: $base-font;
 
-		.btn{
+		.btn {
 			font-size: 15px;
-    		line-height: 20px;
+			line-height: 20px;
 		}
+
 		sup {
 			top: 0;
 			font-size: .3em;
@@ -1881,7 +1905,8 @@ section.refinance_lender_section {
 
 html {
 	scroll-behavior: smooth;
-	&.overflow-hidden{
+
+	&.overflow-hidden {
 		overflow: hidden;
 	}
 }
