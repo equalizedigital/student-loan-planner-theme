@@ -80,6 +80,21 @@
 	}
 }
 
+.btn-style-link {
+	padding: 0;
+	-webkit-appearance: none;
+	background: transparent;
+	border: none;
+	color: inherit;
+	text-decoration: underline;
+	color: var(--WCAG-Green, #547C2D);
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 .wp-block-button {
 
 	&.is-style-outline {
