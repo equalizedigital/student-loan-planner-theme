@@ -356,7 +356,7 @@ function eqd_single_after_entry_author_info() {
 				<span class="article_footer_data_author_entry-info">
 					<span class="article_footer_data_author_entry-data">
 						<?php 
-						$yoast_meta_description = get_user_meta( 4 );
+						$yoast_meta_description = get_user_meta( $id );
 						 echo wp_kses_post($yoast_meta_description['wpseo_metadesc'][0]);
 						?>
 					</span>

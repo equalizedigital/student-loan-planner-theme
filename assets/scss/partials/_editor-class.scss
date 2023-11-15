@@ -90,7 +90,8 @@
     padding: 0;
 
     @include media(">tablet") {
-        columns: 2;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     li {
@@ -147,10 +148,13 @@
     }
 }
 
-.post_type_layout_standard {
+.site-inner .post_type_layout_standard {
     blockquote{
         &.wp-block-quote {
             margin-bottom: 20px;
+            p {
+                text-align: left;
+            }
         }
     }
 }
@@ -165,7 +169,7 @@ blockquote{
         &:not(.is-style-plain) {
     
             max-width: 740px;
-            margin: 60px auto 10px !important;
+            margin: 60px auto 20px !important;
             padding: 100px 24px 50px;
             display: grid;
             gap: 27px;
@@ -482,4 +486,8 @@ a.facetwp-page.next {
             display: none;
         }
     }
+}
+
+html .wptb-table-container, .wptb-table-container .wptb-table-container-matrix, .wptb-preview-table{
+    overflow: auto !important;
 }

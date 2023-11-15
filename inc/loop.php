@@ -179,10 +179,8 @@ function eqd_single_header() {
 		<?php if ( get_field( 'post_format_style' ) === 'full-width' ) : ?>
 			<section class="header_editorial_statement">
 				<div class="header_editorial_statement-container">
-					<div class="header_editorial_statement-container__title">
-						<h2>
-						Editorial Ethics at Student Loan Planner
-						</h2>
+					<div class="header_editorial_statement-container__title screen-reader-text">
+						<h2 class="">Editorial Ethics at Student Loan Planner</h2>
 					</div>
 					<div class="header_editorial_statement-container__copy">
 						<p>

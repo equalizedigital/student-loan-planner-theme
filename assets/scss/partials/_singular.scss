@@ -626,6 +626,9 @@ img.wprm-comment-rating {
 			display: inline-flex;
 			align-items: center;
 			gap: 20px;
+			background: transparent;
+			border: none;
+			cursor: pointer;
 		}
 
 		.link:hover {
@@ -932,6 +935,14 @@ img.wprm-comment-rating {
 	}
 }
 
+.home {
+	.inner-hero{
+		@include media(">tablet") {
+			padding: 132px 0;
+		}
+	}
+}
+
 .inner-hero {
 	background-color: brand-color('tertiary');
 	padding: 60px 0;
@@ -1139,7 +1150,7 @@ img.wprm-comment-rating {
 
 .site-main-article-content {
 	.site-main-article__author-data {
-		margin-bottom: 64px;
+		margin-bottom: 20px;
 		display: flex;
 		gap: 20px 60px;
 
@@ -1209,7 +1220,7 @@ img.wprm-comment-rating {
 		max-width: 750px;
 		max-height: 400px;
 		margin-top: -60px;
-		margin-bottom: 40px;
+		margin-bottom: 20px;
 
 		img {
 			width: 100%;
@@ -1282,8 +1293,8 @@ img.wprm-comment-rating {
 
 .site-main-article__author-data-editorial_statement {
 	background: var(--Light-Gray, #F7F7F7);
-	padding: 30px 40px;
-	margin: 0 0 64px;
+	padding: 0.5rem;
+	margin: 0 0 20px;
 
 	&-container__title {
 		h2 {
@@ -1452,7 +1463,7 @@ section.refinance_lender_section {
 	}
 
 	tr th {
-		font-size: 14px;
+		font-size: 18px;
 	}
 
 	tr .td_content {
@@ -1870,6 +1881,9 @@ section.refinance_lender_section {
 
 html {
 	scroll-behavior: smooth;
+	&.overflow-hidden{
+		overflow: hidden;
+	}
 }
 
 // Single Related Posts

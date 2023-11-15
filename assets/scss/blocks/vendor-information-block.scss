@@ -94,6 +94,10 @@
                 justify-content: center;
                 margin-left: auto;
 
+                @include media("<tablet") {
+                    margin: 30px auto 0;
+                }
+
                 span {
                     display: inline-flex;
                     transform: rotate(0deg);
@@ -261,14 +265,14 @@
             }
     
             &-link {
-                
-    
                 @include media(">desktop") {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     //flex-direction: column;
                     flex-direction: row;
+                    display: grid;
+                    grid-template-columns: auto auto;
                 }
     
                 &.btn {
@@ -279,7 +283,7 @@
                     justify-content: center;
                     flex-direction: column;
                     @include media(">tablet") {
-                        max-width: 185px;
+                        // max-width: 185px;
                     }
                 }
                 &-more-info {
