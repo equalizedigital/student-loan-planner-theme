@@ -15,7 +15,7 @@
 	"attributes": {
 		"previewImage": {
 			"type": "string",
-			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/vendor-information/screenshot.png"
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/vendor-information/screenscchot.png"
 		}
 	}
 }
