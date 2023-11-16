@@ -743,11 +743,11 @@ window.addEventListener("load", function () {
 			let initText = highlightButtonText.innerText;
 			let tabOpen = false;
 
-			if (items.length >= 4) {
+			if (items.length >= 6) {
 
 				if (windowWidth <= 768) {
 					items.forEach(function (item, index) {
-						if (index < 4) {
+						if (index < 6) {
 							item.tabIndex = 0;
 						} else {
 							item.tabIndex = -1;
@@ -760,7 +760,6 @@ window.addEventListener("load", function () {
 							item.tabIndex = 0;
 						});
 					}
-
 				}
 
 				highlightButton.addEventListener('click', function () {
@@ -771,7 +770,7 @@ window.addEventListener("load", function () {
 							item.classList.add('hidden');
 							item.classList.remove('animate');
 							items.forEach(function (item, index) {
-								if (index < 4) {
+								if (index < 6) {
 									item.tabIndex = 0;
 								} else {
 									item.tabIndex = -1;
@@ -789,7 +788,7 @@ window.addEventListener("load", function () {
 					var currentState = this.getAttribute('aria-expanded') === 'true';
 					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
 
-					for (var i = 0; i < 4 && i < items.length; i++) {
+					for (var i = 0; i < 6 && i < items.length; i++) {
 						items[i].classList.remove('hidden');
 					}
 
@@ -910,6 +909,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
+				let listItemCheck = document.querySelector(`.toc-nav li a`);
+				if (listItemCheck == null){
+					return;
+				}
 				if (entry.intersectionRatio > 0) {
 					// Remove 'active' class from the currently active list item
 					if (activeListItemMobile) {

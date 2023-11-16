@@ -68,7 +68,7 @@ endif;
 					<li class="team-hightlight-block-container-team-hightlight-member 
 					<?php
 					if ( empty( $acf_use_alternative_styling ) ) {
-					if ( get_row_index() > 4 ) {
+					if ( get_row_index() > 6 ) {
 						
 						echo 'hidden'; }
 					}
