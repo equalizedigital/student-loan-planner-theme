@@ -88,8 +88,8 @@ function eqd_single_after_entry_content() {
 			<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post( $current_year ); ?></h2>
 		</header>
 
-	<div class="lender_info">
-		<table>
+	<div class="lender_info" >
+		<table id="refinance_lender_options">
 			<tr class="header">
 				<th class="sr-only" scope="col">Lender Name</th>
 				<th scope="col">Lender</th>
@@ -98,24 +98,23 @@ function eqd_single_after_entry_content() {
 			</tr>
 
 			<?php
+			$number_of_items = 0;
 			while ( have_rows( 'vendors','option' ) ) :
 				the_row();
-				
 				$company_title = get_sub_field( 'company_title' );
 				$company_logo = get_sub_field( 'company_logo' );
 				$cashback_amount = get_sub_field( 'cashback_amount' );
 				$variable = get_sub_field( 'variable' );
-
 				?>
 
-				<tr class="data-tr">
-				<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
-				<td>
-					<div class="td_content">
-						<img src="<?php echo $company_logo['url']; ?>" alt="<?php echo $company_logo['alt']; ?>">
-						<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo $company_title; ?>">Disclosures</button>
-					</div>
-				</td>
+				<tr class="data-tr <?php if ( get_row_index() > 3 ) { echo 'hidden'; } ?>">
+					<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
+					<td>
+						<div class="td_content">
+							<img src="<?php echo $company_logo['url']; ?>" alt="<?php echo $company_logo['alt']; ?>">
+							<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo $company_title; ?>">Disclosures</button>
+						</div>
+					</td>
 				<td>
 					<div class="td_content">
 						<div class="td_title">
@@ -130,24 +129,24 @@ function eqd_single_after_entry_content() {
 					</div>
 				</td>
 				<td>
-				<div class="td_title">
-								<?php
-								$link = get_sub_field( 'link' );
-								if(!empty($link['url'])): ?>
-								<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-								<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn" <?php echo !empty($link['target'])? wp_kses_post("target='".$link['target']."'"):''; ?>>
-									<?php  echo wp_kses_post($link['title']); ?>
-									<?php if(empty($link['target'])): ?>
-										<span class="svg">
-											<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
-												<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"></path>
-											</svg>
-										</span>
-									<?php endif; ?>
-								</a>
-								<?php endif; ?>
-								</div>
+					<div class="td_title">
+						<?php
+						$link = get_sub_field( 'link' );
+						if(!empty($link['url'])): ?>
+						<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+						<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn" <?php echo !empty($link['target'])? wp_kses_post("target='".$link['target']."'"):''; ?>>
+							<?php  echo wp_kses_post($link['title']); ?>
+							<?php if(empty($link['target'])): ?>
+								<span class="svg">
+									<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
+										<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"></path>
+									</svg>
+								</span>
+							<?php endif; ?>
+						</a>
+						<?php endif; ?>
+					</div>
 					<div class="td_content">
 						<div class="td_text">
 							<?php $fixed = get_sub_field( 'fixed' ); ?>
@@ -160,15 +159,30 @@ function eqd_single_after_entry_content() {
 					</div>
 				</td>
 			</tr>
-
-
 			<?php
+			++$number_of_items;
 			endwhile;
-	
 		?>
 
 	</table>
 	</div>
+
+		<?php if ( $number_of_items >= 3 ) :
+			?>
+			<div class="refinance_lender_section__load_more">
+				<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="refinance_lender_options">
+					<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?> lenders</div>
+					<span class="arrow">
+						<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+							<path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/>
+						</svg>
+					</span>
+				</button>
+			</div>
+			<?php
+		endif;
+		?>
+
 </section>
 
 <?php endif; ?>

@@ -1460,6 +1460,49 @@ section.refinance_lender_section {
 		width: 100%;
 	}
 
+	.refinance_lender_section__load_more {
+		display: flex;
+		justify-content: center;
+		margin: 0;
+		@include media(">tablet") {
+			margin-top: 40px;
+		}
+
+		button {
+			-webkit-appearance: none;
+			background: transparent;
+			border: none;
+			display: flex;
+			gap: 20px;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+
+			&.active {
+
+				.arrow {
+					transform: rotate(180deg);
+				}
+			}
+
+			.text {
+				color: #000;
+				text-align: right;
+				font-size: 15px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1;
+			}
+
+			.arrow {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transform: rotate(0deg);
+			}
+		}
+	}
+
 	.lender_info tr {
 		display: grid;
 		width: 100%;
@@ -1468,12 +1511,23 @@ section.refinance_lender_section {
 		padding-bottom: 10px;
 		margin: 15px 0;
 
-
 		@include media(">tablet") {
 			margin: 27px 0;
 			padding-bottom: 27px;
-
 			grid-template-columns: 1fr 1.2fr 1fr;
+		}
+
+		position: relative;
+		opacity: 1;
+		overflow: hidden;
+		transition: opacity 0.5s, max-height 0.5s;
+
+		&.hidden {
+			opacity: 0;
+			margin-bottom: 0;
+			max-height: 0;
+			border: none;
+			position: absolute;
 		}
 	}
 

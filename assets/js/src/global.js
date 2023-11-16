@@ -817,6 +817,104 @@ window.addEventListener("load", function () {
 
 
 
+// Lender Table Show More
+window.addEventListener("load", function () {
+
+	function checkIsTabletSizeLender() {
+		var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+		teamLenderFunctionality(windowWidth);
+	}
+
+	// Initial check on page load
+	checkIsTabletSizeLender();
+
+	// Listen for window resize events and recheck
+	window.addEventListener('resize', checkIsTabletSizeLender);
+	
+	function teamLenderFunctionality(windowWidth) {
+		let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button')
+		let highlightButtonLenderText = document.querySelector('.refinance_lender_section__load_more button .text')
+
+		if (highlightButtonLender) {
+			let items = document.querySelectorAll('.data-tr');
+			let initText = highlightButtonLenderText.innerText;
+			let tabOpen = false;
+
+			
+
+			if (items.length >= 3) {
+
+				
+
+				if (windowWidth <= 768) {
+					items.forEach(function (item, index) {
+						if (index < 3) {
+							item.tabIndex = 0;
+						} else {
+							item.tabIndex = -1;
+						}
+					});
+					items[0].tabIndex = 0;
+				}
+
+				highlightButtonLender.addEventListener('click', function () {
+					// Remove the "hidden" class and add an "animate" class for each item
+					
+
+					items.forEach(function (item) {
+
+						if (tabOpen) {
+							item.classList.add('hidden');
+							item.classList.remove('animate');
+							items.forEach(function (item, index) {
+								if (index < 3) {
+									item.tabIndex = 0;
+								} else {
+									item.tabIndex = -1;
+								}
+							});
+
+						} else {
+							item.classList.remove('hidden');
+							item.classList.add('animate');
+						}
+
+						// item.tabIndex = 0;
+					});
+
+					var currentState = this.getAttribute('aria-expanded') === 'true';
+					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
+
+					for (var i = 0; i < 3 && i < items.length; i++) {
+						items[i].classList.remove('hidden');
+					}
+
+					items[0].focus()
+					// Hide the "Show All" button with a fade-out effect
+					this.classList.add('active');
+
+					tabOpen == false ? highlightButtonLenderText.innerText = 'Show Fewer' : highlightButtonLenderText.innerText = initText;
+
+					// After the animation is complete, remove the "animate" class
+					setTimeout(function () {
+						items.forEach(function (item) {
+							tabOpen ? item.classList.remove('animate') : item.classList.add('animate');
+						});
+					}, 500);
+
+					tabOpen ? tabOpen = false : tabOpen = true;
+				});
+
+			}
+
+		}
+
+	}
+});
+
+
+
 // 
 
 window.addEventListener('DOMContentLoaded', () => {
