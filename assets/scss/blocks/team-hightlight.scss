@@ -125,18 +125,21 @@
                     border-radius: 10px;
                     border: 1px solid #D9D9D9;
                     padding: 0 !important;
-
-                        opacity: 1;
-                        max-height: 140px;
-                        overflow: hidden;
-                        transition: opacity 0.5s, max-height 0.5s;
+                    position: relative;
+                    opacity: 1;
+                    max-height: 140px;
+                    overflow: hidden;
+                    transition: opacity 0.5s, max-height 0.5s;
+                    @include media("<tablet") {
                         margin-bottom: 20px;
+                    }
                     
                     &.hidden {
                         opacity: 0;
                         margin-bottom: 0;
                         max-height: 0;
                         border: none;
+                        position: absolute;
                     }
 
                     &__button {
@@ -203,6 +206,9 @@
                     display: flex;
                     justify-content: center;
                     margin: 0;
+                    @include media(">tablet") {
+                    margin-top: 40px;
+                    }
 
                     .load {
                         -webkit-appearance: none;
