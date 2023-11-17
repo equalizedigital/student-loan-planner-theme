@@ -42,10 +42,10 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 					
 						<?php if ( '#' === $link['url'] ) { ?>
 							<button aria-label="<?php echo $link['title']; ?>" type="button" class="menu-item-main-link 
-															<?php
-															if ( empty( $columns ) ) {
-																_e( 'menu-item-no-drop' ); }
-															?>
+								<?php
+								if ( empty( $columns ) ) {
+									_e( 'menu-item-no-drop' ); }
+								?>
 							" data-toggle="<?php echo $link['title']; ?>" aria-expanded="false">
 								<?php _e( $link['title'] ); ?>
 								<span class="chevron">
@@ -56,16 +56,15 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 						<?php } else { ?>
 							
 							<a href="<?php echo $link['url']; ?>" 
-												<?php
-												if ( $link['url'] == $current_url ) {
-													echo 'aria-current="page"';}
-												?>
-							target="<?php echo $link['target']; ?>" class="menu-item-main-link 
-							<?php
-							if ( empty( $columns ) ) {
-								_e( 'menu-item-no-drop' ); }
-							?>
-">
+								<?php
+								if ( $link['url'] == $current_url ) {
+									echo 'aria-current="page"';}
+								?>
+								target="<?php echo $link['target']; ?>" class="menu-item-main-link 
+								<?php
+								if ( empty( $columns ) ) {
+									_e( 'menu-item-no-drop' ); }
+								?>">
 								<?php _e( $link['title'] ); ?>
 								<span class="chevron">
 									<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
@@ -147,7 +146,7 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 
 			<div class="menu_desktop">
 				<button class="menu_search_btn " id="menu_search_btn" aria-haspopup="dialog" aria-controls="search-modal" aria-expanded="false">
-					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search">
+					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search">
 				</button>
 				<?php if ( ! empty( $header_main_link ) ) : ?>
 					<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten">
@@ -176,3 +175,8 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 		</nav>
 	</div>
 </div>
+<?php if ( ! empty( $header_main_link ) ) : ?>
+	<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten mobile-header-link">
+		<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
+	</a>
+<?php endif; ?>

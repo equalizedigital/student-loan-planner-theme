@@ -968,15 +968,15 @@ img.wprm-comment-rating {
 
 .inner-hero {
 	background-color: brand-color('tertiary');
-	padding: 60px 0;
+	padding: 20px 0;
 	position: relative;
 	grid-column-start: 1;
 	grid-column-end: 13;
 	width: 100%;
+	min-height: 200px;
 
 	@include media(">tablet") {
-		padding: 60px 0;
-		min-height: 280px;
+		padding: 20px 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -1098,16 +1098,17 @@ img.wprm-comment-rating {
 			color: white;
 			font-style: normal;
 			font-weight: 700;
-			margin: 0 0 18px;
-			font-size: 35px;
-			line-height: 40px;
+			margin: 0 0 20px;
+			font-size: 22px;
+			line-height: 24px;
 			min-width: 100%;
 			max-width: 750px;
 
 			@include media(">tablet") {
-				line-height: 70px;
-				font-size: 70px;
+				font-size: 42px;
+				line-height: 42px;
 				min-width: 95%;
+				margin: 0 0 50px;
 			}
 		}
 
@@ -1243,7 +1244,7 @@ img.wprm-comment-rating {
 		max-width: 750px;
 		max-height: 400px;
 		margin-top: -60px;
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 
 		img {
 			width: 100%;
@@ -1317,7 +1318,7 @@ img.wprm-comment-rating {
 .site-main-article__author-data-editorial_statement {
 	background: var(--Light-Gray, #F7F7F7);
 	padding: 0.5rem;
-	margin: 0 0 20px;
+	margin: 0 0 10px;
 
 	&-container__title {
 		h2 {

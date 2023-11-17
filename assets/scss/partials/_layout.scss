@@ -19,7 +19,7 @@ input[type="search"] {
 
 .site-inner {
 	@include media("<tablet") {
-		padding-top: 71px;
+		padding-top: 60px;
 	}
 
 	.content &>.wrap {
