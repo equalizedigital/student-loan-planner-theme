@@ -966,9 +966,17 @@ img.wprm-comment-rating {
 	}
 }
 
+.single {
+	.inner-hero {
+		padding: 20px 0 60px;
+		min-height: 200px;
+	}
+}
+
+
 .inner-hero {
 	background-color: brand-color('tertiary');
-	padding: 20px 0;
+	padding: 60px 0;
 	position: relative;
 	grid-column-start: 1;
 	grid-column-end: 13;
@@ -976,7 +984,8 @@ img.wprm-comment-rating {
 	min-height: 200px;
 
 	@include media(">tablet") {
-		padding: 20px 0;
+		padding: 60px 0;
+		min-height: 280px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -1108,7 +1117,7 @@ img.wprm-comment-rating {
 				font-size: 42px;
 				line-height: 42px;
 				min-width: 95%;
-				margin: 0 0 50px;
+				margin: 0 0 20px;
 			}
 		}
 
@@ -1465,6 +1474,7 @@ section.refinance_lender_section {
 		display: flex;
 		justify-content: center;
 		margin: 0;
+
 		@include media(">tablet") {
 			margin-top: 40px;
 		}
@@ -1521,7 +1531,8 @@ section.refinance_lender_section {
 		position: relative;
 		opacity: 1;
 		overflow: hidden;
-		transition: opacity 0.5s, max-height 0.5s;
+		transition: opacity 0.5s,
+		max-height 0.5s;
 
 		&.hidden {
 			opacity: 0;
