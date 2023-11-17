@@ -334,7 +334,18 @@ function eqd_single_fullwidth_content() {
 					echo '</br>';}
 				?>
 
-
+			<section class="site-main-article__author-data-editorial_statement">
+				<div class="site-main-article__author-data-editorial_statement-container">
+					<div class="site-main-article__author-data-editorial_statement-container__title">
+						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
+					</div>
+					<div class="site-main-article__author-data-editorial_statement-container__copy">
+						<p>At Student Loan Planner, we follow a strict editorial ethics policy. This post may contain references to products from our partners within the guidelines of this policy. Read our 
+						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
+						</p>
+					</div>
+				</div>
+			</section>
 
 			<div class="site-main-article__author-data <?php if( !empty(get_field( 'post_editor', get_the_ID() )) ){ echo "site-main-article__author-data_editor"; } ?>">
 				<div class="auth-editor-container">
@@ -410,18 +421,7 @@ function eqd_single_fullwidth_content() {
 
 			</div>
 
-			<section class="site-main-article__author-data-editorial_statement">
-				<div class="site-main-article__author-data-editorial_statement-container">
-					<div class="site-main-article__author-data-editorial_statement-container__title">
-						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
-					</div>
-					<div class="site-main-article__author-data-editorial_statement-container__copy">
-						<p>At Student Loan Planner, we follow a strict editorial ethics policy. This post may contain references to products from our partners within the guidelines of this policy. Read our 
-						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
-						</p>
-					</div>
-				</div>
-			</section>
+			
 
 			<?php
 		endif;

@@ -16,7 +16,7 @@ header.site-header {
 		}
 
 		#nav-icon {
-			z-index: 100;
+			z-index: 100!important;
 
 			span {
 				background-color: white;
@@ -28,6 +28,14 @@ header.site-header {
 				visibility: hidden;
 			}
 		}
+
+		.nav-icon, #nav-icon{
+			display: none;
+		}
+
+		.mobile-header-link{
+			z-index: 1!important;
+		}
 	}
 
 	.wrap {
@@ -37,6 +45,19 @@ header.site-header {
 
 		@include media(">1070px") {
 			overflow: auto;
+		}
+
+		.mobile-header-link {
+			display: none;
+			@include media("<1070px") {
+				position: absolute;
+				top: 8px;
+				right: 15px;
+				display: inline-flex;
+				z-index: 1100;
+				min-width: 0;
+				padding: 8px 15px;
+			}
 		}
 	}
 }
@@ -54,8 +75,8 @@ header.site-header {
 			top: 0;
 			left: 0;
 			right: 0;
-			height: 70px;
-			background: #fff;
+			height: 60px;
+			background: brand-color('tertiary');
 			z-index: 110;
 		}
 	}
@@ -78,8 +99,8 @@ header.site-header {
 				top: 0;
 				left: 0;
 				right: 0;
-				background: white;
-				height: 71px;
+				background: brand-color('tertiary');
+				height: 60px;
 			}
 		}
 
@@ -127,13 +148,13 @@ header.site-header {
 
 					>li>.menu-item-main-link {
 						position: relative;
-						color: #000;
+						color: white;
 						font-size: 15px;
 						font-style: normal;
 						font-weight: 400;
 						line-height: 1;
 						text-decoration: none;
-						padding: 30px 0 30px;
+						padding: 20px 0;
 						display: flex;
 						background: transparent;
 						border: none;
@@ -142,7 +163,7 @@ header.site-header {
 						align-items: center;
 
 						@include media(">1070px") {
-							height: 80px;
+							height: 60px;
 						}
 
 						@include media("<1070px") {
@@ -712,15 +733,15 @@ body {
 	border: none;
 	margin: 0;
 	z-index: 1110;
-	top: 20px;
-	right: 15px;
+	top: 15px;
+	left: 15px;
 
 	span {
 		display: block;
 		position: absolute;
 		height: 2px;
 		width: 100%;
-		background: $off_black;
+		background: white;
 		border-radius: 0px;
 		opacity: 1;
 		left: 0;
@@ -728,16 +749,16 @@ body {
 		transition: 0.25s ease-in-out;
 
 		&:nth-child(1) {
-			width: 20px;
+			// width: 20px;
 			top: 5px;
 		}
 
 		&:nth-child(2) {
-			width: 30px;
+			// width: 30px;
 		}
 
 		&:nth-child(4) {
-			width: 15px;
+			// width: 15px;
 		}
 
 		&:nth-child(2),
@@ -889,10 +910,10 @@ body {
 		}
 	}
 
-	a.btn {
+	.btn {
 		min-width: 0;
 		font-size: 16px;
-		padding: 10px 5px;
+		padding: 8px 15px;
 		min-width: 80px;
 	}
 
