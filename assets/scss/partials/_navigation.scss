@@ -57,6 +57,7 @@ header.site-header {
 				z-index: 1100;
 				min-width: 0;
 				padding: 8px 15px;
+				font-size: 16px;
 			}
 		}
 	}
@@ -911,10 +912,13 @@ body {
 	}
 
 	.btn {
-		min-width: 0;
 		font-size: 16px;
+		line-height: 1;
 		padding: 8px 15px;
 		min-width: 80px;
+		min-height: 43px;
+		display: inline-flex;
+		align-items: center;
 	}
 
 
