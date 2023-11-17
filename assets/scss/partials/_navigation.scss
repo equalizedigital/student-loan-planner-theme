@@ -928,7 +928,7 @@ body {
 	right: 0;
 	align-items: center;
 	justify-content: center;
-	background: #fff;
+	background: brand-color('tertiary');
 	z-index: 1000;
 	min-height: 71px;
 
@@ -979,7 +979,7 @@ body {
 	.input-group input {
 		min-width: 420px;
 		padding: 0;
-		color: #000;
+		color: #fff;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -1001,7 +1001,7 @@ body {
 	}
 
 	label {
-		color: #000;
+		color: white;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
