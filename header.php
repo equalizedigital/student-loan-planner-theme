@@ -42,7 +42,6 @@ echo '<div class="site-container">';
 			echo '<' . esc_attr( $logo_tag ) . ' class="site-title"><a href="' . esc_url( home_url() ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $logo_tag ) . '>';
 		echo '</div>';
 
-		// tha_header_bottom();
 		slp_main_menu();
 	echo '</div></header>';
 	tha_header_after();
