@@ -5,6 +5,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $logo_tag         = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() && is_home() ) ) ? 'h1' : 'p';
 $header_main_link = get_field( 'header_main_link', 'option' );
+// Assuming you have the post ID
+$cat_id = get_the_ID();
+
+// Get the post categories
+$categories_id = get_the_category($post_id);
+
+// Check if categories exist for the post
+if (!empty($categories_id)) {
+	// Retrieve the name of the first category
+	$category_id = $categories_id[0]->term_id;
+	$link_data = get_field( 'header_button_override',  'category_' . $category_id );
+}
 ?>
 
 <div id="main-navigation">
@@ -148,10 +160,17 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 				<button class="menu_search_btn " id="menu_search_btn" aria-haspopup="dialog" aria-controls="search-modal" aria-expanded="false">
 					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search">
 				</button>
-				<?php if ( ! empty( $header_main_link ) ) : ?>
+
+				<?php if ( ! empty( $link_data ) ) : ?>
+					<a href="<?php echo ! empty( $link_data ) ? $link_data['url'] : ''; ?>" <?php echo ! empty( $link_data['target'] ) ? 'target="' . $link_data['target'] . '"' : ''; ?> class="btn br-ten">
+						<?php echo ! empty( $link_data ) ? $link_data['title'] : 'Get Help'; ?>
+					</a>
+				<?php else: ?>
+					<?php if ( ! empty( $header_main_link ) ) : ?>
 					<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten">
 						<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
 					</a>
+					<?php endif; ?>
 				<?php endif; ?>
 			</div>
 
@@ -164,19 +183,35 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 					</form>
 				</div>
 				<div class="mobile_help_btn">
-					<?php if ( ! empty( $header_main_link ) ) : ?>
+
+					<?php if ( ! empty( $link_data ) ) : ?>
+						<a href="<?php echo ! empty( $link_data ) ? $link_data['url'] : ''; ?>" <?php echo ! empty( $link_data['target'] ) ? 'target="' . $link_data['target'] . '"' : ''; ?> class="btn">
+							<?php echo ! empty( $link_data ) ? $link_data['title'] : 'Get Help'; ?>
+						</a>
+					<?php else : ?>
+						<?php if ( ! empty( $header_main_link ) ) : ?>
 						<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
 							<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
 						</a>
+						<?php endif; ?>
 					<?php endif; ?>
+
 				</div>
 			</div>
 
 		</nav>
 	</div>
 </div>
-<?php if ( ! empty( $header_main_link ) ) : ?>
+
+
+<?php if ( ! empty( $link_data ) ) : ?>
+	<a href="<?php echo ! empty( $link_data ) ? $link_data['url'] : ''; ?>" <?php echo ! empty( $link_data['target'] ) ? 'target="' . $link_data['target'] . '"' : ''; ?> class="btn br-ten mobile-header-link">
+		<?php echo ! empty( $link_data ) ? $link_data['title'] : 'Get Help'; ?>
+	</a>
+<?php else : ?>
+	<?php if ( ! empty( $header_main_link ) ) : ?>
 	<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten mobile-header-link">
 		<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
 	</a>
+	<?php endif; ?>
 <?php endif; ?>
