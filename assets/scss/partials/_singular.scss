@@ -1465,6 +1465,7 @@ img.wprm-comment-rating {
 
 section.refinance_lender_section {
 	margin: 0 0 117px 0;
+	position: relative;
 
 	.lender_info table {
 		width: 100%;
@@ -1540,6 +1541,8 @@ section.refinance_lender_section {
 			max-height: 0;
 			border: none;
 			position: absolute;
+			left: 0;
+			top: 0;
 		}
 	}
 
