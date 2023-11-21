@@ -167,6 +167,12 @@ h2 {
 
 }
 
+.entry-content {
+	h3 {
+		color: brand-color('tertiary');
+	}
+}
+
 h3 {
 	@include style('title', 3);
 	font-style: normal;
@@ -346,6 +352,7 @@ input {
 			line-height: 18px;
 			padding: 5px;
 			text-align: left;
+
 			@include media(">tablet") {
 				padding: 18px 20px;
 			}
@@ -358,6 +365,7 @@ input {
 			font-weight: 400;
 			line-height: 18px;
 			padding: 5px;
+
 			@include media(">tablet") {
 				padding: 10px 20px;
 			}
