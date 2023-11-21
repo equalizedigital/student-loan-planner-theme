@@ -1152,6 +1152,7 @@ img.wprm-comment-rating {
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 20px;
+		
 
 		.avatar {
 			border-radius: 50%;
@@ -1214,8 +1215,10 @@ img.wprm-comment-rating {
 		display: flex;
 
 		align-items: center;
-		gap: 20px;
-
+		gap: 8px;
+		@include media(">tablet") {
+			gap: 20px;
+		}
 		@include media("<tablet") {
 			flex-wrap: wrap;
 		}
@@ -1224,6 +1227,10 @@ img.wprm-comment-rating {
 			border-radius: 50%;
 			width: 45px;
 			height: 45px;
+			@include media("<tablet") {
+				width: 30px;
+				height: 30px;
+			}
 		}
 
 		.entry-info {
@@ -1298,6 +1305,9 @@ img.wprm-comment-rating {
 		display: flex;
 		gap: 20px;
 		align-items: center;
+		@include media("<tablet") {
+			gap: 8px;
+		}
 	}
 
 	.reviewed_author img {
@@ -1305,6 +1315,10 @@ img.wprm-comment-rating {
 		width: 45px;
 		height: 45px;
 		max-width: 45px;
+		@include media("<tablet") {
+			width: 30px;
+			height: 30px;
+		}
 	}
 
 	.author_info {
