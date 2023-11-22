@@ -23,6 +23,12 @@ if( empty( $layout_style ) ) {
 
 $container_class .= ' post_type_layout_' . $layout_style . ' ';
 
+$side_container_class         = '';
+if ( get_field( 'post_format_style' ) == 'full-width' ) {
+} else {
+	$side_container_class .= 'inner-hero-alternate-style';
+}
+
 tha_content_before();
 
 	echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
@@ -35,7 +41,7 @@ tha_content_before();
 
 			tha_single_header();
 
-			echo "<div class='side-main-article-container'>";
+			echo "<div class='side-main-article-container $side_container_class'>";
 				tha_content_before_container();
 				echo "<div class=\"site-main-article-content $container_class\">";
 

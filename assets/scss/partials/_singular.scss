@@ -947,6 +947,10 @@ img.wprm-comment-rating {
 	.entry-content {
 		padding: 40px 0;
 	}
+	.inner-hero-container .title{
+		font-size: 22px;
+		line-height: 24px;
+	}
 }
 
 .post_type_layout_full-width {
@@ -1131,10 +1135,12 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 700;
 			margin: 0 0 20px;
-			font-size: 22px;
-			line-height: 24px;
+			
 			min-width: 100%;
 			max-width: 750px;
+
+			font-size: 35px;
+			line-height: 40px;
 
 			@include media(">tablet") {
 				font-size: 42px;
@@ -1204,6 +1210,11 @@ img.wprm-comment-rating {
 
 /* site-main-article-content
 --------------------------------------------- */
+.side-main-article-container.inner-hero-alternate-style {
+	.hero_featured_image {
+		margin-top: 30px;
+	}
+}
 
 .site-main-article-content {
 	.site-main-article__author-data {
