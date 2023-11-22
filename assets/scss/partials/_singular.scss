@@ -947,10 +947,7 @@ img.wprm-comment-rating {
 	.entry-content {
 		padding: 40px 0;
 	}
-	.inner-hero-container .title{
-		font-size: 22px;
-		line-height: 24px;
-	}
+	
 }
 
 .post_type_layout_full-width {
@@ -958,6 +955,12 @@ img.wprm-comment-rating {
 		@include media(">tablet") {
 			min-width: auto;
 			max-width: 650px;
+		}
+	}
+	.inner-hero-container .title{
+		@include media("<tablet") {
+			font-size: 22px;
+			line-height: 24px;
 		}
 	}
 }
