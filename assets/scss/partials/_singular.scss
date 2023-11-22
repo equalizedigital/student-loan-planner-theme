@@ -1217,6 +1217,11 @@ img.wprm-comment-rating {
 	.hero_featured_image {
 		margin-top: 30px;
 	}
+	.sidebar_container{
+		@include media(">tablet") {
+			margin-top: 30px;
+		}
+	}
 }
 
 .site-main-article-content {
