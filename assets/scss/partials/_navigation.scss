@@ -16,7 +16,7 @@ header.site-header {
 		}
 
 		#nav-icon {
-			z-index: 100!important;
+			z-index: 100 !important;
 
 			span {
 				background-color: white;
@@ -29,12 +29,13 @@ header.site-header {
 			}
 		}
 
-		.nav-icon, #nav-icon{
+		.nav-icon,
+		#nav-icon {
 			display: none;
 		}
 
-		.mobile-header-link{
-			z-index: 1!important;
+		.mobile-header-link {
+			z-index: 1 !important;
 		}
 	}
 
@@ -49,6 +50,7 @@ header.site-header {
 
 		.mobile-header-link {
 			display: none;
+
 			@include media("<1070px") {
 				position: absolute;
 				top: 8px;
@@ -58,6 +60,12 @@ header.site-header {
 				min-width: 0;
 				padding: 8px 15px;
 				font-size: 16px;
+			}
+
+			&:focus-within,
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid white;
 			}
 		}
 	}
@@ -188,7 +196,7 @@ header.site-header {
 								top: 50%;
 								transform: translate(0%, -50%);
 								bottom: 0;
-								border: 2px solid blue;
+								border: 2px solid white;
 								width: auto;
 								height: 50%;
 
@@ -328,6 +336,12 @@ header.site-header {
 
 								&::before {
 									display: none;
+								}
+
+								&:focus-within,
+								&:focus,
+								&:focus-visible {
+									outline: 2px solid white;
 								}
 
 								.sub_menu_back__icon {
@@ -737,6 +751,12 @@ body {
 	top: 15px;
 	left: 15px;
 
+	&:focus-within,
+	&:focus,
+	&:focus-visible {
+		outline: 2px solid white;
+	}
+
 	span {
 		display: block;
 		position: absolute;
@@ -819,6 +839,12 @@ body {
 			font-weight: 600;
 			line-height: 30px;
 			border-radius: 0;
+
+			&:focus-within,
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid white;
+			}
 		}
 	}
 
@@ -852,6 +878,8 @@ body {
 			padding: 24px 0;
 			padding-left: 40px;
 			transition: all .3s;
+
+
 		}
 
 		input:focus+label {
@@ -869,6 +897,12 @@ body {
 			border: none;
 			padding: 24px 0;
 			padding-left: 40px;
+
+			&:focus-within,
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid white;
+			}
 		}
 
 		input::placeholder {
@@ -904,6 +938,12 @@ body {
 		padding: 0;
 		margin-left: 20px;
 
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+
 		img {
 			width: 20px;
 			height: 20px;
@@ -919,6 +959,12 @@ body {
 		min-height: 43px;
 		display: inline-flex;
 		align-items: center;
+
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
 	}
 
 
@@ -966,6 +1012,12 @@ body {
 		justify-content: center;
 		cursor: pointer;
 
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -989,6 +1041,8 @@ body {
 		font-weight: 400;
 		line-height: 1;
 		border: none;
+
+
 	}
 
 	form:hover {
@@ -997,6 +1051,15 @@ body {
 				top: -20px;
 			}
 
+		}
+	}
+
+	input {
+
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
 		}
 	}
 
@@ -1029,6 +1092,17 @@ body {
 	gap: 20px;
 	align-items: center;
 	justify-content: center;
+
+	.btn {
+		padding: 8px 15px;
+		min-width: 0;
+
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+	}
 }
 
 .search-popup label {

@@ -32,11 +32,9 @@
         .accordion-block-container-accordion__content {
             padding: 20px 20px 0;
             display: none;
-            color: var(--Black, #000);
-            font-size: 14px;
+            color: black;
             font-style: normal;
             font-weight: 400;
-            line-height: 24px;
 
 
             &.active-content {
