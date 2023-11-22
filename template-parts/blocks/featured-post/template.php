@@ -40,7 +40,7 @@ $category_ids = wp_get_post_categories($post_select->ID);
 
 
 $dateObject = new DateTime($post_select->post_date);
-$formattedDate = $dateObject->format('F d, Y');
+$formattedDate = $dateObject->format('M d, Y');
 
 // Get the author ID from the post ID
 $author_id = get_post_field('post_author', $post_select->ID);
