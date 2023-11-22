@@ -1550,9 +1550,11 @@ section.refinance_lender_section {
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+			@include media(">tablet") {
+				display: none;
+			}
 
 			&.active {
-
 				.arrow {
 					transform: rotate(180deg);
 				}
@@ -1597,13 +1599,15 @@ section.refinance_lender_section {
 		max-height 0.5s;
 
 		&.hidden {
-			opacity: 0;
-			margin-bottom: 0;
-			max-height: 0;
-			border: none;
-			position: absolute;
-			left: 0;
-			top: 0;
+			@include media("<tablet") {
+				opacity: 0;
+				margin-bottom: 0;
+				max-height: 0;
+				border: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
 		}
 	}
 
