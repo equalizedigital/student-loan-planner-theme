@@ -1,8 +1,9 @@
-.featured-post{
+.featured-post {
     @include media("<tablet") {
-    padding: 0 10px;
-    margin-top: -40px!important;
+        padding: 0 10px;
+        // margin-top: -40px !important;
     }
+
     &-container {
         max-width: 1168px;
         margin: 0 auto;
@@ -15,7 +16,7 @@
         min-height: 400px;
         overflow: hidden;
         text-decoration: none;
-    
+
         @include media(">tablet") {
             grid-template-columns: 1fr 1fr;
             margin-top: -80px;
