@@ -249,7 +249,6 @@ function eqd_tha_page_header() {
 				$bg_url = $background_image['url'];
 			}
 		} else {
-
 			// Load values and assing defaults.
 			$page_id                 = get_the_ID();
 			$alternative_title       = get_field( 'alternative_title', $page_id );
@@ -268,11 +267,9 @@ function eqd_tha_page_header() {
 					$bg_url = $background_image['url'];
 				}
 			} else {
-				$background_image    = get_field( 'background_image', $page_id );
-				$thumbnail_id        = get_post_thumbnail_id( $page_id );
-				$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-				if ( isset( $thumbnail_url_array[0] ) ) {
-					$background_image = $thumbnail_url_array[0];
+				$image = get_the_post_thumbnail_url($page_id);
+				if ( $image ) {
+					$background_image = $image;
 				}
 				$bg_url = $background_image;
 			}
@@ -373,9 +370,9 @@ function eqd_tha_page_header() {
 				if ( ! is_search() ) {
 					if ( ! empty( $bg_url ) ) :
 						?>
-					<span class="hero_image">
-						<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
-					</span>
+						<span class="hero_image">
+							<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
+						</span>
 						<?php
 					endif;
 				}
