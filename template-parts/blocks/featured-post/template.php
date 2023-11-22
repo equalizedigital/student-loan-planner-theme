@@ -58,11 +58,10 @@ $author_avatar = get_avatar($author_id, 96);
 		<div class="featured-post-container-content">
 			<div class="featured-post-container-info">
 				<div class="cat">
-					<?php if (!empty($category_ids)) {
-						foreach ($category_ids as $cat_id) {
-							$category = get_category($cat_id);
-							echo $category->name . ' ';
-						}
+					<?php 
+					if (!empty($category_ids)) {
+						$category = get_category($category_ids[0]);
+						echo $category->name . ' ';
 					}
 					?>
 				</div>
