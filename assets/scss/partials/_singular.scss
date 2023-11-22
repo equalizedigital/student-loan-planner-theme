@@ -1006,12 +1006,12 @@ img.wprm-comment-rating {
 	}
 
 	&.inner-hero-alternate-style {
-		padding: 40px $container-padding 0;
+		padding: 0;
 		min-height: 0;
 		background-color: white;
 
 		.inner-hero-container {
-			padding: 0;
+			padding: 40px $container-padding 0;
 		}
 
 		&:after {
