@@ -1005,6 +1005,29 @@ img.wprm-comment-rating {
 		z-index: 1;
 	}
 
+	&.inner-hero-alternate-style {
+		padding: 40px 0 0;
+		min-height: 0;
+		background-color: white;
+
+		.inner-hero-container {
+			padding: 0;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		.title {
+			// margin: 0;
+			color: black;
+		}
+
+		.subtitle {
+			color: black;
+		}
+	}
+
 	&.inner-hero-center-text {
 		text-align: center;
 
@@ -1152,7 +1175,7 @@ img.wprm-comment-rating {
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 20px;
-		
+
 
 		.avatar {
 			border-radius: 50%;
@@ -1216,9 +1239,11 @@ img.wprm-comment-rating {
 
 		align-items: center;
 		gap: 8px;
+
 		@include media(">tablet") {
 			gap: 20px;
 		}
+
 		@include media("<tablet") {
 			flex-wrap: wrap;
 		}
@@ -1227,6 +1252,7 @@ img.wprm-comment-rating {
 			border-radius: 50%;
 			width: 45px;
 			height: 45px;
+
 			@include media("<tablet") {
 				width: 30px;
 				height: 30px;
@@ -1305,6 +1331,7 @@ img.wprm-comment-rating {
 		display: flex;
 		gap: 20px;
 		align-items: center;
+
 		@include media("<tablet") {
 			gap: 8px;
 		}
@@ -1315,6 +1342,7 @@ img.wprm-comment-rating {
 		width: 45px;
 		height: 45px;
 		max-width: 45px;
+
 		@include media("<tablet") {
 			width: 30px;
 			height: 30px;
