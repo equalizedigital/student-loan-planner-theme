@@ -94,6 +94,8 @@ function eqd_single_header() {
 		$container_class         = '';
 		if ( get_field( 'post_format_style' ) == 'full-width' ) {
 			$container_class .= 'hero_relative';
+		} else {
+			$container_class .= 'inner-hero-alternate-style';
 		}
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
