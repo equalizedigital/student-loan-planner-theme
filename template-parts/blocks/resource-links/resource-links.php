@@ -45,54 +45,7 @@ $title = get_field('title');
 		</h2>
 
 		<div class="resource-links-container-links" role="tablist">
-			<?php 
-			$links = get_field('links');
-			if( $links ) {
-				foreach( $links as $key => $row ) {
-					if(!empty($row['link'])){
-						$link 		= $row['link'];
-					}
-					if(!empty($row['icon'])){
-						$icon = $row['icon']['url'];
-					}
-
-					if(!empty($row['manual_link'])){
-						$manual_link 		= $row['manual_link'];
-						$manual_link_text = $manual_link['title'];
-						$manual_link_url = $manual_link['url'];
-					}
-
-					?>
-					<div class="resource-links-container-links-link ">
-						<?php if($row['manual_link']): ?>
-							<a class="resource-links-container-links-link-button" href="<?php echo $manual_link_url; ?>">
-								<?php
-								echo $icon?"<img src='$icon' aria-hidden='true' alt='$title'></img>":'';
-								echo $manual_link_text?"<span class=\"text\">$manual_link_text</span>":'';
-								?>
-							</a>
-						<?php else: ?>
-							<button role="tab" id="button-tab-<?php echo $key; ?>" data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>">
-								<?php
-								if(!empty($icon)){
-									echo $icon?"<img src='$icon' aria-hidden='true' alt='$title'></img>":'';
-								}
-								if(!empty($link)){
-								echo $link?"<span class=\"text\">$link</span>":'';
-								}
-								?>
-							</button>
-						<?php endif; ?>
-						
-
-					</div>
-
-					<?php
-				}
-			}
-			?>
-
-			<div class="dropdown">
+		<div class="dropdown">
 				<button id="resource-links-dropdown" class="dropdown-select">
 				<?php 
 					$links = get_field('links');
@@ -155,6 +108,54 @@ $title = get_field('title');
 					?>
 				</ul>
 			</div>
+			
+			<?php 
+			$links = get_field('links');
+			if( $links ) {
+				foreach( $links as $key => $row ) {
+					if(!empty($row['link'])){
+						$link 		= $row['link'];
+					}
+					if(!empty($row['icon'])){
+						$icon = $row['icon']['url'];
+					}
+
+					if(!empty($row['manual_link'])){
+						$manual_link 		= $row['manual_link'];
+						$manual_link_text = $manual_link['title'];
+						$manual_link_url = $manual_link['url'];
+					}
+
+					?>
+					<div class="resource-links-container-links-link ">
+						<?php if($row['manual_link']): ?>
+							<a class="resource-links-container-links-link-button" href="<?php echo $manual_link_url; ?>">
+								<?php
+								echo $icon?"<img src='$icon' aria-hidden='true' alt='$title'></img>":'';
+								echo $manual_link_text?"<span class=\"text\">$manual_link_text</span>":'';
+								?>
+							</a>
+						<?php else: ?>
+							<!-- <button role="tab" id="button-tab-<?php echo $key; ?>" data-resourcelink="resource-link-<?php echo $key; ?>" class="resource-links-container-links-link-button <?php echo $key==0?'active':''; ?>"> -->
+								<?php
+								// if(!empty($icon)){
+								// 	echo $icon?"<img src='$icon' aria-hidden='true' alt='$title'></img>":'';
+								// }
+								// if(!empty($link)){
+								// echo $link?"<span class=\"text\">$link</span>":'';
+								// }
+								?>
+							<!-- </button> -->
+						<?php endif; ?>
+
+					</div>
+
+					<?php
+				}
+			}
+			?>
+
+			
 			
 		</div>
 
