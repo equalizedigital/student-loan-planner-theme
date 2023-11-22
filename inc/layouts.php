@@ -334,6 +334,17 @@ function eqd_single_fullwidth_content() {
 					echo '</br>';}
 				?>
 
+
+			<?php 
+			$term_list = wp_get_post_terms(get_the_ID(), 'category', ['fields' => 'all']);
+			foreach($term_list as $term) {
+				if( get_post_meta(get_the_ID(), '_yoast_wpseo_primary_category',true) == $term->term_id ) {
+					$hide_editorial_section_on_posts = get_field( 'hide_editorial_section_on_posts',  'category_' . $term->term_id );
+				}
+			}
+
+			if ( !$hide_editorial_section_on_posts ) :
+			?>
 			<section class="site-main-article__author-data-editorial_statement">
 				<div class="site-main-article__author-data-editorial_statement-container">
 					<div class="site-main-article__author-data-editorial_statement-container__title">
@@ -346,6 +357,7 @@ function eqd_single_fullwidth_content() {
 					</div>
 				</div>
 			</section>
+			<?php endif; ?>
 
 			<div class="site-main-article__author-data <?php if( !empty(get_field( 'post_editor', get_the_ID() )) ){ echo "site-main-article__author-data_editor"; } ?>">
 				<div class="auth-editor-container">

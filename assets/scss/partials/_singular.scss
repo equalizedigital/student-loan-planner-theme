@@ -945,7 +945,7 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 40px auto;
+		padding: 40px 0;
 	}
 }
 
@@ -1003,6 +1003,29 @@ img.wprm-comment-rating {
 		background: linear-gradient(90deg, brand-color('tertiary') 0%, brand-color('tertiary') 35%, rgba(98, 80, 137, 0) 100%);
 
 		z-index: 1;
+	}
+
+	&.inner-hero-alternate-style {
+		padding: 40px 0 0;
+		min-height: 0;
+		background-color: white;
+
+		.inner-hero-container {
+			padding: 0;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		.title {
+			// margin: 0;
+			color: black;
+		}
+
+		.subtitle {
+			color: black;
+		}
 	}
 
 	&.inner-hero-center-text {
@@ -1153,6 +1176,7 @@ img.wprm-comment-rating {
 		align-items: center;
 		gap: 20px;
 
+
 		.avatar {
 			border-radius: 50%;
 		}
@@ -1214,7 +1238,11 @@ img.wprm-comment-rating {
 		display: flex;
 
 		align-items: center;
-		gap: 20px;
+		gap: 8px;
+
+		@include media(">tablet") {
+			gap: 20px;
+		}
 
 		@include media("<tablet") {
 			flex-wrap: wrap;
@@ -1224,6 +1252,11 @@ img.wprm-comment-rating {
 			border-radius: 50%;
 			width: 45px;
 			height: 45px;
+
+			@include media("<tablet") {
+				width: 30px;
+				height: 30px;
+			}
 		}
 
 		.entry-info {
@@ -1298,6 +1331,10 @@ img.wprm-comment-rating {
 		display: flex;
 		gap: 20px;
 		align-items: center;
+
+		@include media("<tablet") {
+			gap: 8px;
+		}
 	}
 
 	.reviewed_author img {
@@ -1305,6 +1342,11 @@ img.wprm-comment-rating {
 		width: 45px;
 		height: 45px;
 		max-width: 45px;
+
+		@include media("<tablet") {
+			width: 30px;
+			height: 30px;
+		}
 	}
 
 	.author_info {

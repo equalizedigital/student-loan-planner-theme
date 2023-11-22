@@ -297,6 +297,10 @@ function eqd_tha_page_header() {
 			$container_class .= ' inner-hero-center-text';
 		}
 
+		$alternate_header_style = get_field( 'alternate_header_style' );
+		if ( $alternate_header_style ) {
+			$container_class .= 'inner-hero-alternate-style';
+		}
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
@@ -340,37 +344,43 @@ function eqd_tha_page_header() {
 					<?php endif; ?>
 				</h1>
 				
-				<span class="subtitle">
-					<?php
-					if ( ! is_search() ) {
-						if ( ! empty( $subtitle ) ) {
-							echo wp_kses_post( $subtitle );
-						} else {
-							echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+					<span class="subtitle">
+						<?php
+						if ( ! is_search() ) {
+							if ( ! empty( $subtitle ) ) {
+								echo wp_kses_post( $subtitle );
+							} else {
+								echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+							}
 						}
-					}
-					?>
-				</span>
-
-				<?php if ( ! empty( $heading_link ) ) : ?>
-					<span class="link">
-						<a href="<?php echo $heading_link['url'] ? $heading_link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? $heading_link['title'] : ''; ?></a>
+						?>
 					</span>
+				
+				<?php if ( !$alternate_header_style ): ?>
+
+					<?php if ( ! empty( $heading_link ) ) : ?>
+						<span class="link">
+							<a href="<?php echo $heading_link['url'] ? $heading_link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? $heading_link['title'] : ''; ?></a>
+						</span>
+					<?php endif; ?>
+
 				<?php endif; ?>
 
 			</div>
 
-			<?php
-			if ( ! is_search() ) {
-				if ( ! empty( $bg_url ) ) :
-					?>
-				<span class="hero_image">
-					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
-				</span>
-					<?php
-				endif;
-			}
-			?>
+			<?php if ( !$alternate_header_style ): ?>
+				<?php
+				if ( ! is_search() ) {
+					if ( ! empty( $bg_url ) ) :
+						?>
+					<span class="hero_image">
+						<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
+					</span>
+						<?php
+					endif;
+				}
+				?>
+			<?php endif; ?>
 
 		</header>
 

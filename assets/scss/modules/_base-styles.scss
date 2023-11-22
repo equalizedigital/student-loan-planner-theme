@@ -33,7 +33,7 @@
 		} @else if 2 == $size {
 			@include font-sizes( 25px, 25px, 35px );
 		} @else if 3 == $size {
-			@include font-sizes( 20px, 20px, 20px );
+			@include font-sizes( 20px, 20px, 28px );
 		} @else if 4 == $size {
 			@include font-sizes( 18px, 18px, 20px );
 		} @else if 5 == $size {
