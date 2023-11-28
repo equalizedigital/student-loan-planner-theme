@@ -60,16 +60,16 @@ endif;
 		</div>
 		<div class="full-width-columns-background-container__video" >
 			<?php if ( $image ) : ?>
-				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
+				<!-- <img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	 -->
 
-				<img src="<?php echo wp_kses_post( $image['url'] ); ?>"
+				<img decoding="async" loading="lazy" src="<?php echo wp_kses_post( $image['url'] ); ?>"
 				srcset="<?php echo wp_kses_post( $image['url'] ); ?> 1x, <?php echo wp_kses_post( $placeholder_image_retina_display ['url'] ); ?> 2x"
 				alt="<?php echo wp_kses_post( $image['alt'] ); ?>">
 
 			<?php endif; ?>
 			<?php if(!empty($youtube_video_id)): ?>
 			<button class="modal-btn btn-dark-bg full-width-columns-background-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
-				<img class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
+				<img decoding="async" loading="lazy" class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>
 			<?php endif; ?>
 		</div>

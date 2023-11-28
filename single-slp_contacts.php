@@ -125,8 +125,8 @@ tha_content_before();
 					</div>
 					<div class="slp-contact-info-loop">
 						<?php 
-						$contact_email = get_field( 'contact_email_address' );
-						if ( !empty($contact_email)  ) : ?>
+						$form_shortcode = get_field( 'form_shortcode' );
+						if ( !empty($form_shortcode)  ) : ?>
 							<h2>Get Started</h2>
 							<?php $form_code = get_field('form_shortcode'); ?>
 							<?php echo do_shortcode( $form_code ); ?>

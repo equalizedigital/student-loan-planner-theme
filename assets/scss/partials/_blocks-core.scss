@@ -1,5 +1,6 @@
 /* Button
 --------------------------------------------- */
+.post-button,
 .btn,
 .wp-block-button__link {
 	@include style('callout', 5, true);

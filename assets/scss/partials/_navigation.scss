@@ -1034,8 +1034,8 @@ body {
 	.input-group input::placeholder,
 	.input-group input {
 		min-width: 420px;
-		padding: 0;
-		color: #fff;
+		padding: 0 5px;
+		color: black;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -1059,7 +1059,7 @@ body {
 		&:focus-within,
 		&:focus,
 		&:focus-visible {
-			outline: 2px solid white;
+			outline: 1px solid white;
 		}
 	}
 
