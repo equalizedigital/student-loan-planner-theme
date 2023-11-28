@@ -204,7 +204,7 @@ tha_content_before();
 										?>
 										</span>
 										<div class="author_recommended_posts_content_post-inf__link">
-											<a href="<?php echo $author_url; ?>">
+											<a href="<?php the_permalink( $post->ID ); ?>">
 												By <?php echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author(); ?>
 											</a>
 										</div>

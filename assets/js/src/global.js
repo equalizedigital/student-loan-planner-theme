@@ -398,40 +398,25 @@ document.addEventListener('DOMContentLoaded', function () {
 					var containerId = menuFooterContainer.id;
 					title.setAttribute('aria-controls', containerId);
 				}
-			});
 
-
-			widgetTitles.forEach(title => {
 				title.setAttribute('tabindex', '0');
 				title.setAttribute('role', 'button');
 				title.setAttribute('aria-expanded', 'false');
-				// Add click event listener to each .widget-title
 
-				// title.addEventListener('keypress', function () {
-					
-				// 	// Check if there's a next sibling element
-				// 	this.classList.toggle('active');
-				// 	let sibling = this.nextElementSibling;
-				// 	if (sibling) {
-				// 		var isExpanded = title.getAttribute('aria-expanded') === 'true';
-				// 		// Add class to the sibling
-				// 		this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
-				// 		this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 
-				// 	}
-				// });
+			});
+			widgetTitles.forEach(function (title) {
 
 				title.addEventListener('click', function () {
 					// Check if there's a next sibling element
 					this.classList.toggle('active');
 					let sibling = this.nextElementSibling;
-					if (sibling) {
-						var isExpanded = title.getAttribute('aria-expanded') === 'true';
-						// Add class to the sibling
-						this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+					// if (sibling) {
+						var isExpanded = title.getAttribute('aria-expanded');
+						this.nextElementSibling.classList.toggle('active'); 
 						this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-					}
-				});
+					// }
+				},true);
 			});
 		
 	}
@@ -440,13 +425,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	window.addEventListener('resize', function () {
 		if (window.innerWidth < 768) {
-			footerMenuFunctions()
+			setTimeout(() => {
+				footerMenuFunctions()
+			}, 500);
 		} else {
 			widgetTitlesRespo.forEach(title => {
 				title.removeAttribute('tabindex');
 				title.removeAttribute('role');
 				title.removeAttribute('aria-expanded');
 				title.removeAttribute('aria-controls');
+				title.removeEventListener('click',arguments.callee)
 			});
 		}
 	});
