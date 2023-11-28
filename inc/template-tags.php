@@ -297,7 +297,12 @@ function eqd_tha_page_header() {
 		$alternate_header_style = get_field( 'alternate_header_style' );
 		if ( $alternate_header_style ) {
 			$container_class .= 'inner-hero-alternate-style';
+		} elseif ( is_page() ) {
+			if ( ! is_front_page() ) {
+				$container_class .= 'inner-hero-alternate-style';
+			}
 		}
+
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
@@ -368,12 +373,14 @@ function eqd_tha_page_header() {
 			<?php if ( !$alternate_header_style ): ?>
 				<?php
 				if ( ! is_search() ) {
-					if ( ! empty( $bg_url ) ) :
+					if(!is_page()):
+						if ( ! empty( $bg_url ) ) :
 						?>
 						<span class="hero_image">
 							<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
 						</span>
 						<?php
+						endif;
 					endif;
 				}
 				?>
