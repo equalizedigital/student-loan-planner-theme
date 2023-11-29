@@ -958,7 +958,7 @@ img.wprm-comment-rating {
 		}
 	}
 	.inner-hero-container .title{
-		@include media("<tablet") {
+		@include media("<1070px") {
 			font-size: 22px;
 			line-height: 24px;
 		}
