@@ -970,6 +970,7 @@ img.wprm-comment-rating {
 
 .home {
 	.inner-hero {
+		padding: 20px 0 60px;
 		@include media(">tablet") {
 			padding: 40px 0;
 		}
