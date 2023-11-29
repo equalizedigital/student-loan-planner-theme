@@ -12,7 +12,7 @@
  * Theme Fonts URL
  */
 function eqd_theme_fonts_url() {
-	return 'https://use.typekit.net/hav0fds.css';
+	return 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap';
 }
 
 /**
@@ -30,7 +30,7 @@ function eqd_preconnect_font() {
 		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
 	}
 }
-//add_action( 'wp_head', 'eqd_preconnect_font', 5 );
+add_action( 'wp_head', 'eqd_preconnect_font', 5 );
 
 /**
  * Enqueue Frontend Fonts
