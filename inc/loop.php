@@ -92,14 +92,8 @@ function eqd_single_header() {
 		$link                    = get_field( 'single_post_link', $page_id );
 		$output = null;
 		$container_class         = '';
-
 		if ( get_field( 'post_format_style' ) == 'full-width' ) {
 			$container_class .= 'hero_relative';
-		} else {
-			$container_class .= 'inner-hero-alternate-style';
-		}
-		if ( get_field( 'post_format_style' ) == 'full-width' ) {
-			$container_class .= ' inner-hero-alternate-style';
 		}
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
@@ -163,6 +157,23 @@ function eqd_single_header() {
 
 			</div>
 			
+			<?php
+			// Background image.
+			if ( get_field( 'post_format_style' ) == 'full-width' ) :
+				?>
+				<span class="hero_image">
+					<?php if ( ! empty( $background_image['ID'] ) ) : ?>
+						<?php echo wp_get_attachment_image( $background_image['ID'], 'full' ); ?>
+					<?php endif; ?>
+
+					<?php
+					$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+					if ( $featured_image ) {
+						?>
+						<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
+					<?php } ?>
+				</span>
+			<?php endif; ?>
 		</header>
 
 		<?php

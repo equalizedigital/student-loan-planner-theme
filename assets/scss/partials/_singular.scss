@@ -672,7 +672,7 @@ img.wprm-comment-rating {
 	&-details {
 		padding: 40px 0 0;
 		margin-bottom: 20px;
-		color: black;
+		color: var(--Black, #000);
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
@@ -867,7 +867,7 @@ img.wprm-comment-rating {
 
 			a {
 				background: #82BC46;
-				color: black;
+				color: var(--Black, #000);
 				text-align: center;
 				font-size: 14px;
 				font-style: normal;
@@ -945,7 +945,7 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 0px 0 40px;
+		padding: 40px 0;
 	}
 	
 }
@@ -958,22 +958,17 @@ img.wprm-comment-rating {
 		}
 	}
 	.inner-hero-container .title{
-		@include media("<1070px") {
+		@include media("<tablet") {
 			font-size: 22px;
 			line-height: 24px;
 		}
-	}
-	.inner-hero {
-		margin-bottom: 40px;
 	}
 }
 
 .home {
 	.inner-hero {
-		padding: 20px 0 60px;
-		margin-bottom: -1px;
 		@include media(">tablet") {
-			padding: 40px 0;
+			padding: 132px 0;
 		}
 	}
 }
@@ -988,16 +983,16 @@ img.wprm-comment-rating {
 
 .inner-hero {
 	background-color: brand-color('tertiary');
-	padding: 20px 0;
+	padding: 60px 0;
 	position: relative;
 	grid-column-start: 1;
 	grid-column-end: 13;
 	width: 100%;
-	min-height: 140px;
+	min-height: 200px;
 
 	@include media(">tablet") {
-		padding: 40px 0;
-		min-height: 200px;
+		padding: 60px 0;
+		min-height: 280px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -1039,10 +1034,21 @@ img.wprm-comment-rating {
 			color: black;
 		}
 		#breadcrumbs_top {
-			color: black;
+			color: white;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1;
 	
 			a {
-				color: black;
+				color: inherit;
+				font-size: inherit;
+				color: white;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1;
+				text-decoration: none;
 			}
 		}
 	}
@@ -1212,7 +1218,7 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 400;
 			line-height: 16px;
-			color: black;
+			color: white;
 
 			a {
 				color: inherit;
@@ -1477,7 +1483,7 @@ img.wprm-comment-rating {
 		max-width: 171px;
 
 		h2 {
-			color: black;
+			color: var(--Black, #000);
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 700;
@@ -1486,7 +1492,7 @@ img.wprm-comment-rating {
 	}
 
 	&-container__copy {
-		color: black;
+		color: var(--Black, #000);
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 400;
@@ -1683,7 +1689,7 @@ section.refinance_lender_section {
 	}
 
 	button.btn-text {
-		color: black;
+		color: var(--Black, #000);
 		text-align: center;
 		font-size: 14px;
 		font-style: normal;
@@ -1807,7 +1813,7 @@ section.refinance_lender_section {
 	}
 
 	.author_name {
-		color: black;
+		color: var(--Black, #000);
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 600;
@@ -1838,11 +1844,12 @@ section.refinance_lender_section {
 	}
 
 	&_author_entry-data {
-		color: black;
+		color: var(--Black, #000);
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 24px;
+		/* 150% */
 	}
 
 	&_author_entry-info {
