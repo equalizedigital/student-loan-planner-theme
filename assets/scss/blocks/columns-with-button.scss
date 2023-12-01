@@ -1,7 +1,8 @@
 .columns-with-button-block {
-    padding: 93px 0;
-
-
+    padding: 0 0 93px;
+    @include media(">tablet") {
+        padding: 93px 0;
+    }
     &-container {
         max-width: 1168px;
         margin: 0 auto;
