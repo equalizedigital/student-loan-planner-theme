@@ -249,11 +249,8 @@ header.site-header {
 							&.submenu-column__three {
 								.sub_menu {
 									@include media(">1070px") {
-										// grid-template-columns: repeat(3, 1fr);
+										grid-template-columns: repeat(3, 1fr);
 										gap: 0 15px;
-										counter-reset: items;
-										column-count: 3;
-										
 									}
 								}
 							}
@@ -379,10 +376,6 @@ header.site-header {
 							}
 
 							.menu-column {
-								break-inside: avoid;
-								@include media(">1070px") {
-									margin-bottom: 20px;
-								}
 								@include media("<1070px") {
 									padding: 20px 24px;
 									background: white;
@@ -431,7 +424,6 @@ header.site-header {
 									display: grid;
 									grid-template-columns: 1fr;
 									padding: 0;
-									margin: 0;
 
 									a {
 										color: black;
@@ -450,15 +442,35 @@ header.site-header {
 							}
 						}
 
-						&.submenu-column__three {
-							.sub_menu {
-								&.open {
-									display: block;
+						&.has-submenus button,
+						&.has-submenus button>a {
+
+							&[aria-expanded="true"] {
+								&::before {
+									// transform: rotate(-135deg);
+									// top: calc(50% + 5px);
 								}
 							}
+
+							// &::before {
+							// 	content: "";
+							// 	width: 10px;
+							// 	height: 10px;
+							// 	border: 2px solid #676767;
+							// 	border-top: none;
+							// 	border-left: none;
+							// 	position: absolute;
+							// 	right: 0;
+							// 	top: 50%;
+							// 	// transform: translateY(-50%);
+							// 	transform: rotate(45deg);
+							// 	transition-duration: .3s;
+							// 	transform-origin: center;
+							// }
 						}
 
-						
+
+
 						&:hover {
 
 							button,
@@ -484,14 +496,6 @@ header.site-header {
 										transform: rotate(-135deg);
 										top: calc(50% + 5px);
 
-									}
-								}
-							}
-
-							&.submenu-column__three {
-								.sub_menu{
-									@include media(">1070px") {
-										display: block;
 									}
 								}
 							}
@@ -948,7 +952,7 @@ body {
 	}
 
 	.btn {
-		font-size: 15px;
+		font-size: 16px;
 		line-height: 1;
 		padding: 8px 15px;
 		min-width: 80px;
@@ -1030,8 +1034,8 @@ body {
 	.input-group input::placeholder,
 	.input-group input {
 		min-width: 420px;
-		padding: 0 5px;
-		color: black;
+		padding: 0;
+		color: #fff;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -1055,7 +1059,7 @@ body {
 		&:focus-within,
 		&:focus,
 		&:focus-visible {
-			outline: 1px solid white;
+			outline: 2px solid white;
 		}
 	}
 
