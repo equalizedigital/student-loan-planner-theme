@@ -952,7 +952,7 @@ body {
 	}
 
 	.btn {
-		font-size: 16px;
+		font-size: 15px;
 		line-height: 1;
 		padding: 8px 15px;
 		min-width: 80px;
@@ -1034,8 +1034,9 @@ body {
 	.input-group input::placeholder,
 	.input-group input {
 		min-width: 420px;
-		padding: 0;
-		color: #fff;
+		padding: 0 5px;
+		color: black;
+
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -1055,7 +1056,6 @@ body {
 	}
 
 	input {
-
 		&:focus-within,
 		&:focus,
 		&:focus-visible {

@@ -945,9 +945,9 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 40px 0;
+		padding: 40px 0 40px;
 	}
-	
+
 }
 
 .post_type_layout_full-width {
@@ -957,8 +957,9 @@ img.wprm-comment-rating {
 			max-width: 650px;
 		}
 	}
-	.inner-hero-container .title{
-		@include media("<tablet") {
+
+	.inner-hero-container .title {
+		@include media("<1070px") {
 			font-size: 22px;
 			line-height: 24px;
 		}
@@ -967,6 +968,9 @@ img.wprm-comment-rating {
 
 .home {
 	.inner-hero {
+		padding: 20px 0 60px;
+		margin-bottom: -1px;
+
 		@include media(">tablet") {
 			padding: 132px 0;
 		}
@@ -1033,9 +1037,10 @@ img.wprm-comment-rating {
 		.subtitle {
 			color: black;
 		}
+
 		#breadcrumbs_top {
 			color: black;
-	
+
 			a {
 				color: black;
 			}
@@ -1145,7 +1150,7 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 700;
 			margin: 0 0 20px;
-			
+
 			min-width: 100%;
 			max-width: 750px;
 
@@ -1224,7 +1229,8 @@ img.wprm-comment-rating {
 	.hero_featured_image {
 		margin-top: 30px;
 	}
-	.sidebar_container{
+
+	.sidebar_container {
 		@include media(">tablet") {
 			margin-top: 30px;
 		}
@@ -1557,6 +1563,7 @@ section.refinance_lender_section {
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+
 			@include media(">tablet") {
 				display: none;
 			}
