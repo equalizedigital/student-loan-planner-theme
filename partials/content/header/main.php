@@ -5,18 +5,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $logo_tag         = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() && is_home() ) ) ? 'h1' : 'p';
 $header_main_link = get_field( 'header_main_link', 'option' );
-// Assuming you have the post ID
-$cat_id = get_the_ID();
 
-// Get the post categories
-$categories_id = get_the_category($post_id);
+if (function_exists('yoast_get_primary_term_id')) {
+	$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
+} else {
+	return;
+}
 
 // Check if categories exist for the post
-if (!empty($categories_id)) {
+if (!empty($primary_category_id)) {
 	// Retrieve the name of the first category
-	$category_id = $categories_id[0]->term_id;
+	$category_id = $primary_category_id;
 	$link_data = get_field( 'header_button_override',  'category_' . $category_id );
 }
+
 $disable_green_header_cta_link_on_this_page = get_field('disable_green_header_cta_link_on_this_page');
 ?>
 

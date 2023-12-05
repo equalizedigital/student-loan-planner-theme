@@ -48,8 +48,8 @@ class RqD_Doctor_Map {
 		ob_start();
         ?>
         <h2>
-                <?php echo $this->convert_state( $state ); ?>
-            </h2>
+            <?php echo $this->convert_state( $state ); ?>
+        </h2>
         <?php
 		if ( $the_query->have_posts() ) { ?>
 			
@@ -99,7 +99,6 @@ class RqD_Doctor_Map {
             $field_value = get_field('state_link', $term->taxonomy . '_' . $term->term_id);
         }
 
-
 		$data = array(
 			'html'  => $html,
 			'state' => array(
@@ -129,8 +128,8 @@ class RqD_Doctor_Map {
 			<select name="state" class="doctor-mortgages-block-select" id="doctor-mortgages-block-select">
 			<?php foreach ( $terms as $term ) { ?>
 				<option value="<?php echo $term->name; ?>"><?php echo $this->convert_state( $term->name ); ?></option>
-			<?php
-			}
+		<?php
+		}
 			?>
 			</select>
 			<?php
