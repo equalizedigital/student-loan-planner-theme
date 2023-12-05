@@ -138,6 +138,9 @@
 		});
 	}
 
+	var mobileHelpBtn = document.getElementById('mobile_help_btn');
+    if (mobileHelpBtn) {
+
 	document.querySelector('.mobile_help_btn .btn').addEventListener('keydown', function(event) {
 		if (event.key === 'Tab') {
 			event.preventDefault();
@@ -174,7 +177,7 @@
 				$("html").toggleClass("overflow-hidden");
 		}
 	});
-	
+	}
 
 
 
