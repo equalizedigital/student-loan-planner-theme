@@ -249,8 +249,11 @@ header.site-header {
 							&.submenu-column__three {
 								.sub_menu {
 									@include media(">1070px") {
-										grid-template-columns: repeat(3, 1fr);
+										// grid-template-columns: repeat(3, 1fr);
 										gap: 0 15px;
+										counter-reset: items;
+										column-count: 3;
+										
 									}
 								}
 							}
@@ -376,9 +379,12 @@ header.site-header {
 							}
 
 							.menu-column {
+								break-inside: avoid;
+								margin-bottom: 20px;
 								@include media("<1070px") {
 									padding: 20px 24px;
 									background: white;
+									margin-bottom: -1px;
 
 									&:nth-child(3) {
 										padding-top: 36px;
@@ -424,6 +430,7 @@ header.site-header {
 									display: grid;
 									grid-template-columns: 1fr;
 									padding: 0;
+									margin: 0;
 
 									a {
 										color: black;
@@ -472,6 +479,10 @@ header.site-header {
 
 
 						&:hover {
+
+							&.submenu-column__three .sub_menu {
+								display: block;
+							}
 
 							button,
 							>a {

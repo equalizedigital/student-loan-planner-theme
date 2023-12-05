@@ -160,6 +160,24 @@ function eqd_single_header() {
 				<?php endif; ?>
 
 			</div>
+
+			<?php
+			// Background image.
+			if ( get_field( 'post_format_style' ) == 'full-width' ) :
+				?>
+				<span class="hero_image" style="position:absolute;left:0;top:0;">
+					<?php if ( ! empty( $background_image['ID'] ) ) : ?>
+						<?php echo wp_get_attachment_image( $background_image['ID'], 'full' ); ?>
+					<?php endif; ?>
+
+					<?php
+					$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+					if ( $featured_image ) {
+						?>
+						<?php echo '<img loading="lazy" src="' . esc_url( $featured_image ) . '" />'; ?>
+					<?php } ?>
+				</span>
+			<?php endif; ?>
 			
 			
 		</header>

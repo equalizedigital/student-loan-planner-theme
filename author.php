@@ -194,7 +194,6 @@ tha_content_before();
 									<a href="<?php the_permalink( $post->ID ); ?>" class="author_recommended_posts_content_post">
 										<div class="category">Student Loan Forgiveness</div>
 										<h3 class="title"><?php echo get_the_title( $post->ID ); ?></h3>
-										
 									</a>
 									<div class="author">
 										<span class="author_recommended_posts_content_post-data">
@@ -219,16 +218,19 @@ tha_content_before();
 				</div>
 				<?php endif; ?>
 
-
 				<?php
-				$paged             = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-				$args              = array(
-					'author'         => 77,
-					'posts_per_page' => 9,
+				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+				$args = array(
+					'author'         => $curauth->ID,
+					// 'posts_per_page' => 9,
 					'paged'          => $paged,
+					'ignore_sticky_posts' => 1
 				);
+
 				$author_query_page = new WP_Query( $args );
 				?>
+
 				<?php if ( $author_query_page->have_posts() ) : ?>
 
 				<div class="author_latest_from" id="author_latest_from">
@@ -238,77 +240,65 @@ tha_content_before();
 					?>
 					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $firstWord ); ?></h2>
 					<div class="loop">
-					<?php
-					while ( $author_query_page->have_posts() ) :
-						$author_query_page->the_post();
-
-						// Assuming you have the post ID
-						$post_id = get_the_ID();
-
-						// Get the post categories
-						$categories = get_the_category($post_id);
-
-						// Check if categories exist for the post
-						
-
-
-						?>
-						<div class="post">
-							
-							<?php
-							if (!empty($categories)) {
-								// Retrieve the name of the first category
-								$category_name = $categories[0]->name;
-								
-								?>
-								<span class="post-tax-category">
-									<a href="<?php echo get_the_permalink( $category_name->term_id ); ?>"><?php echo $category_name; ?></a>
-								</span>
-								<?php
-							}
+						<?php
+						while ( $author_query_page->have_posts() ) :
+							$author_query_page->the_post();
+							$post_id = get_the_ID();
+							$categories = get_the_category($post_id);
 							?>
-							<a class="post_link" href="<?php the_permalink(); ?>">
-								<div class="featured-image">
-									<?php the_post_thumbnail(); ?>
-								</div>
-								<h3 class="post_title"><?php the_title(); ?></h3>
-							</a>
-						</div>
-					<?php endwhile; ?>
+							<div class="post">
+								<?php
+								if (!empty($categories)) {
+								$category_name = $categories[0]->name;
+									?>
+									<span class="post-tax-category">
+										<a href="<?php echo esc_url( get_category_link( $category_name->term_id ) ); ?>">
+											<?php echo esc_html( $category_name ); ?>
+										</a>
+									</span>
+								<?php
+								}
+								?>
+								<a class="post_link" href="<?php the_permalink(); ?>">
+									<div class="featured-image">
+										<?php the_post_thumbnail(); ?>
+									</div>
+									<h3 class="post_title"><?php the_title(); ?></h3>
+								</a>
+							</div>
+						<?php endwhile; ?>
 					</div>
 					<div class="pagination">
-							<?php
-							$big = 999999999; 
-							echo paginate_links(
-								array(
-									'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
-									'format'    => '?paged=%#%',
-									'current'   => max( 1, get_query_var( 'paged' ) ),
-									'total'     => $author_query_page->max_num_pages,
-									'prev_text' => __( 'Prev', 'slp' ),
-									'next_text' => __( 'Next', 'slp' ),
-								)
-							);
-							?>
+					<?php
+						// Pagination
+						$big = 999999999; // need an unlikely integer
+
+						echo paginate_links( array(
+							'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+							'format' => '?paged=%#%',
+							'current' => max( 1, get_query_var('paged') ),
+							'total' => $author_query_page->max_num_pages,
+						) );
+						?>
 						</div>
 						
-							<?php wp_reset_postdata(); ?>
+						<?php wp_reset_postdata(); ?>
 				</div>
 
-				<script>
-					document.addEventListener("DOMContentLoaded", function() {
-						var paginationLinks = document.querySelectorAll('.pagination a');
+					<script>
+						document.addEventListener("DOMContentLoaded", function() {
+							var paginationLinks = document.querySelectorAll('.pagination a');
 
-						paginationLinks.forEach(function(link) {
-							link.addEventListener('click', function(e) {
-								e.preventDefault();
-								var newUrl = link.getAttribute('href') + '#author_latest_from';
-								window.location.href = newUrl;
+							paginationLinks.forEach(function(link) {
+								link.addEventListener('click', function(e) {
+									e.preventDefault();
+									var newUrl = link.getAttribute('href') + '#author_latest_from';
+									window.location.href = newUrl;
+								});
 							});
 						});
-					});
 
-				</script>
+					</script>
 				<?php endif; ?>
 
 				<div id="modal_media_mentions" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
