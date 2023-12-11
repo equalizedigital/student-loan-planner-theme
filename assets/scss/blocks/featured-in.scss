@@ -46,7 +46,7 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             justify-content: center;
-            gap: 40px 10px;
+            gap: 20px 10px;
             @include media(">tablet") {
                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             }

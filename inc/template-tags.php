@@ -121,7 +121,7 @@ function eqd_tha_footer_cta() {
 		// Individual page.
 		$disable = get_field( 'disable' );
 
-		if(is_single(  )){
+		if(is_single( )){
 
 			// Assuming you have the post ID
 			$post_id = get_the_ID();
