@@ -253,7 +253,12 @@ header.site-header {
 										gap: 0 15px;
 										counter-reset: items;
 										column-count: 3;
-										
+
+									}
+								}
+								.sub_menu {
+									&.open{
+										display: block;
 									}
 								}
 							}
@@ -381,6 +386,7 @@ header.site-header {
 							.menu-column {
 								break-inside: avoid;
 								margin-bottom: 20px;
+
 								@include media("<1070px") {
 									padding: 20px 24px;
 									background: white;
@@ -1067,6 +1073,7 @@ body {
 	}
 
 	input {
+
 		&:focus-within,
 		&:focus,
 		&:focus-visible {
