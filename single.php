@@ -262,6 +262,7 @@ function eqd_single_after_entry_primary_category() {
 	} else {
 		return;
 	}
+	
 	if ( $primary_category_id ) {
 		$primary_category = get_term( $primary_category_id );
 		$category_id      = 'category_' . $primary_category->term_id;

@@ -52,8 +52,9 @@ $show_states                  = get_field( 'show_states' );
 $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
-$block_id            = get_field( 'block_id' );
-$time_stamp = my_acf_block_unique_id() . wp_rand( 0, 23 );
+$block_id                     = get_field( 'block_id' );
+$time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
+
 ?>
 <section id="<?php echo !empty($block_id)?  $block_id:esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
@@ -174,6 +175,19 @@ $time_stamp = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				</div>
 				<?php endif; ?>
 
+				<?php if( have_rows( 'eligible_states',$select_institutional_contact ) ): ?>
+					<?php while( have_rows( 'eligible_states',$select_institutional_contact ) ): the_row(); 
+						?>
+						<h4 class="vendor_information_block_container_column_two_title">
+							<?php the_sub_field( 'heading' ); ?>
+						</h4>
+						<div class="vendor_information_block_container_column_two_text_repeater">
+							<?php the_sub_field( 'content' ); ?>
+						</div>
+
+					<?php endwhile; ?>
+				<?php endif; ?>
+
 				<div class="vendor_information_block_container_column_two_link">
 
 					<?php
@@ -198,6 +212,7 @@ $time_stamp = my_acf_block_unique_id() . wp_rand( 0, 23 );
 						</button>
 						
 					<?php endif; ?>
+					
 				</div>
 			</div>
 

@@ -1,3 +1,8 @@
+#vendor-repeater-block-block_328d3a699ecf8b2fa9ba8e4d8050f904 .vendor_repeater_block_container_items_table_mobile tbody tr td{
+    @include media("<tablet") {
+        height: 65px;
+    }
+}
 .vendor_repeater_block {
     &_container_items {
         @include media(">tablet") {

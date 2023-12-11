@@ -120,7 +120,22 @@ $acf_title = get_field( 'title' );
 		</div>
 
 		<div class="testimonial-slider-block-container-testimonial_read_more">
-			<a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
+			
+			<?php 
+			$link = get_field('link');
+
+			if ($link) {
+				// The link field returns an array containing 'url', 'title', and 'target'
+				$url = $link['url'];
+				$title = $link['title'] ?: 'Default Title'; // Set a default title if none is provided
+				$target = $link['target'] ?: '_self'; // Default target to '_self' if none is provided
+			
+				echo "<a href='{$url}' target='{$target}' class='btn btn-dark-bg'>{$title}</a>";
+			} else {
+				?><a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a><?php
+			}
+			
+			?>
 		</div>
 		
 		

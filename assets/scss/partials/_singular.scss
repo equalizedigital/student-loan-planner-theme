@@ -809,12 +809,15 @@ img.wprm-comment-rating {
 	max-width: 1168px;
 	margin: 0 auto;
 	padding: 0 24px;
+	position: relative;
+    z-index: 1;
 
 	a.post_link img {
 		display: flex;
 		height: 240px;
 		border-radius: 10px;
 		object-fit: cover;
+		width: auto;
 	}
 
 	.post_title {
@@ -945,9 +948,9 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 40px 0;
+		padding: 40px 0 40px;
 	}
-	
+
 }
 
 .post_type_layout_full-width {
@@ -957,19 +960,20 @@ img.wprm-comment-rating {
 			max-width: 650px;
 		}
 	}
-	.inner-hero-container .title{
-		@include media("<tablet") {
+
+	.inner-hero-container .title {
+		@include media("<1070px") {
 			font-size: 22px;
 			line-height: 24px;
 		}
-	}
-	.entry-content {
-		padding: 40px 0;
 	}
 }
 
 .home {
 	.inner-hero {
+		padding: 20px 0 60px;
+		margin-bottom: -1px;
+
 		@include media(">tablet") {
 			padding: 132px 0;
 		}
@@ -978,24 +982,24 @@ img.wprm-comment-rating {
 
 .single {
 	.inner-hero {
-		padding: 30px 0 30px;
-		min-height: 0;
+		padding: 20px 0 60px;
+		min-height: 200px;
 	}
 }
 
 
 .inner-hero {
 	background-color: brand-color('tertiary');
-	padding: 30px 0;
+	padding: 50px 0;
 	position: relative;
 	grid-column-start: 1;
 	grid-column-end: 13;
 	width: 100%;
-	min-height: 0px;
+	min-height: 200px;
 
 	@include media(">tablet") {
-		padding: 30px 0;
-		min-height: 0;
+		padding: 60px 0;
+		min-height: 280px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -1036,24 +1040,18 @@ img.wprm-comment-rating {
 		.subtitle {
 			color: black;
 		}
-		#breadcrumbs_top {
-		color: white;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 1;
 
-		a {
-			color: inherit;
-			font-size: inherit;
-			color: white;
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 1;
-			text-decoration: none;
+		#breadcrumbs_top {
+			color: black;
+
+			a {
+				color: black;
+			}
 		}
-	}
+
+		.entry-author span.entry-info{
+			color: black;
+		}
 	}
 
 	&.inner-hero-center-text {
@@ -1159,7 +1157,7 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 700;
 			margin: 0 0 20px;
-			
+
 			min-width: 100%;
 			max-width: 750px;
 
@@ -1238,7 +1236,8 @@ img.wprm-comment-rating {
 	.hero_featured_image {
 		margin-top: 30px;
 	}
-	.sidebar_container{
+
+	.sidebar_container {
 		@include media(">tablet") {
 			margin-top: 30px;
 		}
@@ -1571,6 +1570,7 @@ section.refinance_lender_section {
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+
 			@include media(">tablet") {
 				display: none;
 			}

@@ -18,7 +18,7 @@ input[type="search"] {
 .wrap {}
 
 .site-inner {
-	@include media("<1070px") {
+	@include media("<tablet") {
 		padding-top: 60px;
 	}
 
