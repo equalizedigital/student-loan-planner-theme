@@ -254,7 +254,15 @@ input {
 	}
 }
 
+div.wpforms-container-full button:hover
+{
+background-color: white !important;
+}
 
+div.wpforms-container-full button {
+	background-color: brand-color('primary') !important;
+	color: black !important;
+}
 
 .wpforms-container {
 
@@ -337,6 +345,18 @@ input {
 .wp-block-table {
 	margin-bottom: 20px;
 
+	&.has-large-font-size{
+		.wp-element-caption{
+			font-size: 1.5rem;
+		}
+	}
+
+	&.has-small-font-size{
+		.wp-element-caption{
+			font-size: 0.8rem;
+		}
+	}
+
 	table {
 		thead {
 			border-bottom: 1px solid #A1A5A5;
@@ -365,6 +385,10 @@ input {
 
 			@include media(">tablet") {
 				padding: 18px 20px;
+			}
+
+			&.has-text-align-center{
+				text-align: center;
 			}
 		}
 
