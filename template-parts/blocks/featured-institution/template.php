@@ -149,6 +149,18 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 					</div>
 				<?php endif; ?>
 
+				<?php 
+				$vendor_title = get_field('title');
+				$vendor_content = get_field('content');
+				if ( $vendor_title ) : ?>
+					<h4 class="vendor_information_block_container_column_two_title">
+						<?php echo wp_kses_post( $vendor_title ); ?>
+					</h4>
+					<div class="vendor_information_block_container_column_two_text_repeater">
+						<?php  echo wp_kses_post($vendor_content); ?>
+					</div>
+				<?php endif; ?>
+
 				<?php if ( $show_contact ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">Contact:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
@@ -175,6 +187,8 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				</div>
 				<?php endif; ?>
 
+				
+
 				<?php if( have_rows( 'eligible_states',$select_institutional_contact ) ): ?>
 					<?php while( have_rows( 'eligible_states',$select_institutional_contact ) ): the_row(); 
 						?>
@@ -187,6 +201,8 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 					<?php endwhile; ?>
 				<?php endif; ?>
+
+
 
 				<div class="vendor_information_block_container_column_two_link">
 
