@@ -22,7 +22,9 @@ function eqd_preconnect_font() {
 	?>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+
+	<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<?php
 }
 add_action( 'wp_head', 'eqd_preconnect_font', 1 );
