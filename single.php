@@ -78,143 +78,311 @@ function eqd_single_after_entry_content() {
 	if ( $hide_section_per_page ) {
 		return;
 	}
+
+	$post_id = get_the_ID();
+	if ( function_exists( 'yoast_get_primary_term_id' ) ) {
+		$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
+	}
 	?>
-	<?php if ( have_rows( 'vendors','option' ) ) :?>
 
-	<section class="refinance_lender_section">
+	<?php if ( have_rows( 'vendors', 'option' ) ) : ?>
 
-		<header class="title">
-			<?php $current_year = gmdate( 'Y' ); ?>
-			<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post( $current_year ); ?></h2>
-		</header>
+		<section class="refinance_lender_section">
 
-	<div class="lender_info" >
-		<table id="refinance_lender_options">
-			<tr class="header">
-				<th class="sr-only" scope="col">Lender Name</th>
-				<th scope="col">Lender</th>
-				<th scope="col">Offer</th>
-				<th scope="col">Learn more</th>
-			</tr>
+			<header class="title">
+				<?php $current_year = gmdate( 'Y' ); ?>
+				<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post( $current_year ); ?></h2>
+			</header>
 
 			<?php
-			$number_of_items = 0;
-			while ( have_rows( 'vendors','option' ) ) :
-				the_row();
-				$company_title = get_sub_field( 'company_title' );
-				$company_logo = get_sub_field( 'company_logo' );
-				$cashback_amount = get_sub_field( 'cashback_amount' );
-				$variable = get_sub_field( 'variable' );
+			if ( get_field( 'show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id ) ) {
+
 				?>
-
-				<tr class="data-tr <?php if ( get_row_index() > 3 ) { echo 'hidden'; } ?>">
-					<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
-					<td>
-						<div class="td_content">
-							<img src="<?php echo $company_logo['url']; ?>" alt="<?php echo $company_logo['alt']; ?>">
-							<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo $company_title; ?>">Disclosures</button>
-						</div>
-					</td>
-				<td>
-					<div class="td_content">
-						<div class="td_title">
-						<?php 
-						$cashback_amount = get_sub_field( 'cashback_amount' );
-						echo wp_kses_post($cashback_amount); ?> Bonus
-						</div>
-						<div class="td_text">
-							<?php $amount = get_sub_field( 'amount' ); ?>
-							<?php  echo wp_kses_post($amount); ?>
-						</div>
-					</div>
-				</td>
-				<td>
-					<div class="td_title">
+				<div class="lender_info" >
+					<table id="refinance_lender_options">
+						<tr class="header">
+							<th class="sr-only" scope="col">Lender Name</th>
+							<th scope="col">Lender</th>
+							<th scope="col">Offer</th>
+							<th scope="col">Learn more</th>
+						</tr>
+						<!-- TR -->
+						
 						<?php
-						$link = get_sub_field( 'link' );
-						if(!empty($link['url'])): ?>
-						<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-						<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn" <?php echo !empty($link['target'])? wp_kses_post("target='".$link['target']."'"):''; ?>>
-							<?php  echo wp_kses_post($link['title']); ?>
-							<?php if(empty($link['target'])): ?>
-								<span class="svg">
-									<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
-										<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"></path>
-									</svg>
-								</span>
-							<?php endif; ?>
-						</a>
-						<?php endif; ?>
-					</div>
-					<div class="td_content">
-						<div class="td_text">
-							<?php $fixed = get_sub_field( 'fixed' ); ?>
-							<div>Fixed <?php  echo wp_kses_post($fixed); ?></div>
+						$number_of_items = 0;
+							// Check if the flexible content field has rows of data
+						if ( have_rows( 'private_student_loans', 'option' ) ) :
 
-							<?php $variable = get_sub_field( 'variable' ); ?>
-							Variable <?php echo wp_kses_post($variable); ?>
-							<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<?php
-			++$number_of_items;
-			endwhile;
-		?>
+							// Loop through the rows of data
+							while ( have_rows( 'private_student_loans', 'option' ) ) :
+								the_row();
 
-	</table>
-	</div>
+								if ( get_row_layout() == 'private_student_loans' ) :
 
-		<?php if ( $number_of_items >= 3 ) :
-			?>
-			<div class="refinance_lender_section__load_more">
-				<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="refinance_lender_options">
-					<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?> lenders</div>
-					<span class="arrow">
-						<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
-							<path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/>
-						</svg>
-					</span>
-				</button>
+									$company_name    = get_sub_field( 'company_name' );
+									$logo            = get_sub_field( 'logo' );
+									$offer_amount    = get_sub_field( 'offer_amount' );
+									$offer_text      = get_sub_field( 'offer_text' );
+									$url             = get_sub_field( 'url' );
+									$fixed_rates     = get_sub_field( 'fixed_rates' );
+									$variable_rates  = get_sub_field( 'variable_rates' );
+									$disclosure_text = get_sub_field( 'disclosure_text' );
+									?>
+
+										<tr class="data-tr 
+										<?php
+										if ( get_row_index() > 3 ) {
+											echo 'hidden'; 
+										}
+										?>
+										">
+											<th class="sr-only" scope="row"><?php the_sub_field( 'company_name' ); ?></th>
+												<td>
+													<div class="td_content">
+														<img src="<?php echo wp_kses_post( $logo['url'] ); ?>" alt="<?php echo wp_kses_post( $logo['alt'] ); ?>">
+														<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo wp_kses_post( get_row_index() ); ?>" aria-label="Disclosures for <?php echo wp_kses_post( $company_name ); ?>">Disclosures</button>
+													</div>
+												</td>
+												<td>
+													<div class="td_content">
+														<div class="td_title">
+														<?php echo wp_kses_post( $offer_amount ); ?>
+														Bonus
+														</div>
+														<div class="td_text">
+															<?php echo wp_kses_post( $offer_text ); ?>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="td_title">
+														<?php
+														if ( ! empty( $url['url'] ) ) :
+															?>
+															<?php $url_target = $url['target'] ? $url['target'] : '_self'; ?>
+															<a href="<?php echo wp_kses_post( $url['url'] ); ?>" class="btn" <?php echo ! empty( $url['target'] ) ? wp_kses_post( "target='" . $url['target'] . "'" ) : ''; ?>>
+																<?php echo wp_kses_post( $url['title'] ); ?>
+																<?php if ( empty( $url['target'] ) ) : ?>
+																	<span class="svg">
+																		<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
+																			<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"></path>
+																		</svg>
+																	</span>
+																<?php endif; ?>
+															</a>
+														<?php endif; ?>
+													</div>
+													<div class="td_content">
+														<div class="td_text">
+															<div>Fixed <?php echo wp_kses_post( $fixed_rates ); ?></div>
+															Variable <?php echo wp_kses_post( $variable_rates ); ?>
+															<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
+														</div>
+													</div>
+												</td>
+											</tr>
+										
+										<?php
+
+									endif;
+									++$number_of_items;
+								endwhile;
+
+							endif;
+						?>
+
+
+
+								
+							<!-- TR -->
+					</table>
+				</div>
+
+				<?php
+			} else {
+				?>
+			<div class="lender_info" >
+				<table id="refinance_lender_options">
+					<tr class="header">
+						<th class="sr-only" scope="col">Lender Name</th>
+						<th scope="col">Lender</th>
+						<th scope="col">Offer</th>
+						<th scope="col">Learn more</th>
+					</tr>
+
+					<?php
+						$number_of_items = 0;
+					while ( have_rows( 'vendors', 'option' ) ) :
+						the_row();
+						$company_title   = get_sub_field( 'company_title' );
+						$company_logo    = get_sub_field( 'company_logo' );
+						$cashback_amount = get_sub_field( 'cashback_amount' );
+						$variable        = get_sub_field( 'variable' );
+						?>
+
+							<tr class="data-tr 
+							<?php
+							if ( get_row_index() > 3 ) {
+								echo 'hidden'; }
+							?>
+							">
+								<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
+								<td>
+									<div class="td_content">
+										<img src="<?php echo $company_logo['url']; ?>" alt="<?php echo $company_logo['alt']; ?>">
+										<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo $company_title; ?>">Disclosures</button>
+									</div>
+								</td>
+								<td>
+									<div class="td_content">
+										<div class="td_title">
+									<?php
+									$cashback_amount = get_sub_field( 'cashback_amount' );
+									echo wp_kses_post( $cashback_amount );
+									?>
+										Bonus
+										</div>
+										<div class="td_text">
+											<?php $amount = get_sub_field( 'amount' ); ?>
+											<?php echo wp_kses_post( $amount ); ?>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="td_title">
+										<?php
+										$link = get_sub_field( 'link' );
+										if ( ! empty( $link['url'] ) ) :
+											?>
+											<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+										<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn" <?php echo ! empty( $link['target'] ) ? wp_kses_post( "target='" . $link['target'] . "'" ) : ''; ?>>
+											<?php echo wp_kses_post( $link['title'] ); ?>
+											<?php if ( empty( $link['target'] ) ) : ?>
+												<span class="svg">
+													<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
+														<path d="M3.64132 8.71334C3.44606 8.9086 3.44606 9.22519 3.64132 9.42045C3.83658 9.61571 4.15316 9.61571 4.34843 9.42045L3.64132 8.71334ZM12.5615 1.00023C12.5615 0.724085 12.3377 0.500228 12.0615 0.500228L7.56154 0.500228C7.2854 0.500228 7.06154 0.724086 7.06154 1.00023C7.06154 1.27637 7.2854 1.50023 7.56154 1.50023L11.5615 1.50023L11.5615 5.50023C11.5615 5.77637 11.7854 6.00023 12.0615 6.00023C12.3377 6.00023 12.5615 5.77637 12.5615 5.50023L12.5615 1.00023ZM4.34843 9.42045L12.4151 1.35378L11.708 0.646675L3.64132 8.71334L4.34843 9.42045Z" fill="black"></path>
+													</svg>
+												</span>
+											<?php endif; ?>
+										</a>
+										<?php endif; ?>
+									</div>
+									<div class="td_content">
+										<div class="td_text">
+											<?php $fixed = get_sub_field( 'fixed' ); ?>
+											<div>Fixed <?php echo wp_kses_post( $fixed ); ?></div>
+
+											<?php $variable = get_sub_field( 'variable' ); ?>
+											Variable <?php echo wp_kses_post( $variable ); ?>
+											<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+
+						<?php
+						++$number_of_items;
+
+						endwhile;
+
+					?>
+
+				</table>
 			</div>
+			<?php } ?>
+
 			<?php
-		endif;
-		?>
+			if ( $number_of_items >= 3 ) :
+				?>
+				<div class="refinance_lender_section__load_more">
+					<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="refinance_lender_options">
+						<div class="text">Show All <?php echo wp_kses_post( $number_of_items ); ?> lenders</div>
+						<span class="arrow">
+							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+								<path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/>
+							</svg>
+						</span>
+					</button>
+				</div>
 
-</section>
+				<?php
+			endif;
+			?>
 
-<?php endif; ?>
+		</section>
 
+	<?php endif; ?>
 
 	<?php
 }
 add_action( 'tha_content_while_after', 'eqd_single_after_entry_content', 7 );
 
 function eqd_single_after_entry_modals() {
-	?>
-	<?php if ( have_rows( 'vendors', 'option' ) ) : ?>
+	$post_id = get_the_ID();
+	if ( function_exists( 'yoast_get_primary_term_id' ) ) {
+		$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
+	}
+
+	if ( have_rows( 'vendors', 'option' ) ) : ?>
+
 		<?php
-		while ( have_rows( 'vendors', 'option' ) ) :
-			the_row();
-			$full_disclosure_content = get_sub_field( 'full_disclosure_content', 'option' );
-			?>
-			<div id="modal_disclosure_<?php echo get_row_index(); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-				<div class="modal-content" >
-				<button class="close-btn">
-					<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
-				</button>
-				<div class="content">
-					<?php echo wp_kses_post( $full_disclosure_content ); ?>
-				</div>
-				</div>
-			</div>
-		<?php endwhile; ?>
-	<?php endif; ?>
+			if ( get_field( 'show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id ) ) :
 
+				if ( have_rows( 'private_student_loans', 'option' ) ) :
 
-	<?php
+					// Loop through the rows of data
+					while ( have_rows( 'private_student_loans', 'option' ) ) :
+						the_row();
+
+						if ( get_row_layout() === 'private_student_loans' ) :
+
+							$disclosure_text = get_sub_field( 'disclosure_text' );
+							?>
+
+							<div id="modal_disclosure_<?php  echo wp_kses_post(get_row_index()); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+								<div class="modal-content" >
+									<button class="close-btn">
+										<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+									</button>
+									<div class="content">
+										<?php echo wp_kses_post( $disclosure_text ); ?>
+									</div>
+								</div>
+							</div>
+
+							<?php
+
+						endif;
+
+					endwhile;
+
+				endif;
+
+			else :
+
+				while ( have_rows( 'vendors', 'option' ) ) :
+					the_row();
+					$full_disclosure_content = get_sub_field( 'full_disclosure_content', 'option' );
+					?>
+		
+					<div id="modal_disclosure_<?php echo get_row_index(); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+						<div class="modal-content" >
+						<button class="close-btn">
+							<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
+						</button>
+						<div class="content">
+							<?php echo wp_kses_post( $full_disclosure_content ); ?>
+						</div>
+						</div>
+					</div>
+		
+				<?php 
+				endwhile;
+
+			endif;
+	 endif; 
 }
 add_action( 'tha_content_after', 'eqd_single_after_entry_modals', 7 );
 
@@ -256,13 +424,13 @@ add_action( 'tha_content_after', 'advertising_disclosure', 7 );
  * @license      GPL-2.0+
  **/
 function eqd_single_after_entry_primary_category() {
-	$post_id             = get_the_ID(); 
-	if (function_exists('yoast_get_primary_term_id')) {
+	$post_id = get_the_ID();
+	if ( function_exists( 'yoast_get_primary_term_id' ) ) {
 		$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
 	} else {
 		return;
 	}
-	
+
 	if ( $primary_category_id ) {
 		$primary_category = get_term( $primary_category_id );
 		$category_id      = 'category_' . $primary_category->term_id;
@@ -274,7 +442,7 @@ function eqd_single_after_entry_primary_category() {
 			?>
 
 		<div class="single_post_questionnaire">
-			<?php if(!empty($icon['url'])): ?>
+			<?php if ( ! empty( $icon['url'] ) ) : ?>
 			<div class="single_post_questionnaire__icon">
 				<img aria-hidden="true" src="<?php echo wp_kses_post( $icon['url'] ); ?>" alt="<?php echo wp_kses_post( $icon['alt'] ); ?>">
 			</div>
@@ -312,18 +480,17 @@ function eqd_single_after_entry_author_info() {
 
 	$id             = get_the_author_meta( 'ID' );
 	$id_post_editor = get_field( 'post_editor', get_the_ID() );
-	$user_info_ID    =  get_userdata( $id );
-	$author_url_id     = get_author_posts_url( $id );
+	$user_info_ID   = get_userdata( $id );
+	$author_url_id  = get_author_posts_url( $id );
 
-	if(!empty($id_post_editor)){
-		$author_url     = get_author_posts_url( get_the_author_meta( 'ID' ) );
-		$author_name    = get_the_author_meta( 'display_name', $id_post_editor['ID'] );
-		$user_info      = get_userdata( $id_post_editor['ID'] );
-		$first_name     = $user_info->first_name;
-		$last_name      = $user_info->last_name;
-		$nickname       = $user_info->nickname;
+	if ( ! empty( $id_post_editor ) ) {
+		$author_url  = get_author_posts_url( get_the_author_meta( 'ID' ) );
+		$author_name = get_the_author_meta( 'display_name', $id_post_editor['ID'] );
+		$user_info   = get_userdata( $id_post_editor['ID'] );
+		$first_name  = $user_info->first_name;
+		$last_name   = $user_info->last_name;
+		$nickname    = $user_info->nickname;
 	}
-
 
 	?>
 
@@ -331,10 +498,10 @@ function eqd_single_after_entry_author_info() {
 		<div class="article_footer_data_author">
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-					<?php echo get_avatar( $id,64  ); ?>
+					<?php echo get_avatar( $id, 64 ); ?>
 
 					<div class="author_name">
-						<?php echo get_the_author($id); ?>
+						<?php echo get_the_author( $id ); ?>
 					</div>
 
 					
@@ -342,16 +509,17 @@ function eqd_single_after_entry_author_info() {
 
 				<span class="article_footer_data_author_entry-info">
 					<span class="article_footer_data_author_entry-data">
-						<?php 
+						<?php
 						$yoast_meta_description = get_user_meta( $id );
-						 echo wp_kses_post($yoast_meta_description['wpseo_metadesc'][0]);
+						echo wp_kses_post( $yoast_meta_description['wpseo_metadesc'][0] );
 						?>
 					</span>
 					<div class="article_footer_data_author_entry-inf__link">
 						<a href="<?php echo $author_url_id; ?>">
 							Read More from 
-							<?php 
-							echo $user_info_ID->first_name; ?>
+							<?php
+							echo $user_info_ID->first_name;
+							?>
 							<span class="arrow" aria-hidden="true">
 								<svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none">
 									<path d="M10.3536 4.35355C10.5488 4.15829 10.5488 3.84171 10.3536 3.64645L7.17157 0.464465C6.97631 0.269203 6.65973 0.269203 6.46447 0.464466C6.2692 0.659728 6.2692 0.97631 6.46447 1.17157L9.29289 4L6.46447 6.82843C6.2692 7.02369 6.2692 7.34027 6.46447 7.53553C6.65973 7.7308 6.97631 7.7308 7.17157 7.53553L10.3536 4.35355ZM4.37114e-08 4.5L10 4.5L10 3.5L-4.37114e-08 3.5L4.37114e-08 4.5Z" fill="#82BC46"/>
@@ -368,12 +536,12 @@ function eqd_single_after_entry_author_info() {
 			$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 
 			$profile_picture = get_avatar( $review_by_auth_id, 64 );
-			if($review_by_auth_id != false){
-				$user_info       = get_userdata( $review_by_auth_id );
-				$first_name      = $user_info->first_name;
-				$last_name       = $user_info->last_name;
-				$nickname        = $user_info->nickname;
-			}
+		if ( $review_by_auth_id != false ) {
+			$user_info  = get_userdata( $review_by_auth_id );
+			$first_name = $user_info->first_name;
+			$last_name  = $user_info->last_name;
+			$nickname   = $user_info->nickname;
+		}
 		?>
 			<?php if ( $review_by_auth_id ) : ?>
 
@@ -384,7 +552,7 @@ function eqd_single_after_entry_author_info() {
 				<div class="article_footer_data_author_author_info">
 					Reviewed By
 					<span class="name">
-						<?php echo get_author_posts_link_by_id($review_by_auth_id); ?>
+						<?php echo get_author_posts_link_by_id( $review_by_auth_id ); ?>
 					</span>
 				</div>
 
@@ -399,7 +567,7 @@ function eqd_single_after_entry_author_info() {
 			$user_info       = get_userdata( $post_editor_by_auth_id_footer['ID'] );
 
 		?>
-			<?php if ( !empty($post_editor_by_auth_id_footer['ID']) ) : ?>
+			<?php if ( ! empty( $post_editor_by_auth_id_footer['ID'] ) ) : ?>
 
 			<div class="article_footer_data_author_reviewed_author editedby">
 				<div class="article_footer_data_author_profile">
@@ -408,7 +576,7 @@ function eqd_single_after_entry_author_info() {
 				<div class="article_footer_data_author_author_info">
 					Edited By
 					<span class="name">
-					<?php echo get_author_posts_link_by_id($post_editor_by_auth_id_footer['ID']);  ?>
+					<?php echo get_author_posts_link_by_id( $post_editor_by_auth_id_footer['ID'] ); ?>
 					</span>
 				</div>
 				
@@ -485,13 +653,12 @@ function eqd_single_after_related_post() {
 
 	$show_related_posts       = get_field( 'show_related_posts', 'category_' . $primary_category );
 	$select_posts_to_showcase = get_field( 'select_posts_to_showcase', 'category_' . $primary_category );
-	$disable_related_posts    =  get_field( 'disable_related_posts' ,$post_id);
-	
-	if ( $show_related_posts ):
-	 if ( !$disable_related_posts ) :
-	 
+	$disable_related_posts    = get_field( 'disable_related_posts', $post_id );
 
-		?>
+	if ( $show_related_posts ) :
+		if ( ! $disable_related_posts ) :
+
+			?>
 	<section class="single_related_posts">
 		<div class="single_related_posts_container">
 			<header class="single_related_posts_header">
@@ -532,23 +699,23 @@ function eqd_single_after_related_post() {
 					?>
 						<a class="single_related_posts_loop_item" href="<?php echo get_the_permalink(); ?>">
 							<div class="single_related_posts_loop_item_image">
-							<?php
-							if ( has_post_thumbnail() ) {
-								the_post_thumbnail( 'large' );  // 'full' will display the full image. You can use other sizes like 'thumbnail', 'medium', 'large', etc.
-							}
-							?>
+						<?php
+						if ( has_post_thumbnail() ) {
+							the_post_thumbnail( 'large' );  // 'full' will display the full image. You can use other sizes like 'thumbnail', 'medium', 'large', etc.
+						}
+						?>
 							</div>
 							<h3 class="single_related_posts_loop_item_title"><?php the_title(); ?></h3>
 							<div class="single_related_posts_loop_item_info">
 								<div class="single_related_posts_loop_item_info_profile_image">
-								<?php echo get_avatar( $author_email, 96 ); ?>
+							<?php echo get_avatar( $author_email, 96 ); ?>
 								</div>
 								<div class="single_related_posts_loop_item_info_author">
-								<?php echo get_the_author(); ?>
+							<?php echo get_the_author(); ?>
 								</div>
 							</div>
 						</a>
-						<?php
+							<?php
 
 				}
 				wp_reset_postdata();
@@ -558,10 +725,9 @@ function eqd_single_after_related_post() {
 			</div>
 		</div>
 	</section>
-		<?php
+			<?php
 		endif;
 	endif;
 }
 // Build the page.
 require get_template_directory() . '/index.php';
-
