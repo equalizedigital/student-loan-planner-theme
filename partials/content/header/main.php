@@ -164,19 +164,30 @@ $disable_green_header_cta_link_on_this_page = get_field('disable_green_header_ct
 					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search">
 				</button>
 
-				<?php if(!$disable_green_header_cta_link_on_this_page): ?>
-					<?php if ( ! empty( $link_data ) ) : ?>
-						<a href="<?php echo ! empty( $link_data ) ? $link_data['url'] : ''; ?>" <?php echo ! empty( $link_data['target'] ) ? 'target="' . $link_data['target'] . '"' : ''; ?> class="btn br-ten">
-							<?php echo ! empty( $link_data ) ? $link_data['title'] : 'Get Help'; ?>
+				<?php 
+				// If disabled
+				if(!$disable_green_header_cta_link_on_this_page){
+
+					// if link override otherwise default link
+					$link = !empty($link_data) ? $link_data : (!empty($header_main_link) ? $header_main_link : null);
+					// if archive set to original
+					if (is_tax('slp_occupation') && !empty($header_main_link)) {
+						$link = $header_main_link;
+					}
+
+					if ($link):
+						$url = !empty($link['url']) ? $link['url'] : '';
+						$target = !empty($link['target']) ? 'target="' . $link['target'] . '"' : '';
+						$title = !empty($link['title']) ? $link['title'] : 'Get Help';
+					?>
+				
+						<a href="<?= $url; ?>" <?= $target; ?> class="btn br-ten">
+							<?= $title; ?>
 						</a>
-					<?php else: ?>
-						<?php if ( ! empty( $header_main_link ) ) : ?>
-						<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten">
-							<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
-						</a>
-						<?php endif; ?>
-					<?php endif; ?>
-				<?php endif; ?>
+				
+					<?php endif; 
+				}
+				?>
 
 			</div>
 
@@ -190,19 +201,31 @@ $disable_green_header_cta_link_on_this_page = get_field('disable_green_header_ct
 				</div>
 				<div class="mobile_help_btn">
 
-				<?php if(!$disable_green_header_cta_link_on_this_page): ?>
-					<?php if ( ! empty( $link_data ) ) : ?>
-						<a href="<?php echo ! empty( $link_data ) ? $link_data['url'] : ''; ?>" <?php echo ! empty( $link_data['target'] ) ? 'target="' . $link_data['target'] . '"' : ''; ?> class="btn">
-							<?php echo ! empty( $link_data ) ? $link_data['title'] : 'Get Help'; ?>
+				<?php 
+				// If disabled
+				if(!$disable_green_header_cta_link_on_this_page){
+
+					// if link override otherwise default link
+					$link = !empty($link_data) ? $link_data : (!empty($header_main_link) ? $header_main_link : null);
+
+					// if archive set to original
+					if (is_tax('slp_occupation') && !empty($header_main_link)) {
+						$link = $header_main_link;
+					}
+
+					if ($link):
+						$url = !empty($link['url']) ? $link['url'] : '';
+						$target = !empty($link['target']) ? 'target="' . $link['target'] . '"' : '';
+						$title = !empty($link['title']) ? $link['title'] : 'Get Help';
+					?>
+				
+						<a href="<?= $url; ?>" <?= $target; ?> class="btn">
+							<?= $title; ?>
 						</a>
-					<?php else : ?>
-						<?php if ( ! empty( $header_main_link ) ) : ?>
-						<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
-							<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
-						</a>
-						<?php endif; ?>
-					<?php endif; ?>
-				<?php endif; ?>
+				
+					<?php endif; 
+				}
+				?>
 
 				</div>
 			</div>
@@ -211,16 +234,28 @@ $disable_green_header_cta_link_on_this_page = get_field('disable_green_header_ct
 	</div>
 </div>
 
-<?php if(!$disable_green_header_cta_link_on_this_page): ?>
-	<?php if ( ! empty( $link_data ) ) : ?>
-		<a href="<?php echo ! empty( $link_data ) ? $link_data['url'] : ''; ?>" <?php echo ! empty( $link_data['target'] ) ? 'target="' . $link_data['target'] . '"' : ''; ?> class="btn br-ten mobile-header-link">
-			<?php echo ! empty( $link_data ) ? $link_data['title'] : 'Get Help'; ?>
+<?php 
+// If disabled
+if(!$disable_green_header_cta_link_on_this_page){
+
+	// if link override otherwise default link
+	$link = !empty($link_data) ? $link_data : (!empty($header_main_link) ? $header_main_link : null);
+
+	// if archive set to original
+	if (is_tax('slp_occupation') && !empty($header_main_link)) {
+		$link = $header_main_link;
+	}
+
+	if ($link):
+		$url = !empty($link['url']) ? $link['url'] : '';
+		$target = !empty($link['target']) ? 'target="' . $link['target'] . '"' : '';
+		$title = !empty($link['title']) ? $link['title'] : 'Get Help';
+	?>
+
+		<a href="<?= $url; ?>" <?= $target; ?> class="btn br-ten mobile-header-link">
+			<?= $title; ?>
 		</a>
-	<?php else : ?>
-		<?php if ( ! empty( $header_main_link ) ) : ?>
-		<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten mobile-header-link">
-			<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
-		</a>
-		<?php endif; ?>
-	<?php endif; ?>
-<?php endif; ?>
+
+	<?php endif; 
+}
+?>
