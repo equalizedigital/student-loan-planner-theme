@@ -111,13 +111,12 @@ function eqd_single_after_entry_content() {
 						<?php
 						$number_of_items = 0;
 							// Check if the flexible content field has rows of data
-						if ( have_rows( 'private_student_loans', 'option' ) ) :
+						if ( have_rows( 'private_student_loans_section', 'option' ) ) :
 
 							// Loop through the rows of data
-							while ( have_rows( 'private_student_loans', 'option' ) ) :
+							while ( have_rows( 'private_student_loans_section', 'option' ) ) :
 								the_row();
 
-								if ( get_row_layout() == 'private_student_loans' ) :
 
 									$company_name    = get_sub_field( 'company_name' );
 									$logo            = get_sub_field( 'logo' );
@@ -185,7 +184,6 @@ function eqd_single_after_entry_content() {
 										
 										<?php
 
-									endif;
 									++$number_of_items;
 								endwhile;
 
@@ -330,13 +328,12 @@ function eqd_single_after_entry_modals() {
 		<?php
 			if ( get_field( 'show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id ) ) :
 
-				if ( have_rows( 'private_student_loans', 'option' ) ) :
+				if ( have_rows( 'private_student_loans_section', 'option' ) ) :
 
 					// Loop through the rows of data
-					while ( have_rows( 'private_student_loans', 'option' ) ) :
+					while ( have_rows( 'private_student_loans_section', 'option' ) ) :
 						the_row();
 
-						if ( get_row_layout() === 'private_student_loans' ) :
 
 							$disclosure_text = get_sub_field( 'disclosure_text' );
 							?>
@@ -354,7 +351,6 @@ function eqd_single_after_entry_modals() {
 
 							<?php
 
-						endif;
 
 					endwhile;
 
