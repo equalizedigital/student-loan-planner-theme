@@ -298,8 +298,10 @@ function eqd_tha_page_header() {
 		if ( $alternate_header_style ) {
 			$container_class .= 'inner-hero-alternate-style';
 		}
+
+		$current_term = get_queried_object();
 		?>
-		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
+		<header class="inner-hero <?php echo wp_kses_post( $container_class );  echo "taxonomy-".wp_kses_post($current_term->slug); ?>">
 			<div class="inner-hero-container">
 					
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">

@@ -810,7 +810,7 @@ img.wprm-comment-rating {
 	margin: 0 auto;
 	padding: 0 24px;
 	position: relative;
-    z-index: 1;
+	z-index: 1;
 
 	a.post_link img {
 		display: flex;
@@ -1003,7 +1003,14 @@ img.wprm-comment-rating {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+	}
 
+	&.taxonomy-physicians {
+		@include media("<tablet") {
+			.hero_image {
+				display: none;
+			}
+		}
 	}
 
 	&:after {
@@ -1049,7 +1056,7 @@ img.wprm-comment-rating {
 			}
 		}
 
-		.entry-author span.entry-info{
+		.entry-author span.entry-info {
 			color: black;
 		}
 	}
