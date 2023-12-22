@@ -321,9 +321,7 @@ function eqd_single_fullwidth_content() {
 					<div class="hero_featured_image_data">
 						<?php
 						$output = '';
-						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
-							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-						}
+						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 						$post_data = get_the_content( get_the_ID() );
 						?>
 						<?php echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, ' Min Read'; ?> |  <?php echo wp_kses_post( $output ); ?>
