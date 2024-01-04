@@ -948,9 +948,18 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 10px 0 40px;
+		padding: 40px 0 40px;
 	}
 
+}
+
+.single{
+	.post_type_layout_standard {
+		.entry-content {
+			padding: 10px 0 40px;
+		}
+	
+	}	
 }
 
 .post_type_layout_full-width {
