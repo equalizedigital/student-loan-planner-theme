@@ -1,7 +1,5 @@
 /* eslint-env jquery */
 
-
-
 // Sticky Header
 jQuery(function ($) {
 
@@ -153,10 +151,6 @@ window.addEventListener("load", function () {
 		button.focus();
 
 	}
-
-
-
-
 });
 
 window.addEventListener("load", function () {
@@ -902,7 +896,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		if (toc_container.length > 0) {
 			 tocContainer = document.querySelector('.toc_container');
 			 h2Elements = tocContainer.querySelectorAll('h2');
-		} else if(toc_container_entry_content.length>0){
+		} else if(toc_container_entry_content.length > 0){
 			 tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
 			 h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
 		}
@@ -975,7 +969,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
 		
-		
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
@@ -994,7 +987,6 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (activeListItemSidebar) {
 						activeListItemSidebar.classList.remove('active');
 					}
-					
 
 					// Add 'active' class to the one corresponding to the current entry
 					const listItem = document.querySelector(`.toc-nav li a[href="#${id}"]`).parentElement;
@@ -1005,7 +997,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 						listItemSidebar.classList.add('active');
 						activeListItemSidebar = listItemSidebar;
-
 					}
 
 					listItem.classList.add('active');
@@ -1041,7 +1032,6 @@ window.addEventListener('DOMContentLoaded', () => {
 				// Get the .contents-nav-mobile element
 				var navElement = document.querySelector('.contents-nav-mobile');
 				var siteHeader = document.querySelector('.site-header');
-
 
 				// Check if the scroll is past the .inner-hero
 				if (heroBottom < 0) {
@@ -1091,11 +1081,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 		
-
-		
-
-
-		// menu
 		// Get a reference to the elements
 		const dropdownSelect = document.querySelector('.contents-nav-mobile-header-dropdown-select');
 		const contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
