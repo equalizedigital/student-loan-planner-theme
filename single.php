@@ -159,8 +159,7 @@ function eqd_single_after_entry_content() {
 												<td>
 													<div class="td_content">
 														<div class="td_title">
-														<?php echo wp_kses_post( $offer_amount ); ?>
-														Bonus
+															<?php echo wp_kses_post( $offer_amount ); ?>
 														</div>
 														<div class="td_text">
 															<?php echo wp_kses_post( $offer_text ); ?>
