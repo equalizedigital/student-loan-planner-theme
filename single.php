@@ -83,6 +83,10 @@ function eqd_single_after_entry_content() {
 	if ( function_exists( 'yoast_get_primary_term_id' ) ) {
 		$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
 	}
+
+	$heading_override = get_field( 'heading_override', 'option' );
+		
+	
 	?>
 
 	<?php if ( have_rows( 'vendors', 'option' ) ) : ?>
@@ -91,7 +95,17 @@ function eqd_single_after_entry_content() {
 
 			<header class="title">
 				<?php $current_year = gmdate( 'Y' ); ?>
-				<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post( $current_year ); ?></h2>
+				<?php 
+				if ( !empty($heading_override) ) {
+					?><h2 class="title"><?php
+					 echo wp_kses_post($heading_override);
+					 ?></h2><?php
+				} else {
+					?>
+					<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post( $current_year ); ?></h2>
+					<?php
+				}
+				?>
 			</header>
 
 			<?php
