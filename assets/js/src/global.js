@@ -164,7 +164,7 @@ window.addEventListener("load", function () {
 	const tabbedContent = document.querySelector('.resource-links-container');
 	if (tabbedContent) {
 		// Grab all buttons with the class tabbed-content__nav-item
-		const tabButtons = document.querySelectorAll('.resource-links-container-links-link-button , .dropdown-li');
+		const tabButtons = document.querySelectorAll('button.resource-links-container-links-link-button , .dropdown-li');
 
 		tabButtons.forEach(button => {
 			// Add a click event listener to each button
@@ -398,40 +398,25 @@ document.addEventListener('DOMContentLoaded', function () {
 					var containerId = menuFooterContainer.id;
 					title.setAttribute('aria-controls', containerId);
 				}
-			});
 
-
-			widgetTitles.forEach(title => {
 				title.setAttribute('tabindex', '0');
 				title.setAttribute('role', 'button');
 				title.setAttribute('aria-expanded', 'false');
-				// Add click event listener to each .widget-title
 
-				// title.addEventListener('keypress', function () {
-					
-				// 	// Check if there's a next sibling element
-				// 	this.classList.toggle('active');
-				// 	let sibling = this.nextElementSibling;
-				// 	if (sibling) {
-				// 		var isExpanded = title.getAttribute('aria-expanded') === 'true';
-				// 		// Add class to the sibling
-				// 		this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
-				// 		this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 
-				// 	}
-				// });
+			});
+			widgetTitles.forEach(function (title) {
 
 				title.addEventListener('click', function () {
 					// Check if there's a next sibling element
 					this.classList.toggle('active');
 					let sibling = this.nextElementSibling;
-					if (sibling) {
-						var isExpanded = title.getAttribute('aria-expanded') === 'true';
-						// Add class to the sibling
-						this.nextElementSibling.classList.toggle('active'); // Replace 'your-class-name-here' with your desired class name
+					// if (sibling) {
+						var isExpanded = title.getAttribute('aria-expanded');
+						this.nextElementSibling.classList.toggle('active'); 
 						this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-					}
-				});
+					// }
+				},true);
 			});
 		
 	}
@@ -440,13 +425,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	window.addEventListener('resize', function () {
 		if (window.innerWidth < 768) {
-			footerMenuFunctions()
+			setTimeout(() => {
+				footerMenuFunctions()
+			}, 500);
 		} else {
 			widgetTitlesRespo.forEach(title => {
 				title.removeAttribute('tabindex');
 				title.removeAttribute('role');
 				title.removeAttribute('aria-expanded');
 				title.removeAttribute('aria-controls');
+				title.removeEventListener('click',arguments.callee)
 			});
 		}
 	});
@@ -743,11 +731,11 @@ window.addEventListener("load", function () {
 			let initText = highlightButtonText.innerText;
 			let tabOpen = false;
 
-			if (items.length >= 4) {
+			if (items.length >= 6) {
 
 				if (windowWidth <= 768) {
 					items.forEach(function (item, index) {
-						if (index < 4) {
+						if (index < 6) {
 							item.tabIndex = 0;
 						} else {
 							item.tabIndex = -1;
@@ -760,7 +748,6 @@ window.addEventListener("load", function () {
 							item.tabIndex = 0;
 						});
 					}
-
 				}
 
 				highlightButton.addEventListener('click', function () {
@@ -771,7 +758,7 @@ window.addEventListener("load", function () {
 							item.classList.add('hidden');
 							item.classList.remove('animate');
 							items.forEach(function (item, index) {
-								if (index < 4) {
+								if (index < 6) {
 									item.tabIndex = 0;
 								} else {
 									item.tabIndex = -1;
@@ -789,7 +776,7 @@ window.addEventListener("load", function () {
 					var currentState = this.getAttribute('aria-expanded') === 'true';
 					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
 
-					for (var i = 0; i < 4 && i < items.length; i++) {
+					for (var i = 0; i < 6 && i < items.length; i++) {
 						items[i].classList.remove('hidden');
 					}
 
@@ -798,6 +785,104 @@ window.addEventListener("load", function () {
 					this.classList.add('active');
 
 					tabOpen == false ? highlightButtonText.innerText = 'Show Fewer' : highlightButtonText.innerText = initText;
+
+					// After the animation is complete, remove the "animate" class
+					setTimeout(function () {
+						items.forEach(function (item) {
+							tabOpen ? item.classList.remove('animate') : item.classList.add('animate');
+						});
+					}, 500);
+
+					tabOpen ? tabOpen = false : tabOpen = true;
+				});
+
+			}
+
+		}
+
+	}
+});
+
+
+
+// Lender Table Show More
+window.addEventListener("load", function () {
+
+	function checkIsTabletSizeLender() {
+		var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+		teamLenderFunctionality(windowWidth);
+	}
+
+	// Initial check on page load
+	checkIsTabletSizeLender();
+
+	// Listen for window resize events and recheck
+	window.addEventListener('resize', checkIsTabletSizeLender);
+	
+	function teamLenderFunctionality(windowWidth) {
+		let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button')
+		let highlightButtonLenderText = document.querySelector('.refinance_lender_section__load_more button .text')
+
+		if (highlightButtonLender) {
+			let items = document.querySelectorAll('.data-tr');
+			let initText = highlightButtonLenderText.innerText;
+			let tabOpen = false;
+
+			
+
+			if (items.length >= 3) {
+
+				
+
+				if (windowWidth <= 768) {
+					items.forEach(function (item, index) {
+						if (index < 3) {
+							item.tabIndex = 0;
+						} else {
+							item.tabIndex = -1;
+						}
+					});
+					items[0].tabIndex = 0;
+				}
+
+				highlightButtonLender.addEventListener('click', function () {
+					// Remove the "hidden" class and add an "animate" class for each item
+					
+
+					items.forEach(function (item) {
+
+						if (tabOpen) {
+							item.classList.add('hidden');
+							item.classList.remove('animate');
+							items.forEach(function (item, index) {
+								if (index < 3) {
+									item.tabIndex = 0;
+								} else {
+									item.tabIndex = -1;
+								}
+							});
+
+						} else {
+							item.classList.remove('hidden');
+							item.classList.add('animate');
+						}
+
+						// item.tabIndex = 0;
+					});
+
+					var currentState = this.getAttribute('aria-expanded') === 'true';
+					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
+
+					for (var i = 0; i < 3 && i < items.length; i++) {
+						items[i].classList.remove('hidden');
+					}
+
+					items[0].focus()
+					// Hide the "Show All" button with a fade-out effect
+					this.classList.add('active');
+
+					tabOpen == false ? highlightButtonLenderText.innerText = 'Show Fewer' : highlightButtonLenderText.innerText = initText;
 
 					// After the animation is complete, remove the "animate" class
 					setTimeout(function () {
@@ -910,6 +995,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
+				let listItemCheck = document.querySelector(`.toc-nav li a`);
+				if (listItemCheck == null){
+					return;
+				}
 				if (entry.intersectionRatio > 0) {
 					// Remove 'active' class from the currently active list item
 					if (activeListItemMobile) {

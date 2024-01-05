@@ -2,9 +2,9 @@
     &-container {
         margin: 0 auto;
         max-width: $container-width;
-        padding: 100px $container-padding 148px;
+        padding: 100px 0 148px;
         @include media("<tablet") {
-            padding: 90px $container-padding 40px;
+            padding: 90px 0 40px;
         }
 
         &-header {

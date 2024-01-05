@@ -12,25 +12,22 @@
  * Theme Fonts URL
  */
 function eqd_theme_fonts_url() {
-	return 'https://use.typekit.net/hav0fds.css';
+	return 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap';
 }
 
 /**
  * Preconnect Font
  */
 function eqd_preconnect_font() {
-	$font_url = eqd_theme_fonts_url();
-	if ( empty( $font_url ) ) {
-		return;
-	}
+	?>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
 
-	// Preconnect for google font.
-	if ( 0 === strpos( $font_url, 'https://fonts.googleapis.com' ) ) {
-		echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . PHP_EOL;
-		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
-	}
+	<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<?php
 }
-//add_action( 'wp_head', 'eqd_preconnect_font', 5 );
+add_action( 'wp_head', 'eqd_preconnect_font', 1 );
 
 /**
  * Enqueue Frontend Fonts

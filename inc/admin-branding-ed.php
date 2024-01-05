@@ -165,7 +165,7 @@ function eqd_dashboard_rss() {
 		$content = $item->get_content();
 		$content = wp_html_excerpt( $content, 200 ) . ' ...<a target="_blank" href="' . $link . '">Keep Reading</a>';
 
-		echo "<li><a class='rsswidget' href='" . esc_url( $link ) . " target='_blank'>" . esc_html( $title ) . "</a>\n<div class='rssSummary'>" . esc_html( $content ) . "</div>\n";
+		echo "<li><a class='rsswidget' href='" . esc_url( $link ) . " target='_blank'>" . wp_kses_post( $title ) . "</a>\n<div class='rssSummary'>" . wp_kses_post( $content ) . "</div>\n";
 	}
 
 	echo "</ul>\n";

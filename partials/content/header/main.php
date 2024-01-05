@@ -5,6 +5,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $logo_tag         = ( apply_filters( 'eqd_h1_site_title', false ) || ( is_front_page() && is_home() ) ) ? 'h1' : 'p';
 $header_main_link = get_field( 'header_main_link', 'option' );
+
+if (function_exists('yoast_get_primary_term_id')) {
+	$primary_category_id = yoast_get_primary_term_id( 'category', $post_id );
+} else {
+	return;
+}
+
+// Check if categories exist for the post
+if (!empty($primary_category_id)) {
+	// Retrieve the name of the first category
+	$category_id = $primary_category_id;
+	$link_data = get_field( 'header_button_override',  'category_' . $category_id );
+}
+
+$disable_green_header_cta_link_on_this_page = get_field('disable_green_header_cta_link_on_this_page');
 ?>
 
 <div id="main-navigation">
@@ -42,10 +57,10 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 					
 						<?php if ( '#' === $link['url'] ) { ?>
 							<button aria-label="<?php echo $link['title']; ?>" type="button" class="menu-item-main-link 
-															<?php
-															if ( empty( $columns ) ) {
-																_e( 'menu-item-no-drop' ); }
-															?>
+								<?php
+								if ( empty( $columns ) ) {
+									_e( 'menu-item-no-drop' ); }
+								?>
 							" data-toggle="<?php echo $link['title']; ?>" aria-expanded="false">
 								<?php _e( $link['title'] ); ?>
 								<span class="chevron">
@@ -56,16 +71,15 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 						<?php } else { ?>
 							
 							<a href="<?php echo $link['url']; ?>" 
-												<?php
-												if ( $link['url'] == $current_url ) {
-													echo 'aria-current="page"';}
-												?>
-							target="<?php echo $link['target']; ?>" class="menu-item-main-link 
-							<?php
-							if ( empty( $columns ) ) {
-								_e( 'menu-item-no-drop' ); }
-							?>
-">
+								<?php
+								if ( $link['url'] == $current_url ) {
+									echo 'aria-current="page"';}
+								?>
+								target="<?php echo $link['target']; ?>" class="menu-item-main-link 
+								<?php
+								if ( empty( $columns ) ) {
+									_e( 'menu-item-no-drop' ); }
+								?>">
 								<?php _e( $link['title'] ); ?>
 								<span class="chevron">
 									<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/arrow-up-green.svg" alt="chevron arrow">
@@ -132,7 +146,7 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 			<div class="search-popup" id="search-modal" role="dialog" aria-modal="true">
 				<form action="/" method="get">
 					<div class="under_line">
-						<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search" aria-hidden="true">
+						<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search" aria-hidden="true">
 						<div class="input-group">
 							<input type="text" name="s" id="modal_search" value="<?php the_search_query(); ?>" />
 							<label for="modal_search">Search for tools, occupations, resources, etc....</label>
@@ -141,19 +155,40 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 					<button class="btn" type="submit">Search</button>
 				</form>
 				<button class="close" id="close-search"> 
-					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility/'; ?>close-cross.svg" alt="close search">
+					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility/'; ?>close-cross-white.svg" alt="close search">
 				</button>
 			</div>
 
 			<div class="menu_desktop">
 				<button class="menu_search_btn " id="menu_search_btn" aria-haspopup="dialog" aria-controls="search-modal" aria-expanded="false">
-					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search.svg" alt="search">
+					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search">
 				</button>
-				<?php if ( ! empty( $header_main_link ) ) : ?>
-					<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn br-ten">
-						<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
-					</a>
-				<?php endif; ?>
+
+				<?php 
+				// If disabled
+				if(!$disable_green_header_cta_link_on_this_page){
+
+					// if link override otherwise default link
+					$link = !empty($link_data) ? $link_data : (!empty($header_main_link) ? $header_main_link : null);
+					// if archive set to original
+					if (is_tax('slp_occupation') && !empty($header_main_link)) {
+						$link = $header_main_link;
+					}
+
+					if ($link):
+						$url = !empty($link['url']) ? $link['url'] : '';
+						$target = !empty($link['target']) ? 'target="' . $link['target'] . '"' : '';
+						$title = !empty($link['title']) ? $link['title'] : 'Get Help';
+					?>
+				
+						<a href="<?= $url; ?>" <?= $target; ?> class="btn br-ten">
+							<?= $title; ?>
+						</a>
+				
+					<?php endif; 
+				}
+				?>
+
 			</div>
 
 			<div class="menu_bottom">
@@ -165,14 +200,62 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 					</form>
 				</div>
 				<div class="mobile_help_btn">
-					<?php if ( ! empty( $header_main_link ) ) : ?>
-						<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
-							<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
+
+				<?php 
+				// If disabled
+				if(!$disable_green_header_cta_link_on_this_page){
+
+					// if link override otherwise default link
+					$link = !empty($link_data) ? $link_data : (!empty($header_main_link) ? $header_main_link : null);
+
+					// if archive set to original
+					if (is_tax('slp_occupation') && !empty($header_main_link)) {
+						$link = $header_main_link;
+					}
+
+					if ($link):
+						$url = !empty($link['url']) ? $link['url'] : '';
+						$target = !empty($link['target']) ? 'target="' . $link['target'] . '"' : '';
+						$title = !empty($link['title']) ? $link['title'] : 'Get Help';
+					?>
+				
+						<a href="<?= $url; ?>" <?= $target; ?> class="btn">
+							<?= $title; ?>
 						</a>
-					<?php endif; ?>
+				
+					<?php endif; 
+				}
+				?>
+
 				</div>
 			</div>
 
 		</nav>
 	</div>
 </div>
+
+<?php 
+// If disabled
+if(!$disable_green_header_cta_link_on_this_page){
+
+	// if link override otherwise default link
+	$link = !empty($link_data) ? $link_data : (!empty($header_main_link) ? $header_main_link : null);
+
+	// if archive set to original
+	if (is_tax('slp_occupation') && !empty($header_main_link)) {
+		$link = $header_main_link;
+	}
+
+	if ($link):
+		$url = !empty($link['url']) ? $link['url'] : '';
+		$target = !empty($link['target']) ? 'target="' . $link['target'] . '"' : '';
+		$title = !empty($link['title']) ? $link['title'] : 'Get Help';
+	?>
+
+		<a href="<?= $url; ?>" <?= $target; ?> class="btn br-ten mobile-header-link">
+			<?= $title; ?>
+		</a>
+
+	<?php endif; 
+}
+?>

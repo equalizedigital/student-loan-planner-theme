@@ -121,6 +121,26 @@ function eqd_tha_footer_cta() {
 		// Individual page.
 		$disable = get_field( 'disable' );
 
+		if(is_single( )){
+
+			// Assuming you have the post ID
+			$post_id = get_the_ID();
+
+			// Get the post categories
+			$categories = get_the_category($post_id);
+
+			// Check if categories exist for the post
+			if (!empty($categories)) {
+				// Retrieve the name of the first category
+				$category_id = $categories[0]->term_id;
+				$hide_footer_cta = get_field( 'hide_footer_cta',  'category_' . $category_id );
+						if ( $hide_footer_cta ) {
+						return;
+					}
+			}
+		}
+
+
 		if ( ! $disable ) :
 			if ( ( ! is_author() && ! is_archive() && ! is_category() && ! is_tax() ) || is_archive( 'eqd-featured-press' ) ) :
 				?>
@@ -229,7 +249,6 @@ function eqd_tha_page_header() {
 				$bg_url = $background_image['url'];
 			}
 		} else {
-
 			// Load values and assing defaults.
 			$page_id                 = get_the_ID();
 			$alternative_title       = get_field( 'alternative_title', $page_id );
@@ -248,11 +267,9 @@ function eqd_tha_page_header() {
 					$bg_url = $background_image['url'];
 				}
 			} else {
-				$background_image    = get_field( 'background_image', $page_id );
-				$thumbnail_id        = get_post_thumbnail_id( $page_id );
-				$thumbnail_url_array = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-				if ( isset( $thumbnail_url_array[0] ) ) {
-					$background_image = $thumbnail_url_array[0];
+				$image = get_the_post_thumbnail_url($page_id);
+				if ( $image ) {
+					$background_image = $image;
 				}
 				$bg_url = $background_image;
 			}
@@ -277,8 +294,14 @@ function eqd_tha_page_header() {
 			$container_class .= ' inner-hero-center-text';
 		}
 
+		$alternate_header_style = get_field( 'alternate_header_style' );
+		if ( $alternate_header_style ) {
+			$container_class .= 'inner-hero-alternate-style';
+		}
+
+		$current_term = get_queried_object();
 		?>
-		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
+		<header class="inner-hero <?php echo wp_kses_post( $container_class );  echo "taxonomy-".wp_kses_post($current_term->slug); ?>">
 			<div class="inner-hero-container">
 					
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
@@ -320,37 +343,43 @@ function eqd_tha_page_header() {
 					<?php endif; ?>
 				</h1>
 				
-				<span class="subtitle">
-					<?php
-					if ( ! is_search() ) {
-						if ( ! empty( $subtitle ) ) {
-							echo wp_kses_post( $subtitle );
-						} else {
-							echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+					<span class="subtitle">
+						<?php
+						if ( ! is_search() ) {
+							if ( ! empty( $subtitle ) ) {
+								echo wp_kses_post( $subtitle );
+							} else {
+								echo wp_kses_post( get_field( 'title_copy', 'option' ) );
+							}
 						}
-					}
-					?>
-				</span>
-
-				<?php if ( ! empty( $heading_link ) ) : ?>
-					<span class="link">
-						<a href="<?php echo $heading_link['url'] ? $heading_link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? $heading_link['title'] : ''; ?></a>
+						?>
 					</span>
+				
+				<?php if ( !$alternate_header_style ): ?>
+
+					<?php if ( ! empty( $heading_link ) ) : ?>
+						<span class="link">
+							<a href="<?php echo $heading_link['url'] ? $heading_link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? $heading_link['title'] : ''; ?></a>
+						</span>
+					<?php endif; ?>
+
 				<?php endif; ?>
 
 			</div>
 
-			<?php
-			if ( ! is_search() ) {
-				if ( ! empty( $bg_url ) ) :
-					?>
-				<span class="hero_image">
-					<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
-				</span>
-					<?php
-				endif;
-			}
-			?>
+			<?php if ( !$alternate_header_style ): ?>
+				<?php
+				if ( ! is_search() ) {
+					if ( ! empty( $bg_url ) ) :
+						?>
+						<span class="hero_image">
+							<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
+						</span>
+						<?php
+					endif;
+				}
+				?>
+			<?php endif; ?>
 
 		</header>
 

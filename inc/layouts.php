@@ -321,9 +321,7 @@ function eqd_single_fullwidth_content() {
 					<div class="hero_featured_image_data">
 						<?php
 						$output = '';
-						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
-							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-						}
+						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 						$post_data = get_the_content( get_the_ID() );
 						?>
 						<?php echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, ' Min Read'; ?> |  <?php echo wp_kses_post( $output ); ?>
@@ -335,6 +333,29 @@ function eqd_single_fullwidth_content() {
 				?>
 
 
+			<?php 
+			$term_list = wp_get_post_terms(get_the_ID(), 'category', ['fields' => 'all']);
+			foreach($term_list as $term) {
+				if( get_post_meta(get_the_ID(), '_yoast_wpseo_primary_category',true) == $term->term_id ) {
+					$hide_editorial_section_on_posts = get_field( 'hide_editorial_section_on_posts',  'category_' . $term->term_id );
+				}
+			}
+
+			if ( !$hide_editorial_section_on_posts ) :
+			?>
+			<section class="site-main-article__author-data-editorial_statement">
+				<div class="site-main-article__author-data-editorial_statement-container">
+					<div class="site-main-article__author-data-editorial_statement-container__title">
+						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
+					</div>
+					<div class="site-main-article__author-data-editorial_statement-container__copy">
+						<p>At Student Loan Planner, we follow a strict editorial ethics policy. This post may contain references to products from our partners within the guidelines of this policy. Read our 
+						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
+						</p>
+					</div>
+				</div>
+			</section>
+			<?php endif; ?>
 
 			<div class="site-main-article__author-data <?php if( !empty(get_field( 'post_editor', get_the_ID() )) ){ echo "site-main-article__author-data_editor"; } ?>">
 				<div class="auth-editor-container">
@@ -410,18 +431,7 @@ function eqd_single_fullwidth_content() {
 
 			</div>
 
-			<section class="site-main-article__author-data-editorial_statement">
-				<div class="site-main-article__author-data-editorial_statement-container">
-					<div class="site-main-article__author-data-editorial_statement-container__title">
-						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
-					</div>
-					<div class="site-main-article__author-data-editorial_statement-container__copy">
-						<p>At Student Loan Planner, we follow a strict <a href="<?php echo esc_url( get_site_url( null, '/editorial-ethics-policy/' ) ); ?>">editorial ethics policy</a>. This post may contain references to products from our partners within the guidelines of this policy. Read our 
-						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
-						</p>
-					</div>
-				</div>
-			</section>
+			
 
 			<?php
 		endif;

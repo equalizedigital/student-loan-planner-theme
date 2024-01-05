@@ -74,32 +74,51 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 	</div>
 </section>
 
-<?php if ( get_field( 'use_schema_data' ) ) : ?>
+<?php if ( get_field( 'use_schema_data' ) ) : 
+
+	?>
 <script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "FAQPage",
 		"mainEntity": [
 			<?php
+			
+			$count = count(get_field('accordion')); 
+
 			if ( have_rows( 'accordion' ) ) :
 				while ( have_rows( 'accordion' ) ) :
 					the_row();
 					// Get sub-field values.
 					$button_title = get_sub_field( 'button_title' );
-					$content      = get_sub_field( 'content' );
+					$content      = esc_attr( get_sub_field( 'content' ) );
 
-					$data_string = "{
-					\"@type\": \"Question\",
-					\"name\": \"$button_title\",
-					\"acceptedAnswer\": {
-					  \"@type\": \"Answer\",
-					  \"text\": \"$content\"
+					if(get_row_index() == $count){
+						$data_string = "{
+							\"@type\": \"Question\",
+							\"name\": \"$button_title\",
+							\"acceptedAnswer\": {
+								\"@type\": \"Answer\",
+								\"text\": \"$content\"
+							}
+						}";
+					} else {
+						$data_string = "{
+						\"@type\": \"Question\",
+						\"name\": \"$button_title\",
+						\"acceptedAnswer\": {
+							\"@type\": \"Answer\",
+							\"text\": \"$content\"
+						}
+				  	},";
 					}
-				  },";
-					echo esc_attr( $data_string );
 
+				echo wp_kses_post( $data_string );
+
+				
 				endwhile;
-		endif;
+			endif;
+			
 			?>
 		]
 	}

@@ -445,6 +445,7 @@ img.wprm-comment-rating {
 				grid-template-columns: 360px 1fr;
 			}
 		}
+
 		.contact-hero-container__content {
 			@include media("<tablet") {
 				width: 100%;
@@ -808,12 +809,15 @@ img.wprm-comment-rating {
 	max-width: 1168px;
 	margin: 0 auto;
 	padding: 0 24px;
+	position: relative;
+	z-index: 1;
 
 	a.post_link img {
 		display: flex;
 		height: 240px;
 		border-radius: 10px;
 		object-fit: cover;
+		width: auto;
 	}
 
 	.post_title {
@@ -856,6 +860,28 @@ img.wprm-comment-rating {
 
 	.loop .post {
 		border-bottom: 1px solid #eee;
+		position: relative;
+
+		.post-tax-category {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 10020;
+
+			a {
+				background: #82BC46;
+				color: var(--Black, #000);
+				text-align: center;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1;
+				padding: 13px 15px;
+				display: flex;
+				border-radius: 0px 10px 0px 10px;
+				text-decoration: none;
+			}
+		}
 	}
 
 	.pagination {
@@ -922,8 +948,9 @@ img.wprm-comment-rating {
 --------------------------------------------- */
 .post_type_layout_standard {
 	.entry-content {
-		padding: 40px auto;
+		padding: 40px 0 40px;
 	}
+
 }
 
 .post_type_layout_full-width {
@@ -933,23 +960,42 @@ img.wprm-comment-rating {
 			max-width: 650px;
 		}
 	}
+
+	.inner-hero-container .title {
+		@include media("<1070px") {
+			font-size: 22px;
+			line-height: 24px;
+		}
+	}
 }
 
 .home {
-	.inner-hero{
+	.inner-hero {
+		padding: 20px 0 60px;
+		margin-bottom: -1px;
+
 		@include media(">tablet") {
 			padding: 132px 0;
 		}
 	}
 }
 
+.single {
+	.inner-hero {
+		padding: 20px 0 60px;
+		min-height: 200px;
+	}
+}
+
+
 .inner-hero {
 	background-color: brand-color('tertiary');
-	padding: 60px 0;
+	padding: 50px 0;
 	position: relative;
 	grid-column-start: 1;
 	grid-column-end: 13;
 	width: 100%;
+	min-height: 200px;
 
 	@include media(">tablet") {
 		padding: 60px 0;
@@ -957,7 +1003,14 @@ img.wprm-comment-rating {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+	}
 
+	&.taxonomy-physicians {
+		@include media("<tablet") {
+			.hero_image {
+				display: none;
+			}
+		}
 	}
 
 	&:after {
@@ -971,6 +1024,41 @@ img.wprm-comment-rating {
 		background: linear-gradient(90deg, brand-color('tertiary') 0%, brand-color('tertiary') 35%, rgba(98, 80, 137, 0) 100%);
 
 		z-index: 1;
+	}
+
+	&.inner-hero-alternate-style {
+		padding: 0;
+		min-height: 0;
+		background-color: white;
+
+		.inner-hero-container {
+			padding: 40px $container-padding 0;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		.title {
+			// margin: 0;
+			color: black;
+		}
+
+		.subtitle {
+			color: black;
+		}
+
+		#breadcrumbs_top {
+			color: black;
+
+			a {
+				color: black;
+			}
+		}
+
+		.entry-author span.entry-info {
+			color: black;
+		}
 	}
 
 	&.inner-hero-center-text {
@@ -1075,16 +1163,19 @@ img.wprm-comment-rating {
 			color: white;
 			font-style: normal;
 			font-weight: 700;
-			margin: 0 0 18px;
-			font-size: 35px;
-			line-height: 40px;
+			margin: 0 0 20px;
+
 			min-width: 100%;
 			max-width: 750px;
 
+			font-size: 35px;
+			line-height: 40px;
+
 			@include media(">tablet") {
-				line-height: 70px;
-				font-size: 70px;
+				font-size: 42px;
+				line-height: 42px;
 				min-width: 95%;
+				margin: 0 0 20px;
 			}
 		}
 
@@ -1092,7 +1183,7 @@ img.wprm-comment-rating {
 			color: white;
 			font-style: normal;
 			font-weight: 400;
-			font-size: 22px;
+			font-size: 21px;
 			line-height: 26px;
 			max-width: 550px;
 			display: flex;
@@ -1119,6 +1210,7 @@ img.wprm-comment-rating {
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 20px;
+
 
 		.avatar {
 			border-radius: 50%;
@@ -1147,6 +1239,17 @@ img.wprm-comment-rating {
 
 /* site-main-article-content
 --------------------------------------------- */
+.side-main-article-container.inner-hero-alternate-style {
+	.hero_featured_image {
+		margin-top: 30px;
+	}
+
+	.sidebar_container {
+		@include media(">tablet") {
+			margin-top: 30px;
+		}
+	}
+}
 
 .site-main-article-content {
 	.site-main-article__author-data {
@@ -1181,7 +1284,11 @@ img.wprm-comment-rating {
 		display: flex;
 
 		align-items: center;
-		gap: 20px;
+		gap: 8px;
+
+		@include media(">tablet") {
+			gap: 20px;
+		}
 
 		@include media("<tablet") {
 			flex-wrap: wrap;
@@ -1191,6 +1298,11 @@ img.wprm-comment-rating {
 			border-radius: 50%;
 			width: 45px;
 			height: 45px;
+
+			@include media("<tablet") {
+				width: 30px;
+				height: 30px;
+			}
 		}
 
 		.entry-info {
@@ -1220,7 +1332,7 @@ img.wprm-comment-rating {
 		max-width: 750px;
 		max-height: 400px;
 		margin-top: -60px;
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 
 		img {
 			width: 100%;
@@ -1265,6 +1377,10 @@ img.wprm-comment-rating {
 		display: flex;
 		gap: 20px;
 		align-items: center;
+
+		@include media("<tablet") {
+			gap: 8px;
+		}
 	}
 
 	.reviewed_author img {
@@ -1272,6 +1388,11 @@ img.wprm-comment-rating {
 		width: 45px;
 		height: 45px;
 		max-width: 45px;
+
+		@include media("<tablet") {
+			width: 30px;
+			height: 30px;
+		}
 	}
 
 	.author_info {
@@ -1294,7 +1415,7 @@ img.wprm-comment-rating {
 .site-main-article__author-data-editorial_statement {
 	background: var(--Light-Gray, #F7F7F7);
 	padding: 0.5rem;
-	margin: 0 0 20px;
+	margin: 0 0 10px;
 
 	&-container__title {
 		h2 {
@@ -1432,9 +1553,57 @@ img.wprm-comment-rating {
 
 section.refinance_lender_section {
 	margin: 0 0 117px 0;
+	position: relative;
 
 	.lender_info table {
 		width: 100%;
+	}
+
+	.refinance_lender_section__load_more {
+		display: flex;
+		justify-content: center;
+		margin: 0;
+
+		@include media(">tablet") {
+			margin-top: 40px;
+		}
+
+		button {
+			-webkit-appearance: none;
+			background: transparent;
+			border: none;
+			display: flex;
+			gap: 20px;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+
+			@include media(">tablet") {
+				display: none;
+			}
+
+			&.active {
+				.arrow {
+					transform: rotate(180deg);
+				}
+			}
+
+			.text {
+				color: #000;
+				text-align: right;
+				font-size: 15px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1;
+			}
+
+			.arrow {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transform: rotate(0deg);
+			}
+		}
 	}
 
 	.lender_info tr {
@@ -1445,12 +1614,28 @@ section.refinance_lender_section {
 		padding-bottom: 10px;
 		margin: 15px 0;
 
-
 		@include media(">tablet") {
 			margin: 27px 0;
 			padding-bottom: 27px;
-
 			grid-template-columns: 1fr 1.2fr 1fr;
+		}
+
+		position: relative;
+		opacity: 1;
+		overflow: hidden;
+		transition: opacity 0.5s,
+		max-height 0.5s;
+
+		&.hidden {
+			@include media("<tablet") {
+				opacity: 0;
+				margin-bottom: 0;
+				max-height: 0;
+				border: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
 		}
 	}
 
@@ -1488,10 +1673,11 @@ section.refinance_lender_section {
 		justify-content: center;
 		font-family: $base-font;
 
-		.btn{
+		.btn {
 			font-size: 15px;
-    		line-height: 20px;
+			line-height: 20px;
 		}
+
 		sup {
 			top: 0;
 			font-size: .3em;
@@ -1881,7 +2067,8 @@ section.refinance_lender_section {
 
 html {
 	scroll-behavior: smooth;
-	&.overflow-hidden{
+
+	&.overflow-hidden {
 		overflow: hidden;
 	}
 }

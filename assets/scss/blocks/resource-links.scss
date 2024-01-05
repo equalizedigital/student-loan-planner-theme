@@ -2,7 +2,7 @@
 
     &-container {
         max-width: $container-width;
-        padding: 0 $container-padding;
+        padding: 0 ;
         margin: 50px auto;
 
         @include media(">tablet") {
@@ -12,16 +12,16 @@
         &-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 1px;
             align-items: center;
             justify-content: center;
 
 
             &-link {
-                display: none;
+                // display: none;
 
                 @include media(">tablet") {
-                    display: flex;
+                    // display: flex;
                 }
 
                 &-button {
@@ -64,12 +64,7 @@
 
             .dropdown {
                 position: relative;
-                width: 100%;
                 min-width: 327px;
-
-                @include media(">tablet") {
-                    display: none;
-                }
 
                 .field {
                     width: 300px;
@@ -87,7 +82,7 @@
                 }
 
                 >.resource-links-dropdown-list {
-                    display: none;
+                    // display: none;
                     position: absolute;
                     left: 0;
                     top: 100%;
@@ -213,9 +208,8 @@
     &-container {
         max-width: 1120px;
         margin: 0 auto;
-
         max-width: $container-width;
-        padding: 0 $container-padding;
+        padding: 0;
 
         @include media(">tablet") {
             padding: 100px $container-padding;

@@ -66,7 +66,7 @@ tha_content_before();
 								<?php
 								if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) ) { ?>
 									<li>
-										<a href="https://twiter.com/<?php echo esc_url( get_user_meta( $curauth->ID, 'twitter', true ) ); ?>">
+										<a href="https://twitter.com/<?php echo wp_kses_post( get_user_meta( $curauth->ID, 'twitter', true ) ); ?>">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
 												<path d="M16 2.13735C15.4138 2.37735 14.7777 2.54075 14.1141 2.61224C14.7943 2.23948 15.3142 1.64203 15.5576 0.937348C14.9215 1.28458 14.2191 1.53479 13.4725 1.67267C12.8752 1.08543 12.0235 0.717773 11.0778 0.717773C9.26374 0.717773 7.79813 2.07607 7.79813 3.74586C7.79813 3.98586 7.82579 4.21565 7.88109 4.43522C5.15451 4.30756 2.73211 3.10245 1.11718 1.26926C0.835119 1.71862 0.674732 2.23948 0.674732 2.79096C0.674732 3.84288 1.25544 4.77224 2.13481 5.31352C1.59834 5.2982 1.08953 5.16033 0.647079 4.93565C0.647079 4.94586 0.647079 4.96118 0.647079 4.97139C0.647079 6.44203 1.78085 7.66245 3.27964 7.94331C3.00311 8.01479 2.71552 8.05054 2.41687 8.05054C2.20671 8.05054 2.00207 8.03011 1.79744 7.99437C2.21777 9.19948 3.42897 10.0727 4.86139 10.0982C3.73868 10.9101 2.32285 11.3952 0.785344 11.3952C0.519876 11.3952 0.259938 11.3799 0 11.3544C1.45455 12.2122 3.18009 12.7178 5.03284 12.7178C11.0722 12.7178 14.3685 8.1016 14.3685 4.09309C14.3685 3.96033 14.3685 3.83267 14.3574 3.6999C14.999 3.27097 15.5576 2.7399 15.9945 2.13224L16 2.13735Z" fill="black"/>
 											</svg>
@@ -194,7 +194,6 @@ tha_content_before();
 									<a href="<?php the_permalink( $post->ID ); ?>" class="author_recommended_posts_content_post">
 										<div class="category">Student Loan Forgiveness</div>
 										<h3 class="title"><?php echo get_the_title( $post->ID ); ?></h3>
-										
 									</a>
 									<div class="author">
 										<span class="author_recommended_posts_content_post-data">
@@ -204,7 +203,7 @@ tha_content_before();
 										?>
 										</span>
 										<div class="author_recommended_posts_content_post-inf__link">
-											<a href="<?php echo $author_url; ?>">
+											<a href="<?php the_permalink( $post->ID ); ?>">
 												By <?php echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author(); ?>
 											</a>
 										</div>
@@ -219,16 +218,19 @@ tha_content_before();
 				</div>
 				<?php endif; ?>
 
-
 				<?php
-				$paged             = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-				$args              = array(
-					'author'         => 77,
-					'posts_per_page' => 9,
+				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+				$args = array(
+					'author'         => $curauth->ID,
+					// 'posts_per_page' => 9,
 					'paged'          => $paged,
+					'ignore_sticky_posts' => 1
 				);
+
 				$author_query_page = new WP_Query( $args );
 				?>
+
 				<?php if ( $author_query_page->have_posts() ) : ?>
 
 				<div class="author_latest_from" id="author_latest_from">
@@ -238,53 +240,65 @@ tha_content_before();
 					?>
 					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $firstWord ); ?></h2>
 					<div class="loop">
-					<?php
-					while ( $author_query_page->have_posts() ) :
-						$author_query_page->the_post();
-						?>
-						<div class="post">
-							<a class="post_link" href="<?php the_permalink(); ?>">
-								<div class="featured-image">
-									<?php the_post_thumbnail(); ?>
-								</div>
-								<h3 class="post_title"><?php the_title(); ?></h3>
-							</a>
-						</div>
-					<?php endwhile; ?>
+						<?php
+						while ( $author_query_page->have_posts() ) :
+							$author_query_page->the_post();
+							$post_id = get_the_ID();
+							$categories = get_the_category($post_id);
+							?>
+							<div class="post">
+								<?php
+								if (!empty($categories)) {
+								$category_name = $categories[0]->name;
+									?>
+									<span class="post-tax-category">
+										<a href="<?php echo esc_url( get_category_link( $category_name->term_id ) ); ?>">
+											<?php echo esc_html( $category_name ); ?>
+										</a>
+									</span>
+								<?php
+								}
+								?>
+								<a class="post_link" href="<?php the_permalink(); ?>">
+									<div class="featured-image">
+										<?php the_post_thumbnail(); ?>
+									</div>
+									<h3 class="post_title"><?php the_title(); ?></h3>
+								</a>
+							</div>
+						<?php endwhile; ?>
 					</div>
 					<div class="pagination">
-							<?php
-							$big = 999999999; 
-							echo paginate_links(
-								array(
-									'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
-									'format'    => '?paged=%#%',
-									'current'   => max( 1, get_query_var( 'paged' ) ),
-									'total'     => $author_query_page->max_num_pages,
-									'prev_text' => __( 'Prev', 'slp' ),
-									'next_text' => __( 'Next', 'slp' ),
-								)
-							);
-							?>
+					<?php
+						// Pagination
+						$big = 999999999; // need an unlikely integer
+
+						echo paginate_links( array(
+							'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+							'format' => '?paged=%#%',
+							'current' => max( 1, get_query_var('paged') ),
+							'total' => $author_query_page->max_num_pages,
+						) );
+						?>
 						</div>
 						
-							<?php wp_reset_postdata(); ?>
+						<?php wp_reset_postdata(); ?>
 				</div>
 
-				<script>
-					document.addEventListener("DOMContentLoaded", function() {
-						var paginationLinks = document.querySelectorAll('.pagination a');
+					<script>
+						document.addEventListener("DOMContentLoaded", function() {
+							var paginationLinks = document.querySelectorAll('.pagination a');
 
-						paginationLinks.forEach(function(link) {
-							link.addEventListener('click', function(e) {
-								e.preventDefault();
-								var newUrl = link.getAttribute('href') + '#author_latest_from';
-								window.location.href = newUrl;
+							paginationLinks.forEach(function(link) {
+								link.addEventListener('click', function(e) {
+									e.preventDefault();
+									var newUrl = link.getAttribute('href') + '#author_latest_from';
+									window.location.href = newUrl;
+								});
 							});
 						});
-					});
 
-				</script>
+					</script>
 				<?php endif; ?>
 
 				<div id="modal_media_mentions" class="modal" aria-hidden="true" role="dialog" aria-modal="true">

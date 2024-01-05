@@ -16,7 +16,7 @@ header.site-header {
 		}
 
 		#nav-icon {
-			z-index: 100;
+			z-index: 100 !important;
 
 			span {
 				background-color: white;
@@ -28,6 +28,15 @@ header.site-header {
 				visibility: hidden;
 			}
 		}
+
+		.nav-icon,
+		#nav-icon {
+			display: none;
+		}
+
+		.mobile-header-link {
+			z-index: 1 !important;
+		}
 	}
 
 	.wrap {
@@ -37,6 +46,27 @@ header.site-header {
 
 		@include media(">1070px") {
 			overflow: auto;
+		}
+
+		.mobile-header-link {
+			display: none;
+
+			@include media("<1070px") {
+				position: absolute;
+				top: 8px;
+				right: 15px;
+				display: inline-flex;
+				z-index: 1100;
+				min-width: 0;
+				padding: 8px 15px;
+				font-size: 16px;
+			}
+
+			&:focus-within,
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid white;
+			}
 		}
 	}
 }
@@ -54,8 +84,8 @@ header.site-header {
 			top: 0;
 			left: 0;
 			right: 0;
-			height: 70px;
-			background: #fff;
+			height: 60px;
+			background: brand-color('tertiary');
 			z-index: 110;
 		}
 	}
@@ -78,8 +108,8 @@ header.site-header {
 				top: 0;
 				left: 0;
 				right: 0;
-				background: white;
-				height: 71px;
+				background: brand-color('tertiary');
+				height: 60px;
 			}
 		}
 
@@ -127,13 +157,13 @@ header.site-header {
 
 					>li>.menu-item-main-link {
 						position: relative;
-						color: #000;
-						font-size: 15px;
+						color: white;
+						font-size: 14px;
 						font-style: normal;
 						font-weight: 400;
 						line-height: 1;
 						text-decoration: none;
-						padding: 30px 0 30px;
+						padding: 20px 0;
 						display: flex;
 						background: transparent;
 						border: none;
@@ -142,7 +172,7 @@ header.site-header {
 						align-items: center;
 
 						@include media(">1070px") {
-							height: 80px;
+							height: 60px;
 						}
 
 						@include media("<1070px") {
@@ -166,7 +196,7 @@ header.site-header {
 								top: 50%;
 								transform: translate(0%, -50%);
 								bottom: 0;
-								border: 2px solid blue;
+								border: 2px solid white;
 								width: auto;
 								height: 50%;
 
@@ -219,8 +249,16 @@ header.site-header {
 							&.submenu-column__three {
 								.sub_menu {
 									@include media(">1070px") {
-										grid-template-columns: repeat(3, 1fr);
+										// grid-template-columns: repeat(3, 1fr);
 										gap: 0 15px;
+										counter-reset: items;
+										column-count: 3;
+
+									}
+								}
+								.sub_menu {
+									&.open{
+										display: block;
 									}
 								}
 							}
@@ -308,6 +346,12 @@ header.site-header {
 									display: none;
 								}
 
+								&:focus-within,
+								&:focus,
+								&:focus-visible {
+									outline: 2px solid white;
+								}
+
 								.sub_menu_back__icon {
 									position: relative;
 									width: 10px;
@@ -340,9 +384,13 @@ header.site-header {
 							}
 
 							.menu-column {
+								break-inside: avoid;
+								margin-bottom: 20px;
+
 								@include media("<1070px") {
 									padding: 20px 24px;
 									background: white;
+									margin-bottom: -1px;
 
 									&:nth-child(3) {
 										padding-top: 36px;
@@ -388,6 +436,7 @@ header.site-header {
 									display: grid;
 									grid-template-columns: 1fr;
 									padding: 0;
+									margin: 0;
 
 									a {
 										color: black;
@@ -436,6 +485,10 @@ header.site-header {
 
 
 						&:hover {
+
+							&.submenu-column__three .sub_menu {
+								display: block;
+							}
 
 							button,
 							>a {
@@ -712,15 +765,21 @@ body {
 	border: none;
 	margin: 0;
 	z-index: 1110;
-	top: 20px;
-	right: 15px;
+	top: 15px;
+	left: 15px;
+
+	&:focus-within,
+	&:focus,
+	&:focus-visible {
+		outline: 2px solid white;
+	}
 
 	span {
 		display: block;
 		position: absolute;
 		height: 2px;
 		width: 100%;
-		background: $off_black;
+		background: white;
 		border-radius: 0px;
 		opacity: 1;
 		left: 0;
@@ -728,16 +787,16 @@ body {
 		transition: 0.25s ease-in-out;
 
 		&:nth-child(1) {
-			width: 20px;
+			// width: 20px;
 			top: 5px;
 		}
 
 		&:nth-child(2) {
-			width: 30px;
+			// width: 30px;
 		}
 
 		&:nth-child(4) {
-			width: 15px;
+			// width: 15px;
 		}
 
 		&:nth-child(2),
@@ -797,6 +856,12 @@ body {
 			font-weight: 600;
 			line-height: 30px;
 			border-radius: 0;
+
+			&:focus-within,
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid white;
+			}
 		}
 	}
 
@@ -830,6 +895,8 @@ body {
 			padding: 24px 0;
 			padding-left: 40px;
 			transition: all .3s;
+
+
 		}
 
 		input:focus+label {
@@ -847,6 +914,12 @@ body {
 			border: none;
 			padding: 24px 0;
 			padding-left: 40px;
+
+			&:focus-within,
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid white;
+			}
 		}
 
 		input::placeholder {
@@ -882,6 +955,12 @@ body {
 		padding: 0;
 		margin-left: 20px;
 
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+
 		img {
 			width: 20px;
 			height: 20px;
@@ -889,11 +968,20 @@ body {
 		}
 	}
 
-	a.btn {
-		min-width: 0;
-		font-size: 16px;
-		padding: 10px 5px;
+	.btn {
+		font-size: 15px;
+		line-height: 1;
+		padding: 8px 15px;
 		min-width: 80px;
+		min-height: 43px;
+		display: inline-flex;
+		align-items: center;
+
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
 	}
 
 
@@ -907,7 +995,7 @@ body {
 	right: 0;
 	align-items: center;
 	justify-content: center;
-	background: #fff;
+	background: brand-color('tertiary');
 	z-index: 1000;
 	min-height: 71px;
 
@@ -941,6 +1029,12 @@ body {
 		justify-content: center;
 		cursor: pointer;
 
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -957,13 +1051,16 @@ body {
 	.input-group input::placeholder,
 	.input-group input {
 		min-width: 420px;
-		padding: 0;
-		color: #000;
+		padding: 0 5px;
+		color: black;
+
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 1;
 		border: none;
+
+
 	}
 
 	form:hover {
@@ -975,12 +1072,21 @@ body {
 		}
 	}
 
+	input {
+
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+	}
+
 	input:focus+label {
 		top: -20px;
 	}
 
 	label {
-		color: #000;
+		color: white;
 		font-size: 15px;
 		font-style: normal;
 		font-weight: 400;
@@ -1004,6 +1110,17 @@ body {
 	gap: 20px;
 	align-items: center;
 	justify-content: center;
+
+	.btn {
+		padding: 8px 15px;
+		min-width: 0;
+
+		&:focus-within,
+		&:focus,
+		&:focus-visible {
+			outline: 2px solid white;
+		}
+	}
 }
 
 .search-popup label {

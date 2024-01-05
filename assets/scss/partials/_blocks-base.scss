@@ -6,7 +6,7 @@ body {
 	color: black;
 	font-size: 18px;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 28px;
 }
 
@@ -152,14 +152,21 @@ h1 {
 	@include style('title', 1);
 	font-style: normal;
 	font-weight: 700;
-	line-height: 70px;
+
+	@include media(">tablet") {
+		line-height: 70px;
+	}
 }
 
 h2 {
 	@include style('title', 2);
 	color: brand-color('tertiary');
 	font-weight: 700;
-	line-height: 40px;
+	line-height: 35px;
+
+	@include media(">tablet") {
+		line-height: 40px;
+	}
 
 	&.wp-block-heading {
 		margin-top: 30px
@@ -167,11 +174,20 @@ h2 {
 
 }
 
+.entry-content {
+	h3 {
+		color: brand-color('tertiary');
+	}
+}
+
 h3 {
 	@include style('title', 3);
 	font-style: normal;
 	font-weight: 700;
-	line-height: 26px;
+
+	@include media(">tablet") {
+		line-height: 26px;
+	}
 }
 
 h4 {
@@ -238,7 +254,15 @@ input {
 	}
 }
 
+div.wpforms-container-full button:hover
+{
+background-color: white !important;
+}
 
+div.wpforms-container-full button {
+	background-color: brand-color('primary') !important;
+	color: black !important;
+}
 
 .wpforms-container {
 
@@ -321,6 +345,18 @@ input {
 .wp-block-table {
 	margin-bottom: 20px;
 
+	&.has-large-font-size{
+		.wp-element-caption{
+			font-size: 1.5rem;
+		}
+	}
+
+	&.has-small-font-size{
+		.wp-element-caption{
+			font-size: 0.8rem;
+		}
+	}
+
 	table {
 		thead {
 			border-bottom: 1px solid #A1A5A5;
@@ -346,8 +382,13 @@ input {
 			line-height: 18px;
 			padding: 5px;
 			text-align: left;
+
 			@include media(">tablet") {
 				padding: 18px 20px;
+			}
+
+			&.has-text-align-center{
+				text-align: center;
 			}
 		}
 
@@ -358,6 +399,7 @@ input {
 			font-weight: 400;
 			line-height: 18px;
 			padding: 5px;
+
 			@include media(">tablet") {
 				padding: 10px 20px;
 			}
