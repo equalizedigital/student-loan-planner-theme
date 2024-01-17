@@ -158,7 +158,7 @@
             margin: 0 auto;
 
             @include media(">tablet") {
-                padding: 127px $container-padding 50px;
+                padding: 80px $container-padding 50px;
             }
 
             &__pane {
