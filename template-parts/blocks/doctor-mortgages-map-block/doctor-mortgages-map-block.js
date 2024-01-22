@@ -90,8 +90,9 @@
 				}
 				rwc_coalition_map_ajax(state);
 			});
-	
-			rwc_coalition_map_ajax(state = null);
+
+			rwc_coalition_map_ajax('OH'); // set default state.
+
 			// on hover on path.us-state
 			$('.us-state').hover(function(){
 				if ( $(this).attr('id') ) {
