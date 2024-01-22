@@ -31,7 +31,7 @@
 		@if 1 == $size {
 			@include font-sizes( 44px, 46px, 70px );
 		} @else if 2 == $size {
-			@include font-sizes( 25px, 25px, 35px );
+			@include font-sizes( 24px, 24px, 35px );
 		} @else if 3 == $size {
 			@include font-sizes( 20px, 20px, 28px );
 		} @else if 4 == $size {
