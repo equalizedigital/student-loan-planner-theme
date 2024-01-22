@@ -3732,6 +3732,18 @@
       "oAP" : "\/single.php",
       "oF" : 0
     },
+    "\/style-ck.css" : {
+      "aP" : 0,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 2,
+      "oAP" : "\/style-ck-ck.css",
+      "oF" : 0,
+      "pg" : 0
+    },
     "\/style.css" : {
       "aP" : 0,
       "bl" : 0,
