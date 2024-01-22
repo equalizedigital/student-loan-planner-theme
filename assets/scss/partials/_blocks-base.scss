@@ -2,9 +2,8 @@
 --------------------------------------------- */
 
 body {
-	@include style('body', $size: 5, $base: true);
+	@include style('body', $size: 3, $base: true);
 	color: black;
-	font-size: 18px;
 	font-style: normal;
 	font-weight: 300;
 	line-height: 28px;
