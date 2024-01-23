@@ -51,7 +51,6 @@ $link = get_field( 'link' );
         <div class="squared-image-content-callout-container-content">
             <div>
                 <h2 class="title"><?php echo $title; ?></h2>
-                <div class="text"><?php echo $copy; ?></div>
 				<?php
 				if ( ! empty( $link ) ) {
 					$url = $link['url'];
