@@ -62,43 +62,6 @@ $link = get_field( 'link' );
 					echo '</span>';
 				}
 				?>
-				<?php
-				$list = get_field( 'list' );
-				if ( $list ) {
-					echo '<div class="squared-image-content-callout-container-content-list">';
-					foreach ( $list as $row ) {
-						if ( ! empty( $row['image'] ) ) {
-							$image = $row['image']['url'];
-						}
-						if ( ! empty( $row['image'] ) ) {
-							$imageAlt = $row['image']['alt'];
-						}
-						$title = $row['title'];
-						$context = $row['context'];
-
-
-						echo '<div class="squared-image-content-callout-container-content-list-item">';
-						if ( ! empty( $image ) ) {
-							echo "<img src='$image' alt='$imageAlt'>";
-						}
-						echo '<div class="squared-image-content-callout-container-content-list-item-content">';
-						if ( ! empty( $title ) ) {
-							echo '<h3>';
-							echo $title;
-							echo '</h3>';
-						}
-						if ( ! empty( $context ) ) {
-							echo '<span class="content">';
-							echo $context;
-							echo '</span>';
-						}
-
-						echo '</div>';
-						echo '</div>';
-					}
-					echo '</div>';
-				}
-				?>
             </div>
         </div>
     </div>
