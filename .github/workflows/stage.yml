@@ -1,0 +1,36 @@
+name: Deploy Files
+
+on:
+  push:
+    branches:
+      - stage
+    paths:
+      - '**' # Trigger the workflow for any change in any file
+  workflow_dispatch:
+    inputs:
+      sync:
+        description: "File synchronization"
+        required: true
+        default: "delta"
+
+jobs:
+  deploy-stage:
+    name: "stage branch"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "Deploy"
+        uses: milanmk/actions-file-deployer@master
+        with:
+          remote-protocol: "ftp"
+          remote-host: ${{ secrets.REMOTE_HOST }} # Set this in your repository's secrets
+          remote-user: ${{ secrets.REMOTE_USER }} # Set this in your repository's secrets
+          remote-password: ${{ secrets.REMOTE_PASSWORD }} # Set this in your repository's secrets
+          remote-path: "/public/wp-content/themes/student-loan-planner-theme/" # Update this with the correct server path
+          remote-port: ${{ secrets.REMOTE_PORT }} # Set this in your repository's secrets
+          # local-directory: '.' # Uncomment and use if you need to specify the local directory to deploy
