@@ -982,8 +982,8 @@ img.wprm-comment-rating {
 
 .single {
 	.inner-hero {
-		padding: 20px 0 60px;
-		min-height: 200px;
+		padding: 40px 0 40px;
+		min-height: 150px;
 	}
 }
 
@@ -995,11 +995,11 @@ img.wprm-comment-rating {
 	grid-column-start: 1;
 	grid-column-end: 13;
 	width: 100%;
-	min-height: 200px;
+	min-height: 150px;
 
 	@include media(">tablet") {
 		padding: 60px 0;
-		min-height: 220px;
+		min-height: 150px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -1729,7 +1729,7 @@ section.refinance_lender_section {
 
 	header .title {
 		color: #625089;
-		font-size: 30px;
+		font-size: 28px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
@@ -1737,7 +1737,7 @@ section.refinance_lender_section {
 
 		@include media(">tablet") {
 			text-align: center;
-			font-size: 35px;
+			font-size: 32px;
 		}
 	}
 
