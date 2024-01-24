@@ -476,12 +476,13 @@ function prevent_auto_tag_scroll_delayed(){
 ?>
 
 <script>
+	document.addEventListener('DOMContentLoaded', function () {
 	let hashStore;
 
     if (window.location.hash) {
 		hashStore = window.location.hash;
 		// window.location.hash = '';
-		history.replaceState(null, null, window.location.pathname + window.location.search);
+		// history.replaceState(null, null, window.location.pathname + window.location.search);
 		window.scrollTo(0, 0);
 		observeH2Elements();
 	}
@@ -492,9 +493,7 @@ function prevent_auto_tag_scroll_delayed(){
 			var element = document.getElementById(urlWithoutHash);
 			location.hash = hashStore;
 			// element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
 		}, 900);
-
 	}
 
 	// Set up a MutationObserver to watch for changes in ID attributes on h2 elements
@@ -509,13 +508,13 @@ function prevent_auto_tag_scroll_delayed(){
 			if (mutation.type === 'attributes' && mutation.attributeName === 'id') {
 				const target = mutation.target;
 				if (target.id) {
-				console.log(`An ID was added to: `, target);
-				elementsWithIdCount++;
-				// Check if all h2 elements have an ID
-				if (elementsWithIdCount === observedElementsCount) {
-					allH2HaveIds();
-					observer.disconnect(); // Optionally stop observing if no further changes are needed
-				}
+					console.log(`An ID was added to: `, target);
+					elementsWithIdCount++;
+					// Check if all h2 elements have an ID
+					if (elementsWithIdCount === observedElementsCount) {
+						allH2HaveIds();
+						observer.disconnect(); // Optionally stop observing if no further changes are needed
+					}
 				}
 			}
 			}
@@ -543,6 +542,8 @@ function prevent_auto_tag_scroll_delayed(){
 			allH2HaveIds();
 		}
 	}
+});
+
 </script>
 
 <?php

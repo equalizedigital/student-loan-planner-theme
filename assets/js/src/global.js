@@ -1,7 +1,5 @@
 /* eslint-env jquery */
 
-
-
 // Sticky Header
 jQuery(function ($) {
 
@@ -153,10 +151,6 @@ window.addEventListener("load", function () {
 		button.focus();
 
 	}
-
-
-
-
 });
 
 window.addEventListener("load", function () {
@@ -353,96 +347,107 @@ window.addEventListener("load", function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-
 	function footerMenuFunctions() {
 		
-			// Find all elements with class .widget-title
-			const widgetTitles = document.querySelectorAll('.widget-title');
-			// Get all sections with id pattern 'nav_menu-*'
-			var sections = document.querySelectorAll('[id^="nav_menu-"]');
-			// Loop through each section
-			sections.forEach(function (section) {
-				// Extract the current id of the section
-				var sectionId = section.id;
-				// Create a unique id by appending a suffix
-				var uniqueId = sectionId + '_footer';
-				// Get the menu-footer-container within the section
-				var menuFooterContainer = section.querySelector('.menu-footer-container');
-				if (menuFooterContainer) {
-					// Set the unique id to the menu-footer-container
-					menuFooterContainer.id = uniqueId;
-				}
-				 menuFooterContainer = section.querySelector('.menu-home-footer-container');
-				if (menuFooterContainer) {
-					// Set the unique id to the menu-home-footer-container
-					menuFooterContainer.id = uniqueId;
-				}
-				 menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
-				if (menuFooterContainer) {
-					// Set the unique id to the menu-footer-privacy-container
-					menuFooterContainer.id = uniqueId;
-				}
-			});
+		// Find all elements with class .widget-title
+		const widgetTitles = document.querySelectorAll('.widget-title');
+		// Get all sections with id pattern 'nav_menu-*'
+		var sections = document.querySelectorAll('[id^="nav_menu-"]');
+		// Loop through each section
+		sections.forEach(function (section) {
+			// Extract the current id of the section
+			var sectionId = section.id;
+			// Create a unique id by appending a suffix
+			var uniqueId = sectionId + '_footer';
+			// Get the menu-footer-container within the section
+			var menuFooterContainer = section.querySelector('.menu-footer-container');
+			if (menuFooterContainer) {
+				// Set the unique id to the menu-footer-container
+				menuFooterContainer.id = uniqueId;
+			}
+			 menuFooterContainer = section.querySelector('.menu-home-footer-container');
+			if (menuFooterContainer) {
+				// Set the unique id to the menu-home-footer-container
+				menuFooterContainer.id = uniqueId;
+			}
+			 menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
+			if (menuFooterContainer) {
+				// Set the unique id to the menu-footer-privacy-container
+				menuFooterContainer.id = uniqueId;
+			}
+		});
 
-			widgetTitles.forEach(function (title) {
-				var menuFooterContainer = title.nextElementSibling;
-				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
-					var containerId = menuFooterContainer.id;
-					title.setAttribute('aria-controls', containerId);
-				}
-				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-home-footer-container')) {
-					var containerId = menuFooterContainer.id;
-					title.setAttribute('aria-controls', containerId);
-				}
-				if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-privacy-container')) {
-					var containerId = menuFooterContainer.id;
-					title.setAttribute('aria-controls', containerId);
-				}
+		widgetTitles.forEach(function (title) {
+			var menuFooterContainer = title.nextElementSibling;
+			if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-container')) {
+				var containerId = menuFooterContainer.id;
+				title.setAttribute('aria-controls', containerId);
+			}
+			if (menuFooterContainer && menuFooterContainer.classList.contains('menu-home-footer-container')) {
+				var containerId = menuFooterContainer.id;
+				title.setAttribute('aria-controls', containerId);
+			}
+			if (menuFooterContainer && menuFooterContainer.classList.contains('menu-footer-privacy-container')) {
+				var containerId = menuFooterContainer.id;
+				title.setAttribute('aria-controls', containerId);
+			}
 
-				title.setAttribute('tabindex', '0');
-				title.setAttribute('role', 'button');
-				title.setAttribute('aria-expanded', 'false');
+			title.setAttribute('tabindex', '0');
+			title.setAttribute('role', 'button');
+			title.setAttribute('aria-expanded', 'false');
 
 
-			});
-			widgetTitles.forEach(function (title) {
+		});
+		widgetTitles.forEach(function (title) {
 
-				title.addEventListener('click', function () {
-					// Check if there's a next sibling element
-					this.classList.toggle('active');
-					let sibling = this.nextElementSibling;
-					// if (sibling) {
-						var isExpanded = title.getAttribute('aria-expanded');
-						this.nextElementSibling.classList.toggle('active'); 
-						this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-					// }
-				},true);
-			});
-		
-	}
-
-	let widgetTitlesRespo = document.querySelectorAll('.widget-title');
+			title.addEventListener('click', function () {
+				// Check if there's a next sibling element
+				this.classList.toggle('active');
+				let sibling = this.nextElementSibling;
+				// if (sibling) {
+					var isExpanded = title.getAttribute('aria-expanded');
+					this.nextElementSibling.classList.toggle('active'); 
+					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+				// }
+			},true);
+		});
 	
-	window.addEventListener('resize', function () {
-		if (window.innerWidth < 768) {
-			setTimeout(() => {
-				footerMenuFunctions()
-			}, 500);
-		} else {
-			widgetTitlesRespo.forEach(title => {
-				title.removeAttribute('tabindex');
-				title.removeAttribute('role');
-				title.removeAttribute('aria-expanded');
-				title.removeAttribute('aria-controls');
-				title.removeEventListener('click',arguments.callee)
-			});
-		}
-	});
+}
 
-	if (window.innerWidth < 768) {
-		footerMenuFunctions()
-	}
+    let widgetTitlesRespo = document.querySelectorAll('.widget-title');
+
+    function handleTitleClick() {
+        this.classList.toggle('active');
+        let sibling = this.nextElementSibling;
+        if (sibling) {
+            var isExpanded = this.getAttribute('aria-expanded');
+            sibling.classList.toggle('active');
+            this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        }
+    }
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth < 768) {
+            footerMenuFunctions();
+            widgetTitlesRespo.forEach(title => {
+                title.addEventListener('click', handleTitleClick);
+            });
+        } else {
+            widgetTitlesRespo.forEach(title => {
+                title.removeAttribute('tabindex');
+                title.removeAttribute('role');
+                title.removeAttribute('aria-expanded');
+                title.removeAttribute('aria-controls');
+                title.removeEventListener('click', handleTitleClick);
+            });
+        }
+    });
+
+    if (window.innerWidth < 768) {
+        footerMenuFunctions();
+    }
 });
+
 
 
 jQuery(function ($) {
@@ -806,100 +811,73 @@ window.addEventListener("load", function () {
 
 
 // Lender Table Show More
-window.addEventListener("load", function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-	function checkIsTabletSizeLender() {
-		var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    function checkIsTabletSizeLender() {
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-		teamLenderFunctionality(windowWidth);
-	}
+        teamLenderFunctionality(windowWidth);
+    }
 
-	// Initial check on page load
-	checkIsTabletSizeLender();
+    // Initial check on page load
+    checkIsTabletSizeLender();
 
-	// Listen for window resize events and recheck
-	window.addEventListener('resize', checkIsTabletSizeLender);
-	
-	function teamLenderFunctionality(windowWidth) {
-		let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button')
+    // Listen for window resize events and recheck
+    window.addEventListener('resize', checkIsTabletSizeLender);
+
+    function teamLenderFunctionality(windowWidth) {
+        let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button');
 		let highlightButtonLenderText = document.querySelector('.refinance_lender_section__load_more button .text')
 
-		if (highlightButtonLender) {
-			let items = document.querySelectorAll('.data-tr');
-			let initText = highlightButtonLenderText.innerText;
-			let tabOpen = false;
+        if (highlightButtonLender) {
+            let items = document.querySelectorAll('.data-tr');
+            let initText = highlightButtonLenderText;
+            let tabOpen = false;
 
-			
+            if (items.length >= 3) {
 
-			if (items.length >= 3) {
+                if (windowWidth <= 768) {
+                    items.forEach(function (item, index) {
+                        if (index < 3) {
+                            item.tabIndex = 0;
+                        } else {
+                            item.tabIndex = -1;
+                        }
+                    });
+                }
 
-				
+                highlightButtonLender.addEventListener('click', function () {
+                    items.forEach(function (item) {
+                        if (tabOpen) {
+                            item.classList.add('hidden');
+                            item.classList.remove('animate');
+                        } else {
+                            item.classList.remove('hidden');
+                            item.classList.add('animate');
+                        }
+                    });
 
-				if (windowWidth <= 768) {
-					items.forEach(function (item, index) {
-						if (index < 3) {
-							item.tabIndex = 0;
-						} else {
-							item.tabIndex = -1;
-						}
-					});
-					items[0].tabIndex = 0;
-				}
+                    var currentState = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
 
-				highlightButtonLender.addEventListener('click', function () {
-					// Remove the "hidden" class and add an "animate" class for each item
-					
+                    for (var i = 0; i < 3 && i < items.length; i++) {
+                        items[i].classList.remove('hidden');
+                    }
 
-					items.forEach(function (item) {
+                    items[0].focus();
 
-						if (tabOpen) {
-							item.classList.add('hidden');
-							item.classList.remove('animate');
-							items.forEach(function (item, index) {
-								if (index < 3) {
-									item.tabIndex = 0;
-								} else {
-									item.tabIndex = -1;
-								}
-							});
+                    this.classList.toggle('active');
+					tabOpen == false ? highlightButtonLenderText = 'Show Fewer' : highlightButtonLenderText = initText;
 
-						} else {
-							item.classList.remove('hidden');
-							item.classList.add('animate');
-						}
 
-						// item.tabIndex = 0;
-					});
+                    tabOpen = !tabOpen; // Toggle the tabOpen state
+                });
 
-					var currentState = this.getAttribute('aria-expanded') === 'true';
-					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
-
-					for (var i = 0; i < 3 && i < items.length; i++) {
-						items[i].classList.remove('hidden');
-					}
-
-					items[0].focus()
-					// Hide the "Show All" button with a fade-out effect
-					this.classList.add('active');
-
-					tabOpen == false ? highlightButtonLenderText.innerText = 'Show Fewer' : highlightButtonLenderText.innerText = initText;
-
-					// After the animation is complete, remove the "animate" class
-					setTimeout(function () {
-						items.forEach(function (item) {
-							tabOpen ? item.classList.remove('animate') : item.classList.add('animate');
-						});
-					}, 500);
-
-					tabOpen ? tabOpen = false : tabOpen = true;
-				});
-
-			}
-
-		}
-
-	}
+            }
+        }
+    }
 });
+
 
 
 
@@ -918,7 +896,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		if (toc_container.length > 0) {
 			 tocContainer = document.querySelector('.toc_container');
 			 h2Elements = tocContainer.querySelectorAll('h2');
-		} else if(toc_container_entry_content.length>0){
+		} else if(toc_container_entry_content.length > 0){
 			 tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
 			 h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
 		}
@@ -991,7 +969,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
 		
-		
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
@@ -1010,7 +987,6 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (activeListItemSidebar) {
 						activeListItemSidebar.classList.remove('active');
 					}
-					
 
 					// Add 'active' class to the one corresponding to the current entry
 					const listItem = document.querySelector(`.toc-nav li a[href="#${id}"]`).parentElement;
@@ -1021,7 +997,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 						listItemSidebar.classList.add('active');
 						activeListItemSidebar = listItemSidebar;
-
 					}
 
 					listItem.classList.add('active');
@@ -1057,7 +1032,6 @@ window.addEventListener('DOMContentLoaded', () => {
 				// Get the .contents-nav-mobile element
 				var navElement = document.querySelector('.contents-nav-mobile');
 				var siteHeader = document.querySelector('.site-header');
-
 
 				// Check if the scroll is past the .inner-hero
 				if (heroBottom < 0) {
@@ -1107,11 +1081,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 		
-
-		
-
-
-		// menu
 		// Get a reference to the elements
 		const dropdownSelect = document.querySelector('.contents-nav-mobile-header-dropdown-select');
 		const contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
