@@ -26,6 +26,6 @@ jobs:
         with:
           server: "198.175.25.37"
           username: "studentloanplannercombigscoots-stagingcom"
-          password: "*H\*`bo{X\H5n,JR{sb4V?zf@u5"
+          password: '*H\*`bo{X\H5n,JR{sb4V?zf@u5'
           local-dir: "./" # Set to the local directory you want to deploy
           server-dir: "/public/wp-content/themes/student-loan-planner-theme/" # Update with your server path
