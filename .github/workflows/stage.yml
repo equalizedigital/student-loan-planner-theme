@@ -1,4 +1,4 @@
-name: Deploy Files via FTP
+name: Deploy Files via FTP (Staging)
 
 on:
   push:
