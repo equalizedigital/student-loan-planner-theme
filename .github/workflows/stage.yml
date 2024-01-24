@@ -1,11 +1,11 @@
-name: Deploy Files
+name: Deploy Files via FTP
 
 on:
   push:
     branches:
       - stage
     paths:
-      - '**' # Trigger the workflow for any change in any file
+      - '**' # Trigger for any change in any file
   workflow_dispatch:
     inputs:
       sync:
@@ -14,23 +14,18 @@ on:
         default: "delta"
 
 jobs:
-  deploy-stage:
-    name: "stage branch"
+  ftp-deploy:
+    name: "Deploy via FTP"
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: "Deploy"
-        uses: milanmk/actions-file-deployer@master
+      - name: "FTP Deploy"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          remote-protocol: "ftp"
-          remote-host: ${{ secrets.REMOTE_HOST }} # Set this in your repository's secrets
-          remote-user: ${{ secrets.REMOTE_USER }} # Set this in your repository's secrets
-          remote-password: ${{ secrets.REMOTE_PASSWORD }} # Set this in your repository's secrets
-          remote-path: "/public/wp-content/themes/student-loan-planner-theme/" # Update this with the correct server path
-          remote-port: ${{ secrets.REMOTE_PORT }} # Set this in your repository's secrets
-          # local-directory: '.' # Uncomment and use if you need to specify the local directory to deploy
+          server: "198.175.25.37"
+          username: "studentloanplannercombigscoots-stagingcom"
+          password: "*H\*`bo{X\H5n,JR{sb4V?zf@u5"
+          local-dir: "./" # Set to the local directory you want to deploy
+          server-dir: "/public/wp-content/themes/student-loan-planner-theme/" # Update with your server path
