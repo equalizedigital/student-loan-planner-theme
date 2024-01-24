@@ -953,6 +953,15 @@ img.wprm-comment-rating {
 
 }
 
+.single{
+	.post_type_layout_standard {
+		.entry-content {
+			padding: 10px 0 40px;
+		}
+	
+	}	
+}
+
 .post_type_layout_full-width {
 	.inner-hero-container .title {
 		@include media(">tablet") {
