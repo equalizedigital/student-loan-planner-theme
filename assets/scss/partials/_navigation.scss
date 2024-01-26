@@ -44,7 +44,7 @@ header.site-header {
         margin: 0 auto;
         padding: 0 25px;
 
-        @include media(">1070px") {
+        @include media(">=1070px") {
             overflow: auto;
         }
 
@@ -181,13 +181,13 @@ header.site-header {
                     &.has-submenus {
                         &.submenu-column__two {
                             .sub_menu {
-                                @include media(">1070px") {
+                                @include media(">=1070px") {
                                     grid-template-columns: .65fr .35fr;
                                 }
 
                                 .menu-column:nth-child(4) {
                                     .sub-menu {
-                                        @include media(">1070px") {
+                                        @include media(">=1070px") {
                                             grid-template-columns: repeat(2, 1fr);
                                             gap: 0 15px;
                                             display: grid;
@@ -217,7 +217,7 @@ header.site-header {
 
                         &.submenu-column__single_menu {
                             .sub-menu {
-                                @include media(">1070px") {
+                                @include media(">=1070px") {
                                     grid-template-columns: repeat(3, 1fr);
                                     gap: 0 15px;
                                     display: grid;
@@ -657,7 +657,7 @@ header.site-header {
     align-items: center;
     gap: 30px;
 
-    @include media(">1070px") {
+    @include media(">=1070px") {
         display: flex;
     }
 

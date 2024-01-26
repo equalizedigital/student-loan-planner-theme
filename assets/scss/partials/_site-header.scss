@@ -95,11 +95,9 @@ body {
 
 	&.admin-bar {
 		.site-header {
-			@supports (position: sticky) {
-				top: 32px;
-
-				@include media("<1070px") {
-					top: 0;
+			@include media(">=1070px") {
+				@supports (position: sticky) {
+					top: 32px;
 				}
 			}
 		}
@@ -107,8 +105,10 @@ body {
 
 	&.nav-up {
 		.site-header {
-			@supports (position: sticky) {
-				transform: translateY(-100%);
+			@include media(">=1070px") {
+				@supports (position: sticky) {
+					transform: translateY(-100%);
+				}
 			}
 		}
 	}

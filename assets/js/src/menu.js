@@ -104,7 +104,7 @@
 	});
 
 
-	if ($(window).innerWidth() <= 1070) {
+	if ($(window).innerWidth() < 1070) {
 		var $mainLinks = $(".menu-item-main-link");
 		var $sideHeader = $('.site-header');
 
