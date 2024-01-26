@@ -13,8 +13,7 @@
 	text-align: left;
 	z-index: 1100;
 	position: relative;
-	margin: 11px auto;
-	margin-right: 10px;
+	margin: 11px 10px 11px auto;
 
 	@media screen and (max-width:1150px) and (min-width:900px) {
 		margin-right: 10px;
@@ -32,8 +31,7 @@
 		margin: 8px auto;
 	}
 
-
-
+	
 	h1.site-title,
 	p.site-title {
 		margin: 0;
@@ -94,11 +92,9 @@ body {
 
 	&.admin-bar {
 		.site-header {
-			@supports (position: sticky) {
-				top: 32px;
-
-				@include media("<1070px") {
-					top: 0;
+			@include media(">=1070px") {
+				@supports (position: sticky) {
+					top: 32px;
 				}
 			}
 		}
@@ -106,8 +102,10 @@ body {
 
 	&.nav-up {
 		.site-header {
-			@supports (position: sticky) {
-				transform: translateY(-100%);
+			@include media(">=1070px") {
+				@supports (position: sticky) {
+					transform: translateY(-100%);
+				}
 			}
 		}
 	}
