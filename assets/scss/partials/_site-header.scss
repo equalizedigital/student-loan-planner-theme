@@ -66,13 +66,13 @@
 /* Admin Bar
 --------------------------------------------- */
 
-@include media(">782px") {
+@include media(">=1070px") {
 	.admin-bar .site-container {
 		padding-top: 32px;
 	}
 }
 
-@include media("<=782px") {
+@include media("<1070px") {
 	#wpadminbar {
 		display: none !important;
 	}
@@ -82,36 +82,40 @@
 --------------------------------------------- */
 
 body {
-
 	.site-header {
-
-		@supports(position: sticky) {
-			position: sticky;
-			top: 0;
-			transition: transform 0.3s;
-			z-index: 10;
+		@include media(">=1070px") {
+			@supports (position: sticky) {
+				position: sticky;
+				top: 0;
+				transition: transform 0.3s;
+				z-index: 100;
+			}
 		}
 	}
 
 	&.admin-bar {
 		.site-header {
-			@supports(position: sticky) {
+			@supports (position: sticky) {
 				top: 32px;
 
-				@include media("<=782px") {
-					top: 0px;
+				@include media("<1070px") {
+					top: 0;
 				}
 			}
 		}
 	}
 
 	&.nav-up {
-
 		.site-header {
-
-			@supports(position: sticky) {
+			@supports (position: sticky) {
 				transform: translateY(-100%);
 			}
 		}
+	}
+
+	&.mobile-navigation-open {
+		overflow: hidden;
+		position: fixed;
+		width: 100%;
 	}
 }
