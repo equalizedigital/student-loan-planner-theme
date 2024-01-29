@@ -1,22 +1,16 @@
-name: Deploy Files via FTP (Staging)
+name: Deploy Files via FTP (Production)
 
 on:
-  push:
+  pull_request:
     branches:
-      - stage
-    paths:
-      - '**' # Trigger for any change in any file
-  workflow_dispatch:
-    inputs:
-      sync:
-        description: "File synchronization"
-        required: true
-        default: "delta"
+      - master
+    types: [closed]
 
 jobs:
   ftp-deploy:
     name: "Deploy via FTP"
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
@@ -25,7 +19,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: "198.175.25.37"
-          username: "studentloanplannercombigscoots-stagingcom"
-          password: ${{ secrets.FTP_PASSWORD_STG }}
+          username: "studentloanplannercom"
+          password: ${{ secrets.FTP_PASSWORD_PRD }}
           local-dir: "./" # Set to the local directory you want to deploy
           server-dir: "/public/wp-content/themes/student-loan-planner-theme/" # Update with your server path
