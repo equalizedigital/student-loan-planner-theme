@@ -9,22 +9,6 @@
   ],
   "creatorBuild" : "34564",
   "files" : {
-    "\/.github\/workflows\/develop.yml" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/.github\/workflows\/develop.yml",
-      "oF" : 0
-    },
-    "\/.github\/workflows\/master.yml" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/.github\/workflows\/master.yml",
-      "oF" : 0
-    },
     "\/.github\/workflows\/stage.yml" : {
       "cB" : 0,
       "ft" : 8192,
@@ -2871,6 +2855,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/squared-image-content-callout.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/squared-image-content-callout.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/tab-block.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -4507,6 +4506,35 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/template-parts\/blocks\/squared-image-content-callout-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/squared-image-content-callout-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/squared-image-content-callout-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 372200,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/squared-image-content-callout-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/squared-image-content-callout-block\/squared-image-content-callout.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/squared-image-content-callout-block\/squared-image-content-callout.php",
+      "oF" : 0
     },
     "\/template-parts\/blocks\/tab-block\/block.json" : {
       "ft" : 524288,
