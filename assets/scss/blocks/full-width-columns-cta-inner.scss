@@ -82,20 +82,28 @@
 
             .title {
                 color: white;
-                font-size: 35px;
+                font-size: 28px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: 40px;
 
                 @include media("<tablet") {
-                    font-size: 25px;
-                    line-height: 35px;
+                    font-size: 20px;
+                    line-height: 28px;
                 }
              
             }
 
             .content {
                 color: #fff;
+            }
+
+            .link {
+                a {
+                    @include media("<tablet") {
+                        font-size: 16px;
+                    }
+                }
             }
         }
 
