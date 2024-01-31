@@ -43,8 +43,8 @@
                 transition: all .3s;
             }
 
-            input:focus + label,
-            input:not(:placeholder-shown) + label {
+            input:focus ~ label,
+            input:not(:placeholder-shown) ~ label {
                 padding: 4px 0 0 40px;
                 font-size: 12px;
             }
