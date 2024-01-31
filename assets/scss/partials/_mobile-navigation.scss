@@ -22,7 +22,7 @@
 
             img {
                 position: absolute;
-                top: 54%;
+                top: 46%;
                 left: 5px;
                 max-width: 30px;
                 transform: translate(0%, -50%);
@@ -52,7 +52,7 @@
                 line-height: 1.4;
                 background: transparent;
                 border: none;
-                padding: 28px 0 20px 40px;
+                padding: 18px 0 20px 40px;
                 top: -2px;
                 position: relative;
 
@@ -65,18 +65,12 @@
 
             input::placeholder {
                 color: white;
+                opacity: 0.55;
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: 1.4;
                 background: transparent;
-            }
-
-            input:focus + label,
-            input:valid + label {
-                top: -20px;
-                font-size: 0.75em;
-                pointer-events: none;
             }
         }
 
