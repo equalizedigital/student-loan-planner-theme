@@ -22,17 +22,17 @@
 
             img {
                 position: absolute;
-                top: 50%;
-                left: 0;
+                top: 54%;
+                left: 5px;
                 max-width: 30px;
                 transform: translate(0%, -50%);
             }
 
             label {
                 position: absolute;
-                top: 0;
+                top: 2px;
                 left: 0;
-                color: white;
+                color: rgba(255, 255, 255, 0.65);
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 400;
@@ -43,8 +43,9 @@
                 transition: all .3s;
             }
 
-            input:focus + label {
-                padding: 0 0 0 40px;
+            input:focus + label,
+            input:not(:placeholder-shown) + label {
+                padding: 4px 0 0 40px;
                 font-size: 12px;
             }
 
@@ -57,7 +58,7 @@
                 line-height: 1.4;
                 background: transparent;
                 border: none;
-                padding: 24px 0 24px 40px;
+                padding: 28px 0 20px 40px;
                 top: -2px;
                 position: relative;
 
