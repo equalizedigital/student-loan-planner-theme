@@ -87,7 +87,9 @@ function eqd_single_after_entry_content()
 		$primary_category_id = yoast_get_primary_term_id('category', $post_id);
 	}
 
-	$heading_override = get_field('heading_override', 'category_' . $primary_category_id); ?>
+	$heading_override = get_field('heading_override', 'option');
+
+?>
 
 	<?php if (have_rows('vendors', 'option')) : ?>
 
@@ -96,12 +98,11 @@ function eqd_single_after_entry_content()
 			<header class="title">
 				<?php $current_year = gmdate('Y'); ?>
 				<?php
-				if (!empty($heading_override)) {
+				if ( get_field('show_private_student_loans_table_instead_of_refinance_table', 'category_'. $primary_category_id) ) {
 				?>
 				<h2 class="title">
 					<?php echo wp_kses_post($heading_override); ?>
 				</h2>
-								ddd
 				<?php } else { ?>
 					<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post($current_year); ?></h2>
 				<?php } ?>
