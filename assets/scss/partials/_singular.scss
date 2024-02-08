@@ -1362,9 +1362,9 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 400;
 			line-height: 1;
-			/* 500% */
 			padding: 25px 20px;
 			z-index: 15;
+			display: none;
 		}
 
 		&:after {
