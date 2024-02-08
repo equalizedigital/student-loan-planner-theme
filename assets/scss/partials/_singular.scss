@@ -1362,9 +1362,9 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 400;
 			line-height: 1;
-			/* 500% */
 			padding: 25px 20px;
 			z-index: 15;
+			display: none;
 		}
 
 		&:after {
@@ -1673,10 +1673,10 @@ section.refinance_lender_section {
 	tr .td_title {
 		color: #625089;
 		text-align: center;
-		font-size: 35px;
+		font-size: 26px;
 		font-style: normal;
 		font-weight: 700;
-		line-height: 40px;
+		line-height: 28px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
