@@ -16,8 +16,7 @@ add_action('eqd_entry_title_after', 'eqd_entry_date', 12);
 /**
  * After Entry
  */
-function eqd_single_after_entry()
-{
+function eqd_single_after_entry() {
 	echo '<div class="after-entry">';
 
 	// Publish date.
@@ -58,8 +57,7 @@ function eqd_single_after_entry()
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
-function eqd_single_after_entry_content()
-{
+function eqd_single_after_entry_content() {
 	$hide_section_per_category = false;
 	$categories                = get_the_category();
 
@@ -98,11 +96,11 @@ function eqd_single_after_entry_content()
 			<header class="title">
 				<?php $current_year = gmdate('Y'); ?>
 				<?php
-				if ( get_field('show_private_student_loans_table_instead_of_refinance_table', 'category_'. $primary_category_id) ) {
+				if (get_field('show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id)) {
 				?>
-				<h2 class="title">
-					<?php echo wp_kses_post($heading_override); ?>
-				</h2>
+					<h2 class="title">
+						<?php echo wp_kses_post($heading_override); ?>
+					</h2>
 				<?php } else { ?>
 					<h2 class="title">Refinance student loans, get a bonus in <?php echo wp_kses_post($current_year); ?></h2>
 				<?php } ?>
@@ -331,8 +329,7 @@ function eqd_single_after_entry_content()
 }
 add_action('tha_content_while_after', 'eqd_single_after_entry_content', 7);
 
-function eqd_single_after_entry_modals()
-{
+function eqd_single_after_entry_modals() {
 	$post_id = get_the_ID();
 	if (function_exists('yoast_get_primary_term_id')) {
 		$primary_category_id = yoast_get_primary_term_id('category', $post_id);
@@ -398,8 +395,7 @@ function eqd_single_after_entry_modals()
 add_action('tha_content_after', 'eqd_single_after_entry_modals', 7);
 
 
-function advertising_disclosure()
-{
+function advertising_disclosure() {
 	?>
 	<?php
 	$disclosure_content = get_field('advertising_disclosure', 'option');
@@ -435,8 +431,7 @@ add_action('tha_content_after', 'advertising_disclosure', 7);
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
-function eqd_single_after_entry_primary_category()
-{
+function eqd_single_after_entry_primary_category() {
 	$post_id = get_the_ID();
 	if (function_exists('yoast_get_primary_term_id')) {
 		$primary_category_id = yoast_get_primary_term_id('category', $post_id);
@@ -488,8 +483,7 @@ add_action('tha_content_while_after', 'eqd_single_after_entry_author_info', 7);
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
-function eqd_single_after_entry_author_info()
-{
+function eqd_single_after_entry_author_info() {
 	global $post;
 
 	$id             = get_the_author_meta('ID');
@@ -613,8 +607,7 @@ add_action('tha_content_while_after', 'eqd_single_after_entry_block_disclosure',
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
-function eqd_single_after_entry_block_disclosure()
-{
+function eqd_single_after_entry_block_disclosure() {
 	if (has_block('acf/vendor-repeater')) {
 		// $hide_section_per_page   = get_field( 'hide_student_loans_section', get_the_ID() );
 		$hide_table_section_only = get_field('hide_table_section_only', get_the_ID());
@@ -660,8 +653,7 @@ add_action('tha_single_page_end', 'eqd_single_after_related_post', 10);
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
-function eqd_single_after_related_post()
-{
+function eqd_single_after_related_post() {
 	$term    = get_queried_object();
 	$post_id = get_the_ID(); // Assuming you're in the loop
 
@@ -745,5 +737,11 @@ function eqd_single_after_related_post()
 		endif;
 	endif;
 }
+
+
+
+
+
+
 // Build the page.
 require get_template_directory() . '/index.php';
