@@ -30,7 +30,7 @@ tha_content_before();
 			<header class="contact-hero hero-author">
 				<div class="contact-hero-container">
 					<figure class="contact-hero-container__image">
-						<?php $avatar_url = get_avatar_url($curauth->ID, array("size"=>360)); ?>
+						<?php $avatar_url = get_avatar_url($curauth->ID, array("size"=>600)); ?>
 						<img src="<?php echo $avatar_url; ?>" alt="<?php echo wp_kses_post( $curauth->display_name ); ?>">
 					</figure>
 					<div class="contact-hero-container__content">

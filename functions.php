@@ -268,6 +268,9 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 		remove_theme_support( 'widgets-block-editor' );
 		remove_theme_support( 'core-block-patterns' );
 
+		// -- Add custom theme image sizes
+		add_image_size( 'squared-image-content-callout-thumbnail', 732, 732, true );
+
 	}
 endif;
 add_action( 'after_setup_theme', 'eqd_setup' );

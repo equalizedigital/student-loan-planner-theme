@@ -1,20 +1,31 @@
-name: Deploy to wp engine
+name: Deploy Files via FTP (Staging)
+
 on:
   push:
     branches:
-     - stage
+      - stage
+    paths:
+      - '**' # Trigger for any change in any file
+  workflow_dispatch:
+    inputs:
+      sync:
+        description: "File synchronization"
+        required: true
+        default: "delta"
+
 jobs:
-  build:
+  ftp-deploy:
+    name: "Deploy via FTP"
     runs-on: ubuntu-latest
-    steps: 
-    - uses: actions/checkout@v3
-    - name: GitHub Action Deploy to WP Engine
-      uses: wpengine/github-action-wpe-site-deploy@v3.0
-      with:
-        # Deploy vars
-        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
-        WPE_ENV: studentloanstg
-        # Deploy Options
-        REMOTE_PATH: "wp-content/themes/student-loan-planner-theme/"
-        PHP_LINT: FALSE
-        CACHE_CLEAR: TRUE
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "FTP Deploy"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: "198.175.25.37"
+          username: "studentloanplannercombigscoots-stagingcom"
+          password: ${{ secrets.FTP_PASSWORD_STG }}
+          local-dir: "./" # Set to the local directory you want to deploy
+          server-dir: "/public/wp-content/themes/student-loan-planner-theme/" # Update with your server path

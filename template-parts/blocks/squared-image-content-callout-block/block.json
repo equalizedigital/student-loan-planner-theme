@@ -1,0 +1,23 @@
+{
+	"name": "acf/squared-image-content-callout-block",
+	"title": "Squared Image Content Callout",
+	"description": "Squared Image Content Callout Block",
+	"category": "custom-blocks",
+	"icon": "format-image",
+	"keywords": [
+		"calculator",
+		"signup",
+		"squared",
+		"callout"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "squared-image-content-callout.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/squared-image-content-callout-block/screenshot.png"
+		}
+	}
+}

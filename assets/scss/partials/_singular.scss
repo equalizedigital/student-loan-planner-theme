@@ -380,7 +380,7 @@ img.wprm-comment-rating {
 
 	#reply-title {
 		color: #625089;
-		font-size: 35px;
+		font-size: 24px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
@@ -953,6 +953,15 @@ img.wprm-comment-rating {
 
 }
 
+.single{
+	.post_type_layout_standard {
+		.entry-content {
+			padding: 10px 0 40px;
+		}
+	
+	}	
+}
+
 .post_type_layout_full-width {
 	.inner-hero-container .title {
 		@include media(">tablet") {
@@ -982,8 +991,8 @@ img.wprm-comment-rating {
 
 .single {
 	.inner-hero {
-		padding: 20px 0 60px;
-		min-height: 200px;
+		padding: 40px 0 40px;
+		min-height: 150px;
 	}
 }
 
@@ -995,11 +1004,11 @@ img.wprm-comment-rating {
 	grid-column-start: 1;
 	grid-column-end: 13;
 	width: 100%;
-	min-height: 200px;
+	min-height: 150px;
 
 	@include media(">tablet") {
 		padding: 60px 0;
-		min-height: 280px;
+		min-height: 150px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -1168,11 +1177,11 @@ img.wprm-comment-rating {
 			min-width: 100%;
 			max-width: 750px;
 
-			font-size: 35px;
-			line-height: 40px;
+			font-size: 28px;
+			line-height: 32px;
 
 			@include media(">tablet") {
-				font-size: 42px;
+				font-size: 40px;
 				line-height: 42px;
 				min-width: 95%;
 				margin: 0 0 20px;
@@ -1729,7 +1738,7 @@ section.refinance_lender_section {
 
 	header .title {
 		color: #625089;
-		font-size: 30px;
+		font-size: 28px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
@@ -1737,7 +1746,6 @@ section.refinance_lender_section {
 
 		@include media(">tablet") {
 			text-align: center;
-			font-size: 35px;
 		}
 	}
 
@@ -2067,10 +2075,6 @@ section.refinance_lender_section {
 
 html {
 	scroll-behavior: smooth;
-
-	&.overflow-hidden {
-		overflow: hidden;
-	}
 }
 
 // Single Related Posts
