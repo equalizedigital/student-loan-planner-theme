@@ -1,0 +1,26 @@
+{
+	"name": "acf/video-testimonials",
+	"title": "Video Testimonials",
+	"description": "Testimonials in a column style with videos and text",
+	"category": "custom-blocks",
+	"icon": "screenoptions",
+	"keywords": [
+		"featured",
+		"video testimonials",
+		"video testimonials block",
+		"video testimonials logos",
+		"video testimonials logos block",
+		"video testimonials logos list",
+		"video testimonials logos list block"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/video-testimonials/screenshot.png"
+		}
+	}
+}
