@@ -21,10 +21,6 @@
                     <input type="text" name="s" placeholder="Search" id="search" value="<?php the_search_query(); ?>"/>
                 </form>
             </div>
-
-            <div id="mobile-help-button" class="mobile-help-button">
-                <?php get_template_part('partials/content/header/green-cta-button'); ?>
-            </div>
         </div>
     </nav>
 </section>
