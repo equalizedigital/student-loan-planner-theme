@@ -39,7 +39,7 @@ tha_body_top();
 
 <div class="site-container">
     <a class="skip-link screen-reader-text" href="#main-content">
-		<?php esc_html__( 'Skip to content', 'eqd' ); ?>
+		<?php echo esc_html__( 'Skip to content', 'eqd' ); ?>
     </a>
 
 	<?php tha_header_before(); ?>
