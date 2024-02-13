@@ -350,3 +350,82 @@ function slp_append_superscript( $content, $superscript_text ) {
 
 	return $updated_content;
 }
+
+
+
+function get_company_name_shortcode($atts) {
+    // Default message
+    $message = "For all fans, ...";
+    
+    if(isset($_GET['landing_page'])) {
+        $page_slug = sanitize_text_field($_GET['landing_page']);
+        
+        // Query the CPT for the company name using the 'page_slug'
+        $args = array(
+			'name'        => $page_slug,
+			'post_type'   => 'slp_landing',
+			'post_status' => 'publish',
+			'numberposts' => 1
+        );
+        $query = new WP_Query($args);
+        
+        // If a post is found, retrieve the Company Name
+        if($query->have_posts()) {
+            while($query->have_posts()) {
+                $query->the_post();
+                // Assuming the company name is stored in a custom field. Replace 'company_name' with your actual custom field key
+                $company_name = get_post_meta(get_the_ID(), 'company_name', true);
+                if(!empty($company_name)) {
+                    $message = $company_name; // Set the message to the company name
+                }
+            }
+            wp_reset_postdata(); // Reset post data
+        }
+    }
+    
+    // Return the company name or default message
+    return $message;
+}
+add_shortcode('get_company_name', 'get_company_name_shortcode');
+
+
+function generate_custom_booking_button_shortcode($atts) {
+    // Default URL for the booking button
+    $default_url = "https://calendly.com/studentloanplanner-team";
+    $button_url = $default_url; // Set the button URL to default initially
+    
+    // Check if the 'landing_page' URL parameter is present
+    if(isset($_GET['landing_page'])) {
+        $page_slug = sanitize_text_field($_GET['landing_page']);
+        
+        // Query the CPT for the booking link using the 'page_slug'
+        $args = array(
+            'name'        => $page_slug,
+            'post_type'   => 'slp_landing', // Replace 'slp_landing' with your actual CPT name
+            'post_status' => 'publish',
+            'numberposts' => 1
+        );
+        $query = new WP_Query($args);
+        
+        // If a post is found, retrieve the Booking Link
+        if($query->have_posts()) {
+            while($query->have_posts()) {
+                $query->the_post();
+                // Assuming the booking link is stored in a custom field. Replace 'booking_link' with your actual custom field key
+                $booking_link = get_post_meta(get_the_ID(), 'booking_link', true);
+                if(!empty($booking_link)) {
+                    $button_url = $booking_link; // Update the button URL to the custom link
+                }
+            }
+            wp_reset_postdata(); // Reset post data
+        }
+    }
+    
+    // Generate the HTML for the button
+    $button_html = '<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" "'. esc_url($button_url) .'">Book Your Custom Plan</a></div>';
+	
+    
+    // Return the button HTML
+    return $button_html;
+}
+add_shortcode('custom_booking_button', 'generate_custom_booking_button_shortcode');

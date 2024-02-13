@@ -345,6 +345,13 @@ function tha_page_header() {
 }
 
 /**
+ * Landing Page Header.
+ */
+function tha_landing_page_header() {
+	do_action( 'tha_landing_page_header' );
+}
+
+/**
  * Single Sidebar.
  */
 function tha_single_sidebar() {

@@ -190,20 +190,23 @@ add_action( 'tha_footer_top', 'eqd_output_footer_widgets' );
  * Output footer widget area.
  */
 function eqd_output_footer_widgets() {
-	if ( is_active_sidebar( 'Footer Widget Area 1' ) ) {
-		?>
-		<div id="footer-widget-area-1" class="widget-area">
-			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
-		</div>
-		<?php
+	if (! is_page_template( 'page-landing.php' ) ) {
+		if ( is_active_sidebar( 'Footer Widget Area 1' ) ) {
+			?>
+			<div id="footer-widget-area-1" class="widget-area">
+				<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+			</div>
+			<?php
+		}
+		if ( is_active_sidebar( 'Footer Widget Area 2' ) ) {
+			?>
+			<div id="footer-widget-area-2" class="widget-area">
+				<?php dynamic_sidebar( 'Footer Widget Area 2' ); ?>
+			</div>
+			<?php
+		}
 	}
-	if ( is_active_sidebar( 'Footer Widget Area 2' ) ) {
-		?>
-		<div id="footer-widget-area-2" class="widget-area">
-			<?php dynamic_sidebar( 'Footer Widget Area 2' ); ?>
-		</div>
-		<?php
-	}
+
 	if ( is_active_sidebar( 'Footer Widget Area 3' ) ) {
 		?>
 		<div id="footer-widget-area-3" class="widget-area">
@@ -324,7 +327,9 @@ function eqd_single_fullwidth_content() {
 						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 						$post_data = get_the_content( get_the_ID() );
 						?>
-						<?php echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, ' Min Read'; ?> |  <?php echo wp_kses_post( $output ); ?>
+						<?php 
+						//echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, ' Min Read | '; ?> 
+						<?php echo wp_kses_post( $output ); ?>
 					</div>
 				</span>
 					<?php
