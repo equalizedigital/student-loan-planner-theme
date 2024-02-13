@@ -122,9 +122,9 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								">
 
 								<span class="tabbed-content__content__text">
-									<h3>
+									<h2>
 										<?php echo $row['title']; ?>
-									</h3>
+									</h2>
 
 									<?php echo $row['text']; ?>
 
