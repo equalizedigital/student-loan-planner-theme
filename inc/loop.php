@@ -261,14 +261,35 @@ function eqd_has_h1_block($blocks = array()) {
  **/
 
 function eqd_single_landing_page() {
+	// Check if 'slug' is set in the URL parameters
 	if (isset($_GET['landing_page'])) {
+		$page_slug = $_GET['landing_page'];
+
+		// Query for the page by slug
+		$args = array(
+			'name'        => $page_slug,
+			'post_type'   => 'slp_landing',
+			'post_status' => 'publish',
+			'numberposts' => 1
+		);
+		$page = get_posts($args);
+
+		// If the page exists, redirect or load the page
+		if ($page) {
+			$page_id = $page[0]->ID;
+
+			$parameter_page = $page_id;
+		}
+	}
+
+	if (isset($parameter_page)) {
 	?>
 		<section class="ed_landing_hero">
 			<div class="ed_landing_hero_container">
 				<figure class="ed_landing_hero_container_figure">
 					<?php
 					// Get the medium-sized featured image URL
-					$featured_img_url = get_the_post_thumbnail_url(84295, 'medium');
+					$featured_img_url = get_the_post_thumbnail_url($parameter_page, 'medium');
 
 					// Output the image HTML if available
 					if ($featured_img_url) {
@@ -281,11 +302,31 @@ function eqd_single_landing_page() {
 				</figure>
 				<div class="ed_landing_hero_container_text">
 					<div class="sub_title">Trusted by</div>
-					<h2 class="ed_landing_hero_container_text_heading">Wesley Smith</h2>
-					<div class="copy">Founder, Veterinary Financial Summit </div>
-					<div class="link">
-						<a href="" class="btn">Book Your Custom Student Loan Plan</a>
+					<h2 class="ed_landing_hero_container_text_heading">
+						<?php the_field('trusted_by_name', $parameter_page); ?>
+					</h2>
+					<div class="copy">
+						<?php 
+						$job_title = get_field('job_title', $parameter_page);  
+						the_field('job_title', $parameter_page);  
+
+						$company_name = get_field('company_name', $parameter_page);
+						if($company_name && $job_title){
+							echo ', ';
+						}
+						echo get_field('company_name', $parameter_page); 
+						?>
 					</div>
+					<?php
+					$link_page = get_field('booking_link', $parameter_page);
+					if($link_page):
+					?>
+					<div class="link">
+						<a href="<?php the_field('booking_link', $parameter_page); ?>" class="btn">
+							<?php the_field('landing_page_url_text', $parameter_page); ?>
+						</a>
+					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>
@@ -294,7 +335,7 @@ function eqd_single_landing_page() {
 			<div class="ed_landing_works_container">
 				<div class="ed_landing_works_container_content">
 					<h2 class="heading">How Does the Consult Work?</h2>
-					<?php the_field('how_does_the_consult_work', '84295'); ?>
+					<?php the_field('how_does_the_consult_work', $parameter_page); ?>
 				</div>
 				<div class="ed_landing_works_container_media">
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/VNnd4EhCQAo?si=pqFe6R3P50ok0VWy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

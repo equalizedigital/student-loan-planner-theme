@@ -9,14 +9,6 @@
   ],
   "creatorBuild" : "34564",
   "files" : {
-    "\/.github\/workflows\/develop.yml" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/.github\/workflows\/develop.yml",
-      "oF" : 0
-    },
     "\/.github\/workflows\/master.yml" : {
       "cB" : 0,
       "ft" : 8192,
@@ -2526,6 +2518,21 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/scss\/blocks\/_testimonial-videos.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_testimonial-videos.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/accordion.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -2866,6 +2873,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/resources-loop-reverse.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/squared-image-content-callout.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/squared-image-content-callout.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -3647,6 +3669,14 @@
       "oAP" : "\/offline.php",
       "oF" : 0
     },
+    "\/page-landing.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/page-landing.php",
+      "oF" : 0
+    },
     "\/partials\/content\/content.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3731,6 +3761,18 @@
       "oA" : 2,
       "oAP" : "\/single.php",
       "oF" : 0
+    },
+    "\/style-ck.css" : {
+      "aP" : 0,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 2,
+      "oAP" : "\/style-ck-ck.css",
+      "oF" : 0,
+      "pg" : 0
     },
     "\/style.css" : {
       "aP" : 0,
@@ -3888,17 +3930,6 @@
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/detailed-links\/template.php",
       "oF" : 0
-    },
-    "\/template-parts\/blocks\/doctor-mortgages-map-block-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/doctor-mortgages-map-block-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
     },
     "\/template-parts\/blocks\/doctor-mortgages-map-block\/block.json" : {
       "ft" : 524288,
@@ -4457,6 +4488,35 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/template-parts\/blocks\/squared-image-content-callout-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/squared-image-content-callout-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/squared-image-content-callout-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 372200,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/squared-image-content-callout-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/squared-image-content-callout-block\/squared-image-content-callout.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/squared-image-content-callout-block\/squared-image-content-callout.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/tab-block\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -4658,6 +4718,35 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/vendor-repeater\/template.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/video-testimonials\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/video-testimonials\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/video-testimonials\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 89599,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/video-testimonials\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/video-testimonials\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/video-testimonials\/template.php",
       "oF" : 0
     }
   },
