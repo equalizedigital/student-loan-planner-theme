@@ -3141,6 +3141,10 @@ img.wprm-comment-rating {
       display: flex;
       flex-direction: column;
       justify-content: center; } }
+  .inner-hero.landing-page-header {
+    padding: 60px 0 80px; }
+    .inner-hero.landing-page-header .title {
+      max-width: unset; }
   @media (max-width: 767px) {
     .inner-hero.taxonomy-physicians .hero_image {
       display: none; } }
@@ -3999,8 +4003,7 @@ article.type-post {
         grid-template-columns: 450px 1fr; } }
     .ed_landing_hero_container_figure img {
       width: 100%;
-      height: auto;
-      height: 394px;
+      height: 100%;
       object-fit: cover;
       object-position: center; }
     .ed_landing_hero_container_text {
@@ -4008,7 +4011,7 @@ article.type-post {
       align-items: flex-start;
       justify-content: center;
       flex-direction: column;
-      padding: 20px 20px;
+      padding: 46px 20px;
       max-width: 480px;
       margin: 0 auto;
       gap: 0 20px; }
