@@ -2256,14 +2256,16 @@ article.type-post {
 		border-radius: 10px;
 		overflow: hidden;
 		@include media(">tablet") {
+			grid-template-columns: 1fr 1fr;
+		}
+		@include media(">desktop") {
 			grid-template-columns: 450px 1fr;
 		}
-
 		&_figure {
 			img {
 				width: 100%;
 				height: auto;
-				max-height: 394px;
+				height: 394px;
 				object-fit: cover;
 				object-position: center;
 			}
@@ -2281,19 +2283,26 @@ article.type-post {
 
 			.sub_title {
 				color: var(--WCAG-Green, #547C2D);
-				font-size: 25px;
 				font-style: normal;
 				font-weight: 400;
-				line-height: 30px;
+				
 				margin-bottom: 10px;
+				@include media(">tablet") {
+					line-height: 30px;
+					font-size: 25px;
+	
+				}
 			}
 
 			&_heading {
 				color: #625089;
-				font-size: 50px;
 				font-style: normal;
 				font-weight: 700;
-				line-height: 50px;
+				@include media(">tablet") {
+					line-height: 50px;
+					font-size: 50px;
+				}
+
 			}
 
 			.copy {
