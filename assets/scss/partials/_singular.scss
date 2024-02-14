@@ -1015,6 +1015,10 @@ img.wprm-comment-rating {
 	}
 
 	&.landing-page-header {
+		padding: 60px 0 80px;
+		.title {
+			max-width: unset;
+		}
 	}
 
 	&.taxonomy-physicians {
@@ -2249,23 +2253,25 @@ article.type-post {
 	&_container {
 		max-width: 1122px;
 		display: grid;
-		grid-template-columns:  1fr;
+		grid-template-columns: 1fr;
 		background-color: #FFFDE9;
 		width: 100%;
 		box-shadow: 0px 15px 27px rgba(161, 165, 165, 0.25);
 		border-radius: 10px;
 		overflow: hidden;
+
 		@include media(">tablet") {
 			grid-template-columns: 1fr 1fr;
 		}
+
 		@include media(">desktop") {
 			grid-template-columns: 450px 1fr;
 		}
+
 		&_figure {
 			img {
 				width: 100%;
-				height: auto;
-				height: 394px;
+				height: 100%;
 				object-fit: cover;
 				object-position: center;
 			}
@@ -2276,7 +2282,7 @@ article.type-post {
 			align-items: flex-start;
 			justify-content: center;
 			flex-direction: column;
-			padding: 20px 20px;
+			padding: 46px 20px;
 			max-width: 480px;
 			margin: 0 auto;
 			gap: 0 20px;
@@ -2285,12 +2291,13 @@ article.type-post {
 				color: var(--WCAG-Green, #547C2D);
 				font-style: normal;
 				font-weight: 400;
-				
+
 				margin-bottom: 10px;
+
 				@include media(">tablet") {
 					line-height: 30px;
 					font-size: 25px;
-	
+
 				}
 			}
 
@@ -2298,6 +2305,7 @@ article.type-post {
 				color: #625089;
 				font-style: normal;
 				font-weight: 700;
+
 				@include media(">tablet") {
 					line-height: 50px;
 					font-size: 50px;
