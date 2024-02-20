@@ -104,43 +104,36 @@
 	});
 
 
-	if ($(window).innerWidth() < 1070) {
-		var $mainLinks = $(".menu-item-main-link");
-		var $sideHeader = $('.site-header');
+	const $mainLinks = $('.menu-item-main-link');
 
-		$mainLinks.on("click", function (e) {
-			e.preventDefault();
+	function handleOpenMobileSubMenus(item) {
+		if (!1 === $(item).hasClass('menu-item-no-drop')) {
+			$(item).toggleClass('active');
+			$(item).parent().toggleClass('active');
 
-			if($(this).hasClass('menu-item-no-drop') == false){
-				$(this).toggleClass("active");
-				$(this).parent().toggleClass("active");
-
-				// Toggle class on the sibling with class .sub_menu
-				var $siblingSubMenu = $(this).siblings(".sub_menu");
-				if ($siblingSubMenu.length) {
-					$siblingSubMenu.toggleClass("active");
-				}
-
-				$sideHeader.toggleClass('site-header-active');
-
-				let menuColumn = $(this).siblings(".sub_menu").find('.menu-column'); // Assuming .menu-column is the next sibling
-
-				let firstFocusableItem = menuColumn.find('a[href], button:not([disabled])').first();
-
-				if (firstFocusableItem.length) {
-					firstFocusableItem.focus();
-				}
+			const $siblingSubMenu = $(item).siblings('.sub_menu');
+			if ($siblingSubMenu.length) {
+				$siblingSubMenu.toggleClass('active');
 			}
 
+			$('.site-header').toggleClass('site-header-active');
 
-
-
-		});
+			const menuColumn = $(item).siblings('.sub_menu').find('.menu-column');
+			const firstFocusableItem = menuColumn.find('a[href], button:not([disabled])').first();
+			if (firstFocusableItem.length) {
+				firstFocusableItem.focus();
+			}
+		}
 	}
 
-	const mobileHelpBtn = document.getElementById('mobile-help-button');
+	$mainLinks.on('click', function(e) {
+		if ($(window).innerWidth() < 1070) {
+			e.preventDefault();
+			handleOpenMobileSubMenus(e.target);
+		}
+	});
 
-	if (mobileHelpBtn) {
+	if ($('mobile-help-button').length) {
 		document.querySelector('.mobile-help-button .btn').addEventListener('keydown', function(event) {
 			if (event.key === 'Tab') {
 				event.preventDefault();
