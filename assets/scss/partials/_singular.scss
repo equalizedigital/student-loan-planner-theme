@@ -1362,7 +1362,6 @@ img.wprm-comment-rating {
 			font-style: normal;
 			font-weight: 400;
 			line-height: 1;
-			/* 500% */
 			padding: 25px 20px;
 			z-index: 15;
 		}
@@ -1564,6 +1563,13 @@ section.refinance_lender_section {
 	margin: 0 0 117px 0;
 	position: relative;
 
+	&.refinance_lender_section_private{
+		tr .td_title {
+			font-size: 26px;
+			line-height: 28px;
+		}
+	}
+
 	.lender_info table {
 		width: 100%;
 	}
@@ -1673,10 +1679,13 @@ section.refinance_lender_section {
 	tr .td_title {
 		color: #625089;
 		text-align: center;
+	
+
 		font-size: 35px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: 40px;
+
 		display: flex;
 		align-items: center;
 		justify-content: center;
