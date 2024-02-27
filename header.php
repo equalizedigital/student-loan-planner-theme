@@ -59,10 +59,50 @@ tha_body_top();
             </<?php esc_attr( $logo_tag ); ?>>
         </div>
 
+		<?php 
+		$template_slug = get_page_template_slug( get_the_ID() );
+		if ( 'page-landing.php' != $template_slug ) {
+		?>
         <div id="main-navigation">
 			<?php get_template_part( 'partials/content/header/mobile-navigation' ); ?>
 			<?php get_template_part( 'partials/content/header/desktop-navigation' ); ?>
         </div>
+		<?php } else { 
+					// Check if 'slug' is set in the URL parameters
+		if (isset($_GET['landing_page'])) {
+			$page_slug = $_GET['landing_page'];
+	
+			// Query for the page by slug
+			$args = array(
+				'name'        => $page_slug,
+				'post_type'   => 'slp_landing',
+				'post_status' => 'publish',
+				'numberposts' => 1
+			);
+			$page = get_posts($args);
+	
+			// If the page exists, redirect or load the page
+			if ($page) {
+				$page_id = $page[0]->ID;
+	
+				$parameter_page = $page_id;
+			}
+		}
+
+			?>
+
+			<?php
+					$link_page = get_field('booking_link', $parameter_page);
+					if($link_page):
+					?>
+
+		<section class="landing-page-navigation">
+			<a href="<?php the_field('booking_link', $parameter_page); ?>" class="btn">Get Help</a>
+		</section>
+		<?php endif; ?>
+
+
+		<?php } ?>
 </div>
 </header>
 

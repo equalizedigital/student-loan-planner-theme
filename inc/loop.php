@@ -301,8 +301,8 @@ function eqd_single_landing_page() {
 					?>
 				</figure>
 				<div class="ed_landing_hero_container_text">
-					<div class="sub_title">Trusted by</div>
 					<h2 class="ed_landing_hero_container_text_heading">
+						<div class="sub_title">Trusted by</div>
 						<?php the_field('trusted_by_name', $parameter_page); ?>
 					</h2>
 					<div class="copy">
