@@ -593,7 +593,7 @@ function eq_landing_page_header() {
 				if (isset($parameter_page)) {
 					echo wp_kses_post( get_the_title($parameter_page) );
 				} else {
-					echo wp_kses_post( get_the_title() );
+					echo wp_kses_post( 'Hire Student Loan Planner' );
 				}
 				 ?>
 			</h1>

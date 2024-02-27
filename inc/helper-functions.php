@@ -428,7 +428,7 @@ function generate_custom_booking_button_shortcode($atts) {
     }
     
     // Generate the HTML for the button
-    $button_html = '<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" "'. esc_url($button_url) .'">Book Your Custom Plan</a></div>';
+    $button_html = '<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="'. esc_url($button_url) .'">Book Your Custom Plan</a></div>';
 	
     
     // Return the button HTML

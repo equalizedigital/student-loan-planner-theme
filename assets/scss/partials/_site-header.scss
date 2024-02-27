@@ -59,6 +59,34 @@
 	}
 }
 
+.landing-page-navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 0;
+	min-width: 270px;
+	z-index: 10000;
+	@include media("<1070px") {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+	}
+	a{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		@include media("<1070px") {
+			position: absolute;
+			top: 8px;
+			right: 15px;
+			display: inline-flex;
+			z-index: 1100;
+			min-width: 0;
+			padding: 8px 15px;
+			font-size: 16px;
+			border-radius: 10px;
+		}
+	}
+}
 
 /* Admin Bar
 --------------------------------------------- */
