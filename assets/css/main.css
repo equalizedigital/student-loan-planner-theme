@@ -1391,6 +1391,32 @@ div.wpforms-container.one-line:after {
       .title-area p.site-title a:focus-visible {
         outline: 2px solid white; }
 
+.landing-page-navigation {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 0;
+  min-width: 270px;
+  z-index: 10000; }
+  @media (max-width: 1069px) {
+    .landing-page-navigation {
+      position: absolute;
+      top: 5px;
+      right: 10px; } }
+  .landing-page-navigation a {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    @media (max-width: 1069px) {
+      .landing-page-navigation a {
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        display: inline-flex;
+        z-index: 1100;
+        min-width: 0;
+        padding: 8px 15px;
+        font-size: 16px;
+        border-radius: 10px; } }
 /* Admin Bar
 --------------------------------------------- */
 @media (min-width: 1070px) {
