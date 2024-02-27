@@ -361,12 +361,18 @@ function get_company_name_shortcode($atts) {
         $page_slug = sanitize_text_field($_GET['landing_page']);
         
         // Query the CPT for the company name using the 'page_slug'
-        $args = array(
-			'name'        => $page_slug,
+		$args = array(
 			'post_type'   => 'slp_landing',
 			'post_status' => 'publish',
-			'numberposts' => 1
-        );
+			'numberposts' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => 'landing_page_url_text', 
+					'value' => $page_slug, 
+					'compare' => '=', 
+				),
+			),
+		);
         $query = new WP_Query($args);
         
         // If a post is found, retrieve the Company Name

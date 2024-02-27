@@ -267,10 +267,16 @@ function eqd_single_landing_page() {
 
 		// Query for the page by slug
 		$args = array(
-			'name'        => $page_slug,
 			'post_type'   => 'slp_landing',
 			'post_status' => 'publish',
-			'numberposts' => 1
+			'numberposts' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => 'landing_page_url_text', 
+					'value' => $page_slug, 
+					'compare' => '=', 
+				),
+			),
 		);
 		$page = get_posts($args);
 
@@ -283,10 +289,11 @@ function eqd_single_landing_page() {
 	}
 
 	if (isset($parameter_page)) {
+		$image_type = get_field( 'type_of_image',$parameter_page );
 	?>
 		<section class="ed_landing_hero">
 			<div class="ed_landing_hero_container">
-				<figure class="ed_landing_hero_container_figure">
+				<figure class="ed_landing_hero_container_figure <?php  echo wp_kses_post('image_type_'.$image_type); ?>">
 					<?php
 					// Get the medium-sized featured image URL
 					$featured_img_url = get_the_post_thumbnail_url($parameter_page, 'medium');
@@ -323,7 +330,7 @@ function eqd_single_landing_page() {
 					?>
 					<div class="link">
 						<a href="<?php the_field('booking_link', $parameter_page); ?>" class="btn">
-							<?php the_field('landing_page_url_text', $parameter_page); ?>
+							Book Your Custom Student Loan Plan
 						</a>
 					</div>
 					<?php endif; ?>
@@ -338,7 +345,7 @@ function eqd_single_landing_page() {
 					<?php the_field('how_does_the_consult_work', $parameter_page); ?>
 				</div>
 				<div class="ed_landing_works_container_media">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/VNnd4EhCQAo?si=pqFe6R3P50ok0VWy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php the_field('how_does_the_consult_work_youtube_id', $parameter_page); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				</div>
 			</div>
 		</section>

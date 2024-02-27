@@ -562,10 +562,16 @@ function eq_landing_page_header() {
 	
 			// Query for the page by slug
 			$args = array(
-				'name'        => $page_slug,
 				'post_type'   => 'slp_landing',
 				'post_status' => 'publish',
-				'numberposts' => 1
+				'numberposts' => 1,
+				'meta_query'     => array(
+					array(
+						'key'   => 'landing_page_url_text', 
+						'value' => $page_slug, 
+						'compare' => '=', 
+					),
+				),
 			);
 			$page = get_posts($args);
 	

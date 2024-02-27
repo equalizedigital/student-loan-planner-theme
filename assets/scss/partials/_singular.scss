@@ -2269,6 +2269,19 @@ article.type-post {
 		}
 
 		&_figure {
+			&.image_type_Logo{
+				background-color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+				img {
+					width: auto;
+					height: auto;
+					object-fit: contain;
+					object-position: center;
+				}
+			}
 			img {
 				width: 100%;
 				height: 100%;
