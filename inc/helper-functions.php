@@ -406,11 +406,17 @@ function generate_custom_booking_button_shortcode($atts) {
         
         // Query the CPT for the booking link using the 'page_slug'
         $args = array(
-            'name'        => $page_slug,
-            'post_type'   => 'slp_landing', // Replace 'slp_landing' with your actual CPT name
-            'post_status' => 'publish',
-            'numberposts' => 1
-        );
+			'post_type'   => 'slp_landing',
+			'post_status' => 'publish',
+			'numberposts' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => 'landing_page_url_text', 
+					'value' => $page_slug, 
+					'compare' => '=', 
+				),
+			),
+		);
         $query = new WP_Query($args);
         
         // If a post is found, retrieve the Booking Link
