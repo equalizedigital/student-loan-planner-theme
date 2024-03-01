@@ -337,22 +337,42 @@ function eqd_single_landing_page() {
 				</div>
 			</div>
 		</section>
+	<?php } ?>
 
-		<section class="ed_landing_works">
+		<section class="ed_landing_works <?php if(empty($parameter_page)){ echo 'ed_landing_works_empty'; } else {} ?>">
 			<div class="ed_landing_works_container">
 				<div class="ed_landing_works_container_content">
 					<h2 class="heading">How Does the Consult Work?</h2>
-					<?php the_field('how_does_the_consult_work', $parameter_page); ?>
+					<?php 
+					if(empty($parameter_page)){
+						the_field('how_does_the_consult_work'); 
+					} else {
+						the_field('how_does_the_consult_work', $parameter_page); 
+					}
+					?>
 				</div>
-				<?php if(get_field('how_does_the_consult_work_youtube_id', $parameter_page)): ?>
-				<div class="ed_landing_works_container_media">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php the_field('how_does_the_consult_work_youtube_id', $parameter_page); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-				</div>
-				<?php endif; ?>
+				
+
+				<?php 
+					if(empty($parameter_page)){
+						if(get_field('how_does_the_consult_work_youtube_id')): ?>
+							<div class="ed_landing_works_container_media">
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php the_field('how_does_the_consult_work_youtube_id'); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							</div>
+							<?php endif;
+
+					} else {
+					 if(get_field('how_does_the_consult_work_youtube_id', $parameter_page)): ?>
+							<div class="ed_landing_works_container_media">
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php the_field('how_does_the_consult_work_youtube_id', $parameter_page); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							</div>
+							<?php endif;
+					}
+					?>
 			</div>
 		</section>
+
 <?php
-	}
 }
 
 add_action('tha_content_top', 'eqd_single_landing_page', 10);

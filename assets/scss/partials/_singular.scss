@@ -2344,6 +2344,9 @@ article.type-post {
 
 
 .ed_landing_works {
+	&.ed_landing_works_empty {
+		padding: 90px 0 0;
+	}
 
 	&_container {
 		display: flex;
