@@ -8091,6 +8091,9 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       position: relative;
       top: auto; } }
 
+.editor-styles-wrapper .editormargin {
+  margin: 0 !important; }
+
 .grid-middle-line {
   position: relative; }
   .grid-middle-line::after {
