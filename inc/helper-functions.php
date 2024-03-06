@@ -354,8 +354,13 @@ function slp_append_superscript( $content, $superscript_text ) {
 
 
 function get_company_name_shortcode($atts) {
+	$fallback = shortcode_atts( array(
+        'fallback' => 'eee',
+    ), $atts );
+
+
     // Default message
-    $message = "For all fans, ...";
+    $message = esc_attr($fallback['fallback']);
     
     if(isset($_GET['landing_page'])) {
         $page_slug = sanitize_text_field($_GET['landing_page']);
