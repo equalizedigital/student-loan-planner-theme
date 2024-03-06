@@ -1,0 +1,26 @@
+{
+	"name": "acf/affialiate-landing-block",
+	"title": "Affiliate Landing",
+	"description": "Two columns. Text and Video",
+	"category": "custom-blocks",
+	"icon": "screenoptions",
+	"keywords": [
+		"featured",
+		"Affiliate Landing",
+		"Affiliate Landing block",
+		"Affiliate Landing logos",
+		"Affiliate Landing logos block",
+		"Affiliate Landing logos list",
+		"Affiliate Landing logos list block"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/affiliate-landing-block/screenshot.png"
+		}
+	}
+}

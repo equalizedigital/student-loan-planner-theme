@@ -2518,6 +2518,21 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/scss\/blocks\/_affiliate-landing.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_affiliate-landing.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/_testimonial-videos.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3852,6 +3867,35 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/accordion\/template.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/affiliant-landing-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/affiliant-landing-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/affiliant-landing-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 1047008,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/affiliant-landing-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/affiliant-landing-block\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/affiliant-landing-block\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/calculator-form-cta\/block.json" : {

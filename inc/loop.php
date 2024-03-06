@@ -339,10 +339,22 @@ function eqd_single_landing_page() {
 		</section>
 	<?php } ?>
 
+
+	<?php if(!empty($parameter_page)): ?>
 		<section class="ed_landing_works <?php if(empty($parameter_page)){ echo 'ed_landing_works_empty'; } else {} ?>">
 			<div class="ed_landing_works_container">
 				<div class="ed_landing_works_container_content">
-					<h2 class="heading">How Does the Consult Work?</h2>
+					<h2 class="heading">
+					<?php 
+					if(empty($parameter_page)){
+						the_field('heading'); 
+					} else {
+						the_field('heading', $parameter_page); 
+					}
+					?>	
+
+					</h2>
+
 					<?php 
 					if(empty($parameter_page)){
 						the_field('how_does_the_consult_work'); 
@@ -371,6 +383,7 @@ function eqd_single_landing_page() {
 					?>
 			</div>
 		</section>
+	<?php endif; ?>
 
 <?php
 }
