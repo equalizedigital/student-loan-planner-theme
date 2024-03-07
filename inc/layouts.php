@@ -190,20 +190,23 @@ add_action( 'tha_footer_top', 'eqd_output_footer_widgets' );
  * Output footer widget area.
  */
 function eqd_output_footer_widgets() {
-	if ( is_active_sidebar( 'Footer Widget Area 1' ) ) {
-		?>
-		<div id="footer-widget-area-1" class="widget-area">
-			<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
-		</div>
-		<?php
+	if (! is_page_template( 'page-landing.php' ) ) {
+		if ( is_active_sidebar( 'Footer Widget Area 1' ) ) {
+			?>
+			<div id="footer-widget-area-1" class="widget-area">
+				<?php dynamic_sidebar( 'Footer Widget Area 1' ); ?>
+			</div>
+			<?php
+		}
+		if ( is_active_sidebar( 'Footer Widget Area 2' ) ) {
+			?>
+			<div id="footer-widget-area-2" class="widget-area">
+				<?php dynamic_sidebar( 'Footer Widget Area 2' ); ?>
+			</div>
+			<?php
+		}
 	}
-	if ( is_active_sidebar( 'Footer Widget Area 2' ) ) {
-		?>
-		<div id="footer-widget-area-2" class="widget-area">
-			<?php dynamic_sidebar( 'Footer Widget Area 2' ); ?>
-		</div>
-		<?php
-	}
+
 	if ( is_active_sidebar( 'Footer Widget Area 3' ) ) {
 		?>
 		<div id="footer-widget-area-3" class="widget-area">

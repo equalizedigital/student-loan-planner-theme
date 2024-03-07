@@ -2518,6 +2518,36 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/scss\/blocks\/_affiliate-landing.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_affiliate-landing.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/_testimonial-videos.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_testimonial-videos.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/accordion.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -2676,7 +2706,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/assets\/scss\/css\/full-width-columns-background.css",
       "oF" : 0,
       "oS" : 0,
@@ -2691,7 +2721,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/assets\/scss\/css\/full-width-columns-cta-inner.css",
       "oF" : 0,
       "oS" : 0,
@@ -2721,7 +2751,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/assets\/scss\/css\/media-reviews-slider.css",
       "oF" : 0,
       "oS" : 0,
@@ -2736,7 +2766,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/assets\/scss\/css\/media-reviews.css",
       "oF" : 0,
       "oS" : 0,
@@ -3101,17 +3131,17 @@
       "sct" : 1
     },
     "\/assets\/scss\/main.scss" : {
-      "aP" : 1,
+      "aP" : 0,
       "bl" : 0,
       "co" : 0,
       "dP" : 10,
       "ec" : 1,
       "ft" : 4,
-      "ma" : 1,
+      "ma" : 0,
       "oA" : 0,
       "oAP" : "\/assets\/css\/main.css",
       "oF" : 0,
-      "oS" : 3,
+      "oS" : 0,
       "pg" : 0,
       "sct" : 1
     },
@@ -3305,6 +3335,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/_layout.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/partials\/_mobile-navigation.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_mobile-navigation.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -3654,6 +3699,14 @@
       "oAP" : "\/offline.php",
       "oF" : 0
     },
+    "\/page-landing.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/page-landing.php",
+      "oF" : 0
+    },
     "\/partials\/content\/content.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3662,12 +3715,36 @@
       "oAP" : "\/partials\/content\/content.php",
       "oF" : 0
     },
-    "\/partials\/content\/header\/main.php" : {
+    "\/partials\/content\/header\/desktop-navigation.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/partials\/content\/header\/main.php",
+      "oAP" : "\/partials\/content\/header\/desktop-navigation.php",
+      "oF" : 0
+    },
+    "\/partials\/content\/header\/green-cta-button.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/partials\/content\/header\/green-cta-button.php",
+      "oF" : 0
+    },
+    "\/partials\/content\/header\/mobile-navigation.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/partials\/content\/header\/mobile-navigation.php",
+      "oF" : 0
+    },
+    "\/partials\/content\/header\/primary-navigation.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/partials\/content\/header\/primary-navigation.php",
       "oF" : 0
     },
     "\/partials\/content\/no-content.php" : {
@@ -3792,6 +3869,35 @@
       "oAP" : "\/template-parts\/blocks\/accordion\/template.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/affiliant-landing-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/affiliant-landing-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/affiliant-landing-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 1047008,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/affiliant-landing-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/affiliant-landing-block\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/affiliant-landing-block\/template.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/calculator-form-cta\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -3907,17 +4013,6 @@
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/detailed-links\/template.php",
       "oF" : 0
-    },
-    "\/template-parts\/blocks\/doctor-mortgages-map-block-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/doctor-mortgages-map-block-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
     },
     "\/template-parts\/blocks\/doctor-mortgages-map-block\/block.json" : {
       "ft" : 524288,
@@ -4706,6 +4801,35 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/vendor-repeater\/template.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/video-testimonials\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/video-testimonials\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/video-testimonials\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 89599,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/video-testimonials\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/video-testimonials\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/video-testimonials\/template.php",
       "oF" : 0
     }
   },

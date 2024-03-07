@@ -1,5 +1,6 @@
-body, p {
-	@include style( 'text', null, true );
+body,
+p {
+	@include style('text', null, true);
 }
 
 /* Post title width */
@@ -8,7 +9,7 @@ body, p {
 
 	/* Post title styling */
 	.editor-post-title__input {
-		@include style( 'title', 1, true );
+		@include style('title', 1, true);
 	}
 }
 
@@ -25,7 +26,7 @@ body, p {
 		max-width: none;
 	}
 
-	&[data-align="center"] > [data-type="core/group"] {
+	&[data-align="center"]>[data-type="core/group"] {
 		text-align: inherit;
 
 		.wp-block-group__inner-container {
@@ -33,7 +34,7 @@ body, p {
 		}
 	}
 
-	&[data-align="wide"] > [data-type="core/group"] {
+	&[data-align="wide"]>[data-type="core/group"] {
 
 		.wp-block-group__inner-container {
 			max-width: $grid-width;
@@ -65,7 +66,8 @@ body, p {
 	}
 }
 
-ul, ol {
+ul,
+ol {
 	margin-bottom: 24px;
 }
 
@@ -85,12 +87,15 @@ ul, ol {
 }
 
 .grid-middle-line {
-    position: relative;
+	position: relative;
 }
 
 
 
 
 @import "entry-content";
+
+
+
 
 

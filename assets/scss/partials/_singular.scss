@@ -953,13 +953,13 @@ img.wprm-comment-rating {
 
 }
 
-.single{
+.single {
 	.post_type_layout_standard {
 		.entry-content {
 			padding: 10px 0 40px;
 		}
-	
-	}	
+
+	}
 }
 
 .post_type_layout_full-width {
@@ -1012,6 +1012,13 @@ img.wprm-comment-rating {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+	}
+
+	&.landing-page-header {
+		padding: 60px 0 80px;
+		.title {
+			max-width: unset;
+		}
 	}
 
 	&.taxonomy-physicians {
@@ -2239,5 +2246,162 @@ article.type-post {
 
 	+.refinance_lender_section {
 		margin-top: -67px;
+	}
+}
+
+
+// Landing Page
+.ed_landing_hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: -60px;
+	margin-bottom: 100px;
+	position: relative;
+	z-index: 2;
+
+	&_container {
+		max-width: 1122px;
+		display: grid;
+		grid-template-columns: 1fr;
+		background-color: #FFFDE9;
+		width: 100%;
+		box-shadow: 0px 15px 27px rgba(161, 165, 165, 0.25);
+		border-radius: 10px;
+		overflow: hidden;
+
+		@include media(">tablet") {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include media(">desktop") {
+			grid-template-columns: 450px 1fr;
+		}
+
+		&_figure {
+			&.image_type_Logo{
+				background-color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+				img {
+					width: auto;
+					height: auto;
+					object-fit: contain;
+					object-position: center;
+				}
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+		}
+
+		&_text {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			flex-direction: column;
+			padding: 46px 20px;
+			max-width: 480px;
+			margin: 0 auto;
+			gap: 0 20px;
+
+			.sub_title {
+				color: var(--WCAG-Green, #547C2D);
+				font-style: normal;
+				font-weight: 400;
+
+				margin-bottom: 10px;
+
+				@include media(">tablet") {
+					line-height: 30px;
+					font-size: 25px;
+
+				}
+			}
+
+			&_heading {
+				color: #625089;
+				font-style: normal;
+				font-weight: 700;
+
+				@include media(">tablet") {
+					line-height: 50px;
+					font-size: 50px;
+				}
+
+			}
+
+			.copy {
+				color: #000;
+				font-size: 25px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 30px;
+				margin-bottom: 30px;
+			}
+
+			.link {
+				display: flex;
+			}
+		}
+	}
+}
+
+
+.ed_landing_works {
+	&.ed_landing_works_empty {
+		padding: 90px 0 0;
+	}
+
+	&_container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 0 auto;
+		max-width: 1122px;
+
+		&_content,
+		&_media {
+			flex-basis: 48%;
+			margin-bottom: 20px;
+		}
+
+		&_content {}
+
+		&_media {
+
+			position: -webkit-sticky;
+			position: sticky;
+			top: 20px;
+			align-self: flex-start;
+
+			iframe {
+
+				width: 100%;
+				height: 315px;
+			}
+		}
+	}
+
+
+	@media (max-width: 768px) {
+		&_container {
+			flex-direction: column;
+
+			&_content,
+			&_media {
+				flex-basis: 100%;
+			}
+
+			&_media {
+				position: relative;
+				top: auto;
+			}
+		}
 	}
 }
