@@ -91,7 +91,7 @@ function eqd_single_after_entry_content() {
 
 	<?php if (have_rows('vendors', 'option')) : ?>
 
-		<section class="refinance_lender_section">
+		<section class="refinance_lender_section <?php if (get_field('show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id)) { echo 'refinance_lender_section_private'; } ?>">
 
 			<header class="title">
 				<?php $current_year = gmdate('Y'); ?>
@@ -108,7 +108,6 @@ function eqd_single_after_entry_content() {
 
 			<?php
 			if (get_field('show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id)) {
-
 			?>
 				<div class="lender_info">
 					<table id="refinance_lender_options">
