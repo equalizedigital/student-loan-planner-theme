@@ -81,7 +81,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<?php
 				$icon = get_sub_field( 'icon' );
 				if ( $icon ) {
-					echo wp_get_attachment_image( $icon['ID'], 'full' );
+					echo wp_get_attachment_image( $icon['ID'], 'full' , false, array('aria-hidden' => 'true') );
 				}
 				?>
 				<?php echo esc_html( $link_title ); ?>
