@@ -9,6 +9,14 @@
   ],
   "creatorBuild" : "34564",
   "files" : {
+    "\/.github\/workflows\/develop.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.github\/workflows\/develop.yml",
+      "oF" : 0
+    },
     "\/.github\/workflows\/master.yml" : {
       "cB" : 0,
       "ft" : 8192,
@@ -2533,6 +2541,21 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/assets\/scss\/blocks\/_link_tiles.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_link_tiles.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/assets\/scss\/blocks\/_testimonial-videos.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -2706,7 +2729,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/full-width-columns-background.css",
       "oF" : 0,
       "oS" : 0,
@@ -2721,7 +2744,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/full-width-columns-cta-inner.css",
       "oF" : 0,
       "oS" : 0,
@@ -2751,7 +2774,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/media-reviews-slider.css",
       "oF" : 0,
       "oS" : 0,
@@ -2766,7 +2789,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/media-reviews.css",
       "oF" : 0,
       "oS" : 0,
@@ -4250,6 +4273,35 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/template.php",
+      "oF" : 0
+    },
+    "\/template-parts\/blocks\/link-tiles\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/link-tiles\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/link-tiles\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 112322,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/link-tiles\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/link-tiles\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/link-tiles\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/media-reviews-block\/block.json" : {

@@ -1,27 +1,29 @@
 <?php
 /**
- * Featured Post Block Template.
+ * Link Tiles Template.
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Featured Post
+ * @package Block Title Template
  */
 
+$block_name = 'link_tiles_template';
+
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$block_id = 'featured-post-' . $block['id'];
+$block_id = $block_name . '-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
 	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$class_name = 'block featured-post';
+$class_name = 'block ' . $block_name;
 if ( ! empty( $block['className'] ) ) :
 	$class_name .= ' ' . $block['className'];
 endif;
@@ -32,52 +34,63 @@ endif;
 
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
-// Load values and assing defaults.
-$post_select                          = get_field( 'post' );
 
-$featured_img_url = get_the_post_thumbnail_url($post_select->ID, 'full'); // 'full' indicates the original image size
-$category_ids = wp_get_post_categories($post_select->ID);
+// get_field( 'heading_level_select' )
 
-
-$dateObject = new DateTime($post_select->post_date);
-$formattedDate = $dateObject->format('M d, Y');
-
-// Get the author ID from the post ID
-$author_id = get_post_field('post_author', $post_select->ID);
-
-// Get the author's display name
-$author_name = get_the_author_meta('display_name', $author_id);
-
-// Get the author's avatar. You can adjust the size (e.g., 96 here) as needed.
-$author_avatar = get_avatar($author_id, 96);
 
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
-	<a class="featured-post-container" href="<?php the_permalink( $post_select->ID ); ?>">
-		<div class="featured-post-container-content">
-			<div class="featured-post-container-info">
-				<div class="cat">
-					<?php 
-					if (!empty($category_ids)) {
-						$category = get_category($category_ids[0]);
-						echo $category->name . ' ';
-					}
-					?>
-				</div>
-				<div class="date"><?php  echo wp_kses_post($formattedDate); ?></div>
+
+<div class="link_tiles_template_container">
+	<div class="link_tiles_template_container_header">
+
+	<?php
+	// Assuming the field name is 'heading_level_select'
+	$heading_level = get_field('heading_level_select');
+
+	// Default to h2 if no selection is made
+	if (!$heading_level) {
+		$heading_level = 'h2';
+	}
+
+	// Assuming the field name for the heading text is 'heading_text'
+	$heading_text = get_field('heading');
+	?>
+
+	<?php if($heading_text): ?>
+		<<?php echo $heading_level; ?>><?php echo esc_html($heading_text); ?></<?php echo $heading_level; ?>>
+	<?php endif; ?>
+
+	</div>
+	<div class="link_tiles_template_container_tiles">
+	<?php 
+	if ( have_rows( 'tiles' ) ) : 
+		while ( have_rows( 'tiles' ) ) :
+			the_row();
+			?>
+			<div class="link_tiles_template_container_tiles_tile">
+			<?php
+			$link = get_sub_field( 'link' );
+			if ( $link ) :
+				$link_url    = $link['url'];
+				$link_title  = $link['title'];
+				$link_target = $link['target'] ? $link['target'] : '_self';
+				?>
+				<a class="link" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
+				<?php
+				$icon = get_sub_field( 'icon' );
+				if ( $icon ) {
+					echo wp_get_attachment_image( $icon['ID'], 'full' );
+				}
+				?>
+				<?php echo esc_html( $link_title ); ?>
+			</a>
+			<?php endif; ?>
 			</div>
-			<h2 class="title"><?php  echo wp_kses_post($post_select->post_title); ?></h2>
-			<div class="author">
-			<?php  echo wp_kses_post($author_avatar); ?>
-				<?php  echo wp_kses_post($author_name); ?>
-			</div>
-		</div>
-		<div class="featured-post-container-image">
-		<?php if ($featured_img_url) {
-			echo '<img src="' . esc_url($featured_img_url) . '" alt="">';
-		}
-		?>
-		</div>
-	</a>
+		<?php endwhile; 
+	endif; ?>
+	</div>
+</div>
+
 </section>

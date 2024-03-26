@@ -1,7 +1,7 @@
 {
-	"name": "acf/featured-post",
-	"title": "Featured Post",
-	"description": "Display a post.",
+	"name": "acf/link-tiles",
+	"title": "Link Tyles",
+	"description": "Display tiles.",
 	"category": "custom-blocks",
 	"icon": "admin-post",
 	"keywords": [
@@ -15,7 +15,7 @@
 	"attributes": {
 		"previewImage": {
 			"type": "string",
-			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/featured-post/screenshot.png"
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/link-tiles/screenshot.png"
 		}
 	}
 }
