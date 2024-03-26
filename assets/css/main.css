@@ -8149,7 +8149,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     .video_block_template_container_content_block {
       min-width: 520px; } }
 .video_block_template_container_content_block_heading {
-  color: white;
+  color: white !important;
   left: 84px; }
 
 .video_block_template_container_media_placeholder_action {
