@@ -1,6 +1,8 @@
 .video_block_template {
     background: #625089;
 
+
+
     .video_block_template_container {
         display: grid;
         grid-template-columns: 0.34fr 1fr;
@@ -8,6 +10,11 @@
 
     video {
         max-width: 100%;
+        @include media("<tablet") {
+            min-height: 100vh;
+            object-fit: cover;
+    object-position: center;
+        }
     }
 }
 
@@ -18,11 +25,17 @@
     position: relative;
     width: 100%;
     z-index: 21;
+    @include media("<tablet") {
+        min-height: 100vh;
+    }
 }
 
 
 .video_block_template_container_media_video {
     position: relative;
+    @include media("<tablet") {
+        min-height: 100vh;
+    }
 }
 
 .video_block_template_container_media_video_button {
@@ -46,14 +59,22 @@
 .video_block_template_container_content_block {
     position: absolute;
     top: 50%;
-    left: 84px;
-    min-width: 460px;
+    width: 50%;
+    left: 20px;
     transform: translate(0px, -50%);
+
+    @include media(">tablet") {
+        min-width: 520px;
+    }
+
 }
 
 
-.video_block_template_container_content_block_heading{
+.video_block_template_container_content_block_heading {
     color: white;
+    left: 84px;
+
+
 }
 
 .video_block_template_container_media_placeholder_action {

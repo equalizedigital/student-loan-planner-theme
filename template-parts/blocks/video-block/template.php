@@ -43,10 +43,24 @@ $heading = get_field( 'heading' );
 	<div class="video_block_template_container">
 		<div class="video_block_template_container_content">
 			<div class="video_block_template_container_content_block">
-				<h2 class="video_block_template_container_content_block_heading">Grow Wealth and Leave Student Loans in the Dust</h2>
+			<?php
+			// Assuming the field name is 'heading_level_select'
+			$heading_level = get_field('heading_level_select');
+
+			// Default to h2 if no selection is made
+			if (!$heading_level) {
+				$heading_level = 'h2';
+			}
+
+			// Assuming the field name for the heading text is 'heading_text'
+			$heading_text = get_field('heading');
+			?>
+
+			<?php if($heading_text): ?>
 				<?php if ( $heading ) : ?>
-					<?php echo esc_html( $heading ); ?>
+					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo esc_html($heading_text); ?></<?php echo $heading_level; ?>>
 				<?php endif; ?>
+			<?php endif; ?>
 				<button class="btn btn-dark-bg">Get Started</button>
 			</div>
 		</div>
