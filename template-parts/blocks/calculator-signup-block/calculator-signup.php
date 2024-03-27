@@ -37,7 +37,7 @@ $copy  = get_field( 'copy' );
 if ( get_field( 'image' ) ) {
 	$image = get_field( 'image' );
 }
-$link = get_field('link');
+$link = get_field( 'link' );
 ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
 	<div class="calculator-signup-container">
@@ -52,7 +52,7 @@ $link = get_field('link');
 			<div class="text"><?php echo $copy; ?></div>
 			<?php 
 			if ( ! empty( $link ) ) {
-				$url = $link['url'];
+				$url   = $link['url'];
 				$title = $link['title'];
 				echo '<span class="content">';
 				echo "<a href=\"$url\" class=\"btn btn-dark-bg\">";

@@ -36,22 +36,22 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 $title                   = get_field( 'title', 'option' );
 $block_style             = get_field( 'block_style', 'option' );
 $testimonial_block_style = get_field( 'testimonial_block_style', 'option' );
-$hide_title             = get_field( 'hide_title' );
+$hide_title              = get_field( 'hide_title' );
 
 if ( $testimonial_block_style ) :
 	$className .= ' media-reviews-global-block_' . $testimonial_block_style;
 endif;
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?> <?php echo $block_style == 'purple' ? 'media-reviews-global-block-purple' : ''; ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?> <?php echo $block_style === 'purple' ? 'media-reviews-global-block-purple' : ''; ?>">
 	<div class="media-reviews-global-container">
 
-		<?php if(!$hide_title ): ?>
+		<?php if ( ! $hide_title ) : ?>
 			<h2 class="title"><?php echo $title; ?></h2>
 		<?php endif; ?>
 		<div class="media-reviews-global-container-review-items">
 			<?php
-			if ( have_rows( 'select_reviews','option' ) ) :
-				while ( have_rows( 'select_reviews','option' ) ) :
+			if ( have_rows( 'select_reviews', 'option' ) ) :
+				while ( have_rows( 'select_reviews', 'option' ) ) :
 					the_row();
 
 					// Get sub-field values

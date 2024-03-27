@@ -36,7 +36,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 $acf_title                          = get_field( 'title' );
 $content                            = get_field( 'content' );
 $image                              = get_field( 'image' );
-$placeholder_image_retina_display                              = get_field( 'placeholder_image_retina_display' );
+$placeholder_image_retina_display   = get_field( 'placeholder_image_retina_display' );
 $youtube_video_id                   = get_field( 'youtube_video_id' );
 $acf_link                           = get_field( 'link' );
 $reverse_order_of_image_and_content = get_field( 'reverse_order_of_image_and_content' );
@@ -67,7 +67,7 @@ endif;
 				alt="<?php echo wp_kses_post( $image['alt'] ); ?>">
 
 			<?php endif; ?>
-			<?php if(!empty($youtube_video_id)): ?>
+			<?php if ( ! empty( $youtube_video_id ) ) : ?>
 			<button class="modal-btn btn-dark-bg full-width-columns-background-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
 				<img decoding="async" loading="lazy" class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>

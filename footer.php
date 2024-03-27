@@ -13,7 +13,7 @@ tha_footer_cta();
 echo '</div>'; // .site-inner
 
 tha_footer_before();
-echo '<footer class="site-footer" role="contentinfo"><h2 class="screen-reader-text">'.get_bloginfo( ).' Footer</h2><div class="wrap">';
+echo '<footer class="site-footer" role="contentinfo"><h2 class="screen-reader-text">' . get_bloginfo() . ' Footer</h2><div class="wrap">';
 tha_footer_top();
 tha_footer_bottom();
 echo '</div></footer>';

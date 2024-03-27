@@ -49,7 +49,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								data-link="tab-<?php echo $key; ?>" 
 								class="
 								<?php
-								if ( $key == 0 ) {
+								if ( $key === 0 ) {
 									echo 'active'; }
 								?>
 								" 
@@ -57,7 +57,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								role="tab" 
 								tabindex="
 								<?php
-								if ( $key == 0 ) {
+								if ( $key === 0 ) {
 									echo '';
 								} else {
 									echo '-1';}
@@ -65,7 +65,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								"
 								aria-selected="
 								<?php
-								if ( $key == 0 ) {
+								if ( $key === 0 ) {
 									echo 'true';
 								} else {
 									echo 'false';}
@@ -116,7 +116,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 								id="tab-<?php echo $key; ?>" 
 								class="tabbed-content__content__pane 
 								<?php
-								if ( $key == 0 ) {
+								if ( $key === 0 ) {
 									echo 'tabbed-content__content__pane--active'; }
 								?>
 								">
@@ -135,17 +135,17 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 									</div>
 									<div class="review">
 										<?php
-										if(!empty($row['rating']['url'])){
+										if ( ! empty( $row['rating']['url'] ) ) {
 											echo '<a href="' . $row['rating']['url'] . '">';
 										}
 										?>
 										<?php 
-										if(!empty($row['rating']['title'])){
-										echo $row['rating']['title']; 
+										if ( ! empty( $row['rating']['title'] ) ) {
+											echo $row['rating']['title']; 
 										}
 										?>
 										<?php
-										if(!empty($row['rating']['url'])){
+										if ( ! empty( $row['rating']['url'] ) ) {
 											echo '</a>';
 										}
 										?>
@@ -163,7 +163,7 @@ $className = apply_filters( 'loader_block_class', $className, $block, $post_id )
 										$ctas = $row['ctas'];
 										if ( $ctas ) {
 											foreach ( $ctas as $key => $row ) {
-												if ( $key != 0 ) {
+												if ( $key !== 0 ) {
 													continue;}
 												?>
 												<div class="image_info_item">

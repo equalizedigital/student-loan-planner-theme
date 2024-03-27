@@ -34,19 +34,19 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$acf_title                          = get_field( 'title' );
-$content                            = get_field( 'content' );
-$image                              = get_field( 'image' );
-$youtube_video_id                   = get_field( 'youtube_video_id' );
-$acf_link                           = get_field( 'link' );
-$modal_button                       = get_field( 'modal_button' );
+$acf_title        = get_field( 'title' );
+$content          = get_field( 'content' );
+$image            = get_field( 'image' );
+$youtube_video_id = get_field( 'youtube_video_id' );
+$acf_link         = get_field( 'link' );
+$modal_button     = get_field( 'modal_button' );
 
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="full-width-columns-cta-inner-container">
 		<div class="full-width-columns-cta-inner-container-content">
-			<h2 class="title <?php echo !empty(get_field('title_size'))?'title_medium':'';  ?> "><?php echo wp_kses_post( $acf_title ); ?></h2>
+			<h2 class="title <?php echo ! empty( get_field( 'title_size' ) ) ? 'title_medium' : ''; ?> "><?php echo wp_kses_post( $acf_title ); ?></h2>
 			<div class="content"><?php echo wp_kses_post( $content ); ?></div>
 			<?php if ( $modal_button ) : ?>
 				<button class="btn modal-btn" data-modal="modal1" aria-label="Open Video"><?php echo wp_kses_post( $modal_button ); ?></button>
@@ -61,7 +61,7 @@ $modal_button                       = get_field( 'modal_button' );
 			<?php if ( $image ) : ?>
 				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
 			<?php endif; ?>
-			<?php if(!empty($youtube_video_id)): ?>
+			<?php if ( ! empty( $youtube_video_id ) ) : ?>
 			<button class="modal-btn full-width-columns-cta-inner-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
 				<img class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>

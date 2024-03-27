@@ -58,7 +58,7 @@ endif;
 
 					$member = get_sub_field( 'member' );
 					$author = get_field( 'post_author', $member->ID );
-					if ( !is_null($author->ID) ) {
+					if ( ! is_null( $author->ID ) ) {
 						$author_id   = $author->ID;
 						$author_name = get_userdata( $author->ID );
 					}
@@ -68,15 +68,15 @@ endif;
 					<li class="team-hightlight-block-container-team-hightlight-member 
 					<?php
 					if ( empty( $acf_use_alternative_styling ) ) {
-					if ( get_row_index() > 6 ) {
+						if ( get_row_index() > 6 ) {
 						
-						echo 'hidden'; }
+							echo 'hidden'; }
 					}
 					?>
 					">
 					
 						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
-							<?php if ( !is_null($author->ID) ) : ?>
+							<?php if ( ! is_null( $author->ID ) ) : ?>
 								<a href="<?php echo get_site_url() . '/author/' . $author_name->user_nicename; ?>" class="team-hightlight-block-container-team-hightlight-member__button">
 							<?php else : ?>
 								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>-<?php echo esc_attr( $classid ); ?>" aria-label="Open Video">
@@ -105,7 +105,7 @@ endif;
 							</div>
 
 							<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
-								<?php if ( !is_null($author->ID) ) : ?>
+								<?php if ( ! is_null( $author->ID ) ) : ?>
 									</a>
 								<?php else : ?>
 									</button>
@@ -150,7 +150,7 @@ if ( have_rows( 'team' ) ) :
 		$member      = get_sub_field( 'member' );
 		$booking_url = get_field( 'booking_url', $member->ID );
 		$words       = explode( ' ', trim( $member->post_title ) );
-		$first_word   = $words[0];
+		$first_word  = $words[0];
 		?>
 
 		<div id="modal<?php echo wp_kses_post( get_row_index() ); ?>-<?php echo esc_attr( $classid ); ?>" class="modal team-hightlight-block-modal" role="dialog" aria-modal="true">

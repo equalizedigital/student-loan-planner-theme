@@ -66,7 +66,6 @@ function eqd_add_dashboard_widgets() {
 
 	add_meta_box( 'eqd_dashboard_widget', 'Welcome to the ' . get_bloginfo( 'name' ) . ' Website', 'eqd_dashboard_widget_function', 'dashboard', 'side', 'high' );
 	add_meta_box( 'eqd_dashboard_rss', 'Equalize Digital News', 'eqd_dashboard_rss', 'dashboard', 'side', 'high' );
-
 }
 
 /**
@@ -119,7 +118,6 @@ function eqd_dashboard_widget_function() {
 		<a href="https://twitter.com/equalizedigital" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>';
 
 	echo '</div>';
-
 }
 
 /**
@@ -157,13 +155,13 @@ function eqd_dashboard_rss() {
 	foreach ( $rss->get_items( 0, $items ) as $item ) {
 		$publisher = '';
 		$site_link = '';
-		$link = '';
-		$content = '';
-		$date = '';
-		$link = esc_url( strip_tags( $item->get_link() ) );
-		$title = esc_html( $item->get_title() );
-		$content = $item->get_content();
-		$content = wp_html_excerpt( $content, 200 ) . ' ...<a target="_blank" href="' . $link . '">Keep Reading</a>';
+		$link      = '';
+		$content   = '';
+		$date      = '';
+		$link      = esc_url( strip_tags( $item->get_link() ) );
+		$title     = esc_html( $item->get_title() );
+		$content   = $item->get_content();
+		$content   = wp_html_excerpt( $content, 200 ) . ' ...<a target="_blank" href="' . $link . '">Keep Reading</a>';
 
 		echo "<li><a class='rsswidget' href='" . esc_url( $link ) . " target='_blank'>" . wp_kses_post( $title ) . "</a>\n<div class='rssSummary'>" . wp_kses_post( $content ) . "</div>\n";
 	}

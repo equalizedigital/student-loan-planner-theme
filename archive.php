@@ -67,13 +67,12 @@ function eqd_archive_header() {
 	echo '<header class="' . esc_attr( join( ' ', $classes ) ) . '">';
 	do_action( 'eqd_archive_header_before' );
 
-	if ( !is_search() ) {
+	if ( ! is_search() ) {
 		echo '<h2 class="archive-title">Latest articles</h2>';
 	}
 	echo wp_kses_post( apply_filters( 'eqd_the_content', $description ) );
 	do_action( 'eqd_archive_header_after' );
 	echo '</header>';
-
 }
 add_action( 'tha_content_while_before', 'eqd_archive_header' );
 
@@ -82,19 +81,19 @@ add_action( 'tha_content_while_before', 'eqd_archive_header' );
  * Archive Recommended Posts
  */
 function eqd_archive_recommended_post() {
-	$term = get_queried_object();
-	$post_recommened = get_field('recommendedfeatured_posts',$term); 
+	$term            = get_queried_object();
+	$post_recommened = get_field( 'recommendedfeatured_posts', $term ); 
 
-	if(!empty($post_recommened)):
-		if (!is_paged()) :
-	?>
+	if ( ! empty( $post_recommened ) ) :
+		if ( ! is_paged() ) :
+			?>
 	<section class="archive_template_recommended_post">
 		<div class="archive_template_recommended_post_header">
 			<h2 class="archive_template_recommended_post_header_title">
 				
 				<?php 
-				if(is_tax()){
-					echo "Recommended Resources for ". $term->name;
+				if ( is_tax() ) {
+					echo 'Recommended Resources for ' . $term->name;
 				} else {
 					echo 'Featured articles';
 				}
@@ -117,7 +116,7 @@ function eqd_archive_recommended_post() {
 				while ( $the_query->have_posts() ) {
 					$the_query->the_post();
 					?>
-					<a class="archive_template_recommended_post_loop_item" href="<?php the_permalink( ); ?>">
+					<a class="archive_template_recommended_post_loop_item" href="<?php the_permalink(); ?>">
 						<figure>
 							<?php
 							if ( has_post_thumbnail() ) {
@@ -126,22 +125,22 @@ function eqd_archive_recommended_post() {
 							?>
 							<?php 
 							if ( is_tax( 'slp_occupation' ) ) {
-							$categories = get_the_category();
-							if ( ! empty( $categories ) ) {
-								?>
-								<div class="categories"><?php  echo wp_kses_post(  $categories[0]->name ); ?></div>
-								<?php
-							}
+								$categories = get_the_category();
+								if ( ! empty( $categories ) ) {
+									?>
+								<div class="categories"><?php echo wp_kses_post( $categories[0]->name ); ?></div>
+									<?php
+								}
 							}
 							?>
 						</figure>
 						<div class="date">
 							<?php echo get_the_date();  // This will output the date the post was published ?>
 						</div>
-						<h3 class="title"><?php  echo wp_kses_post(get_the_title()); ?></h3>
+						<h3 class="title"><?php echo wp_kses_post( get_the_title() ); ?></h3>
 						<div class="author">
 							<?php
-							$author_id = get_the_author_meta('ID');
+							$author_id = get_the_author_meta( 'ID' );
 							echo get_avatar( $author_id, 96 );  
 							?>
 							<div class="author_name">
@@ -161,32 +160,31 @@ function eqd_archive_recommended_post() {
 			?>
 		</div>
 	</section>
-	<?php
+			<?php
 	endif;
 	endif;
-
 }
 add_action( 'tha_content_before_container', 'eqd_archive_recommended_post' );
 
-function eqd_archive_recommended_cta(){
+function eqd_archive_recommended_cta() {
 	$term = get_queried_object();
-	$cta = get_field('cta',$term); 
+	$cta  = get_field( 'cta', $term ); 
 
-	if($cta):
-		if(!is_paged()):
-?>
+	if ( $cta ) :
+		if ( ! is_paged() ) :
+			?>
 <section class="archive_cta">
 	<div class="archive_cta_container">
-		<?php if(!empty($cta['image'])): ?>
+			<?php if ( ! empty( $cta['image'] ) ) : ?>
 		<div class="archive_cta_container_figure">
-			<img src="<?php echo wp_kses_post($cta['image']['url']); ?>" alt="<?php echo wp_kses_post($cta['title']); ?>">
+			<img src="<?php echo wp_kses_post( $cta['image']['url'] ); ?>" alt="<?php echo wp_kses_post( $cta['title'] ); ?>">
 		</div>
 		<?php endif; ?>
-		<?php if(!empty($cta['title'])): ?>
+			<?php if ( ! empty( $cta['title'] ) ) : ?>
 		<div class="archive_cta_container_copy">
-			<h2 class="title"><?php echo wp_kses_post($cta['title']); ?></h2>
+			<h2 class="title"><?php echo wp_kses_post( $cta['title'] ); ?></h2>
 			<div class="copy">
-				<?php echo wp_kses_post($cta['copy']); ?>
+				<?php echo wp_kses_post( $cta['copy'] ); ?>
 			</div>
 			<div class="form">
 				<?php echo do_shortcode( $cta['form_code'] ); ?>
@@ -195,7 +193,7 @@ function eqd_archive_recommended_cta(){
 		<?php endif; ?>
 	</div>
 </section>
-<?php
+			<?php
 endif;
 endif;
 }
