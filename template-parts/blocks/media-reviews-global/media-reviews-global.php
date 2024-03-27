@@ -21,16 +21,16 @@ if ( ! empty( $block['anchor'] ) ) :
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block media-reviews-global-block';
+$class_name = 'block media-reviews-global-block';
 if ( ! empty( $block['className'] ) ) :
-	$className .= ' ' . $block['className'];
+	$class_name .= ' ' . $block['className'];
 endif;
 
 if ( ! empty( $block['align'] ) ) :
-	$className .= ' align' . $block['align'];
+	$class_name .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
 $title                   = get_field( 'title', 'option' );
@@ -39,10 +39,10 @@ $testimonial_block_style = get_field( 'testimonial_block_style', 'option' );
 $hide_title              = get_field( 'hide_title' );
 
 if ( $testimonial_block_style ) :
-	$className .= ' media-reviews-global-block_' . $testimonial_block_style;
+	$class_name .= ' media-reviews-global-block_' . $testimonial_block_style;
 endif;
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?> <?php echo $block_style === 'purple' ? 'media-reviews-global-block-purple' : ''; ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo $block_style === 'purple' ? 'media-reviews-global-block-purple' : ''; ?>">
 	<div class="media-reviews-global-container">
 
 		<?php if ( ! $hide_title ) : ?>

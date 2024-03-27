@@ -21,15 +21,15 @@ if ( ! empty( $block['anchor'] ) ) :
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block query-loop-block';
+$class_name = 'block query-loop-block';
 if ( ! empty( $block['className'] ) ) :
-	$className .= ' ' . $block['className'];
+	$class_name .= ' ' . $block['className'];
 endif;
 if ( ! empty( $block['align'] ) ) :
-	$className .= ' align' . $block['align'];
+	$class_name .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
 $title   = get_field( 'title' );
@@ -37,7 +37,7 @@ $link    = get_field( 'link' );
 $authors = get_field( 'authors' );
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="query-loop-container">
 		<header class="query-loop-container-header">
 			<h2 class="title"><?php echo $title; ?></h2>
