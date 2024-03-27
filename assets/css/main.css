@@ -8097,6 +8097,17 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
 .editor-styles-wrapper .editormargin {
   margin: 0 !important; }
 
+.swiper-container {
+  width: 100%;
+  height: 470px;
+  max-width: 940px;
+  margin: 0 auto; }
+  .swiper-container .swiper-wrapper .swiper-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; }
+
 .grid-middle-line {
   position: relative; }
   .grid-middle-line::after {

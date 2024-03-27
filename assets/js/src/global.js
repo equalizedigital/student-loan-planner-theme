@@ -1146,3 +1146,69 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
  
+
+
+var mySwiper = new Swiper ('.swiper-container', {
+  // Optional parameters
+  loop: true,
+
+// Use 'auto' plus a fixed 'spaceBetween' to show a partial next slide.
+slidesPerView: 4,
+spaceBetween: 30, // Adjust the space between slides as needed.
+centeredSlides: true, // This helps in showing the partial slides on the sides.
+pagination: {
+  el: '.swiper-pagination',
+  clickable: true,
+},
+
+// Responsive breakpoints
+breakpoints: {
+  // When window width is >= 640px
+  640: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  // When window width is >= 768px
+  768: {
+    slidesPerView: 3,
+    spaceBetween: 30,
+  },
+  // When window width is >= 1024px
+  1024: {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    centeredSlides: true, // or false, depending on your preference for desktop
+  },
+},
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  
+  on: {
+    transitionStart: function(){
+      
+      var videos = document.querySelectorAll('video');
+
+      Array.prototype.forEach.call(videos, function(video){
+        video.pause();
+      });
+    },
+    
+    transitionEnd: function(){
+      
+      var activeIndex = this.activeIndex;
+      var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
+      var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
+      activeSlideVideo.play();
+    
+    },
+  
+  }
+})
+
+
+
+
