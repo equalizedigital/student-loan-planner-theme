@@ -258,6 +258,7 @@ function eqd_tha_page_header() {
 			$heading_link            = get_field( 'heading_link' );
 			$padding_size            = get_field( 'padding_size', $page_id );
 			$container_class         = null;
+			$hide_page_header        = get_field( 'hide_page_header', $page_id );
 
 			if ( is_archive() ) {
 				$term             = get_queried_object();
@@ -299,13 +300,10 @@ function eqd_tha_page_header() {
 		}
 
 		$current_term = get_queried_object();
+
+		if(!$hide_page_header):
 		?>
-		<header class="inner-hero 
-		<?php
-		echo wp_kses_post( $container_class );
-									echo 'taxonomy-' . wp_kses_post( $current_term->slug );
-		?>
-									">
+		<header class="inner-hero <?php echo wp_kses_post( $container_class ); if ( isset( $current_term ) && !empty( $current_term->slug ) ) { echo 'taxonomy-' . esc_attr( $current_term->slug ); } ?>">
 			<div class="inner-hero-container">
 
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
@@ -388,6 +386,7 @@ function eqd_tha_page_header() {
 		</header>
 
 		<?php
+		endif;
 	}
 }
 add_action( 'tha_page_header', 'eqd_tha_page_header' );
@@ -426,7 +425,7 @@ function eqd_single_sidebar() {
 				?>
 				<div class="toc-nav placeholder"></div>
 				<?php
-				// mobile nav 
+				// mobile nav
 				?>
 				<div class="contents-nav-mobile">
 					<div class="contents-nav-mobile-header">
@@ -563,7 +562,7 @@ function eq_landing_page_header() {
 		// Check if 'slug' is set in the URL parameters
 	if ( isset( $_GET['landing_page'] ) ) {
 		$page_slug = $_GET['landing_page'];
-	
+
 		// Query for the page by slug
 		$args = array(
 			'post_type'   => 'slp_landing',
@@ -571,29 +570,29 @@ function eq_landing_page_header() {
 			'numberposts' => 1,
 			'meta_query'  => array(
 				array(
-					'key'     => 'landing_page_url_text', 
-					'value'   => $page_slug, 
-					'compare' => '=', 
+					'key'     => 'landing_page_url_text',
+					'value'   => $page_slug,
+					'compare' => '=',
 				),
 			),
 		);
 		$page = get_posts( $args );
-	
+
 		// If the page exists, redirect or load the page
 		if ( $page ) {
 			$page_id = $page[0]->ID;
-	
+
 			$parameter_page = $page_id;
 		}
 	}
-	
-		
+
+
 
 	?>
 	<header class="inner-hero landing-page-header">
 		<div class="inner-hero-container">
 			<h1 class="title">
-				<?php 
+				<?php
 				if ( isset( $parameter_page ) ) {
 					echo wp_kses_post( get_the_title( $parameter_page ) );
 				} else {
