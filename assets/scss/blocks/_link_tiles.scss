@@ -55,9 +55,12 @@ $hover-effect-duration: 0.3s;
             min-width: calc(20% - 20px);
 
             &:hover {
-                background: $tile-hover-bg-color;
-                cursor: pointer;
-                color: #625089;
+				box-shadow: 0 0 0 1px #625089;
+				.link {
+
+					color: #625089;
+
+				}
             }
 
             // Icon and label styling
