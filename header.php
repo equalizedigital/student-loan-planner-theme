@@ -49,21 +49,38 @@ tha_body_top();
 
 			<?php tha_header_top(); ?>
 
-			<div class="title-area">
+            <div class="title-area">
 				<?php
-				$logo_tag = ( apply_filters(
-					'eqd_h1_site_title',
-					false 
-				) || ( is_front_page() || is_home() ) ) ? 'h1' : 'p';
-				?>
-				<<?php echo esc_attr( $logo_tag ); ?> class="site-title">
-				<a href="<?php echo esc_url( home_url() ); ?>" rel="home">
-					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-				</a>
-			</<?php esc_attr( $logo_tag ); ?>>
-		</div>
+				$custom_logo_id = get_theme_mod( 'custom_logo' );
+				$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 
-		<?php 
+				if (has_custom_logo()) {
+					$site_logo = esc_url( $logo[0] ); // This is your logo's URL
+				} else {
+					$site_logo = esc_url( get_stylesheet_directory_uri() ) . '/images/default-logo.png'; // Path to default logo
+				}
+
+				$logo_tag = ( apply_filters( 'eqd_h1_site_title',
+						false ) || ( is_front_page() || is_home() ) ) ? 'h1' : 'p'; ?>
+                <<?php echo esc_attr( $logo_tag ); ?> class="site-title">
+
+				<?php
+				$site_logo_style = '';
+
+				if( $site_logo ) {
+					$image_url = $site_logo;
+
+					$site_logo_style = 'style="background-image:url(\'' . esc_url($image_url) . '\');"';
+				}
+				?>
+                <a href="<?php echo esc_url( home_url() ); ?>" rel="home" <?php  echo wp_kses_post($site_logo_style); ?> >
+					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+                </a>
+
+            </<?php esc_attr( $logo_tag ); ?>>
+        </div>
+
+		<?php
 		$template_slug = get_page_template_slug( get_the_ID() );
 		if ( 'page-landing.php' !== $template_slug ) {
 			?>
@@ -72,11 +89,11 @@ tha_body_top();
 			<?php get_template_part( 'partials/content/header/desktop-navigation' ); ?>
 		</div>
 			<?php
-		} else { 
+		} else {
 					// Check if 'slug' is set in the URL parameters
 			if ( isset( $_GET['landing_page'] ) ) {
 				$page_slug = $_GET['landing_page'];
-	
+
 				// Query for the page by slug
 				$args = array(
 					'post_type'   => 'slp_landing',
@@ -84,18 +101,18 @@ tha_body_top();
 					'numberposts' => 1,
 					'meta_query'  => array(
 						array(
-							'key'     => 'landing_page_url_text', 
-							'value'   => $page_slug, 
-							'compare' => '=', 
+							'key'     => 'landing_page_url_text',
+							'value'   => $page_slug,
+							'compare' => '=',
 						),
 					),
 				);
 				$page = get_posts( $args );
-	
+
 				// If the page exists, redirect or load the page
 				if ( $page ) {
 					$page_id = $page[0]->ID;
-	
+
 					$parameter_page = $page_id;
 				}
 			}
