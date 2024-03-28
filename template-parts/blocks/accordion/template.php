@@ -74,7 +74,8 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 	</div>
 </section>
 
-<?php if ( get_field( 'use_schema_data' ) ) : 
+<?php
+if ( get_field( 'use_schema_data' ) ) : 
 
 	?>
 <script type="application/ld+json">
@@ -84,7 +85,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 		"mainEntity": [
 			<?php
 			
-			$count = count(get_field('accordion')); 
+			$count = count( get_field( 'accordion' ) ); 
 
 			if ( have_rows( 'accordion' ) ) :
 				while ( have_rows( 'accordion' ) ) :
@@ -93,7 +94,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					$button_title = get_sub_field( 'button_title' );
 					$content      = esc_attr( get_sub_field( 'content' ) );
 
-					if(get_row_index() == $count){
+					if ( get_row_index() === $count ) {
 						$data_string = "{
 							\"@type\": \"Question\",
 							\"name\": \"$button_title\",
@@ -113,7 +114,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				  	},";
 					}
 
-				echo wp_kses_post( $data_string );
+					echo wp_kses_post( $data_string );
 
 				
 				endwhile;

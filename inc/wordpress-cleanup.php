@@ -101,7 +101,6 @@ function eqd_clean_body_classes( $classes ) {
 	}
 
 	return array_intersect( $classes, $allowed_classes );
-
 }
 add_filter( 'body_class', 'eqd_clean_body_classes', 20 );
 

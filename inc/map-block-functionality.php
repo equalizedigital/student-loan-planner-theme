@@ -16,7 +16,7 @@ class RqD_Doctor_Map {
 		$state = $_REQUEST['state'];
 
 		// if state is empty set to first term
-		if ( $state == null ) {
+		if ( $state === null ) {
 			$terms = get_terms(
 				array(
 					'taxonomy'   => 'slp_state',
@@ -46,12 +46,13 @@ class RqD_Doctor_Map {
 		$the_query = new WP_Query( $args );
 
 		ob_start();
-        ?>
-        <h2>
-            <?php echo $this->convert_state( $state ); ?>
-        </h2>
-        <?php
-		if ( $the_query->have_posts() ) { ?>
+		?>
+		<h2>
+			<?php echo $this->convert_state( $state ); ?>
+		</h2>
+		<?php
+		if ( $the_query->have_posts() ) {
+			?>
 			
 			<ul class="doctor-mortgages-block-results">
 				<?php
@@ -74,7 +75,9 @@ class RqD_Doctor_Map {
 			wp_reset_postdata();
 		} else {
 			// no posts found
-            ?>No banks found.<?php
+			?>
+			No banks found.
+			<?php
 		}
 		$html = ob_get_clean();
 
@@ -88,16 +91,16 @@ class RqD_Doctor_Map {
 			wp_send_json_error( $error );
 		}
 
-        // Slug of the taxonomy term
-        $slug = $state;
+		// Slug of the taxonomy term
+		$slug = $state;
 
-        // Get the term object using the slug
-        $term = get_term_by('slug', $slug, 'slp_state'); // replace 'your-taxonomy-name-here' with the name of your taxonomy
+		// Get the term object using the slug
+		$term = get_term_by( 'slug', $slug, 'slp_state' ); // replace 'your-taxonomy-name-here' with the name of your taxonomy
 
-        // Check if the term exists and get the ACF field value using the term's ID
-        if ($term) {
-            $field_value = get_field('state_link', $term->taxonomy . '_' . $term->term_id);
-        }
+		// Check if the term exists and get the ACF field value using the term's ID
+		if ( $term ) {
+			$field_value = get_field( 'state_link', $term->taxonomy . '_' . $term->term_id );
+		}
 
 		$data = array(
 			'html'  => $html,
@@ -128,8 +131,8 @@ class RqD_Doctor_Map {
 			<select name="state" class="doctor-mortgages-block-select" id="doctor-mortgages-block-select">
 			<?php foreach ( $terms as $term ) { ?>
 				<option value="<?php echo $term->name; ?>"><?php echo $this->convert_state( $term->name ); ?></option>
-		<?php
-		}
+				<?php
+			}
 			?>
 			</select>
 			<?php
@@ -376,12 +379,12 @@ class RqD_Doctor_Map {
 		foreach ( $states as $state ) :
 			if ( $strlen < 2 ) {
 				return false;
-			} elseif ( $strlen == 2 ) {
-				if ( strtolower( $state['abbr'] ) == strtolower( $name ) ) {
+			} elseif ( $strlen === 2 ) {
+				if ( strtolower( $state['abbr'] ) === strtolower( $name ) ) {
 					$return = $state['name'];
 					break;
 				}
-			} elseif ( strtolower( $state['name'] ) == strtolower( $name ) ) {
+			} elseif ( strtolower( $state['name'] ) === strtolower( $name ) ) {
 					$return = strtoupper( $state['abbr'] );
 					break;
 			}

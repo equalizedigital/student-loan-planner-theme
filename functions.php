@@ -51,7 +51,7 @@ function eqd_scripts() {
 		'theme-global',
 		'eqd_vars',
 		array(
-			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'nonce'   => wp_create_nonce( 'ajax-nonce' ),
 			'post_id' => get_the_ID(),
 		)
 	);
@@ -84,11 +84,10 @@ function eqd_scripts() {
 		'doctor-mortgages-map-block',
 		'rwc_base_vars',
 		array(
-			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'nonce'    => wp_create_nonce( 'ajax-nonce' ),
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		)
 	);
-
 }
 add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
 
@@ -270,7 +269,6 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 
 		// -- Add custom theme image sizes
 		add_image_size( 'squared-image-content-callout-thumbnail', 732, 732, true );
-
 	}
 endif;
 add_action( 'after_setup_theme', 'eqd_setup' );
@@ -306,8 +304,8 @@ function npp_custom_acf_post_object_query( $args, $field, $post_id ) {
 	if ( $field['name'] === 'recommended_posts' ) {
 		// Modify the query to search for post titles only.
 		$args['post_type'] = 'post';
-		//$args['s'] = ''; // Clear any previous search query.
-		$args['search_columns'] = array('post_title');
+		// $args['s'] = ''; // Clear any previous search query.
+		$args['search_columns'] = array( 'post_title' );
 	}
 	return $args;
 }
@@ -331,18 +329,18 @@ function npp_filter_post_object_query( $args, $field, $post_id ) {
 		// Check if it's a term ID and extract the ID.
 		if ( strpos( $post_id, 'term_' ) === 0 ) {
 			$term_id = str_replace( 'term_', '', $post_id );
-			$term = get_term( $term_id );
+			$term    = get_term( $term_id );
 
 			// Check if term belongs to the specified taxonomies.
-			if ( $term instanceof WP_Term && in_array( $term->taxonomy, [ 'category', 'post_tag', 'slp_occupation' ], true ) ) {
-				$args['tax_query'] = [
-					[
+			if ( $term instanceof WP_Term && in_array( $term->taxonomy, array( 'category', 'post_tag', 'slp_occupation' ), true ) ) {
+				$args['tax_query'] = array(
+					array(
 						'taxonomy' => $term->taxonomy,
 						'field'    => 'term_id',
 						'terms'    => $term->term_id,
 						'operator' => 'IN',
-					],
-				];
+					),
+				);
 			}
 		}
 	}
@@ -353,14 +351,14 @@ add_filter( 'acf/fields/post_object/query', 'npp_filter_post_object_query', 10, 
 
 function modify_post_object_query( $args, $field, $post_id ) {
 	// Check if the parent block is 'acf/recommended-posts-block'
-	if ( isset($field['parent']) && $field['parent'] == 'block_acf/recommended-posts-block' ) {
+	if ( isset( $field['parent'] ) && $field['parent'] === 'block_acf/recommended-posts-block' ) {
 		// If there's a search term, modify the query to search by title only
-		if( isset($args['s']) ) {
+		if ( isset( $args['s'] ) ) {
 			// Set search term to a variable
 			$search_term = $args['s'];
 
 			// Modify the query
-			unset($args['s']); // Remove default search
+			unset( $args['s'] ); // Remove default search
 			$args['post_title_like'] = $search_term; // Add title search
 		}
 	}
@@ -368,13 +366,13 @@ function modify_post_object_query( $args, $field, $post_id ) {
 	// Return the modified arguments
 	return $args;
 }
-add_filter('acf/fields/post_object/query', 'modify_post_object_query', 10, 3);
+add_filter( 'acf/fields/post_object/query', 'modify_post_object_query', 10, 3 );
 
 function title_like_posts_where( $where, $wp_query ) {
 	global $wpdb;
-	if ( $post_title_like = $wp_query->get('post_title_like') ) {
+	if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
 		$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
 	}
 	return $where;
 }
-add_filter('posts_where', 'title_like_posts_where', 10, 2);
+add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );
