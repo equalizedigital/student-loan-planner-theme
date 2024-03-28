@@ -34,14 +34,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 // fields.
 $company_name     = get_field( 'company_name' );
-$logo             = get_field( 'logo');
-$rating           = get_field( 'rating');
-$review_url       = get_field( 'review_url');
-$heading          = get_field( 'heading');
-$features         = get_field( 'features');
-$button_url       = get_field( 'button_url');
-$button_subtext   = get_field( 'button_subtext');
-$more_information = get_field( 'more_information');
+$logo             = get_field( 'logo' );
+$rating           = get_field( 'rating' );
+$review_url       = get_field( 'review_url' );
+$heading          = get_field( 'heading' );
+$features         = get_field( 'features' );
+$button_url       = get_field( 'button_url' );
+$button_subtext   = get_field( 'button_subtext' );
+$more_information = get_field( 'more_information' );
 $time_stamp       = time() . wp_rand( 0, 23 );
 ?>
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
@@ -119,7 +119,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 				<?php
 				if ( $button_url ) :
 					$target = '_blank';
-					$title  = ($company_name) ? 'Visit ' . $company_name : 'Visit';
+					$title  = ( $company_name ) ? 'Visit ' . $company_name : 'Visit';
 					?>
 					<a href="<?php echo esc_url( $button_url ); ?>" class="vendor-information-block-container-column-two-link btn" target="<?php echo esc_attr( $target ); ?>">
 						<?php
@@ -134,7 +134,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 						<?php endif; ?>
 					</a>
 				<?php endif; ?>
-				<?php if( $more_information ): ?>
+				<?php if ( $more_information ) : ?>
 
 					<button 
 					class="vendor_information_block_container_column_two_link_more_info"

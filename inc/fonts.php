@@ -50,7 +50,6 @@ function eqd_enqueue_backend_fonts() {
 	if ( ! empty( $font_url ) ) {
 		wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' );
 	}
-
 }
 add_action( 'enqueue_block_editor_assets', 'eqd_enqueue_backend_fonts' );
 

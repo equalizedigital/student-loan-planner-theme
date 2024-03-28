@@ -47,18 +47,18 @@ $about                        = get_field( 'about', $select_institutional_contac
 $contact_info                 = get_field( 'contact_info', $select_institutional_contact );
 $more_info_content            = get_field( 'more_info_content', $select_institutional_contact );
 $show_about                   = get_field( 'show_about' );
-$degrees_that_qualify         = get_field( 'degrees_that_qualify',$select_institutional_contact );
+$degrees_that_qualify         = get_field( 'degrees_that_qualify', $select_institutional_contact );
 $show_states                  = get_field( 'show_states' );
 $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
 $block_id                     = get_field( 'block_id' );
-$time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
+$time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 ?>
-<section id="<?php echo !empty($block_id)?  $block_id:esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo ! empty( $block_id ) ? $block_id : esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
-	<h3 class="screen-reader-text"><?php echo get_the_title($select_institutional_contact); ?></h3>
+	<h3 class="screen-reader-text"><?php echo get_the_title( $select_institutional_contact ); ?></h3>
 	<div class="vendor_information_block_container">
 
 		<div class="vendor_information_block_container_column_one">
@@ -150,21 +150,22 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				<?php endif; ?>
 
 				<?php 
-				$vendor_title = get_field('title');
-				$vendor_content = get_field('content');
-				if ( $vendor_title ) : ?>
+				$vendor_title   = get_field( 'title' );
+				$vendor_content = get_field( 'content' );
+				if ( $vendor_title ) :
+					?>
 					<h4 class="vendor_information_block_container_column_two_title">
 						<?php echo wp_kses_post( $vendor_title ); ?>
 					</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
-						<?php  echo wp_kses_post($vendor_content); ?>
+						<?php echo wp_kses_post( $vendor_content ); ?>
 					</div>
 				<?php endif; ?>
 
 				<?php if ( $show_contact ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">Contact:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
-						<a href="<?php echo get_the_permalink($select_institutional_contact); ?>"><?php echo get_the_title($select_institutional_contact); ?></a>
+						<a href="<?php echo get_the_permalink( $select_institutional_contact ); ?>"><?php echo get_the_title( $select_institutional_contact ); ?></a>
 					</div>
 				<?php endif; ?>
 				
@@ -189,8 +190,10 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 				
 
-				<?php if( have_rows( 'eligible_states',$select_institutional_contact ) ): ?>
-					<?php while( have_rows( 'eligible_states',$select_institutional_contact ) ): the_row(); 
+				<?php if ( have_rows( 'eligible_states', $select_institutional_contact ) ) : ?>
+					<?php
+					while ( have_rows( 'eligible_states', $select_institutional_contact ) ) :
+						the_row(); 
 						?>
 						<h4 class="vendor_information_block_container_column_two_title">
 							<?php the_sub_field( 'heading' ); ?>
@@ -207,19 +210,19 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				<div class="vendor_information_block_container_column_two_link">
 
 					<?php
-					if ( ! empty(get_field('review_url',$select_institutional_contact))  ) :
+					if ( ! empty( get_field( 'review_url', $select_institutional_contact ) ) ) :
 						?>
-						<a href="<?php echo get_field('review_url',$select_institutional_contact); ?>" class="vendor_information_block_container_column_two_link btn">
-							<?php echo "Full ".get_field('institution_name',$select_institutional_contact)." Review"; ?>
+						<a href="<?php echo get_field( 'review_url', $select_institutional_contact ); ?>" class="vendor_information_block_container_column_two_link btn">
+							<?php echo 'Full ' . get_field( 'institution_name', $select_institutional_contact ) . ' Review'; ?>
 						</a>
 					<?php endif; ?>
 
-					<?php if(!empty($more_info_content)): ?>
+					<?php if ( ! empty( $more_info_content ) ) : ?>
 
 						<button 
 						class="vendor_information_block_container_column_two_link_more_info"
 						type="button"
-						aria-label="More Information about <?php echo get_the_title($select_institutional_contact); ?>"
+						aria-label="More Information about <?php echo get_the_title( $select_institutional_contact ); ?>"
 						aria-expanded="false"
 						aria-controls="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>"
 						>More Information<span>

@@ -35,7 +35,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 // Load values and assing defaults.
 $acf_copy = get_field( 'copy' );
 
-if ( get_field( 'post_format_style',get_the_ID() ) == 'full-width' ) {
+if ( get_field( 'post_format_style', get_the_ID() ) === 'full-width' ) {
 	$class_name .= ' post_format_style-full-width';
 } else {
 	$class_name .= ' post_format_style-standard';

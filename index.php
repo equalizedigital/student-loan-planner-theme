@@ -12,19 +12,19 @@ get_header();
 
 $container_class = null;
 
-if ( get_field( 'post_format_style' ) == 'full-width' ) {
-	$container_class .=  ' site-main-article-content__full-width';
+if ( get_field( 'post_format_style' ) === 'full-width' ) {
+	$container_class .= ' site-main-article-content__full-width';
 }
 $layout_style = get_field( 'post_format_style' );
 
-if( empty( $layout_style ) ) {
+if ( empty( $layout_style ) ) {
 	$layout_style = 'standard';
 }
 
 $container_class .= ' post_type_layout_' . $layout_style . ' ';
 
-$side_container_class         = '';
-if ( get_field( 'post_format_style' ) == 'full-width' ) {
+$side_container_class = '';
+if ( get_field( 'post_format_style' ) === 'full-width' ) {
 } else {
 	$side_container_class .= 'inner-hero-alternate-style';
 }
