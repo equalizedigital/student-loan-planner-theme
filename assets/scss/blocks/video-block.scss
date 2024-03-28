@@ -5,7 +5,10 @@
 
     .video_block_template_container {
         display: grid;
-        grid-template-columns: 0.34fr 1fr;
+		grid-template-columns: 1fr 1fr;
+        @include media(">tablet") {
+			grid-template-columns: 0.34fr 1fr;
+		}
     }
 
     video {
@@ -62,12 +65,13 @@
 .video_block_template_container_content_block {
     position: absolute;
     top: 50%;
-    width: 50%;
+    width: 90%;
     left: 20px;
     transform: translate(0px, -50%);
 
     @include media(">tablet") {
         min-width: 520px;
+		width: 50%;
     }
 
 }
@@ -76,8 +80,15 @@
 .video_block_template_container_content_block_heading {
     color: white!important;
     left: 84px;
+	line-height: 42px;
+	font-size: 44px;
 
-
+	@include media(">tablet") {
+		font-size: 40px;
+		font-weight: 700;
+		line-height: 42px;
+		text-align: left;
+	}
 }
 
 .video_block_template_container_media_placeholder_action {
