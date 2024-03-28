@@ -55,6 +55,10 @@ $hover-effect-duration: 0.3s;
 			min-width: calc(20% - 20px);
 			width: calc(50% - 20px);
 
+			@include media(">tablet") {
+				width: calc(20% - 20px);
+			}
+
 			// Icon and label styling
 			.link {
 				display: flex;
