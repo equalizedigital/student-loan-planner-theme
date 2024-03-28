@@ -13,7 +13,7 @@ namespace Basic_Site_Caching;
 // Customize the manifest.
 add_filter(
 	'web_app_manifest',
-	function( $manifest ) {
+	function ( $manifest ) {
 		$manifest['display'] = 'standalone';
 
 		// $manifest['short_name'] = 'Client Short Name'; // max 12 characters

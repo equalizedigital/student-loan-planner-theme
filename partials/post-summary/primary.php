@@ -9,8 +9,8 @@
  **/
 
 echo '<article class="post-summary post-summary--primary">';
-    echo '<div class="post-summary__content">';
-        eqd_post_summary_title();
-        eqd_post_author();
-    echo '</div>';
+	echo '<div class="post-summary__content">';
+		eqd_post_summary_title();
+		eqd_post_author();
+	echo '</div>';
 echo '</article>';

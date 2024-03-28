@@ -21,9 +21,9 @@ function eqd_site_header() {
 				<?php
 				wp_nav_menu(
 					array(
-						'theme_location' => 'primary',
-						'depth'          => 3,
-						'menu_id' => 'primary-menu',
+						'theme_location'  => 'primary',
+						'depth'           => 3,
+						'menu_id'         => 'primary-menu',
 						'container_class' => 'nav-primary',
 					)
 				);
@@ -33,19 +33,19 @@ function eqd_site_header() {
 		</div>
 		<?php
 	endif;
-
 }
 add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 
 function slp_cta_button() {
-	$slp_cta = get_field('cta_header', 'option');
-	if(isset($slp_cta)) : ?>
+	$slp_cta = get_field( 'cta_header', 'option' );
+	if ( isset( $slp_cta ) ) :
+		?>
 		<div class="cta-header">
-			<a href="<?php echo esc_attr($slp_cta['url']); ?>" <?php echo esc_html(slp_a_target($slp_cta['target'])); ?>>
-				<?php echo esc_html($slp_cta['title']); ?>
+			<a href="<?php echo esc_attr( $slp_cta['url'] ); ?>" <?php echo esc_html( slp_a_target( $slp_cta['target'] ) ); ?>>
+				<?php echo esc_html( $slp_cta['title'] ); ?>
 			</a>
 		</div>
-	<?php 
+		<?php 
 	endif;
 }
 
@@ -82,13 +82,13 @@ function eqd_search_toggle() {
 	$output  = '<button aria-label="Search" class="search-toggle">';
 	$output .= eqd_icon(
 		array(
-			'icon' => 'search-fat',
+			'icon'  => 'search-fat',
 			'class' => 'open',
 		)
 	);
 	$output .= eqd_icon(
 		array(
-			'icon' => 'close',
+			'icon'  => 'close',
 			'class' => 'close',
 		)
 	);
@@ -101,7 +101,7 @@ function eqd_search_toggle() {
  */
 function eqd_help_btn() {
 	$output  = '<button aria-label="Get Help" class="btn">';
-	$output .= esc_html('Get Help');
+	$output .= esc_html( 'Get Help' );
 	$output .= '</button>';
 	return $output;
 }
@@ -113,13 +113,13 @@ function eqd_mobile_menu_toggle() {
 	$output  = '<button aria-label="Menu" class="menu-toggle ">';
 	$output .= eqd_icon(
 		array(
-			'icon' => 'menu',
+			'icon'  => 'menu',
 			'class' => 'open',
 		)
 	);
 	$output .= eqd_icon(
 		array(
-			'icon' => 'close',
+			'icon'  => 'close',
 			'class' => 'close',
 		)
 	);
