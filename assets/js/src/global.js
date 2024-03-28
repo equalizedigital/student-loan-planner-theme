@@ -1016,7 +1016,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		const toc_content_load_point = document.querySelector('.toc_content_load_point');
-		);
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
