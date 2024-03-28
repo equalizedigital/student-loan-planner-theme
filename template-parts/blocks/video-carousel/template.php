@@ -37,95 +37,89 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
-  <div class="swiper-container">
-      <div class="swiper-wrapper">
+	<div class="video-carousel-swiper-container">
 
-          <div class="swiper-slide">
+    	<div class="swiper-wrapper">
+
+			<?php if ( have_rows( 'video_carousel' ) ) :
+		$rows = get_field( 'video_carousel' ); // Assuming 'video_carousel' is a field of the current post
+		// Repeat the process 3 times
+		for ($i = 0; $i < 3; $i++):
+			// Reset the rows pointer to ensure have_rows works correctly in each iteration
+			reset($rows);
+				?>
+				<?php while ( have_rows( 'video_carousel' ) ) :
+					the_row();
+
+					?>
+
+				<div class="swiper-slide">
+					<div class="slide_main_container">
+
 						<div class="slide-container">
 							<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								<?php
+								$placeholder_image = get_sub_field( 'placeholder_image' );
+								if( $placeholder_image ) {
+									echo wp_get_attachment_image( $placeholder_image['ID'], 'full' ,"", ["class" => "image-placeholder"] );
+								}
+								?>
+								<button class="image-placeholder-action" aria-label="Play Video">
+									<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="play video">
 								</button>
 							</div>
-            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+							<?php
+							$video_url = get_sub_field( 'video_url' );
+							if ( $video_url ) : ?>
+								<video src="<?php echo esc_url( $video_url ); ?>"></video>
+							<?php endif; ?>
 						</div>
-          </div>
 
-					<div class="swiper-slide">
-						<div class="slide-container">
-							<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
-								</button>
-							</div>
-            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						<div class="slide_link">
+							<?php
+							$link_carousel = get_sub_field( 'work_with_link' );
+							if ( $link_carousel ) :
+								$link_carousel_url = $link_carousel['url'];
+								$link_carousel_title = $link_carousel['title'];
+								$link_carousel_target = $link_carousel['target'] ? $link_carousel['target'] : '_self';
+								?>
+								<a class="btn" href="<?php echo esc_url( $link_carousel_url ); ?>" target="<?php echo esc_attr( $link_carousel_target ); ?>"><?php echo esc_html( $link_carousel_title ); ?></a>
+							<?php endif; ?>
 						</div>
-          </div>
 
-					<div class="swiper-slide">
-						<div class="slide-container">
-							<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
-								</button>
-							</div>
-            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
-						</div>
-          </div>
+					</div>
+				</div>
 
-					<div class="swiper-slide">
-						<div class="slide-container">
-							<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
-								</button>
-							</div>
-            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
-						</div>
-          </div>
+				<?php
+				endwhile;
+			endfor;
+				?>
+			<?php endif; ?>
 
-					<div class="swiper-slide">
-						<div class="slide-container">
-							<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
-								</button>
-							</div>
-            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
-						</div>
-          </div>
+		</div>
 
-          <div class="swiper-slide">
-					<div class="slide-container">
-					<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
-								</button>
-							</div>
-            <video src="https://into-the-program.com/uploads/sample_video02.mp4" preload="none" muted></video>
-						</div>
-          </div>
-          <div class="swiper-slide">
-					<div class="slide-container">
-					<div class="image-object">
-								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
-								<button class="image-placeholder-action">
-								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
-								</button>
-							</div>
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-						</div>
-          </div>
-      </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-  </div>
+    	<div class="swiper-nav">
+			<div class="swiper-button-prev">
+				<span class="arrow">
+					<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6.5 1L2 5.5L6.5 10" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+				</span>
+				Prev
+			</div>
+			|
+  			<div class="swiper-button-next">
+				Next
+				<span class="arrow">
+					<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4.5 10L9 5.5L4.5 1" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+				</span>
+			</div>
+
+		</div>
+
+	</div>
 </section>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
