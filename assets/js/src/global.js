@@ -1203,3 +1203,34 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 	}
 });
+
+
+jQuery('.video-placeholder').on('click', function() {
+	var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
+
+	if (!videoElement.paused) {
+	  videoElement.pause();
+	  jQuery(this).show(); // Show the placeholder when the video is paused
+	} else {
+	  videoElement.play();
+	  jQuery(this).hide(); // Hide the placeholder when the video is playing
+	}
+  });
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+	// Correct the element ID to point to the video element, not the placeholder
+	var videoElement = document.getElementById('video-placeholder');
+	var videoPlaceholderPause = document.querySelector('.video_block_template_container_media_placeholder_action_btn');
+	var buttonText = document.querySelector('.video_block_template_container_media_placeholder_action_btn .text'); // Get the span that contains the text
+
+	videoPlaceholderPause.addEventListener('click', function() {
+	  if (!videoElement.paused) {
+		videoElement.pause();
+		buttonText.textContent = 'Play Video'; // Change the text to 'Play Video'
+	  } else {
+		videoElement.play();
+		buttonText.textContent = 'Pause Video'; // Change the text to 'Pause Video'
+	  }
+	});
+  });
