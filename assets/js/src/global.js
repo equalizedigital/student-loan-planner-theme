@@ -1148,13 +1148,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-var mySwiper = new Swiper ('.swiper-container', {
+var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
   // Optional parameters
   loop: true,
 
 // Use 'auto' plus a fixed 'spaceBetween' to show a partial next slide.
 slidesPerView: 4,
-spaceBetween: 30, // Adjust the space between slides as needed.
+spaceBetween: 21, // Adjust the space between slides as needed.
 centeredSlides: true, // This helps in showing the partial slides on the sides.
 pagination: {
   el: '.swiper-pagination',
@@ -1167,11 +1167,13 @@ breakpoints: {
   640: {
     slidesPerView: 2,
     spaceBetween: 20,
+	centeredSlides: true,
   },
   // When window width is >= 768px
   768: {
     slidesPerView: 3,
     spaceBetween: 30,
+	centeredSlides: true,
   },
   // When window width is >= 1024px
   1024: {
@@ -1195,19 +1197,68 @@ breakpoints: {
       Array.prototype.forEach.call(videos, function(video){
         video.pause();
       });
+
     },
 
     transitionEnd: function(){
 
-      var activeIndex = this.activeIndex;
-      var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
-      var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
-      activeSlideVideo.play();
+    //   var activeIndex = this.activeIndex;
+    //   var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
+    //   var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
+    //   activeSlideVideo.play();
 
     },
 
   }
-})
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all play buttons
+    var playButtons = document.querySelectorAll('.image-placeholder-action');
+	var allimageObject = document.querySelectorAll('.image-placeholder');
+	var documentimageobject = document.querySelectorAll('.image-object');
+
+    // Iterate over each play button
+    playButtons.forEach(function(button) {
+        // Add click event listener to each button
+        button.addEventListener('click', function() {
+
+			documentimageobject.forEach(function(image) {
+				image.classList.remove('image-hold');
+			})
+
+			allimageObject.forEach(function(image) {
+				image.classList.remove('image-hold');
+			})
+
+            var slideContainer = button.closest('.slide-container');
+            var currentImagePlaceholder = slideContainer.querySelector('.image-placeholder');
+            var video = slideContainer.querySelector('video');
+			var currentimageobject = slideContainer.querySelector('.image-object');
+
+            // Pause all videos and remove the class from all .image-object elements except the current
+            document.querySelectorAll('.slide-container video').forEach(function(video) {
+                if (video !== button.closest('.slide-container').querySelector('video')) {
+                    video.pause();
+					video.controls = false; // Hide controls
+					currentImagePlaceholder.classList.remove('image-hold');
+                }
+            });
+
+            // Toggle the class for the current .image-object
+            if (video.paused) {
+                currentImagePlaceholder.classList.add('image-hold');
+				currentimageobject.classList.add('image-hold');
+				video.controls = true; // Show controls when video plays
+            }
+
+            // Play or pause the current video
+            video.paused ? video.play() : video.pause();
+        });
+    });
+});
+
+
 
 
 
