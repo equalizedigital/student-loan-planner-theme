@@ -446,3 +446,15 @@ function generate_custom_booking_button_shortcode($atts) {
     return $button_html;
 }
 add_shortcode('custom_booking_button', 'generate_custom_booking_button_shortcode');
+
+function eqd_logo_setup() {
+    $defaults = array(
+        'height'      => 70, // Set the desired height for the logo
+        'width'       => 240, // Set the desired width for the logo
+        'flex-height' => true, // Allow flexible height
+        'flex-width'  => true, // Allow flexible width
+        'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'eqd_logo_setup' );
