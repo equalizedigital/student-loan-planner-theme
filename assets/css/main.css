@@ -8169,7 +8169,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       font-size: 20px;
       font-weight: 700;
       line-height: 35px;
-      text-align: center; }
+      text-align: center;
+      color: #000000; }
   .link_tiles_template_container .link_tiles_template_container_tiles {
     display: flex;
     justify-content: space-around;
