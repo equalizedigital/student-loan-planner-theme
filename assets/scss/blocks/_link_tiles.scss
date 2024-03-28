@@ -1,0 +1,102 @@
+// Define base variables for easy theme management
+$tile-bg-color: #ffffff;
+$tile-border-color: #e6e6e6;
+$tile-hover-bg-color: #f2f2f2;
+$text-color: #333333;
+$icon-color: #6c757d;
+$hover-effect-duration: 0.3s;
+
+// Tile container styling
+.link_tiles_template_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    // Header styling
+    .link_tiles_template_container_header {
+        width: 100%;
+        text-align: center;
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 35px;
+            text-align: center;
+
+        }
+    }
+
+    // Tiles styling
+    .link_tiles_template_container_tiles {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        min-height: 136px;
+        flex-wrap: wrap;
+        gap: 20px;
+        @include media(">tablet") {
+            flex-wrap: nowrap;
+           }
+
+        // Individual tile styling
+        .link_tiles_template_container_tiles_tile {
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 15px 27px 0px #A1A5A540;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            min-width: calc(20% - 20px);
+
+            &:hover {
+                background: $tile-hover-bg-color;
+                cursor: pointer;
+                color: #625089;
+            }
+
+            // Icon and label styling
+            .link {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: #000000;
+                font-size: 17px;
+                line-height: 21px;
+                text-decoration: none;
+
+                // Icon styling
+                img {
+                    width: auto;
+                    height: 40px;
+                    margin-bottom: 10px;
+                    fill: $icon-color; // If SVGs are used, this can change their color
+                }
+
+                // Text styling
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+    .link_tiles_template_container_tiles .link_tiles_template_container_tiles_tile {
+        flex: 0 1 calc(50% - 20px); // 2 tiles per row
+    }
+}
+
+@media (max-width: 480px) {
+    .link_tiles_template_container_tiles .link_tiles_template_container_tiles_tile {
+        flex: 0 1 calc(100% - 20px); // 1 tile per row
+    }
+}
