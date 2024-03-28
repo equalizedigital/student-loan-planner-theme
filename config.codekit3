@@ -2391,16 +2391,6 @@
       "plM" : 3758088159,
       "prP" : 0
     },
-    "\/assets\/images\/pause.svg" : {
-      "ft" : 2097152,
-      "miP" : 0,
-      "oA" : 2,
-      "oAP" : "\/assets\/images\/pause.svg",
-      "oF" : 0,
-      "opt" : 0,
-      "plM" : 3758088159,
-      "prP" : 0
-    },
     "\/assets\/images\/placeholder-post.png" : {
       "ft" : 32768,
       "iS" : 479716,
@@ -2413,16 +2403,6 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
-    },
-    "\/assets\/images\/play.svg" : {
-      "ft" : 2097152,
-      "miP" : 0,
-      "oA" : 2,
-      "oAP" : "\/assets\/images\/play.svg",
-      "oF" : 0,
-      "opt" : 0,
-      "plM" : 3758088159,
-      "prP" : 0
     },
     "\/assets\/images\/SLP-Logo-Color-white.png" : {
       "ft" : 32768,
@@ -3056,7 +3036,7 @@
       "pg" : 0,
       "sct" : 1
     },
-    "\/assets\/scss\/blocks\/video-block.scss" : {
+    "\/assets\/scss\/blocks\/video-carousel.scss" : {
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
@@ -3064,8 +3044,8 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/assets\/scss\/css\/video-block.css",
+      "oA" : 0,
+      "oAP" : "\/assets\/scss\/css\/video-carousel.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -3517,14 +3497,6 @@
       "oS" : 0,
       "pg" : 0,
       "sct" : 1
-    },
-    "\/assets\/videos\/h264_1080_best.mp4" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/assets\/videos\/h264_1080_best.mp4",
-      "oF" : 0
     },
     "\/author.php" : {
       "cB" : 0,
@@ -4854,19 +4826,19 @@
       "oAP" : "\/template-parts\/blocks\/vendor-repeater\/template.php",
       "oF" : 0
     },
-    "\/template-parts\/blocks\/video-block\/block.json" : {
+    "\/template-parts\/blocks\/video-carousel\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
-      "oAP" : "\/template-parts\/blocks\/video-block\/block-min.json",
+      "oAP" : "\/template-parts\/blocks\/video-carousel\/block-min.json",
       "oF" : 0,
       "oO" : 0,
       "oS" : 1
     },
-    "\/template-parts\/blocks\/video-block\/screenshot.png" : {
+    "\/template-parts\/blocks\/video-carousel\/screenshot.png" : {
       "ft" : 32768,
-      "iS" : 112322,
+      "iS" : 618449,
       "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/video-block\/screenshot.png",
+      "oAP" : "\/template-parts\/blocks\/video-carousel\/screenshot.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -4875,12 +4847,12 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/template-parts\/blocks\/video-block\/template.php" : {
+    "\/template-parts\/blocks\/video-carousel\/template.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/video-block\/template.php",
+      "oAP" : "\/template-parts\/blocks\/video-carousel\/template.php",
       "oF" : 0
     },
     "\/template-parts\/blocks\/video-testimonials\/block.json" : {

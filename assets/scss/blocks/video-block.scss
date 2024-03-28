@@ -76,8 +76,15 @@
 .video_block_template_container_content_block_heading {
     color: white!important;
     left: 84px;
+	line-height: 42px;
+	font-size: 44px;
 
-
+	@include media(">tablet") {
+		font-size: 40px;
+		font-weight: 700;
+		line-height: 42px;
+		text-align: left;
+	}
 }
 
 .video_block_template_container_media_placeholder_action {

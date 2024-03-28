@@ -8150,8 +8150,16 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       min-width: 520px; } }
 .video_block_template_container_content_block_heading {
   color: white !important;
-  left: 84px; }
-
+  left: 84px;
+  font-size: 40px;
+  line-height: 42px;
+  font-size: 44px; }
+  @media (min-width: 769px) {
+    .video_block_template_container_content_block_heading {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 42px;
+      text-align: left; } }
 .video_block_template_container_media_placeholder_action {
   display: flex;
   justify-content: flex-end;
