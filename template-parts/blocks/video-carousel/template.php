@@ -41,9 +41,17 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 
     	<div class="swiper-wrapper">
 
-			<?php if ( have_rows( 'video_carousel' ) ) : ?>
+			<?php if ( have_rows( 'video_carousel' ) ) :
+		$rows = get_field( 'video_carousel' ); // Assuming 'video_carousel' is a field of the current post
+		// Repeat the process 3 times
+		for ($i = 0; $i < 3; $i++):
+			// Reset the rows pointer to ensure have_rows works correctly in each iteration
+			reset($rows);
+				?>
 				<?php while ( have_rows( 'video_carousel' ) ) :
-					the_row(); ?>
+					the_row();
+
+					?>
 
 				<div class="swiper-slide">
 					<div class="slide_main_container">
@@ -82,7 +90,10 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 					</div>
 				</div>
 
-				<?php endwhile; ?>
+				<?php
+				endwhile;
+			endfor;
+				?>
 			<?php endif; ?>
 
 		</div>
