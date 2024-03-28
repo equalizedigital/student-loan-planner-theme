@@ -66,7 +66,7 @@ $heading = get_field( 'heading' );
 		</div>
 		<div class="video_block_template_container_media">
 			<div class="video_block_template_container_media_video">
-				<video class="video-element video-placeholder" id="video-placeholder" controlslist="nodownload"  autoplay muted>
+				<video class="video-element video-placeholder" id="video-placeholder" controlslist="nodownload" loop autoplay muted>
 					<source src="<?php echo wp_kses_post( $video_path ); ?>/h264_1080_best.mp4"  type="video/mp4">
 				</video>
 				<button class="video_block_template_container_media_video_button modal-btn" data-modal="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-label="Play Video">
@@ -79,7 +79,7 @@ $heading = get_field( 'heading' );
 					<span class="text" aria-live>Pause Video</span>
 				</button>
 			</div>
-			
+
 		</div>
 	</div>
 </section>
