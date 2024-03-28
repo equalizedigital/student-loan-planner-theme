@@ -6,6 +6,9 @@ $text-color: #333333;
 $icon-color: #6c757d;
 $hover-effect-duration: 0.3s;
 
+.link_tiles_template{
+	width: 100%;
+}
 // Tile container styling
 .link_tiles_template_container {
 	display: flex;
