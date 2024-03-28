@@ -8097,6 +8097,63 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
 .editor-styles-wrapper .editormargin {
   margin: 0 !important; }
 
+.swiper-container {
+  width: 100%;
+  height: 470px;
+  max-width: 940px;
+  margin: 0 auto; }
+  .swiper-container .swiper-wrapper .swiper-slide video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    object-position: center; }
+
+.slide-container {
+  position: relative;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden; }
+
+.slide-container .image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  z-index: 20; }
+
+.image-object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  z-index: 20; }
+
+.image-object button.image-placeholder-action {
+  position: absolute;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 .link_tiles_template_container {
   display: flex;
   flex-wrap: wrap;

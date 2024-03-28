@@ -1147,62 +1147,68 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// vendor information block
-document.addEventListener('DOMContentLoaded', function () {
-	const accordionButton = document.querySelectorAll(
-		'.vendor_information_block_container_column_two_link_more_info'
-	);
-	if (accordionButton.length > 0) {
-		accordionButton.forEach((element) => {
-			element.addEventListener('click', (event) => {
-				const controlledElementId =
-					event.target.getAttribute('aria-controls');
-				const targetElement =
-					document.getElementById(controlledElementId);
-				if (targetElement) {
-					event.target.classList.toggle('active_btn');
-					targetElement.toggleAttribute('hidden');
-					const isExpanded =
-						event.target.getAttribute('aria-expanded') === 'true';
-					event.target.setAttribute('aria-expanded', !isExpanded);
-					event.target.innerHTML = isExpanded
-						? 'More Information <span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>'
-						: 'Less Information<span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>';
-				}
-			});
-		});
-	}
 
-	const tabletChevron = document.querySelectorAll('.tablet_chevron');
-	if (tabletChevron.length > 0) {
-		document
-			.querySelector('.tablet_chevron')
-			.addEventListener('click', function () {
-				let list = document.querySelector('.tabbed-content__nav-list');
-				var items = list.querySelectorAll('.tabbed-content__nav-item');
+var mySwiper = new Swiper ('.swiper-container', {
+  // Optional parameters
+  loop: true,
 
-				// Find the currently active item
-				let activeItem = list.querySelector('.active');
-				var activeIndex = Array.from(items).indexOf(activeItem);
+// Use 'auto' plus a fixed 'spaceBetween' to show a partial next slide.
+slidesPerView: 4,
+spaceBetween: 30, // Adjust the space between slides as needed.
+centeredSlides: true, // This helps in showing the partial slides on the sides.
+pagination: {
+  el: '.swiper-pagination',
+  clickable: true,
+},
 
-				// Determine the next item to scroll into view
-				let nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
+// Responsive breakpoints
+breakpoints: {
+  // When window width is >= 640px
+  640: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  // When window width is >= 768px
+  768: {
+    slidesPerView: 3,
+    spaceBetween: 30,
+  },
+  // When window width is >= 1024px
+  1024: {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    centeredSlides: true, // or false, depending on your preference for desktop
+  },
+},
 
-				if (nextItem) {
-					// Scroll the next item into view
-					nextItem.scrollIntoView({
-						behavior: 'smooth',
-						block: 'nearest',
-						inline: 'start',
-					});
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
 
-					// Update the active class if needed
-					activeItem.classList.remove('active');
-					nextItem.classList.add('active');
-				}
-			});
-	}
-});
+  on: {
+    transitionStart: function(){
+
+      var videos = document.querySelectorAll('video');
+
+      Array.prototype.forEach.call(videos, function(video){
+        video.pause();
+      });
+    },
+
+    transitionEnd: function(){
+
+      var activeIndex = this.activeIndex;
+      var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
+      var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
+      activeSlideVideo.play();
+
+    },
+
+  }
+})
+
 
 
 jQuery('.video-placeholder').on('click', function() {

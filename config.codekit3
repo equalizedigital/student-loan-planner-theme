@@ -3044,7 +3044,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/video-carousel.css",
       "oF" : 0,
       "oS" : 0,

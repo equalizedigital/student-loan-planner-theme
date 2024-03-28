@@ -61,25 +61,34 @@ $heading = get_field( 'heading' );
 					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo esc_html($heading_text); ?></<?php echo $heading_level; ?>>
 				<?php endif; ?>
 			<?php endif; ?>
-				<button class="btn btn-dark-bg">Get Started</button>
+
+			<?php
+$link = get_field( 'link' );
+if ( $link ) :
+	$link_url = $link['url'];
+	$link_title = $link['title'];
+	$link_target = $link['target'] ? $link['target'] : '_self';
+	?>
+	<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+<?php endif; ?>
 			</div>
 		</div>
 		<div class="video_block_template_container_media">
 			<div class="video_block_template_container_media_video">
-				<video class="video-element video-placeholder" id="video-placeholder" controlslist="nodownload"  autoplay muted>
+				<video class="video-element video-placeholder" id="video-placeholder" controlslist="nodownload" loop autoplay muted>
 					<source src="<?php echo wp_kses_post( $video_path ); ?>/h264_1080_best.mp4"  type="video/mp4">
 				</video>
 				<button class="video_block_template_container_media_video_button modal-btn" data-modal="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-label="Play Video">
-					<img src="<?php echo $image_path; ?>/play.svg" alt="">
+					<img src="<?php echo $image_path; ?>/play.svg" alt="Play Video">
 				</button>
 			</div>
 			<div class="video_block_template_container_media_placeholder_action">
 				<button class="video_block_template_container_media_placeholder_action_btn" aria-label="Pause Video">
-					<span class="img"><img src="<?php echo $image_path; ?>/pause.svg" alt=""></span>
+					<span class="img"><img src="<?php echo $image_path; ?>/pause.svg" alt="Pause Video"></span>
 					<span class="text" aria-live>Pause Video</span>
 				</button>
 			</div>
-			
+
 		</div>
 	</div>
 </section>
