@@ -5,7 +5,10 @@
 
     .video_block_template_container {
         display: grid;
-        grid-template-columns: 0.34fr 1fr;
+		grid-template-columns: 1fr 1fr;
+        @include media(">tablet") {
+			grid-template-columns: 0.34fr 1fr;
+		}
     }
 
     video {
@@ -62,12 +65,13 @@
 .video_block_template_container_content_block {
     position: absolute;
     top: 50%;
-    width: 50%;
+    width: 90%;
     left: 20px;
     transform: translate(0px, -50%);
 
     @include media(">tablet") {
         min-width: 520px;
+		width: 50%;
     }
 
 }
