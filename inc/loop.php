@@ -150,7 +150,7 @@ function eqd_single_header() {
 				</span>
 
 				<?php
-				// optional link 
+				// optional link
 				?>
 				<?php
 				if ( ! empty( $link ) ) :
@@ -273,9 +273,9 @@ function eqd_single_landing_page() {
 			'numberposts' => 1,
 			'meta_query'  => array(
 				array(
-					'key'     => 'landing_page_url_text', 
-					'value'   => $page_slug, 
-					'compare' => '=', 
+					'key'     => 'landing_page_url_text',
+					'value'   => $page_slug,
+					'compare' => '=',
 				),
 			),
 		);
@@ -314,15 +314,15 @@ function eqd_single_landing_page() {
 						<?php the_field( 'trusted_by_name', $parameter_page ); ?>
 					</h2>
 					<div class="copy">
-						<?php 
-						$job_title = get_field( 'job_title', $parameter_page );  
-						the_field( 'job_title', $parameter_page );  
+						<?php
+						$job_title = get_field( 'job_title', $parameter_page );
+						the_field( 'job_title', $parameter_page );
 
 						$company_name = get_field( 'company_name', $parameter_page );
 						if ( $company_name && $job_title ) {
 							echo ', ';
 						}
-						echo get_field( 'company_name', $parameter_page ); 
+						echo get_field( 'company_name', $parameter_page );
 						?>
 					</div>
 					<?php
@@ -342,7 +342,7 @@ function eqd_single_landing_page() {
 
 
 	<?php if ( ! empty( $parameter_page ) ) : ?>
-		<section class="ed_landing_works 
+		<section class="ed_landing_works
 		<?php
 		if ( empty( $parameter_page ) ) {
 			echo 'ed_landing_works_empty'; } else {
@@ -352,27 +352,27 @@ function eqd_single_landing_page() {
 			<div class="ed_landing_works_container">
 				<div class="ed_landing_works_container_content">
 					<h2 class="heading">
-					<?php 
+					<?php
 					if ( empty( $parameter_page ) ) {
-						the_field( 'heading' ); 
+						the_field( 'heading' );
 					} else {
-						the_field( 'heading', $parameter_page ); 
+						the_field( 'heading', $parameter_page );
 					}
 					?>
-					
+
 					</h2>
 
-					<?php 
+					<?php
 					if ( empty( $parameter_page ) ) {
-						the_field( 'how_does_the_consult_work' ); 
+						the_field( 'how_does_the_consult_work' );
 					} else {
-						the_field( 'how_does_the_consult_work', $parameter_page ); 
+						the_field( 'how_does_the_consult_work', $parameter_page );
 					}
 					?>
 				</div>
-				
 
-				<?php 
+
+				<?php
 				if ( empty( $parameter_page ) ) {
 					if ( get_field( 'how_does_the_consult_work_youtube_id' ) ) :
 						?>

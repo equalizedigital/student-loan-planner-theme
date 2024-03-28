@@ -26,7 +26,7 @@ add_filter( 'acf/load_field', 'load_menu_names_to_acf' );
  */
 function load_menu_names_to_acf( $field ) {
 	// Ensure it targets the correct field key
-	if ( $field['key'] === 'field_64f21f700a2cd' ) {  
+	if ( $field['key'] === 'field_64f21f700a2cd' ) {
 		$menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );  // get all menus
 
 		foreach ( $menus as $menu ) {
@@ -337,7 +337,7 @@ function slp_a_target( $value ) {
  *
  * @param string $content          The original HTML content.
  * @param string $superscript_text The text to be added as superscript.
- * 
+ *
  * @return string Updated content with superscripts appended.
  */
 function slp_append_superscript( $content, $superscript_text ) {
@@ -360,16 +360,16 @@ function get_company_name_shortcode( $atts ) {
 		array(
 			'fallback' => 'eee',
 		),
-		$atts 
+		$atts
 	);
 
 
 	// Default message
 	$message = esc_attr( $fallback['fallback'] );
-	
+
 	if ( isset( $_GET['landing_page'] ) ) {
 		$page_slug = sanitize_text_field( $_GET['landing_page'] );
-		
+
 		// Query the CPT for the company name using the 'page_slug'
 		$args  = array(
 			'post_type'   => 'slp_landing',
@@ -377,14 +377,14 @@ function get_company_name_shortcode( $atts ) {
 			'numberposts' => 1,
 			'meta_query'  => array(
 				array(
-					'key'     => 'landing_page_url_text', 
-					'value'   => $page_slug, 
-					'compare' => '=', 
+					'key'     => 'landing_page_url_text',
+					'value'   => $page_slug,
+					'compare' => '=',
 				),
 			),
 		);
 		$query = new WP_Query( $args );
-		
+
 		// If a post is found, retrieve the Company Name
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
@@ -398,10 +398,11 @@ function get_company_name_shortcode( $atts ) {
 			wp_reset_postdata(); // Reset post data
 		}
 	}
-	
+
 	// Return the company name or default message
 	return $message;
 }
+
 add_shortcode( 'get_company_name', 'get_company_name_shortcode' );
 
 
@@ -409,11 +410,11 @@ function generate_custom_booking_button_shortcode( $atts ) {
 	// Default URL for the booking button
 	$default_url = 'https://calendly.com/studentloanplanner-team';
 	$button_url  = $default_url; // Set the button URL to default initially
-	
+
 	// Check if the 'landing_page' URL parameter is present
 	if ( isset( $_GET['landing_page'] ) ) {
 		$page_slug = sanitize_text_field( $_GET['landing_page'] );
-		
+
 		// Query the CPT for the booking link using the 'page_slug'
 		$args  = array(
 			'post_type'   => 'slp_landing',
@@ -421,14 +422,14 @@ function generate_custom_booking_button_shortcode( $atts ) {
 			'numberposts' => 1,
 			'meta_query'  => array(
 				array(
-					'key'     => 'landing_page_url_text', 
-					'value'   => $page_slug, 
-					'compare' => '=', 
+					'key'     => 'landing_page_url_text',
+					'value'   => $page_slug,
+					'compare' => '=',
 				),
 			),
 		);
 		$query = new WP_Query( $args );
-		
+
 		// If a post is found, retrieve the Booking Link
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
@@ -442,12 +443,24 @@ function generate_custom_booking_button_shortcode( $atts ) {
 			wp_reset_postdata(); // Reset post data
 		}
 	}
-	
+
 	// Generate the HTML for the button
 	$button_html = '<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $button_url ) . '">Book Your Custom Plan</a></div>';
-	
-	
+
+
 	// Return the button HTML
 	return $button_html;
 }
 add_shortcode( 'custom_booking_button', 'generate_custom_booking_button_shortcode' );
+
+function eqd_logo_setup() {
+    $defaults = array(
+        'height'      => 70, // Set the desired height for the logo
+        'width'       => 240, // Set the desired width for the logo
+        'flex-height' => true, // Allow flexible height
+        'flex-width'  => true, // Allow flexible width
+        'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'eqd_logo_setup' );

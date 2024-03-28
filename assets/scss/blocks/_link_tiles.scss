@@ -17,15 +17,15 @@ $hover-effect-duration: 0.3s;
 		width: 100%;
 		text-align: center;
 
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			font-size: 20px;
-			font-weight: 700;
-			line-height: 35px;
-			text-align: center;
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 35px;
+            text-align: center;
 			color: #000000;
 
 		}
@@ -44,9 +44,7 @@ $hover-effect-duration: 0.3s;
 			flex-wrap: wrap;
 		}
 
-		// Individual tile styling
-		.link_tiles_template_container_tiles_tile {
-			border-radius: 10px;
+		.link_tiles_template_container_tiles_tile{
 
 			text-align: center;
 
@@ -56,6 +54,7 @@ $hover-effect-duration: 0.3s;
 			width: 100%;
 			min-width: calc(20% - 20px);
 			width: calc(50% - 20px);
+
 			@include media(">tablet") {
 				width: calc(20% - 20px);
 			}
@@ -78,15 +77,11 @@ $hover-effect-duration: 0.3s;
 				border-radius: 10px;
 
 				&:focus-within,
-			&:hover {
-				box-shadow: 0 0 0 1px #625089;
-				outline: 0px !important;
-				.link {
-
-					color: #625089;
-
+				&:hover {
+					box-shadow: 0 0 0 1px #625089;
+					outline: 0px !important;
+						color: #625089;
 				}
-			}
 
 				// Icon styling
 				img {
