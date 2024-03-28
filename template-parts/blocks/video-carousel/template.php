@@ -33,41 +33,94 @@ if ( ! empty( $block['align'] ) ) :
 endif;
 
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
-
+$image_path = get_template_directory_uri() . '/assets/images/';
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
   <div class="swiper-container">
       <div class="swiper-wrapper">
+
           <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						<div class="slide-container">
+							<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
+            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						</div>
           </div>
+
+					<div class="swiper-slide">
+						<div class="slide-container">
+							<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
+            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						</div>
+          </div>
+
+					<div class="swiper-slide">
+						<div class="slide-container">
+							<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
+            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						</div>
+          </div>
+
+					<div class="swiper-slide">
+						<div class="slide-container">
+							<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
+            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						</div>
+          </div>
+
+					<div class="swiper-slide">
+						<div class="slide-container">
+							<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
+            	<video src="https://into-the-program.com/uploads/sample_video01.mp4" muted></video>
+						</div>
+          </div>
+
           <div class="swiper-slide">
+					<div class="slide-container">
+					<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
             <video src="https://into-the-program.com/uploads/sample_video02.mp4" preload="none" muted></video>
+						</div>
           </div>
           <div class="swiper-slide">
+					<div class="slide-container">
+					<div class="image-object">
+								<img class="image-placeholder" src="https://slpwealth.test/wp-content/uploads/2024/03/Rectangle-56.jpg" alt="">
+								<button class="image-placeholder-action">
+								<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="">
+								</button>
+							</div>
             <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
-          </div>
-          <div class="swiper-slide">
-            <video src="https://into-the-program.com/uploads/sample_video03.mp4" preload="none" muted></video>
+						</div>
           </div>
       </div>
       <div class="swiper-button-prev"></div>
