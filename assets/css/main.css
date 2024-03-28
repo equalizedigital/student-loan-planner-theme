@@ -8269,7 +8269,11 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   top: 50%;
   width: 90%;
   left: 20px;
-  transform: translate(0px, -50%); }
+  transform: translate(0px, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start; }
   @media (min-width: 769px) {
     .video_block_template_container_content_block {
       min-width: 520px;
