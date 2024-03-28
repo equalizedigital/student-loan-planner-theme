@@ -1,0 +1,122 @@
+.video_block_template {
+    background: #625089;
+
+
+
+    .video_block_template_container {
+        display: grid;
+        grid-template-columns: 0.34fr 1fr;
+    }
+
+    video {
+        max-width: 100%;
+
+        @include media("<tablet") {
+            min-height: 100vh;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+
+
+.video_block_template_container_content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    z-index: 21;
+
+    @include media("<tablet") {
+        min-height: 100vh;
+    }
+}
+
+
+.video_block_template_container_media_video {
+    position: relative;
+
+    @include media("<tablet") {
+        min-height: 100vh;
+    }
+}
+
+.video_block_template_container_media_video_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: #62508980;
+    padding: 0;
+}
+
+.video_block_template_container_media_video video {
+    display: flex;
+}
+
+.video_block_template_container_content_block {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    left: 20px;
+    transform: translate(0px, -50%);
+
+    @include media(">tablet") {
+        min-width: 520px;
+    }
+
+}
+
+
+.video_block_template_container_content_block_heading {
+    color: white!important;
+    left: 84px;
+
+
+}
+
+.video_block_template_container_media_placeholder_action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 11px 30px;
+}
+
+button.video_block_template_container_media_placeholder_action_btn {
+    border: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+
+.video_block_modal {}
+
+.video_block_modal .modal-content {
+    padding: 0;
+    display: flex;
+}
+
+.video_block_modal .modal-content video {
+    width: 100%;
+}
+
+.video_block_modal .modal-content .content {
+    display: flex;
+}
+
+.video_block_modal button.close-btn {
+    background: #fff;
+    border-radius: 50%;
+}
