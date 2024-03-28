@@ -8258,11 +8258,9 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       width: 100%;
       min-width: calc(20% - 20px);
       width: calc(50% - 20px); }
-      @media (min-width: 769px) {
-        .link_tiles_template_container .link_tiles_template_container_tiles .link_tiles_template_container_tiles_tile {
-          width: calc(20% - 20px); } }
       .link_tiles_template_container .link_tiles_template_container_tiles .link_tiles_template_container_tiles_tile .link {
         display: flex;
+        min-height: 140px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
