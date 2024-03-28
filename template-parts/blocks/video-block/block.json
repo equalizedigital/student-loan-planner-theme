@@ -1,0 +1,21 @@
+{
+	"name": "acf/video-block",
+	"title": "Video Block",
+	"description": "Display tiles.",
+	"category": "custom-blocks",
+	"icon": "admin-post",
+	"keywords": [
+		"post",
+		"featured"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/video-block/screenshot.png"
+		}
+	}
+}

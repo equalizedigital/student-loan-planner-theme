@@ -1,0 +1,56 @@
+name: Lint JS
+
+on:
+  # Run on pushes to select branches and on all pull requests.
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+      
+  # Allow manually triggering the workflow.
+  workflow_dispatch:
+
+# Cancels all previous workflow runs for the same branch that have not yet completed.
+concurrency:
+  # The concurrency group contains the workflow name and the branch name.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    name: "Lint: JS"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Cache the Node.js modules to speed up the workflow.
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # The lint stage doesn't run the unit tests or use code style, so no need for PHPUnit, WPCS or phpcompatibility.
+      - name: 'Install NPM packages'
+        run: npm install
+
+      # Only run ESLint on changed JavaScript files.
+      - name: 'Get changed JavaScript files'
+        id: jsfiles
+        run: |
+          echo "JS_FILES<<EOF" >> $GITHUB_ENV
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.js$' || echo ""
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: 'Run ESLint'
+        if: env.JS_FILES != ''
+        run: npm run lint:js -- ${{ env.JS_FILES }}

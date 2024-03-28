@@ -348,7 +348,7 @@ window.addEventListener("load", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 	function footerMenuFunctions() {
-		
+
 		// Find all elements with class .widget-title
 		const widgetTitles = document.querySelectorAll('.widget-title');
 		// Get all sections with id pattern 'nav_menu-*'
@@ -406,12 +406,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				let sibling = this.nextElementSibling;
 				// if (sibling) {
 					var isExpanded = title.getAttribute('aria-expanded');
-					this.nextElementSibling.classList.toggle('active'); 
+					this.nextElementSibling.classList.toggle('active');
 					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 				// }
 			},true);
 		});
-	
+
 }
 
     let widgetTitlesRespo = document.querySelectorAll('.widget-title');
@@ -595,11 +595,11 @@ jQuery(function ($) {
 });
 
 (function() {
-	
+
 window.addEventListener("DOMContentLoaded", function () {
 	// resource links
 	let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
-	
+
 
 	if (accordionButtons.length > 0) {
 		// Accordion
@@ -726,7 +726,7 @@ window.addEventListener("load", function () {
 
 	// Listen for window resize events and recheck
 	window.addEventListener('resize', checkIsTabletSize);
-	
+
 	function teamHighlightFunctionality(windowWidth) {
 		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
 		let highlightButtonText = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button .text')
@@ -881,15 +881,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// 
+//
 
 window.addEventListener('DOMContentLoaded', () => {
-	
+
 	let toc_container_entry_content = document.querySelectorAll('.single .post_type_layout_standard .entry-content');
 	let toc_container = document.querySelectorAll('.toc_container');
 
 	if (toc_container.length > 0 || toc_container_entry_content.length > 0) {
-		
+
 		// Get all <h2> elements within .toc_container
 		let tocContainer;
 		let h2Elements;
@@ -968,7 +968,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
-		
+
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
@@ -1045,33 +1045,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		});
 
-		// click toc menu links	
+		// click toc menu links
 		const elementsWithHref = document.querySelectorAll('.contents-nav-mobile-menu a, .toc-nav a');
 
 		// Add a click event listener to each element
 		elementsWithHref.forEach(element => {
 			element.addEventListener('click', event => {
 				event.preventDefault(); // Prevent the default anchor behavior
-		
+
 				// Get the href value
 				const hrefValue = element.getAttribute('href');
-		
+
 				// Find the target element using the href value
 				const targetElement = document.querySelector(hrefValue);
-		
+
 				// Check if the target element exists
 				if (targetElement) {
 					// Set the focus on the target element
 					targetElement.focus();
-					
+
 					// Toggle the contents-nav-mobile class
 					let contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
 					contentsNavMobileClicker.classList.toggle('active');
-					
+
 					// Calculate the position to scroll to
 					const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
 					const offsetPosition = elementTop - 100;
-		
+
 					// Scroll to the desired position
 					window.scrollTo({
 						top: offsetPosition,
@@ -1080,7 +1080,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		});
-		
+
 		// Get a reference to the elements
 		const dropdownSelect = document.querySelector('.contents-nav-mobile-header-dropdown-select');
 		const contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
@@ -1097,7 +1097,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
-	
+
 	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
 	if (accordionButton.length > 0) {
 
@@ -1125,18 +1125,18 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.querySelector('.tablet_chevron').addEventListener('click', function() {
 		var list = document.querySelector('.tabbed-content__nav-list');
 		var items = list.querySelectorAll('.tabbed-content__nav-item');
-		
+
 		// Find the currently active item
 		var activeItem = list.querySelector('.active');
 		var activeIndex = Array.from(items).indexOf(activeItem);
-		
+
 		// Determine the next item to scroll into view
 		var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
-		
+
 		if (nextItem) {
 			// Scroll the next item into view
 			nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-			
+
 			// Update the active class if needed
 			activeItem.classList.remove('active');
 			nextItem.classList.add('active');
@@ -1145,4 +1145,61 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 });
- 
+
+
+// vendor information block
+document.addEventListener('DOMContentLoaded', function () {
+	const accordionButton = document.querySelectorAll(
+		'.vendor_information_block_container_column_two_link_more_info'
+	);
+	if (accordionButton.length > 0) {
+		accordionButton.forEach((element) => {
+			element.addEventListener('click', (event) => {
+				const controlledElementId =
+					event.target.getAttribute('aria-controls');
+				const targetElement =
+					document.getElementById(controlledElementId);
+				if (targetElement) {
+					event.target.classList.toggle('active_btn');
+					targetElement.toggleAttribute('hidden');
+					const isExpanded =
+						event.target.getAttribute('aria-expanded') === 'true';
+					event.target.setAttribute('aria-expanded', !isExpanded);
+					event.target.innerHTML = isExpanded
+						? 'More Information <span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>'
+						: 'Less Information<span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg></span>';
+				}
+			});
+		});
+	}
+
+	const tabletChevron = document.querySelectorAll('.tablet_chevron');
+	if (tabletChevron.length > 0) {
+		document
+			.querySelector('.tablet_chevron')
+			.addEventListener('click', function () {
+				let list = document.querySelector('.tabbed-content__nav-list');
+				var items = list.querySelectorAll('.tabbed-content__nav-item');
+
+				// Find the currently active item
+				let activeItem = list.querySelector('.active');
+				var activeIndex = Array.from(items).indexOf(activeItem);
+
+				// Determine the next item to scroll into view
+				let nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
+
+				if (nextItem) {
+					// Scroll the next item into view
+					nextItem.scrollIntoView({
+						behavior: 'smooth',
+						block: 'nearest',
+						inline: 'start',
+					});
+
+					// Update the active class if needed
+					activeItem.classList.remove('active');
+					nextItem.classList.add('active');
+				}
+			});
+	}
+});

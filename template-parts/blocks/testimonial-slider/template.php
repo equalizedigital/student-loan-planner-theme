@@ -73,12 +73,15 @@ $acf_title = get_field( 'title' );
 								<span>
 									<?php the_field( 'location', $id_post ); ?>
 								</span>
-								 <?php if(!empty(get_field( 'date', $id_post ))){ echo '|'; } ?>
+								<?php
+								if ( ! empty( get_field( 'date', $id_post ) ) ) {
+									echo '|'; }
+								?>
 								<span>
 									<?php the_field( 'date', $id_post ); ?>
 								</span>
 							</span>
-							<?php if(!empty($rating)): ?>
+							<?php if ( ! empty( $rating ) ) : ?>
 							<span class="rating">
 								<div class="stars" aria-hidden="true">
 								<?php for ( $i = 0; $i < 5; $i++ ) : ?>
@@ -122,17 +125,19 @@ $acf_title = get_field( 'title' );
 		<div class="testimonial-slider-block-container-testimonial_read_more">
 			
 			<?php 
-			$link = get_field('link');
+			$link = get_field( 'link' );
 
-			if ($link) {
+			if ( $link ) {
 				// The link field returns an array containing 'url', 'title', and 'target'
-				$url = $link['url'];
-				$title = $link['title'] ?: 'Default Title'; // Set a default title if none is provided
+				$url    = $link['url'];
+				$title  = $link['title'] ?: 'Default Title'; // Set a default title if none is provided
 				$target = $link['target'] ?: '_self'; // Default target to '_self' if none is provided
 			
 				echo "<a href='{$url}' target='{$target}' class='btn btn-dark-bg'>{$title}</a>";
 			} else {
-				?><a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a><?php
+				?>
+				<a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
+				<?php
 			}
 			
 			?>
@@ -145,9 +150,10 @@ $acf_title = get_field( 'title' );
 
  
 <?php 
-if (is_admin()) {
+if ( is_admin() ) {
 	add_action( 'enqueue_block_editor_assets', 'testimonial_slider_assets' );
-} else{ ?>
+} else {
+	?>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

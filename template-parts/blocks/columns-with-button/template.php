@@ -45,18 +45,24 @@ $acf_copy        = get_field( 'copy' );
 	<div class="columns-with-button-block-container">
 		<div class="columns-with-button-block-container-content">
 			<h2 class="columns-with-button-block-container-content__title"><?php echo wp_kses_post( $acf_title ); ?></h2>
-			<a href="<?php echo wp_kses_post( $acf_link_url ); if(isset( $_SERVER['QUERY_STRING'] ) && !empty( $_SERVER['QUERY_STRING'] )){ echo "&#63;".$_SERVER['QUERY_STRING']; } ?>" class="columns-with-button-block-container-content__button btn">
+			<a href="
+			<?php
+			echo wp_kses_post( $acf_link_url );
+			if ( isset( $_SERVER['QUERY_STRING'] ) && ! empty( $_SERVER['QUERY_STRING'] ) ) {
+				echo '&#63;' . $_SERVER['QUERY_STRING']; }
+			?>
+			" class="columns-with-button-block-container-content__button btn">
 				<?php echo wp_kses_post( $acf_link_title ); ?>
 			</a>
 			<div class="columns-with-button-block-container-content__rating">
 				<?php
-				if(!empty($acf_rating_text['url'])){
+				if ( ! empty( $acf_rating_text['url'] ) ) {
 					echo '<a href="' . $acf_rating_text['url'] . '">';
 				}
 				?>
 				<?php echo $acf_rating_text['title']; ?>
 				<?php
-				if(!empty($acf_rating_text['url'])){
+				if ( ! empty( $acf_rating_text['url'] ) ) {
 					echo '</a>';
 				}
 				?>
