@@ -22,17 +22,22 @@ if ( empty( $layout_style ) ) {
 }
 
 $container_class .= ' post_type_layout_' . $layout_style . ' ';
-
+$hide_page_header = get_field('hide_page_header');
 $side_container_class = '';
+
 if ( get_field( 'post_format_style' ) === 'full-width' ) {
 } else {
 	$side_container_class .= 'inner-hero-alternate-style';
 }
 
+if( $hide_page_header ){
+	$container_class .= ' post_type_layout_hide_page_header ';
+}
+
 tha_content_before();
 
 	echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
-		
+
 		tha_content_wrap_before();
 
 		tha_page_header();
@@ -53,9 +58,9 @@ tha_content_before();
 				echo '</div>';
 
 				tha_single_sidebar();
-				
+
 			echo '</div>';
-			
+
 			tha_single_page_end();
 
 		echo '</main>';
