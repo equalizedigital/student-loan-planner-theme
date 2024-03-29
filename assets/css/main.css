@@ -8103,7 +8103,17 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
 
 .video_carousel_template {
   padding-bottom: 100px;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0 20px; }
+  @media (min-width: 769px) {
+    .video_carousel_template {
+      padding: 0; } }
+  .video_carousel_template .swiper-notification {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+    padding: 20px; }
   .video_carousel_template .swiper-nav {
     position: relative;
     display: flex;
@@ -8151,9 +8161,9 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       justify-content: center;
       margin: 20px 0 0; }
     .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide {
-      min-width: 265px;
+      width: 265px;
       opacity: .5; }
-      .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-next {
+      .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev:has(+ * + .swiper-slide), .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-next {
         opacity: 1; }
       .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide .btn {
         font-size: 15px;
@@ -8185,7 +8195,9 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     object-fit: cover;
     object-position: center;
     height: 100%;
-    z-index: 20; }
+    z-index: 20;
+    width: 100%;
+    border-radius: 10px; }
     .video_carousel_template .slide-container .image-placeholder.image-hold {
       opacity: 0;
       visibility: hidden; }
@@ -8199,8 +8211,12 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     object-position: center;
     height: 100%;
     z-index: 20; }
-    .video_carousel_template .image-object.image-hold .image-placeholder-action {
+    .video_carousel_template .image-object.image-hold {
       display: none; }
+      .video_carousel_template .image-object.image-hold .image-placeholder-action {
+        display: none; }
+      .video_carousel_template .image-object.image-hold:after {
+        display: none; }
     .video_carousel_template .image-object:after {
       content: close-quote;
       position: absolute;
