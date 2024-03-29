@@ -55,7 +55,7 @@ $hover-effect-duration: 0.3s;
 			display: flex;
 			justify-content: center;
 			width: 100%;
-			min-width: calc(20% - 20px);
+			max-width: 206px;
 			width: calc(50% - 20px);
 
 			@include media(">tablet") {

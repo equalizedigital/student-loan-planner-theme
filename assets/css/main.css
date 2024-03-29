@@ -8279,7 +8279,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       display: flex;
       justify-content: center;
       width: 100%;
-      min-width: calc(20% - 20px);
+      max-width: 206px;
       width: calc(50% - 20px); }
       @media (min-width: 769px) {
         .link_tiles_template_container .link_tiles_template_container_tiles .link_tiles_template_container_tiles_tile {
