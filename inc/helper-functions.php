@@ -464,3 +464,29 @@ function eqd_logo_setup() {
     add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
+
+
+function theme_enqueue_swiper_assets() {
+    if ( is_singular() && has_video_carousel_block( get_post() ) ) {
+        // Enqueue Swiper CSS
+        wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
+
+        // Enqueue Swiper JS
+        wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), false, true );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_swiper_assets' );
+
+function has_video_carousel_block( $post ) {
+    // Replace 'acf/video-carousel' with your block's name
+    $block_name = 'acf/video-carousel';
+    $blocks = parse_blocks( $post->post_content );
+
+    foreach ( $blocks as $block ) {
+        if ( $block['blockName'] === $block_name ) {
+            return true;
+        }
+    }
+
+    return false;
+}
