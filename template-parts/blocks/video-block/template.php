@@ -34,8 +34,8 @@ endif;
 
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 $image_path = get_template_directory_uri() . '/assets/images/';
-$video_path = get_template_directory_uri() . '/assets/videos/';
-
+$video_path = get_field('video_file');
+$video_path = $video_path['url'];
 $heading = get_field( 'heading' );
 ?>
 
@@ -75,12 +75,15 @@ if ( $link ) :
 		</div>
 		<div class="video_block_template_container_media">
 			<div class="video_block_template_container_media_video">
-				<video class="video-element video-placeholder" id="video-placeholder" controlslist="nodownload" loop autoplay muted>
-					<source src="<?php echo wp_kses_post( $video_path ); ?>/h264_1080_best.mp4"  type="video/mp4">
+				<video class="video-element video-placeholder" id="video-placeholder" "  autoplay muted>
+					<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
 				</video>
-				<button class="video_block_template_container_media_video_button modal-btn" data-modal="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-label="Play Video">
-					<img src="<?php echo $image_path; ?>/play.svg" alt="Play Video">
-				</button>
+				<div class="video_block_template_container_media_video_button">
+					<button class="modal-btn" data-modal="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-controls="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-expanded="false" aria-haspopup="dialog" aria-label="Play Video">
+						<img src="<?php echo $image_path; ?>/play.svg" alt="Play Video">
+					</button>
+				</div>
+
 			</div>
 			<div class="video_block_template_container_media_placeholder_action">
 				<button class="video_block_template_container_media_placeholder_action_btn" aria-label="Pause Video">
@@ -95,13 +98,13 @@ if ( $link ) :
 
 <div id="modal_video_block_<?php echo esc_attr( $block_id ); ?>" class="modal video_block_modal" aria-hidden="true" role="dialog" aria-modal="true">
 	<div class="modal-content" >
+		<div class="content">
+			<video  class="video-element" controlslist="nodownload" controls>
+				<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
+			</video>
+		</div>
 		<button class="close-btn" aria-label="Close Modal">
 			<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
 		</button>
-		<div class="content">
-			<video  class="video-element" controlslist="nodownload"  autoplay muted>
-				<source src="<?php echo wp_kses_post( $video_path ); ?>/h264_1080_best.mp4"  type="video/mp4">
-			</video>
-		</div>
 	</div>
 </div>

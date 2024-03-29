@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
 jQuery(function ($) {
 
 	// jQuery formatted selector to search for focusable items
-	var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+	var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, video, object, embed, *[tabindex], *[contenteditable]";
 
 	// store the item that has focus before opening the modal window
 	var focusedElementBeforeModal;
@@ -558,7 +558,7 @@ jQuery(function ($) {
 	function setFocusToFirstItemInModal(obj) {
 		// get list of all children elements in given object
 		var o = $(obj).find('*');
-
+		console.log(o.filter(focusableElementsString).filter(':visible'))
 		// set the focus to the first keyboard focusable item
 		o.filter(focusableElementsString).filter(':visible').first().focus();
 	}
@@ -568,26 +568,36 @@ jQuery(function ($) {
 		// jQuery('.modalOverlay').css('display', 'block'); // insert an overlay to prevent clicking and make a visual change to indicate the main apge is not available
 		jQuery('#' + obj).css('display', 'block'); // make the modal window visible
 		jQuery('#' + obj).attr('aria-hidden', 'false'); // mark the modal window as visible
-
+		jQuery('body').addClass('modal-active');
 		// attach a listener to redirect the tab to the modal window if the user somehow gets out of the modal window
 		jQuery('body').on('focusin', 'body', function () {
 			setFocusToFirstItemInModal('#' + obj);
 		})
 		// save current focus
 		focusedElementBeforeModal = jQuery(':focus');
-
 		setFocusToFirstItemInModal('#' + obj);
+
 	}
 
 	function hideModal() {
+		jQuery('body').removeClass('modal-active');
 		jQuery('.modal').css('display', 'none'); // hide the modal window
 		jQuery('.modal').attr('aria-hidden', 'true'); // mark the modal window as hidden
 		jQuery(' body').attr('aria-hidden', 'false'); // mark the main page as visible
+
+		jQuery('.modal-btn').attr('aria-expanded',false) ;
 
 		// remove the listener which redirects tab keys in the main content area to the modal
 		jQuery('body').off('focusin', ' body');
 
 		jQuery('.modal').attr('aria-hidden', 'true');
+
+		const modal_videos = document.querySelectorAll('.modal video');
+
+		// Pause each video found
+		modal_videos.forEach(function(video) {
+			video.pause();
+		});
 
 		// set focus back to element that had it before the modal was opened
 		focusedElementBeforeModal.focus();
@@ -1259,7 +1269,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('video-placeholder').play();
+});
 
 
 jQuery('.video-placeholder').on('click', function() {
