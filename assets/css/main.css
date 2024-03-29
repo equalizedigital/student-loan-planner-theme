@@ -3129,6 +3129,9 @@ img.wprm-comment-rating {
 .post_type_layout_standard .entry-content {
   padding: 40px 0 40px; }
 
+.post_type_layout_standard.post_type_layout_hide_page_header .entry-content {
+  padding: 0 0 40px; }
+
 .single .post_type_layout_standard .entry-content {
   padding: 10px 0 40px; }
 
