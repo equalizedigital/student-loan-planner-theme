@@ -4882,7 +4882,8 @@ article.type-post {
 .calculator-signup-container {
   margin: 0 auto;
   display: flex;
-  position: relative; }
+  position: relative;
+  background: #625089; }
   @media (max-width: 767px) {
     .calculator-signup-container {
       flex-direction: column; } }
