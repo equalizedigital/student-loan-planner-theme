@@ -1,6 +1,18 @@
 .video_carousel_template {
 	padding-bottom: 100px;
 	overflow: hidden;
+	padding: 0 20px;
+	@include media(">tablet") {
+		padding: 0;
+	}
+
+	.swiper-notification {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		font-size: 14px;
+		padding: 20px;
+	}
 
 	.swiper-nav {
 		position: relative;
@@ -65,9 +77,9 @@
 			}
 
 			.swiper-slide {
-				min-width: 265px;
+				width: 265px;
 				opacity: .5;
-
+				&.swiper-slide-prev:has(+ * + .swiper-slide),
 				&.swiper-slide-prev,
 				&.swiper-slide-active,
 				&.swiper-slide-next {
@@ -115,6 +127,8 @@
 		object-position: center;
 		height: 100%;
 		z-index: 20;
+		width: 100%;
+    	border-radius: 10px;
 
 		&.image-hold {
 			opacity: 0;
@@ -135,7 +149,11 @@
 		z-index: 20;
 
 		&.image-hold {
+			display: none;
 			.image-placeholder-action {
+				display: none;
+			}
+			&:after {
 				display: none;
 			}
 		}

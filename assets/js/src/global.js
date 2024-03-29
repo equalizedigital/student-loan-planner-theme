@@ -1157,47 +1157,42 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
 
 var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
   // Optional parameters
-  loop: true,
+	  loop: true,
+	slidesPerView: 3.5,
+	spaceBetween: 21, // Adjust the space between slides as needed.
+	centeredSlides: true, // This helps in showing the partial slides on the sides.
+	keyboard: {
+		enabled: true,
+	  },
+	// Navigation arrows
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
 
-// Use 'auto' plus a fixed 'spaceBetween' to show a partial next slide.
-slidesPerView: 4,
-spaceBetween: 21, // Adjust the space between slides as needed.
-centeredSlides: true, // This helps in showing the partial slides on the sides.
-pagination: {
-  el: '.swiper-pagination',
-  clickable: true,
-},
+	// Responsive breakpoints
+	breakpoints: {
+	// When window width is >= 640px
+	1: {
+		slidesPerView: 1,
+		centeredSlides: true,
+	},
+	// When window width is >= 768px
+	768: {
+		slidesPerView: 3,
+		centeredSlides: true,
+	},
+	// When window width is >= 1024px
+	1024: {
+		slidesPerView: 3,
+		centeredSlides: true, // or false, depending on your preference for desktop
+	},
+	},
 
-// Responsive breakpoints
-breakpoints: {
-  // When window width is >= 640px
-  640: {
-    slidesPerView: 2,
-    spaceBetween: 20,
-	centeredSlides: true,
-  },
-  // When window width is >= 768px
-  768: {
-    slidesPerView: 3,
-    spaceBetween: 30,
-	centeredSlides: true,
-  },
-  // When window width is >= 1024px
-  1024: {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    centeredSlides: true, // or false, depending on your preference for desktop
-  },
-},
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
 
   on: {
     transitionStart: function(){
@@ -1221,7 +1216,7 @@ breakpoints: {
 
   }
 });
-
+});
 document.addEventListener('DOMContentLoaded', function() {
     // Select all play buttons
     var playButtons = document.querySelectorAll('.image-placeholder-action');
