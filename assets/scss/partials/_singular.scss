@@ -951,7 +951,15 @@ img.wprm-comment-rating {
 		padding: 40px 0 40px;
 	}
 
+	&.post_type_layout_hide_page_header{
+		.entry-content {
+			padding: 0 0 40px;
+		}
+	}
+
 }
+
+
 
 .single {
 	.post_type_layout_standard {
@@ -1686,7 +1694,7 @@ section.refinance_lender_section {
 	tr .td_title {
 		color: #625089;
 		text-align: center;
-	
+
 
 		font-size: 35px;
 		font-style: normal;
@@ -2191,7 +2199,7 @@ html {
 }
 
 
-// Archive Featured Image	
+// Archive Featured Image
 
 .archive_featured_post {
 	position: relative;
@@ -2284,7 +2292,7 @@ article.type-post {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				
+
 				img {
 					width: auto;
 					height: auto;

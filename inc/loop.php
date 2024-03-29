@@ -92,13 +92,12 @@ function eqd_single_header() {
 		$link                    = get_field( 'single_post_link', $page_id );
 		$output                  = null;
 		$container_class         = '';
-
+		$hide_author_data = get_field('hide_author_data', get_the_ID());
 		if ( get_field( 'post_format_style' ) === 'full-width' ) {
 			$container_class .= 'hero_relative';
 		} else {
 			$container_class .= 'inner-hero-alternate-style';
 		}
-
 		?>
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
@@ -121,6 +120,7 @@ function eqd_single_header() {
 				<?php
 				// post author data
 				if ( get_field( 'post_format_style' ) === 'full-width' ) {
+					if( !$hide_author_data ){
 					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
 						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 					}
@@ -139,6 +139,7 @@ function eqd_single_header() {
 						</span>
 					</span>
 					<?php
+					}
 				}
 				?>
 
