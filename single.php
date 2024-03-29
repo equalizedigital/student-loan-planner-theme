@@ -91,7 +91,7 @@ function eqd_single_after_entry_content() {
 
 	<?php if ( have_rows( 'vendors', 'option' ) ) : ?>
 
-		<section class="refinance_lender_section 
+		<section class="refinance_lender_section
 		<?php
 		if ( get_field( 'show_private_student_loans_table_instead_of_refinance_table', 'category_' . $primary_category_id ) ) {
 			echo 'refinance_lender_section_private'; }
@@ -144,7 +144,7 @@ function eqd_single_after_entry_content() {
 								$disclosure_text = get_sub_field( 'disclosure_text' );
 								?>
 
-								<tr class="data-tr 
+								<tr class="data-tr
 										<?php
 										if ( get_row_index() > 3 ) {
 											echo 'hidden';
@@ -234,7 +234,7 @@ function eqd_single_after_entry_content() {
 							$variable        = get_sub_field( 'variable' );
 							?>
 
-							<tr class="data-tr 
+							<tr class="data-tr
 							<?php
 							if ( get_row_index() > 3 ) {
 								echo 'hidden';
@@ -495,6 +495,7 @@ function eqd_single_after_entry_author_info() {
 	$id_post_editor = get_field( 'post_editor', get_the_ID() );
 	$user_info_ID   = get_userdata( $id );
 	$author_url_id  = get_author_posts_url( $id );
+	$hide_author_data = get_field('hide_author_data', get_the_ID());
 
 	if ( ! empty( $id_post_editor ) ) {
 		$author_url  = get_author_posts_url( get_the_author_meta( 'ID' ) );
@@ -504,20 +505,18 @@ function eqd_single_after_entry_author_info() {
 		$last_name   = $user_info->last_name;
 		$nickname    = $user_info->nickname;
 	}
-
+	if($hide_author_data){
+		return;
+	}
 	?>
-
 	<div class="article_footer_data">
 		<div class="article_footer_data_author">
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
 					<?php echo get_avatar( $id, 64 ); ?>
-
 					<div class="author_name">
 						<?php echo get_the_author( $id ); ?>
 					</div>
-
-
 				</div>
 
 				<span class="article_footer_data_author_entry-info">
