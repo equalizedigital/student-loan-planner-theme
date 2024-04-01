@@ -577,6 +577,11 @@ jQuery(function ($) {
 		focusedElementBeforeModal = jQuery(':focus');
 		setFocusToFirstItemInModal('#' + obj);
 
+		var video = jQuery('#' + obj).find('.video-modal-autoplay').get(0);
+		if (video) {
+			video.play();
+		}
+
 	}
 
 	function hideModal() {
@@ -1294,9 +1299,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	videoPlaceholderPause.addEventListener('click', function() {
 	  if (!videoElement.paused) {
 		videoElement.pause();
+		videoPlaceholderPause.ariaPressed = true;
 		buttonText.textContent = 'Play Video'; // Change the text to 'Play Video'
 	  } else {
 		videoElement.play();
+		videoPlaceholderPause.ariaPressed = false;
 		buttonText.textContent = 'Pause Video'; // Change the text to 'Pause Video'
 	  }
 	});
