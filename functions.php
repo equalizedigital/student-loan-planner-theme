@@ -319,13 +319,13 @@ add_filter( 'acf/fields/post_object/query', 'npp_custom_acf_post_object_query', 
  * @param array $args   The WP_Query arguments.
  * @param array $field  The field settings.
  * @param int   $post_id The post ID (or term ID, depending on context).
- * 
+ *
  * @return array Modified query arguments.
  */
 function npp_filter_post_object_query( $args, $field, $post_id ) {
 	// Check if this is the specific field we want to modify.
 	if ( 'recommendedfeatured_posts' === $field['name'] ) {
-		
+
 		// Check if it's a term ID and extract the ID.
 		if ( strpos( $post_id, 'term_' ) === 0 ) {
 			$term_id = str_replace( 'term_', '', $post_id );

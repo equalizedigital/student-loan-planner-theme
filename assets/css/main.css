@@ -3129,6 +3129,9 @@ img.wprm-comment-rating {
 .post_type_layout_standard .entry-content {
   padding: 40px 0 40px; }
 
+.post_type_layout_standard.post_type_layout_hide_page_header .entry-content {
+  padding: 0 0 40px; }
+
 .single .post_type_layout_standard .entry-content {
   padding: 10px 0 40px; }
 
@@ -8279,7 +8282,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       display: flex;
       justify-content: center;
       width: 100%;
-      min-width: calc(20% - 20px);
+      max-width: 206px;
       width: calc(50% - 20px); }
       @media (min-width: 769px) {
         .link_tiles_template_container .link_tiles_template_container_tiles .link_tiles_template_container_tiles_tile {
