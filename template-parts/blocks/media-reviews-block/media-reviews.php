@@ -38,7 +38,7 @@ $block_style             = get_field( 'block_style' );
 $select_testimonials     = get_field( 'select_testimonials' );
 $testimonial_block_style = get_field( 'testimonial_block_style' );
 $remove_padding          = get_field( 'remove_padding' );
- 
+$hide_author_image       = get_field('hide_author_image');
 if ( $testimonial_block_style ) :
 	$class_name .= ' media-reviews-block_' . $testimonial_block_style;
 endif;
@@ -47,16 +47,15 @@ if ( $remove_padding ) :
 	$class_name .= ' media-reviews-block_padding_' . $remove_padding;
 endif;
 
-
 ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo $block_style === 'purple' ? 'media-reviews-block-purple' : ''; ?>">
 	<div class="media-reviews-container">
 		<div class="media-reviews-container-review-items-loop">
 
-		<?php 
+		<?php
 		if ( ! empty( $select_testimonials ) ) {
 			$args = array(
-				'post_type' => 'slp_testimonials', 
+				'post_type' => 'slp_testimonials',
 				'post__in'  => $select_testimonials,
 				'orderby'   => 'post__in',
 			);
@@ -64,13 +63,13 @@ endif;
 		} else {
 			$args = array(
 				'post_type'      => 'slp_testimonials',
-				'posts_per_page' => 4, 
+				'posts_per_page' => 4,
 			);
 		}
 
 			$testimonial_query = new WP_Query( $args );
 
-		if ( $testimonial_query->have_posts() ) : 
+		if ( $testimonial_query->have_posts() ) :
 			while ( $testimonial_query->have_posts() ) :
 				$testimonial_query->the_post();
 				?>
@@ -79,24 +78,29 @@ endif;
 
 							<div class="info">
 							<?php
-							if ( $testimonial_block_style ) : 
-								the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height)
+							if ( $testimonial_block_style ) :
+
+								if(!$hide_author_image ){
+									the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height)
+								}
 								?>
 								<?php endif; ?>
 								<h3 class="title"><?php the_title(); ?></h3>
+
 									<div class="location">
-									<?php 
+									<?php
 									$location = get_field( 'location', get_the_ID() );
 									?>
 									<?php echo $location ? $location : ''; ?>
 										<div class="date">
-										<?php 
+										<?php
 										$date = get_field( 'date', get_the_ID() );
 										echo $date ? $date : '';
 										?>
-																			</div>
+										</div>
 								</div>
-								<?php 
+
+								<?php
 									$rating                     = get_field( 'rating', get_the_ID() );
 									$rating ? $rating : $rating = 0;
 								?>
@@ -104,7 +108,7 @@ endif;
 								if ( ! empty( $rating ) ) :
 									?>
 									<div class="rating">
-										
+
 										<div class="rating-stars">
 											<span class="star">
 													<?php for ( $i = 0; $i < 5; $i++ ) : ?>
@@ -122,7 +126,7 @@ endif;
 
 							<div class="content">
 								<p>
-								<?php 
+								<?php
 								$content = get_the_content();
 								$content = '"' . $content . '"';
 								echo wp_strip_all_tags( apply_filters( 'the_content', $content ) );
@@ -132,8 +136,8 @@ endif;
 
 						</blockquote>
 					</div>
-				<?php 
-				endwhile; 
+				<?php
+				endwhile;
 			wp_reset_postdata();
 			endif;
 		?>
@@ -141,7 +145,7 @@ endif;
 		</div>
 		<div class="media-reviews-container-review-items-read">
 			<?php
-			$read_more_link = get_field( 'read_more_link' ); 
+			$read_more_link = get_field( 'read_more_link' );
 			if ( $read_more_link ) :
 				?>
 			<a class="btn" href="<?php echo $read_more_link['url']; ?>"><?php echo $read_more_link['title']; ?></a>
