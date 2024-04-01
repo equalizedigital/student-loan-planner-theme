@@ -464,3 +464,25 @@ function eqd_logo_setup() {
     add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
+
+function eqd_enqueue_swiper_assets() {
+    // Only proceed if we're on a singular page and it has content.
+    if ( is_singular() && have_posts() ) {
+        the_post(); // Load the post data.
+        $content = get_the_content();
+
+        // Check if our ACF block is in the content.
+        if ( has_block( 'acf/video-carousel', $content ) ) {
+            // Enqueue Swiper.js CSS
+            wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
+
+            // Enqueue Swiper.js Script
+            wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true );
+        }
+
+        // Rewind posts so that the loop can run as expected elsewhere.
+        rewind_posts();
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'eqd_enqueue_swiper_assets' );
