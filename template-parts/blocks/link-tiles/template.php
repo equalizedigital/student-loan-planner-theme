@@ -63,13 +63,13 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 	<?php endif; ?>
 
 	</div>
-	<div class="link_tiles_template_container_tiles">
-	<?php 
-	if ( have_rows( 'tiles' ) ) : 
+	<ul class="link_tiles_template_container_tiles">
+	<?php
+	if ( have_rows( 'tiles' ) ) :
 		while ( have_rows( 'tiles' ) ) :
 			the_row();
 			?>
-			<div class="link_tiles_template_container_tiles_tile">
+			<li class="link_tiles_template_container_tiles_tile">
 			<?php
 			$link = get_sub_field( 'link' );
 			if ( $link ) :
@@ -87,10 +87,10 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<?php echo esc_html( $link_title ); ?>
 			</a>
 			<?php endif; ?>
-			</div>
-		<?php endwhile; 
+			</li>
+		<?php endwhile;
 	endif; ?>
-	</div>
+	</ul>
 </div>
 
 </section>

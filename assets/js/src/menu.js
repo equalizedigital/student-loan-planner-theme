@@ -8,50 +8,42 @@
 	const navIcon = $('#nav-icon');
 	const mobileToggle = $('.zight-mobile-tab-toggle');
 
-	// Select all links with hashes
 	$('a[href*="#"]')
-		// Remove links that don't actually link to anything
-		.not('[href="#"]')
-		.not('[href="#0"]')
-		.not('[href="#main-content"]')
-		.not('.features_buttons_acc a')
-		.click(function (event) {
-			// On-page links
-			if (
-				location.pathname.replace(/^\//, '') ==
-					this.pathname.replace(/^\//, '') &&
-				location.hostname == this.hostname
-			) {
-				// Figure out element to scroll to
-				let target = $(this.hash);
-				target = target.length
-					? target
-					: $('[name=' + this.hash.slice(1) + ']');
-				// Does a scroll target exist?
-				if (target.length) {
-					// Only prevent default if animation is actually gonna happen
-					event.preventDefault();
-					$('html, body').animate(
-						{
-							scrollTop: target.offset().top,
-						},
-						1000,
-						function () {
-							// Callback after animation
-							// Must change focus!
-							const $target = $(target);
-							$target.focus();
-							if ($target.is(':focus')) {
-								// Checking if the target was focused
-								return false;
-							}
-							$target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-							$target.focus(); // Set focus again
-						}
-					);
-				}
-			}
-		});
+	// Remove links that don't actually link to anything
+	.not('[href="#"]')
+	.not('[href="#0"]')
+	.not('[href="#main-content"]')
+	.not('.features_buttons_acc a')
+	.click(function(event) {
+	  // Prevent default anchor click behavior
+	  if (
+		location.pathname === this.pathname &&
+		location.hostname === this.hostname
+	) {
+		event.preventDefault();
+
+		// Store hash
+		var hash = this.hash;
+
+		// Using jQuery's animate() method to add smooth page scroll
+		// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		// -100 is the offset/top margin
+		if (hash !== "") {
+		  // Don't do anything if there's no target to scroll to
+		  var target = $(hash);
+		  if (target.length) {
+			$('html, body').animate({
+			  scrollTop: target.offset().top - 100 // Offset by 100 pixels
+			}, 0, function() {
+			  // Add hash (#) to URL when done scrolling (default click behavior)
+			  window.location.hash = hash;
+			});
+		  }
+		}
+	}
+
+	});
+
 
 	//   main menu link toggle
 	document.addEventListener('DOMContentLoaded', function () {

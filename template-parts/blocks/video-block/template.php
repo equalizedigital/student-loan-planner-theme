@@ -87,7 +87,7 @@ $heading            = get_field( 'heading' );
 		</div>
 		<div class="video_block_template_container_media">
 			<div class="video_block_template_container_media_video">
-				<video class="video-element video-placeholder" id="video-placeholder" "  autoplay muted>
+				<video class="video-element video-placeholder" id="video-placeholder" " loop autoplay muted>
 					<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
 				</video>
 				<div class="video_block_template_container_media_video_button">
@@ -98,9 +98,9 @@ $heading            = get_field( 'heading' );
 
 			</div>
 			<div class="video_block_template_container_media_placeholder_action">
-				<button class="video_block_template_container_media_placeholder_action_btn" aria-label="Pause Video">
+				<button class="video_block_template_container_media_placeholder_action_btn" aria-label="Pause Video" aria-pressed="false">
 					<span class="img"><img src="<?php echo $image_path; ?>/pause.svg" alt="Pause Video"></span>
-					<span class="text" aria-live>Pause Video</span>
+					<span class="text">Pause Video</span>
 				</button>
 			</div>
 
@@ -111,7 +111,7 @@ $heading            = get_field( 'heading' );
 <div id="modal_video_block_<?php echo esc_attr( $block_id ); ?>" class="modal video_block_modal" aria-hidden="true" role="dialog" aria-modal="true">
 	<div class="modal-content" >
 		<div class="content">
-			<video  class="video-element" controlslist="nodownload" controls>
+			<video class="video-element video-modal-autoplay" controlslist="nodownload" controls>
 				<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
 			</video>
 		</div>
