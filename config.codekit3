@@ -9,6 +9,49 @@
   ],
   "creatorBuild" : "34564",
   "files" : {
+    "\/.editorconfig" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.editorconfig",
+      "oF" : 0
+    },
+    "\/.eslintrc" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/.eslintrc",
+      "oF" : 0
+    },
+    "\/.github\/PULL_REQUEST_TEMPLATE.md" : {
+      "cB" : 0,
+      "cS" : 0,
+      "eF" : 1,
+      "eL" : 1,
+      "ema" : 1,
+      "eSQ" : 1,
+      "ft" : 4096,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/.github\/PULL_REQUEST_TEMPLATE.html",
+      "oF" : 0,
+      "oFM" : 0,
+      "oS" : 0,
+      "pHT" : 0,
+      "pME" : 1,
+      "rFN" : 0,
+      "uCM" : 0
+    },
+    "\/.github\/workflows\/cs.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.github\/workflows\/cs.yml",
+      "oF" : 0
+    },
     "\/.github\/workflows\/develop.yml" : {
       "cB" : 0,
       "ft" : 8192,
@@ -17,12 +60,36 @@
       "oAP" : "\/.github\/workflows\/develop.yml",
       "oF" : 0
     },
+    "\/.github\/workflows\/lint-js.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.github\/workflows\/lint-js.yml",
+      "oF" : 0
+    },
+    "\/.github\/workflows\/lint-php.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.github\/workflows\/lint-php.yml",
+      "oF" : 0
+    },
     "\/.github\/workflows\/master.yml" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/.github\/workflows\/master.yml",
+      "oF" : 0
+    },
+    "\/.github\/workflows\/security.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.github\/workflows\/security.yml",
       "oF" : 0
     },
     "\/.github\/workflows\/stage.yml" : {
@@ -39,6 +106,14 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/.gitignore",
+      "oF" : 0
+    },
+    "\/.phpcs.xml.dist" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/.phpcs.xml.dist",
       "oF" : 0
     },
     "\/archive.php" : {
@@ -2391,6 +2466,16 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/images\/pause.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/images\/pause.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/images\/placeholder-post.png" : {
       "ft" : 32768,
       "iS" : 479716,
@@ -2403,6 +2488,16 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/assets\/images\/play.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/images\/play.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
     },
     "\/assets\/images\/SLP-Logo-Color-white.png" : {
       "ft" : 32768,
@@ -2536,6 +2631,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/_affiliate-landing.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/_link_tiles.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/css\/_link_tiles.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -3031,6 +3141,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/vendor-repeater.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 1
+    },
+    "\/assets\/scss\/blocks\/video-block.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/scss\/css\/video-block.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -3722,6 +3847,22 @@
       "oAP" : "\/offline.php",
       "oF" : 0
     },
+    "\/package-lock.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/package-lock-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/package.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/package-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
     "\/page-landing.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -4275,6 +4416,35 @@
       "oAP" : "\/template-parts\/blocks\/image-text-columns-block\/template.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/link-tiles\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/link-tiles\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/link-tiles\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 112322,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/link-tiles\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/link-tiles\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/link-tiles\/template.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/media-reviews-block\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -4826,6 +4996,35 @@
       "oAP" : "\/template-parts\/blocks\/vendor-repeater\/template.php",
       "oF" : 0
     },
+    "\/template-parts\/blocks\/video-block\/block.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/template-parts\/blocks\/video-block\/block-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/template-parts\/blocks\/video-block\/screenshot.png" : {
+      "ft" : 32768,
+      "iS" : 112322,
+      "oA" : 0,
+      "oAP" : "\/template-parts\/blocks\/video-block\/screenshot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/template-parts\/blocks\/video-block\/template.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/template-parts\/blocks\/video-block\/template.php",
+      "oF" : 0
+    },
     "\/template-parts\/blocks\/video-carousel\/block.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -4883,6 +5082,14 @@
       "oA" : 2,
       "oAP" : "\/template-parts\/blocks\/video-testimonials\/template.php",
       "oF" : 0
+    },
+    "\/theme.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/theme-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
     }
   },
   "hooks" : [
