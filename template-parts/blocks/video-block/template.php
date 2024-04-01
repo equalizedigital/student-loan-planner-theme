@@ -32,11 +32,23 @@ if ( ! empty( $block['align'] ) ) :
 	$class_name .= ' align' . $block['align'];
 endif;
 
-$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
-$image_path = get_template_directory_uri() . '/assets/images/';
-$video_path = get_field('video_file');
-$video_path = $video_path['url'];
-$heading = get_field( 'heading' );
+$class_name         = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
+$image_path         = get_template_directory_uri() . '/assets/images/';
+
+$optional_video_url         = get_field('optional_video_url');
+
+if($optional_video_url){
+	$video_path         = $optional_video_url;
+}
+
+$video_path_main         = get_field('video_file');
+
+if($video_path_main){
+	$video_path         = $video_path_main['url'];
+}
+
+
+$heading            = get_field( 'heading' );
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
@@ -63,14 +75,14 @@ $heading = get_field( 'heading' );
 			<?php endif; ?>
 
 			<?php
-$link = get_field( 'link' );
-if ( $link ) :
-	$link_url = $link['url'];
-	$link_title = $link['title'];
-	$link_target = $link['target'] ? $link['target'] : '_self';
-	?>
-	<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-<?php endif; ?>
+			$link = get_field( 'link' );
+			if ( $link ) :
+				$link_url = $link['url'];
+				$link_title = $link['title'];
+				$link_target = $link['target'] ? $link['target'] : '_self';
+				?>
+				<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+			<?php endif; ?>
 			</div>
 		</div>
 		<div class="video_block_template_container_media">
