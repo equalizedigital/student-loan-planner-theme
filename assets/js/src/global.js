@@ -1164,6 +1164,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+	const videoCarouselElement = document.querySelectorAll('.video-carousel-swiper-container');
+	if (videoCarouselElement.length) {
+
 var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
   // Optional parameters
 	  loop: true,
@@ -1221,8 +1224,15 @@ var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
 
   }
 });
+	}
 });
+
+
 document.addEventListener('DOMContentLoaded', function() {
+
+	const videoBlockElement = document.querySelectorAll('.image-placeholder-action');
+	if (videoBlockElement.length) {
+
     // Select all play buttons
     var playButtons = document.querySelectorAll('.image-placeholder-action');
 	var allimageObject = document.querySelectorAll('.image-placeholder');
@@ -1266,29 +1276,22 @@ document.addEventListener('DOMContentLoaded', function() {
             video.paused ? video.play() : video.pause();
         });
     });
-});
+	document.getElementById('video-placeholder').play();
+
+	jQuery('.video-placeholder').on('click', function() {
+		var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
+
+		if (!videoElement.paused) {
+		  videoElement.pause();
+		  jQuery(this).show(); // Show the placeholder when the video is paused
+		} else {
+		  videoElement.play();
+		  jQuery(this).hide(); // Hide the placeholder when the video is playing
+		}
+	  });
 
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('video-placeholder').play();
-});
-
-
-jQuery('.video-placeholder').on('click', function() {
-	var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
-
-	if (!videoElement.paused) {
-	  videoElement.pause();
-	  jQuery(this).show(); // Show the placeholder when the video is paused
-	} else {
-	  videoElement.play();
-	  jQuery(this).hide(); // Hide the placeholder when the video is playing
-	}
-  });
-
-
-  document.addEventListener('DOMContentLoaded', function() {
-	// Correct the element ID to point to the video element, not the placeholder
+	  	// Correct the element ID to point to the video element, not the placeholder
 	var videoElement = document.getElementById('video-placeholder');
 	var videoPlaceholderPause = document.querySelector('.video_block_template_container_media_placeholder_action_btn');
 	var buttonText = document.querySelector('.video_block_template_container_media_placeholder_action_btn .text'); // Get the span that contains the text
@@ -1304,4 +1307,11 @@ jQuery('.video-placeholder').on('click', function() {
 		buttonText.textContent = 'Pause Video'; // Change the text to 'Pause Video'
 	  }
 	});
-  });
+
+	}
+});
+
+
+
+
+

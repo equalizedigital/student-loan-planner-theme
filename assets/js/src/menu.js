@@ -35,7 +35,7 @@
 						{
 							scrollTop: target.offset().top,
 						},
-						1000,
+						0,
 						function () {
 							// Callback after animation
 							// Must change focus!

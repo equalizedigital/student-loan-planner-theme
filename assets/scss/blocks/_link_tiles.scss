@@ -42,6 +42,9 @@ $hover-effect-duration: 0.3s;
 		min-height: 136px;
 		flex-wrap: wrap;
 		gap: 20px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
 
 		@include media(">tablet") {
 			flex-wrap: wrap;
