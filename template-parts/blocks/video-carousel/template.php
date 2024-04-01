@@ -36,9 +36,6 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 $image_path = get_template_directory_uri() . '/assets/images/';
 ?>
 
-
-
-
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="video-carousel-swiper-container">
 

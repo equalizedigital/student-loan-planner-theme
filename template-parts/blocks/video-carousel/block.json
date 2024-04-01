@@ -1,7 +1,7 @@
 {
 	"name": "acf/video-carousel",
 	"title": "Video Carousel",
-	"description": "Display tiles.",
+	"description": "Video Carousel with multiple videos in slider.",
 	"category": "custom-blocks",
 	"icon": "admin-post",
 	"keywords": [

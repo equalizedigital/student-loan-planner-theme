@@ -465,28 +465,24 @@ function eqd_logo_setup() {
 }
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
 
+function eqd_enqueue_swiper_assets() {
+    // Only proceed if we're on a singular page and it has content.
+    if ( is_singular() && have_posts() ) {
+        the_post(); // Load the post data.
+        $content = get_the_content();
 
-function theme_enqueue_swiper_assets() {
-    if ( is_singular() && has_video_carousel_block( get_post() ) ) {
-        // Enqueue Swiper CSS
-        wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
+        // Check if our ACF block is in the content.
+        if ( has_block( 'acf/video-carousel', $content ) ) {
+            // Enqueue Swiper.js CSS
+            wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
 
-        // Enqueue Swiper JS
-        wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), false, true );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_swiper_assets' );
-
-function has_video_carousel_block( $post ) {
-    // Replace 'acf/video-carousel' with your block's name
-    $block_name = 'acf/video-carousel';
-    $blocks = parse_blocks( $post->post_content );
-
-    foreach ( $blocks as $block ) {
-        if ( $block['blockName'] === $block_name ) {
-            return true;
+            // Enqueue Swiper.js Script
+            wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true );
         }
-    }
 
-    return false;
+        // Rewind posts so that the loop can run as expected elsewhere.
+        rewind_posts();
+    }
 }
+
+add_action( 'wp_enqueue_scripts', 'eqd_enqueue_swiper_assets' );
