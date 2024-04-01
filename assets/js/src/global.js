@@ -1267,10 +1267,28 @@ document.addEventListener('DOMContentLoaded', function() {
 				video.controls = true; // Show controls when video plays
             }
 
+				video.addEventListener('ended', function() {
+					// The code you want to execute when the video ends
+					document.querySelectorAll('.slide-container video').forEach(function(otherVideo) {
+						if (otherVideo !== video) { // Ensure we're not pausing or altering the video that just ended
+							otherVideo.pause();
+							otherVideo.controls = false; // Hide controls
+							// Assuming 'currentImagePlaceholder' is defined in your broader script context
+							currentImagePlaceholder.classList.remove('image-hold');
+							currentImagePlaceholder.classList.remove('image-hold');
+							currentimageobject.classList.remove('image-hold');
+						}
+					});
+				});
+
             // Play or pause the current video
             video.paused ? video.play() : video.pause();
         });
     });
+
+
+
+
 	document.getElementById('video-placeholder').play();
 
 	jQuery('.video-placeholder').on('click', function() {

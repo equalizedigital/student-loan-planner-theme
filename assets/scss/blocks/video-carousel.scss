@@ -2,6 +2,7 @@
 	padding-bottom: 100px;
 	overflow: hidden;
 	padding: 0 20px;
+
 	@include media(">tablet") {
 		padding: 0;
 	}
@@ -48,6 +49,10 @@
 		text-align: center;
 		color: #000000;
 		gap: 5px;
+		&:focus{
+			outline: 2px solid blue;
+    		outline-offset: 2px;
+		}
 	}
 
 	.swiper-nav .arrow {
@@ -79,6 +84,7 @@
 			.swiper-slide {
 				width: 265px;
 				opacity: .5;
+
 				&.swiper-slide-prev:has(+ * + .swiper-slide),
 				&.swiper-slide-prev,
 				&.swiper-slide-active,
@@ -91,6 +97,7 @@
 					font-weight: 400;
 					line-height: 1.4;
 					text-align: center;
+					width: 100%;
 				}
 
 				video {
@@ -103,6 +110,7 @@
 					bottom: 0;
 					object-fit: cover;
 					object-position: center;
+					border-radius: 10px;
 				}
 			}
 		}
@@ -114,7 +122,6 @@
 		height: 100%;
 		border-radius: 10px;
 		height: 470px;
-		overflow: hidden;
 	}
 
 	.slide-container .image-placeholder {
@@ -128,7 +135,7 @@
 		height: 100%;
 		z-index: 20;
 		width: 100%;
-    	border-radius: 10px;
+		border-radius: 10px;
 
 		&.image-hold {
 			opacity: 0;
@@ -150,9 +157,11 @@
 
 		&.image-hold {
 			display: none;
+
 			.image-placeholder-action {
 				display: none;
 			}
+
 			&:after {
 				display: none;
 			}
@@ -190,6 +199,12 @@
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
+
+		&:focus {
+			outline: 2px solid blue;
+			outline-offset: 2px;
+			border-radius: 10px;
+		}
 	}
 
 }
