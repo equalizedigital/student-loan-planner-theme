@@ -2466,26 +2466,6 @@
       "plM" : 3758088159,
       "prP" : 0
     },
-    "\/assets\/images\/add.svg" : {
-      "ft" : 2097152,
-      "miP" : 0,
-      "oA" : 2,
-      "oAP" : "\/assets\/images\/add.svg",
-      "oF" : 0,
-      "opt" : 0,
-      "plM" : 3758088159,
-      "prP" : 0
-    },
-    "\/assets\/images\/checkmark.svg" : {
-      "ft" : 2097152,
-      "miP" : 0,
-      "oA" : 2,
-      "oAP" : "\/assets\/images\/checkmark.svg",
-      "oF" : 0,
-      "opt" : 0,
-      "plM" : 3758088159,
-      "prP" : 0
-    },
     "\/assets\/images\/pause.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -2936,21 +2916,6 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/css\/podcast-trio.css",
-      "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 1
-    },
-    "\/assets\/scss\/blocks\/pricing_calculator.scss" : {
-      "aP" : 0,
-      "bl" : 0,
-      "co" : 0,
-      "dP" : 10,
-      "ec" : 1,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/assets\/scss\/css\/pricing_calculator.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -4007,6 +3972,14 @@
       "oAP" : "\/single-slp_contacts.php",
       "oF" : 0
     },
+    "\/single-slp_profession.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 2,
+      "oAP" : "\/single-slp_profession.php",
+      "oF" : 0
+    },
     "\/single.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -4595,35 +4568,6 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
-    },
-    "\/template-parts\/blocks\/pricing-calculator\/block.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/template-parts\/blocks\/pricing-calculator\/block-min.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
-    },
-    "\/template-parts\/blocks\/pricing-calculator\/screenshot.png" : {
-      "ft" : 32768,
-      "iS" : 292005,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/blocks\/pricing-calculator\/screenshot.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/template-parts\/blocks\/pricing-calculator\/template.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/template-parts\/blocks\/pricing-calculator\/template.php",
-      "oF" : 0
     },
     "\/template-parts\/blocks\/query-loop\/block.json" : {
       "ft" : 524288,
