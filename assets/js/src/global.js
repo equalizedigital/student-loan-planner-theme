@@ -1173,6 +1173,8 @@ var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
 	slidesPerView: 3.5,
 	spaceBetween: 21, // Adjust the space between slides as needed.
 	centeredSlides: true, // This helps in showing the partial slides on the sides.
+	loopAddBlankSlides:true,
+	watchSlidesProgress:true,
 	keyboard: {
 		enabled: true,
 	  },
@@ -1196,13 +1198,14 @@ var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
 	},
 	// When window width is >= 1024px
 	1024: {
-		slidesPerView: 3,
+		slidesPerView: 3.5,
 		centeredSlides: true, // or false, depending on your preference for desktop
 	},
 	},
 
 
   on: {
+
     transitionStart: function(){
 
       var videos = document.querySelectorAll('video');
