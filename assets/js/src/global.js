@@ -1237,57 +1237,74 @@ document.addEventListener('DOMContentLoaded', function() {
     var playButtons = document.querySelectorAll('.image-placeholder-action');
 	var allimageObject = document.querySelectorAll('.image-placeholder');
 	var documentimageobject = document.querySelectorAll('.image-object');
+	let pauseButton = document.querySelectorAll('.image-placeholder-action-pause');
+
+
+	function videoFunctionality(button){
+		documentimageobject.forEach(function(image) {
+			image.classList.remove('image-hold');
+		})
+
+		allimageObject.forEach(function(image) {
+			image.classList.remove('image-hold');
+		})
+
+		var slideContainer = button.closest('.slide-container');
+		var currentImagePlaceholder = slideContainer.querySelector('.image-placeholder');
+		var video = slideContainer.querySelector('video');
+		var currentimageobject = slideContainer.querySelector('.image-object');
+
+		document.querySelectorAll('.slide-container').forEach(function(container) {
+			container.classList.remove('image-hold');
+		})
+
+		// Pause all videos and remove the class from all .image-object elements except the current
+		document.querySelectorAll('.slide-container video').forEach(function(video) {
+			if (video !== button.closest('.slide-container').querySelector('video')) {
+				video.pause();
+				video.controls = false; // Hide controls
+				currentImagePlaceholder.classList.remove('image-hold');
+				slideContainer.classList.remove('image-hold');
+			}
+		});
+
+		// Toggle the class for the current .image-object
+		if (video.paused) {
+			currentImagePlaceholder.classList.add('image-hold');
+			currentimageobject.classList.add('image-hold');
+			slideContainer.classList.add('image-hold');
+			video.controls = true; // Show controls when video plays
+		}
+
+			video.addEventListener('ended', function() {
+				// The code you want to execute when the video ends
+				document.querySelectorAll('.slide-container video').forEach(function(otherVideo) {
+					if (otherVideo !== video) { // Ensure we're not pausing or altering the video that just ended
+						otherVideo.pause();
+						otherVideo.controls = false; // Hide controls
+						// Assuming 'currentImagePlaceholder' is defined in your broader script context
+						currentImagePlaceholder.classList.remove('image-hold');
+						currentImagePlaceholder.classList.remove('image-hold');
+						currentimageobject.classList.remove('image-hold');
+						slideContainer.classList.remove('image-hold');
+					}
+				});
+			});
+
+		// Play or pause the current video
+		video.paused ? video.play() : video.pause();
+	}
 
     // Iterate over each play button
+	pauseButton.forEach(function(button) {
+		button.addEventListener('click', function() {
+			videoFunctionality(button);
+        });
+	})
     playButtons.forEach(function(button) {
         // Add click event listener to each button
         button.addEventListener('click', function() {
-
-			documentimageobject.forEach(function(image) {
-				image.classList.remove('image-hold');
-			})
-
-			allimageObject.forEach(function(image) {
-				image.classList.remove('image-hold');
-			})
-
-            var slideContainer = button.closest('.slide-container');
-            var currentImagePlaceholder = slideContainer.querySelector('.image-placeholder');
-            var video = slideContainer.querySelector('video');
-			var currentimageobject = slideContainer.querySelector('.image-object');
-
-            // Pause all videos and remove the class from all .image-object elements except the current
-            document.querySelectorAll('.slide-container video').forEach(function(video) {
-                if (video !== button.closest('.slide-container').querySelector('video')) {
-                    video.pause();
-					video.controls = false; // Hide controls
-					currentImagePlaceholder.classList.remove('image-hold');
-                }
-            });
-
-            // Toggle the class for the current .image-object
-            if (video.paused) {
-                currentImagePlaceholder.classList.add('image-hold');
-				currentimageobject.classList.add('image-hold');
-				video.controls = true; // Show controls when video plays
-            }
-
-				video.addEventListener('ended', function() {
-					// The code you want to execute when the video ends
-					document.querySelectorAll('.slide-container video').forEach(function(otherVideo) {
-						if (otherVideo !== video) { // Ensure we're not pausing or altering the video that just ended
-							otherVideo.pause();
-							otherVideo.controls = false; // Hide controls
-							// Assuming 'currentImagePlaceholder' is defined in your broader script context
-							currentImagePlaceholder.classList.remove('image-hold');
-							currentImagePlaceholder.classList.remove('image-hold');
-							currentimageobject.classList.remove('image-hold');
-						}
-					});
-				});
-
-            // Play or pause the current video
-            video.paused ? video.play() : video.pause();
+			videoFunctionality(button)
         });
     });
 
