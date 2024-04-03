@@ -117,6 +117,7 @@ function eqd_single_header() {
 				</h1>
 
 				<?php
+				if( !is_singular('slp_profession')){
 				// post author data
 				if ( get_field( 'post_format_style' ) === 'full-width' ) {
 					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
@@ -138,19 +139,23 @@ function eqd_single_header() {
 					</span>
 					<?php
 				}
+				}
 				?>
 
 				<?php
 				// optional subtitle
+				if( !is_singular('slp_profession')){
 				?>
 				<span class="subtitle">
 					<?php echo wp_kses_post( $subtitle ); ?>
 				</span>
 
 				<?php
+				}
 				// optional link
 				?>
 				<?php
+				if( !is_singular('slp_profession')){
 				if ( ! empty( $link ) ) :
 					?>
 					<span class="link">
@@ -158,7 +163,8 @@ function eqd_single_header() {
 							<?php echo $link['title'] ? $link['title'] : ''; ?>
 						</a>
 					</span>
-				<?php endif; ?>
+				<?php endif;
+				} ?>
 
 			</div>
 
