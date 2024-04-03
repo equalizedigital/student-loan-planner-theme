@@ -82,8 +82,10 @@
 			}
 
 			.swiper-slide {
-				width: 265px;
 				opacity: .5;
+				@include media(">tablet") {
+					min-width: 275px;
+				}
 
 				&.swiper-slide-prev:has(+ * + .swiper-slide),
 				&.swiper-slide-prev,
