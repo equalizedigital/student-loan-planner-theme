@@ -2486,6 +2486,26 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/images\/add.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/images\/add.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
+    "\/assets\/images\/checkmark.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/images\/checkmark.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/images\/pause.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -2949,7 +2969,7 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/assets\/scss\/css\/pricing_calculator.css",
       "oF" : 0,
       "oS" : 0,

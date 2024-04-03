@@ -8406,6 +8406,16 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 40px 20px; }
+  @media screen and (min-width: 768px) {
+    .video_block_template_container_content_block {
+      width: 520px;
+      max-width: 50vw;
+      position: absolute;
+      top: 50%;
+      width: 90%;
+      left: 20px;
+      transform: translate(0px, -50%);
+      min-width: 350px; } }
   @media screen and (min-width: 1000px) {
     .video_block_template_container_content_block {
       width: 520px;
@@ -8419,8 +8429,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
 .video_block_template_container_content_block_heading {
   color: white !important;
   left: 84px;
-  line-height: 42px;
-  font-size: 44px; }
+  line-height: 32px;
+  font-size: 34px; }
   @media (min-width: 769px) {
     .video_block_template_container_content_block_heading {
       font-size: 40px;
