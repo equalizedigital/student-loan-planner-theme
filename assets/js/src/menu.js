@@ -102,7 +102,8 @@
 	const $mainLinks = $('.menu-item-main-link');
 
 	function handleOpenMobileSubMenus(item) {
-		if (!1 === $(item).hasClass('menu-item-no-drop')) {
+		if (false === $(item).hasClass('menu-item-no-drop')) {
+			// item.preventDefault();
 			$(item).toggleClass('active');
 			$(item).parent().toggleClass('active');
 
@@ -127,7 +128,6 @@
 
 	$mainLinks.on('click', function (e) {
 		if ($(window).innerWidth() < 1070) {
-			e.preventDefault();
 			handleOpenMobileSubMenus(e.target);
 		}
 	});

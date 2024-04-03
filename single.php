@@ -495,7 +495,6 @@ function eqd_single_after_entry_author_info() {
 	$id_post_editor = get_field( 'post_editor', get_the_ID() );
 	$user_info_ID   = get_userdata( $id );
 	$author_url_id  = get_author_posts_url( $id );
-	$hide_author_data = get_field('hide_author_data', get_the_ID());
 
 	if ( ! empty( $id_post_editor ) ) {
 		$author_url  = get_author_posts_url( get_the_author_meta( 'ID' ) );
@@ -505,10 +504,10 @@ function eqd_single_after_entry_author_info() {
 		$last_name   = $user_info->last_name;
 		$nickname    = $user_info->nickname;
 	}
-	if($hide_author_data){
-		return;
-	}
+
+	if( is_singular('slp_profession')){return;}
 	?>
+
 	<div class="article_footer_data">
 		<div class="article_footer_data_author">
 			<span class="article_footer_data_author_entry-author">

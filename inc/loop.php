@@ -92,7 +92,6 @@ function eqd_single_header() {
 		$link                    = get_field( 'single_post_link', $page_id );
 		$output                  = null;
 		$container_class         = '';
-		$hide_author_data = get_field('hide_author_data', get_the_ID());
 		if ( get_field( 'post_format_style' ) === 'full-width' ) {
 			$container_class .= 'hero_relative';
 		} else {
@@ -118,9 +117,9 @@ function eqd_single_header() {
 				</h1>
 
 				<?php
+				if( !is_singular('slp_profession')){
 				// post author data
 				if ( get_field( 'post_format_style' ) === 'full-width' ) {
-					if( !$hide_author_data ){
 					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
 						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
 					}
@@ -139,21 +138,24 @@ function eqd_single_header() {
 						</span>
 					</span>
 					<?php
-					}
+				}
 				}
 				?>
 
 				<?php
 				// optional subtitle
+				if( !is_singular('slp_profession')){
 				?>
 				<span class="subtitle">
 					<?php echo wp_kses_post( $subtitle ); ?>
 				</span>
 
 				<?php
+				}
 				// optional link
 				?>
 				<?php
+				if( !is_singular('slp_profession')){
 				if ( ! empty( $link ) ) :
 					?>
 					<span class="link">
@@ -161,7 +163,8 @@ function eqd_single_header() {
 							<?php echo $link['title'] ? $link['title'] : ''; ?>
 						</a>
 					</span>
-				<?php endif; ?>
+				<?php endif;
+				} ?>
 
 			</div>
 
