@@ -52,6 +52,9 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 					$enrollment_fee = get_sub_field( 'enrollment_fee' );
 					$disclaimer = esc_html( get_sub_field( 'disclaimer' ) );
 					$benefits = get_sub_field( 'benefits' );
+					$link_get_started = get_field( 'link' );
+
+
 
 					if($row_index === 1): ?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
@@ -70,10 +73,17 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 								<div class="pricing_calculator_template_container_main_info_title">At this pricing, you’re getting:</div>
 								<div class="pricing_calculator_template_container_main_info_ul">
 									<?php  echo wp_kses_post($benefits); ?>
-
 								</div>
 								<div class="pricing_calculator_template_container_main_info_started">
-									<a href="" class="btn btn-dark-bg">Get Started</a>
+									<?php
+									if ( $link_get_started ) :
+										$link_get_started_url = $link_get_started['url'];
+										$link_get_started_title = $link_get_started['title'];
+										$link_get_started_target = $link_get_started['target'] ? $link_get_started['target'] : '_self';
+										?>
+										<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_get_started_url ); ?>" target="<?php echo esc_attr( $link_get_started_target ); ?>"><?php echo esc_html( $link_get_started_title ); ?></a>
+									<?php endif;
+									?>
 								</div>
 							</div>
 						</div>
@@ -94,7 +104,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 						aria-label="add service">
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/'; ?>add.svg" alt="add">
 						</button>
-						<button type="button" aria-expanded="true" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
+						<button type="button" aria-expanded="<?php echo$row_index>2? 'false':'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
 							<span class="pricing_calculator_accordion-title">
 								<?php  echo wp_kses_post($title); ?>
 								<span class="pricing_calculator_accordion-icon">
@@ -102,8 +112,8 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 							</span>
 						</button>
 					</div>
-					<div id="sect<?php echo get_row_index(); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo get_row_index(); ?>" class="pricing_calculator_accordion-panel">
-						<div class="pricing_calculator_accordion-panel_content">
+					<div id="sect<?php echo get_row_index(); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo get_row_index(); ?>" class="pricing_calculator_accordion-panel" <?php echo$row_index>2? 'hidden':''; ?>>
+						<div class="pricing_calculator_accordion-panel_content <?php echo empty($video)? "no-video":''; ?>">
 							<div class="pricing_calculator_accordion-panel_content_left">
 								<div class="title">
 									<?php echo wp_kses_post($title); ?>
