@@ -50,7 +50,7 @@ if ( ! function_exists( 'comments_callback' ) ) :
 					</span>
 					</div>
 				</div>
-				
+
 				<div class="comment-block">
 						<?php if ( $comment->comment_approved === '0' ) : ?>
 						<em><?php esc_html_e( 'Your comment is awaiting moderation.', '5balloons_theme' ); ?></em>
@@ -91,7 +91,7 @@ endif;
 			<h3 class="comments-title"><?php esc_html_e( 'Comments', 'eqd' ); ?></h3>
 
 			<?php
-			eqd_comment_navigation( 'before' ); 
+			eqd_comment_navigation( 'before' );
 			?>
 
 			<ol class="comment-list">

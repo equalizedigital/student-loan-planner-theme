@@ -8704,8 +8704,6 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   > *:last-child .pricing_calculator_accordion-trigger,
   .pricing_calculator_accordion > *:last-child {
     border-radius: 0 0 5px 5px; }
-  .pricing_calculator_accordion button {
-    border-style: none; }
   .pricing_calculator_accordion button::-moz-focus-inner {
     border: 0; }
   .pricing_calculator_accordion-title {
