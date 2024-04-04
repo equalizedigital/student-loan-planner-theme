@@ -8691,6 +8691,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     outline: none;
     background: #625089;
     border-radius: 8px 8px 0 0;
+    border: none;
     cursor: pointer; }
     .pricing_calculator_accordion-trigger[aria-expanded="false"] {
       border-radius: 8px 8px; }
