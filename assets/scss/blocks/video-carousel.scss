@@ -72,6 +72,15 @@
 
 			.slide_main_container {
 				position: relative;
+				&_disable {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 101;
+					display: block;
+				}
 			}
 
 			.slide_link {
@@ -85,6 +94,7 @@
 				opacity: .5;
 				@include media(">tablet") {
 					min-width: 275px;
+					width: 17vw !important;
 				}
 
 				&.swiper-slide-prev:has(+ * + .swiper-slide),
@@ -92,6 +102,11 @@
 				&.swiper-slide-active,
 				&.swiper-slide-next {
 					opacity: 1;
+					.slide_main_container {
+						&_disable {
+							display: none;
+						}
+					}
 				}
 
 				.btn {

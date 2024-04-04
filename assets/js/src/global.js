@@ -1170,10 +1170,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		var videoCarousel = new Swiper('.video-carousel-swiper-container', {
 			// Optional parameters
 			loop: true,
-			slidesPerView: 3.5,
 			spaceBetween: 21, // Adjust the space between slides as needed.
 			centeredSlides: true, // This helps in showing the partial slides on the sides.
-			loopAddBlankSlides: true,
+			loopedSlides: 10,
+			slidesPerView: 3.5,
 			watchSlidesProgress: true,
 			keyboard: {
 				enabled: true,
@@ -1193,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				},
 				// When window width is >= 768px
 				768: {
-					slidesPerView: 3,
+					slidesPerView: 3.5,
 					centeredSlides: true,
 				},
 				// When window width is >= 1024px
@@ -1215,16 +1215,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					});
 
 				},
-
-				transitionEnd: function () {
-
-					//   var activeIndex = this.activeIndex;
-					//   var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
-					//   var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
-					//   activeSlideVideo.play();
-
-				},
-
 			}
 		});
 	}
@@ -1240,7 +1230,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		var playButtons = document.querySelectorAll('.image-placeholder-action');
 		var allimageObject = document.querySelectorAll('.image-placeholder');
 		var documentimageobject = document.querySelectorAll('.image-object');
-		let pauseButton = document.querySelectorAll('.image-placeholder-action-pause');
 
 
 		function videoFunctionality(button) {
@@ -1298,12 +1287,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			video.paused ? video.play() : video.pause();
 		}
 
-		// Iterate over each play button
-		pauseButton.forEach(function (button) {
-			button.addEventListener('click', function () {
-				videoFunctionality(button);
-			});
-		})
+
 		playButtons.forEach(function (button) {
 			// Add click event listener to each button
 			button.addEventListener('click', function () {

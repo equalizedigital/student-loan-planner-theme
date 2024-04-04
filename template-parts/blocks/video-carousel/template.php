@@ -55,11 +55,9 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 
 				<div class="swiper-slide">
 					<div class="slide_main_container">
+						<div class="slide_main_container_disable"></div>
 
 						<div class="slide-container">
-							<button class="image-placeholder-action-pause" aria-label="Pause Video">
-									<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/pause.svg" alt="play video">
-								</button>
 							<div class="image-object">
 
 								<?php

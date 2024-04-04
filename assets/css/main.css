@@ -8166,6 +8166,14 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     margin: 0 auto; }
     .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .slide_main_container {
       position: relative; }
+      .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .slide_main_container_disable {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 101;
+        display: block; }
     .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .slide_link {
       display: flex;
       align-items: center;
@@ -8175,9 +8183,12 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       opacity: .5; }
       @media (min-width: 769px) {
         .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide {
-          min-width: 275px; } }
+          min-width: 275px;
+          width: 17vw !important; } }
       .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev:has(+ * + .swiper-slide), .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-next {
         opacity: 1; }
+        .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev:has(+ * + .swiper-slide) .slide_main_container_disable, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-prev .slide_main_container_disable, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active .slide_main_container_disable, .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide.swiper-slide-next .slide_main_container_disable {
+          display: none; }
       .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide .btn {
         font-size: 15px;
         font-weight: 400;
