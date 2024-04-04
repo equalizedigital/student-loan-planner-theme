@@ -94,9 +94,11 @@
 				opacity: .5;
 				@include media(">tablet") {
 					min-width: 275px;
-					width: 17vw !important;
+					// width: 17vw !important;
 				}
-
+				&.keyboard-focused{
+					opacity: 1;
+				}
 				&.swiper-slide-prev:has(+ * + .swiper-slide),
 				&.swiper-slide-prev,
 				&.swiper-slide-active,

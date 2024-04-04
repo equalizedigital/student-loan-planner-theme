@@ -1175,8 +1175,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			loopedSlides: 10,
 			slidesPerView: 3.5,
 			watchSlidesProgress: true,
+			a11y: true,
 			keyboard: {
 				enabled: true,
+				onlyInViewport: true,
 			},
 			// Navigation arrows
 			navigation: {
@@ -1205,7 +1207,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 			on: {
-
+			 // Remove the class from all slides on initialization
+			 init: function () {
+				this.slides.forEach(slide => {
+				  slide.classList.remove('keyboard-focused');
+				});
+			  },
+			  // Update the class on slides when the active slide changes
+			  slideChange: function () {
+				this.slides.forEach(slide => {
+				  slide.classList.remove('keyboard-focused');
+				});
+				const activeSlide = this.slides[this.activeIndex];
+				if(activeSlide) {
+				  activeSlide.classList.add('keyboard-focused');
+				}
+			  },
 				transitionStart: function () {
 
 					var videos = document.querySelectorAll('video');
@@ -1217,7 +1234,37 @@ document.addEventListener('DOMContentLoaded', function () {
 				},
 			}
 		});
+		let isKeyboardNavigation = false;
+
+
+		// Function to handle keyboard navigation including Arrow keys, Tab, and Shift+Tab
+		function handleKeyboardNavigation(event) {
+		  const key = event.key;
+		  let isTabPressed = key === 'Tab';
+		  let isShiftPressed = event.shiftKey;
+
+		  // Check for navigation keys
+		  if (key === 'ArrowLeft' || key === 'ArrowRight' || isTabPressed && !isShiftPressed || isTabPressed && isShiftPressed) {
+			isKeyboardNavigation = true;
+			setTimeout(() => {
+			  if (isKeyboardNavigation) {
+				videoCarousel.slides.forEach(slide => slide.classList.add('keyboard-focused'));
+
+
+
+				isKeyboardNavigation = false;
+			  } else {
+				videoCarousel.slides.forEach(slide => slide.classList.remove('keyboard-focused'));
+			  }
+			}, 50); // Adjust delay as necessary
+		  }
+		}
+
+		// Add a global listener for keyboard events
+		document.addEventListener('keydown', handleKeyboardNavigation);
+
 	}
+
 });
 
 
