@@ -8499,12 +8499,13 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   align-items: center; }
 
 .pricing_calculator_template_container_main_pricing_disclaimer {
-  color: var(--White, #FFF);
+  color: #fff;
   text-align: center;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 21px;
+  margin-top: 20px;
   /* 150% */ }
 
 .pricing_calculator_template_container_main_info {
@@ -8547,7 +8548,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     /* 81.818% */ }
 
 .pricing_calculator_template_container_main_pricing_plus {
-  color: var(--White, #FFF);
+  color: #fff;
   text-align: center;
   font-size: 17.5px;
   font-style: normal;
@@ -8557,20 +8558,20 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   /* 120% */ }
 
 .pricing_calculator_template_container_main_pricing_info {
-  color: var(--White, #FFF);
+  color: #fff;
   text-align: center;
   font-size: 35px;
   font-style: normal;
   font-weight: 700;
   line-height: 40px;
   /* 114.286% */
-  color: var(--White, #FFF);
+  color: #fff;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 40px; }
   .pricing_calculator_template_container_main_pricing_info .info_set {
-    color: var(--White, #FFF);
+    color: #fff;
     text-align: center;
     font-size: 35px;
     font-style: normal;
@@ -8579,7 +8580,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     /* 114.286% */ }
 
 .pricing_calculator_template_container_main_info_title {
-  color: var(--White, #FFF);
+  color: #fff;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -8590,24 +8591,29 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
 .pricing_calculator_template_container_main_info_started {
   display: flex; }
 
-.pricing_calculator_template_container_main_info_ul ul {
-  color: var(--White, #FFF);
+.pricing_calculator_template_container_main_info_ul {
+  color: #fff;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  margin: 0;
-  padding: 0;
-  line-height: 18px;
-  /* 112.5% */
-  margin-bottom: 20px;
-  list-style: none; }
-  .pricing_calculator_template_container_main_info_ul ul li {
-    background-image: url("../../assets/images/checkmark.svg");
-    display: flex;
-    gap: 20px;
-    background-repeat: no-repeat;
-    background-position: left;
-    padding-left: 30px; }
+  line-height: 18px; }
+  .pricing_calculator_template_container_main_info_ul ul {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    list-style: none; }
+    .pricing_calculator_template_container_main_info_ul ul li {
+      background-image: url("../../assets/images/checkmark.svg");
+      display: flex;
+      gap: 20px;
+      background-repeat: no-repeat;
+      background-position: left;
+      padding-left: 30px; }
 
 .pricing_calculator_accordion {
   display: flex;
@@ -8625,6 +8631,20 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     border: 1px solid #625089;
     margin-left: 50px;
     border-radius: 10px; }
+    .pricing_calculator_accordion .pricing_calculator_accordion_item.pricing_calculator_accordion_add_active {
+      border: 1px solid #82BC46;
+      background-color: #F7F7F7; }
+      .pricing_calculator_accordion .pricing_calculator_accordion_item.pricing_calculator_accordion_add_active .pricing_calculator_accordion-trigger {
+        background-color: #82BC46; }
+      .pricing_calculator_accordion .pricing_calculator_accordion_item.pricing_calculator_accordion_add_active .pricing_calculator_accordion-title {
+        color: black; }
+      .pricing_calculator_accordion .pricing_calculator_accordion_item.pricing_calculator_accordion_add_active .pricing_calculator_accordion_add {
+        background-image: url("../../assets/images/checked.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 50%; }
+        .pricing_calculator_accordion .pricing_calculator_accordion_item.pricing_calculator_accordion_add_active .pricing_calculator_accordion_add img {
+          opacity: 0; }
   .pricing_calculator_accordion .pricing_calculator_accordion_add {
     background: transparent;
     border: none;
@@ -8665,7 +8685,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   .pricing_calculator_accordion button::-moz-focus-inner {
     border: 0; }
   .pricing_calculator_accordion-title {
-    color: var(--White, #FFF);
+    color: #fff;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;

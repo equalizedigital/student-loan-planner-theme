@@ -21,12 +21,13 @@
 }
 
 .pricing_calculator_template_container_main_pricing_disclaimer {
-	color: var(--White, #FFF);
+	color:#fff;
 	text-align: center;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 21px;
+	margin-top: 20px;
 	/* 150% */
 }
 
@@ -75,7 +76,7 @@
 }
 
 .pricing_calculator_template_container_main_pricing_plus {
-	color: var(--White, #FFF);
+	color:#fff;
 	text-align: center;
 	font-size: 17.5px;
 	font-style: normal;
@@ -86,14 +87,14 @@
 }
 
 .pricing_calculator_template_container_main_pricing_info {
-	color: var(--White, #FFF);
+	color:#fff;
 	text-align: center;
 	font-size: 35px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: 40px;
 	/* 114.286% */
-	color: var(--White, #FFF);
+	color:#fff;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 400;
@@ -102,7 +103,7 @@
 
 
 	.info_set {
-		color: var(--White, #FFF);
+		color:#fff;
 		text-align: center;
 		font-size: 35px;
 		font-style: normal;
@@ -113,7 +114,7 @@
 }
 
 .pricing_calculator_template_container_main_info_title {
-	color: var(--White, #FFF);
+	color:#fff;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 700;
@@ -126,25 +127,33 @@
 	display: flex;
 }
 
-.pricing_calculator_template_container_main_info_ul ul {
-	color: var(--White, #FFF);
+.pricing_calculator_template_container_main_info_ul {
+	color:#fff;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	margin: 0;
-	padding: 0;
 	line-height: 18px;
-	/* 112.5% */
-	margin-bottom: 20px;
-	list-style: none;
 
-	li {
-		background-image: url('../../assets/images/checkmark.svg');
-		display: flex;
-		gap: 20px;
-		background-repeat: no-repeat;
-		background-position: left;
-		padding-left: 30px;
+	ul {
+		color:#fff;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 18px;
+
+		margin: 0;
+		padding: 0;
+		margin-bottom: 20px;
+		list-style: none;
+
+		li {
+			background-image: url('../../assets/images/checkmark.svg');
+			display: flex;
+			gap: 20px;
+			background-repeat: no-repeat;
+			background-position: left;
+			padding-left: 30px;
+		}
 	}
 }
 
@@ -177,6 +186,25 @@
 		border: 1px solid #625089;
 		margin-left: 50px;
 		border-radius: 10px;
+		&.pricing_calculator_accordion_add_active{
+			border: 1px solid #82BC46;
+			background-color: #F7F7F7;
+			.pricing_calculator_accordion-trigger{
+				background-color: #82BC46;
+			}
+			.pricing_calculator_accordion-title{
+				color: black;
+			}
+			.pricing_calculator_accordion_add{
+				background-image: url('../../assets/images/checked.svg');
+				background-position: center;
+    			background-repeat: no-repeat;
+				border-radius: 50%;
+				img{
+					opacity: 0;
+				}
+			}
+		}
 	}
 
 	// border-top: 1px solid #eee;
@@ -238,7 +266,7 @@
 	}
 
 	&-title {
-		color: var(--White, #FFF);
+		color:#fff;
 		font-size: 24px;
 		font-style: normal;
 		font-weight: 600;

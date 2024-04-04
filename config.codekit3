@@ -2476,6 +2476,16 @@
       "plM" : 3758088159,
       "prP" : 0
     },
+    "\/assets\/images\/checked.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/images\/checked.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 3758088159,
+      "prP" : 0
+    },
     "\/assets\/images\/checkmark.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -4005,14 +4015,6 @@
       "hM" : 0,
       "oA" : 2,
       "oAP" : "\/single-slp_contacts.php",
-      "oF" : 0
-    },
-    "\/single-slp_profession.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 2,
-      "oAP" : "\/single-slp_profession.php",
       "oF" : 0
     },
     "\/single.php" : {
