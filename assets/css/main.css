@@ -8508,7 +8508,10 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   font-weight: 400;
   line-height: 21px;
   margin-top: 20px;
-  /* 150% */ }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
 .pricing_calculator_template_container_main_info {
   position: relative; }
@@ -8603,7 +8606,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 18px; }
+  line-height: 18px;
+  margin-bottom: 20px; }
   .pricing_calculator_template_container_main_info_ul ul {
     color: #fff;
     font-size: 16px;
@@ -8612,7 +8616,6 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     line-height: 18px;
     margin: 0;
     padding: 0;
-    margin-bottom: 20px;
     list-style: none; }
     .pricing_calculator_template_container_main_info_ul ul li {
       background-image: url("../../assets/images/checkmark.svg");
@@ -8620,7 +8623,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       gap: 20px;
       background-repeat: no-repeat;
       background-position: left;
-      padding-left: 30px; }
+      padding-left: 30px;
+      padding: 5px 0 5px 30px !important; }
 
 .pricing_calculator_accordion {
   display: flex;
@@ -8677,6 +8681,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     background: #625089;
     border-radius: 8px 8px 0 0;
     cursor: pointer; }
+    .pricing_calculator_accordion-trigger[aria-expanded="false"] {
+      border-radius: 8px 8px; }
   .pricing_calculator_accordion-trigger:focus, .pricing_calculator_accordion-trigger:hover {
     background: #82BC46; }
   .pricing_calculator_accordion-trigger:focus {

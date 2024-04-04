@@ -36,7 +36,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 ?>
 
 
-	<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
+	<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 		<div class="pricing_calculator_template_container">
 			<!--  -->
 			<div id="accordionGroup" class="pricing_calculator_accordion">
@@ -52,13 +52,13 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 					$enrollment_fee = get_sub_field( 'enrollment_fee' );
 					$disclaimer = esc_html( get_sub_field( 'disclaimer' ) );
 					$benefits = get_sub_field( 'benefits' );
-					$link_get_started = get_field( 'link' );
+
 
 
 
 					if($row_index === 1): ?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
-						<div class="pricing_calculator_template_container_main">
+						<div class="pricing_calculator_template_container_main" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
 							<div class="pricing_calculator_template_container_main_pricing">
 								<div class="pricing_calculator_template_container_main_pricing_price">
 									<div class="large_set">$<span class="price"><?php  echo wp_kses_post($price); ?></span></div> <span>/month <sup>1</sup></span>
@@ -75,15 +75,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 									<?php  echo wp_kses_post($benefits); ?>
 								</div>
 								<div class="pricing_calculator_template_container_main_info_started">
-									<?php
-									if ( $link_get_started ) :
-										$link_get_started_url = $link_get_started['url'];
-										$link_get_started_title = $link_get_started['title'];
-										$link_get_started_target = $link_get_started['target'] ? $link_get_started['target'] : '_self';
-										?>
-										<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_get_started_url ); ?>" target="<?php echo esc_attr( $link_get_started_target ); ?>"><?php echo esc_html( $link_get_started_title ); ?></a>
-									<?php endif;
-									?>
+									<a class="btn btn-dark-bg" href="calendly.com" target="_blank">Get Started</a>
 								</div>
 							</div>
 						</div>
@@ -100,6 +92,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 						data-disclaimer="<?php echo esc_attr($disclaimer); ?>"
 						data-benefits="<?php echo esc_attr($benefits); ?>"
 						data-added="false"
+						data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 						aria-pressed="false"
 						aria-label="add service">
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/'; ?>add.svg" alt="add">
@@ -116,7 +109,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 						<div class="pricing_calculator_accordion-panel_content <?php echo empty($video)? "no-video":''; ?>">
 							<div class="pricing_calculator_accordion-panel_content_left">
 								<div class="title">
-									<?php echo wp_kses_post($title); ?>
+									<?php echo wp_kses_post($disclaimer); ?>
 								</div>
 								<div class="content">
 									<?php  echo wp_kses_post($description); ?>
@@ -129,14 +122,16 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 								data-disclaimer="<?php echo esc_attr($disclaimer); ?>"
 								data-benefits="<?php echo esc_attr($benefits); ?>"
 								data-added="false"
+								data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 								aria-pressed="false"
-								aria-label="add service">
+								aria-label="Add Service <?php echo wp_kses_post($title); ?>"
+								>
 									Add Service
 								</button>
 							</div>
 							<div class="pricing_calculator_accordion-panel_content_right">
 								<?php
-								echo wp_kses_post($video); ?>
+								echo ($video); ?>
 							</div>
 						</div>
 					</div>
@@ -225,6 +220,7 @@ function addData($this) {
     var dataenrollment = parseInt($this.data('enrollment'), 10);
     var dataBenefits = $this.data('benefits');
     var dataDisclaimer = $this.data('disclaimer');
+	var uniqueId = $this.data('unique-id');
 
     var $targetPrice = jQuery('.large_set .price');
     var $targetenrollment = jQuery('.info_set_number');
@@ -236,8 +232,8 @@ function addData($this) {
 
     $targetPrice.text(currentPrice + dataprice);
     $targetenrollment.text(currentEnrollment + dataenrollment);
-    benefitsData.html(dataBenefits);
-    disclaimerData.html(dataDisclaimer);
+	benefitsData.append('<span data-unique-id="' + uniqueId + '">' + dataBenefits + '</span>');
+	disclaimerData.append('<span data-unique-id="' + uniqueId + '">' + dataDisclaimer + '</span>');
 }
 
 function removeData($this) {
@@ -245,6 +241,7 @@ function removeData($this) {
     var dataenrollment = parseInt($this.data('enrollment'), 10);
     var dataBenefits = $this.data('benefits');
     var dataDisclaimer = $this.data('disclaimer');
+	var uniqueId = $this.data('unique-id');
 
     var $targetPrice = jQuery('.large_set .price');
     var $targetenrollment = jQuery('.info_set_number');
@@ -256,8 +253,9 @@ function removeData($this) {
 
     $targetPrice.text(currentPrice - dataprice);
     $targetenrollment.text(currentEnrollment - dataenrollment);
-    benefitsData.html(dataBenefits);
-    disclaimerData.html(dataDisclaimer);
+
+	benefitsData.find('[data-unique-id="' + uniqueId + '"]').remove();
+	disclaimerData.find('[data-unique-id="' + uniqueId + '"]').remove();
 }
 
 jQuery('.action, .pricing_calculator_accordion_add').on('click', function() {
