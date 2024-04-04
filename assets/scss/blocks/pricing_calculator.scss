@@ -13,15 +13,21 @@
 .pricing_calculator_template_container_main {
 	background: #625089;
 	border-radius: 10px;
-	padding: 56px 100px;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 100px;
+	padding: 20px 20px;
+
+	gap: 20px 100px;
 	align-items: center;
+
+	@include media(">tablet") {
+		grid-template-columns: 1fr 1fr;
+		padding: 56px 100px;
+
+	}
 }
 
 .pricing_calculator_template_container_main_pricing_disclaimer {
-	color:#fff;
+	color: #fff;
 	text-align: center;
 	font-size: 14px;
 	font-style: normal;
@@ -63,38 +69,46 @@
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
-	gap: 20px;
+	gap: 0 20px;
+
+	@include media("<tablet") {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
 	.large_set {
 		color: #FFF;
-		font-size: 110px;
+		font-size: 50px;
 		font-style: normal;
 		font-weight: 700;
-		line-height: 90px;
-		/* 81.818% */
+		line-height: 1.2;
+
+		@include media(">tablet") {
+			line-height: 90px;
+			font-size: 110px;
+		}
 	}
 }
 
 .pricing_calculator_template_container_main_pricing_plus {
-	color:#fff;
+	color: #fff;
 	text-align: center;
 	font-size: 17.5px;
 	font-style: normal;
 	margin: 10px 0;
 	font-weight: 400;
 	line-height: 21px;
-	/* 120% */
 }
 
 .pricing_calculator_template_container_main_pricing_info {
-	color:#fff;
+	color: #fff;
 	text-align: center;
 	font-size: 35px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: 40px;
-	/* 114.286% */
-	color:#fff;
+	color: #fff;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 400;
@@ -103,7 +117,7 @@
 
 
 	.info_set {
-		color:#fff;
+		color: #fff;
 		text-align: center;
 		font-size: 35px;
 		font-style: normal;
@@ -114,7 +128,7 @@
 }
 
 .pricing_calculator_template_container_main_info_title {
-	color:#fff;
+	color: #fff;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 700;
@@ -128,14 +142,14 @@
 }
 
 .pricing_calculator_template_container_main_info_ul {
-	color:#fff;
+	color: #fff;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 18px;
 
 	ul {
-		color:#fff;
+		color: #fff;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
@@ -186,28 +200,31 @@
 		border: 1px solid #625089;
 		margin-left: 50px;
 		border-radius: 10px;
-		&.pricing_calculator_accordion_add_active{
+
+		&.pricing_calculator_accordion_add_active {
 			border: 1px solid #82BC46;
 			background-color: #F7F7F7;
-			.pricing_calculator_accordion-trigger{
+
+			.pricing_calculator_accordion-trigger {
 				background-color: #82BC46;
 			}
-			.pricing_calculator_accordion-title{
+
+			.pricing_calculator_accordion-title {
 				color: black;
 			}
-			.pricing_calculator_accordion_add{
+
+			.pricing_calculator_accordion_add {
 				background-image: url('../../assets/images/checked.svg');
 				background-position: center;
-    			background-repeat: no-repeat;
+				background-repeat: no-repeat;
 				border-radius: 50%;
-				img{
+
+				img {
 					opacity: 0;
 				}
 			}
 		}
 	}
-
-	// border-top: 1px solid #eee;
 
 	.pricing_calculator_accordion_add {
 		background: transparent;
@@ -266,12 +283,16 @@
 	}
 
 	&-title {
-		color:#fff;
-		font-size: 24px;
+		color: #fff;
 		font-style: normal;
+		font-size: 16px;
+		line-height: 1;
 		font-weight: 600;
+		@include media(">tablet") {
 		line-height: 24px;
-		/* 100% */
+		font-size: 24px;
+
+		}
 	}
 
 	&-trigger:focus &-title {
@@ -305,7 +326,14 @@
 
 		.pricing_calculator_accordion-panel_content {
 			display: grid;
-			grid-template-columns: 1fr 1fr;
+
+			@include media(">tablet") {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			&.no-video {
+				grid-template-columns: 1fr;
+			}
 
 			gap: 60px;
 
@@ -324,7 +352,21 @@
 				font-style: normal;
 				font-weight: 400;
 				line-height: 28px;
-				/* 160% */
+
+				ul,
+				ol {
+					@include media(">tablet") {
+						display: grid;
+						grid-template-columns: 1fr 1fr;
+					}
+				}
+
+				li::marker {
+					color: #82BC46;
+					font-size: 1.6rem;
+					line-height: 1;
+				}
+
 			}
 
 			video,
