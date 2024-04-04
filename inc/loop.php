@@ -92,6 +92,9 @@ function eqd_single_header() {
 		$link                    = get_field( 'single_post_link', $page_id );
 		$output                  = null;
 		$container_class         = '';
+		$title_override          = get_field('title_override', $page_id);
+
+
 		if ( get_field( 'post_format_style' ) === 'full-width' ) {
 			$container_class .= 'hero_relative';
 		} else {
@@ -113,7 +116,13 @@ function eqd_single_header() {
 				// Title
 				?>
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
-					<?php echo wp_kses_post( get_the_title() ); ?>
+					<?php
+					if($title_override){
+						 echo wp_kses_post($title_override);
+					} else {
+						echo wp_kses_post( get_the_title() );
+					}
+					 ?>
 				</h1>
 
 				<?php
