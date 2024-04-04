@@ -278,6 +278,10 @@ jQuery('.action, .pricing_calculator_accordion_add').on('click', function() {
 
     // Toggle 'pressed' state for visual feedback or other uses
     $this.attr('pressed', !$this.attr('pressed'));
+
+    // Toggle aria-pressed attribute between true and false
+    var isPressed = $this.attr('aria-pressed') === 'true';
+    $this.attr('aria-pressed', !isPressed);
 });
 
 
