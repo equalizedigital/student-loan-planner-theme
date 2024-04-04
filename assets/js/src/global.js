@@ -365,12 +365,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				// Set the unique id to the menu-footer-container
 				menuFooterContainer.id = uniqueId;
 			}
-			 menuFooterContainer = section.querySelector('.menu-home-footer-container');
+			menuFooterContainer = section.querySelector('.menu-home-footer-container');
 			if (menuFooterContainer) {
 				// Set the unique id to the menu-home-footer-container
 				menuFooterContainer.id = uniqueId;
 			}
-			 menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
+			menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
 			if (menuFooterContainer) {
 				// Set the unique id to the menu-footer-privacy-container
 				menuFooterContainer.id = uniqueId;
@@ -405,47 +405,47 @@ document.addEventListener('DOMContentLoaded', function () {
 				this.classList.toggle('active');
 				let sibling = this.nextElementSibling;
 				// if (sibling) {
-					var isExpanded = title.getAttribute('aria-expanded');
-					this.nextElementSibling.classList.toggle('active');
-					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+				var isExpanded = title.getAttribute('aria-expanded');
+				this.nextElementSibling.classList.toggle('active');
+				this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 				// }
-			},true);
+			}, true);
 		});
 
-}
+	}
 
-    let widgetTitlesRespo = document.querySelectorAll('.widget-title');
+	let widgetTitlesRespo = document.querySelectorAll('.widget-title');
 
-    function handleTitleClick() {
-        this.classList.toggle('active');
-        let sibling = this.nextElementSibling;
-        if (sibling) {
-            var isExpanded = this.getAttribute('aria-expanded');
-            sibling.classList.toggle('active');
-            this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-        }
-    }
+	function handleTitleClick() {
+		this.classList.toggle('active');
+		let sibling = this.nextElementSibling;
+		if (sibling) {
+			var isExpanded = this.getAttribute('aria-expanded');
+			sibling.classList.toggle('active');
+			this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+		}
+	}
 
-    window.addEventListener('resize', function () {
-        if (window.innerWidth < 768) {
-            footerMenuFunctions();
-            widgetTitlesRespo.forEach(title => {
-                title.addEventListener('click', handleTitleClick);
-            });
-        } else {
-            widgetTitlesRespo.forEach(title => {
-                title.removeAttribute('tabindex');
-                title.removeAttribute('role');
-                title.removeAttribute('aria-expanded');
-                title.removeAttribute('aria-controls');
-                title.removeEventListener('click', handleTitleClick);
-            });
-        }
-    });
+	window.addEventListener('resize', function () {
+		if (window.innerWidth < 768) {
+			footerMenuFunctions();
+			widgetTitlesRespo.forEach(title => {
+				title.addEventListener('click', handleTitleClick);
+			});
+		} else {
+			widgetTitlesRespo.forEach(title => {
+				title.removeAttribute('tabindex');
+				title.removeAttribute('role');
+				title.removeAttribute('aria-expanded');
+				title.removeAttribute('aria-controls');
+				title.removeEventListener('click', handleTitleClick);
+			});
+		}
+	});
 
-    if (window.innerWidth < 768) {
-        footerMenuFunctions();
-    }
+	if (window.innerWidth < 768) {
+		footerMenuFunctions();
+	}
 });
 
 
@@ -590,7 +590,7 @@ jQuery(function ($) {
 		jQuery('.modal').attr('aria-hidden', 'true'); // mark the modal window as hidden
 		jQuery(' body').attr('aria-hidden', 'false'); // mark the main page as visible
 
-		jQuery('.modal-btn').attr('aria-expanded',false) ;
+		jQuery('.modal-btn').attr('aria-expanded', false);
 
 		// remove the listener which redirects tab keys in the main content area to the modal
 		jQuery('body').off('focusin', ' body');
@@ -600,7 +600,7 @@ jQuery(function ($) {
 		const modal_videos = document.querySelectorAll('.modal video');
 
 		// Pause each video found
-		modal_videos.forEach(function(video) {
+		modal_videos.forEach(function (video) {
 			video.pause();
 		});
 
@@ -609,32 +609,32 @@ jQuery(function ($) {
 	}
 });
 
-(function() {
+(function () {
 
-window.addEventListener("DOMContentLoaded", function () {
-	// resource links
-	let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
+	window.addEventListener("DOMContentLoaded", function () {
+		// resource links
+		let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
 
 
-	if (accordionButtons.length > 0) {
-		// Accordion
-		accordionButtons.forEach(button => {
+		if (accordionButtons.length > 0) {
+			// Accordion
+			accordionButtons.forEach(button => {
 
-			button.addEventListener('click', () => {
-				const contentId = button.getAttribute('aria-controls');
-				const content = document.getElementById(contentId);
+				button.addEventListener('click', () => {
+					const contentId = button.getAttribute('aria-controls');
+					const content = document.getElementById(contentId);
 
-				if (button.getAttribute('aria-expanded') === 'true') {
-					button.setAttribute('aria-expanded', 'false');
-					content.classList.remove('active-content');
-				} else {
-					button.setAttribute('aria-expanded', 'true');
-					content.classList.add('active-content');
-				}
+					if (button.getAttribute('aria-expanded') === 'true') {
+						button.setAttribute('aria-expanded', 'false');
+						content.classList.remove('active-content');
+					} else {
+						button.setAttribute('aria-expanded', 'true');
+						content.classList.add('active-content');
+					}
+				});
 			});
-		});
-	}
-},false);
+		}
+	}, false);
 })();
 
 
@@ -828,69 +828,69 @@ window.addEventListener("load", function () {
 // Lender Table Show More
 document.addEventListener('DOMContentLoaded', function () {
 
-    function checkIsTabletSizeLender() {
-        var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	function checkIsTabletSizeLender() {
+		var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-        teamLenderFunctionality(windowWidth);
-    }
+		teamLenderFunctionality(windowWidth);
+	}
 
-    // Initial check on page load
-    checkIsTabletSizeLender();
+	// Initial check on page load
+	checkIsTabletSizeLender();
 
-    // Listen for window resize events and recheck
-    window.addEventListener('resize', checkIsTabletSizeLender);
+	// Listen for window resize events and recheck
+	window.addEventListener('resize', checkIsTabletSizeLender);
 
-    function teamLenderFunctionality(windowWidth) {
-        let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button');
+	function teamLenderFunctionality(windowWidth) {
+		let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button');
 		let highlightButtonLenderText = document.querySelector('.refinance_lender_section__load_more button .text')
 
-        if (highlightButtonLender) {
-            let items = document.querySelectorAll('.data-tr');
-            let initText = highlightButtonLenderText;
-            let tabOpen = false;
+		if (highlightButtonLender) {
+			let items = document.querySelectorAll('.data-tr');
+			let initText = highlightButtonLenderText;
+			let tabOpen = false;
 
-            if (items.length >= 3) {
+			if (items.length >= 3) {
 
-                if (windowWidth <= 768) {
-                    items.forEach(function (item, index) {
-                        if (index < 3) {
-                            item.tabIndex = 0;
-                        } else {
-                            item.tabIndex = -1;
-                        }
-                    });
-                }
+				if (windowWidth <= 768) {
+					items.forEach(function (item, index) {
+						if (index < 3) {
+							item.tabIndex = 0;
+						} else {
+							item.tabIndex = -1;
+						}
+					});
+				}
 
-                highlightButtonLender.addEventListener('click', function () {
-                    items.forEach(function (item) {
-                        if (tabOpen) {
-                            item.classList.add('hidden');
-                            item.classList.remove('animate');
-                        } else {
-                            item.classList.remove('hidden');
-                            item.classList.add('animate');
-                        }
-                    });
+				highlightButtonLender.addEventListener('click', function () {
+					items.forEach(function (item) {
+						if (tabOpen) {
+							item.classList.add('hidden');
+							item.classList.remove('animate');
+						} else {
+							item.classList.remove('hidden');
+							item.classList.add('animate');
+						}
+					});
 
-                    var currentState = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
+					var currentState = this.getAttribute('aria-expanded') === 'true';
+					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
 
-                    for (var i = 0; i < 3 && i < items.length; i++) {
-                        items[i].classList.remove('hidden');
-                    }
+					for (var i = 0; i < 3 && i < items.length; i++) {
+						items[i].classList.remove('hidden');
+					}
 
-                    items[0].focus();
+					items[0].focus();
 
-                    this.classList.toggle('active');
+					this.classList.toggle('active');
 					tabOpen == false ? highlightButtonLenderText = 'Show Fewer' : highlightButtonLenderText = initText;
 
 
-                    tabOpen = !tabOpen; // Toggle the tabOpen state
-                });
+					tabOpen = !tabOpen; // Toggle the tabOpen state
+				});
 
-            }
-        }
-    }
+			}
+		}
+	}
 });
 
 
@@ -909,11 +909,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		let tocContainer;
 		let h2Elements;
 		if (toc_container.length > 0) {
-			 tocContainer = document.querySelector('.toc_container');
-			 h2Elements = tocContainer.querySelectorAll('h2');
-		} else if(toc_container_entry_content.length > 0){
-			 tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
-			 h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
+			tocContainer = document.querySelector('.toc_container');
+			h2Elements = tocContainer.querySelectorAll('h2');
+		} else if (toc_container_entry_content.length > 0) {
+			tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
+			h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
 		}
 
 		// Create an empty array to store the IDs
@@ -988,7 +988,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
 				let listItemCheck = document.querySelector(`.toc-nav li a`);
-				if (listItemCheck == null){
+				if (listItemCheck == null) {
 					return;
 				}
 				if (entry.intersectionRatio > 0) {
@@ -1030,9 +1030,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		// Track all sections that have an `id` applied
 		let targetElements;
 		if (toc_container.length > 0) {
-			 targetElements = document.querySelectorAll('.toc_container h2');
-		} else if( toc_container_entry_content.length > 0 ) {
-			 targetElements = document.querySelectorAll('.single .post_type_layout_standard .entry-content h2');
+			targetElements = document.querySelectorAll('.toc_container h2');
+		} else if (toc_container_entry_content.length > 0) {
+			targetElements = document.querySelectorAll('.single .post_type_layout_standard .entry-content h2');
 		}
 
 		targetElements.forEach(element => {
@@ -1137,151 +1137,140 @@ document.addEventListener('DOMContentLoaded', function () {
 	const tabletChevron = document.querySelectorAll('.tablet_chevron');
 	if (tabletChevron.length > 0) {
 
-	document.querySelector('.tablet_chevron').addEventListener('click', function() {
-		var list = document.querySelector('.tabbed-content__nav-list');
-		var items = list.querySelectorAll('.tabbed-content__nav-item');
+		document.querySelector('.tablet_chevron').addEventListener('click', function () {
+			var list = document.querySelector('.tabbed-content__nav-list');
+			var items = list.querySelectorAll('.tabbed-content__nav-item');
 
-		// Find the currently active item
-		var activeItem = list.querySelector('.active');
-		var activeIndex = Array.from(items).indexOf(activeItem);
+			// Find the currently active item
+			var activeItem = list.querySelector('.active');
+			var activeIndex = Array.from(items).indexOf(activeItem);
 
-		// Determine the next item to scroll into view
-		var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
+			// Determine the next item to scroll into view
+			var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
 
-		if (nextItem) {
-			// Scroll the next item into view
-			nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+			if (nextItem) {
+				// Scroll the next item into view
+				nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 
-			// Update the active class if needed
-			activeItem.classList.remove('active');
-			nextItem.classList.add('active');
-		}
-	});
+				// Update the active class if needed
+				activeItem.classList.remove('active');
+				nextItem.classList.add('active');
+			}
+		});
 	}
 
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 	const videoCarouselElement = document.querySelectorAll('.video-carousel-swiper-container');
 	if (videoCarouselElement.length) {
 
-var videoCarousel = new Swiper ('.video-carousel-swiper-container', {
-  // Optional parameters
-	  loop: true,
-	slidesPerView: 3.5,
-	spaceBetween: 21, // Adjust the space between slides as needed.
-	centeredSlides: true, // This helps in showing the partial slides on the sides.
-	loopAddBlankSlides:true,
-	watchSlidesProgress:true,
-	keyboard: {
-		enabled: true,
-	  },
-	// Navigation arrows
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
+		var videoCarousel = new Swiper('.video-carousel-swiper-container', {
+			// Optional parameters
+			loop: true,
+			spaceBetween: 21, // Adjust the space between slides as needed.
+			centeredSlides: true, // This helps in showing the partial slides on the sides.
+			loopedSlides: 10,
+			slidesPerView: 3.5,
+			watchSlidesProgress: true,
+			keyboard: {
+				enabled: true,
+			},
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
 
-	// Responsive breakpoints
-	breakpoints: {
-	// When window width is >= 640px
-	1: {
-		slidesPerView: 1,
-		centeredSlides: true,
-	},
-	// When window width is >= 768px
-	768: {
-		slidesPerView: 3,
-		centeredSlides: true,
-	},
-	// When window width is >= 1024px
-	1024: {
-		slidesPerView: 3.5,
-		centeredSlides: true, // or false, depending on your preference for desktop
-	},
-	},
+			// Responsive breakpoints
+			breakpoints: {
+				// When window width is >= 640px
+				1: {
+					slidesPerView: 1,
+					centeredSlides: true,
+				},
+				// When window width is >= 768px
+				768: {
+					slidesPerView: 3.5,
+					centeredSlides: true,
+				},
+				// When window width is >= 1024px
+				1024: {
+					slidesPerView: 3.5,
+					centeredSlides: true, // or false, depending on your preference for desktop
+				},
+			},
 
 
-  on: {
+			on: {
 
-    transitionStart: function(){
+				transitionStart: function () {
 
-      var videos = document.querySelectorAll('video');
+					var videos = document.querySelectorAll('video');
 
-      Array.prototype.forEach.call(videos, function(video){
-        video.pause();
-      });
+					Array.prototype.forEach.call(videos, function (video) {
+						video.pause();
+					});
 
-    },
-
-    transitionEnd: function(){
-
-    //   var activeIndex = this.activeIndex;
-    //   var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
-    //   var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
-    //   activeSlideVideo.play();
-
-    },
-
-  }
-});
+				},
+			}
+		});
 	}
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 	const videoBlockElement = document.querySelectorAll('.image-placeholder-action');
 	if (videoBlockElement.length) {
 
-    // Select all play buttons
-    var playButtons = document.querySelectorAll('.image-placeholder-action');
-	var allimageObject = document.querySelectorAll('.image-placeholder');
-	var documentimageobject = document.querySelectorAll('.image-object');
-	let pauseButton = document.querySelectorAll('.image-placeholder-action-pause');
+		// Select all play buttons
+		var playButtons = document.querySelectorAll('.image-placeholder-action');
+		var allimageObject = document.querySelectorAll('.image-placeholder');
+		var documentimageobject = document.querySelectorAll('.image-object');
 
 
-	function videoFunctionality(button){
-		documentimageobject.forEach(function(image) {
-			image.classList.remove('image-hold');
-		})
+		function videoFunctionality(button) {
+			documentimageobject.forEach(function (image) {
+				image.classList.remove('image-hold');
+			})
 
-		allimageObject.forEach(function(image) {
-			image.classList.remove('image-hold');
-		})
+			allimageObject.forEach(function (image) {
+				image.classList.remove('image-hold');
+			})
 
-		var slideContainer = button.closest('.slide-container');
-		var currentImagePlaceholder = slideContainer.querySelector('.image-placeholder');
-		var video = slideContainer.querySelector('video');
-		var currentimageobject = slideContainer.querySelector('.image-object');
+			var slideContainer = button.closest('.slide-container');
+			var currentImagePlaceholder = slideContainer.querySelector('.image-placeholder');
+			var video = slideContainer.querySelector('video');
+			var currentimageobject = slideContainer.querySelector('.image-object');
 
-		document.querySelectorAll('.slide-container').forEach(function(container) {
-			container.classList.remove('image-hold');
-		})
+			document.querySelectorAll('.slide-container').forEach(function (container) {
+				container.classList.remove('image-hold');
+			})
 
-		// Pause all videos and remove the class from all .image-object elements except the current
-		document.querySelectorAll('.slide-container video').forEach(function(video) {
-			if (video !== button.closest('.slide-container').querySelector('video')) {
-				video.pause();
-				video.controls = false; // Hide controls
-				currentImagePlaceholder.classList.remove('image-hold');
-				slideContainer.classList.remove('image-hold');
+			// Pause all videos and remove the class from all .image-object elements except the current
+			document.querySelectorAll('.slide-container video').forEach(function (video) {
+				if (video !== button.closest('.slide-container').querySelector('video')) {
+					video.pause();
+					video.controls = false; // Hide controls
+					currentImagePlaceholder.classList.remove('image-hold');
+					slideContainer.classList.remove('image-hold');
+				}
+			});
+
+			// Toggle the class for the current .image-object
+			if (video.paused) {
+				currentImagePlaceholder.classList.add('image-hold');
+				currentimageobject.classList.add('image-hold');
+				slideContainer.classList.add('image-hold');
+				video.controls = true; // Show controls when video plays
 			}
-		});
 
-		// Toggle the class for the current .image-object
-		if (video.paused) {
-			currentImagePlaceholder.classList.add('image-hold');
-			currentimageobject.classList.add('image-hold');
-			slideContainer.classList.add('image-hold');
-			video.controls = true; // Show controls when video plays
-		}
-
-			video.addEventListener('ended', function() {
+			video.addEventListener('ended', function () {
 				// The code you want to execute when the video ends
-				document.querySelectorAll('.slide-container video').forEach(function(otherVideo) {
+				document.querySelectorAll('.slide-container video').forEach(function (otherVideo) {
 					if (otherVideo !== video) { // Ensure we're not pausing or altering the video that just ended
 						otherVideo.pause();
 						otherVideo.controls = false; // Hide controls
@@ -1294,57 +1283,52 @@ document.addEventListener('DOMContentLoaded', function() {
 				});
 			});
 
-		// Play or pause the current video
-		video.paused ? video.play() : video.pause();
-	}
-
-    // Iterate over each play button
-	pauseButton.forEach(function(button) {
-		button.addEventListener('click', function() {
-			videoFunctionality(button);
-        });
-	})
-    playButtons.forEach(function(button) {
-        // Add click event listener to each button
-        button.addEventListener('click', function() {
-			videoFunctionality(button)
-        });
-    });
-
-
-
-
-	document.getElementById('video-placeholder').play();
-
-	jQuery('.video-placeholder').on('click', function() {
-		var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
-
-		if (!videoElement.paused) {
-		  videoElement.pause();
-		  jQuery(this).show(); // Show the placeholder when the video is paused
-		} else {
-		  videoElement.play();
-		  jQuery(this).hide(); // Hide the placeholder when the video is playing
+			// Play or pause the current video
+			video.paused ? video.play() : video.pause();
 		}
-	  });
 
 
-	  	// Correct the element ID to point to the video element, not the placeholder
-	var videoElement = document.getElementById('video-placeholder');
-	var videoPlaceholderPause = document.querySelector('.video_block_template_container_media_placeholder_action_btn');
-	var buttonText = document.querySelector('.video_block_template_container_media_placeholder_action_btn .text'); // Get the span that contains the text
+		playButtons.forEach(function (button) {
+			// Add click event listener to each button
+			button.addEventListener('click', function () {
+				videoFunctionality(button)
+			});
+		});
 
-	videoPlaceholderPause.addEventListener('click', function() {
-	  if (!videoElement.paused) {
-		videoElement.pause();
-		videoPlaceholderPause.ariaPressed = true;
-		buttonText.textContent = 'Play Video'; // Change the text to 'Play Video'
-	  } else {
-		videoElement.play();
-		videoPlaceholderPause.ariaPressed = false;
-		buttonText.textContent = 'Pause Video'; // Change the text to 'Pause Video'
-	  }
-	});
+
+
+
+		document.getElementById('video-placeholder').play();
+
+		jQuery('.video-placeholder').on('click', function () {
+			var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
+
+			if (!videoElement.paused) {
+				videoElement.pause();
+				jQuery(this).show(); // Show the placeholder when the video is paused
+			} else {
+				videoElement.play();
+				jQuery(this).hide(); // Hide the placeholder when the video is playing
+			}
+		});
+
+
+		// Correct the element ID to point to the video element, not the placeholder
+		var videoElement = document.getElementById('video-placeholder');
+		var videoPlaceholderPause = document.querySelector('.video_block_template_container_media_placeholder_action_btn');
+		var buttonText = document.querySelector('.video_block_template_container_media_placeholder_action_btn .text'); // Get the span that contains the text
+
+		videoPlaceholderPause.addEventListener('click', function () {
+			if (!videoElement.paused) {
+				videoElement.pause();
+				videoPlaceholderPause.ariaPressed = true;
+				buttonText.textContent = 'Play Video'; // Change the text to 'Play Video'
+			} else {
+				videoElement.play();
+				videoPlaceholderPause.ariaPressed = false;
+				buttonText.textContent = 'Pause Video'; // Change the text to 'Pause Video'
+			}
+		});
 
 	}
 });
