@@ -1337,3 +1337,132 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+// Pricing Block
+document.addEventListener('DOMContentLoaded', function () {
+
+	const pricingCalculator = document.querySelectorAll('.pricing_calculator_template');
+	if (pricingCalculator.length) {
+
+		class PricingAccordion {
+			constructor(domNode) {
+				this.rootEl = domNode;
+				this.buttonEl = this.rootEl.querySelector('button[aria-expanded]');
+
+				const controlsId = this.buttonEl.getAttribute('aria-controls');
+				this.contentEl = document.getElementById(controlsId);
+
+				this.open = this.buttonEl.getAttribute('aria-expanded') === 'true';
+
+				// add event listeners
+				this.buttonEl.addEventListener('click', this.onButtonClick.bind(this));
+			}
+
+			onButtonClick() {
+				this.toggle(!this.open);
+			}
+
+			toggle(open) {
+				// don't do anything if the open state doesn't change
+				if (open === this.open) {
+					return;
+				}
+
+				// update the internal state
+				this.open = open;
+
+				// handle DOM updates
+				this.buttonEl.setAttribute('aria-expanded', `${open}`);
+				if (open) {
+					this.contentEl.removeAttribute('hidden');
+				} else {
+					this.contentEl.setAttribute('hidden', '');
+				}
+			}
+
+			// Add public open and close methods for convenience
+			open() {
+				this.toggle(true);
+			}
+
+			close() {
+				this.toggle(false);
+			}
+		}
+
+		// init accordions
+		const accordions = document.querySelectorAll('.pricing_calculator_accordion .pricing_calculator_accordion_item_title');
+		accordions.forEach((accordionEl) => {
+			new PricingAccordion(accordionEl);
+		});
+
+		function addData($this) {
+			var dataprice = parseInt($this.data('price'), 10);
+			var dataenrollment = parseInt($this.data('enrollment'), 10);
+			var dataBenefits = $this.data('benefits');
+			var dataDisclaimer = $this.data('disclaimer');
+			var uniqueId = $this.data('unique-id');
+
+			var $targetPrice = jQuery('.large_set .price');
+			var $targetenrollment = jQuery('.info_set_number');
+			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul');
+			var disclaimerData = jQuery('.pricing_calculator_template_container_main_pricing_disclaimer');
+
+			var currentPrice = parseInt($targetPrice.text(), 10);
+			var currentEnrollment = parseInt($targetenrollment.text(), 10);
+
+			$targetPrice.text(currentPrice + dataprice);
+			$targetenrollment.text(currentEnrollment + dataenrollment);
+			benefitsData.append('<span data-unique-id="' + uniqueId + '">' + dataBenefits + '</span>');
+			disclaimerData.append('<span data-unique-id="' + uniqueId + '">' + dataDisclaimer + '</span>');
+		}
+
+		function removeData($this) {
+			var dataprice = parseInt($this.data('price'), 10);
+			var dataenrollment = parseInt($this.data('enrollment'), 10);
+			var dataBenefits = $this.data('benefits');
+			var dataDisclaimer = $this.data('disclaimer');
+			var uniqueId = $this.data('unique-id');
+
+			var $targetPrice = jQuery('.large_set .price');
+			var $targetenrollment = jQuery('.info_set_number');
+			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul');
+			var disclaimerData = jQuery('.pricing_calculator_template_container_main_pricing_disclaimer');
+
+			var currentPrice = parseInt($targetPrice.text(), 10);
+			var currentEnrollment = parseInt($targetenrollment.text(), 10);
+
+			$targetPrice.text(currentPrice - dataprice);
+			$targetenrollment.text(currentEnrollment - dataenrollment);
+
+			benefitsData.find('[data-unique-id="' + uniqueId + '"]').remove();
+			disclaimerData.find('[data-unique-id="' + uniqueId + '"]').remove();
+		}
+
+		jQuery('.action, .pricing_calculator_accordion_add').on('click', function () {
+			var $this = jQuery(this);
+			var dataAdded = $this.data('added');
+			var pricing_calculator_accordion_item = $this.closest('.pricing_calculator_accordion_item');
+
+			if (dataAdded) {
+				$this.data('added', false).attr('data-added', 'false');
+				jQuery(pricing_calculator_accordion_item).removeClass('pricing_calculator_accordion_add_active');
+				removeData($this);
+
+				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Add Service');
+			} else {
+				$this.data('added', true).attr('data-added', 'true');
+				addData($this);
+				jQuery(pricing_calculator_accordion_item).addClass('pricing_calculator_accordion_add_active');
+				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Remove Service');
+			}
+
+			// Toggle 'pressed' state for visual feedback or other uses
+			$this.attr('pressed', !$this.attr('pressed'));
+
+			// Toggle aria-pressed attribute between true and false
+			var isPressed = $this.attr('aria-pressed') === 'true';
+			$this.attr('aria-pressed', !isPressed);
+		});
+	}
+});
