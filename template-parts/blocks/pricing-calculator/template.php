@@ -32,7 +32,7 @@ if ( ! empty( $block['align'] ) ) :
 	$class_name .= ' align' . $block['align'];
 endif;
 
-$class_name         = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 ?>
 
 
@@ -51,28 +51,40 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 					$price = get_sub_field( 'price' );
 					$enrollment_fee = get_sub_field( 'enrollment_fee' );
 					$disclaimer = esc_html( get_sub_field( 'disclaimer' ) );
-					$benefits = get_sub_field( 'benefits' );
-
-
-
-
+					$benefits = get_sub_field( 'benefits',false, false );
 					if($row_index === 1): ?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
-						<div class="pricing_calculator_template_container_main" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
-							<div class="pricing_calculator_template_container_main_pricing">
-								<div class="pricing_calculator_template_container_main_pricing_price">
-									<div class="large_set">$<span class="price"><?php  echo wp_kses_post($price); ?></span></div> <span>/month <sup>1</sup></span>
+						<div class="pricing_calculator_template_container_main" aria-live="polite" aria-atomic="true" aria-relevant="all" role="log">
+							<div class="pricing_calculator_template_container_main_pricing"  >
+								<div class="pricing_calculator_template_container_main_pricing_price" >
+									<div class="large_set">$<span class="price"><?php echo wp_kses_post($price); ?></span></div>
+									<span>/month <sup aria-hidden="true">1</sup></span>
 								</div>
 								<div class="pricing_calculator_template_container_main_pricing_plus">+</div>
 								<div class="pricing_calculator_template_container_main_pricing_info">
-									<span class="info_set">$<span class="info_set_number"><?php  echo wp_kses_post($enrollment_fee); ?></span></span> enrollment fee
+									<span class="info_set">$<span class="info_set_number"><?php echo wp_kses_post($enrollment_fee); ?></span></span> enrollment fee
 								</div>
 								<div class="pricing_calculator_template_container_main_pricing_disclaimer"></div>
 							</div>
 							<div class="pricing_calculator_template_container_main_info">
 								<div class="pricing_calculator_template_container_main_info_title">At this pricing, you’re getting:</div>
 								<div class="pricing_calculator_template_container_main_info_ul">
-									<?php  echo wp_kses_post($benefits); ?>
+										<?php
+										if ($benefits) {
+											// Split the content by line breaks into an array
+											$lines = explode("\n", strip_tags($benefits, '<br><li><ul><ol>'));
+
+											echo '<ul>';
+											foreach ($lines as $line) {
+												// Trim the line to remove whitespace and then check if it's not empty
+												$line = trim($line);
+												if (!empty($line)) {
+													echo '<li>' . esc_html($line) . '</li>';
+												}
+											}
+											echo '</ul>';
+										}
+										?>
 								</div>
 								<div class="pricing_calculator_template_container_main_info_started">
 									<a class="btn btn-dark-bg" href="www.slpwealth.com/book" target="_blank">Get Started</a>
@@ -81,7 +93,22 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 						</div>
 						<div class="heading">Add Additional Services:</div>
 
-				<?php else : ?>
+				<?php else :
+					if ($benefits) {
+						$oldBenefits = $benefits;
+						$benefits = '';
+						// Split the content by line breaks into an array
+						$lines = explode("\n", strip_tags($oldBenefits, '<br><li><ul><ol>'));
+
+						foreach ($lines as $line) {
+							// Trim the line to remove whitespace and then check if it's not empty
+							$line = trim($line);
+							if (!empty($line)) {
+								$benefits .= "<li data-unique-id='benefits_".  esc_attr( $block_id . '_' . $row_index ) . "'>" . esc_html($line) . "</li>";
+							}
+						}
+					}
+					?>
 
 				<div class="pricing_calculator_accordion_item">
 					<div class="pricing_calculator_accordion_item_title">
@@ -94,12 +121,12 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 						data-added="false"
 						data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 						aria-pressed="false"
-						aria-label="add service">
+						aria-label="Add Service <?php echo wp_kses_post($title); ?>">
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/'; ?>add.svg" alt="add">
 						</button>
 						<button type="button" aria-expanded="<?php echo$row_index>2? 'false':'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
 							<span class="pricing_calculator_accordion-title">
-								<?php  echo wp_kses_post($title); ?>
+								<?php echo wp_kses_post($title); ?>
 								<span class="pricing_calculator_accordion-icon">
 								</span>
 							</span>
@@ -112,7 +139,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 									<?php echo wp_kses_post($disclaimer); ?>
 								</div>
 								<div class="content">
-									<?php  echo wp_kses_post($description); ?>
+									<?php echo wp_kses_post($description); ?>
 								</div>
 
 								<button
