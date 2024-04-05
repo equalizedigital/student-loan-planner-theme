@@ -54,7 +54,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					$benefits = get_sub_field( 'benefits',false, false );
 					if($row_index === 1): ?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
-						<div class="pricing_calculator_template_container_main" aria-live="assertive" aria-atomic="true" aria-relevant="all" role="log">
+						<div class="pricing_calculator_template_container_main" aria-live="polite" aria-atomic="true" aria-relevant="all" role="log">
 							<div class="pricing_calculator_template_container_main_pricing"  >
 								<div class="pricing_calculator_template_container_main_pricing_price" >
 									<div class="large_set">$<span class="price"><?php echo wp_kses_post($price); ?></span></div>
