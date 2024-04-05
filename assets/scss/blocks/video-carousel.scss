@@ -65,7 +65,7 @@
 
 	.video-carousel-swiper-container {
 		width: 100%;
-		max-width: 940px;
+		max-width: 1120px;
 		margin: 0 auto;
 
 		.swiper-wrapper {
@@ -93,7 +93,7 @@
 			.swiper-slide {
 				opacity: .5;
 				@include media(">tablet") {
-					width: 235px;
+					width: 260px;
 					// width: 17vw !important;
 				}
 				&.keyboard-focused{
