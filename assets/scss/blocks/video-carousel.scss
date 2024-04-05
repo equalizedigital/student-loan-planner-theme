@@ -99,10 +99,9 @@
 				&.keyboard-focused{
 					opacity: 1;
 				}
-				&.swiper-slide-prev:has(+ * + .swiper-slide),
-				&.swiper-slide-prev,
-				&.swiper-slide-active,
-				&.swiper-slide-next {
+				&.swiper-slide-visible,
+				&.swiper-slide-active
+				{
 					opacity: 1;
 					.slide_main_container {
 						&_disable {
