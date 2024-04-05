@@ -122,7 +122,7 @@ endif;
 		</ul>
 		<?php
 		if ( empty( $acf_use_alternative_styling ) ) :
-			if ( $number_of_items >= 4 ) :
+			if ( $number_of_items > 4 ) :
 				?>
 				<div class="team-hightlight-block-container-team-hightlight__load_more">
 					<button class="load" aria-label="Show All Consultants" aria-expanded="false" aria-controls="team-hightlight-block-container-team-hightlight">
