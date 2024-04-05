@@ -466,8 +466,9 @@ function eqd_logo_setup() {
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
 
 function eqd_enqueue_swiper_assets() {
+
     // Only proceed if we're on a singular page and it has content.
-    if ( is_singular() && have_posts() ) {
+    if ( is_singular() && have_posts()  ) {
         the_post(); // Load the post data.
         $content = get_the_content();
 
@@ -486,3 +487,29 @@ function eqd_enqueue_swiper_assets() {
 }
 
 add_action( 'wp_enqueue_scripts', 'eqd_enqueue_swiper_assets' );
+
+function eqd_enqueue_swiper_assets_admin($hook_suffix) {
+    // Only proceed on post edit screens.
+    if ('post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix) {
+        return;
+    }
+
+    global $post;
+    if ($post && has_blocks($post->post_content)) {
+        $blocks = parse_blocks($post->post_content);
+        foreach ($blocks as $block) {
+            if ($block['blockName'] === 'acf/video-carousel') {
+                // Enqueue Swiper.js CSS for Admin
+                wp_enqueue_style('swiper-css-admin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+
+                // Enqueue Swiper.js Script for Admin
+                wp_enqueue_script('swiper-js-admin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+
+                // No need to check further blocks
+                break;
+            }
+        }
+    }
+}
+
+add_action('admin_enqueue_scripts', 'eqd_enqueue_swiper_assets_admin');

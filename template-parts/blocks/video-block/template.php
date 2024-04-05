@@ -36,7 +36,7 @@ $class_name         = apply_filters( 'loader_block_class', $class_name, $block, 
 $image_path         = get_template_directory_uri() . '/assets/images/';
 
 $optional_video_url         = get_field('optional_video_url');
-
+$video_path = null;
 if($optional_video_url){
 	$video_path         = $optional_video_url;
 }
@@ -87,7 +87,7 @@ $heading            = get_field( 'heading' );
 		</div>
 		<div class="video_block_template_container_media">
 			<div class="video_block_template_container_media_video">
-				<video class="video-element video-placeholder" id="video-placeholder" " loop autoplay muted>
+				<video class="video-element video-placeholder" id="video-placeholder" loop autoplay muted>
 					<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
 				</video>
 				<div class="video_block_template_container_media_video_button">
