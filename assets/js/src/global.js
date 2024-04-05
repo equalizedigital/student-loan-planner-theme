@@ -1452,7 +1452,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			var $targetPrice = jQuery('.large_set .price');
 			var $targetenrollment = jQuery('.info_set_number');
-			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul');
+			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul ul');
 			var disclaimerData = jQuery('.pricing_calculator_template_container_main_pricing_disclaimer');
 
 			var currentPrice = parseInt($targetPrice.text(), 10);
@@ -1460,7 +1460,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			$targetPrice.text(currentPrice + dataprice);
 			$targetenrollment.text(currentEnrollment + dataenrollment);
-			benefitsData.append('<span data-unique-id="' + uniqueId + '">' + dataBenefits + '</span>');
+			benefitsData.append(dataBenefits);
 			disclaimerData.append('<span data-unique-id="' + uniqueId + '">' + dataDisclaimer + '</span>');
 		}
 
@@ -1473,7 +1473,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			var $targetPrice = jQuery('.large_set .price');
 			var $targetenrollment = jQuery('.info_set_number');
-			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul');
+			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul ul');
 			var disclaimerData = jQuery('.pricing_calculator_template_container_main_pricing_disclaimer');
 
 			var currentPrice = parseInt($targetPrice.text(), 10);
@@ -1492,13 +1492,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			var pricing_calculator_accordion_item = $this.closest('.pricing_calculator_accordion_item');
 
 			if (dataAdded) {
-				$this.data('added', false).attr('data-added', 'false');
+				// $this.data('added', false).attr('data-added', 'false');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').data('added', false).attr('data-added', 'false');
 				jQuery(pricing_calculator_accordion_item).removeClass('pricing_calculator_accordion_add_active');
 				removeData($this);
 
 				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Add Service');
 			} else {
-				$this.data('added', true).attr('data-added', 'true');
+				// $this.data('added', true).attr('data-added', 'true');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').data('added', true).attr('data-added', 'true');
 				addData($this);
 				jQuery(pricing_calculator_accordion_item).addClass('pricing_calculator_accordion_add_active');
 				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Remove Service');
