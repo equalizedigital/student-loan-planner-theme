@@ -8263,6 +8263,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       bottom: 0;
       z-index: 242;
       background: #625089CC;
+      border-radius: 10px;
       opacity: 0; }
     .video_carousel_template .image-object:hover:after {
       opacity: 1; }
