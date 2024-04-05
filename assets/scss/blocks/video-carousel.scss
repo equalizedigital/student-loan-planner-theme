@@ -93,7 +93,7 @@
 			.swiper-slide {
 				opacity: .5;
 				@include media(">tablet") {
-					width: 275px;
+					width: 235px;
 					// width: 17vw !important;
 				}
 				&.keyboard-focused{

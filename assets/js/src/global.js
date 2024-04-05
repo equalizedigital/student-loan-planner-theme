@@ -1174,9 +1174,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			loopedSlides: 10,
 			// slidesPerView: 4.5,
 			slidesPerView: 'auto',
-			// centeredSlides: true,
-
-
+			centeredSlides: false,
+			initialSlide: 3,
 			watchSlidesProgress: true,
 			a11y: true,
 			keyboard: {
@@ -1194,17 +1193,14 @@ document.addEventListener('DOMContentLoaded', function () {
 				// When window width is >= 640px
 				1: {
 					// slidesPerView: 1,
-					centeredSlides: true,
 				},
 				// When window width is >= 768px
 				768: {
 					// slidesPerView: 2.5,
-					centeredSlides: true,
 				},
 				// When window width is >= 1024px
 				1024: {
 					// slidesPerView: 4.5,
-					centeredSlides: true, // or false, depending on your preference for desktop
 				},
 			},
 
