@@ -1173,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			spaceBetween: 21, // Adjust the space between slides as needed.
 			centeredSlides: true, // This helps in showing the partial slides on the sides.
 			loopedSlides: 10,
-			slidesPerView: 3.5,
+			slidesPerView: 4.5,
 			watchSlidesProgress: true,
 			a11y: true,
 			keyboard: {
@@ -1195,12 +1195,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				},
 				// When window width is >= 768px
 				768: {
-					slidesPerView: 3.5,
+					slidesPerView: 2.5,
 					centeredSlides: true,
 				},
 				// When window width is >= 1024px
 				1024: {
-					slidesPerView: 3.5,
+					slidesPerView: 4.5,
 					centeredSlides: true, // or false, depending on your preference for desktop
 				},
 			},
