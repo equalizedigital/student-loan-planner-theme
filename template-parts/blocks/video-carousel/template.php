@@ -55,6 +55,7 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 
 				<div class="swiper-slide">
 					<div class="slide_main_container">
+						<div class="slide_main_container_disable"></div>
 
 						<div class="slide-container">
 							<div class="image-object">
