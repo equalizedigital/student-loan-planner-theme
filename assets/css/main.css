@@ -8195,7 +8195,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
         font-weight: 400;
         line-height: 1.4;
         text-align: center;
-        width: 100%; }
+        width: 100%;
+        padding: 13px 10px; }
       .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .swiper-slide video {
         width: 100%;
         height: 100%;
