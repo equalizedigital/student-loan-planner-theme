@@ -1174,6 +1174,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			loopedSlides: 10,
 			// slidesPerView: 4.5,
 			slidesPerView: 'auto',
+			// centeredSlides: true,
 
 
 			watchSlidesProgress: true,
