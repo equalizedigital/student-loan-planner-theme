@@ -1580,16 +1580,32 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Function to collect and append text
 		function collectAndAppendText() {
 			var container = document.querySelector('.pricing_calculator_template_container_main');
-			var textContent = container.textContent; // Grabbing all the text content
+
+			// Function to recursively grab text content from nodes
+			function getTextWithSpacing(node) {
+				let text = '';
+				node.childNodes.forEach(function(child) {
+					if (child.nodeType === Node.TEXT_NODE) {
+						// For text nodes, trim and add space to avoid extra whitespace issues
+						text += child.textContent.trim() + ' ';
+					} else if (child.nodeType === Node.ELEMENT_NODE) {
+						// For element nodes, recurse
+						text += getTextWithSpacing(child);
+					}
+				});
+				return text;
+			}
+
+			var textContent = getTextWithSpacing(container).trim(); // Trim the final string to remove any leading/trailing spaces
 
 			var ariaReadElement = document.getElementById('aria-read');
 			if (ariaReadElement) {
-				ariaReadElement.textContent='';
-				ariaReadElement.textContent +=  ' ' + textContent + ' '; // Appending the collected text
+				ariaReadElement.textContent = textContent; // Set the collected text
 			} else {
 				console.log('Element with ID "aria-read" not found.');
 			}
 		}
+
 
 
 		function removeData($this) {
