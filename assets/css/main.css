@@ -8164,6 +8164,17 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     width: 100%;
     max-width: 100%;
     margin: 0 auto; }
+    @media (min-width: 769px) {
+      .video_carousel_template .video-carousel-swiper-container {
+        width: 130vw;
+        max-width: unset;
+        margin: 0 auto;
+        transform: translate(-15vw, 0px); } }
+    .video_carousel_template .video-carousel-swiper-container.container-focused-class {
+      width: 100%;
+      max-width: unset;
+      margin: 0 auto;
+      transform: translate(0, 0px); }
     .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .slide_main_container {
       position: relative; }
       .video_carousel_template .video-carousel-swiper-container .swiper-wrapper .slide_main_container_disable {
