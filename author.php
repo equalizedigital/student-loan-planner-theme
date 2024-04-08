@@ -43,12 +43,17 @@ tha_content_before();
 						<?php
 						if ( ! empty( get_field( 'consult_link', 'user_' . $curauth->ID ) ) ) :
 							$link = get_field( 'consult_link', 'user_' . $curauth->ID );
-							?>
+							if (is_array($link)) {
+						?>
 						<div class="info_link">
-						<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg"><?php echo wp_kses_post( $link['title'] ); ?></a>
+							<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
+							<?php echo wp_kses_post( $link['title'] ); ?>
+							</a>
 						</div>
-						<?php endif; ?>
-						
+						<?php
+							}
+						endif; ?>
+
 					</div>
 				</div>
 			</header>
@@ -58,7 +63,7 @@ tha_content_before();
 				tha_content_top();
 			?>
 				<div class="slp-contact-info author-info">
-					
+
 					<div class="slp-contact-info-details">
 						<?php if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) || ! empty( get_user_meta( $curauth->ID, 'linkedin', true ) ) ) : ?>
 						<div class="author-info_entry-author_titles">
@@ -112,7 +117,7 @@ tha_content_before();
 
 						<?php if ( get_field( 'media_mentions', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Media Mentions</h2>
-						
+
 						<div class="detail">
 							<?php
 							// Check rows existexists.
@@ -145,7 +150,7 @@ tha_content_before();
 
 							?>
 						</div>
-						
+
 							<?php if ( $mentions > 2 ) : ?>
 						<div class="detail_end_link">
 							<div class="td_content">
@@ -163,11 +168,11 @@ tha_content_before();
 
 						<?php endif; ?>
 
-						
+
 					</div>
 					<div class="slp-contact-info-loop">
-						<h2 class="title">More About 
-						<?php 
+						<h2 class="title">More About
+						<?php
 						$words     = explode( ' ', $idf['nickname'][0] );
 						$firstWord = $words[0];
 
@@ -201,9 +206,9 @@ tha_content_before();
 									</a>
 									<div class="author">
 										<span class="author_recommended_posts_content_post-data">
-										<?php 
+										<?php
 										$author_id = get_the_author_meta( 'ID' );
-										echo get_avatar( $author_id, 96 );  
+										echo get_avatar( $author_id, 96 );
 										?>
 										</span>
 										<div class="author_recommended_posts_content_post-inf__link">
@@ -238,7 +243,7 @@ tha_content_before();
 				<?php if ( $author_query_page->have_posts() ) : ?>
 
 				<div class="author_latest_from" id="author_latest_from">
-					<?php 
+					<?php
 					$words     = explode( ' ', $curauth->display_name );
 					$firstWord = $words[0];
 					?>
@@ -283,11 +288,11 @@ tha_content_before();
 								'format'  => '?paged=%#%',
 								'current' => max( 1, get_query_var( 'paged' ) ),
 								'total'   => $author_query_page->max_num_pages,
-							) 
+							)
 						);
 					?>
 						</div>
-						
+
 						<?php wp_reset_postdata(); ?>
 				</div>
 
@@ -347,7 +352,7 @@ tha_content_before();
 			</div>
 
 
-			
+
 			<?php
 				tha_content_bottom();
 			echo '</div>';
@@ -363,4 +368,3 @@ tha_content_before();
 			get_footer();
 
 
-			
