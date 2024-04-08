@@ -1551,6 +1551,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (dataAdded) {
 				// $this.data('added', false).attr('data-added', 'false');
 				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').data('added', false).attr('data-added', 'false');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').attr('aria-pressed', 'false');
 				jQuery(pricing_calculator_accordion_item).removeClass('pricing_calculator_accordion_add_active');
 				removeData($this);
 
@@ -1558,17 +1559,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			} else {
 				// $this.data('added', true).attr('data-added', 'true');
 				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').data('added', true).attr('data-added', 'true');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').attr('aria-pressed', 'true');
 				addData($this);
 				jQuery(pricing_calculator_accordion_item).addClass('pricing_calculator_accordion_add_active');
 				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Remove Service');
 			}
 
-			// Toggle 'pressed' state for visual feedback or other uses
-			$this.attr('pressed', !$this.attr('pressed'));
-
-			// Toggle aria-pressed attribute between true and false
-			var isPressed = $this.attr('aria-pressed') === 'true';
-			$this.attr('aria-pressed', !isPressed);
 		});
 	}
 });
