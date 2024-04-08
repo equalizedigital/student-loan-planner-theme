@@ -6559,6 +6559,18 @@ article.type-post {
   .team-hightlight-block-modal .modal_text .job {
     display: flex;
     margin: 0 0 20px; }
+  .team-hightlight-block-modal .modal_text .content {
+    max-height: 250px;
+    margin-bottom: 20px;
+    overflow-y: auto; }
+  .team-hightlight-block-modal .modal_text .content::-webkit-scrollbar {
+    -webkit-appearance: none; }
+  .team-hightlight-block-modal .modal_text .content::-webkit-scrollbar:vertical {
+    width: 11px; }
+  .team-hightlight-block-modal .modal_text .content::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.5); }
 
 .testimonial-slider-block {
   background: #625089;
