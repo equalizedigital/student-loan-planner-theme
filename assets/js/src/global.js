@@ -1585,7 +1585,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			var ariaReadElement = document.getElementById('aria-read');
 			if (ariaReadElement) {
 				ariaReadElement.textContent='';
-				ariaReadElement.textContent += textContent; // Appending the collected text
+				ariaReadElement.textContent +=  ' ' + textContent + ' '; // Appending the collected text
 			} else {
 				console.log('Element with ID "aria-read" not found.');
 			}
