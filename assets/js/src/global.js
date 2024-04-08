@@ -1171,12 +1171,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Optional parameters
 			loop: true,
 			spaceBetween: 21, // Adjust the space between slides as needed.
-			loopedSlides: 10,
-			// slidesPerView: 4.5,
-			slidesPerView: 'auto',
+			loopedSlides: 4,
+			slidesPerView: 6,
+			// slidesPerView: 'auto',
 			centeredSlides: false,
 			initialSlide: 3,
 			watchSlidesProgress: true,
+			loopFillGroupWithBlank: true,
 			a11y: true,
 			keyboard: {
 				enabled: true,
@@ -1190,38 +1191,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			// Responsive breakpoints
 			breakpoints: {
-				// When window width is >= 640px
 				1: {
-					// slidesPerView: 1,
+					slidesPerView: 1,
 				},
-				// When window width is >= 768px
 				768: {
-					// slidesPerView: 2.5,
+					slidesPerView: 4,
 				},
-				// When window width is >= 1024px
-				1024: {
-					// slidesPerView: 4.5,
-				},
+				1400: {
+					slidesPerView: 6,
+				}
 			},
 
 
 			on: {
-			 // Remove the class from all slides on initialization
-			 init: function () {
-				this.slides.forEach(slide => {
-				  slide.classList.remove('keyboard-focused');
-				});
-			  },
-			  // Update the class on slides when the active slide changes
-			  slideChange: function () {
-				this.slides.forEach(slide => {
-				  slide.classList.remove('keyboard-focused');
-				});
-				const activeSlide = this.slides[this.activeIndex];
-				if(activeSlide) {
-				  activeSlide.classList.add('keyboard-focused');
-				}
-			  },
+				// Remove the class from all slides on initialization
+				init: function () {
+					this.slides.forEach(slide => {
+						slide.classList.remove('keyboard-focused');
+					});
+				},
+				// Update the class on slides when the active slide changes
+				slideChange: function () {
+					this.slides.forEach(slide => {
+						slide.classList.remove('keyboard-focused');
+					});
+					const activeSlide = this.slides[this.activeIndex];
+					if (activeSlide) {
+						activeSlide.classList.add('keyboard-focused');
+					}
+				},
 				transitionStart: function () {
 
 					var videos = document.querySelectorAll('video');
@@ -1233,34 +1231,94 @@ document.addEventListener('DOMContentLoaded', function () {
 				},
 			}
 		});
-		let isKeyboardNavigation = false;
 
+		function updateVisibleSlidesClass(swiper) {
+			// Only proceed if viewport is greater than 768 pixels
+			if (window.innerWidth > 768) {
+				// Remove the class from all slides first
+				swiper.slides.forEach(slide => {
+					slide.classList.remove('first-visible-slide', 'last-visible-slide');
+				});
+
+				// Filter for visible slides
+				const visibleSlides = Array.from(swiper.slides).filter(slide => slide.classList.contains('swiper-slide-visible'));
+
+				// Check if there are visible slides
+				if (visibleSlides.length > 0) {
+					// Add the class to the first and last visible slides
+					visibleSlides[0].classList.add('first-visible-slide');
+					visibleSlides[visibleSlides.length - 1].classList.add('last-visible-slide');
+				}
+			} else {
+				// Optionally, ensure classes are removed when viewport is less than or equal to 768 pixels
+				swiper.slides.forEach(slide => {
+					slide.classList.remove('first-visible-slide', 'last-visible-slide');
+				});
+			}
+		}
+
+		// Function to handle resize event with debounce to improve performance
+		let resizeTimer;
+		function onResize() {
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(function () {
+				updateVisibleSlidesClass(videoCarousel);
+			}, 250); // Adjust debounce time as needed
+		}
+
+		// Add event listeners for Swiper events
+		videoCarousel.on('init slideChange update', function () {
+			updateVisibleSlidesClass(this);
+		});
+
+		// Listen to resize events
+		window.addEventListener('resize', onResize);
+
+		// Trigger the update function initially in case the Swiper is already initialized
+		updateVisibleSlidesClass(videoCarousel);
+
+		let isKeyboardNavigation = false;
 
 		// Function to handle keyboard navigation including Arrow keys, Tab, and Shift+Tab
 		function handleKeyboardNavigation(event) {
-		  const key = event.key;
-		  let isTabPressed = key === 'Tab';
-		  let isShiftPressed = event.shiftKey;
+			const key = event.key;
+			let isTabPressed = key === 'Tab';
+			let isShiftPressed = event.shiftKey;
 
-		  // Check for navigation keys
-		  if (key === 'ArrowLeft' || key === 'ArrowRight' || isTabPressed && !isShiftPressed || isTabPressed && isShiftPressed) {
-			isKeyboardNavigation = true;
-			setTimeout(() => {
-			  if (isKeyboardNavigation) {
-				videoCarousel.slides.forEach(slide => slide.classList.add('keyboard-focused'));
-
-
-
-				isKeyboardNavigation = false;
-			  } else {
-				videoCarousel.slides.forEach(slide => slide.classList.remove('keyboard-focused'));
-			  }
-			}, 50); // Adjust delay as necessary
-		  }
+			// Check for navigation keys
+			if (key === 'ArrowLeft' || key === 'ArrowRight' || isTabPressed && !isShiftPressed || isTabPressed && isShiftPressed) {
+				isKeyboardNavigation = true;
+				setTimeout(() => {
+					if (isKeyboardNavigation) {
+						videoCarousel.slides.forEach(slide => slide.classList.add('keyboard-focused'));
+						isKeyboardNavigation = true;
+					} else {
+						videoCarousel.slides.forEach(slide => slide.classList.remove('keyboard-focused'));
+					}
+				}, 50); // Adjust delay as necessary
+			}
 		}
 
 		// Add a global listener for keyboard events
 		document.addEventListener('keydown', handleKeyboardNavigation);
+
+		function clearKeyboardFocus() {
+			videoCarousel.slides.forEach(slide => {
+				slide.classList.remove('keyboard-focused');
+			});
+			isKeyboardNavigation = false; // Reset the flag when the mouse is used
+		}
+
+		document.addEventListener('click', function (event) {
+			// Check if the clicked element is a Swiper pagination bullet
+			if (event.target.classList.contains('swiper-button-next')) {
+				clearKeyboardFocus();
+			}
+			if (event.target.classList.contains('swiper-button-prev')) {
+				clearKeyboardFocus();
+			}
+		});
+
 
 	}
 

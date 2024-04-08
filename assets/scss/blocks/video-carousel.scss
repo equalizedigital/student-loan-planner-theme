@@ -49,9 +49,10 @@
 		text-align: center;
 		color: #000000;
 		gap: 5px;
-		&:focus{
+
+		&:focus {
 			outline: 2px solid blue;
-    		outline-offset: 2px;
+			outline-offset: 2px;
 		}
 	}
 
@@ -65,13 +66,14 @@
 
 	.video-carousel-swiper-container {
 		width: 100%;
-		max-width: 1120px;
+		max-width: 100%;
 		margin: 0 auto;
 
 		.swiper-wrapper {
 
 			.slide_main_container {
 				position: relative;
+
 				&_disable {
 					position: absolute;
 					top: 0;
@@ -92,23 +94,44 @@
 
 			.swiper-slide {
 				opacity: .5;
-				@include media(">tablet") {
-					width: 260px;
-					// width: 17vw !important;
-				}
-				&.keyboard-focused{
-					opacity: 1;
-				}
+
 				&.swiper-slide-visible,
-				&.swiper-slide-active
-				{
+				&.swiper-slide-active {
 					opacity: 1;
+
 					.slide_main_container {
 						&_disable {
 							display: none;
 						}
 					}
 				}
+
+				&.first-visible-slide,
+				&.last-visible-slide {
+					opacity: .5;
+
+					.slide_main_container_disable {
+						display: block;
+					}
+				}
+
+				&.keyboard-focused {
+					opacity: 1;
+
+					.slide_main_container_disable {
+						display: none;
+					}
+
+					&.first-visible-slide,
+					&.last-visible-slide {
+						opacity: 1;
+
+						.slide_main_container_disable {
+							display: none;
+						}
+					}
+				}
+
 
 				.btn {
 					font-size: 15px;
@@ -141,6 +164,7 @@
 		height: 100%;
 		border-radius: 10px;
 		height: 470px;
+
 		.image-placeholder-action-pause {
 			position: absolute;
 			top: 10px;
@@ -154,11 +178,12 @@
 	}
 
 	.slide-container {
-		&.image-hold{
-			.image-placeholder-action-pause{
+		&.image-hold {
+			.image-placeholder-action-pause {
 				display: block;
 			}
 		}
+
 		.image-placeholder {
 			position: absolute;
 			top: 0;
