@@ -1572,7 +1572,25 @@ document.addEventListener('DOMContentLoaded', function () {
 			$targetenrollment.text(currentEnrollment + dataenrollment);
 			benefitsData.append(dataBenefits);
 			disclaimerData.append('<span data-unique-id="' + uniqueId + '">' + dataDisclaimer + '</span>');
+
+			collectAndAppendText();
+
+
 		}
+		// Function to collect and append text
+		function collectAndAppendText() {
+			var container = document.querySelector('.pricing_calculator_template_container_main');
+			var textContent = container.textContent; // Grabbing all the text content
+
+			var ariaReadElement = document.getElementById('aria-read');
+			if (ariaReadElement) {
+				ariaReadElement.textContent='';
+				ariaReadElement.textContent += textContent; // Appending the collected text
+			} else {
+				console.log('Element with ID "aria-read" not found.');
+			}
+		}
+
 
 		function removeData($this) {
 			var dataprice = parseInt($this.data('price'), 10);
@@ -1594,6 +1612,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			benefitsData.find('[data-unique-id="' + uniqueId + '"]').remove();
 			disclaimerData.find('[data-unique-id="' + uniqueId + '"]').remove();
+
+			collectAndAppendText();
 		}
 
 		jQuery('.action, .pricing_calculator_accordion_add').on('click', function () {

@@ -54,7 +54,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					$benefits = get_sub_field( 'benefits',false, false );
 					if($row_index === 1): ?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
-						<div class="pricing_calculator_template_container_main" aria-live="polite" aria-atomic="true" aria-relevant="all" role="log">
+						<div class="pricing_calculator_template_container_main" >
 							<div class="pricing_calculator_template_container_main_pricing"  >
 								<div class="pricing_calculator_template_container_main_pricing_price" >
 									<div class="large_set">$<span class="price"><?php echo wp_kses_post($price); ?></span></div>
@@ -90,6 +90,10 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 									<a class="btn btn-dark-bg" href="www.slpwealth.com/book" target="_blank">Get Started</a>
 								</div>
 							</div>
+						</div>
+						 <!-- Screen Reader Announcements Div -->
+						<div id="aria-read" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+							<!-- Dynamic content changes will be announced by screen readers when updated here -->
 						</div>
 						<div class="heading">Add Additional Services:</div>
 
