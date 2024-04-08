@@ -50,8 +50,7 @@ tha_body_top();
 			<?php tha_header_top(); ?>
 
             <div class="title-area">
-				<?php $logo_tag = ( apply_filters( 'eqd_h1_site_title',
-						false ) || ( is_front_page() || is_home() ) ) ? 'h1' : 'p'; ?>
+				<?php $logo_tag = ( apply_filters( 'eqd_h1_site_title',	false ) ) ? 'h1' : 'p'; ?>
                 <<?php echo esc_attr( $logo_tag ); ?> class="site-title">
                 <a href="<?php echo esc_url( home_url() ); ?>" rel="home">
 					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
