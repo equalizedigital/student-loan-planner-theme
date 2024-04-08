@@ -1215,6 +1215,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					this.slides.forEach(slide => {
 						slide.classList.remove('keyboard-focused');
 					});
+
 					const activeSlide = this.slides[this.activeIndex];
 					if (activeSlide) {
 						activeSlide.classList.add('keyboard-focused');
@@ -1306,6 +1307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			videoCarousel.slides.forEach(slide => {
 				slide.classList.remove('keyboard-focused');
 			});
+			videoCarouselElement[0].classList.remove('keyboard-focused');
 			isKeyboardNavigation = false; // Reset the flag when the mouse is used
 		}
 
@@ -1318,6 +1320,57 @@ document.addEventListener('DOMContentLoaded', function () {
 				clearKeyboardFocus();
 			}
 		});
+
+		setTimeout(() => {
+			clearKeyboardFocus()
+		}, 200);
+
+
+		window.addEventListener('resize', function () {
+			if (window.innerWidth > 768) {
+				setTimeout(() => {
+					clearKeyboardFocus()
+				}, 200);
+			}
+		});
+
+
+
+ // Assuming 'video-carousel-swiper-container' is the class of your Swiper container
+ const swiperContainer = document.querySelector('.video-carousel-swiper-container');
+
+ if (!swiperContainer) {
+	 console.warn('Swiper container not found.');
+	 return;
+ }
+
+ // This function checks if the focused element is what we're interested in
+ function isTargetElement(element) {
+	 // Check if the element is an .image-placeholder-action or a video tag
+	 return element.classList.contains('image-placeholder-action') || element.tagName === 'VIDEO';
+ }
+
+ // Adds a class to the swiper container when a target element within any slide gains focus
+ function handleFocusIn(event) {
+	 const focusedElement = event.target;
+
+	 if (isTargetElement(focusedElement)) {
+		 swiperContainer.classList.add('container-focused-class'); // Replace 'container-focused-class' with your desired class
+	 }
+ }
+
+ // Removes the class from the swiper container when focus moves away from a target element within any slide
+ function handleFocusOut(event) {
+	 const blurredElement = event.target;
+
+	 if (isTargetElement(blurredElement)) {
+		 swiperContainer.classList.remove('container-focused-class'); // Ensure this matches the class added in handleFocusIn
+	 }
+ }
+
+ // Add event listeners for focusin and focusout within the swiper container
+ swiperContainer.addEventListener('focusin', handleFocusIn);
+ swiperContainer.addEventListener('focusout', handleFocusOut);
 
 
 	}

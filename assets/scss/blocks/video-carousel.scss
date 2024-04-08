@@ -69,6 +69,20 @@
 		max-width: 100%;
 		margin: 0 auto;
 
+		@include media(">tablet") {
+			width: 130vw;
+			max-width: unset;
+			margin: 0 auto;
+			transform: translate(-15vw, 0px);
+		}
+
+		&.container-focused-class{
+			width: 100%;
+			max-width: unset;
+			margin: 0 auto;
+			transform: translate(0, 0px);
+		}
+
 		.swiper-wrapper {
 
 			.slide_main_container {
