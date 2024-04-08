@@ -8161,9 +8161,14 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     height: 10px;
     display: inline-flex; }
   .video_carousel_template .video-carousel-swiper-container {
+    transition: width 200ms;
     width: 100%;
     max-width: 100%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    width: 170vw;
+    max-width: unset;
+    margin: 0 auto;
+    transform: translate(-40vw, 0px); }
     @media (min-width: 769px) {
       .video_carousel_template .video-carousel-swiper-container {
         width: 130vw;

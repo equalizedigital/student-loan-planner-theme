@@ -1173,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			spaceBetween: 21, // Adjust the space between slides as needed.
 			loopedSlides: 4,
 			slidesPerView: 6,
-			// slidesPerView: 'auto',
+			slidesPerGroup:3,
 			centeredSlides: false,
 			initialSlide: 3,
 			watchSlidesProgress: true,
@@ -1192,7 +1192,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Responsive breakpoints
 			breakpoints: {
 				1: {
-					slidesPerView: 1,
+					slidesPerView: 3,
+					slidesPerGroup:1,
 				},
 				768: {
 					slidesPerView: 4,
@@ -1235,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		function updateVisibleSlidesClass(swiper) {
 			// Only proceed if viewport is greater than 768 pixels
-			if (window.innerWidth > 768) {
+			if (window.innerWidth > 1) {
 				// Remove the class from all slides first
 				swiper.slides.forEach(slide => {
 					slide.classList.remove('first-visible-slide', 'last-visible-slide');
@@ -1327,11 +1328,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 		window.addEventListener('resize', function () {
-			if (window.innerWidth > 768) {
 				setTimeout(() => {
 					clearKeyboardFocus()
 				}, 200);
-			}
 		});
 
 
@@ -1347,7 +1346,7 @@ document.addEventListener('DOMContentLoaded', function () {
  // This function checks if the focused element is what we're interested in
  function isTargetElement(element) {
 	 // Check if the element is an .image-placeholder-action or a video tag
-	 return element.classList.contains('image-placeholder-action') || element.tagName === 'VIDEO' || element.classList.contains('btn') || element.classList.contains('swiper-button-prev') || element.classList.contains('swiper-button-next');
+	 return element.classList.contains('image-placeholder-action') || element.tagName === 'VIDEO' || element.classList.contains('btn') ;
  }
 
  // Adds a class to the swiper container when a target element within any slide gains focus
