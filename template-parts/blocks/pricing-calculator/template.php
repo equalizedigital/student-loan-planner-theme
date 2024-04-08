@@ -79,7 +79,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 												// Trim the line to remove whitespace and then check if it's not empty
 												$line = trim($line);
 												if (!empty($line)) {
-													echo '<li>' . esc_html($line) . '</li>';
+													echo '<li>' . esc_html($line) . ' </li>';
 												}
 											}
 											echo '</ul>';
