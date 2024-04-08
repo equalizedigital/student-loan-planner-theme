@@ -33,23 +33,23 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$post_select                          = get_field( 'post' );
+$post_select = get_field( 'post' );
 
-$featured_img_url = get_the_post_thumbnail_url($post_select->ID, 'full'); // 'full' indicates the original image size
-$category_ids = wp_get_post_categories($post_select->ID);
+$featured_img_url = get_the_post_thumbnail_url( $post_select->ID, 'full' ); // 'full' indicates the original image size
+$category_ids     = wp_get_post_categories( $post_select->ID );
 
 
-$dateObject = new DateTime($post_select->post_date);
-$formattedDate = $dateObject->format('M d, Y');
+$dateObject    = new DateTime( $post_select->post_date );
+$formattedDate = $dateObject->format( 'M d, Y' );
 
 // Get the author ID from the post ID
-$author_id = get_post_field('post_author', $post_select->ID);
+$author_id = get_post_field( 'post_author', $post_select->ID );
 
 // Get the author's display name
-$author_name = get_the_author_meta('display_name', $author_id);
+$author_name = get_the_author_meta( 'display_name', $author_id );
 
 // Get the author's avatar. You can adjust the size (e.g., 96 here) as needed.
-$author_avatar = get_avatar($author_id, 96);
+$author_avatar = get_avatar( $author_id, 96 );
 
 ?>
 
@@ -59,23 +59,24 @@ $author_avatar = get_avatar($author_id, 96);
 			<div class="featured-post-container-info">
 				<div class="cat">
 					<?php 
-					if (!empty($category_ids)) {
-						$category = get_category($category_ids[0]);
+					if ( ! empty( $category_ids ) ) {
+						$category = get_category( $category_ids[0] );
 						echo $category->name . ' ';
 					}
 					?>
 				</div>
-				<div class="date"><?php  echo wp_kses_post($formattedDate); ?></div>
+				<div class="date"><?php echo wp_kses_post( $formattedDate ); ?></div>
 			</div>
-			<h2 class="title"><?php  echo wp_kses_post($post_select->post_title); ?></h2>
+			<h2 class="title"><?php echo wp_kses_post( $post_select->post_title ); ?></h2>
 			<div class="author">
-			<?php  echo wp_kses_post($author_avatar); ?>
-				<?php  echo wp_kses_post($author_name); ?>
+			<?php echo wp_kses_post( $author_avatar ); ?>
+				<?php echo wp_kses_post( $author_name ); ?>
 			</div>
 		</div>
 		<div class="featured-post-container-image">
-		<?php if ($featured_img_url) {
-			echo '<img src="' . esc_url($featured_img_url) . '" alt="">';
+		<?php
+		if ( $featured_img_url ) {
+			echo '<img src="' . esc_url( $featured_img_url ) . '" alt="">';
 		}
 		?>
 		</div>

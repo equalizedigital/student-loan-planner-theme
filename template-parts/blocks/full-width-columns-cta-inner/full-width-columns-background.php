@@ -69,7 +69,7 @@ endif;
 			<?php if ( $image ) : ?>
 				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
 			<?php endif; ?>
-			<?php if(!empty($youtube_video_id)): ?>
+			<?php if ( ! empty( $youtube_video_id ) ) : ?>
 			<button class="modal-btn full-width-columns-background-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
 				<img decoding="async" loading="lazy" class="play" src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility'; ?>/play.svg" alt="play video"  >
 			</button>

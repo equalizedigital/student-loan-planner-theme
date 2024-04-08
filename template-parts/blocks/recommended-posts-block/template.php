@@ -33,8 +33,8 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$acf_title = get_field( 'title' );
-$recommended_posts  = get_field( 'recommended_posts' );
+$acf_title         = get_field( 'title' );
+$recommended_posts = get_field( 'recommended_posts' );
 
 
 ?>
@@ -53,17 +53,17 @@ $recommended_posts  = get_field( 'recommended_posts' );
 			'orderby'   => 'post__in', // This ensures posts are returned in the order of the provided IDs.
 		);
 		
-		$query = new WP_Query($args);
+		$query = new WP_Query( $args );
 		
-		if ($query->have_posts()) {
-			while ($query->have_posts()) {
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
 				$query->the_post();
 				?>
 				<li>
 					<a class="recommended_posts_block_block_container_loop_item" href="<?php the_permalink(); ?>">
 						<div class="recommended_posts_block_block_container_loop_item_image">
 							<?php 
-							if (has_post_thumbnail()) {
+							if ( has_post_thumbnail() ) {
 								$image_url = get_the_post_thumbnail_url();
 								echo "<img src='$image_url' aria-hidden=\"true\" role=\"presentation\" />";
 							}

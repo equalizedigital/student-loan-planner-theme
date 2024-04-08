@@ -1,0 +1,73 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 2,
+    "settings": {
+        "useRootPaddingAwareAlignments": true,
+        "layout": {
+            "contentSize": "780px",
+            "wideSize": "1120px"
+        },
+        "appearanceTools": true,
+        "border": {
+            "color": true,
+            "radius": true,
+            "style": true,
+            "width": true
+        },
+        "typography": {
+			"customFontSize": true,
+            "fluid": true,
+			"lineHeight": true,
+            "fontSizes": [
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "size": "13px"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "size": "20px"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "size": "36px"
+                },
+                {
+                    "name": "Extra Large",
+                    "slug": "x-large",
+                    "size": "42px"
+                }
+            ]
+        },
+        "dimensions": {
+            "minHeight": true
+        },
+        "position": {
+            "sticky": true
+        },
+        "spacing": {
+			"margin": true,
+			"padding": true,
+            "blockGap": null,
+            "customSpacingSize": true,
+            "spacingScale": {
+                "operator": "*",
+                "increment": 1.5,
+                "steps": 7,
+                "mediumStep": 1.5,
+                "unit": "rem"
+            },
+            "spacingSizes": [],
+            "units": [
+                "px",
+                "em",
+                "rem",
+                "vh",
+                "vw",
+                "%"
+            ]
+        }
+    }
+}

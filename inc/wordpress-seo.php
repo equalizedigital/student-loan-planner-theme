@@ -12,12 +12,11 @@
  * Breadcrumbs
  */
 function eqd_breadcrumbs() {
-	if(!is_front_page()){
+	if ( ! is_front_page() ) {
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumb">', '</p>' );
 		}
 	}
-
 }
 // add_action( 'tha_content_top', 'eqd_breadcrumbs' );
 

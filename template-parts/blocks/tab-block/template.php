@@ -50,7 +50,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							<button
 							type="button"
 							class="tab-block-container__heading__button "
-							aria-selected="<?php echo get_row_index() === 1? "true":'false'; ?>"
+							aria-selected="<?php echo get_row_index() === 1 ? 'true' : 'false'; ?>"
 							aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
 							role="tab"
 							<?php echo get_row_index() > 1 ? 'tabindex="-1"' : ''; ?>
@@ -75,7 +75,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 								<option
 								class="tab-block-container__heading__button "
-								aria-selected="<?php echo get_row_index() === 1? "true":'false'; ?>"
+								aria-selected="<?php echo get_row_index() === 1 ? 'true' : 'false'; ?>"
 								aria-controls="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
 								role="tab"
 								>
@@ -100,7 +100,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						<div
 						aria-labelledby="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>"
 						role="tabpanel"
-						class="tab-block-container-tab-block_content_items_item <?php echo get_row_index() === 1? "active-content":''; ?>"
+						class="tab-block-container-tab-block_content_items_item <?php echo get_row_index() === 1 ? 'active-content' : ''; ?>"
 						id="tab_list_<?php echo wp_kses_post( get_row_index() ); ?>">
 
 							<?php
@@ -111,12 +111,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 									<div class="tab-block-container-tab-block_content_items_item_category">
 									<?php
 
-									if( get_sub_field( 'title' ) ) {
+									if ( get_sub_field( 'title' ) ) {
 										echo '<h3 class="tab-block-container-tab-block_content_items_item_category_title">';
-											$icon  = get_sub_field( 'icon' );
-											if( ! empty( $icon ) ): ?>
+											$icon = get_sub_field( 'icon' );
+										if ( ! empty( $icon ) ) :
+											?>
 												<img src="<?php echo esc_url( $icon['url'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" aria-hidden="true" />
-											<?php endif;
+											<?php
+											endif;
 											the_sub_field( 'title' );
 										echo '</h3>';
 									}
@@ -129,16 +131,16 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 											$url   = get_sub_field( 'url' );
 											?>
 											<div class="tab-block-container-tab-block_content_items_item_container">
-												<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>">
+												<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php echo wp_kses_post( $url ); ?>" aria-label="Listen now to <?php echo wp_kses_post( $title ); ?>">
 													<div class="tab-block-container-tab-block_content_items_item_container_heading_date">
-														<?php  echo wp_kses_post($date); ?>
+														<?php echo wp_kses_post( $date ); ?>
 													</div>
 													<div class="tab-block-container-tab-block_content_items_item_container_heading_title">
-														<?php  echo wp_kses_post($title); ?>
+														<?php echo wp_kses_post( $title ); ?>
 													</div>
 												</a>
 												<div class="tab-block-container-tab-block_content_items_item_container_heading_link">
-													<a href="<?php  echo wp_kses_post($url); ?>" aria-label="Listen now to <?php  echo wp_kses_post($title); ?>" class="link btn btn-dark-bg">
+													<a href="<?php echo wp_kses_post( $url ); ?>" aria-label="Listen now to <?php echo wp_kses_post( $title ); ?>" class="link btn btn-dark-bg">
 														Listen Now
 													</a>
 												</div>

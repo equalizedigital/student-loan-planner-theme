@@ -18,16 +18,16 @@ if ( post_password_required() ) {
 }
 
 function has_children( $comment_id ) {
-    $children = get_comments( array( 'parent' => $comment_id ) );
-    return ! empty( $children );
+	$children = get_comments( array( 'parent' => $comment_id ) );
+	return ! empty( $children );
 }
 
 function add_class_to_comment_with_children( $classes ) {
-    global $comment;
-    if ( has_children( $comment->comment_ID ) ) {
-        $classes[] = 'has-children';
-    }
-    return $classes;
+	global $comment;
+	if ( has_children( $comment->comment_ID ) ) {
+		$classes[] = 'has-children';
+	}
+	return $classes;
 }
 add_filter( 'comment_class', 'add_class_to_comment_with_children' );
 
@@ -50,9 +50,9 @@ if ( ! function_exists( 'comments_callback' ) ) :
 					</span>
 					</div>
 				</div>
-				
+
 				<div class="comment-block">
-						<?php if ( $comment->comment_approved == '0' ) : ?>
+						<?php if ( $comment->comment_approved === '0' ) : ?>
 						<em><?php esc_html_e( 'Your comment is awaiting moderation.', '5balloons_theme' ); ?></em>
 					<?php endif; ?>
 
@@ -91,7 +91,7 @@ endif;
 			<h3 class="comments-title"><?php esc_html_e( 'Comments', 'eqd' ); ?></h3>
 
 			<?php
-			eqd_comment_navigation( 'before' ); 
+			eqd_comment_navigation( 'before' );
 			?>
 
 			<ol class="comment-list">
@@ -109,9 +109,10 @@ endif;
 		endif;
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+			?>
 			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'eqd' ); ?></p>
-		<?php
+			<?php
 		endif;
 
 		comment_form();

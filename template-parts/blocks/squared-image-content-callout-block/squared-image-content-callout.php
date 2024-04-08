@@ -17,15 +17,15 @@ if ( ! empty( $block['anchor'] ) ) {
 }
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block squared-image-content-callout-block';
+$class_name = 'block squared-image-content-callout-block';
 if ( ! empty( $block['className'] ) ) {
-	$className .= ' ' . $block['className'];
+	$class_name .= ' ' . $block['className'];
 }
 if ( ! empty( $block['align'] ) ) {
-	$className .= ' align' . $block['align'];
+	$class_name .= ' align' . $block['align'];
 }
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
 $title = get_field( 'title' );
@@ -35,7 +35,7 @@ if ( get_field( 'image' ) ) {
 }
 $link = get_field( 'link' );
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="squared-image-content-callout-container">
 		<figure class="squared-image-content-callout-container-image">
 			<?php 

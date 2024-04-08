@@ -30,7 +30,7 @@ tha_content_before();
 			<header class="contact-hero hero-author">
 				<div class="contact-hero-container">
 					<figure class="contact-hero-container__image">
-						<?php $avatar_url = get_avatar_url($curauth->ID, array("size"=>600)); ?>
+						<?php $avatar_url = get_avatar_url( $curauth->ID, array( 'size' => 600 ) ); ?>
 						<img src="<?php echo $avatar_url; ?>" alt="<?php echo wp_kses_post( $curauth->display_name ); ?>">
 					</figure>
 					<div class="contact-hero-container__content">
@@ -43,12 +43,17 @@ tha_content_before();
 						<?php
 						if ( ! empty( get_field( 'consult_link', 'user_' . $curauth->ID ) ) ) :
 							$link = get_field( 'consult_link', 'user_' . $curauth->ID );
-							?>
+							if (is_array($link)) {
+						?>
 						<div class="info_link">
-						<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg"><?php echo wp_kses_post( $link['title'] ); ?></a>
+							<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
+							<?php echo wp_kses_post( $link['title'] ); ?>
+							</a>
 						</div>
-						<?php endif; ?>
-						
+						<?php
+							}
+						endif; ?>
+
 					</div>
 				</div>
 			</header>
@@ -58,13 +63,14 @@ tha_content_before();
 				tha_content_top();
 			?>
 				<div class="slp-contact-info author-info">
-					
+
 					<div class="slp-contact-info-details">
-						<?php if(!empty( get_user_meta( $curauth->ID, 'twitter', true ) ) || !empty( get_user_meta( $curauth->ID, 'linkedin', true )) ): ?>
+						<?php if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) || ! empty( get_user_meta( $curauth->ID, 'linkedin', true ) ) ) : ?>
 						<div class="author-info_entry-author_titles">
 							<ul class="author_socials">
 								<?php
-								if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) ) { ?>
+								if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) ) {
+									?>
 									<li>
 										<a href="https://twitter.com/<?php echo wp_kses_post( get_user_meta( $curauth->ID, 'twitter', true ) ); ?>">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
@@ -111,7 +117,7 @@ tha_content_before();
 
 						<?php if ( get_field( 'media_mentions', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Media Mentions</h2>
-						
+
 						<div class="detail">
 							<?php
 							// Check rows existexists.
@@ -121,7 +127,7 @@ tha_content_before();
 									the_row();
 									$press_post    = get_sub_field( 'press_post' );
 									$press_company = get_sub_field( 'press_company' );
-									if($mentions > 2) {
+									if ( $mentions > 2 ) {
 										continue;
 									}
 									?>
@@ -144,8 +150,8 @@ tha_content_before();
 
 							?>
 						</div>
-						
-						<?php if($mentions > 2): ?>
+
+							<?php if ( $mentions > 2 ) : ?>
 						<div class="detail_end_link">
 							<div class="td_content">
 								<button class="btn-text modal-btn link" data-modal="modal_media_mentions" aria-label="Disclosures for Media Mentions">
@@ -162,14 +168,17 @@ tha_content_before();
 
 						<?php endif; ?>
 
-						
+
 					</div>
 					<div class="slp-contact-info-loop">
-						<h2 class="title">More About <?php 
-						$words = explode(' ', $idf['nickname'][0]);
+						<h2 class="title">More About
+						<?php
+						$words     = explode( ' ', $idf['nickname'][0] );
 						$firstWord = $words[0];
 
-						echo wp_kses_post( $firstWord ); ?></h2>
+						echo wp_kses_post( $firstWord );
+						?>
+						</h2>
 						<?php echo wpautop( $idf['custom_author_bio'][0] ); ?>
 					</div>
 				</div>
@@ -184,7 +193,7 @@ tha_content_before();
 
 					while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
 						the_row();
-						$post = get_sub_field( 'post' );
+						$post           = get_sub_field( 'post' );
 						$id_post_editor = get_field( 'post_editor', $post->ID );
 						$author_url     = get_author_posts_url( $post->ID );
 						$author_name    = get_the_author_meta( 'display_name', $post->ID );
@@ -197,9 +206,9 @@ tha_content_before();
 									</a>
 									<div class="author">
 										<span class="author_recommended_posts_content_post-data">
-										<?php 
-										$author_id = get_the_author_meta('ID');
-										echo get_avatar( $author_id, 96 );  
+										<?php
+										$author_id = get_the_author_meta( 'ID' );
+										echo get_avatar( $author_id, 96 );
 										?>
 										</span>
 										<div class="author_recommended_posts_content_post-inf__link">
@@ -222,10 +231,10 @@ tha_content_before();
 				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 				$args = array(
-					'author'         => $curauth->ID,
+					'author'              => $curauth->ID,
 					// 'posts_per_page' => 9,
-					'paged'          => $paged,
-					'ignore_sticky_posts' => 1
+					'paged'               => $paged,
+					'ignore_sticky_posts' => 1,
 				);
 
 				$author_query_page = new WP_Query( $args );
@@ -234,8 +243,8 @@ tha_content_before();
 				<?php if ( $author_query_page->have_posts() ) : ?>
 
 				<div class="author_latest_from" id="author_latest_from">
-					<?php 
-					$words = explode(' ', $curauth->display_name);
+					<?php
+					$words     = explode( ' ', $curauth->display_name );
 					$firstWord = $words[0];
 					?>
 					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $firstWord ); ?></h2>
@@ -243,20 +252,20 @@ tha_content_before();
 						<?php
 						while ( $author_query_page->have_posts() ) :
 							$author_query_page->the_post();
-							$post_id = get_the_ID();
-							$categories = get_the_category($post_id);
+							$post_id    = get_the_ID();
+							$categories = get_the_category( $post_id );
 							?>
 							<div class="post">
 								<?php
-								if (!empty($categories)) {
-								$category_name = $categories[0]->name;
+								if ( ! empty( $categories ) ) {
+									$category_name = $categories[0]->name;
 									?>
 									<span class="post-tax-category">
 										<a href="<?php echo esc_url( get_category_link( $category_name->term_id ) ); ?>">
 											<?php echo esc_html( $category_name ); ?>
 										</a>
 									</span>
-								<?php
+									<?php
 								}
 								?>
 								<a class="post_link" href="<?php the_permalink(); ?>">
@@ -273,15 +282,17 @@ tha_content_before();
 						// Pagination
 						$big = 999999999; // need an unlikely integer
 
-						echo paginate_links( array(
-							'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-							'format' => '?paged=%#%',
-							'current' => max( 1, get_query_var('paged') ),
-							'total' => $author_query_page->max_num_pages,
-						) );
-						?>
+						echo paginate_links(
+							array(
+								'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+								'format'  => '?paged=%#%',
+								'current' => max( 1, get_query_var( 'paged' ) ),
+								'total'   => $author_query_page->max_num_pages,
+							)
+						);
+					?>
 						</div>
-						
+
 						<?php wp_reset_postdata(); ?>
 				</div>
 
@@ -311,17 +322,17 @@ tha_content_before();
 						<?php
 							// Check rows existexists.
 							$mentions = 0;
-							if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
-								while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
-									the_row();
-									$press_post    = get_sub_field( 'press_post' );
-									$press_company = get_sub_field( 'press_company' );
-									?>
+						if ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+							while ( have_rows( 'media_mentions', 'user_' . $curauth->ID ) ) :
+								the_row();
+								$press_post    = get_sub_field( 'press_post' );
+								$press_company = get_sub_field( 'press_company' );
+								?>
 								<div class="detail_link_content">
 									<a href="<?php echo wp_kses_post( $press_post['url'] ); ?>" class="detail_link">
-										<?php
-										echo wp_kses_post( $press_post['title'] );
-										?>
+									<?php
+									echo wp_kses_post( $press_post['title'] );
+									?>
 									</a>
 									<span class="press-company"> - <?php echo wp_kses_post( $press_company ); ?>
 								</span>
@@ -334,14 +345,14 @@ tha_content_before();
 
 							endif;
 
-							?>
+						?>
 					</div>
 				</div>
 
 			</div>
 
 
-			
+
 			<?php
 				tha_content_bottom();
 			echo '</div>';
@@ -357,4 +368,3 @@ tha_content_before();
 			get_footer();
 
 
-			
