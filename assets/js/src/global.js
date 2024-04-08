@@ -1178,6 +1178,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			initialSlide: 3,
 			watchSlidesProgress: true,
 			loopFillGroupWithBlank: true,
+			speed:800,
 			a11y: true,
 			keyboard: {
 				enabled: true,
