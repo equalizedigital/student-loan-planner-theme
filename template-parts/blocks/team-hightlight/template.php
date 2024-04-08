@@ -178,9 +178,9 @@ if ( have_rows( 'team' ) ) :
 						<span class="job">
 							<?php the_field( 'job_title', $member->ID ); ?>
 						</span>
-						<span class="content">
+						<div class="content">
 							<?php echo wpautop( wp_kses_post( $member->post_content ) ); ?>
-						</span>
+						</div>
 						<?php if ( $booking_url ) {
 							$booking_url = is_array($booking_url) ? reset($booking_url) : $booking_url;
 						?>
