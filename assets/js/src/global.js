@@ -1347,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', function () {
  // This function checks if the focused element is what we're interested in
  function isTargetElement(element) {
 	 // Check if the element is an .image-placeholder-action or a video tag
-	 return element.classList.contains('image-placeholder-action') || element.tagName === 'VIDEO';
+	 return element.classList.contains('image-placeholder-action') || element.tagName === 'VIDEO' || element.classList.contains('btn') || element.classList.contains('swiper-button-prev') || element.classList.contains('swiper-button-next');
  }
 
  // Adds a class to the swiper container when a target element within any slide gains focus
