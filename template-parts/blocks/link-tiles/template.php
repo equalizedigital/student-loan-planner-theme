@@ -47,19 +47,19 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 	<?php
 	// Assuming the field name is 'heading_level_select'
-	$heading_level = get_field('heading_level_select');
+	$heading_level = get_field( 'heading_level_select' );
 
 	// Default to h2 if no selection is made
-	if (!$heading_level) {
+	if ( ! $heading_level ) {
 		$heading_level = 'h2';
 	}
 
 	// Assuming the field name for the heading text is 'heading_text'
-	$heading_text = get_field('heading');
+	$heading_text = get_field( 'heading' );
 	?>
 
-	<?php if($heading_text): ?>
-		<<?php echo $heading_level; ?>><?php echo esc_html($heading_text); ?></<?php echo $heading_level; ?>>
+	<?php if ( $heading_text ) : ?>
+		<<?php echo $heading_level; ?>><?php echo esc_html( $heading_text ); ?></<?php echo $heading_level; ?>>
 	<?php endif; ?>
 
 	</div>
@@ -81,15 +81,17 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<?php
 				$icon = get_sub_field( 'icon' );
 				if ( $icon ) {
-					echo wp_get_attachment_image( $icon['ID'], 'full' , false, array('aria-hidden' => 'true') );
+					echo wp_get_attachment_image( $icon['ID'], 'full', false, array( 'aria-hidden' => 'true' ) );
 				}
 				?>
 				<?php echo esc_html( $link_title ); ?>
 			</a>
 			<?php endif; ?>
 			</li>
-		<?php endwhile;
-	endif; ?>
+			<?php
+		endwhile;
+	endif;
+	?>
 	</ul>
 </div>
 

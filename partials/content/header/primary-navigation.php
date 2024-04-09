@@ -1,4 +1,10 @@
 <?php
+/**
+ * Primary Navigation
+ *
+ * @package Equalize Digital Base Theme
+ */
+
 $menu_items              = get_field( 'primary_header', 'option' );
 $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility/arrow-up-green.svg';
 ?>
@@ -7,38 +13,38 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 	<?php
 	if ( $menu_items && is_array( $menu_items ) ) :
 		foreach ( $menu_items as $item ) {
-			$link                    = $item['link'];
+			$link_item               = $item['link'];
 			$columns                 = $item['columns'];
 			$number_of_columns       = $item['number_of_columns'];
 			$current_url             = home_url( $_SERVER['REQUEST_URI'] );
 			$menu_item_no_drop_class = empty( $columns ) ? 'menu-item-no-drop' : '';
-			$aria_current_page       = $link['url'] === $current_url ? 'aria-current="page"' : ''
+			$aria_current_page       = $link_item['url'] === $current_url ? 'aria-current="page"' : ''
 			?>
 
-			<li class="main-nav-link-li 
+			<li class="main-nav-link-li
 			<?php
 			echo esc_attr( $columns ) ? 'has-submenus' : '';
 			echo esc_attr( " submenu-column__$number_of_columns" );
 			?>
 			">
-				<?php if ( '#' === $link['url'] ) { ?>
+				<?php if ( '#' === $link_item['url'] ) { ?>
 					<button
-						aria-label="<?php echo esc_attr( $link['title'] ); ?>"
+						aria-label="<?php echo esc_attr( $link_item['title'] ); ?>"
 						type="button"
 						class="menu-item-main-link <?php echo esc_attr( $menu_item_no_drop_class ); ?>"
-						data-toggle="<?php echo esc_attr( $link['title'] ); ?>"
+						data-toggle="<?php echo esc_attr( $link_item['title'] ); ?>"
 						aria-expanded="false">
-						<?php _e( $link['title'] ); ?>
+						<?php esc_html_e( $link_item['title'], 'eqd' ); ?>
 						<span class="chevron">
 							<img src="<?php echo esc_url( $arrow_up_green_svg_path ); ?>" alt="chevron arrow">
 						</span>
 					</button>
 				<?php } else { ?>
 					<a
-						href="<?php echo esc_attr( $link['url'] ); ?>" <?php echo esc_attr( $aria_current_page ); ?>
-						target="<?php echo esc_attr( $link['target'] ); ?>"
+						href="<?php echo esc_url( $link_item['url'] ); ?>" <?php echo esc_attr( $aria_current_page ); ?>
+						target="<?php echo esc_attr( $link_item['target'] ); ?>"
 						class="menu-item-main-link <?php echo esc_attr( $menu_item_no_drop_class ); ?>">
-						<?php _e( $link['title'] ); ?>
+						<?php esc_html_e( $link_item['title'], 'eqd' ); ?>
 						<span class="chevron">
 							<img src="<?php echo esc_url( $arrow_up_green_svg_path ); ?>" alt="chevron arrow">
 						</span>
@@ -46,15 +52,15 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 				<?php } ?>
 
 				<?php if ( is_array( $columns ) && 0 < count( $columns ) ) { ?>
-					<div class="sub_menu" id="<?php echo esc_attr( $link['title'] ) . '-submenu'; ?>">
+					<div class="sub_menu" id="<?php echo esc_attr( $link_item['title'] ) . '-submenu'; ?>">
 						<button class="sub_menu_back" aria-label="Back to Menu">
 							<span class="sub_menu_back__icon"></span>
 							<span class="sub_menu_back__text">
-								<?php _e( 'Back to All' ); ?>
+								<?php esc_html_e( 'Back to All', 'eqd' ); ?>
 							</span>
 						</button>
 						<div class="sub_menu_dropdown__title">
-							<?php esc_html( $link['title'] ); ?>
+							<?php esc_html( $link_item['title'] ); ?>
 						</div>
 
 						<?php
@@ -65,7 +71,7 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 								continue;
 							}
 							?>
-							
+
 							<?php $sub_menu = wp_get_nav_menu_object( $sub_menu_id ); ?>
 
 							<div class="menu-column">

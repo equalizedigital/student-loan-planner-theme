@@ -30,7 +30,7 @@ if ( ! empty( $block['align'] ) ) :
 	$class_name .= ' align' . $block['align'];
 endif;
 
-$class_name      = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
+$class_name     = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 $taxonomy       = get_field( 'select_taxonomy' );
 $taxonomy_value = ( isset( $taxonomy['value'] ) ) ? $taxonomy['value'] : null;
 $taxonomy_label = ( isset( $taxonomy['label'] ) ) ? $taxonomy['label'] : '';

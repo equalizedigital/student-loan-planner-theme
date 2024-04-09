@@ -505,7 +505,8 @@ function eqd_single_after_entry_author_info() {
 		$nickname    = $user_info->nickname;
 	}
 
-	if( is_singular('slp_profession')){return;}
+	if ( is_singular( 'slp_profession' ) ) {
+		return;}
 	?>
 
 	<div class="article_footer_data">

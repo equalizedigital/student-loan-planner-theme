@@ -454,62 +454,62 @@ function generate_custom_booking_button_shortcode( $atts ) {
 add_shortcode( 'custom_booking_button', 'generate_custom_booking_button_shortcode' );
 
 function eqd_logo_setup() {
-    $defaults = array(
-        'height'      => 70, // Set the desired height for the logo
-        'width'       => 240, // Set the desired width for the logo
-        'flex-height' => true, // Allow flexible height
-        'flex-width'  => true, // Allow flexible width
-        'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
-    );
-    add_theme_support( 'custom-logo', $defaults );
+	$defaults = array(
+		'height'      => 70, // Set the desired height for the logo
+		'width'       => 240, // Set the desired width for the logo
+		'flex-height' => true, // Allow flexible height
+		'flex-width'  => true, // Allow flexible width
+		'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
+	);
+	add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
 
 function eqd_enqueue_swiper_assets() {
 
-    // Only proceed if we're on a singular page and it has content.
-    if ( is_singular() && have_posts()  ) {
-        the_post(); // Load the post data.
-        $content = get_the_content();
+	// Only proceed if we're on a singular page and it has content.
+	if ( is_singular() && have_posts() ) {
+		the_post(); // Load the post data.
+		$content = get_the_content();
 
-        // Check if our ACF block is in the content.
-        if ( has_block( 'acf/video-carousel', $content ) ) {
-            // Enqueue Swiper.js CSS
-            wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
+		// Check if our ACF block is in the content.
+		if ( has_block( 'acf/video-carousel', $content ) ) {
+			// Enqueue Swiper.js CSS
+			wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
 
-            // Enqueue Swiper.js Script
-            wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true );
-        }
+			// Enqueue Swiper.js Script
+			wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true );
+		}
 
-        // Rewind posts so that the loop can run as expected elsewhere.
-        rewind_posts();
-    }
+		// Rewind posts so that the loop can run as expected elsewhere.
+		rewind_posts();
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'eqd_enqueue_swiper_assets' );
 
-function eqd_enqueue_swiper_assets_admin($hook_suffix) {
-    // Only proceed on post edit screens.
-    if ('post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix) {
-        return;
-    }
+function eqd_enqueue_swiper_assets_admin( $hook_suffix ) {
+	// Only proceed on post edit screens.
+	if ( 'post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix ) {
+		return;
+	}
 
-    global $post;
-    if ($post && has_blocks($post->post_content)) {
-        $blocks = parse_blocks($post->post_content);
-        foreach ($blocks as $block) {
-            if ($block['blockName'] === 'acf/video-carousel') {
-                // Enqueue Swiper.js CSS for Admin
-                wp_enqueue_style('swiper-css-admin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+	global $post;
+	if ( $post && has_blocks( $post->post_content ) ) {
+		$blocks = parse_blocks( $post->post_content );
+		foreach ( $blocks as $block ) {
+			if ( $block['blockName'] === 'acf/video-carousel' ) {
+				// Enqueue Swiper.js CSS for Admin
+				wp_enqueue_style( 'swiper-css-admin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
 
-                // Enqueue Swiper.js Script for Admin
-                wp_enqueue_script('swiper-js-admin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+				// Enqueue Swiper.js Script for Admin
+				wp_enqueue_script( 'swiper-js-admin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true );
 
-                // No need to check further blocks
-                break;
-            }
-        }
-    }
+				// No need to check further blocks
+				break;
+			}
+		}
+	}
 }
 
-add_action('admin_enqueue_scripts', 'eqd_enqueue_swiper_assets_admin');
+add_action( 'admin_enqueue_scripts', 'eqd_enqueue_swiper_assets_admin' );

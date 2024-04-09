@@ -32,23 +32,23 @@ if ( ! empty( $block['align'] ) ) :
 	$class_name .= ' align' . $block['align'];
 endif;
 
-$class_name         = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
-$image_path         = get_template_directory_uri() . '/assets/images/';
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
+$image_path = get_template_directory_uri() . '/assets/images/';
 
-$optional_video_url         = get_field('optional_video_url');
-$video_path = null;
-if($optional_video_url){
-	$video_path         = $optional_video_url;
+$optional_video_url = get_field( 'optional_video_url' );
+$video_path         = null;
+if ( $optional_video_url ) {
+	$video_path = $optional_video_url;
 }
 
-$video_path_main         = get_field('video_file');
+$video_path_main = get_field( 'video_file' );
 
-if($video_path_main){
-	$video_path         = $video_path_main['url'];
+if ( $video_path_main ) {
+	$video_path = $video_path_main['url'];
 }
 
 
-$heading            = get_field( 'heading' );
+$heading = get_field( 'heading' );
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
@@ -57,28 +57,28 @@ $heading            = get_field( 'heading' );
 			<div class="video_block_template_container_content_block">
 			<?php
 			// Assuming the field name is 'heading_level_select'
-			$heading_level = get_field('heading_level_select');
+			$heading_level = get_field( 'heading_level_select' );
 
 			// Default to h2 if no selection is made
-			if (!$heading_level) {
+			if ( ! $heading_level ) {
 				$heading_level = 'h2';
 			}
 
 			// Assuming the field name for the heading text is 'heading_text'
-			$heading_text = get_field('heading');
+			$heading_text = get_field( 'heading' );
 			?>
 
-			<?php if($heading_text): ?>
+			<?php if ( $heading_text ) : ?>
 				<?php if ( $heading ) : ?>
-					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo esc_html($heading_text); ?></<?php echo $heading_level; ?>>
+					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo esc_html( $heading_text ); ?></<?php echo $heading_level; ?>>
 				<?php endif; ?>
 			<?php endif; ?>
 
 			<?php
 			$link = get_field( 'link' );
 			if ( $link ) :
-				$link_url = $link['url'];
-				$link_title = $link['title'];
+				$link_url    = $link['url'];
+				$link_title  = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
 				?>
 				<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>

@@ -9,41 +9,43 @@
 	const mobileToggle = $('.zight-mobile-tab-toggle');
 
 	$('a[href*="#"]')
-	// Remove links that don't actually link to anything
-	.not('[href="#"]')
-	.not('[href="#0"]')
-	.not('[href="#main-content"]')
-	.not('.features_buttons_acc a')
-	.click(function(event) {
-	  // Prevent default anchor click behavior
-	  if (
-		location.pathname === this.pathname &&
-		location.hostname === this.hostname
-	) {
-		event.preventDefault();
+		// Remove links that don't actually link to anything
+		.not('[href="#"]')
+		.not('[href="#0"]')
+		.not('[href="#main-content"]')
+		.not('.features_buttons_acc a')
+		.click(function (event) {
+			// Prevent default anchor click behavior
+			if (
+				location.pathname === this.pathname &&
+				location.hostname === this.hostname
+			) {
+				event.preventDefault();
 
-		// Store hash
-		var hash = this.hash;
+				// Store hash
+				const hash = this.hash;
 
-		// Using jQuery's animate() method to add smooth page scroll
-		// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-		// -100 is the offset/top margin
-		if (hash !== "") {
-		  // Don't do anything if there's no target to scroll to
-		  var target = $(hash);
-		  if (target.length) {
-			$('html, body').animate({
-			  scrollTop: target.offset().top - 100 // Offset by 100 pixels
-			}, 0, function() {
-			  // Add hash (#) to URL when done scrolling (default click behavior)
-			  window.location.hash = hash;
-			});
-		  }
-		}
-	}
-
-	});
-
+				// Using jQuery's animate() method to add smooth page scroll
+				// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+				// -100 is the offset/top margin
+				if (hash !== '') {
+					// Don't do anything if there's no target to scroll to
+					const target = $(hash);
+					if (target.length) {
+						$('html, body').animate(
+							{
+								scrollTop: target.offset().top - 100, // Offset by 100 pixels
+							},
+							0,
+							function () {
+								// Add hash (#) to URL when done scrolling (default click behavior)
+								window.location.hash = hash;
+							}
+						);
+					}
+				}
+			}
+		});
 
 	//   main menu link toggle
 	document.addEventListener('DOMContentLoaded', function () {

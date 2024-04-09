@@ -43,16 +43,17 @@ tha_content_before();
 						<?php
 						if ( ! empty( get_field( 'consult_link', 'user_' . $curauth->ID ) ) ) :
 							$link = get_field( 'consult_link', 'user_' . $curauth->ID );
-							if (is_array($link)) {
-						?>
+							if ( is_array( $link ) ) {
+								?>
 						<div class="info_link">
 							<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
-							<?php echo wp_kses_post( $link['title'] ); ?>
+								<?php echo wp_kses_post( $link['title'] ); ?>
 							</a>
 						</div>
-						<?php
+								<?php
 							}
-						endif; ?>
+						endif;
+						?>
 
 					</div>
 				</div>
