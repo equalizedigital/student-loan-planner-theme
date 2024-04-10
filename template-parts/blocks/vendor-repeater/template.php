@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -55,7 +55,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					?>
 				</tr>
 			</thead>
-					
+
 			<tbody>
 
 
@@ -200,7 +200,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					</th>
 				</tr>
 			</thead>
-					
+
 			<tbody>
 				<!-- tr -->
 				<tr>
@@ -218,7 +218,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						</div>
 					</td>
 				</tr>
-				
+
 
 				<!-- tr -->
 				<tr>
@@ -244,7 +244,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					$link = get_sub_field( 'link' ); 
+					$link = get_sub_field( 'link' );
 					if ( ! empty( $link['url'] ) ) :
 						?>
 

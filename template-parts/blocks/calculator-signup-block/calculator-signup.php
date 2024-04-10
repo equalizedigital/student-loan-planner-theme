@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -50,7 +50,7 @@ $link = get_field( 'link' );
 		<div class="calculator-signup-container-content">
 			<h2 class="title"><?php echo $title; ?></h2>
 			<div class="text"><?php echo $copy; ?></div>
-			<?php 
+			<?php
 			if ( ! empty( $link ) ) {
 				$url   = $link['url'];
 				$title = $link['title'];
@@ -74,7 +74,7 @@ $link = get_field( 'link' );
 					}
 					$title   = $row['title'];
 					$context = $row['context'];
-					
+
 
 					echo '<div class="calculator-signup-container-content-list-item">';
 					if ( ! empty( $image ) ) {
@@ -91,7 +91,7 @@ $link = get_field( 'link' );
 							echo $context;
 						echo '</span>';
 					}
-					
+
 					echo '</div>';
 					echo '</div>';
 				}

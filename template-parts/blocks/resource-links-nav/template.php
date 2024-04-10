@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -39,7 +39,7 @@ $more_link      = get_field( 'more_link' );
 ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
-	<?php 
+	<?php
 	if ( $terms ) {
 		echo '<ul class="taxonomy-select-block-list">';
 		foreach ( $terms as $term ) {

@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -58,7 +58,7 @@ $author_avatar = get_avatar( $author_id, 96 );
 		<div class="featured-post-container-content">
 			<div class="featured-post-container-info">
 				<div class="cat">
-					<?php 
+					<?php
 					if ( ! empty( $category_ids ) ) {
 						$category = get_category( $category_ids[0] );
 						echo $category->name . ' ';

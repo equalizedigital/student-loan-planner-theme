@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -70,12 +70,12 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 		endif;
 		?>
 		</div>
-		
+
 	</div>
 </section>
 
 <?php
-if ( get_field( 'use_schema_data' ) ) : 
+if ( get_field( 'use_schema_data' ) ) :
 
 	?>
 <script type="application/ld+json">
@@ -84,8 +84,8 @@ if ( get_field( 'use_schema_data' ) ) :
 		"@type": "FAQPage",
 		"mainEntity": [
 			<?php
-			
-			$count = count( get_field( 'accordion' ) ); 
+
+			$count = count( get_field( 'accordion' ) );
 
 			if ( have_rows( 'accordion' ) ) :
 				while ( have_rows( 'accordion' ) ) :
@@ -116,10 +116,10 @@ if ( get_field( 'use_schema_data' ) ) :
 
 					echo wp_kses_post( $data_string );
 
-				
+
 				endwhile;
 			endif;
-			
+
 			?>
 		]
 	}

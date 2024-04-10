@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -39,7 +39,7 @@ $acf_link_title  = $acf_link['title'];
 $acf_link_url    = $acf_link['url'];
 $acf_rating_text = get_field( 'rating_text' );
 $acf_copy        = get_field( 'copy' );
- 
+
 ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="columns-with-button-block-container">

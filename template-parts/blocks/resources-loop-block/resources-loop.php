@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -63,8 +63,8 @@ if ( ! $featured_image_url ) {
 
 				<?php
 				$args = array(
-					'post_type'      => 'post', 
-					'posts_per_page' => 3, 
+					'post_type'      => 'post',
+					'posts_per_page' => 3,
 					'post__in'       => $selected_posts,
 					'orderby'        => 'post__in',
 				);
@@ -74,7 +74,7 @@ if ( ! $featured_image_url ) {
 				if ( $query->have_posts() ) {
 					while ( $query->have_posts() ) {
 						$query->the_post();
-						
+
 						// Get categories
 						$categories = get_the_category();
 						if ( $categories ) {
@@ -82,16 +82,16 @@ if ( ! $featured_image_url ) {
 						} else {
 							$category = '';
 						}
-						
+
 						// Get title
 						$title = get_the_title();
 
 						$link = get_the_permalink();
-						
+
 						// Get author image (assuming you're using Gravatar)
 						$author_email     = get_the_author_meta( 'user_email' );
 						$author_image_url = get_avatar_url( $author_email, array( 'size' => 96 ) );
-						
+
 						// Get author name
 						$author_name = get_the_author();
 

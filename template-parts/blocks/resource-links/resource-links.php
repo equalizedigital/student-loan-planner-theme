@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -47,7 +47,7 @@ $title = get_field( 'title' );
 		<div class="resource-links-container-links" role="tablist">
 		<div class="dropdown">
 				<button id="resource-links-dropdown" class="dropdown-select">
-				<?php 
+				<?php
 					$links = get_field( 'links' );
 				if ( $links ) {
 					foreach ( $links as $key => $row ) {
@@ -70,7 +70,7 @@ $title = get_field( 'title' );
 
 				</button>
 				<ul class="resource-links-dropdown-list" role="tablist">
-					<?php 
+					<?php
 					$links = get_field( 'links' );
 					if ( $links ) {
 						foreach ( $links as $key => $row ) {
@@ -103,15 +103,15 @@ $title = get_field( 'title' );
 								</li>
 							<?php endif; ?>
 
-								
+
 							<?php
 						}
 					}
 					?>
 				</ul>
 			</div>
-			
-			<?php 
+
+			<?php
 			$links = get_field( 'links' );
 			if ( $links ) {
 				foreach ( $links as $key => $row ) {
@@ -157,8 +157,8 @@ $title = get_field( 'title' );
 			}
 			?>
 
-			
-			
+
+
 		</div>
 
 	</div>
@@ -166,7 +166,7 @@ $title = get_field( 'title' );
 
 	<div class="resource-links-loop-container">
 
-		<?php 
+		<?php
 			$links = get_field( 'links' );
 		if ( $links ) {
 			foreach ( $links as $key => $row ) {
@@ -176,17 +176,17 @@ $title = get_field( 'title' );
 				if ( ! empty( $row['featured_image'] ) ) {
 					$featured_image = $row['featured_image']['url'];
 				}
-				
+
 				if ( ! empty( $row['category'] ) ) {
 					$category = $row['category'];
 				}
 				if ( ! empty( $row['selected_posts'] ) ) {
 					$selected_posts = $row['selected_posts'];
 				}
-					
+
 				?>
 					<div id="resource-link-<?php echo $key; ?>" role="tabpanel" aria-labelledby="button-tab-<?php echo $key; ?>" class="resource-links-loop-container-item <?php echo $key === 0 ? 'resource-links-loop-container-item--active' : ''; ?>">
-						
+
 						<div class="resource-links-loop-container-content">
 							<div class="resource-links-loop-container-content-featured">
 								<div class="resource-links-loop-container-content-featured-link">
@@ -208,15 +208,15 @@ $title = get_field( 'title' );
 							if ( $selected_posts ) {
 
 								$args = array(
-									'post_type' => 'post', 
+									'post_type' => 'post',
 									'post__in'  => $selected_posts,
 									'orderby'   => 'post__in',
 								);
 
 							} else {
 								$args = array(
-									'post_type'      => 'post', 
-									'posts_per_page' => 3, 
+									'post_type'      => 'post',
+									'posts_per_page' => 3,
 									'cat'            => $category,
 								);
 							}
@@ -226,7 +226,7 @@ $title = get_field( 'title' );
 							if ( $query->have_posts() ) {
 								while ( $query->have_posts() ) {
 									$query->the_post();
-											
+
 									// Get categories
 									$categories = get_the_category();
 									if ( $categories ) {
@@ -234,16 +234,16 @@ $title = get_field( 'title' );
 									} else {
 										$category = '';
 									}
-											
+
 									// Get title
 										$title = get_the_title();
 
 										$link = get_the_permalink();
-											
+
 										// Get author image (assuming you're using Gravatar)
 										$author_email     = get_the_author_meta( 'user_email' );
 										$author_image_url = get_avatar_url( $author_email, array( 'size' => 96 ) );
-											
+
 										// Get author name
 										$author_name = get_the_author();
 

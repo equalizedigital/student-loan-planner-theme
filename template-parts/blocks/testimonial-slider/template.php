@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -44,7 +44,7 @@ $acf_title = get_field( 'title' );
 		<header class="testimonial-slider-block-container-header">
 			<h2 class="testimonial-slider-block-container-header__title"><?php echo esc_attr( $acf_title ); ?></h2>
 		</header>
-		
+
 		<div class="quote_icon">
 			<div class="icon">
 				<svg width="42" height="36" viewBox="0 0 42 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@ $acf_title = get_field( 'title' );
 		</div>
 
 		<div class="testimonial-slider-block-container-testimonial-slider">
-			
+
 			<?php
 			if ( have_rows( 'testimonials' ) ) :
 
@@ -123,8 +123,8 @@ $acf_title = get_field( 'title' );
 		</div>
 
 		<div class="testimonial-slider-block-container-testimonial_read_more">
-			
-			<?php 
+
+			<?php
 			$link = get_field( 'link' );
 
 			if ( $link ) {
@@ -132,24 +132,24 @@ $acf_title = get_field( 'title' );
 				$url    = $link['url'];
 				$title  = $link['title'] ?: 'Default Title'; // Set a default title if none is provided
 				$target = $link['target'] ?: '_self'; // Default target to '_self' if none is provided
-			
+
 				echo "<a href='{$url}' target='{$target}' class='btn btn-dark-bg'>{$title}</a>";
 			} else {
 				?>
 				<a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
 				<?php
 			}
-			
+
 			?>
 		</div>
-		
-		
+
+
 	</div>
 </section>
 
 
- 
-<?php 
+
+<?php
 if ( is_admin() ) {
 	add_action( 'enqueue_block_editor_assets', 'testimonial_slider_assets' );
 } else {
@@ -162,7 +162,7 @@ if ( is_admin() ) {
 <script>
 jQuery(function() {
 		var rev = jQuery('#<?php echo esc_attr( $classid ); ?> .testimonial-slider-block-container-testimonial-slider');
-		
+
 		rev.on('init', function(event, slick, currentSlide) {
 			var
 			cur = jQuery(slick.$slides[slick.currentSlide]),
@@ -171,9 +171,9 @@ jQuery(function() {
 			prev = cur.prev(),
 			prev2 = cur.prev().prev();
 			prev.addClass('slick-sprev');
-			next.addClass('slick-snext');  
+			next.addClass('slick-snext');
 			prev2.addClass('slick-sprev2');
-			next2.addClass('slick-snext2');  
+			next2.addClass('slick-snext2');
 			cur.removeClass('slick-snext').removeClass('slick-sprev').removeClass('slick-snext2').removeClass('slick-sprev2');
 			slick.$prev = prev;
 			slick.$next = next;
@@ -186,7 +186,7 @@ jQuery(function() {
 			slick.$next.removeClass('slick-snext');
 			slick.$prev.prev().removeClass('slick-sprev2');
 			slick.$next.next().removeClass('slick-snext2');
-			next = cur.next(),  
+			next = cur.next(),
 			prev = cur.prev();
 			//prev2.prev().prev();
 			//next2.next().next();

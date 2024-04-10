@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -56,17 +56,17 @@ $authors = get_field( 'authors' );
 
 					// Initialize an empty array for authors.
 					$authors_array = array();
-  
+
 					// Loop through each row in the repeater.
 					while ( have_rows( 'authors' ) ) :
 						the_row();
-  
+
 						// Get the value of the subfield 'author'.
 						$author = get_sub_field( 'author' );
-  
+
 						// Push the author to the authors array.
 						$authors_array[] = $author;
-  
+
 					endwhile;
 endif;
 
@@ -74,18 +74,18 @@ endif;
 				foreach ( $authors_array as $author_id ) {
 					// Set up the query arguments.
 					$args = array(
-						'author'         => $author_id, 
+						'author'         => $author_id,
 						'posts_per_page' => 1, // Only retrieve one post.
 					);
-					
+
 					// Perform the query.
 					$author_query = new WP_Query( $args );
-					
+
 					// If there's a post, display it.
 					if ( $author_query->have_posts() ) {
 						while ( $author_query->have_posts() ) {
 							$author_query->the_post();
-							
+
 							// Get title
 							$title = get_the_title();
 
@@ -123,7 +123,7 @@ endif;
 
 							<?php
 						}
-						
+
 						// Reset post data after each author.
 						wp_reset_postdata();
 					}
@@ -133,7 +133,7 @@ endif;
 
 
 
-				 
+
 				?>
 
 

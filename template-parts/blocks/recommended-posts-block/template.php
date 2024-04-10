@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -46,15 +46,15 @@ $recommended_posts = get_field( 'recommended_posts' );
 
 		<ul class="recommended_posts_block_block_container_loop">
 
-		<?php 
+		<?php
 		$args = array(
 			'post_type' => 'post',
 			'post__in'  => $recommended_posts,
 			'orderby'   => 'post__in', // This ensures posts are returned in the order of the provided IDs.
 		);
-		
+
 		$query = new WP_Query( $args );
-		
+
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
@@ -62,7 +62,7 @@ $recommended_posts = get_field( 'recommended_posts' );
 				<li>
 					<a class="recommended_posts_block_block_container_loop_item" href="<?php the_permalink(); ?>">
 						<div class="recommended_posts_block_block_container_loop_item_image">
-							<?php 
+							<?php
 							if ( has_post_thumbnail() ) {
 								$image_url = get_the_post_thumbnail_url();
 								echo "<img src='$image_url' aria-hidden=\"true\" role=\"presentation\" />";
@@ -75,9 +75,9 @@ $recommended_posts = get_field( 'recommended_posts' );
 					</a>
 				</li>
 				<?php
-				
+
 			}
-			wp_reset_postdata(); 
+			wp_reset_postdata();
 		} else {
 			echo 'No posts found';
 		}

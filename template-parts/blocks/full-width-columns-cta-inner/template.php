@@ -1,6 +1,6 @@
 <?php
 /**
- * full-width-columns-cta-inner Block Template.
+ * Full-width-columns-cta-inner Block Template.
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -9,7 +9,6 @@
  * @package full-width-columns-cta-inner
  */
 
-// var_dump($block['example']['attributes']['data']['preview_image_help']);
 if ( isset( $block['example']['attributes']['data']['preview_image_help'] ) ) :
 	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] ) );
 	return;
@@ -59,7 +58,7 @@ $modal_button     = get_field( 'modal_button' );
 		</div>
 		<div class="full-width-columns-cta-inner-container__video" >
 			<?php if ( $image ) : ?>
-				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">	
+				<img src="<?php echo wp_kses_post( $image['url'] ); ?>" alt="<?php echo wp_kses_post( $image['alt'] ); ?>">
 			<?php endif; ?>
 			<?php if ( ! empty( $youtube_video_id ) ) : ?>
 			<button class="modal-btn full-width-columns-cta-inner-container__video__button" aria-haspopup="dialog" data-modal="modal1" aria-label="Open Video" id="play-iframe" >
@@ -96,7 +95,7 @@ function onYouTubeIframeAPIReady() {
 		}
 	});
 }
-function onPlayerReady(event) {                                        
+function onPlayerReady(event) {
 	event.target.pauseVideo();
 }
 function playVideo() {

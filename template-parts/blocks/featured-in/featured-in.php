@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -39,7 +39,7 @@ $title = get_field( 'title' );
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="featured-in-block-container">
 		<?php echo "<header class=\"featured-in-block-container-header\"><h2 class=\"featured-in-block-container-header__title\">$title</h2></header>"; ?>
-		<?php 
+		<?php
 		$images = get_field( 'images' );
 		if ( $images ) {
 			echo '<div class="featured-in-block-container-images">';
@@ -50,7 +50,7 @@ $title = get_field( 'title' );
 				if ( ! empty( $row['image'] ) ) {
 					$imageAlt = $row['image']['alt'];
 				}
-				
+
 				echo '<div class="featured-in-block-container-images__image">';
 				if ( ! empty( $image ) ) {
 					echo "<img src='$image' alt='$imageAlt'></img>";

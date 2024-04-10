@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -48,7 +48,7 @@ $title = get_field( 'title' );
 	if ( have_rows( 'testimonials' ) ) :
 		?>
 		<div class="media-reviews-slider-block-container-slider">
-			
+
 			<?php
 			// Loop through rows.
 			while ( have_rows( 'testimonials' ) ) :
@@ -64,13 +64,13 @@ $title = get_field( 'title' );
 					<span class="author"><?php echo get_the_title( $testimonial->ID ); ?></span>
 				</blockquote>
 				<?php if ( $testimonial_youtube_video_id ) : ?>
-					<iframe 
-						width="560" 
-						height="315" 
-						src="https://www.youtube.com/embed/<?php _e( $testimonial_youtube_video_id ); ?>" 
-						title="YouTube video player" 
-						frameborder="0" 
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/<?php _e( $testimonial_youtube_video_id ); ?>"
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowfullscreen></iframe>
 				<?php endif; ?>
 			</div>

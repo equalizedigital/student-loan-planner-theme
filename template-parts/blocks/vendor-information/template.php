@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -89,14 +89,14 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 			<?php if ( ! empty( $review_url ) ) : ?>
 			<div class="vendor-information-block-container-column-one-read-review">
 				<a href="<?php echo wp_kses_post( $review_url ); ?>">
-					Read Review 
+					Read Review
 				</a>
 			</div>
 			<?php endif; ?>
 		</div>
 
 		<div class="vendor-information-block-container-column-two">
-			
+
 			<?php if ( $features ) : ?>
 			<h4 class="vendor-information-block-container-column-two-title"><?php echo wp_kses_post( $heading ); ?></h4>
 			<div class="vendor-information-block-container-column-two-text-repeater">
@@ -136,7 +136,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 				<?php endif; ?>
 				<?php if ( $more_information ) : ?>
 
-					<button 
+					<button
 					class="vendor_information_block_container_column_two_link_more_info"
 					aria-label="More Information about <?php echo $company_name; ?>"
 					aria-expanded="false"
@@ -147,7 +147,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 							<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg>
 						</span>
 					</button>
-			
+
 				<?php endif; ?>
 			</div>
 		</div>

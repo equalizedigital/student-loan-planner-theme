@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -41,11 +41,11 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 			// Check rows existexists.
 			if ( have_rows( 'items' ) ) :
-			
+
 				// Loop through rows.
 				while ( have_rows( 'items' ) ) :
 					the_row();
-			
+
 					// Load sub field value.
 					$link  = get_sub_field( 'link' );
 					$title = get_sub_field( 'title' );
@@ -70,10 +70,10 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						</div>
 					</a>
 					<?php
-			
+
 					// End loop.
 				endwhile;
-			
+
 				// No value.
 			else :
 				// Do something...

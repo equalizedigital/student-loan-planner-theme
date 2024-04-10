@@ -6,7 +6,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) {
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 }
 
@@ -38,7 +38,7 @@ $link = get_field( 'link' );
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="squared-image-content-callout-container">
 		<figure class="squared-image-content-callout-container-image">
-			<?php 
+			<?php
 			if ( ! empty( $image ) ) {
 				echo wp_get_attachment_image( $image['id'], 'squared-image-content-callout-thumbnail' );
 			}

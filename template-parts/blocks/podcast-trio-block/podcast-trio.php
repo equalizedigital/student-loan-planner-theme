@@ -10,7 +10,7 @@
  */
 
 // if( isset( $block['example']['attributes']['data']['preview_image_help'] )  ) :
-// echo Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] );
+// echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 // return;
 // endif;
 
@@ -41,7 +41,7 @@ $title = get_field( 'title' );
 			<?php if ( ! empty( $title ) ) : ?>
 				<h2 class="title"><?php echo $title; ?></h2>
 			<?php endif; ?>
-		<?php 
+		<?php
 		$logo_images = get_field( 'logo_images' );
 		if ( $logo_images ) {
 			echo '<div class="podcast-trio-images">';

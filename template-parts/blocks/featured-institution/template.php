@@ -12,7 +12,7 @@
 
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -149,7 +149,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 					</div>
 				<?php endif; ?>
 
-				<?php 
+				<?php
 				$vendor_title   = get_field( 'title' );
 				$vendor_content = get_field( 'content' );
 				if ( $vendor_title ) :
@@ -168,7 +168,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 						<a href="<?php echo get_the_permalink( $select_institutional_contact ); ?>"><?php echo get_the_title( $select_institutional_contact ); ?></a>
 					</div>
 				<?php endif; ?>
-				
+
 				<?php if ( $show_feature_list ) : ?>
 				<h4 class="vendor_information_block_container_column_two_title"><?php echo wp_kses_post( $heading ); ?></h4>
 				<div class="vendor_information_block_container_column_two_text_repeater">
@@ -188,12 +188,12 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				</div>
 				<?php endif; ?>
 
-				
+
 
 				<?php if ( have_rows( 'eligible_states', $select_institutional_contact ) ) : ?>
 					<?php
 					while ( have_rows( 'eligible_states', $select_institutional_contact ) ) :
-						the_row(); 
+						the_row();
 						?>
 						<h4 class="vendor_information_block_container_column_two_title">
 							<?php the_sub_field( 'heading' ); ?>
@@ -219,7 +219,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 					<?php if ( ! empty( $more_info_content ) ) : ?>
 
-						<button 
+						<button
 						class="vendor_information_block_container_column_two_link_more_info"
 						type="button"
 						aria-label="More Information about <?php echo get_the_title( $select_institutional_contact ); ?>"
@@ -229,15 +229,15 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 								<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg>
 							</span>
 						</button>
-						
+
 					<?php endif; ?>
-					
+
 				</div>
 			</div>
 
 			<div class="vendor_information_block_container_more_info" hidden id="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>">
 				<?php echo wp_kses_post( $more_info_content ); ?>
 			</div>
-		
+
 	</div>
 </section>

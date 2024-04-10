@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -45,16 +45,16 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						foreach ( $rows as $key => $row ) {
 								echo '<li class="tabbed-content__nav-item">';
 							?>
-								<button 
-								data-link="tab-<?php echo $key; ?>" 
+								<button
+								data-link="tab-<?php echo $key; ?>"
 								class="
 								<?php
 								if ( $key === 0 ) {
 									echo 'active'; }
 								?>
-								" 
-								type="button" 
-								role="tab" 
+								"
+								type="button"
+								role="tab"
 								tabindex="
 								<?php
 								if ( $key === 0 ) {
@@ -70,7 +70,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								} else {
 									echo 'false';}
 								?>
-								" 
+								"
 								aria-controls="tab-<?php echo $key; ?>">
 									<span class="icon">
 										<?php
@@ -101,7 +101,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					</svg>
 					</button>
 				</div>
-				
+
 				<div class="tabbed-content__content">
 
 					<?php
@@ -110,11 +110,11 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						foreach ( $tabbed_content as $key => $row ) {
 							$link = $row['link'];
 							?>
-							<div 
-								role="tabpanel" 
-								aria-labelledby="tab-<?php echo $key; ?>" 
-								id="tab-<?php echo $key; ?>" 
-								class="tabbed-content__content__pane 
+							<div
+								role="tabpanel"
+								aria-labelledby="tab-<?php echo $key; ?>"
+								id="tab-<?php echo $key; ?>"
+								class="tabbed-content__content__pane
 								<?php
 								if ( $key === 0 ) {
 									echo 'tabbed-content__content__pane--active'; }
@@ -139,9 +139,9 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 											echo '<a href="' . $row['rating']['url'] . '">';
 										}
 										?>
-										<?php 
+										<?php
 										if ( ! empty( $row['rating']['title'] ) ) {
-											echo $row['rating']['title']; 
+											echo $row['rating']['title'];
 										}
 										?>
 										<?php
@@ -157,7 +157,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 											<img src="<?php echo $row['image']['url']; ?>" class="tabbed-content__content__image_img" alt="<?php echo $row['title']; ?>">
 										<?php endif; ?>
 									</figure>
-									
+
 									<div class="image_info">
 										<?php
 										$ctas = $row['ctas'];
@@ -186,8 +186,8 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 											}
 										}
 										?>
-										
-										
+
+
 									</div>
 								</div>
 							</div>
