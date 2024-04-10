@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Single Post
  *
@@ -37,7 +36,7 @@ function eqd_single_after_entry() {
 			'layout'     => 'gamma',
 			'title'      => 'You May Also Like',
 			'query_args' => array(
-				'post__not_in' => array( get_the_ID() ),
+				'post__not_in' => array( get_the_ID() ), //phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 				'cat'          => eqd_first_term( array( 'field' => 'term_id' ) ),
 			),
 		);
@@ -46,8 +45,6 @@ function eqd_single_after_entry() {
 
 	echo '</div>';
 }
-// add_action( 'tha_content_while_after', 'eqd_single_after_entry', 8 );
-
 
 /**
  * Refinance student loans, single section
@@ -61,7 +58,7 @@ function eqd_single_after_entry_content() {
 	$hide_section_per_category = false;
 	$categories                = get_the_category();
 
-	// hide option
+	// hide option.
 	foreach ( $categories as $_category ) {
 		$hide_section_per_category = get_field( 'hide_student_loans_section', 'category_' . $_category->term_id );
 		if ( $hide_section_per_category ) {
@@ -69,12 +66,12 @@ function eqd_single_after_entry_content() {
 		}
 	}
 
-	// hide option
+	// hide option.
 	if ( $hide_section_per_category ) {
 		return;
 	}
 
-	// hide option
+	// hide option.
 	$hide_section_per_page = get_field( 'hide_student_loans_section', get_the_ID() );
 	if ( $hide_section_per_page ) {
 		return;
@@ -126,22 +123,19 @@ function eqd_single_after_entry_content() {
 
 						<?php
 						$number_of_items = 0;
-						// Check if the flexible content field has rows of data
+						// Check if the flexible content field has rows of data.
 						if ( have_rows( 'private_student_loans_section', 'option' ) ) :
 
-							// Loop through the rows of data
+							// Loop through the rows of data.
 							while ( have_rows( 'private_student_loans_section', 'option' ) ) :
 								the_row();
-
-
-								$company_name    = get_sub_field( 'company_name' );
-								$logo            = get_sub_field( 'logo' );
-								$offer_amount    = get_sub_field( 'offer_amount' );
-								$offer_text      = get_sub_field( 'offer_text' );
-								$url             = get_sub_field( 'url' );
-								$fixed_rates     = get_sub_field( 'fixed_rates' );
-								$variable_rates  = get_sub_field( 'variable_rates' );
-								$disclosure_text = get_sub_field( 'disclosure_text' );
+								$company_name   = get_sub_field( 'company_name' );
+								$logo           = get_sub_field( 'logo' );
+								$offer_amount   = get_sub_field( 'offer_amount' );
+								$offer_text     = get_sub_field( 'offer_text' );
+								$url            = get_sub_field( 'url' );
+								$fixed_rates    = get_sub_field( 'fixed_rates' );
+								$variable_rates = get_sub_field( 'variable_rates' );
 								?>
 
 								<tr class="data-tr
@@ -151,7 +145,7 @@ function eqd_single_after_entry_content() {
 										}
 										?>
 										">
-									<th class="sr-only" scope="row"><?php the_sub_field( 'company_name' ); ?></th>
+									<th class="sr-only" scope="row"><?php echo esc_html( get_sub_field( 'company_name' ) ); ?></th>
 									<td>
 										<div class="td_content">
 											<img src="<?php echo wp_kses_post( $logo['url'] ); ?>" alt="<?php echo wp_kses_post( $logo['alt'] ); ?>">
@@ -173,7 +167,6 @@ function eqd_single_after_entry_content() {
 											<?php
 											if ( ! empty( $url['url'] ) ) :
 												?>
-												<?php $url_target = $url['target'] ? $url['target'] : '_self'; ?>
 												<a href="<?php echo wp_kses_post( $url['url'] ); ?>" class="btn" <?php echo ! empty( $url['target'] ) ? wp_kses_post( "target='" . $url['target'] . "'" ) : ''; ?>>
 													<?php echo wp_kses_post( $url['title'] ); ?>
 													<?php if ( empty( $url['target'] ) ) : ?>
@@ -191,7 +184,7 @@ function eqd_single_after_entry_content() {
 											<div class="td_text">
 												<div>Fixed <?php echo wp_kses_post( $fixed_rates ); ?></div>
 												Variable <?php echo wp_kses_post( $variable_rates ); ?>
-												<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
+												<div><?php echo esc_html( get_sub_field( 'learn_more_subtext' ) ); ?></div>
 											</div>
 										</div>
 									</td>
@@ -204,10 +197,6 @@ function eqd_single_after_entry_content() {
 
 						endif;
 						?>
-
-
-
-
 						<!-- TR -->
 					</table>
 				</div>
@@ -241,11 +230,14 @@ function eqd_single_after_entry_content() {
 							}
 							?>
 							">
-								<th class="sr-only" scope="row"><?php the_sub_field( 'lender_name' ); ?></th>
+								<th class="sr-only" scope="row">
+									<?php echo esc_html( get_sub_field( 'lender_name' ) ); ?>
+								</th>
+
 								<td>
 									<div class="td_content">
-										<img src="<?php echo $company_logo['url']; ?>" alt="<?php echo $company_logo['alt']; ?>">
-										<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosures for <?php echo $company_title; ?>">Disclosures</button>
+										<img src="<?php echo esc_url( $company_logo['url'] ); ?>" alt="<?php echo esc_attr( $company_logo['alt'] ); ?>">
+										<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo esc_attr( get_row_index() ); ?>" aria-label="Disclosures for <?php echo esc_attr( $company_title ); ?>">Disclosures</button>
 									</div>
 								</td>
 								<td>
@@ -269,8 +261,7 @@ function eqd_single_after_entry_content() {
 										$link = get_sub_field( 'link' );
 										if ( ! empty( $link['url'] ) ) :
 											?>
-											<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-											<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn" <?php echo ! empty( $link['target'] ) ? wp_kses_post( "target='" . $link['target'] . "'" ) : ''; ?>>
+											<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn"  <?php echo ! empty( $link['target'] ) ? wp_kses_post( "target='" . $link['target'] . "'" ) : ''; ?>>
 												<?php echo wp_kses_post( $link['title'] ); ?>
 												<?php if ( empty( $link['target'] ) ) : ?>
 													<span class="svg">
@@ -290,7 +281,7 @@ function eqd_single_after_entry_content() {
 
 											<?php $variable = get_sub_field( 'variable' ); ?>
 											Variable <?php echo wp_kses_post( $variable ); ?>
-											<div><?php the_sub_field( 'learn_more_subtext' ); ?></div>
+											<div><?php echo esc_html( get_sub_field( 'learn_more_subtext' ) ); ?></div>
 										</div>
 									</div>
 								</td>
@@ -333,6 +324,11 @@ function eqd_single_after_entry_content() {
 }
 add_action( 'tha_content_while_after', 'eqd_single_after_entry_content', 7 );
 
+/**
+ * Method eqd_single_after_entry_modals
+ *
+ * @return void
+ */
 function eqd_single_after_entry_modals() {
 	$post_id = get_the_ID();
 	if ( function_exists( 'yoast_get_primary_term_id' ) ) {
@@ -347,11 +343,9 @@ function eqd_single_after_entry_modals() {
 
 			if ( have_rows( 'private_student_loans_section', 'option' ) ) :
 
-				// Loop through the rows of data
+				// Loop through the rows of data.
 				while ( have_rows( 'private_student_loans_section', 'option' ) ) :
 					the_row();
-
-
 					$disclosure_text = get_sub_field( 'disclosure_text' );
 					?>
 
@@ -380,7 +374,7 @@ function eqd_single_after_entry_modals() {
 				$full_disclosure_content = get_sub_field( 'full_disclosure_content', 'option' );
 				?>
 
-				<div id="modal_disclosure_<?php echo get_row_index(); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+				<div id="modal_disclosure_<?php echo esc_attr( get_row_index() ); ?>" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
 					<div class="modal-content">
 						<button class="close-btn">
 							<img src="<?php echo wp_kses_post( get_template_directory_uri() ) . '/assets/icons/utility/close-cross.svg'; ?>" alt="close modal">
@@ -400,6 +394,11 @@ function eqd_single_after_entry_modals() {
 add_action( 'tha_content_after', 'eqd_single_after_entry_modals', 7 );
 
 
+/**
+ * Method advertising_disclosure
+ *
+ * @return void
+ */
 function advertising_disclosure() {
 	?>
 	<?php
@@ -489,21 +488,9 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_author_info', 7 )
  * @license      GPL-2.0+
  **/
 function eqd_single_after_entry_author_info() {
-	global $post;
-
-	$id             = get_the_author_meta( 'ID' );
-	$id_post_editor = get_field( 'post_editor', get_the_ID() );
-	$user_info_ID   = get_userdata( $id );
-	$author_url_id  = get_author_posts_url( $id );
-
-	if ( ! empty( $id_post_editor ) ) {
-		$author_url  = get_author_posts_url( get_the_author_meta( 'ID' ) );
-		$author_name = get_the_author_meta( 'display_name', $id_post_editor['ID'] );
-		$user_info   = get_userdata( $id_post_editor['ID'] );
-		$first_name  = $user_info->first_name;
-		$last_name   = $user_info->last_name;
-		$nickname    = $user_info->nickname;
-	}
+	$id            = get_the_author_meta( 'ID' );
+	$user_info_id  = get_userdata( $id );
+	$author_url_id = get_author_posts_url( $id );
 
 	if ( is_singular( 'slp_profession' ) ) {
 		return;}
@@ -515,7 +502,7 @@ function eqd_single_after_entry_author_info() {
 				<div class="article_footer_data_author_entry-author_titles">
 					<?php echo get_avatar( $id, 64 ); ?>
 					<div class="author_name">
-						<?php echo get_the_author( $id ); ?>
+						<?php echo get_the_author( $id );  //phpcs:ignore WordPress.WP.DeprecatedParameters.Get_the_authorParam1Found ?>
 					</div>
 				</div>
 
@@ -527,10 +514,10 @@ function eqd_single_after_entry_author_info() {
 						?>
 					</span>
 					<div class="article_footer_data_author_entry-inf__link">
-						<a href="<?php echo $author_url_id; ?>">
+						<a href="<?php echo esc_url( $author_url_id ); ?>">
 							Read More from
 							<?php
-							echo $user_info_ID->first_name;
+							echo esc_html( $user_info_id->first_name );
 							?>
 							<span class="arrow" aria-hidden="true">
 								<svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none">
@@ -548,27 +535,22 @@ function eqd_single_after_entry_author_info() {
 		$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 
 		$profile_picture = get_avatar( $review_by_auth_id, 64 );
-		if ( $review_by_auth_id !== false ) {
-			$user_info  = get_userdata( $review_by_auth_id );
-			$first_name = $user_info->first_name;
-			$last_name  = $user_info->last_name;
-			$nickname   = $user_info->nickname;
+		if ( false !== $review_by_auth_id ) {
+			$user_info = get_userdata( $review_by_auth_id );  //phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		}
 		?>
 		<?php if ( $review_by_auth_id ) : ?>
 
 			<div class="article_footer_data_author_reviewed_author">
 				<div class="article_footer_data_author_profile">
-					<?php echo $profile_picture; ?>
+					<?php echo esc_html( $profile_picture ); ?>
 				</div>
 				<div class="article_footer_data_author_author_info">
 					Reviewed By
 					<span class="name">
-						<?php echo get_author_posts_link_by_id( $review_by_auth_id ); ?>
+						<?php echo esc_html( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
 					</span>
 				</div>
-
-
 			</div>
 
 		<?php endif; ?>
@@ -576,19 +558,17 @@ function eqd_single_after_entry_author_info() {
 		$post_editor_by_auth_id_footer = get_field( 'post_editor', get_the_ID() );
 
 		$profile_picture = get_avatar( $post_editor_by_auth_id_footer['ID'], 64 );
-		$user_info       = get_userdata( $post_editor_by_auth_id_footer['ID'] );
-
 		?>
 		<?php if ( ! empty( $post_editor_by_auth_id_footer['ID'] ) ) : ?>
 
 			<div class="article_footer_data_author_reviewed_author editedby">
 				<div class="article_footer_data_author_profile">
-					<?php echo $profile_picture; ?>
+					<?php echo esc_html( $profile_picture ); ?>
 				</div>
 				<div class="article_footer_data_author_author_info">
 					Edited By
 					<span class="name">
-						<?php echo get_author_posts_link_by_id( $post_editor_by_auth_id_footer['ID'] ); ?>
+						<?php echo esc_html( get_author_posts_link_by_id( $post_editor_by_auth_id_footer['ID'] ) ); ?>
 					</span>
 				</div>
 
@@ -613,7 +593,6 @@ add_action( 'tha_content_while_after', 'eqd_single_after_entry_block_disclosure'
  **/
 function eqd_single_after_entry_block_disclosure() {
 	if ( has_block( 'acf/vendor-repeater' ) ) {
-		// $hide_section_per_page   = get_field( 'hide_student_loans_section', get_the_ID() );
 		$hide_table_section_only = get_field( 'hide_table_section_only', get_the_ID() );
 		if ( $hide_table_section_only ) {
 			return;
@@ -628,10 +607,9 @@ function eqd_single_after_entry_block_disclosure() {
 						the_row();
 						$company_title      = get_sub_field( 'company_title' );
 						$disclosure_content = get_sub_field( 'disclosure_content' );
-						// $company_title
-						$result = preg_replace( '/<p>/', '<p><b>' . $company_title . ':</b> ', $disclosure_content, 1 );
+						$result             = preg_replace( '/<p>/', '<p><b>' . $company_title . ':</b> ', $disclosure_content, 1 );
 						?>
-						<li class="vendor_disclosure_ol_li" id="sup_disclosure_<?php echo get_row_index(); ?>">
+						<li class="vendor_disclosure_ol_li" id="sup_disclosure_<?php echo esc_attr( get_row_index() ); ?>">
 							<?php echo wp_kses_post( $result ); ?>
 						</li>
 						<?php
@@ -658,8 +636,7 @@ add_action( 'tha_single_page_end', 'eqd_single_after_related_post', 10 );
  * @license      GPL-2.0+
  **/
 function eqd_single_after_related_post() {
-	$term    = get_queried_object();
-	$post_id = get_the_ID(); // Assuming you're in the loop
+	$post_id = get_the_ID(); // Assuming you're in the loop.
 
 	$primary_category = get_primary_category_id( $post_id );
 
@@ -674,9 +651,9 @@ function eqd_single_after_related_post() {
 			<section class="single_related_posts">
 				<div class="single_related_posts_container">
 					<header class="single_related_posts_header">
-						<h2 class="title">More on <?php echo get_cat_name( $primary_category ); ?></h2>
+						<h2 class="title">More on <?php echo esc_html( get_cat_name( $primary_category ) ); ?></h2>
 						<div class="single_related_posts_header_link">
-							<a href="<?php echo get_category_link( $primary_category ); ?>" class="btn" aria-label="More <?php echo get_cat_name( $primary_category ); ?> posts">More Posts</a>
+							<a href="<?php echo esc_url( get_category_link( $primary_category ) ); ?>" class="btn" aria-label="More <?php echo esc_attr( get_cat_name( $primary_category ) ); ?> posts">More Posts</a>
 						</div>
 					</header>
 					<div class="single_related_posts_loop">
@@ -695,7 +672,7 @@ function eqd_single_after_related_post() {
 							$args = array(
 								'post_type'      => 'post',
 								'posts_per_page' => 3,
-								'cat'            => $primary_category,  // Category ID
+								'cat'            => $primary_category,  // Category ID.
 								'orderby'        => 'date',
 								'order'          => 'DESC',
 							);
@@ -703,13 +680,12 @@ function eqd_single_after_related_post() {
 
 						$query = new WP_Query( $args );
 
-						$posts_array = array();
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
 								$query->the_post();
 								$author_email = get_the_author_meta( 'user_email' );
 								?>
-								<a class="single_related_posts_loop_item" href="<?php echo get_the_permalink(); ?>">
+								<a class="single_related_posts_loop_item" href="<?php echo esc_url( get_the_permalink() ); ?>">
 									<div class="single_related_posts_loop_item_image">
 										<?php
 										if ( has_post_thumbnail() ) {
@@ -741,11 +717,6 @@ function eqd_single_after_related_post() {
 		endif;
 	endif;
 }
-
-
-
-
-
 
 // Build the page.
 require get_template_directory() . '/index.php';
