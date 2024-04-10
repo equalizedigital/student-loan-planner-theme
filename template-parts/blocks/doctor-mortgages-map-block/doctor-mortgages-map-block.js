@@ -1,18 +1,15 @@
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 (function ($) {
 	/**
 	 * initializeBlock
 	 *
 	 * Adds custom JavaScript to the block HTML.
 	 *
-	 * @date    10/11/21
 	 * @since   1.0.0
-	 * @param $block
-	 *
-	 * @param object $block The block jQuery element.
-	 * @param object attributes The block attributes (only available when editing).
-	 * @return  void
 	 */
-	const initializeBlock = function ($block) {
+	// global rwc_base_vars
+	const initializeBlock = function () {
 		if (typeof rwc_base_vars === 'undefined') return;
 
 		if ($('.doctor-mortgages-block').length) {
@@ -27,25 +24,25 @@
 					},
 				}).done(function (response) {
 					if (true === response.success) {
-						const response_json = $.parseJSON(response.data);
+						const responseJson = $.parseJSON(response.data);
 
 						$('.doctor-mortgages-block-results-container').html(
-							response_json.html
+							responseJson.html
 						);
 
 						if ($('.doctor-mortgages-block-cta').length) {
 							$('.doctor-mortgages-block-cta').remove();
 						}
 
-						if (response_json.state.link != null) {
+						if (responseJson.state.link !== null) {
 							const button =
 								'<a href="' +
-								response_json.state.link.url +
+								responseJson.state.link.url +
 								'" class="doctor-mortgages-block-cta" aria-label="Best Physician Mortgage Loans in ' +
-								response_json.state.name +
+								responseJson.state.name +
 								'">Best Physician Mortgage Loans in' +
 								' ' +
-								response_json.state.abbreviation +
+								responseJson.state.abbreviation +
 								'</a>';
 							$(
 								'.doctor-mortgages-block-results-container'
@@ -53,11 +50,11 @@
 						}
 
 						$('.us-state').removeClass('active');
-						$('.' + response_json.state.abbreviation).addClass(
+						$('.' + responseJson.state.abbreviation).addClass(
 							'active'
 						);
 						$(
-							`.doctor-mortgages-block-select option[value='${response_json.state.abbreviation}']`
+							`.doctor-mortgages-block-select option[value='${responseJson.state.abbreviation}']`
 						).prop('selected', true);
 
 						$(
@@ -71,14 +68,14 @@
 							$(this).toggleClass('active');
 
 							const text = $('span', this).html();
-							if (text == 'Open') {
+							if (text === 'Open') {
 								$('span', this).html('Close');
-							} else if (text == 'Close') {
+							} else if (text === 'Close') {
 								$('span', this).html('Open');
 							}
 						});
 
-						if (state != null) {
+						if (state !== null) {
 							$(
 								'.doctor-mortgages-block-results-result-tab-button'
 							)
@@ -92,7 +89,7 @@
 							.first()
 							.toggle();
 					} else {
-						console.log(response);
+						// console.log(response);
 					}
 				});
 			}
@@ -103,21 +100,21 @@
 			});
 
 			$('.us-state').click(function () {
-				var state = null;
+				let state = null;
 
 				if ($(this).hasClass('us-state-isolabel')) {
 					const classList = $(this).attr('class').split(/\s+/);
 					$.each(classList, function (index, item) {
 						if (
-							item != 'us-state' ||
-							item != 'us-state-isolabel' ||
-							item != 'us-territory'
+							item !== 'us-state' ||
+							item !== 'us-state-isolabel' ||
+							item !== 'us-territory'
 						) {
 							state = item;
 						}
 					});
 				} else {
-					var state = $(this).attr('id').replace('us-state-', '');
+					state = $(this).attr('id').replace('us-state-', '');
 				}
 				rwc_coalition_map_ajax(state);
 			});
@@ -155,7 +152,7 @@
 				$('#us-state-label-' + state).removeClass('hover');
 			});
 			// NH, RI, MD, NJ, MA, VT, DE, CT, DC, PR, MP, GH, AS, VI
-			const rect_states = [
+			const rectStates = [
 				'us-state-NH',
 				'us-state-RI',
 				'us-state-MD',
@@ -180,7 +177,7 @@
 			$('.us-state').hover(function () {
 				if ($(this).attr('id')) {
 					const state = $(this).attr('id').replace('us-state-', '');
-					if (rect_states.includes($(this).attr('id'))) {
+					if (rectStates.includes($(this).attr('id'))) {
 						$('.us-state-isolabel.' + state).addClass('hover');
 					}
 				}
@@ -188,7 +185,7 @@
 			$('.us-state').mouseleave(function () {
 				if ($(this).attr('id')) {
 					const state = $(this).attr('id').replace('us-state-', '');
-					if (rect_states.includes($(this).attr('id'))) {
+					if (rectStates.includes($(this).attr('id'))) {
 						$('.us-state-isolabel.' + state).removeClass('hover');
 					}
 				}

@@ -1,6 +1,6 @@
 /**
  * An accessible menu for WordPress
- * @param $
+ * @param {Object} $
  */
 
 (function ($) {
@@ -154,18 +154,25 @@
 					});
 
 					$(navIcon).toggleClass('open');
-					$(navIcon).attr('aria-expanded') === 'false'
-						? $(navIcon).attr('aria-expanded', 'true')
-						: $(navIcon).attr('aria-expanded', 'false');
 
-					!nav.hasClass('menu-mobile-open')
-						? nav.addClass('menu-mobile-open')
-						: nav.removeClass('menu-mobile-open');
+					if ($(navIcon).attr('aria-expanded') === 'false') {
+						$(navIcon).attr('aria-expanded', 'true');
+					} else {
+						$(navIcon).attr('aria-expanded', 'false');
+					}
+
+					if (!nav.hasClass('menu-mobile-open')) {
+						nav.addClass('menu-mobile-open');
+					} else {
+						nav.removeClass('menu-mobile-open');
+					}
 
 					//Fix the weird behaviour
-					$(window).scrollTop() > 40
-						? $('#header-top').toggle()
-						: $('#header-top').slideToggle();
+					if ($(window).scrollTop() > 40) {
+						$('#header-top').toggle();
+					} else {
+						$('#header-top').slideToggle();
+					}
 
 					$('.primary-navigation').toggleClass('active');
 
@@ -191,18 +198,24 @@
 		});
 
 		$(this).toggleClass('open');
-		$(this).attr('aria-expanded') === 'false'
-			? $(this).attr('aria-expanded', 'true')
-			: $(this).attr('aria-expanded', 'false');
 
-		!nav.hasClass('menu-mobile-open')
-			? nav.addClass('menu-mobile-open')
-			: nav.removeClass('menu-mobile-open');
+		if ($(this).attr('aria-expanded') === 'false') {
+			$(this).attr('aria-expanded', 'true');
+		} else {
+			$(this).attr('aria-expanded', 'false');
+		}
 
-		//Fix the weird behaviour
-		$(window).scrollTop() > 40
-			? $('#header-top').toggle()
-			: $('#header-top').slideToggle();
+		if (!nav.hasClass('menu-mobile-open')) {
+			nav.addClass('menu-mobile-open');
+		} else {
+			nav.removeClass('menu-mobile-open');
+		}
+
+		if ($(window).scrollTop() > 40) {
+			$('#header-top').toggle();
+		} else {
+			$('#header-top').slideToggle();
+		}
 
 		$('.primary-navigation').toggleClass('active');
 
@@ -279,14 +292,14 @@
 
 	$('.primary-navigation li.has-submenus button').click(function () {
 		$(this).attr('aria-expanded', function (index, attr) {
-			if (attr == 'true') {
+			if (attr === 'true') {
 				attr = 'false';
 				$(this).siblings('.sub_menu').removeClass('open');
 			} else {
 				// let's close all the other open submenus first.
 				$('.primary-navigation li.has-submenus button').each(
-					function (index, elem) {
-						if ($(elem).attr('aria-expanded') == 'true') {
+					function (indexElem, elem) {
+						if ($(elem).attr('aria-expanded') === 'true') {
 							$(elem).attr('aria-expanded', 'false');
 							$(elem).siblings('.sub_menu').removeClass('open');
 						}
@@ -382,20 +395,20 @@
 				var lastFocusableElement = $('.sub_menu.active').find(focusableSelectors).last();
 
 				// mobile nav dropdown
-				if($(this).is(lastFocusableElement)){
+				if ($(this).is(lastFocusableElement)) {
 					$('.sub_menu_back').focus()
 				}
 
-				if($(this).is('#close-search')){
+				if ($(this).is('#close-search')) {
 					e.preventDefault();
 					$('.under_line .input-group input').focus()
 				}
 
-				if($(this).is('#modal_search')){
-					if(e.shiftKey) {
+				if ($(this).is('#modal_search')) {
+					if (e.shiftKey) {
 						//Focus previous input
 						e.preventDefault();
-					 }
+					}
 				}
 				if ($(this).is('.menu-item a')) {
 					// All focusable elements inside .sub_menu

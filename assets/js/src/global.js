@@ -8,9 +8,10 @@ jQuery(function ($) {
 
 	// Header Scroll
 	let didScroll = false,
-		lastScrollTop = 0,
-		delta = 5,
-		navbarHeight = navbarheight();
+		lastScrollTop = 0;
+
+	const delta = 5;
+	const navbarHeight = navbarheight();
 
 	$(window).scroll(function () {
 		didScroll = true;
@@ -36,11 +37,8 @@ jQuery(function ($) {
 			) {
 				// Scroll Down
 				$('body').removeClass('nav-down').addClass('nav-up');
-			} else {
-				// Scroll Up
-				if (st + $(window).height() < $(document).height()) {
-					$('body').removeClass('nav-up').addClass('nav-down');
-				}
+			} else if (st + $(window).height() < $(document).height()) {
+				$('body').removeClass('nav-up').addClass('nav-down');
 			}
 		} else {
 			$('body').removeClass('nav-down').removeClass('nav-up');
@@ -54,8 +52,6 @@ jQuery(function ($) {
 });
 
 window.addEventListener('load', function () {
-	const firstTab = null;
-	const lastTab = null;
 	let currentTab = 0;
 	let nextTab = 'tab-' + 0;
 	// tabbed content
@@ -69,8 +65,7 @@ window.addEventListener('load', function () {
 	if (tabbedContent) {
 		tabButtons.forEach((button) => {
 			button.addEventListener('keydown', function (event) {
-				let tgt = event.currentTarget,
-					flag = false;
+				let flag = false;
 
 				switch (event.key) {
 					case 'ArrowLeft':
@@ -136,7 +131,7 @@ window.addEventListener('load', function () {
 	}
 
 	function moveFocusToPreviousTab(button) {
-		if (currentTab == 0) {
+		if (currentTab === 0) {
 			currentTab = 0;
 		} else {
 			currentTab--;
@@ -144,7 +139,8 @@ window.addEventListener('load', function () {
 
 		nextTab = 'tab-' + currentTab;
 
-		var button = document.querySelector(`button[data-link="${nextTab}"]`);
+		button = document.querySelector(`button[data-link="${nextTab}"]`);
+
 		button.focus();
 	}
 
@@ -152,7 +148,7 @@ window.addEventListener('load', function () {
 		currentTab++;
 		nextTab = 'tab-' + currentTab;
 
-		var button = document.querySelector(`button[data-link="${nextTab}"]`);
+		button = document.querySelector(`button[data-link="${nextTab}"]`);
 		button.focus();
 	}
 });
@@ -168,7 +164,7 @@ window.addEventListener('load', function () {
 
 		tabButtons.forEach((button) => {
 			// Add a click event listener to each button
-			button.addEventListener('click', function (event) {
+			button.addEventListener('click', function () {
 				// Get the value of the data-target attribute
 				const targetClass = button.getAttribute('data-resourcelink');
 				// Remove active class from all items before adding to the new one
@@ -225,7 +221,7 @@ window.addEventListener('load', function () {
 			});
 
 		document.querySelectorAll('.dropdown-li').forEach(function (element) {
-			element.addEventListener('click', function (event) {
+			element.addEventListener('click', function () {
 				const target = document.getElementById(
 					'resource-links-dropdown'
 				);
@@ -239,7 +235,7 @@ window.addEventListener('load', function () {
 			});
 
 			element.addEventListener('keydown', function (event) {
-				if (event.keyCode == 13) {
+				if (event.keyCode === 13) {
 					const target = document.getElementById(
 						'resource-links-dropdown'
 					);
@@ -260,8 +256,8 @@ window.addEventListener('load', function () {
 					const panes = document.querySelectorAll(
 						'.resource-links-loop-container-item'
 					);
-					panes.forEach((element) => {
-						element.classList.remove(
+					panes.forEach((elementPane) => {
+						elementPane.classList.remove(
 							'resource-links-loop-container-item--active'
 						);
 					});
@@ -271,8 +267,8 @@ window.addEventListener('load', function () {
 						const targetElements = document.querySelectorAll(
 							'#' + targetClass
 						);
-						targetElements.forEach((element) => {
-							element.classList.add(
+						targetElements.forEach((elementTarget) => {
+							elementTarget.classList.add(
 								'resource-links-loop-container-item--active'
 							);
 						});
@@ -293,7 +289,7 @@ window.addEventListener('load', function () {
 		document
 			.querySelector('#resource-links-dropdown')
 			.addEventListener('keydown', function (event) {
-				if (event.key == 'ArrowDown') {
+				if (event.key === 'ArrowDown') {
 					const firstLink = document.querySelector(
 						'.resource-links-dropdown-list .dropdown-li'
 					);
@@ -364,7 +360,7 @@ window.addEventListener('load', function () {
 				currentIndex <
 					document.querySelectorAll('.dropdown-li').length - 1
 			) {
-				if (currentIndex - 1 != -1) {
+				if (currentIndex - 1 !== -1) {
 					document
 						.querySelectorAll('.dropdown-li')
 						[currentIndex - 1].focus();
@@ -435,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				menuFooterContainer &&
 				menuFooterContainer.classList.contains('menu-footer-container')
 			) {
-				var containerId = menuFooterContainer.id;
+				const containerId = menuFooterContainer.id;
 				title.setAttribute('aria-controls', containerId);
 			}
 			if (
@@ -444,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					'menu-home-footer-container'
 				)
 			) {
-				var containerId = menuFooterContainer.id;
+				const containerId = menuFooterContainer.id;
 				title.setAttribute('aria-controls', containerId);
 			}
 			if (
@@ -453,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					'menu-footer-privacy-container'
 				)
 			) {
-				var containerId = menuFooterContainer.id;
+				const containerId = menuFooterContainer.id;
 				title.setAttribute('aria-controls', containerId);
 			}
 
@@ -467,8 +463,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				function () {
 					// Check if there's a next sibling element
 					this.classList.toggle('active');
-					const sibling = this.nextElementSibling;
-					// if (sibling) {
 					const isExpanded = title.getAttribute('aria-expanded');
 					this.nextElementSibling.classList.toggle('active');
 					this.setAttribute(
@@ -535,16 +529,16 @@ jQuery(function ($) {
 		jQuery('.modal-btn').click(function (event) {
 			const isExpanded = $(this).attr('aria-expanded') === 'true';
 
-			modalId = $(event.currentTarget).data('modal');
+			const modalId = $(event.currentTarget).data('modal');
 			showModal(modalId);
 			$(this).attr('aria-expanded', !isExpanded);
 		});
 
-		jQuery('.modal .close-btn').click(function (e) {
+		jQuery('.modal .close-btn').click(function () {
 			hideModal();
 		});
 
-		jQuery('.modal .close-btnButton').click(function (e) {
+		jQuery('.modal .close-btnButton').click(function () {
 			hideModal();
 		});
 
@@ -559,14 +553,7 @@ jQuery(function ($) {
 
 	function trapEscapeKey(obj, evt) {
 		// if escape pressed
-		if (evt.which == 27) {
-			// get list of all children elements in given object
-			const o = obj.find('*');
-
-			// get list of focusable items
-			let cancelElement;
-			cancelElement = o.filter('.modal .close-btn');
-
+		if (evt.which === 27) {
 			// close the modal window
 			hideModal();
 			evt.preventDefault();
@@ -575,42 +562,33 @@ jQuery(function ($) {
 
 	function trapTabKey(obj, evt) {
 		// if tab or shift-tab pressed
-		if (evt.which == 9) {
+		if (evt.which === 9) {
 			// get list of all children elements in given object
 			const o = obj.find('*');
 
 			// get list of focusable items
-			let focusableItems;
-			focusableItems = o
+			const focusableItems = o
 				.filter(focusableElementsString)
 				.filter(':visible');
 
 			// get currently focused item
-			let focusedItem;
-			focusedItem = jQuery(':focus');
+			const focusedItem = jQuery(':focus');
 
 			// get the number of focusable items
-			let numberOfFocusableItems;
-			numberOfFocusableItems = focusableItems.length;
+			const numberOfFocusableItems = focusableItems.length;
 
 			// get the index of the currently focused item
-			let focusedItemIndex;
-			focusedItemIndex = focusableItems.index(focusedItem);
+			const focusedItemIndex = focusableItems.index(focusedItem);
 			if (evt.shiftKey) {
 				//back tab
 				// if focused on first item and user preses back-tab, go to the last focusable item
-				if (focusedItemIndex == 0) {
+				if (focusedItemIndex === 0) {
 					focusableItems.get(numberOfFocusableItems - 1).focus();
 					evt.preventDefault();
 				}
-			} else {
-				//forward tab
-
-				// if focused on the last item and user preses tab, go to the first focusable item
-				if (focusedItemIndex == numberOfFocusableItems - 1) {
-					focusableItems.get(0).focus();
-					evt.preventDefault();
-				}
+			} else if (focusedItemIndex === numberOfFocusableItems - 1) {
+				focusableItems.get(0).focus();
+				evt.preventDefault();
 			}
 		}
 	}
@@ -618,7 +596,7 @@ jQuery(function ($) {
 	function setFocusToFirstItemInModal(obj) {
 		// get list of all children elements in given object
 		const o = $(obj).find('*');
-		console.log(o.filter(focusableElementsString).filter(':visible'));
+		// console.log(o.filter(focusableElementsString).filter(':visible'));
 		// set the focus to the first keyboard focusable item
 		o.filter(focusableElementsString).filter(':visible').first().focus();
 	}
@@ -658,10 +636,10 @@ jQuery(function ($) {
 
 		jQuery('.modal').attr('aria-hidden', 'true');
 
-		const modal_videos = document.querySelectorAll('.modal video');
+		const modalVideos = document.querySelectorAll('.modal video');
 
 		// Pause each video found
-		modal_videos.forEach(function (video) {
+		modalVideos.forEach(function (video) {
 			video.pause();
 		});
 
@@ -893,11 +871,11 @@ window.addEventListener('load', function () {
 						if (tabOpen) {
 							item.classList.add('hidden');
 							item.classList.remove('animate');
-							items.forEach(function (item, index) {
+							items.forEach(function (itemButton, index) {
 								if (index < 6) {
-									item.tabIndex = 0;
+									itemButton.tabIndex = 0;
 								} else {
-									item.tabIndex = -1;
+									itemButton.tabIndex = -1;
 								}
 							});
 						} else {
@@ -923,20 +901,28 @@ window.addEventListener('load', function () {
 					// Hide the "Show All" button with a fade-out effect
 					this.classList.add('active');
 
-					tabOpen == false
-						? (highlightButtonText.innerText = 'Show Fewer')
-						: (highlightButtonText.innerText = initText);
+					if (tabOpen === false) {
+						highlightButtonText.innerText = 'Show Fewer';
+					} else {
+						highlightButtonText.innerText = initText;
+					}
 
 					// After the animation is complete, remove the "animate" class
 					setTimeout(function () {
 						items.forEach(function (item) {
-							tabOpen
-								? item.classList.remove('animate')
-								: item.classList.add('animate');
+							if (tabOpen) {
+								item.classList.remove('animate');
+							} else {
+								item.classList.add('animate');
+							}
 						});
 					}, 500);
 
-					tabOpen ? (tabOpen = false) : (tabOpen = true);
+					if (tabOpen) {
+						tabOpen = false;
+					} else {
+						tabOpen = true;
+					}
 				});
 			}
 		}
@@ -1009,9 +995,12 @@ document.addEventListener('DOMContentLoaded', function () {
 					items[0].focus();
 
 					this.classList.toggle('active');
-					tabOpen == false
-						? (highlightButtonLenderText = 'Show Fewer')
-						: (highlightButtonLenderText = initText);
+
+					if (tabOpen === false) {
+						highlightButtonLenderText = 'Show Fewer';
+					} else {
+						highlightButtonLenderText = initText;
+					}
 
 					tabOpen = !tabOpen; // Toggle the tabOpen state
 				});
@@ -1023,19 +1012,19 @@ document.addEventListener('DOMContentLoaded', function () {
 //
 
 window.addEventListener('DOMContentLoaded', () => {
-	const toc_container_entry_content = document.querySelectorAll(
+	const tocContainerEntryContent = document.querySelectorAll(
 		'.single .post_type_layout_standard .entry-content'
 	);
-	const toc_container = document.querySelectorAll('.toc_container');
+	const mainTocContainer = document.querySelectorAll('.toc_container');
 
-	if (toc_container.length > 0 || toc_container_entry_content.length > 0) {
+	if (mainTocContainer.length > 0 || tocContainerEntryContent.length > 0) {
 		// Get all <h2> elements within .toc_container
 		let tocContainer;
 		let h2Elements;
-		if (toc_container.length > 0) {
+		if (mainTocContainer.length > 0) {
 			tocContainer = document.querySelector('.toc_container');
 			h2Elements = tocContainer.querySelectorAll('h2');
-		} else if (toc_container_entry_content.length > 0) {
+		} else if (tocContainerEntryContent.length > 0) {
 			tocContainer = document.querySelector(
 				'.post_type_layout_standard .entry-content'
 			);
@@ -1114,15 +1103,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItem = null;
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
-		const toc_content_load_point = document.querySelector(
+		const tocContentLoadPoint = document.querySelector(
 			'.toc_content_load_point'
 		);
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
-				const id = entry.target.getAttribute('id');
 				const listItemCheck = document.querySelector(`.toc-nav li a`);
-				if (listItemCheck == null) {
+				if (listItemCheck === null) {
 					return;
 				}
 				if (entry.intersectionRatio > 0) {
@@ -1137,6 +1125,7 @@ window.addEventListener('DOMContentLoaded', () => {
 						activeListItemSidebar.classList.remove('active');
 					}
 
+					const id = entry.target.getAttribute('id');
 					// Add 'active' class to the one corresponding to the current entry
 					const listItem = document.querySelector(
 						`.toc-nav li a[href="#${id}"]`
@@ -1145,7 +1134,7 @@ window.addEventListener('DOMContentLoaded', () => {
 						`.contents-nav-mobile-menu li a[href="#${id}"]`
 					).parentElement;
 
-					if (toc_content_load_point) {
+					if (tocContentLoadPoint) {
 						const listItemSidebar = document.querySelector(
 							`.toc_content_load_point li a[href="#${id}"]`
 						).parentElement;
@@ -1166,9 +1155,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		// Track all sections that have an `id` applied
 		let targetElements;
-		if (toc_container.length > 0) {
+		if (mainTocContainer.length > 0) {
 			targetElements = document.querySelectorAll('.toc_container h2');
-		} else if (toc_container_entry_content.length > 0) {
+		} else if (tocContainerEntryContent.length > 0) {
 			targetElements = document.querySelectorAll(
 				'.single .post_type_layout_standard .entry-content h2'
 			);
@@ -1318,6 +1307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });
 
+/* global Swiper */
 document.addEventListener('DOMContentLoaded', function () {
 	const videoCarouselElement = document.querySelectorAll(
 		'.video-carousel-swiper-container'
@@ -1511,7 +1501,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		);
 
 		if (!swiperContainer) {
-			console.warn('Swiper container not found.');
+			// console.warn('Swiper container not found.');
 			return;
 		}
 
@@ -1586,15 +1576,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Pause all videos and remove the class from all .image-object elements except the current
 			document
 				.querySelectorAll('.slide-container video')
-				.forEach(function (video) {
+				.forEach(function (videoElement) {
 					if (
-						video !==
+						videoElement !==
 						button
 							.closest('.slide-container')
 							.querySelector('video')
 					) {
-						video.pause();
-						video.controls = false; // Hide controls
+						videoElement.pause();
+						videoElement.controls = false; // Hide controls
 						currentImagePlaceholder.classList.remove('image-hold');
 						slideContainer.classList.remove('image-hold');
 					}
@@ -1631,7 +1621,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 
 			// Play or pause the current video
-			video.paused ? video.play() : video.pause();
+			if (video.paused) {
+				video.play();
+			} else {
+				video.pause();
+			}
 		}
 
 		playButtons.forEach(function (button) {
@@ -1803,15 +1797,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (ariaReadElement) {
 				ariaReadElement.textContent = textContent; // Set the collected text
 			} else {
-				console.log('Element with ID "aria-read" not found.');
+				// console.log('Element with ID "aria-read" not found.');
 			}
 		}
 
 		function removeData($this) {
 			const dataprice = parseInt($this.data('price'), 10);
 			const dataenrollment = parseInt($this.data('enrollment'), 10);
-			const dataBenefits = $this.data('benefits');
-			const dataDisclaimer = $this.data('disclaimer');
 			const uniqueId = $this.data('unique-id');
 
 			const $targetPrice = jQuery('.large_set .price');
@@ -1840,7 +1832,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			function () {
 				const $this = jQuery(this);
 				const dataAdded = $this.data('added');
-				const pricing_calculator_accordion_item = $this.closest(
+				const pricingCalculatorAccordionItem = $this.closest(
 					'.pricing_calculator_accordion_item'
 				);
 
@@ -1855,7 +1847,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						.closest('.pricing_calculator_accordion_item')
 						.find('.pricing_calculator_accordion_add,.action.btn')
 						.attr('aria-pressed', 'false');
-					jQuery(pricing_calculator_accordion_item).removeClass(
+					jQuery(pricingCalculatorAccordionItem).removeClass(
 						'pricing_calculator_accordion_add_active'
 					);
 					removeData($this);
@@ -1876,7 +1868,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						.find('.pricing_calculator_accordion_add,.action.btn')
 						.attr('aria-pressed', 'true');
 					addData($this);
-					jQuery(pricing_calculator_accordion_item).addClass(
+					jQuery(pricingCalculatorAccordionItem).addClass(
 						'pricing_calculator_accordion_add_active'
 					);
 					$this
