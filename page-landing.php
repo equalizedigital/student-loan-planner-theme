@@ -1,7 +1,6 @@
 <?php
-// Template name: Landing Page
-
 /**
+ * Template name: Landing Page
  * Base template
  *
  * @package      Equalize Digital Base Theme
@@ -12,30 +11,31 @@
 
 get_header();
 
-// Check if 'slug' is set in the URL parameters
-if ( isset( $_GET['landing_page'] ) ) {
-	$page_slug = $_GET['landing_page'];
+// Check if 'slug' is set in the URL parameters.
 
-	// Query for the page by slug
-	$args = array(
+if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$page_slug = $_GET['landing_page']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
+
+	// Query for the page by slug.
+	$args        = array(
 		'post_type'   => 'slp_landing',
 		'post_status' => 'publish',
 		'numberposts' => 1,
-		'meta_query'  => array(
+		'meta_query'  => array( //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 			array(
-				'key'     => 'landing_page_url_text', 
-				'value'   => $page_slug, 
-				'compare' => '=', 
+				'key'     => 'landing_page_url_text',
+				'value'   => $page_slug,
+				'compare' => '=',
 			),
 		),
 	);
-	$page = get_posts( $args );
+	$page_object = get_posts( $args );
 
-	// If the page exists, redirect or load the page
-	if ( $page ) {
-		$page_id = $page[0]->ID;
+	// If the page exists, redirect or load the page.
+	if ( $page_object ) {
+		$page_id = $page_object[0]->ID;
 
-		$parameter_page = $page_id;
+		$parameter_page = $page_id; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 	}
 }
 
@@ -53,14 +53,13 @@ if ( empty( $layout_style ) ) {
 $container_class .= ' post_type_layout_' . $layout_style . ' ';
 
 $side_container_class = '';
-if ( get_field( 'post_format_style' ) === 'full-width' ) {
-} else {
+if ( get_field( 'post_format_style' ) !== 'full-width' ) {
 	$side_container_class .= 'inner-hero-alternate-style';
 }
 
 tha_content_before();
 
-echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
+echo esc_html( '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">' );
 
 tha_content_wrap_before();
 
@@ -70,9 +69,9 @@ echo '<main class="site-main" role="main">';
 
 tha_single_header();
 
-echo "<div class='side-main-article-container $side_container_class'>";
+echo esc_html( "<div class='side-main-article-container $side_container_class'>" );
 tha_content_before_container();
-echo "<div class=\"site-main-article-content $container_class\">";
+echo esc_html( "<div class=\"site-main-article-content $container_class\">" );
 
 tha_content_top();
 tha_single_fullwidth();

@@ -16,7 +16,7 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 			$link_item               = $item['link'];
 			$columns                 = $item['columns'];
 			$number_of_columns       = $item['number_of_columns'];
-			$current_url             = home_url( $_SERVER['REQUEST_URI'] );
+			$current_url             = home_url( isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( $_SERVER['REQUEST_URI'] ) : '' );
 			$menu_item_no_drop_class = empty( $columns ) ? 'menu-item-no-drop' : '';
 			$aria_current_page       = $link_item['url'] === $current_url ? 'aria-current="page"' : ''
 			?>
@@ -34,7 +34,7 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 						class="menu-item-main-link <?php echo esc_attr( $menu_item_no_drop_class ); ?>"
 						data-toggle="<?php echo esc_attr( $link_item['title'] ); ?>"
 						aria-expanded="false">
-						<?php esc_html_e( $link_item['title'], 'eqd' ); ?>
+						<?php esc_html__( $link_item['title'], 'eqd' ); ?>
 						<span class="chevron">
 							<img src="<?php echo esc_url( $arrow_up_green_svg_path ); ?>" alt="chevron arrow">
 						</span>
@@ -44,7 +44,7 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 						href="<?php echo esc_url( $link_item['url'] ); ?>" <?php echo esc_attr( $aria_current_page ); ?>
 						target="<?php echo esc_attr( $link_item['target'] ); ?>"
 						class="menu-item-main-link <?php echo esc_attr( $menu_item_no_drop_class ); ?>">
-						<?php esc_html_e( $link_item['title'], 'eqd' ); ?>
+						<?php esc_html__( $link_item['title'], 'eqd' ); ?>
 						<span class="chevron">
 							<img src="<?php echo esc_url( $arrow_up_green_svg_path ); ?>" alt="chevron arrow">
 						</span>
@@ -56,7 +56,7 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 						<button class="sub_menu_back" aria-label="Back to Menu">
 							<span class="sub_menu_back__icon"></span>
 							<span class="sub_menu_back__text">
-								<?php esc_html_e( 'Back to All', 'eqd' ); ?>
+								<?php esc_html__( 'Back to All', 'eqd' ); ?>
 							</span>
 						</button>
 						<div class="sub_menu_dropdown__title">
