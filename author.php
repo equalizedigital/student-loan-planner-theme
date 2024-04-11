@@ -48,7 +48,7 @@ tha_content_before();
 								<div class="info_link">
 									<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
 										<?php
-											if( empty( $link['title'] ){
+											if( empty( $link['title'] ) ) {
 												echo 'Schedule a Call';
 											} else {
 												echo wp_kses_post( $link['title'] );
