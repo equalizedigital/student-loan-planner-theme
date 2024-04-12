@@ -46,14 +46,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				while ( have_rows( 'services' ) ) :
 					the_row();
 					$row_index      = get_row_index();
-					$title          = get_sub_field( 'title' );
+					$acf_title      = get_sub_field( 'title' );
 					$description    = get_sub_field( 'description' );
 					$video          = get_sub_field( 'video' );
 					$price          = get_sub_field( 'price' );
 					$enrollment_fee = get_sub_field( 'enrollment_fee' );
 					$disclaimer     = get_sub_field( 'disclaimer' );
 					$benefits       = get_sub_field( 'benefits', false, false );
-					if ( $row_index === 1 ) :
+					if ( 1 === $row_index ) :
 						?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
 						<div class="pricing_calculator_template_container_main" >
@@ -73,12 +73,12 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								<div class="pricing_calculator_template_container_main_info_ul">
 										<?php
 										if ( $benefits ) {
-											// Split the content by line breaks into an array
-											$lines = explode( "\n", strip_tags( $benefits, '<br><li><ul><ol>' ) );
+											// Split the content by line breaks into an array.
+											$lines = explode( "\n", strip_tags( $benefits, '<br><li><ul><ol>' ) );  //phpcs:ignore WordPressVIPMinimum.Functions.StripTags.StripTagsTwoParameters
 
 											echo '<ul>';
 											foreach ( $lines as $line ) {
-												// Trim the line to remove whitespace and then check if it's not empty
+												// Trim the line to remove whitespace and then check if it's not empty.
 												$line = trim( $line );
 												if ( ! empty( $line ) ) {
 													echo '<li>' . esc_html( $line ) . ' </li>';
@@ -102,13 +102,13 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						<?php
 				else :
 					if ( $benefits ) {
-						$oldBenefits = $benefits;
-						$benefits    = '';
-						// Split the content by line breaks into an array
-						$lines = explode( "\n", strip_tags( $oldBenefits, '<br><li><ul><ol>' ) );
+						$old_benefits = $benefits;
+						$benefits     = '';
+						// Split the content by line breaks into an array.
+						$lines = explode( "\n", strip_tags( $old_benefits, '<br><li><ul><ol>' ) );  //phpcs:ignore WordPressVIPMinimum.Functions.StripTags.StripTagsTwoParameters
 
 						foreach ( $lines as $line ) {
-							// Trim the line to remove whitespace and then check if it's not empty
+							// Trim the line to remove whitespace and then check if it's not empty.
 							$line = trim( $line );
 							if ( ! empty( $line ) ) {
 								$benefits .= "<li data-unique-id='benefits_" . esc_attr( $block_id . '_' . $row_index ) . "'>" . esc_html( $line ) . '</li>';
@@ -128,18 +128,18 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						data-added="false"
 						data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 						aria-pressed="false"
-						aria-label="Add Service <?php echo wp_kses_post( $title ); ?>">
-							<img src="<?php echo get_template_directory_uri() . '/assets/images/'; ?>add.svg" alt="add">
+						aria-label="Add Service <?php echo wp_kses_post( $acf_title ); ?>">
+							<img src="<?php echo esc_url( get_template_directory_uri() ) . '/assets/images/'; ?>add.svg" alt="add">
 						</button>
-						<button type="button" aria-expanded="<?php echo $row_index > 2 ? 'false' : 'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
+						<button type="button" aria-expanded="<?php echo esc_attr( $row_index ) > 2 ? 'false' : 'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo esc_attr( get_row_index() ); ?>" id="pricing_calculator_accordion<?php echo esc_attr( get_row_index() ); ?>">
 							<span class="pricing_calculator_accordion-title">
-								<?php echo wp_kses_post( $title ); ?>
+								<?php echo wp_kses_post( $acf_title ); ?>
 								<span class="pricing_calculator_accordion-icon">
 								</span>
 							</span>
 						</button>
 					</div>
-					<div id="sect<?php echo get_row_index(); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo get_row_index(); ?>" class="pricing_calculator_accordion-panel" <?php echo $row_index > 2 ? 'hidden' : ''; ?>>
+					<div id="sect<?php echo esc_attr( get_row_index() ); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo esc_attr( get_row_index() ); ?>" class="pricing_calculator_accordion-panel" <?php echo esc_attr( $row_index ) > 2 ? 'hidden' : ''; ?>>
 						<div class="pricing_calculator_accordion-panel_content <?php echo empty( $video ) ? 'no-video' : ''; ?>">
 							<div class="pricing_calculator_accordion-panel_content_left">
 								<div class="title">
@@ -158,14 +158,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								data-added="false"
 								data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 								aria-pressed="false"
-								aria-label="Add Service <?php echo wp_kses_post( $title ); ?>"
+								aria-label="Add Service <?php echo wp_kses_post( $acf_title ); ?>"
 								>
 									Add Service
 								</button>
 							</div>
 							<div class="pricing_calculator_accordion-panel_content_right">
 								<?php
-								echo ( $video );
+								echo wp_kses_post( $video );
 								?>
 							</div>
 						</div>
