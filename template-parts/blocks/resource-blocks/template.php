@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -40,8 +40,8 @@ $blocks      = get_field( 'blocks' );
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
 	<header class="resource-blocks-block-container">
-		<h2 class="title"><?php echo esc_html( $title_field ); ?></h2>
-		<span class="subtitle"><?php echo esc_html( $subcopy ); ?></span>
+		<h2 class="title"><?php echo wp_kses_post( $title_field ); ?></h2>
+		<span class="subtitle"><?php echo wp_kses_post( $subcopy ); ?></span>
 	</header>
 
 	<div class="resource-blocks-block-container-list">
@@ -60,13 +60,13 @@ $blocks      = get_field( 'blocks' );
 
 
 				echo '<li class="resource-blocks-block-container-list-item__block">';
-					echo esc_html( "<a href=\"$link_row\">" );
+					echo wp_kses_post( "<a href=\"$link_row\">" );
 			if ( ! empty( $row['title'] ) ) {
 				$title_row = $row['title'];
 				?>
-							<h3 class="title"><?php esc_html( $title_row ); ?></h3>
+							<h3 class="title"><?php wp_kses_post( $title_row ); ?></h3>
 						<?php } ?>
-							<p><?php esc_html( $subcopy ); ?></p>
+							<p><?php wp_kses_post( $subcopy ); ?></p>
 						<?php
 						echo '</a>';
 						echo '</li>';

@@ -12,7 +12,7 @@
 $block_name = 'video_carousel_template';
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -88,7 +88,7 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 								$link_carousel_title  = $link_carousel['title'];
 								$link_carousel_target = $link_carousel['target'] ? $link_carousel['target'] : '_self';
 								?>
-								<a class="btn" href="<?php echo esc_url( $link_carousel_url ); ?>" target="<?php echo esc_attr( $link_carousel_target ); ?>"><?php echo esc_html( $link_carousel_title ); ?></a>
+								<a class="btn" href="<?php echo esc_url( $link_carousel_url ); ?>" target="<?php echo esc_attr( $link_carousel_target ); ?>"><?php echo wp_kses_post( $link_carousel_title ); ?></a>
 							<?php endif; ?>
 						</div>
 

@@ -6,7 +6,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) {
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 }
 
@@ -51,7 +51,7 @@ $link = get_field( 'link' );
 				<?php if ( ! empty( $link ) ) { ?>
 					<span class="content">
 						<a href="<?php echo esc_url( $link['url'] ); ?>" class="btn btn-dark-bg">
-							<?php echo esc_html( $link['title'] ); ?>
+							<?php echo wp_kses_post( $link['title'] ); ?>
 						</a>
 					</span>
 				<?php } ?>

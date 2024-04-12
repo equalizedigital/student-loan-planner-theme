@@ -12,7 +12,7 @@
 $block_name = 'link_tiles_template';
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -59,7 +59,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 	?>
 
 	<?php if ( $heading_text ) : ?>
-		<<?php echo $heading_level; ?>><?php echo esc_html( $heading_text ); ?></<?php echo $heading_level; ?>>
+		<<?php echo $heading_level; ?>><?php echo wp_kses_post( $heading_text ); ?></<?php echo $heading_level; ?>>
 	<?php endif; ?>
 
 	</div>
@@ -84,7 +84,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					echo wp_get_attachment_image( $icon['ID'], 'full', false, array( 'aria-hidden' => 'true' ) );
 				}
 				?>
-				<?php echo esc_html( $link_title ); ?>
+				<?php echo wp_kses_post( $link_title ); ?>
 			</a>
 			<?php endif; ?>
 			</li>

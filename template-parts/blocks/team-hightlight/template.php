@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -187,7 +187,7 @@ if ( have_rows( 'team' ) ) :
 							?>
 							<div class="link">
 								<a href="<?php echo esc_url( $booking_url ); ?>" class="btn">
-									Book a Call with <?php echo esc_html( $first_word ); ?>
+									Book a Call with <?php echo wp_kses_post( $first_word ); ?>
 								</a>
 							</div>
 						<?php } ?>

@@ -12,7 +12,7 @@
 $block_name = 'video_block_template';
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -70,7 +70,7 @@ $heading = get_field( 'heading' );
 
 			<?php if ( $heading_text ) : ?>
 				<?php if ( $heading ) : ?>
-					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo esc_html( $heading_text ); ?></<?php echo $heading_level; ?>>
+					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo wp_kses_post( $heading_text ); ?></<?php echo $heading_level; ?>>
 				<?php endif; ?>
 			<?php endif; ?>
 
@@ -81,7 +81,7 @@ $heading = get_field( 'heading' );
 				$link_title  = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
 				?>
-				<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+				<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo wp_kses_post( $link_title ); ?></a>
 			<?php endif; ?>
 			</div>
 		</div>

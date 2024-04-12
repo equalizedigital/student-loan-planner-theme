@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -70,9 +70,9 @@ if ( ! isset( $parameter_page ) ) {
 	<?php echo esc_attr( $class_name ); ?>">
 	<div class="ed_landing_works_editor_container">
 		<div class="ed_landing_works_editor_container_content">
-			<h2 class="heading"><?php echo esc_html( get_field( 'heading' ) ); ?></h2>
+			<h2 class="heading"><?php echo wp_kses_post( get_field( 'heading' ) ); ?></h2>
 			<?php
-				echo esc_html( get_field( 'how_does_the_consult_work' ) );
+				echo wp_kses_post( get_field( 'how_does_the_consult_work' ) );
 			?>
 		</div>
 
@@ -81,7 +81,7 @@ if ( ! isset( $parameter_page ) ) {
 		if ( get_field( 'how_does_the_consult_work_youtube_id' ) ) :
 			?>
 					<div class="ed_landing_works_editor_container_media">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_html( get_field( 'how_does_the_consult_work_youtube_id' ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo wp_kses_post( get_field( 'how_does_the_consult_work_youtube_id' ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 					</div>
 					<?php
 					endif;

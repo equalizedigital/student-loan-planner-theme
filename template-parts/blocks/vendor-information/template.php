@@ -10,7 +10,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -51,7 +51,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 		<div class="vendor-information-block-container-column-one">
 
 			<?php if ( $company_name ) { ?>
-				<h3 class="screen-reader-text"><?php echo esc_html( $company_name ); ?></h3>
+				<h3 class="screen-reader-text"><?php echo wp_kses_post( $company_name ); ?></h3>
 			<?php } ?>
 
 			<div class="vendor-information-block-container-column-one-image">
@@ -74,7 +74,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 									<path d="M7.77387 0.881322C8.07577 -0.034611 9.37143 -0.0346103 9.67334 0.881322L10.9884 4.8711C11.1236 5.28107 11.5065 5.55805 11.9382 5.55805H16.1631C17.1353 5.55805 17.5357 6.80498 16.7453 7.37105L13.3521 9.80121C12.9966 10.0558 12.8478 10.5119 12.9847 10.9273L14.2866 14.877C14.5894 15.7958 13.5411 16.5663 12.7546 16.003L9.30586 13.5331C8.95773 13.2838 8.48948 13.2838 8.14134 13.5331L4.69265 16.003C3.90614 16.5663 2.8578 15.7958 3.16065 14.877L4.46254 10.9273C4.59944 10.5119 4.4506 10.0558 4.09507 9.80121L0.701879 7.37105C-0.0885191 6.80498 0.311942 5.55805 1.28414 5.55805H5.50903C5.94069 5.55805 6.32363 5.28107 6.45876 4.8711L7.77387 0.881322Z" fill="#F19E3E"/>
 									</svg>
 								<?php endfor; ?>
-							<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
+							<div class="cover" style="width: calc(<?php echo esc_attr( 100 - ( $rating * 20 ) ); ?>% );"></div>
 						</span>
 					</div>
 				</div>
@@ -118,13 +118,13 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 			<div class="vendor-information-block-container-column-two-link">
 				<?php
 				if ( $button_url ) :
-					$target = '_blank';
-					$title  = ( $company_name ) ? 'Visit ' . $company_name : 'Visit';
+					$target     = '_blank';
+					$title_link = ( $company_name ) ? 'Visit ' . $company_name : 'Visit';
 					?>
 					<a href="<?php echo esc_url( $button_url ); ?>" class="vendor-information-block-container-column-two-link btn" target="<?php echo esc_attr( $target ); ?>">
 						<?php
-						if ( ! empty( $title ) ) {
-							echo wp_kses_post( $title );
+						if ( ! empty( $title_link ) ) {
+							echo wp_kses_post( $title_link );
 						}
 						if ( ! empty( $button_subtext ) ) :
 							?>
@@ -138,9 +138,9 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 
 					<button
 					class="vendor_information_block_container_column_two_link_more_info"
-					aria-label="More Information about <?php echo $company_name; ?>"
+					aria-label="More Information about <?php echo esc_attr( $company_name ); ?>"
 					aria-expanded="false"
-					aria-controls="vendor_information_block_container_column_two_link_more_info-btn-<?php echo $time_stamp; ?>"
+					aria-controls="vendor_information_block_container_column_two_link_more_info-btn-<?php echo esc_attr( $time_stamp ); ?>"
 					>
 						More Information
 						<span>
@@ -152,7 +152,7 @@ $time_stamp       = time() . wp_rand( 0, 23 );
 			</div>
 		</div>
 
-		<div class="vendor-information-block-container-more-info" hidden id="vendor_information_block_container_column_two_link_more_info-btn-<?php echo $time_stamp; ?>">
+		<div class="vendor-information-block-container-more-info" hidden id="vendor_information_block_container_column_two_link_more_info-btn-<?php echo esc_attr( $time_stamp ); ?>">
 			<?php echo wp_kses_post( $more_information ); ?>
 		</div>
 	</div>

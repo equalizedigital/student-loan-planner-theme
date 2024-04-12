@@ -12,7 +12,7 @@
 
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo esc_html( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
@@ -116,9 +116,9 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 							foreach ( $post_terms as $term ) {
 
 								if ( ++$i === $numItems ) {
-									echo esc_html( $term->name ) . '';
+									echo wp_kses_post( $term->name ) . '';
 								} else {
-									echo esc_html( $term->name ) . '<span>,</span> ';
+									echo wp_kses_post( $term->name ) . '<span>,</span> ';
 								}
 							}
 						}
@@ -138,9 +138,9 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 						$i        = 0;
 						foreach ( $post_terms as $term ) {
 							if ( ++$i === $numItems ) {
-								echo '<span>' . esc_html( $term->name ) . '</span> ';
+								echo '<span>' . wp_kses_post( $term->name ) . '</span> ';
 							} else {
-								echo '<span>' . esc_html( $term->name ) . ',</span> ';
+								echo '<span>' . wp_kses_post( $term->name ) . ',</span> ';
 							}
 						}
 					}

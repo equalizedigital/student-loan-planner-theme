@@ -51,7 +51,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					$video          = get_sub_field( 'video' );
 					$price          = get_sub_field( 'price' );
 					$enrollment_fee = get_sub_field( 'enrollment_fee' );
-					$disclaimer     = esc_html( get_sub_field( 'disclaimer' ) );
+					$disclaimer     = get_sub_field( 'disclaimer' );
 					$benefits       = get_sub_field( 'benefits', false, false );
 					if ( $row_index === 1 ) :
 						?>
