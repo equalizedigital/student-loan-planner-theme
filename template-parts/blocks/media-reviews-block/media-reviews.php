@@ -1,12 +1,12 @@
 <?php
-
 /**
- * media-reviews Block Template.
+ * Media-reviews Block Template.
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
+ * @package slp
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
@@ -15,9 +15,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'media-reviews-block-' . $block['id'];
+$block_id = 'media-reviews-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -33,7 +33,6 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title                   = get_field( 'title' );
 $block_style             = get_field( 'block_style' );
 $select_testimonials     = get_field( 'select_testimonials' );
 $testimonial_block_style = get_field( 'testimonial_block_style' );
@@ -48,7 +47,7 @@ if ( $remove_padding ) :
 endif;
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo $block_style === 'purple' ? 'media-reviews-block-purple' : ''; ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo 'purple' === $block_style ? 'media-reviews-block-purple' : ''; ?>">
 	<div class="media-reviews-container">
 		<div class="media-reviews-container-review-items-loop">
 
@@ -67,7 +66,7 @@ endif;
 			);
 		}
 
-			$testimonial_query = new WP_Query( $args );
+		$testimonial_query = new WP_Query( $args );
 
 		if ( $testimonial_query->have_posts() ) :
 			while ( $testimonial_query->have_posts() ) :
@@ -81,7 +80,7 @@ endif;
 							if ( $testimonial_block_style ) :
 
 								if ( ! $hide_author_image ) {
-									the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height)
+									the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height).
 								}
 								?>
 								<?php endif; ?>
@@ -91,11 +90,11 @@ endif;
 									<?php
 									$location = get_field( 'location', get_the_ID() );
 									?>
-									<?php echo $location ? $location : ''; ?>
+									<?php echo wp_kses_post( $location ? $location : '' ); ?>
 										<div class="date">
 										<?php
 										$date = get_field( 'date', get_the_ID() );
-										echo $date ? $date : '';
+										echo wp_kses_post( $date ? $date : '' );
 										?>
 										</div>
 								</div>
@@ -117,7 +116,7 @@ endif;
 														</svg>
 													<?php endfor; ?>
 
-													<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
+													<div class="cover" style="width: calc(<?php echo wp_kses_post( 100 - ( $rating * 20 ) ); ?>% ));"></div>
 											</span>
 										</div>
 									</div>
@@ -129,7 +128,7 @@ endif;
 								<?php
 								$content = get_the_content();
 								$content = '"' . $content . '"';
-								echo wp_strip_all_tags( apply_filters( 'the_content', $content ) );
+								echo wp_kses_post( wp_strip_all_tags( apply_filters( 'the_content', $content ) ) );
 								?>
 								</p>
 							</div>
@@ -148,7 +147,7 @@ endif;
 			$read_more_link = get_field( 'read_more_link' );
 			if ( $read_more_link ) :
 				?>
-			<a class="btn" href="<?php echo $read_more_link['url']; ?>"><?php echo $read_more_link['title']; ?></a>
+			<a class="btn" href="<?php echo esc_url( $read_more_link['url'] ); ?>"><?php echo wp_kses_post( $read_more_link['title'] ); ?></a>
 			<?php endif; ?>
 		</div>
 
