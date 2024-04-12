@@ -15,9 +15,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'affiliate-landing-block-' . $block['id'];
+$blockid = 'affiliate-landing-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$blockid = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -32,15 +32,11 @@ endif;
 
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
-// Load values and assing defaults.
-$title = get_field( 'title' );
+// Check if 'slug' is set in the URL parameters.
+if (isset($_GET['landing_page'])) {
+    $landing_page = sanitize_text_field($_GET['landing_page']);
 
-
-// Check if 'slug' is set in the URL parameters
-if ( isset( $_GET['landing_page'] ) ) {
-	$page_slug = $_GET['landing_page'];
-
-	// Query for the page by slug
+	// Query for the page by slug.
 	$args = array(
 		'post_type'   => 'slp_landing',
 		'post_status' => 'publish',
@@ -55,7 +51,7 @@ if ( isset( $_GET['landing_page'] ) ) {
 	);
 	$page = get_posts( $args );
 
-	// If the page exists, redirect or load the page
+	// If the page exists, redirect or load the page.
 	if ( $page ) {
 		$page_id = $page[0]->ID;
 
@@ -66,7 +62,7 @@ if ( isset( $_GET['landing_page'] ) ) {
 if ( ! isset( $parameter_page ) ) {
 
 	?>
-<section id="<?php echo esc_attr( $id ); ?>" class="ed_landing_works_editor
+<section id="<?php echo esc_attr( $blockid ); ?>" class="ed_landing_works_editor
 						<?php
 						if ( empty( $parameter_page ) ) {
 							echo 'ed_landing_works_editor_empty'; } else {
