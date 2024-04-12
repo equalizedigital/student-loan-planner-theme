@@ -44,7 +44,7 @@ endif;
 	<div class="team-hightlight-block-container">
 
 		<header class="team-hightlight-block-container-header">
-			<h2 class="team-hightlight-block-container-header__title"><?php echo esc_attr( $acf_title ); ?></h2>
+			<h2 class="team-hightlight-block-container-header__title"><?php echo esc_html( $acf_title ); ?></h2>
 		</header>
 
 		<ul class="team-hightlight-block-container-team-hightlight" id="team-hightlight-block-container-team-hightlight">
@@ -59,7 +59,6 @@ endif;
 					$member = get_sub_field( 'member' );
 					$author = get_field( 'post_author', $member->ID );
 					if ( ! is_null( $author->ID ) ) {
-						$author_id   = $author->ID;
 						$author_name = get_userdata( $author->ID );
 					}
 
@@ -77,9 +76,9 @@ endif;
 
 						<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
 							<?php if ( ! is_null( $author->ID ) ) : ?>
-								<a href="<?php echo get_site_url() . '/author/' . $author_name->user_nicename; ?>" class="team-hightlight-block-container-team-hightlight-member__button">
+								<a href="<?php echo esc_url( get_site_url() . '/author/' . $author_name->user_nicename ); ?>" class="team-hightlight-block-container-team-hightlight-member__button">
 							<?php else : ?>
-								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo get_row_index(); ?>-<?php echo esc_attr( $classid ); ?>" aria-label="Open Video">
+								<button class="team-hightlight-block-container-team-hightlight-member__button modal-btn" data-modal="modal<?php echo esc_html( get_row_index() ); ?>-<?php echo esc_html( $classid ); ?>" aria-label="Open Video">
 							<?php endif; ?>
 						<?php endif; ?>
 
@@ -101,7 +100,7 @@ endif;
 								<?php if ( ! empty( $member->ID ) ) : ?>
 								<span class="title"><?php echo wp_kses_post( get_the_title( $member->ID ) ); ?></span>
 								<?php endif; ?>
-								<span class="job"><?php the_field( 'job_title', $member->ID ); ?></span>
+								<span class="job"><?php echo wp_kses_post( get_field( 'job_title', $member->ID ) ); ?></span>
 							</div>
 
 							<?php if ( ! empty( $acf_use_alternative_styling ) ) : ?>
@@ -176,10 +175,10 @@ if ( have_rows( 'team' ) ) :
 							<?php echo wp_kses_post( $member->post_title ); ?>
 						</span>
 						<span class="job">
-							<?php the_field( 'job_title', $member->ID ); ?>
+							<?php echo wp_kses_post( get_field( 'job_title', $member->ID ) ); ?>
 						</span>
 						<div class="content">
-							<?php echo wpautop( wp_kses_post( $member->post_content ) ); ?>
+							<?php echo wp_kses_post( wpautop( wp_kses_post( $member->post_content ) ) ); ?>
 						</div>
 						<?php
 						if ( $booking_url ) {
