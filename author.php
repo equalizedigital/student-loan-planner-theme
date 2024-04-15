@@ -213,7 +213,7 @@ tha_content_before();
 
 						// Display the bio if it exists
 						if (!empty($author_bio)) {
-							echo '<div class="author-bio">' . esc_html($author_bio) . '</div>';
+							 echo wp_kses_post('<div class="author-bio">' . ($author_bio) . '</div>');
 						} else {
 							// Fallback to Yoast SEO's user bio if the custom bio is not set.
 							$yoast_user_bio = get_the_author_meta('wpseo_metadesc');
@@ -297,7 +297,7 @@ tha_content_before();
 									?>
 									<span class="post-tax-category">
 										<a href="<?php echo esc_url( get_category_link( $category_name->term_id ) ); ?>">
-											<?php echo esc_html( $category_name ); ?>
+											<?php echo wp_kses_post( $category_name ); ?>
 										</a>
 									</span>
 									<?php
