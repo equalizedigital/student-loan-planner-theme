@@ -43,14 +43,20 @@ tha_content_before();
 						<?php
 						if ( ! empty( get_field( 'consult_link', 'user_' . $curauth->ID ) ) ) :
 							$link = get_field( 'consult_link', 'user_' . $curauth->ID );
-							if (is_array($link)) {
-						?>
-						<div class="info_link">
-							<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
-							<?php echo wp_kses_post( $link['title'] ); ?>
-							</a>
-						</div>
-						<?php
+							if ( is_array( $link ) ) {
+								?>
+								<div class="info_link">
+									<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
+										<?php
+											if( empty( $link['title'] ) ) {
+												echo 'Schedule a Call';
+											} else {
+												echo wp_kses_post( $link['title'] );
+											}
+										?>
+									</a>
+								</div>
+								<?php
 							}
 						endif; ?>
 
@@ -179,7 +185,25 @@ tha_content_before();
 						echo wp_kses_post( $firstWord );
 						?>
 						</h2>
-						<?php echo wpautop( $idf['custom_author_bio'][0] ); ?>
+						<?php
+						echo wpautop( $idf['custom_author_bio'][0] );
+
+						$author_bio = get_the_author_meta('description');
+
+						// Display the bio if it exists
+						if (!empty($author_bio)) {
+							echo '<div class="author-bio">' . esc_html($author_bio) . '</div>';
+						} else {
+							// Fallback to Yoast SEO's user bio if the custom bio is not set.
+							$yoast_user_bio = get_the_author_meta('wpseo_metadesc');
+
+							// Check if Yoast's user bio exists and is not empty.
+							if ( !empty($yoast_user_bio) ) {
+								echo wpautop( $yoast_user_bio );
+							}
+						}
+
+						?>
 					</div>
 				</div>
 

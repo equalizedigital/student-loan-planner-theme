@@ -50,6 +50,7 @@ tha_body_top();
 			<?php tha_header_top(); ?>
 
             <div class="title-area">
+
 				<?php
 				$custom_logo_id = get_theme_mod( 'custom_logo' );
 				$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
@@ -60,8 +61,9 @@ tha_body_top();
 					$site_logo = esc_url( get_stylesheet_directory_uri() ) . '/images/default-logo.png'; // Path to default logo
 				}
 
-				$logo_tag = ( apply_filters( 'eqd_h1_site_title',
-						false ) || ( is_front_page() || is_home() ) ) ? 'h1' : 'p'; ?>
+				?>
+
+				<?php $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) ) ? 'h1' : 'p'; ?>
                 <<?php echo esc_attr( $logo_tag ); ?> class="site-title">
 
 				<?php
@@ -76,8 +78,7 @@ tha_body_top();
                 <a href="<?php echo esc_url( home_url() ); ?>" rel="home" <?php  echo wp_kses_post($site_logo_style); ?> >
 					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
                 </a>
-
-            </<?php esc_attr( $logo_tag ); ?>>
+            </<?php echo esc_attr( $logo_tag ); ?>>
         </div>
 
 		<?php
