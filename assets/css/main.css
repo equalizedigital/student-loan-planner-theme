@@ -8591,6 +8591,8 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   align-items: flex-end;
   justify-content: center;
   gap: 0 20px; }
+  .pricing_calculator_template_container_main_pricing_price > span {
+    min-width: 98px; }
   @media (max-width: 899px) {
     .pricing_calculator_template_container_main_pricing_price {
       align-items: flex-end;
