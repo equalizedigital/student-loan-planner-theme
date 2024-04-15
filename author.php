@@ -213,7 +213,7 @@ tha_content_before();
 
 						// Display the bio if it exists
 						if (!empty($author_bio)) {
-							 echo wp_kses_post('<div class="author-bio">' . ($author_bio) . '</div>');
+							 echo wpautop( wp_kses_post('<div class="author-bio">' . ($author_bio) . '</div>'));
 						} else {
 							// Fallback to Yoast SEO's user bio if the custom bio is not set.
 							$yoast_user_bio = get_the_author_meta('wpseo_metadesc');
