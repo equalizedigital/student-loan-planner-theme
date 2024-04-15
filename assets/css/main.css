@@ -8545,7 +8545,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   padding: 20px 20px;
   gap: 20px 100px;
   align-items: center; }
-  @media (min-width: 769px) {
+  @media (min-width: 901px) {
     .pricing_calculator_template_container_main {
       grid-template-columns: 1fr 1fr;
       padding: 56px 100px; } }
@@ -8581,30 +8581,27 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   font-style: normal;
   font-weight: 700;
   line-height: 90px;
-  /* 81.818% */
   color: #FFF;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  /* 100% */
   text-align: center;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 0 20px; }
-  @media (max-width: 767px) {
+  @media (max-width: 899px) {
     .pricing_calculator_template_container_main_pricing_price {
-      flex-direction: column;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center; } }
   .pricing_calculator_template_container_main_pricing_price .large_set {
     color: #FFF;
     font-size: 50px;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.2; }
-    @media (min-width: 769px) {
+    line-height: 0.8; }
+    @media (min-width: 901px) {
       .pricing_calculator_template_container_main_pricing_price .large_set {
         line-height: 90px;
         font-size: 110px; } }
@@ -8751,7 +8748,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     font-size: 16px;
     line-height: 1;
     font-weight: 600; }
-    @media (min-width: 769px) {
+    @media (min-width: 901px) {
       .pricing_calculator_accordion-title {
         line-height: 24px;
         font-size: 24px; } }
@@ -8777,7 +8774,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content {
       display: grid;
       gap: 60px; }
-      @media (min-width: 769px) {
+      @media (min-width: 901px) {
         .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content {
           grid-template-columns: 1fr 1fr; } }
       .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content.no-video {
@@ -8795,7 +8792,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
         font-style: normal;
         font-weight: 400;
         line-height: 28px; }
-        @media (min-width: 769px) {
+        @media (min-width: 901px) {
           .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content .content ul,
           .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content .content ol {
             display: grid;
