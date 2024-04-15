@@ -87,7 +87,7 @@ endif;
 								<?php
 								$thumbnail_id = get_post_thumbnail_id( $member->ID );
 								if ( ! empty( $member->ID ) ) {
-									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+									$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'large' );
 									$featured_image_url = $image_url[0];
 									if ( ! empty( $featured_image_url ) ) {
 										echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
@@ -164,7 +164,7 @@ if ( have_rows( 'team' ) ) :
 							<?php
 								$thumbnail_id = get_post_thumbnail_id( $member->ID );
 							if ( $thumbnail_id ) {
-								$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'large' );
+								$image_url          = wp_get_attachment_image_src( $thumbnail_id, 'full' );
 								$featured_image_url = $image_url[0];
 								echo wp_kses_post( '<img src="' . $featured_image_url . '" alt="' . get_the_title( $member->ID ) . '">' );
 							}
