@@ -8535,7 +8535,6 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   font-style: normal;
   font-weight: 700;
   line-height: 25px;
-  /* 125% */
   margin: 86px 0 26px; }
 
 .pricing_calculator_template_container_main {
@@ -8680,8 +8679,6 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
   gap: 12px; }
   .pricing_calculator_accordion:focus-within {
     border-color: blue; }
-  .pricing_calculator_accordion:focus-within h3 {
-    background-color: #eee; }
   .pricing_calculator_accordion .pricing_calculator_accordion_item_title {
     display: flex;
     gap: 20px;
@@ -8714,6 +8711,12 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     height: 30px;
     top: 20px;
     cursor: pointer; }
+  .pricing_calculator_accordion-trigger_heading {
+    display: block;
+    margin: 0;
+    position: relative;
+    text-align: left;
+    width: 100%; }
   .pricing_calculator_accordion-trigger {
     background: none;
     color: black;

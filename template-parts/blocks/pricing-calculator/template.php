@@ -33,6 +33,7 @@ if ( ! empty( $block['align'] ) ) :
 endif;
 
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
+$cta_link = get_field('cta_link');
 ?>
 
 
@@ -54,7 +55,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					$benefits = get_sub_field( 'benefits',false, false );
 					if($row_index === 1): ?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
-						<div class="pricing_calculator_template_container_main" >
+						<div class="pricing_calculator_template_container_main" id="pricing_calculator_template_container_main_init">
 							<div class="pricing_calculator_template_container_main_pricing"  >
 								<div class="pricing_calculator_template_container_main_pricing_price" >
 									<div class="large_set">$<span class="price"><?php echo wp_kses_post($price); ?></span></div>
@@ -87,7 +88,12 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 										?>
 								</div>
 								<div class="pricing_calculator_template_container_main_info_started">
-									<a class="btn btn-dark-bg" href="www.slpwealth.com/book" target="_blank">Get Started</a>
+									<?php
+									$cta_link = get_field('cta_link');
+									if ($cta_link): ?>
+										<a href="<?php echo esc_url($cta_link['url']); ?>" class="btn btn-dark-bg"><?php echo esc_html($cta_link['title']); ?></a>
+									<?php endif; ?>
+
 								</div>
 							</div>
 						</div>
@@ -95,7 +101,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						<div id="aria-read" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
 							<!-- Dynamic content changes will be announced by screen readers when updated here -->
 						</div>
-						<div class="heading">Add Additional Services:</div>
+						<h3 class="heading">Add Additional Services:</h3>
 
 				<?php else :
 					if ($benefits) {
@@ -128,13 +134,15 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						aria-label="Add Service <?php echo wp_kses_post($title); ?>">
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/'; ?>add.svg" alt="add">
 						</button>
-						<button type="button" aria-expanded="<?php echo$row_index>2? 'false':'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
-							<span class="pricing_calculator_accordion-title">
-								<?php echo wp_kses_post($title); ?>
-								<span class="pricing_calculator_accordion-icon">
+						<h4 class="pricing_calculator_accordion-trigger_heading">
+							<button type="button" aria-expanded="<?php echo$row_index>2? 'false':'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
+								<span class="pricing_calculator_accordion-title">
+									<?php echo wp_kses_post($title); ?>
+									<span class="pricing_calculator_accordion-icon">
+									</span>
 								</span>
-							</span>
-						</button>
+							</button>
+						</h4>
 					</div>
 					<div id="sect<?php echo get_row_index(); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo get_row_index(); ?>" class="pricing_calculator_accordion-panel" <?php echo$row_index>2? 'hidden':''; ?>>
 						<div class="pricing_calculator_accordion-panel_content <?php echo empty($video)? "no-video":''; ?>">
@@ -159,6 +167,10 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								>
 									Add Service
 								</button>
+
+								<a href="#pricing_calculator_template_container_main_init" class="btn">
+									Go to pricing
+								</a>
 							</div>
 							<div class="pricing_calculator_accordion-panel_content_right">
 								<?php
