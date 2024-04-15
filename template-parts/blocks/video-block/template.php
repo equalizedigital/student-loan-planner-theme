@@ -35,6 +35,8 @@ endif;
 $class_name         = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 $image_path         = get_template_directory_uri() . '/assets/images/';
 
+$video_file_cc         = get_field('video_file_cc');
+
 $optional_video_url         = get_field('optional_video_url');
 $video_path = null;
 if($optional_video_url){
@@ -46,6 +48,8 @@ $video_path_main         = get_field('video_file');
 if($video_path_main){
 	$video_path         = $video_path_main['url'];
 }
+
+
 
 
 $heading            = get_field( 'heading' );
@@ -89,6 +93,7 @@ $heading            = get_field( 'heading' );
 			<div class="video_block_template_container_media_video">
 				<video class="video-element video-placeholder" id="video-placeholder" loop autoplay muted>
 					<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
+
 				</video>
 				<div class="video_block_template_container_media_video_button">
 					<button class="modal-btn" data-modal="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-controls="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-expanded="false" aria-haspopup="dialog" aria-label="Play Video">
@@ -113,6 +118,9 @@ $heading            = get_field( 'heading' );
 		<div class="content">
 			<video class="video-element video-modal-autoplay" controlslist="nodownload" controls>
 				<source src="<?php echo wp_kses_post( $video_path ); ?>"  type="video/mp4">
+				<?php if($video_file_cc): ?>
+					<track src="<?php echo wp_kses_post( $video_file_cc['url'] ); ?>" kind="subtitles" srclang="en" label="English" default>
+				<?php endif; ?>
 			</video>
 		</div>
 		<button class="close-btn" aria-label="Close Modal">
