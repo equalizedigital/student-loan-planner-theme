@@ -68,7 +68,28 @@ tha_content_before();
 			echo '<div class="site-main-article-content">';
 				tha_content_top();
 			?>
-				<div class="slp-contact-info author-info">
+
+			<?php
+			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+			$args = array(
+				'author'              => $curauth->ID,
+				'paged'               => $paged,
+				'ignore_sticky_posts' => 1,
+			);
+
+			$author_query_page = new WP_Query( $args );
+
+			$author_info__bar = null;
+			if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) {
+				$author_info__bar = "author-info-bar";
+			}
+			if ( $author_query_page->have_posts() ) {
+				$author_info__bar = "author-info-bar";
+			}
+			?>
+
+				<div class="slp-contact-info author-info <?php echo esc_attr($author_info__bar); ?>">
 
 					<div class="slp-contact-info-details">
 						<?php if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) || ! empty( get_user_meta( $curauth->ID, 'linkedin', true ) ) ) : ?>
@@ -190,9 +211,14 @@ tha_content_before();
 
 						$author_bio = get_the_author_meta('description');
 
+
+
 						// Display the bio if it exists
 						if (!empty($author_bio)) {
-							echo '<div class="author-bio">' . esc_html($author_bio) . '</div>';
+							$formatted_bio = wpautop($author_bio);
+							$clean_bio = wp_kses_post($formatted_bio); // Sanitize content
+							echo '<div class="author-bio">' . $clean_bio . '</div>';
+
 						} else {
 							// Fallback to Yoast SEO's user bio if the custom bio is not set.
 							$yoast_user_bio = get_the_author_meta('wpseo_metadesc');
@@ -208,61 +234,51 @@ tha_content_before();
 				</div>
 
 				<?php if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) : ?>
-				<div class="author_recommended_posts">
-					<h2 class="author_recommended_posts_title"><?php echo wp_kses_post( $firstWord ); ?> recommends</h2>
-					<div class="author_recommended_posts_loop">
 
-					<?php
-						// Check rows existexists.
+					<div class="author_recommended_posts">
+						<h2 class="author_recommended_posts_title"><?php echo wp_kses_post( $firstWord ); ?> recommends</h2>
+						<div class="author_recommended_posts_loop">
 
-					while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
-						the_row();
-						$post           = get_sub_field( 'post' );
-						$id_post_editor = get_field( 'post_editor', $post->ID );
-						$author_url     = get_author_posts_url( $post->ID );
-						$author_name    = get_the_author_meta( 'display_name', $post->ID );
+						<?php
+							// Check rows existexists.
+
+						while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
+							the_row();
+							$post           = get_sub_field( 'post' );
+							$id_post_editor = get_field( 'post_editor', $post->ID );
+							$author_url     = get_author_posts_url( $post->ID );
+							$author_name    = get_the_author_meta( 'display_name', $post->ID );
+
+							?>
+									<div class="author_recommended_posts_content">
+										<a href="<?php the_permalink( $post->ID ); ?>" class="author_recommended_posts_content_post">
+											<div class="category">Student Loan Forgiveness</div>
+											<h3 class="title"><?php echo get_the_title( $post->ID ); ?></h3>
+										</a>
+										<div class="author">
+											<span class="author_recommended_posts_content_post-data">
+											<?php
+											$author_id = get_the_author_meta( 'ID' );
+											echo get_avatar( $author_id, 96 );
+											?>
+											</span>
+											<div class="author_recommended_posts_content_post-inf__link">
+												<a href="<?php the_permalink( $post->ID ); ?>">
+													By <?php echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author(); ?>
+												</a>
+											</div>
+											</div>
+									</div>
+								<?php
+								endwhile;
 
 						?>
-								<div class="author_recommended_posts_content">
-									<a href="<?php the_permalink( $post->ID ); ?>" class="author_recommended_posts_content_post">
-										<div class="category">Student Loan Forgiveness</div>
-										<h3 class="title"><?php echo get_the_title( $post->ID ); ?></h3>
-									</a>
-									<div class="author">
-										<span class="author_recommended_posts_content_post-data">
-										<?php
-										$author_id = get_the_author_meta( 'ID' );
-										echo get_avatar( $author_id, 96 );
-										?>
-										</span>
-										<div class="author_recommended_posts_content_post-inf__link">
-											<a href="<?php the_permalink( $post->ID ); ?>">
-												By <?php echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author(); ?>
-											</a>
-										</div>
-										</div>
-								</div>
-							<?php
-							endwhile;
+						</div>
 
-					?>
 					</div>
-
-				</div>
 				<?php endif; ?>
 
-				<?php
-				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-				$args = array(
-					'author'              => $curauth->ID,
-					// 'posts_per_page' => 9,
-					'paged'               => $paged,
-					'ignore_sticky_posts' => 1,
-				);
-
-				$author_query_page = new WP_Query( $args );
-				?>
 
 				<?php if ( $author_query_page->have_posts() ) : ?>
 
@@ -286,7 +302,7 @@ tha_content_before();
 									?>
 									<span class="post-tax-category">
 										<a href="<?php echo esc_url( get_category_link( $category_name->term_id ) ); ?>">
-											<?php echo esc_html( $category_name ); ?>
+											<?php echo wp_kses_post( $category_name ); ?>
 										</a>
 									</span>
 									<?php
@@ -301,6 +317,7 @@ tha_content_before();
 							</div>
 						<?php endwhile; ?>
 					</div>
+
 					<div class="pagination">
 					<?php
 						// Pagination
@@ -315,25 +332,26 @@ tha_content_before();
 							)
 						);
 					?>
-						</div>
+					</div>
 
-						<?php wp_reset_postdata(); ?>
+					<?php wp_reset_postdata(); ?>
 				</div>
 
-					<script>
-						document.addEventListener("DOMContentLoaded", function() {
-							var paginationLinks = document.querySelectorAll('.pagination a');
+				<script>
+					document.addEventListener("DOMContentLoaded", function() {
+						var paginationLinks = document.querySelectorAll('.pagination a');
 
-							paginationLinks.forEach(function(link) {
-								link.addEventListener('click', function(e) {
-									e.preventDefault();
-									var newUrl = link.getAttribute('href') + '#author_latest_from';
-									window.location.href = newUrl;
-								});
+						paginationLinks.forEach(function(link) {
+							link.addEventListener('click', function(e) {
+								e.preventDefault();
+								var newUrl = link.getAttribute('href') + '#author_latest_from';
+								window.location.href = newUrl;
 							});
 						});
+					});
 
-					</script>
+				</script>
+
 				<?php endif; ?>
 
 				<div id="modal_media_mentions" class="modal" aria-hidden="true" role="dialog" aria-modal="true">

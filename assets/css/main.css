@@ -835,6 +835,32 @@ iframe {
 .di-calculator .di-table_results {
   box-shadow: none !important; }
 
+.inline-logo-heading img {
+  display: inline-block;
+  margin-right: 8px; }
+
+.list-style-x,
+.list-style-check {
+  list-style-type: none;
+  padding-left: 0 !important; }
+
+.list-style-x li,
+.list-style-check li {
+  border-bottom: 1px solid #82BC46;
+  padding: 0.5em !important; }
+
+.list-style-x li:before {
+  font: 30px dashicons;
+  content: "\f335";
+  margin-right: 5px;
+  vertical-align: -30%; }
+
+.list-style-check li:before {
+  font: 30px dashicons;
+  content: "\f15e";
+  margin-right: 5px;
+  vertical-align: -30%; }
+
 /* Button
 --------------------------------------------- */
 .post-button,
@@ -2866,9 +2892,10 @@ img.wprm-comment-rating {
     .slp-contact-info {
       gap: 0 116px; } }
   .slp-contact-info.author-info {
-    border-bottom: 1px solid #D9D9D9;
     margin-bottom: 80px;
     padding: 0; }
+    .slp-contact-info.author-info.author-info-bar {
+      border-bottom: 1px solid #D9D9D9; }
     @media (min-width: 769px) {
       .slp-contact-info.author-info {
         grid-template-columns: 360px 1fr; } }
