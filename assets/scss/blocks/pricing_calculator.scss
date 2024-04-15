@@ -72,6 +72,10 @@
 	justify-content: center;
 	gap: 0 20px;
 
+	> span {
+		min-width: 98px;
+	}
+
 	@include media("<900px") {
 		align-items: flex-end;
 		justify-content: center;
