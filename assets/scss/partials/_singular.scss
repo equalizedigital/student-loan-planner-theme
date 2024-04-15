@@ -236,7 +236,6 @@ img.wprm-comment-rating {
 	.author-info {
 		display: flex;
 		flex-direction: column;
-
 	}
 
 	.comment-text {
@@ -575,9 +574,12 @@ img.wprm-comment-rating {
 	}
 
 	&.author-info {
-		border-bottom: 1px solid #D9D9D9;
 		margin-bottom: 80px;
 		padding: 0;
+
+		&.author-info-bar{
+			border-bottom: 1px solid #D9D9D9;
+		}
 
 		@include media(">tablet") {
 			grid-template-columns: 360px 1fr;
