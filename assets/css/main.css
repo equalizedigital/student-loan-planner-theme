@@ -835,6 +835,32 @@ iframe {
 .di-calculator .di-table_results {
   box-shadow: none !important; }
 
+.inline-logo-heading img {
+  display: inline-block;
+  margin-right: 8px; }
+
+.list-style-x,
+.list-style-check {
+  list-style-type: none;
+  padding-left: 0 !important; }
+
+.list-style-x li,
+.list-style-check li {
+  border-bottom: 1px solid #82BC46;
+  padding: 0.5em !important; }
+
+.list-style-x li:before {
+  font: 30px dashicons;
+  content: "\f335";
+  margin-right: 5px;
+  vertical-align: -30%; }
+
+.list-style-check li:before {
+  font: 30px dashicons;
+  content: "\f15e";
+  margin-right: 5px;
+  vertical-align: -30%; }
+
 /* Button
 --------------------------------------------- */
 .post-button,
