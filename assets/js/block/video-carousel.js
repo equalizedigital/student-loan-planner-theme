@@ -17,7 +17,6 @@ var Swiper = function () { "use strict"; function e(e) { return null !== e && "o
 const videoCarouselElement = document.querySelectorAll('.video-carousel-swiper-container');
 if (videoCarouselElement.length) {
 
-
 	var videoCarousel = new Swiper('.video-carousel-swiper-container', {
 		// Optional parameters
 		loop: true,
@@ -49,9 +48,11 @@ if (videoCarouselElement.length) {
 			},
 			768: {
 				slidesPerView: 4,
+				slidesPerGroup: 1,
 			},
 			1400: {
 				slidesPerView: 6,
+				slidesPerGroup: 3,
 			}
 		},
 
@@ -202,25 +203,50 @@ if (videoCarouselElement.length) {
 
 	// Adds a class to the swiper container when a target element within any slide gains focus
 	function handleFocusIn(event) {
-		const focusedElement = event.target;
+		if (tabPressed) {
+			const focusedElement = event.target;
 
-		if (isTargetElement(focusedElement)) {
-			swiperContainer.classList.add('container-focused-class'); // Replace 'container-focused-class' with your desired class
+			if (isTargetElement(focusedElement)) {
+				swiperContainer.classList.add('container-focused-class'); // Replace 'container-focused-class' with your desired class
+			}
 		}
 	}
 
 	// Removes the class from the swiper container when focus moves away from a target element within any slide
 	function handleFocusOut(event) {
-		const blurredElement = event.target;
+		if (tabPressed) {
+			const blurredElement = event.target;
 
-		if (isTargetElement(blurredElement)) {
-			swiperContainer.classList.remove('container-focused-class'); // Ensure this matches the class added in handleFocusIn
+			if (isTargetElement(blurredElement)) {
+				swiperContainer.classList.remove('container-focused-class'); // Ensure this matches the class added in handleFocusIn
+			}
 		}
 	}
 
-	// Add event listeners for focusin and focusout within the swiper container
-	swiperContainer.addEventListener('focusin', handleFocusIn);
-	swiperContainer.addEventListener('focusout', handleFocusOut);
+	let tabPressed = false;  // Flag to track if the Tab key was the cause of the focus event
+
+	// Event listener to detect Tab or Shift+Tab key presses
+	document.addEventListener('keydown', function (event) {
+		if (event.key === "Tab") {
+			tabPressed = true;  // Set the flag if Tab key is pressed
+		}
+	});
+
+	// Reset the tabPressed flag after the focus has fully shifted
+	swiperContainer.addEventListener('focusin', function (event) {
+		handleFocusIn(event);
+		tabPressed = false;  // Reset the flag after handling focus in
+	});
+
+	swiperContainer.addEventListener('focusout', function (event) {
+		handleFocusOut(event);
+		tabPressed = false;  // Reset the flag after handling focus out
+	});
+
+	// swiperContainer.addEventListener('focusin', handleFocusIn);
+	// swiperContainer.addEventListener('focusout', handleFocusOut);
+
+
 
 }
 
