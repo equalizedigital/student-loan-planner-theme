@@ -2555,6 +2555,17 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/assets\/js\/block\/video-carousel.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/js\/video-carousel-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/assets\/js\/blocks-min.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -2647,6 +2658,28 @@
       "mi" : 1,
       "oA" : 1,
       "oAP" : "\/assets\/js\/smoothscroll-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/assets\/js\/vendor\/swiper-bundle.min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/js\/swiper-bundle.min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/assets\/js\/video-carousel-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/video-carousel-min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
