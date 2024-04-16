@@ -8204,10 +8204,10 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    width: 170vw;
+    width: 250vw;
     max-width: unset;
     margin: 0 auto;
-    transform: translate(-40vw, 0px); }
+    transform: translate(-80vw, 0px); }
     @media (min-width: 769px) {
       .video_carousel_template .video-carousel-swiper-container {
         width: 130vw;
