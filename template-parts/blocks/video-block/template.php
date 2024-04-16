@@ -104,7 +104,7 @@ $heading            = get_field( 'heading' );
 			</div>
 			<div class="video_block_template_container_media_placeholder_action">
 				<button class="video_block_template_container_media_placeholder_action_btn" aria-label="Pause Video" aria-pressed="false">
-					<span class="img"><img src="<?php echo $image_path; ?>/pause.svg" alt="Pause Video"></span>
+					<span class="img"><img src="<?php echo $image_path; ?>/pause.svg" alt="Pause Background Video"></span>
 					<span class="text">Pause Video</span>
 				</button>
 			</div>
