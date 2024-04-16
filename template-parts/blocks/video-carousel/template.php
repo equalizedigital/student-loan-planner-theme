@@ -36,6 +36,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 $image_path = get_template_directory_uri() . '/assets/images/';
 ?>
 
+
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="video-carousel-swiper-container">
 
@@ -50,7 +51,7 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 				?>
 				<?php while ( have_rows( 'video_carousel' ) ) :
 					the_row();
-
+					$video_cc         = get_sub_field('video_cc');
 					?>
 
 				<div class="swiper-slide">
@@ -73,7 +74,12 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 							<?php
 							$video_url = get_sub_field( 'video_url' );
 							if ( $video_url ) : ?>
-								<video src="<?php echo esc_url( $video_url ); ?>"></video>
+								<video class="video-autoplay">
+									<source src="<?php echo esc_url( $video_url ); ?>"  type="video/mp4">
+								<?php if($video_cc): ?>
+									<track src="<?php echo esc_url( $video_cc['url'] ); ?>" kind="subtitles" srclang="en" label="English" default>
+								<?php endif; ?>
+								</video>
 							<?php endif; ?>
 						</div>
 
@@ -123,4 +129,34 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 
 	</div>
 </section>
+
+
+
+<?php
+        if ( has_block( 'acf/video-carousel' ) ) {
+			?>
+			<?php
+			// Construct the path to the JavaScript file
+			$js_file_path = get_template_directory_uri() . '/assets/js/video-carousel-min.js';
+
+			// Retrieve the contents of the JavaScript file
+			$js_content = file_get_contents($js_file_path);
+
+			// Check if the file was successfully read
+			if ($js_content !== false) {
+				// Output the JavaScript content within a <script> tag
+				echo '<script>' . $js_content . '</script>';
+			} else {
+				// Handle the error if the file could not be read
+				echo '<script>console.error("Unable to load the JavaScript file.");</script>';
+			}
+			?>
+
+			<?php
+        }
+
+?>
+
+
+
 
