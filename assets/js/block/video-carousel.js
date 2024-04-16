@@ -209,12 +209,18 @@ if (videoCarouselElement.length) {
 			if (isTargetElement(focusedElement)) {
 				swiperContainer.classList.add('container-focused-class'); // Replace 'container-focused-class' with your desired class
 			}
+		} else if (shiftTabPressed) {
+			const focusedElement = event.target;
+
+			if (isTargetElement(focusedElement)) {
+				swiperContainer.classList.add('container-focused-class'); // Replace 'container-focused-class' with your desired class
+			}
 		}
 	}
 
 	// Removes the class from the swiper container when focus moves away from a target element within any slide
 	function handleFocusOut(event) {
-		if (tabPressed) {
+		if (!tabPressed) {
 			const blurredElement = event.target;
 
 			if (isTargetElement(blurredElement)) {
@@ -224,23 +230,30 @@ if (videoCarouselElement.length) {
 	}
 
 	let tabPressed = false;  // Flag to track if the Tab key was the cause of the focus event
+	let shiftTabPressed = false;
 
 	// Event listener to detect Tab or Shift+Tab key presses
 	document.addEventListener('keydown', function (event) {
-		if (event.key === "Tab") {
-			tabPressed = true;  // Set the flag if Tab key is pressed
-		}
+ 	if (event.key === "Tab") {
+        if (event.shiftKey) {
+            shiftTabPressed = true;  // Set the flag if Shift + Tab keys are pressed
+            tabPressed = false;  // Ensure only one flag is set
+        } else {
+            tabPressed = true;  // Set the flag if only Tab key is pressed
+            shiftTabPressed = false;  // Ensure only one flag is set
+        }
+    }
 	});
 
 	// Reset the tabPressed flag after the focus has fully shifted
 	swiperContainer.addEventListener('focusin', function (event) {
 		handleFocusIn(event);
-		// tabPressed = false;  // Reset the flag after handling focus in
+		tabPressed = true;  // Reset the flag after handling focus in
 	});
 
 	swiperContainer.addEventListener('focusout', function (event) {
 		handleFocusOut(event);
-		// tabPressed = false;  // Reset the flag after handling focus out
+		tabPressed = false;  // Reset the flag after handling focus out
 	});
 
 	// swiperContainer.addEventListener('focusin', handleFocusIn);
