@@ -235,12 +235,12 @@ if (videoCarouselElement.length) {
 	// Reset the tabPressed flag after the focus has fully shifted
 	swiperContainer.addEventListener('focusin', function (event) {
 		handleFocusIn(event);
-		tabPressed = false;  // Reset the flag after handling focus in
+		// tabPressed = false;  // Reset the flag after handling focus in
 	});
 
 	swiperContainer.addEventListener('focusout', function (event) {
 		handleFocusOut(event);
-		tabPressed = false;  // Reset the flag after handling focus out
+		// tabPressed = false;  // Reset the flag after handling focus out
 	});
 
 	// swiperContainer.addEventListener('focusin', handleFocusIn);

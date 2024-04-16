@@ -146,9 +146,6 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 			if ($js_content !== false) {
 				// Output the JavaScript content within a <script> tag
 				echo '<script>' . $js_content . '</script>';
-			} else {
-				// Handle the error if the file could not be read
-				echo '<script>console.error("Unable to load the JavaScript file.");</script>';
 			}
 			?>
 
