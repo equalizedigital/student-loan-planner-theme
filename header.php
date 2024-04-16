@@ -49,13 +49,13 @@ tha_body_top();
 
 			<?php tha_header_top(); ?>
 
-            <div class="title-area">
+			<div class="title-area">
 
 				<?php
 				$custom_logo_id = get_theme_mod( 'custom_logo' );
-				$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+				$logo           = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 
-				if (has_custom_logo()) {
+				if ( has_custom_logo() ) {
 					$site_logo = esc_url( $logo[0] ); // This is your logo's URL
 				} else {
 					$site_logo = esc_url( get_stylesheet_directory_uri() ) . '/images/default-logo.png'; // Path to default logo
@@ -64,22 +64,22 @@ tha_body_top();
 				?>
 
 				<?php $logo_tag = ( apply_filters( 'eqd_h1_site_title', false ) ) ? 'h1' : 'p'; ?>
-                <<?php echo esc_attr( $logo_tag ); ?> class="site-title">
+				<<?php echo esc_attr( $logo_tag ); ?> class="site-title">
 
 				<?php
 				$site_logo_style = '';
 
-				if( $site_logo ) {
+				if ( $site_logo ) {
 					$image_url = $site_logo;
 
-					$site_logo_style = 'style="background-image:url(\'' . esc_url($image_url) . '\');"';
+					$site_logo_style = 'style="background-image:url(\'' . esc_url( $image_url ) . '\');"';
 				}
 				?>
-                <a href="<?php echo esc_url( home_url() ); ?>" rel="home" <?php  echo wp_kses_post($site_logo_style); ?> >
+				<a href="<?php echo esc_url( home_url() ); ?>" rel="home" <?php echo wp_kses_post( $site_logo_style ); ?> >
 					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-                </a>
-            </<?php echo esc_attr( $logo_tag ); ?>>
-        </div>
+				</a>
+			</<?php echo esc_attr( $logo_tag ); ?>>
+		</div>
 
 		<?php
 		$template_slug = get_page_template_slug( get_the_ID() );

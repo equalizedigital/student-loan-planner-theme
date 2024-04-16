@@ -74,7 +74,7 @@ $acf_title = get_field( 'title' );
 									<?php the_field( 'location', $id_post ); ?>
 								</span>
 								<?php
-								if ( ! empty( get_field( 'date', $id_post ) )  && ! empty( get_field( 'location', $id_post ) ) ) {
+								if ( ! empty( get_field( 'date', $id_post ) ) && ! empty( get_field( 'location', $id_post ) ) ) {
 									echo '|';
 								}
 								?>

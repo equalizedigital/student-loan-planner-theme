@@ -181,9 +181,10 @@ if ( have_rows( 'team' ) ) :
 						<div class="content">
 							<?php echo wpautop( wp_kses_post( $member->post_content ) ); ?>
 						</div>
-						<?php if ( $booking_url ) {
-							$booking_url = is_array($booking_url) ? reset($booking_url) : $booking_url;
-						?>
+						<?php
+						if ( $booking_url ) {
+							$booking_url = is_array( $booking_url ) ? reset( $booking_url ) : $booking_url;
+							?>
 							<div class="link">
 								<a href="<?php echo esc_url( $booking_url ); ?>" class="btn">
 									Book a Call with <?php echo esc_html( $first_word ); ?>

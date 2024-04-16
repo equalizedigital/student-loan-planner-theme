@@ -21,8 +21,8 @@ if ( empty( $layout_style ) ) {
 	$layout_style = 'standard';
 }
 
-$container_class .= ' post_type_layout_' . $layout_style . ' ';
-$hide_page_header = get_field('hide_page_header');
+$container_class     .= ' post_type_layout_' . $layout_style . ' ';
+$hide_page_header     = get_field( 'hide_page_header' );
 $side_container_class = '';
 
 if ( get_field( 'post_format_style' ) === 'full-width' ) {
@@ -30,7 +30,7 @@ if ( get_field( 'post_format_style' ) === 'full-width' ) {
 	$side_container_class .= 'inner-hero-alternate-style';
 }
 
-if( $hide_page_header ){
+if ( $hide_page_header ) {
 	$container_class .= ' post_type_layout_hide_page_header ';
 }
 

@@ -33,7 +33,7 @@ if ( ! empty( $block['align'] ) ) :
 endif;
 
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
-$cta_link = get_field('cta_link');
+$cta_link   = get_field( 'cta_link' );
 ?>
 
 
@@ -43,27 +43,29 @@ $cta_link = get_field('cta_link');
 			<div id="accordionGroup" class="pricing_calculator_accordion">
 
 			<?php if ( have_rows( 'services' ) ) : ?>
-				<?php while ( have_rows( 'services' ) ) :
+				<?php
+				while ( have_rows( 'services' ) ) :
 					the_row();
-					$row_index = get_row_index();
-					$title = get_sub_field( 'title' );
-					$description = get_sub_field( 'description' );
-					$video =	get_sub_field( 'video' );
-					$price = get_sub_field( 'price' );
+					$row_index      = get_row_index();
+					$title          = get_sub_field( 'title' );
+					$description    = get_sub_field( 'description' );
+					$video          = get_sub_field( 'video' );
+					$price          = get_sub_field( 'price' );
 					$enrollment_fee = get_sub_field( 'enrollment_fee' );
-					$disclaimer = esc_html( get_sub_field( 'disclaimer' ) );
-					$benefits = get_sub_field( 'benefits',false, false );
-					if($row_index === 1): ?>
+					$disclaimer     = esc_html( get_sub_field( 'disclaimer' ) );
+					$benefits       = get_sub_field( 'benefits', false, false );
+					if ( $row_index === 1 ) :
+						?>
 						<h3 class="screen-reader-text">Financial Planning</h3>
 						<div class="pricing_calculator_template_container_main" id="pricing_calculator_template_container_main_init">
 							<div class="pricing_calculator_template_container_main_pricing"  >
 								<div class="pricing_calculator_template_container_main_pricing_price" >
-									<div class="large_set">$<span class="price"><?php echo wp_kses_post($price); ?></span></div>
+									<div class="large_set">$<span class="price"><?php echo wp_kses_post( $price ); ?></span></div>
 									<span>/month <sup aria-hidden="true">1</sup></span>
 								</div>
 								<div class="pricing_calculator_template_container_main_pricing_plus">+</div>
 								<div class="pricing_calculator_template_container_main_pricing_info">
-									<span class="info_set">$<span class="info_set_number"><?php echo wp_kses_post($enrollment_fee); ?></span></span> enrollment fee
+									<span class="info_set">$<span class="info_set_number"><?php echo wp_kses_post( $enrollment_fee ); ?></span></span> enrollment fee
 								</div>
 								<div class="pricing_calculator_template_container_main_pricing_disclaimer"></div>
 							</div>
@@ -71,16 +73,16 @@ $cta_link = get_field('cta_link');
 								<div class="pricing_calculator_template_container_main_info_title">At this pricing, you’re getting:</div>
 								<div class="pricing_calculator_template_container_main_info_ul">
 										<?php
-										if ($benefits) {
+										if ( $benefits ) {
 											// Split the content by line breaks into an array
-											$lines = explode("\n", strip_tags($benefits, '<br><li><ul><ol>'));
+											$lines = explode( "\n", strip_tags( $benefits, '<br><li><ul><ol>' ) );
 
 											echo '<ul>';
-											foreach ($lines as $line) {
+											foreach ( $lines as $line ) {
 												// Trim the line to remove whitespace and then check if it's not empty
-												$line = trim($line);
-												if (!empty($line)) {
-													echo '<li>' . esc_html($line) . ' </li>';
+												$line = trim( $line );
+												if ( ! empty( $line ) ) {
+													echo '<li>' . esc_html( $line ) . ' </li>';
 												}
 											}
 											echo '</ul>';
@@ -89,32 +91,34 @@ $cta_link = get_field('cta_link');
 								</div>
 								<div class="pricing_calculator_template_container_main_info_started">
 									<?php
-									$cta_link = get_field('cta_link');
-									if ($cta_link): ?>
-										<a href="<?php echo esc_url($cta_link['url']); ?>" class="btn btn-dark-bg"><?php echo esc_html($cta_link['title']); ?></a>
+									$cta_link = get_field( 'cta_link' );
+									if ( $cta_link ) :
+										?>
+										<a href="<?php echo esc_url( $cta_link['url'] ); ?>" class="btn btn-dark-bg"><?php echo esc_html( $cta_link['title'] ); ?></a>
 									<?php endif; ?>
 
 								</div>
 							</div>
 						</div>
-						 <!-- Screen Reader Announcements Div -->
+						<!-- Screen Reader Announcements Div -->
 						<div id="aria-read" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
 							<!-- Dynamic content changes will be announced by screen readers when updated here -->
 						</div>
 						<h3 class="heading">Add Additional Services:</h3>
 
-				<?php else :
-					if ($benefits) {
+						<?php
+				else :
+					if ( $benefits ) {
 						$oldBenefits = $benefits;
-						$benefits = '';
+						$benefits    = '';
 						// Split the content by line breaks into an array
-						$lines = explode("\n", strip_tags($oldBenefits, '<br><li><ul><ol>'));
+						$lines = explode( "\n", strip_tags( $oldBenefits, '<br><li><ul><ol>' ) );
 
-						foreach ($lines as $line) {
+						foreach ( $lines as $line ) {
 							// Trim the line to remove whitespace and then check if it's not empty
-							$line = trim($line);
-							if (!empty($line)) {
-								$benefits .= "<li data-unique-id='benefits_".  esc_attr( $block_id . '_' . $row_index ) . "'>" . esc_html($line) . "</li>";
+							$line = trim( $line );
+							if ( ! empty( $line ) ) {
+								$benefits .= "<li data-unique-id='benefits_" . esc_attr( $block_id . '_' . $row_index ) . "'>" . esc_html( $line ) . '</li>';
 							}
 						}
 					}
@@ -124,46 +128,46 @@ $cta_link = get_field('cta_link');
 					<div class="pricing_calculator_accordion_item_title">
 						<button
 						class="pricing_calculator_accordion_add"
-						data-price="<?php echo wp_kses_post($price); ?>"
-						data-enrollment="<?php echo wp_kses_post($enrollment_fee); ?>"
-						data-disclaimer="<?php echo esc_attr($disclaimer); ?>"
-						data-benefits="<?php echo esc_attr($benefits); ?>"
+						data-price="<?php echo wp_kses_post( $price ); ?>"
+						data-enrollment="<?php echo wp_kses_post( $enrollment_fee ); ?>"
+						data-disclaimer="<?php echo esc_attr( $disclaimer ); ?>"
+						data-benefits="<?php echo esc_attr( $benefits ); ?>"
 						data-added="false"
 						data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 						aria-pressed="false"
-						aria-label="Add Service <?php echo wp_kses_post($title); ?>">
+						aria-label="Add Service <?php echo wp_kses_post( $title ); ?>">
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/'; ?>add.svg" alt="add">
 						</button>
 						<h4 class="pricing_calculator_accordion-trigger_heading">
-							<button type="button" aria-expanded="<?php echo$row_index>2? 'false':'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
+							<button type="button" aria-expanded="<?php echo $row_index > 2 ? 'false' : 'true'; ?>" class="pricing_calculator_accordion-trigger" aria-controls="sect<?php echo get_row_index(); ?>" id="pricing_calculator_accordion<?php echo get_row_index(); ?>">
 								<span class="pricing_calculator_accordion-title">
-									<?php echo wp_kses_post($title); ?>
+									<?php echo wp_kses_post( $title ); ?>
 									<span class="pricing_calculator_accordion-icon">
 									</span>
 								</span>
 							</button>
 						</h4>
 					</div>
-					<div id="sect<?php echo get_row_index(); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo get_row_index(); ?>" class="pricing_calculator_accordion-panel" <?php echo$row_index>2? 'hidden':''; ?>>
-						<div class="pricing_calculator_accordion-panel_content <?php echo empty($video)? "no-video":''; ?>">
+					<div id="sect<?php echo get_row_index(); ?>" role="region" aria-labelledby="pricing_calculator_accordion<?php echo get_row_index(); ?>" class="pricing_calculator_accordion-panel" <?php echo $row_index > 2 ? 'hidden' : ''; ?>>
+						<div class="pricing_calculator_accordion-panel_content <?php echo empty( $video ) ? 'no-video' : ''; ?>">
 							<div class="pricing_calculator_accordion-panel_content_left">
 								<div class="title">
-									<?php echo wp_kses_post($disclaimer); ?>
+									<?php echo wp_kses_post( $disclaimer ); ?>
 								</div>
 								<div class="content">
-									<?php echo wp_kses_post($description); ?>
+									<?php echo wp_kses_post( $description ); ?>
 								</div>
 
 								<button
 								class="action btn"
-								data-price="<?php echo wp_kses_post($price); ?>"
-								data-enrollment="<?php echo wp_kses_post($enrollment_fee); ?>"
-								data-disclaimer="<?php echo esc_attr($disclaimer); ?>"
-								data-benefits="<?php echo esc_attr($benefits); ?>"
+								data-price="<?php echo wp_kses_post( $price ); ?>"
+								data-enrollment="<?php echo wp_kses_post( $enrollment_fee ); ?>"
+								data-disclaimer="<?php echo esc_attr( $disclaimer ); ?>"
+								data-benefits="<?php echo esc_attr( $benefits ); ?>"
 								data-added="false"
 								data-unique-id="benefits_<?php echo esc_attr( $block_id . '_' . $row_index ); ?>"
 								aria-pressed="false"
-								aria-label="Add Service <?php echo wp_kses_post($title); ?>"
+								aria-label="Add Service <?php echo wp_kses_post( $title ); ?>"
 								>
 									Add Service
 								</button>
@@ -174,7 +178,8 @@ $cta_link = get_field('cta_link');
 							</div>
 							<div class="pricing_calculator_accordion-panel_content_right">
 								<?php
-								echo ($video); ?>
+								echo ( $video );
+								?>
 							</div>
 						</div>
 					</div>

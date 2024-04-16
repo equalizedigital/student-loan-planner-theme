@@ -29,7 +29,7 @@ if ( ! empty( $block['align'] ) ) :
 	$class_name .= ' align' . $block['align'];
 endif;
 
-$class_name     = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
+$class_name    = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 $coalition_map = new RqD_Doctor_Map();
 
 ?>
