@@ -454,39 +454,39 @@ function generate_custom_booking_button_shortcode( $atts ) {
 add_shortcode( 'custom_booking_button', 'generate_custom_booking_button_shortcode' );
 
 function eqd_logo_setup() {
-    $defaults = array(
-        'height'      => 70, // Set the desired height for the logo
-        'width'       => 240, // Set the desired width for the logo
-        'flex-height' => true, // Allow flexible height
-        'flex-width'  => true, // Allow flexible width
-        'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
-    );
-    add_theme_support( 'custom-logo', $defaults );
+	$defaults = array(
+		'height'      => 70, // Set the desired height for the logo
+		'width'       => 240, // Set the desired width for the logo
+		'flex-height' => true, // Allow flexible height
+		'flex-width'  => true, // Allow flexible width
+		'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
+	);
+	add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
 
 function enqueue_block_editor_assets_vc() {
 
-    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
+	wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
 }
 
-add_action('enqueue_block_editor_assets', 'enqueue_block_editor_assets_vc');
+add_action( 'enqueue_block_editor_assets', 'enqueue_block_editor_assets_vc' );
 
 
 function enqueue_swiper_assets() {
-    // Global post object to check the current post content
-    global $post;
-	$uri = get_theme_file_uri($relpath);
-    $vsn = filemtime(get_theme_file_path($relpath));
+	// Global post object to check the current post content
+	global $post;
+	$uri = get_theme_file_uri( $relpath );
+	$vsn = filemtime( get_theme_file_path( $relpath ) );
 
-    // Check if the post is loaded and contains the specific block
-    if (is_a($post, 'WP_Post') && has_block('acf/video-carousel', $post)) {
-        // Enqueue Swiper CSS
-        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
+	// Check if the post is loaded and contains the specific block
+	if ( is_a( $post, 'WP_Post' ) && has_block( 'acf/video-carousel', $post ) ) {
+		// Enqueue Swiper CSS
+		wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
 
-        // Enqueue your custom JS to initialize Swiper
-        wp_enqueue_script('custom-swiper-initialization', get_template_directory_uri() . '/assets/js/video-carousel-min.js', array(), $vsn, true);
-    }
+		// Enqueue your custom JS to initialize Swiper
+		wp_enqueue_script( 'custom-swiper-initialization', get_template_directory_uri() . '/assets/js/video-carousel-min.js', array(), $vsn, true );
+	}
 }
 
-add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper_assets' );

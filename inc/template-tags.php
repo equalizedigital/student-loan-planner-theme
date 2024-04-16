@@ -301,9 +301,15 @@ function eqd_tha_page_header() {
 
 		$current_term = get_queried_object();
 
-		if(!$hide_page_header):
-		?>
-		<header class="inner-hero <?php echo wp_kses_post( $container_class ); if ( isset( $current_term ) && !empty( $current_term->slug ) ) { echo 'taxonomy-' . esc_attr( $current_term->slug ); } ?>">
+		if ( ! $hide_page_header ) :
+			?>
+		<header class="inner-hero 
+			<?php
+			echo wp_kses_post( $container_class );
+			if ( isset( $current_term ) && ! empty( $current_term->slug ) ) {
+				echo 'taxonomy-' . esc_attr( $current_term->slug ); }
+			?>
+		">
 			<div class="inner-hero-container">
 
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
@@ -385,7 +391,7 @@ function eqd_tha_page_header() {
 
 		</header>
 
-		<?php
+			<?php
 		endif;
 	}
 }

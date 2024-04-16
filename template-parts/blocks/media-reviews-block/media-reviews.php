@@ -38,7 +38,7 @@ $block_style             = get_field( 'block_style' );
 $select_testimonials     = get_field( 'select_testimonials' );
 $testimonial_block_style = get_field( 'testimonial_block_style' );
 $remove_padding          = get_field( 'remove_padding' );
-$hide_author_image       = get_field('hide_author_image');
+$hide_author_image       = get_field( 'hide_author_image' );
 if ( $testimonial_block_style ) :
 	$class_name .= ' media-reviews-block_' . $testimonial_block_style;
 endif;
@@ -80,7 +80,7 @@ endif;
 							<?php
 							if ( $testimonial_block_style ) :
 
-								if(!$hide_author_image ){
+								if ( ! $hide_author_image ) {
 									the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height)
 								}
 								?>

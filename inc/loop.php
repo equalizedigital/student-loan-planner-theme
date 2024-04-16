@@ -92,7 +92,7 @@ function eqd_single_header() {
 		$link                    = get_field( 'single_post_link', $page_id );
 		$output                  = null;
 		$container_class         = '';
-		$title_override          = get_field('title_override', $page_id);
+		$title_override          = get_field( 'title_override', $page_id );
 
 
 		if ( get_field( 'post_format_style' ) === 'full-width' ) {
@@ -117,23 +117,23 @@ function eqd_single_header() {
 				?>
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
 					<?php
-					if($title_override){
-						 echo wp_kses_post($title_override);
+					if ( $title_override ) {
+						echo wp_kses_post( $title_override );
 					} else {
 						echo wp_kses_post( get_the_title() );
 					}
-					 ?>
+					?>
 				</h1>
 
 				<?php
-				if( !is_singular('slp_profession')){
-				// post author data
-				if ( get_field( 'post_format_style' ) === 'full-width' ) {
-					if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
-						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-					}
-					$id = get_the_author_meta( 'ID' );
-					?>
+				if ( ! is_singular( 'slp_profession' ) ) {
+					// post author data
+					if ( get_field( 'post_format_style' ) === 'full-width' ) {
+						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
+							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+						}
+						$id = get_the_author_meta( 'ID' );
+						?>
 					<span class="entry-author">
 						<a href="<?php echo esc_url( get_author_posts_url( $id ) ); ?>" aria-hidden="true" tabindex="-1">
 							<?php echo get_avatar( $id, 40 ); ?>
@@ -146,34 +146,36 @@ function eqd_single_header() {
 							<span class="entry-data"><?php echo wp_kses_post( $output ); ?></span>
 						</span>
 					</span>
-					<?php
-				}
+						<?php
+					}
 				}
 				?>
 
 				<?php
 				// optional subtitle
-				if( !is_singular('slp_profession')){
-				?>
+				if ( ! is_singular( 'slp_profession' ) ) {
+					?>
 				<span class="subtitle">
 					<?php echo wp_kses_post( $subtitle ); ?>
 				</span>
 
-				<?php
+					<?php
 				}
 				// optional link
 				?>
 				<?php
-				if( !is_singular('slp_profession')){
-				if ( ! empty( $link ) ) :
-					?>
+				if ( ! is_singular( 'slp_profession' ) ) {
+					if ( ! empty( $link ) ) :
+						?>
 					<span class="link">
 						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn">
 							<?php echo $link['title'] ? $link['title'] : ''; ?>
 						</a>
 					</span>
-				<?php endif;
-				} ?>
+						<?php
+				endif;
+				}
+				?>
 
 			</div>
 

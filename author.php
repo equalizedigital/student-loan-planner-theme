@@ -48,17 +48,18 @@ tha_content_before();
 								<div class="info_link">
 									<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
 										<?php
-											if( empty( $link['title'] ) ) {
-												echo 'Schedule a Call';
-											} else {
-												echo wp_kses_post( $link['title'] );
-											}
+										if ( empty( $link['title'] ) ) {
+											echo 'Schedule a Call';
+										} else {
+											echo wp_kses_post( $link['title'] );
+										}
 										?>
 									</a>
 								</div>
 								<?php
 							}
-						endif; ?>
+						endif;
+						?>
 
 					</div>
 				</div>
@@ -82,14 +83,14 @@ tha_content_before();
 
 			$author_info__bar = null;
 			if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) {
-				$author_info__bar = "author-info-bar";
+				$author_info__bar = 'author-info-bar';
 			}
 			if ( $author_query_page->have_posts() ) {
-				$author_info__bar = "author-info-bar";
+				$author_info__bar = 'author-info-bar';
 			}
 			?>
 
-				<div class="slp-contact-info author-info <?php echo esc_attr($author_info__bar); ?>">
+				<div class="slp-contact-info author-info <?php echo esc_attr( $author_info__bar ); ?>">
 
 					<div class="slp-contact-info-details">
 						<?php if ( ! empty( get_user_meta( $curauth->ID, 'twitter', true ) ) || ! empty( get_user_meta( $curauth->ID, 'linkedin', true ) ) ) : ?>
@@ -209,22 +210,22 @@ tha_content_before();
 						<?php
 						echo wpautop( $idf['custom_author_bio'][0] );
 
-						$author_bio = get_the_author_meta('description');
+						$author_bio = get_the_author_meta( 'description' );
 
 
 
 						// Display the bio if it exists
-						if (!empty($author_bio)) {
-							$formatted_bio = wpautop($author_bio);
-							$clean_bio = wp_kses_post($formatted_bio); // Sanitize content
+						if ( ! empty( $author_bio ) ) {
+							$formatted_bio = wpautop( $author_bio );
+							$clean_bio     = wp_kses_post( $formatted_bio ); // Sanitize content
 							echo '<div class="author-bio">' . $clean_bio . '</div>';
 
 						} else {
 							// Fallback to Yoast SEO's user bio if the custom bio is not set.
-							$yoast_user_bio = get_the_author_meta('wpseo_metadesc');
+							$yoast_user_bio = get_the_author_meta( 'wpseo_metadesc' );
 
 							// Check if Yoast's user bio exists and is not empty.
-							if ( !empty($yoast_user_bio) ) {
+							if ( ! empty( $yoast_user_bio ) ) {
 								echo wpautop( $yoast_user_bio );
 							}
 						}
