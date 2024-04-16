@@ -476,6 +476,8 @@ add_action('enqueue_block_editor_assets', 'enqueue_block_editor_assets_vc');
 function enqueue_swiper_assets() {
     // Global post object to check the current post content
     global $post;
+	$uri = get_theme_file_uri($relpath);
+    $vsn = filemtime(get_theme_file_path($relpath));
 
     // Check if the post is loaded and contains the specific block
     if (is_a($post, 'WP_Post') && has_block('acf/video-carousel', $post)) {
@@ -483,7 +485,7 @@ function enqueue_swiper_assets() {
         wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
 
         // Enqueue your custom JS to initialize Swiper
-        wp_enqueue_script('custom-swiper-initialization', get_template_directory_uri() . '/assets/js/video-carousel-min.js', array(), '1.0.0', true);
+        wp_enqueue_script('custom-swiper-initialization', get_template_directory_uri() . '/assets/js/video-carousel-min.js', array(), $vsn, true);
     }
 }
 
