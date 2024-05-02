@@ -135,12 +135,7 @@ $acf_title = get_field( 'title' );
 				$target = $link['target'] ?: '_self'; // Default target to '_self' if none is provided
 
 				echo "<a href='{$url}' target='{$target}' class='btn btn-dark-bg'>{$title}</a>";
-			} else {
-				?>
-				<a href="<?php echo get_site_url(); ?>/reviews/" class="btn btn-dark-bg">Read Our 2,400+ Reviews</a>
-				<?php
 			}
-
 			?>
 		</div>
 
