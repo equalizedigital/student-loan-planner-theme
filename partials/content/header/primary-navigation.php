@@ -70,7 +70,9 @@ $arrow_up_green_svg_path = get_template_directory_uri() . '/assets/icons/utility
 
 							<div class="menu-column">
 								<h3 class="menu-column_title <?php echo esc_attr( $hide_menu_title ) ? 'menu-column-hidden' : ''; ?>">
-									<?php echo esc_html( $sub_menu->name ); ?>
+									<?php if ( isset( $sub_menu->name ) ) {
+										echo esc_html( $sub_menu->name );
+									} ?>
 								</h3>
 								<?php
 								wp_nav_menu(
