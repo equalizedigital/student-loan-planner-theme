@@ -7,7 +7,7 @@
       "uuidString" : "F098CAB6-68FD-4BF6-AE0A-27C6B360832B"
     }
   ],
-  "creatorBuild" : "34564",
+  "creatorBuild" : "34484",
   "files" : {
     "\/.editorconfig" : {
       "cB" : 0,
@@ -2662,17 +2662,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/assets\/js\/vendor\/swiper-bundle.min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/swiper-bundle.min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/assets\/js\/video-carousel-min.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -4098,7 +4087,7 @@
     },
     "\/template-parts\/blocks\/accordion\/screenshot.png" : {
       "ft" : 32768,
-      "iS" : 7422,
+      "iS" : 79226,
       "oA" : 0,
       "oAP" : "\/template-parts\/blocks\/accordion\/screenshot.png",
       "oF" : 0,
@@ -25177,6 +25166,9 @@
       "no-new-native-nonconstructor" : {
         "active" : 0
       },
+      "no-new-object" : {
+        "active" : 0
+      },
       "no-new-symbol" : {
         "active" : 1
       },
@@ -25188,9 +25180,6 @@
       },
       "no-obj-calls" : {
         "active" : 1
-      },
-      "no-object-constructor" : {
-        "active" : 0
       },
       "no-octal" : {
         "active" : 1
@@ -25245,6 +25234,9 @@
       "no-return-assign" : {
         "active" : 0,
         "optionString" : "'except-parens'"
+      },
+      "no-return-await" : {
+        "active" : 0
       },
       "no-script-url" : {
         "active" : 0
