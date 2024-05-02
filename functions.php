@@ -88,6 +88,8 @@ function eqd_scripts() {
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		)
 	);
+
+	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
 
