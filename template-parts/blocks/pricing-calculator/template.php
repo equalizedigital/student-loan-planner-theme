@@ -173,7 +173,7 @@ $cta_link   = get_field( 'cta_link' );
 								</button>
 
 								<a href="#pricing_calculator_template_container_main_init" class="btn">
-									Go to pricing
+									Go to Pricing
 								</a>
 							</div>
 							<div class="pricing_calculator_accordion-panel_content_right">
