@@ -8836,6 +8836,9 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
       .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content video,
       .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content img {
         border-radius: 10px; }
+      .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content button, .pricing_calculator_accordion-panel .pricing_calculator_accordion-panel_content a {
+        display: inline-block;
+        margin-bottom: 5px; }
   .pricing_calculator_accordion-panel[hidden] {
     display: none; }
   .pricing_calculator_accordion fieldset {
