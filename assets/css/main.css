@@ -8266,7 +8266,7 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
         left: 0;
         right: 0;
         bottom: 0;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
         border-radius: 10px; }
   .video_carousel_template .slide-container {
