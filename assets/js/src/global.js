@@ -1444,39 +1444,19 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });
 
-
-// Function to set styles for fullscreen
-function applyFullscreenStyles(video) {
-	if (video.clientWidth / video.clientHeight > 1) {
-		// Apply styles for landscape aspect ratio
-		video.style.width = 'auto';
-		video.style.height = '100%';
-	} else {
-		// Apply styles for portrait aspect ratio
-		video.style.width = '100%';
-		video.style.height = 'auto';
-	}
-}
-
-// Function to remove styles when not in fullscreen
-function removeFullscreenStyles(video) {
-	video.style.width = '';
-	video.style.height = '';
-}
-
-// Event listener for entering/exiting fullscreen
-document.addEventListener('fullscreenchange', (event) => {
+// Video Modal Fullscreen.
+document.addEventListener('fullscreenchange', function() {
 	const video = document.querySelector('video');
 	if (document.fullscreenElement) {
-		// Apply styles when video goes fullscreen
-		applyFullscreenStyles(video);
+		// Apply object-fit: contain; when the video goes fullscreen
+		video.style.objectFit = 'contain';
 	} else {
-		// Remove styles when exiting fullscreen
-		removeFullscreenStyles(video);
+		// Remove the style when exiting fullscreen
+		video.style.objectFit = '';
 	}
 });
 
-// Optionally, handle vendor-prefixed fullscreenchange events
+// Optionally, handle vendor-prefixed fullscreenchange events.
 document.addEventListener('webkitfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('mozfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('MSFullscreenChange', fullscreenChangeHandler);
