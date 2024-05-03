@@ -1447,15 +1447,26 @@ document.addEventListener('DOMContentLoaded', function () {
 // Define a function to handle fullscreen changes.
 function fullscreenChangeHandler() {
     const video = document.querySelector('video');
-    // Ensure the video element exists.
+    // Log to see if the handler is triggered.
+    console.log("Fullscreen change event triggered");
+
+    // Check if the video element exists.
     if (video) {
-        if (document.fullscreenElement) {
+        // More specific checks for debugging.
+        console.log("Current fullscreen element:", document.fullscreenElement);
+        console.log("Is video the fullscreen element:", document.fullscreenElement === video);
+
+        if (document.fullscreenElement === video) {
             // Apply object-fit: contain when the video goes fullscreen
             video.style.objectFit = 'contain';
+            console.log("Applied object-fit: contain");
         } else {
             // Remove the style when exiting fullscreen
             video.style.objectFit = '';
+            console.log("Removed object-fit style");
         }
+    } else {
+        console.log("Video element not found");
     }
 }
 
@@ -1466,4 +1477,5 @@ document.addEventListener('fullscreenchange', fullscreenChangeHandler);
 document.addEventListener('webkitfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('mozfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('MSFullscreenChange', fullscreenChangeHandler);
+
 
