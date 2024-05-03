@@ -1443,3 +1443,40 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 });
+
+
+// Function to set styles for fullscreen
+function applyFullscreenStyles(video) {
+	if (video.clientWidth / video.clientHeight > 1) {
+		// Apply styles for landscape aspect ratio
+		video.style.width = 'auto';
+		video.style.height = '100%';
+	} else {
+		// Apply styles for portrait aspect ratio
+		video.style.width = '100%';
+		video.style.height = 'auto';
+	}
+}
+
+// Function to remove styles when not in fullscreen
+function removeFullscreenStyles(video) {
+	video.style.width = '';
+	video.style.height = '';
+}
+
+// Event listener for entering/exiting fullscreen
+document.addEventListener('fullscreenchange', (event) => {
+	const video = document.querySelector('video');
+	if (document.fullscreenElement) {
+		// Apply styles when video goes fullscreen
+		applyFullscreenStyles(video);
+	} else {
+		// Remove styles when exiting fullscreen
+		removeFullscreenStyles(video);
+	}
+});
+
+// Optionally, handle vendor-prefixed fullscreenchange events
+document.addEventListener('webkitfullscreenchange', fullscreenChangeHandler);
+document.addEventListener('mozfullscreenchange', fullscreenChangeHandler);
+document.addEventListener('MSFullscreenChange', fullscreenChangeHandler);
