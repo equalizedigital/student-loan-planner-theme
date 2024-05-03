@@ -1447,28 +1447,22 @@ document.addEventListener('DOMContentLoaded', function () {
 function fullscreenChangeHandler() {
     const video = document.querySelector('video');
     const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
-    
+
     console.log("Fullscreen change event triggered");
     console.log("Current fullscreen element:", fullscreenElement);
 
-    // Check if the video element exists and if the fullscreen element contains the video.
-    if (video && fullscreenElement && fullscreenElement.contains(video)) {
-        console.log("Video is contained within the fullscreen element.");
-        if (fullscreenElement === video || fullscreenElement.contains(video)) {
-            video.style.objectFit = 'contain';
-            console.log("Applied object-fit: contain");
-        } else {
-            video.style.objectFit = '';
-            console.log("Removed object-fit style");
-        }
+    // Check if the fullscreen element is defined and contains the video
+    if (fullscreenElement && fullscreenElement.contains(video)) {
+        console.log("Video is within the fullscreen element.");
+        video.style.objectFit = 'contain';
     } else {
-        console.log("Fullscreen element does not contain video");
+        console.log("Fullscreen element does not contain video or is undefined.");
         video.style.objectFit = '';
     }
 }
 
-// Listen for the standard and vendor-prefixed fullscreen change events.
 document.addEventListener('fullscreenchange', fullscreenChangeHandler);
 document.addEventListener('webkitfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('mozfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('MSFullscreenChange', fullscreenChangeHandler);
+
