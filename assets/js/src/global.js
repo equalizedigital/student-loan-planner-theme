@@ -1444,19 +1444,26 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });
 
-// Video Modal Fullscreen.
-document.addEventListener('fullscreenchange', function() {
-	const video = document.querySelector('video');
-	if (document.fullscreenElement) {
-		// Apply object-fit: contain; when the video goes fullscreen
-		video.style.objectFit = 'contain';
-	} else {
-		// Remove the style when exiting fullscreen
-		video.style.objectFit = '';
-	}
-});
+// Define a function to handle fullscreen changes.
+function fullscreenChangeHandler() {
+    const video = document.querySelector('video');
+    // Ensure the video element exists.
+    if (video) {
+        if (document.fullscreenElement) {
+            // Apply object-fit: contain when the video goes fullscreen
+            video.style.objectFit = 'contain';
+        } else {
+            // Remove the style when exiting fullscreen
+            video.style.objectFit = '';
+        }
+    }
+}
+
+// Listen for the standard fullscreen change event.
+document.addEventListener('fullscreenchange', fullscreenChangeHandler);
 
 // Optionally, handle vendor-prefixed fullscreenchange events.
 document.addEventListener('webkitfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('mozfullscreenchange', fullscreenChangeHandler);
 document.addEventListener('MSFullscreenChange', fullscreenChangeHandler);
+
