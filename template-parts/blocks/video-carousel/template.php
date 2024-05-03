@@ -77,7 +77,7 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 								$video_url = get_sub_field( 'video_url' );
 								if ( $video_url ) :
 									?>
-								<video class="video-autoplay">
+								<video class="video-autoplay" controlsList="nodownload">
 									<source src="<?php echo esc_url( $video_url ); ?>"  type="video/mp4">
 									<?php if ( $video_cc ) : ?>
 									<track src="<?php echo esc_url( $video_cc['url'] ); ?>" kind="subtitles" srclang="en" label="English" default>
