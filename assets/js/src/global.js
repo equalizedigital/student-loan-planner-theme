@@ -824,7 +824,6 @@ window.addEventListener("load", function () {
 });
 
 
-
 // Lender Table Show More
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -893,11 +892,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });
 
-
-
-
-//
-
+// Table of Contents.
 window.addEventListener('DOMContentLoaded', () => {
 
 	let toc_container_entry_content = document.querySelectorAll('.single .post_type_layout_standard .entry-content');
@@ -1108,8 +1103,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -1161,9 +1154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-
-
+// Video Block.
 document.addEventListener('DOMContentLoaded', function () {
 
 	const videoBlockElement = document.querySelectorAll('.image-placeholder-action');
@@ -1275,11 +1266,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 });
-
-
-
-
-
 
 // Pricing Block
 document.addEventListener('DOMContentLoaded', function () {
