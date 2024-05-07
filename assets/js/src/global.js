@@ -601,7 +601,7 @@ jQuery(function ($) {
 
 		// Pause each video found
 		modal_videos.forEach(function (video) {
-			video.pause();
+			//video.pause();
 		});
 
 		// set focus back to element that had it before the modal was opened
@@ -1196,7 +1196,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Pause all videos and remove the class from all .image-object elements except the current
 			document.querySelectorAll('.slide-container video').forEach(function (video) {
 				if (video !== button.closest('.slide-container').querySelector('video')) {
-					video.pause();
+					//video.pause();
 					video.controls = false; // Hide controls
 					currentImagePlaceholder.classList.remove('image-hold');
 					slideContainer.classList.remove('image-hold');
@@ -1215,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				// The code you want to execute when the video ends
 				document.querySelectorAll('.slide-container video').forEach(function (otherVideo) {
 					if (otherVideo !== video) { // Ensure we're not pausing or altering the video that just ended
-						otherVideo.pause();
+						//otherVideo.pause();
 						otherVideo.controls = false; // Hide controls
 						// Assuming 'currentImagePlaceholder' is defined in your broader script context
 						currentImagePlaceholder.classList.remove('image-hold');
@@ -1227,7 +1227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 
 			// Play or pause the current video
-			video.paused ? video.play() : video.pause();
+			//video.paused ? video.play() : video.pause();
 		}
 
 
@@ -1247,7 +1247,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
 
 			if (!videoElement.paused) {
-				videoElement.pause();
+				//videoElement.pause();
 				jQuery(this).show(); // Show the placeholder when the video is paused
 			} else {
 				videoElement.play();
@@ -1263,7 +1263,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		videoPlaceholderPause.addEventListener('click', function () {
 			if (!videoElement.paused) {
-				videoElement.pause();
+				//videoElement.pause();
 				videoPlaceholderPause.ariaPressed = true;
 				buttonText.textContent = 'Play Video'; // Change the text to 'Play Video'
 			} else {
@@ -1274,21 +1274,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 	}
-});
-
-window.addEventListener('resize', () => {
-    setTimeout(() => {  // Delay the check to ensure all resize handlers have completed
-        const videos = document.querySelectorAll('video');
-        console.log('Videos found:', videos.length);
-        videos.forEach(video => {
-            console.log('Video paused state:', video.paused);
-            if (!video.paused) {
-                video.play().catch(e => {
-                    console.log('Error attempting to play video on resize:', e);
-                });
-            }
-        });
-    }, 100);  // Adjust delay as needed to test timing issues
 });
 
 
