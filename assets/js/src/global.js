@@ -1275,7 +1275,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 });
-
+window.addEventListener('resize', () => {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        if (!video.paused) {
+            // The video was playing before resize, ensure it continues playing
+            video.play().catch(e => {
+                console.log('Error attempting to play video on resize:', e);
+            });
+        }
+    });
+});
 
 
 
