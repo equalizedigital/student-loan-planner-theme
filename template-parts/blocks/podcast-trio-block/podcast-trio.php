@@ -1,5 +1,4 @@
 <?php
-
 /**
  * podcast-trio Block Template.
  *

@@ -1,15 +1,18 @@
 <?php
 /**
- * full-width-columns-cta-inner Block Template.
+ * Full Width Columns CTA Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package full-width-columns-cta-inner
  */
 
-// var_dump($block['example']['attributes']['data']['preview_image_help']);
 if ( isset( $block['example']['attributes']['data']['preview_image_help'] ) ) :
 	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] ) );
 	return;

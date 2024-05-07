@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Author
+ * The template for displaying author pages.
  *
  * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
@@ -13,7 +13,7 @@ add_action( 'eqd_entry_title_after', 'eqd_entry_author', 12 );
 add_action( 'eqd_entry_title_after', 'eqd_entry_date', 12 );
 
 
-$curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) );
+$curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification is not needed here.
 
 $idf = get_user_meta( $curauth->ID );
 
@@ -31,27 +31,27 @@ tha_content_before();
 				<div class="contact-hero-container">
 					<figure class="contact-hero-container__image">
 						<?php $avatar_url = get_avatar_url( $curauth->ID, array( 'size' => 600 ) ); ?>
-						<img src="<?php echo $avatar_url; ?>" alt="<?php echo wp_kses_post( $curauth->display_name ); ?>">
+						<img src="<?php echo esc_url( $avatar_url ); ?>" alt="<?php echo wp_kses_post( $curauth->display_name ); ?>">
 					</figure>
 					<div class="contact-hero-container__content">
 						<h1 class="entry-title">
 							<?php echo wp_kses_post( $curauth->display_name ); ?>
 						</h1>
 						<span class="info">
-							<?php the_field( 'job_title', 'user_' . $curauth->ID ); ?>
+							<?php echo esc_html( get_field( 'job_title', 'user_' . $curauth->ID ) ); ?>
 						</span>
 						<?php
 						if ( ! empty( get_field( 'consult_link', 'user_' . $curauth->ID ) ) ) :
-							$link = get_field( 'consult_link', 'user_' . $curauth->ID );
-							if ( is_array( $link ) ) {
+							$consult_link = get_field( 'consult_link', 'user_' . $curauth->ID );
+							if ( is_array( $consult_link ) ) {
 								?>
 								<div class="info_link">
-									<a href="<?php echo wp_kses_post( $link['url'] ); ?>" class="btn btn-dark-bg">
+									<a href="<?php echo wp_kses_post( $consult_link['url'] ); ?>" class="btn btn-dark-bg">
 										<?php
-										if ( empty( $link['title'] ) ) {
+										if ( empty( $consult_link['title'] ) ) {
 											echo 'Schedule a Call';
 										} else {
-											echo wp_kses_post( $link['title'] );
+											echo wp_kses_post( $consult_link['title'] );
 										}
 										?>
 									</a>
@@ -71,11 +71,11 @@ tha_content_before();
 			?>
 
 			<?php
-			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+			$custom_paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 			$args = array(
 				'author'              => $curauth->ID,
-				'paged'               => $paged,
+				'paged'               => $custom_paged,
 				'ignore_sticky_posts' => 1,
 			);
 
@@ -130,17 +130,17 @@ tha_content_before();
 
 					<?php if ( get_field( 'expertise', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Expertise</h2>
-						<div class="detail"><?php the_field( 'expertise', 'user_' . $curauth->ID ); ?></div>
+						<div class="detail"><?php echo wp_kses_post( get_field( 'expertise', 'user_' . $curauth->ID ) ); ?></div>
 					<?php endif; ?>
 
 					<?php if ( get_field( 'education', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Education</h2>
-						<div class="detail"><?php the_field( 'education', 'user_' . $curauth->ID ); ?></div>
+						<div class="detail"><?php echo wp_kses_post( get_field( 'education', 'user_' . $curauth->ID ) ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( get_field( 'certifications', 'user_' . $curauth->ID ) ) : ?>
 						<h2 class="title">Certifications</h2>
-						<div class="detail"><?php the_field( 'certifications', 'user_' . $curauth->ID ); ?></div>
+						<div class="detail"><?php echo wp_kses_post( get_field( 'certifications', 'user_' . $curauth->ID ) ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( get_field( 'media_mentions', 'user_' . $curauth->ID ) ) : ?>
@@ -201,24 +201,24 @@ tha_content_before();
 					<div class="slp-contact-info-loop">
 						<h2 class="title">More About
 						<?php
-						$words     = explode( ' ', $idf['nickname'][0] );
-						$firstWord = $words[0];
+						$words      = explode( ' ', $idf['nickname'][0] );
+						$first_word = $words[0];
 
-						echo wp_kses_post( $firstWord );
+						echo wp_kses_post( $first_word );
 						?>
 						</h2>
 						<?php
-						echo wpautop( $idf['custom_author_bio'][0] );
+						echo wp_kses_post( wpautop( $idf['custom_author_bio'][0] ) );
 
 						$author_bio = get_the_author_meta( 'description' );
 
-
-
-						// Display the bio if it exists
+						// Display the bio if it exists.
 						if ( ! empty( $author_bio ) ) {
-							$formatted_bio = wpautop( $author_bio );
-							$clean_bio     = wp_kses_post( $formatted_bio ); // Sanitize content
-							echo '<div class="author-bio">' . $clean_bio . '</div>';
+							?>
+							<div class="author-bio">
+								<?php echo wp_kses_post( wpautop( $author_bio ) ); ?>
+							</div>
+							<?php
 
 						} else {
 							// Fallback to Yoast SEO's user bio if the custom bio is not set.
@@ -226,7 +226,7 @@ tha_content_before();
 
 							// Check if Yoast's user bio exists and is not empty.
 							if ( ! empty( $yoast_user_bio ) ) {
-								echo wpautop( $yoast_user_bio );
+								echo wp_kses_post( wpautop( $yoast_user_bio ) );
 							}
 						}
 
@@ -237,7 +237,7 @@ tha_content_before();
 				<?php if ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) : ?>
 
 					<div class="author_recommended_posts">
-						<h2 class="author_recommended_posts_title"><?php echo wp_kses_post( $firstWord ); ?> recommends</h2>
+						<h2 class="author_recommended_posts_title"><?php echo wp_kses_post( $first_word ); ?> recommends</h2>
 						<div class="author_recommended_posts_loop">
 
 						<?php
@@ -245,16 +245,16 @@ tha_content_before();
 
 						while ( have_rows( 'author_page_recommended_posts', 'user_' . $curauth->ID ) ) :
 							the_row();
-							$post           = get_sub_field( 'post' );
-							$id_post_editor = get_field( 'post_editor', $post->ID );
-							$author_url     = get_author_posts_url( $post->ID );
-							$author_name    = get_the_author_meta( 'display_name', $post->ID );
+							$recommended_post = get_sub_field( 'post' );
+							$id_post_editor   = get_field( 'post_editor', $recommended_post->ID );
+							$author_url       = get_author_posts_url( $recommended_post->ID ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- This is used in the template.
+							$author_name      = get_the_author_meta( 'display_name', $recommended_post->ID );
 
 							?>
 									<div class="author_recommended_posts_content">
-										<a href="<?php the_permalink( $post->ID ); ?>" class="author_recommended_posts_content_post">
+										<a href="<?php the_permalink( $recommended_post->ID ); ?>" class="author_recommended_posts_content_post">
 											<div class="category">Student Loan Forgiveness</div>
-											<h3 class="title"><?php echo get_the_title( $post->ID ); ?></h3>
+											<h3 class="title"><?php echo esc_html( get_the_title( $recommended_post->ID ) ); ?></h3>
 										</a>
 										<div class="author">
 											<span class="author_recommended_posts_content_post-data">
@@ -264,8 +264,8 @@ tha_content_before();
 											?>
 											</span>
 											<div class="author_recommended_posts_content_post-inf__link">
-												<a href="<?php the_permalink( $post->ID ); ?>">
-													By <?php echo ! empty( $id_post_editor ) ? $first_name . ' ' . $last_name : get_the_author(); ?>
+												<a href="<?php the_permalink( $recommended_post->ID ); ?>">
+													By <?php echo ! empty( $id_post_editor ) ? esc_html( $first_name ) . ' ' . esc_html( $last_name ) : get_the_author(); ?>
 												</a>
 											</div>
 											</div>
@@ -285,16 +285,16 @@ tha_content_before();
 
 				<div class="author_latest_from" id="author_latest_from">
 					<?php
-					$words     = explode( ' ', $curauth->display_name );
-					$firstWord = $words[0];
+					$words      = explode( ' ', $curauth->display_name );
+					$first_word = $words[0];
 					?>
-					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $firstWord ); ?></h2>
+					<h2 class="author_latest_from_title">The lastest from <?php echo wp_kses_post( $first_word ); ?></h2>
 					<div class="loop">
 						<?php
 						while ( $author_query_page->have_posts() ) :
 							$author_query_page->the_post();
-							$post_id    = get_the_ID();
-							$categories = get_the_category( $post_id );
+							$author_post_id = get_the_ID();
+							$categories     = get_the_category( $author_post_id );
 							?>
 							<div class="post">
 								<?php
@@ -321,15 +321,17 @@ tha_content_before();
 
 					<div class="pagination">
 					<?php
-						// Pagination
-						$big = 999999999; // need an unlikely integer
+						// Pagination.
+						$big = 999999999; // need an unlikely integer.
 
-						echo paginate_links(
-							array(
-								'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-								'format'  => '?paged=%#%',
-								'current' => max( 1, get_query_var( 'paged' ) ),
-								'total'   => $author_query_page->max_num_pages,
+						echo wp_kses_post(
+							paginate_links(
+								array(
+									'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+									'format'  => '?paged=%#%',
+									'current' => max( 1, get_query_var( 'paged' ) ),
+									'total'   => $author_query_page->max_num_pages,
+								)
 							)
 						);
 					?>

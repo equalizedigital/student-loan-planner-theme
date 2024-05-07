@@ -15,9 +15,9 @@ function eqd_site_header() {
 
 	if ( has_nav_menu( 'primary' ) ) : ?>
 		<div class="menu-container">
-			<button class="menu-button"><span class="screen-reader-text"><?php esc_html_e( 'Menu', 'rwc' ); ?></span></button>
+			<button class="menu-button"><span class="screen-reader-text"><?php esc_html_e( 'Menu', 'eqd' ); ?></span></button>
 			<div id="site-header-menu" class="site-header-menu">
-				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'rwc' ); ?>">
+				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'eqd' ); ?>">
 				<?php
 				wp_nav_menu(
 					array(
@@ -36,12 +36,15 @@ function eqd_site_header() {
 }
 add_action( 'tha_header_bottom', 'eqd_site_header', 11 );
 
+/**
+ * Mobile Menu
+ */
 function slp_cta_button() {
 	$slp_cta = get_field( 'cta_header', 'option' );
 	if ( isset( $slp_cta ) ) :
 		?>
 		<div class="cta-header">
-			<a href="<?php echo esc_attr( $slp_cta['url'] ); ?>" <?php echo esc_html( slp_a_target( $slp_cta['target'] ) ); ?>>
+			<a href="<?php echo esc_url( $slp_cta['url'] ); ?>" <?php echo esc_html( slp_a_target( $slp_cta['target'] ) ); ?>>
 				<?php echo esc_html( $slp_cta['title'] ); ?>
 			</a>
 		</div>
@@ -97,7 +100,7 @@ function eqd_search_toggle() {
 }
 
 /**
- * help btn
+ * Help btn
  */
 function eqd_help_btn() {
 	$output  = '<button aria-label="Get Help" class="btn">';
@@ -160,7 +163,7 @@ function eqd_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	return $output;
 }
-/* add_filter( 'walker_nav_menu_start_el', 'eqd_nav_add_dropdown_icons', 10, 4 ); */
+// add_filter( 'walker_nav_menu_start_el', 'eqd_nav_add_dropdown_icons', 10, 4 ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment this line to add dropdown icons to top-level menu items.
 
 /**
  * Previous/Next Archive Navigation (disabled)
@@ -170,7 +173,7 @@ function eqd_archive_navigation() {
 		the_posts_navigation();
 	}
 }
-/* add_action( 'tha_content_while_after', 'eqd_archive_navigation' ); */
+// add_action( 'tha_content_while_after', 'eqd_archive_navigation' ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment this line to add dropdown icons to top-level menu items.
 
 /**
  * Archive Paginated Navigation

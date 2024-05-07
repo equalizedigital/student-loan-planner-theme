@@ -6,7 +6,7 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) {
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 }
 

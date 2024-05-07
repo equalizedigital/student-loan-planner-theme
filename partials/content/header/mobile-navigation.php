@@ -1,3 +1,15 @@
+<?php
+/**
+ * Mobile Navigation
+ *
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
+ **/
+
+?>
+
 <section class="mobile-navigation">
 	<button type="button" id="nav-icon" title="Mobile Menu" aria-controls="primary-navigation" aria-expanded="false">
 		<span></span>
@@ -16,7 +28,7 @@
 		<div class="mobile-navigation-footer">
 			<div class="mobile-search">
 				<form action="/" method="get">
-					<img src="<?php echo get_template_directory_uri() . '/assets/icons/utility'; ?>/search-white.svg" alt="search">
+					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/icons/utility' ); ?>/search-white.svg" alt="search">
 					<label for="search" class="sr-only">Search for tools, occupations, resources, etc....</label>
 					<input type="text" name="s" placeholder="Search" id="search" value="<?php the_search_query(); ?>"/>
 				</form>

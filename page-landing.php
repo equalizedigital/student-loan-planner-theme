@@ -1,8 +1,6 @@
 <?php
-// Template name: Landing Page
-
 /**
- * Base template
+ * Template name: Landing Page
  *
  * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
@@ -12,16 +10,16 @@
 
 get_header();
 
-// Check if 'slug' is set in the URL parameters
-if ( isset( $_GET['landing_page'] ) ) {
-	$page_slug = $_GET['landing_page'];
+// Check if 'slug' is set in the URL parameters.
+if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Using $_GET to allow for URL parameters.
+	$page_slug = sanitize_text_field( $_GET['landing_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Using $_GET to allow for URL parameters.
 
-	// Query for the page by slug
-	$args = array(
+	// Query for the page by slug.
+	$args         = array(
 		'post_type'   => 'slp_landing',
 		'post_status' => 'publish',
 		'numberposts' => 1,
-		'meta_query'  => array(
+		'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Meta query is necessary to query by custom field.
 			array(
 				'key'     => 'landing_page_url_text', 
 				'value'   => $page_slug, 
@@ -29,13 +27,13 @@ if ( isset( $_GET['landing_page'] ) ) {
 			),
 		),
 	);
-	$page = get_posts( $args );
+	$landing_page = get_posts( $args );
 
-	// If the page exists, redirect or load the page
-	if ( $page ) {
-		$page_id = $page[0]->ID;
+	// If the page exists, redirect or load the page.
+	if ( $landing_page ) {
+		$page_id = $landing_page[0]->ID;
 
-		$parameter_page = $page_id;
+		$parameter_page = $page_id; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving this here for future use.
 	}
 }
 
@@ -53,14 +51,13 @@ if ( empty( $layout_style ) ) {
 $container_class .= ' post_type_layout_' . $layout_style . ' ';
 
 $side_container_class = '';
-if ( get_field( 'post_format_style' ) === 'full-width' ) {
-} else {
+if ( get_field( 'post_format_style' ) !== 'full-width' ) {
 	$side_container_class .= 'inner-hero-alternate-style';
 }
 
 tha_content_before();
 
-echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
+echo '<div class="' . esc_attr( $container_class ) . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
 
 tha_content_wrap_before();
 
@@ -70,9 +67,9 @@ echo '<main class="site-main" role="main">';
 
 tha_single_header();
 
-echo "<div class='side-main-article-container $side_container_class'>";
+echo "<div class='side-main-article-container " . esc_attr( $side_container_class ) . "'>";
 tha_content_before_container();
-echo "<div class=\"site-main-article-content $container_class\">";
+echo '<div class="site-main-article-content ' . esc_attr( $container_class ) . '">';
 
 tha_content_top();
 tha_single_fullwidth();
