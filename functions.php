@@ -45,6 +45,18 @@ require_once get_template_directory() . '/inc/class-gutenberg-loader.php';
  */
 function eqd_scripts() {
 
+	// Global post object to check the current post content.
+	global $post;
+
+	// Check if the post is loaded and contains the specific block.
+	if ( is_a( $post, 'WP_Post' ) && has_block( 'acf/video-carousel', $post ) ) {
+		// Enqueue Swiper CSS.
+		wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
+
+		// Enqueue your custom JS to initialize Swiper.
+		wp_enqueue_script( 'custom-swiper-initialization', get_template_directory_uri() . '/assets/js/video-carousel-min.js', array(), filemtime( get_template_directory() . '/assets/js/video-carousel-min.js' ), true );
+	}
+
 	wp_enqueue_script( 'theme-global', get_template_directory_uri() . '/assets/js/global-min.js', array( 'jquery' ), filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
 
 	wp_localize_script(
