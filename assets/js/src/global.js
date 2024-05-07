@@ -1275,17 +1275,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 });
+
 window.addEventListener('resize', () => {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        if (!video.paused) {
-            // The video was playing before resize, ensure it continues playing
-            video.play().catch(e => {
-                console.log('Error attempting to play video on resize:', e);
-            });
-        }
-    });
+    setTimeout(() => {  // Delay the check to ensure all resize handlers have completed
+        const videos = document.querySelectorAll('video');
+        console.log('Videos found:', videos.length);
+        videos.forEach(video => {
+            console.log('Video paused state:', video.paused);
+            if (!video.paused) {
+                video.play().catch(e => {
+                    console.log('Error attempting to play video on resize:', e);
+                });
+            }
+        });
+    }, 100);  // Adjust delay as needed to test timing issues
 });
+
 
 
 
