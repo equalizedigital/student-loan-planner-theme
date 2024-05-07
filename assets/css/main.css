@@ -841,7 +841,7 @@ iframe {
   margin-bottom: -3px; }
   @media (max-width: 991px) {
     .inline-logo-heading img {
-      width: 150px; } }
+      width: 150px !important; } }
 .list-style-x,
 .list-style-check {
   list-style-type: none;

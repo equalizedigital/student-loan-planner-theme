@@ -436,7 +436,7 @@ iframe {
     margin-right: 8px;
 	margin-bottom: -3px;
 	@include media("<medium") {
-		width: 150px;
+		width: 150px !important;
 	}
 }
 
