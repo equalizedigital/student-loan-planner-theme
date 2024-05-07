@@ -77,8 +77,8 @@ if (videoCarouselElement.length) {
 			},
 			transitionStart: function () {
 
-				var videos = document.querySelectorAll('video');
-
+				var videos = videoCarouselElement[0].querySelectorAll('video');
+				
 				Array.prototype.forEach.call(videos, function (video) {
 					video.pause();
 				});
