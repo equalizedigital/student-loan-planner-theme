@@ -837,8 +837,11 @@ iframe {
 
 .inline-logo-heading img {
   display: inline-block;
-  margin-right: 8px; }
-
+  margin-right: 8px;
+  margin-bottom: -3px; }
+  @media (max-width: 991px) {
+    .inline-logo-heading img {
+      width: 150px; } }
 .list-style-x,
 .list-style-check {
   list-style-type: none;
