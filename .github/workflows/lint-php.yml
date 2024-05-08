@@ -6,10 +6,12 @@ on:
     branches:
       - master
       - main
+      - develop
   pull_request:
     branches:
       - master
       - main
+      - develop
       
   # Allow manually triggering the workflow.
   workflow_dispatch:
