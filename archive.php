@@ -28,7 +28,7 @@ add_filter( 'body_class', 'eqd_archive_body_class' );
 function eqd_archive_header() {
 
 	$title       = false;
-	$subtitle    = false;
+	$subtitle    = false; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 	$description = false;
 
 	if ( is_author() ) {
@@ -93,7 +93,7 @@ function eqd_archive_recommended_post() {
 				
 				<?php 
 				if ( is_tax() ) {
-					echo 'Recommended Resources for ' . $term->name;
+					echo 'Recommended Resources for ' . esc_html( $term->name );
 				} else {
 					echo 'Featured articles';
 				}
@@ -105,13 +105,13 @@ function eqd_archive_recommended_post() {
 			$args = array(
 				'post__in'       => $post_recommened,
 				'post_type'      => 'post',
-				'orderby'        => 'post__in', // This will preserve the order of IDs as you provided
-				'posts_per_page' => -1, // Get all posts matching the criteria
+				'orderby'        => 'post__in', // phpcs:ignore WordPress.VIP.PostsPerPage.posts_per_page_posts_per_page -- This will preserve the order of IDs as you provided.
+				'posts_per_page' => -1, // Get all posts matching the criteria.
 			);
 
 			$the_query = new WP_Query( $args );
 
-			// The Loop
+			// The Loop.
 			if ( $the_query->have_posts() ) {
 				while ( $the_query->have_posts() ) {
 					$the_query->the_post();
@@ -120,7 +120,7 @@ function eqd_archive_recommended_post() {
 						<figure>
 							<?php
 							if ( has_post_thumbnail() ) {
-								the_post_thumbnail();  // This will output the featured image with default settings
+								the_post_thumbnail();  // This will output the featured image with default settings.
 							}
 							?>
 							<?php 
@@ -135,7 +135,7 @@ function eqd_archive_recommended_post() {
 							?>
 						</figure>
 						<div class="date">
-							<?php echo get_the_date();  // This will output the date the post was published ?>
+							<?php echo get_the_date();  // This will output the date the post was published. ?>
 						</div>
 						<h3 class="title"><?php echo wp_kses_post( get_the_title() ); ?></h3>
 						<div class="author">
@@ -151,10 +151,9 @@ function eqd_archive_recommended_post() {
 					
 					<?php
 				}
-				/* Restore original Post Data */
 				wp_reset_postdata();
 			} else {
-				// No posts found
+				// No posts found.
 				echo 'No posts found';
 			}
 			?>
@@ -166,6 +165,11 @@ function eqd_archive_recommended_post() {
 }
 add_action( 'tha_content_before_container', 'eqd_archive_recommended_post' );
 
+/**
+ * Archive Recommended CTA.
+ *
+ * @return void
+ */
 function eqd_archive_recommended_cta() {
 	$term = get_queried_object();
 	$cta  = get_field( 'cta', $term ); 
@@ -173,29 +177,29 @@ function eqd_archive_recommended_cta() {
 	if ( $cta ) :
 		if ( ! is_paged() ) :
 			?>
-<section class="archive_cta">
-	<div class="archive_cta_container">
-			<?php if ( ! empty( $cta['image'] ) ) : ?>
-		<div class="archive_cta_container_figure">
-			<img src="<?php echo wp_kses_post( $cta['image']['url'] ); ?>" alt="<?php echo wp_kses_post( $cta['title'] ); ?>">
-		</div>
-		<?php endif; ?>
-			<?php if ( ! empty( $cta['title'] ) ) : ?>
-		<div class="archive_cta_container_copy">
-			<h2 class="title"><?php echo wp_kses_post( $cta['title'] ); ?></h2>
-			<div class="copy">
-				<?php echo wp_kses_post( $cta['copy'] ); ?>
-			</div>
-			<div class="form">
-				<?php echo do_shortcode( $cta['form_code'] ); ?>
-			</div>
-		</div>
-		<?php endif; ?>
-	</div>
-</section>
+			<section class="archive_cta">
+				<div class="archive_cta_container">
+						<?php if ( ! empty( $cta['image'] ) ) : ?>
+					<div class="archive_cta_container_figure">
+						<img src="<?php echo wp_kses_post( $cta['image']['url'] ); ?>" alt="<?php echo wp_kses_post( $cta['title'] ); ?>">
+					</div>
+					<?php endif; ?>
+						<?php if ( ! empty( $cta['title'] ) ) : ?>
+					<div class="archive_cta_container_copy">
+						<h2 class="title"><?php echo wp_kses_post( $cta['title'] ); ?></h2>
+						<div class="copy">
+							<?php echo wp_kses_post( $cta['copy'] ); ?>
+						</div>
+						<div class="form">
+							<?php echo do_shortcode( $cta['form_code'] ); ?>
+						</div>
+					</div>
+					<?php endif; ?>
+				</div>
+			</section>
 			<?php
-endif;
-endif;
+		endif;
+	endif;
 }
 add_action( 'tha_content_before_container', 'eqd_archive_recommended_cta' );
 

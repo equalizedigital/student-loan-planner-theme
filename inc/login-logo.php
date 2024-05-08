@@ -10,10 +10,8 @@
 
 /**
  * Login Logo URL
- *
- * @param string $url URL.
  */
-function eqd_login_header_url( $url ) {
+function eqd_login_header_url() {
 	return esc_url( home_url() );
 }
 add_filter( 'login_headerurl', 'eqd_login_header_url' );

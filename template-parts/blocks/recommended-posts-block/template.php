@@ -1,12 +1,16 @@
 <?php
 /**
  * Recommended-posts-block Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
@@ -41,7 +45,7 @@ $recommended_posts = get_field( 'recommended_posts' );
 <section id="<?php echo esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="recommended_posts_block_block_container">
 		<div class="recommended_posts_block_block_container_header">
-			<h2 class="recommended_posts_block_block_container_header__title"><?php echo esc_attr( $acf_title ); ?></h2>
+			<h2 class="recommended_posts_block_block_container_header__title"><?php echo esc_html( $acf_title ); ?></h2>
 		</div>
 
 		<ul class="recommended_posts_block_block_container_loop">
@@ -65,12 +69,12 @@ $recommended_posts = get_field( 'recommended_posts' );
 							<?php 
 							if ( has_post_thumbnail() ) {
 								$image_url = get_the_post_thumbnail_url();
-								echo "<img src='$image_url' aria-hidden=\"true\" role=\"presentation\" />";
+								echo '<img src="' . esc_url( $image_url ) . '" aria-hidden="true" role="presentation" />';
 							}
 							?>
 						</div>
 						<div class="recommended_posts_block_block_container_loop_item_text">
-							<span><?php echo get_the_title(); ?></h2>
+							<span><?php echo esc_html( get_the_title() ); ?></h2>
 						</div>
 					</a>
 				</li>

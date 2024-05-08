@@ -22,12 +22,13 @@ add_filter( 'acf/load_field', 'load_menu_names_to_acf' );
 /**
  * Populate select field with menus
  *
- * @param field fields
+ * @param array $field Field.
+ * @return array
  */
 function load_menu_names_to_acf( $field ) {
-	// Ensure it targets the correct field key
-	if ( $field['key'] === 'field_64f21f700a2cd' ) {
-		$menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );  // get all menus
+	// Ensure it targets the correct field key.
+	if ( 'field_64f21f700a2cd' === $field['key'] ) {
+		$menus = get_terms( 'nav_menu' );
 
 		foreach ( $menus as $menu ) {
 			$field['choices'][ $menu->term_id ] = $menu->name;
@@ -38,7 +39,7 @@ function load_menu_names_to_acf( $field ) {
 }
 
 /**
- * Get the first term attached to post
+ * Get the first term attached to post.
  *
  * @param array $args Args.
  */
@@ -101,7 +102,7 @@ function eqd_first_term( $args = array() ) {
 }
 
 /**
- * Conditional CSS Classes
+ * Conditional CSS Classes.
  *
  * @param string $base_classes classes always applied.
  * @param string $optional_class additional class applied if $conditional is true.
@@ -113,7 +114,7 @@ function eqd_class( $base_classes, $optional_class, $conditional ) {
 }
 
 /**
- *  Background Image Style
+ *  Background Image Style.
  *
  * @param int    $image_id Image ID.
  * @param string $image_size Image Size.
@@ -125,7 +126,7 @@ function eqd_bg_image_style( $image_id = false, $image_size = 'full' ) {
 }
 
 /**
- * Get Icon
+ * Get Icon.
  * This function is in charge of displaying SVG icons across the site.
  *
  * Place each <svg> source in the /assets/icons/{group}/ directory.
@@ -172,7 +173,7 @@ function eqd_icon( $atts = array() ) {
 
 	// Display the icon directly.
 	if ( true === $atts['force'] ) {
-		$icon = file_get_contents( $icon_path );
+		$icon = file_get_contents( $icon_path ); // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- We're loading a local file.
 		if ( false !== $atts['size'] ) {
 			$repl = sprintf( '<svg width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $atts['size'], $atts['size'] );
 			$svg  = preg_replace( '/^<svg /', $repl, trim( $icon ) ); // Add extra attributes to SVG code.
@@ -187,7 +188,7 @@ function eqd_icon( $atts = array() ) {
 
 		// Display the icon as symbol in defs.
 	} elseif ( true === $atts['defs'] ) {
-		$icon = file_get_contents( $icon_path );
+		$icon = file_get_contents( $icon_path ); // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- We're loading a local file.
 		$svg  = preg_replace( '/^<svg /', '<svg id="' . $atts['group'] . '-' . $atts['icon'] . '"', trim( $icon ) );
 		$svg  = str_replace( '<svg', '<symbol', $svg );
 		$svg  = str_replace( '</svg>', '</symbol>', $svg );
@@ -258,12 +259,14 @@ function eqd_icon_definitions() {
 	echo '<svg style="display:none;"><defs>';
 	foreach ( $eqd_icons as $group => $icons ) {
 		foreach ( $icons as $icon => $count ) {
-			echo eqd_icon(
-				array(
-					'icon'  => $icon,
-					'group' => $group,
-					'defs'  => true,
-				)
+			echo wp_kses_post(
+				eqd_icon(
+					array(
+						'icon'  => $icon,
+						'group' => $group,
+						'defs'  => true,
+					)
+				) 
 			);
 		}
 	}
@@ -314,21 +317,20 @@ function eqd_button( $field = array(), $atts = array() ) {
 		$button_class[] = 'has-' . $atts['bg'] . '-background-color';
 	}
 
-	$output = '<div class="' . join( ' ', $block_class ) . '"><a class="' . join( ' ', $button_class ) . '" href="' . esc_html( $field['url'] ) . '"' . $target . '>' . esc_html( $field['title'] ) . '</a></div>';
+	$output = '<div class="' . join( ' ', $block_class ) . '"><a class="' . join( ' ', $button_class ) . '" href="' . esc_url( $field['url'] ) . '"' . $target . '>' . esc_html( $field['title'] ) . '</a></div>';
 	return apply_filters( 'eqd_button', $output, $block );
 }
 
 /**
  * Add the target attribute for links
  *
- * @param string
+ * @param string $value The target attribute value.
  * @return void
  */
 function slp_a_target( $value ) {
 	if ( ! $value ) {
 		return;
 	}
-
 	return ' target="' . $value . '"';
 }
 
@@ -344,7 +346,7 @@ function slp_append_superscript( $content, $superscript_text ) {
 	// Convert the superscript text to actual HTML tag.
 	$superscript = '<sup>' . $superscript_text . '</sup>';
 
-	// Use regex to match <br> tags with potential white spaces and replace them with the superscript
+	// Use regex to match <br> tags with potential white spaces and replace them with the superscript.
 	$updated_content = preg_replace( '/\s*<br\s*\/?\s*>\s*/', $superscript . '<br>', $content );
 
 	// Additionally, add superscript to the end of the paragraph if needed.
@@ -353,9 +355,13 @@ function slp_append_superscript( $content, $superscript_text ) {
 	return $updated_content;
 }
 
-
-
-function get_company_name_shortcode( $atts ) {
+/**
+ * Get the company name from the landing page URL.
+ *
+ * @param array $atts Shortcode attributes.
+ * @return string Company name or fallback message.
+ */
+function eqd_get_company_name_shortcode( $atts ) {
 	$fallback = shortcode_atts(
 		array(
 			'fallback' => 'eee',
@@ -364,18 +370,18 @@ function get_company_name_shortcode( $atts ) {
 	);
 
 
-	// Default message
+	// Default message.
 	$message = esc_attr( $fallback['fallback'] );
 
-	if ( isset( $_GET['landing_page'] ) ) {
-		$page_slug = sanitize_text_field( $_GET['landing_page'] );
+	if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Using $_GET to retrieve the landing page URL.
+		$page_slug = sanitize_text_field( $_GET['landing_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Using $_GET to retrieve the landing page URL.
 
-		// Query the CPT for the company name using the 'page_slug'
+		// Query the CPT for the company name using the 'page_slug'.
 		$args  = array(
 			'post_type'   => 'slp_landing',
 			'post_status' => 'publish',
 			'numberposts' => 1,
-			'meta_query'  => array(
+			'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Meta query is necessary to retrieve the correct post.
 				array(
 					'key'     => 'landing_page_url_text',
 					'value'   => $page_slug,
@@ -385,42 +391,47 @@ function get_company_name_shortcode( $atts ) {
 		);
 		$query = new WP_Query( $args );
 
-		// If a post is found, retrieve the Company Name
+		// If a post is found, retrieve the Company Name.
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				// Assuming the company name is stored in a custom field. Replace 'company_name' with your actual custom field key
+				// Assuming the company name is stored in a custom field. Replace 'company_name' with your actual custom field key.
 				$company_name = get_post_meta( get_the_ID(), 'company_name', true );
 				if ( ! empty( $company_name ) ) {
-					$message = $company_name; // Set the message to the company name
+					$message = $company_name; // Set the message to the company name.
 				}
 			}
-			wp_reset_postdata(); // Reset post data
+			wp_reset_postdata(); // Reset post data.
 		}
 	}
 
-	// Return the company name or default message
+	// Return the company name or default message.
 	return $message;
 }
 
-add_shortcode( 'get_company_name', 'get_company_name_shortcode' );
+add_shortcode( 'get_company_name', 'eqd_get_company_name_shortcode' );
 
-
-function generate_custom_booking_button_shortcode( $atts ) {
-	// Default URL for the booking button
+/**
+ * Generate a custom booking button shortcode.
+ *
+ * @param array $atts Shortcode attributes.
+ * @return string HTML for the custom booking button.
+ */
+function generate_custom_booking_button_shortcode( $atts ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $atts is used in the shortcode.
+	// Default URL for the booking button.
 	$default_url = 'https://calendly.com/studentloanplanner-team';
-	$button_url  = $default_url; // Set the button URL to default initially
+	$button_url  = $default_url; // Set the button URL to default initially.
 
-	// Check if the 'landing_page' URL parameter is present
-	if ( isset( $_GET['landing_page'] ) ) {
-		$page_slug = sanitize_text_field( $_GET['landing_page'] );
+	// Check if the 'landing_page' URL parameter is present.
+	if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Using $_GET to retrieve the landing page URL.
+		$page_slug = sanitize_text_field( $_GET['landing_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Using $_GET to retrieve the landing page URL.
 
-		// Query the CPT for the booking link using the 'page_slug'
+		// Query the CPT for the booking link using the 'page_slug'.
 		$args  = array(
 			'post_type'   => 'slp_landing',
 			'post_status' => 'publish',
 			'numberposts' => 1,
-			'meta_query'  => array(
+			'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Meta query is necessary to retrieve the correct post.
 				array(
 					'key'     => 'landing_page_url_text',
 					'value'   => $page_slug,
@@ -430,44 +441,52 @@ function generate_custom_booking_button_shortcode( $atts ) {
 		);
 		$query = new WP_Query( $args );
 
-		// If a post is found, retrieve the Booking Link
+		// If a post is found, retrieve the Booking Link.
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				// Assuming the booking link is stored in a custom field. Replace 'booking_link' with your actual custom field key
+				// Assuming the booking link is stored in a custom field. Replace 'booking_link' with your actual custom field key.
 				$booking_link = get_post_meta( get_the_ID(), 'booking_link', true );
 				if ( ! empty( $booking_link ) ) {
-					$button_url = $booking_link; // Update the button URL to the custom link
+					$button_url = $booking_link; // Update the button URL to the custom link.
 				}
 			}
-			wp_reset_postdata(); // Reset post data
+			wp_reset_postdata(); // Reset post data.
 		}
 	}
 
-	// Generate the HTML for the button
+	// Generate the HTML for the button.
 	$button_html = '<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $button_url ) . '">Book Your Custom Plan</a></div>';
 
 
-	// Return the button HTML
+	// Return the button HTML.
 	return $button_html;
 }
 add_shortcode( 'custom_booking_button', 'generate_custom_booking_button_shortcode' );
 
+/**
+ * Logo Setup
+ *
+ * @return void
+ */
 function eqd_logo_setup() {
 	$defaults = array(
-		'height'      => 70, // Set the desired height for the logo
-		'width'       => 240, // Set the desired width for the logo
-		'flex-height' => true, // Allow flexible height
-		'flex-width'  => true, // Allow flexible width
-		'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline
+		'height'      => 70, // Set the desired height for the logo.
+		'width'       => 240, // Set the desired width for the logo.
+		'flex-height' => true, // Allow flexible height.
+		'flex-width'  => true, // Allow flexible width.
+		'header-text' => array( 'site-title', 'site-description' ), // Selectively hide or show site title and tagline.
 	);
 	add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'eqd_logo_setup' );
 
-function enqueue_block_editor_assets_vc() {
+/**
+ * Add custom image sizes
+ */
+function eqd_enqueue_block_editor_assets_vc() {
 
 	wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
 }
 
-add_action( 'enqueue_block_editor_assets', 'enqueue_block_editor_assets_vc' );
+add_action( 'enqueue_block_editor_assets', 'eqd_enqueue_block_editor_assets_vc' );

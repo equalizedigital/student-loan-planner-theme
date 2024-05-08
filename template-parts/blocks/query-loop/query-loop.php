@@ -1,6 +1,11 @@
 <?php
 /**
- * query loop block Block Template.
+ * Query Loop Block.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -14,9 +19,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'query-loop-block-' . $block['id'];
+$block_id = 'query-loop-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -31,18 +36,18 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title   = get_field( 'title' );
-$link    = get_field( 'link' );
-$authors = get_field( 'authors' );
+$block_title = get_field( 'title' );
+$block_link  = get_field( 'link' );
+$authors     = get_field( 'authors' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="query-loop-container">
 		<header class="query-loop-container-header">
-			<h2 class="title"><?php echo $title; ?></h2>
-			<?php if ( $link ) : ?>
+			<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
+			<?php if ( $block_link ) : ?>
 				<div class="link">
-					<a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
+					<a href="<?php echo esc_url( $block_link['url'] ); ?>" class="btn"><?php echo esc_html( $block_link['title'] ); ?></a>
 				</div>
 			<?php endif; ?>
 		</header>
@@ -85,57 +90,39 @@ endif;
 						while ( $author_query->have_posts() ) {
 							$author_query->the_post();
 							
-							// Get title
-							$title = get_the_title();
+							$post_title         = get_the_title();
+							$post_link          = get_the_permalink();
+							$author_email       = get_the_author_meta( 'user_email' );
+							$author_image_url   = get_avatar_url( $author_email, array( 'size' => 96 ) );
+							$author_name        = get_the_author();
+							$featured_image_url = get_the_post_thumbnail_url();
 
-							$link = get_the_permalink();
-
-							// Get author image (assuming you're using Gravatar)
-							$author_email     = get_the_author_meta( 'user_email' );
-							$author_image_url = get_avatar_url( $author_email, array( 'size' => 96 ) );
-
-							// Get author name
-							$author_name = get_the_author();
-
-							$featured_image_url = get_the_post_thumbnail_url(); // gets the featured image URL
-
-							// If there's no featured image, use a default image
 							if ( empty( $featured_image_url ) ) {
 								$featured_image_url = get_template_directory_uri() . '/assets/images/placeholder-post.png';
 							}
 
 							?>
-							<a class="query-loop-container-loop-item" href="<?php echo $link; ?>">
+							<a class="query-loop-container-loop-item" href="<?php echo esc_url( $post_link ); ?>">
 								<figure>
 									<img src="<?php echo esc_url( $featured_image_url ); ?>" alt="Post Featured Image">
 								</figure>
-								<h3 class="title"><?php echo $title; ?></h3>
+								<h3 class="title"><?php echo esc_html( $post_title ); ?></h3>
 								<div class="author">
 									<figure>
 									<?php echo '<img src="' . esc_url( $author_image_url ) . '" alt="' . esc_attr( $author_name ) . '">'; ?>
 									</figure>
 									<div class="author_data">
-										By <?php echo $author_name; ?>
+										By <?php echo esc_html( $author_name ); ?>
 									</div>
 								</div>
 							</a>
 
 							<?php
 						}
-						
-						// Reset post data after each author.
 						wp_reset_postdata();
 					}
 				}
-
-
-
-
-
-				 
 				?>
-
-
 		</div>
 	</div>
 </section>

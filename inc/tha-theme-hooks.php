@@ -87,7 +87,7 @@ add_theme_support(
  *
  * @return bool
  */
-function tha_current_theme_supports( $bool, $args, $registered ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.boolFound) -- This is a third-party library, so we can't change the parameter names.
+function tha_current_theme_supports( $bool, $args, $registered ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.boolFound -- This is a third-party library, so we can't change the parameter names.
 	return in_array( $args[0], $registered[0] ) || in_array( 'all', $registered[0] ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict -- This is a thrid-party library, so we can't change the comparison.
 }
 add_filter( 'current_theme_supports-tha_hooks', 'tha_current_theme_supports', 10, 3 );

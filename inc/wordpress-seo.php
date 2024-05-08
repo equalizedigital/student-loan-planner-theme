@@ -18,7 +18,7 @@ function eqd_breadcrumbs() {
 		}
 	}
 }
-// add_action( 'tha_content_top', 'eqd_breadcrumbs' );
+// add_action( 'tha_content_top', 'eqd_breadcrumbs' ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment when ready to use.
 
 /**
  * Remove post title from breadcrumbs
@@ -52,4 +52,4 @@ function ea_home_breadcrumb( $crumbs ) {
 	}
 	return $crumbs;
 }
-/* add_filter( 'wpseo_breadcrumb_links', 'ea_home_breadcrumb' ); */
+// add_filter( 'wpseo_breadcrumb_links', 'ea_home_breadcrumb' ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment when ready to use.

@@ -11,9 +11,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) {
 }
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'squared-image-content-callout-block-' . $block['id'];
+$block_id = 'squared-image-content-callout-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -28,14 +28,14 @@ if ( ! empty( $block['align'] ) ) {
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title = get_field( 'title' );
-$copy  = get_field( 'copy' );
+$block_title = get_field( 'title' );
+$copy        = get_field( 'copy' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 if ( get_field( 'image' ) ) {
 	$image = get_field( 'image' );
 }
-$link = get_field( 'link' );
+$callout_link = get_field( 'link' );
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="squared-image-content-callout-container">
 		<figure class="squared-image-content-callout-container-image">
 			<?php 
@@ -47,11 +47,11 @@ $link = get_field( 'link' );
 
 		<div class="squared-image-content-callout-container-content">
 			<div>
-				<h2 class="title"><?php echo $title; ?></h2>
-				<?php if ( ! empty( $link ) ) { ?>
+				<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
+				<?php if ( ! empty( $callout_link ) ) { ?>
 					<span class="content">
-						<a href="<?php echo esc_url( $link['url'] ); ?>" class="btn btn-dark-bg">
-							<?php echo esc_html( $link['title'] ); ?>
+						<a href="<?php echo esc_url( $callout_link['url'] ); ?>" class="btn btn-dark-bg">
+							<?php echo esc_html( $callout_link['title'] ); ?>
 						</a>
 					</span>
 				<?php } ?>

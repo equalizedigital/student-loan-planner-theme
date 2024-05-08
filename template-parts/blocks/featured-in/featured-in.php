@@ -1,6 +1,11 @@
 <?php
 /**
- * featured in block Block Template.
+ * Featured in block Block.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -14,9 +19,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'featured-in-block-' . $block['id'];
+$block_id = 'featured-in-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -32,12 +37,12 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title = get_field( 'title' );
+$block_title = get_field( 'title' );
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="featured-in-block-container">
-		<?php echo "<header class=\"featured-in-block-container-header\"><h2 class=\"featured-in-block-container-header__title\">$title</h2></header>"; ?>
+		<?php echo '<header class="featured-in-block-container-header"><h2 class="featured-in-block-container-header__title">' . esc_html( $block_title ) . '</h2></header>'; ?>
 		<?php 
 		$images = get_field( 'images' );
 		if ( $images ) {
@@ -47,12 +52,12 @@ $title = get_field( 'title' );
 					$image = $row['image']['url'];
 				}
 				if ( ! empty( $row['image'] ) ) {
-					$imageAlt = $row['image']['alt'];
+					$image_alt = $row['image']['alt'];
 				}
 				
 				echo '<div class="featured-in-block-container-images__image">';
 				if ( ! empty( $image ) ) {
-					echo "<img src='$image' alt='$imageAlt'></img>";
+					echo '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $image_alt ) . '"></img>';
 				}
 				echo '</div>';
 			}

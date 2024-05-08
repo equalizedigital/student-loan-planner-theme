@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.NotHyphenatedLowercase
 /**
  * Single Post
  *
@@ -39,14 +39,14 @@ tha_content_before();
 							$insti = get_field( 'institution_name' );
 							echo 'Contact ' . wp_kses_post( get_the_title() );
 							if ( ! empty( $insti ) ) {
-								echo ' at ' . $insti;
+								echo ' at ' . esc_html( $insti );
 							}
 							?>
 						</h1>
 						<span class="info">
-							<?php the_field( 'job_title' ); ?>
+							<?php echo esc_html( get_field( 'job_title' ) ); ?>
 							<?php if ( get_field( 'mls' ) ) : ?>
-							, NMLS # <?php the_field( 'mls' ); ?>
+							, NMLS # <?php echo esc_html( get_field( 'mls' ) ); ?>
 							<?php endif; ?>
 						</span>
 					</div>
@@ -62,12 +62,12 @@ tha_content_before();
 						
 						<?php if ( get_field( 'property_type' ) ) : ?>
 						<h2 class="title">Property Type</h2>
-						<div class="detail"><?php the_field( 'property_type' ); ?></div>
+						<div class="detail"><?php echo esc_html( get_field( 'property_type' ) ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( get_field( 'financing_options' ) ) : ?>
 						<h2 class="title">Financing Options</h2>
-						<div class="detail"><?php the_field( 'financing_options' ); ?></div>
+						<div class="detail"><?php echo esc_html( get_field( 'financing_options' ) ); ?></div>
 						<?php endif; ?>
 
 						<?php 
@@ -79,14 +79,14 @@ tha_content_before();
 							<?php 
 						
 							if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
-								$numItems = count( $post_terms );
-								$i        = 0;
-								foreach ( $post_terms as $term ) {
+								$num_items = count( $post_terms );
+								$i         = 0;
+								foreach ( $post_terms as $post_term ) {
 								
-									if ( ++$i === $numItems ) {
-										echo esc_html( $term->name ) . '';
+									if ( ++$i === $num_items ) {
+										echo esc_html( $post_term->name ) . '';
 									} else {
-										echo esc_html( $term->name ) . '<span>,</span> ';
+										echo esc_html( $post_term->name ) . '<span>,</span> ';
 									}
 								}
 							}
@@ -96,7 +96,7 @@ tha_content_before();
 
 						<?php if ( get_field( 'program_requirements' ) ) : ?>
 						<h2 class="title">Program Requirements</h2>
-						<div class="detail"><?php the_field( 'program_requirements' ); ?></div>
+						<div class="detail"><?php echo wp_kses_post( get_field( 'program_requirements' ) ); ?></div>
 						<?php endif; ?>
 
 						<?php 
@@ -107,13 +107,13 @@ tha_content_before();
 						<div class="detail">
 							<?php 
 							if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
-								$numItems = count( $post_terms );
-								$i        = 0;
-								foreach ( $post_terms as $term ) {
-									if ( ++$i === $numItems ) {
-										echo '<span>' . esc_html( $term->name ) . '</span> ';
+								$num_items = count( $post_terms );
+								$i         = 0;
+								foreach ( $post_terms as $post_term ) {
+									if ( ++$i === $num_items ) {
+										echo '<span>' . esc_html( $post_term->name ) . '</span> ';
 									} else {
-										echo '<span>' . esc_html( $term->name ) . ',</span> ';
+										echo '<span>' . esc_html( $post_term->name ) . ',</span> ';
 									}                               
 								}
 							}

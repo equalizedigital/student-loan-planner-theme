@@ -1,18 +1,17 @@
 <?php
 /**
- * tab-block Block Template.
+ * Tab Block.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block
  */
-
-// if ( isset( $block['example']['attributes']['data']['preview_image_help'] ) ) :
-// esc_attr( Loader_Gutenberg::get_preview_image( $block['example']['attributes']['data']['preview_image_help'], $block['name'] ) );
-// return;
-// endif;
 
 // Create id attribute allowing for custom 'anchor' value.
 $classid = 'tab-block-' . $block['id'];
@@ -44,7 +43,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					while ( have_rows( 'accordion' ) ) :
 						the_row();
 						$button_title = get_sub_field( 'button_title' );
-						$content      = get_sub_field( 'content' );
+						$content      = get_sub_field( 'content' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 						?>
 
 							<button
@@ -70,7 +69,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						while ( have_rows( 'accordion' ) ) :
 							the_row();
 							$button_title = get_sub_field( 'button_title' );
-							$content      = get_sub_field( 'content' );
+							$content      = get_sub_field( 'content' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 							?>
 
 								<option
@@ -119,28 +118,28 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 												<img src="<?php echo esc_url( $icon['url'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" aria-hidden="true" />
 											<?php
 											endif;
-											the_sub_field( 'title' );
+											echo esc_html( get_sub_field( 'title' ) );
 										echo '</h3>';
 									}
 
 									if ( have_rows( 'podcast_content' ) ) :
 										while ( have_rows( 'podcast_content' ) ) :
 											the_row();
-											$date  = get_sub_field( 'date' );
-											$title = get_sub_field( 'title' );
-											$url   = get_sub_field( 'url' );
+											$date      = get_sub_field( 'date' );
+											$row_title = get_sub_field( 'title' );
+											$url       = get_sub_field( 'url' );
 											?>
 											<div class="tab-block-container-tab-block_content_items_item_container">
-												<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php echo wp_kses_post( $url ); ?>" aria-label="Listen now to <?php echo wp_kses_post( $title ); ?>">
+												<a class="tab-block-container-tab-block_content_items_item_container_heading" href="<?php echo wp_kses_post( $url ); ?>" aria-label="Listen now to <?php echo wp_kses_post( $row_title ); ?>">
 													<div class="tab-block-container-tab-block_content_items_item_container_heading_date">
 														<?php echo wp_kses_post( $date ); ?>
 													</div>
 													<div class="tab-block-container-tab-block_content_items_item_container_heading_title">
-														<?php echo wp_kses_post( $title ); ?>
+														<?php echo wp_kses_post( $row_title ); ?>
 													</div>
 												</a>
 												<div class="tab-block-container-tab-block_content_items_item_container_heading_link">
-													<a href="<?php echo wp_kses_post( $url ); ?>" aria-label="Listen now to <?php echo wp_kses_post( $title ); ?>" class="link btn btn-dark-bg">
+													<a href="<?php echo wp_kses_post( $url ); ?>" aria-label="Listen now to <?php echo wp_kses_post( $row_title ); ?>" class="link btn btn-dark-bg">
 														Listen Now
 													</a>
 												</div>
@@ -162,9 +161,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				endif;
 				?>
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 </section>

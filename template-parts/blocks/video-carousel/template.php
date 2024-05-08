@@ -1,12 +1,16 @@
 <?php
 /**
  * Video Carousel Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block Title Template
  */
 
 $block_name = 'video_carousel_template';
@@ -44,10 +48,10 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 
 			<?php
 			if ( have_rows( 'video_carousel' ) ) :
-				$rows = get_field( 'video_carousel' ); // Assuming 'video_carousel' is a field of the current post
-				// Repeat the process 3 times
+				$rows = get_field( 'video_carousel' ); // Assuming 'video_carousel' is a field of the current post.
+				// Repeat the process 3 times.
 				for ( $i = 0; $i < 3; $i++ ) :
-					// Reset the rows pointer to ensure have_rows works correctly in each iteration
+					// Reset the rows pointer to ensure have_rows works correctly in each iteration.
 					reset( $rows );
 					?>
 					<?php
@@ -70,7 +74,7 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 								}
 								?>
 								<button class="image-placeholder-action" aria-label="Play Video">
-									<img class="image-placeholder-btn" src="<?php echo $image_path; ?>/play.svg" alt="play video">
+									<img class="image-placeholder-btn" src="<?php echo esc_url( $image_path ); ?>/play.svg" alt="play video">
 								</button>
 							</div>
 								<?php
@@ -139,16 +143,16 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 if ( has_block( 'acf/video-carousel' ) ) {
 	?>
 	<?php
-	// Construct the path to the JavaScript file
+	// Construct the path to the JavaScript file.
 	$js_file_path = get_template_directory_uri() . '/assets/js/video-carousel-min.js';
 
-	// Retrieve the contents of the JavaScript file
-	$js_content = file_get_contents( $js_file_path );
+	// Retrieve the contents of the JavaScript file.
+	$js_content = file_get_contents( $js_file_path ); // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- File is within the theme directory.
 
-	// Check if the file was successfully read
-	if ( $js_content !== false ) {
-		// Output the JavaScript content within a <script> tag
-		echo '<script>' . $js_content . '</script>';
+	// Check if the file was successfully read.
+	if ( false !== $js_content ) {
+		// Output the JavaScript content within a <script> tag.
+		echo '<script>' . $js_content . '</script>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Outputting the contents of the JavaScript file.
 	}
 	?>
 

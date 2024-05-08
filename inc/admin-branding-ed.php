@@ -12,10 +12,10 @@ add_filter( 'admin_footer_text', 'eqd_modify_footer_admin' );
 /**
  * Modify the admin footer text.
  *
- * @return void
+ * @return mixed Footer text.
  */
 function eqd_modify_footer_admin() {
-	echo '<span id="footer-thankyou">Theme Development by <a href="https://equalizedigital.com" target="_blank">Equalize Digital</a></span>';
+	return '<span id="footer-thankyou">Theme Development by <a href="https://equalizedigital.com" target="_blank">Equalize Digital</a></span>';
 }
 
 add_action( 'login_head', 'custom_loginlogo' );
@@ -110,7 +110,6 @@ function eqd_dashboard_widget_function() {
 	echo '<li><span class="dashicons dashicons-admin-site"></span><strong>Website</strong> <a href="https://equalizedigital.com" target="_blank">equalizedigital.com</a></li>';
 	echo '<li><span class="dashicons dashicons-email"></span><strong>Email</strong> <a href="mailto:support@equalizedigital.com?body=' . esc_url( get_bloginfo( 'url' ) ) . '" target="_blank">support@equalizedigital.com</a></li>';
 	echo '<li><span class="dashicons dashicons-phone"></span><strong>Phone</strong> <a href="tel:5129425858" target="_blank">512-942-5858</a></li>';
-	/* echo '<li><span class="dashicons dashicons-editor-help"></span><strong><a href="https://equalizedigital.com/contact/customer-support/#faq" target="_blank">Support FAQ & Hours</a></strong></li>'; */
 	echo '</ul>';
 	echo '<h3>FOLLOW US</h3>';
 	echo '<a href="https://www.facebook.com/groups/wordpress.accessibility" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -153,15 +152,12 @@ function eqd_dashboard_rss() {
 	}
 
 	foreach ( $rss->get_items( 0, $items ) as $item ) {
-		$publisher = '';
-		$site_link = '';
-		$link      = '';
-		$content   = '';
-		$date      = '';
-		$link      = esc_url( strip_tags( $item->get_link() ) );
-		$title     = esc_html( $item->get_title() );
-		$content   = $item->get_content();
-		$content   = wp_html_excerpt( $content, 200 ) . ' ...<a target="_blank" href="' . $link . '">Keep Reading</a>';
+		$link    = '';
+		$content = '';
+		$link    = esc_url( wp_strip_all_tags( $item->get_link() ) );
+		$title   = esc_html( $item->get_title() );
+		$content = $item->get_content();
+		$content = wp_html_excerpt( $content, 200 ) . ' ...<a target="_blank" href="' . $link . '">Keep Reading</a>';
 
 		echo "<li><a class='rsswidget' href='" . esc_url( $link ) . " target='_blank'>" . wp_kses_post( $title ) . "</a>\n<div class='rssSummary'>" . wp_kses_post( $content ) . "</div>\n";
 	}

@@ -17,11 +17,23 @@ if ( post_password_required() ) {
 	return;
 }
 
+/**
+ * Has children.
+ *
+ * @param int $comment_id The comment ID.
+ * @return boolean
+ */
 function has_children( $comment_id ) {
 	$children = get_comments( array( 'parent' => $comment_id ) );
 	return ! empty( $children );
 }
 
+/**
+ * Add class to comment with children.
+ *
+ * @param array $classes The comment classes.
+ * @return array
+ */
 function add_class_to_comment_with_children( $classes ) {
 	global $comment;
 	if ( has_children( $comment->comment_ID ) ) {
@@ -32,7 +44,15 @@ function add_class_to_comment_with_children( $classes ) {
 add_filter( 'comment_class', 'add_class_to_comment_with_children' );
 
 if ( ! function_exists( 'comments_callback' ) ) :
-
+	
+	/**
+	 * Comments callback.
+	 *
+	 * @param string $comment The comment.
+	 * @param array  $args The arguments.
+	 * @param int    $depth The depth.
+	 * @return void
+	 */
 	function comments_callback( $comment, $args, $depth ) {
 		?>
 
@@ -41,19 +61,22 @@ if ( ! function_exists( 'comments_callback' ) ) :
 			<div class="comment-container">
 				<div class="comment-author">
 					<div class="comment-authorimg">
-						<img src="<?php echo get_avatar_url( $comment->user_id, 32 ); ?>" alt="">
+						<img src="<?php echo esc_url( get_avatar_url( $comment->user_id, 32 ) ); ?>" alt="">
 					</div>
 					<div class="author-info">
-					<strong><?php echo get_comment_author(); ?></strong>
+					<strong><?php echo esc_html( get_comment_author() ); ?></strong>
 					<span class="date align-right">
-							<?php printf( esc_html__( '%1$s at %2$s', '5balloons_theme' ), get_comment_date(), get_comment_time( 'g:i A' ) ); ?>
+							<?php 
+							/* translators: 1: comment date, 2: comment time */
+							printf( esc_html__( '%1$s at %2$s', 'eqd' ), esc_html( get_comment_date() ), esc_html( get_comment_time( 'g:i A' ) ) ); 
+							?>
 					</span>
 					</div>
 				</div>
 
 				<div class="comment-block">
-						<?php if ( $comment->comment_approved === '0' ) : ?>
-						<em><?php esc_html_e( 'Your comment is awaiting moderation.', '5balloons_theme' ); ?></em>
+						<?php if ( '0' === $comment->comment_approved ) : ?>
+						<em><?php esc_html_e( 'Your comment is awaiting moderation.', 'eqd' ); ?></em>
 					<?php endif; ?>
 
 					<span class="comment-by">

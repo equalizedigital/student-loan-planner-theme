@@ -1,13 +1,13 @@
 <?php
-
 /**
- * Site Header
+ * Site Header.
  *
  * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
  * @since        1.0.0
  * @license      GPL-2.0+
  **/
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
 </head>
 
 <?php
-$featured_press_classes = is_post_type_archive( 'eqd-featured-press' ) ? 'press-archive-page' : '';
+$featured_press_classes = is_post_type_archive( 'eqd-featured-press' ) ? 'press-archive-page' : ''; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 $body_classes           = implode( ' ', get_body_class() );
 
 if ( is_post_type_archive( 'eqd-featured-press' ) ) {
@@ -56,9 +56,9 @@ tha_body_top();
 				$logo           = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 
 				if ( has_custom_logo() ) {
-					$site_logo = esc_url( $logo[0] ); // This is your logo's URL
+					$site_logo = esc_url( $logo[0] );
 				} else {
-					$site_logo = esc_url( get_stylesheet_directory_uri() ) . '/images/default-logo.png'; // Path to default logo
+					$site_logo = esc_url( get_stylesheet_directory_uri() ) . '/images/default-logo.png';
 				}
 
 				?>
@@ -91,16 +91,16 @@ tha_body_top();
 		</div>
 			<?php
 		} else {
-					// Check if 'slug' is set in the URL parameters
-			if ( isset( $_GET['landing_page'] ) ) {
-				$page_slug = $_GET['landing_page'];
+			// Check if 'slug' is set in the URL parameters.
+			if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to get the landing page slug.
+				$page_slug = sanitize_text_field( $_GET['landing_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to get the landing page slug.
 
-				// Query for the page by slug
-				$args = array(
+				// Query for the page by slug.
+				$args         = array(
 					'post_type'   => 'slp_landing',
 					'post_status' => 'publish',
 					'numberposts' => 1,
-					'meta_query'  => array(
+					'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Meta query is needed.
 						array(
 							'key'     => 'landing_page_url_text',
 							'value'   => $page_slug,
@@ -108,12 +108,11 @@ tha_body_top();
 						),
 					),
 				);
-				$page = get_posts( $args );
+				$landing_page = get_posts( $args );
 
-				// If the page exists, redirect or load the page
-				if ( $page ) {
-					$page_id = $page[0]->ID;
-
+				// If the page exists, redirect or load the page.
+				if ( $landing_page ) {
+					$page_id        = $landing_page[0]->ID;
 					$parameter_page = $page_id;
 				}
 			}
@@ -126,7 +125,7 @@ tha_body_top();
 				?>
 
 		<section class="landing-page-navigation">
-			<a href="<?php the_field( 'booking_link', $parameter_page ); ?>" class="btn">Get Help</a>
+			<a href="<?php echo esc_url( get_field( 'booking_link', $parameter_page ) ); ?>" class="btn">Get Help</a>
 		</section>
 		<?php endif; ?>
 

@@ -1,12 +1,16 @@
 <?php
 /**
  * Columns-with-button Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package  Block
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
@@ -15,9 +19,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$classid = 'columns-with-button-block-' . $block['id'];
+$classid = 'columns-with-button-block-' . $block['id']; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 if ( ! empty( $block['anchor'] ) ) :
-	$classid = $block['anchor'];
+	$classid = $block['anchor']; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -49,7 +53,10 @@ $acf_copy        = get_field( 'copy' );
 			<?php
 			echo wp_kses_post( $acf_link_url );
 			if ( isset( $_SERVER['QUERY_STRING'] ) && ! empty( $_SERVER['QUERY_STRING'] ) ) {
-				echo '&#63;' . $_SERVER['QUERY_STRING']; }
+
+				$query_string = sanitize_text_field( wp_unslash( $_SERVER['QUERY_STRING'] ) );
+				echo '&#63;' . esc_html( $query_string );
+			}
 			?>
 			" class="columns-with-button-block-container-content__button btn">
 				<?php echo wp_kses_post( $acf_link_title ); ?>
@@ -57,10 +64,10 @@ $acf_copy        = get_field( 'copy' );
 			<div class="columns-with-button-block-container-content__rating">
 				<?php
 				if ( ! empty( $acf_rating_text['url'] ) ) {
-					echo '<a href="' . $acf_rating_text['url'] . '">';
+					echo '<a href="' . esc_url( $acf_rating_text['url'] ) . '">';
 				}
 				?>
-				<?php echo $acf_rating_text['title']; ?>
+				<?php echo esc_html( $acf_rating_text['title'] ); ?>
 				<?php
 				if ( ! empty( $acf_rating_text['url'] ) ) {
 					echo '</a>';

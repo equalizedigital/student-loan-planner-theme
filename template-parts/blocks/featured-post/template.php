@@ -39,13 +39,13 @@ $featured_img_url = get_the_post_thumbnail_url( $post_select->ID, 'full' ); // '
 $category_ids     = wp_get_post_categories( $post_select->ID );
 
 
-$dateObject    = new DateTime( $post_select->post_date );
-$formattedDate = $dateObject->format( 'M d, Y' );
+$date_object    = new DateTime( $post_select->post_date );
+$formatted_date = $date_object->format( 'M d, Y' );
 
-// Get the author ID from the post ID
+// Get the author ID from the post ID.
 $author_id = get_post_field( 'post_author', $post_select->ID );
 
-// Get the author's display name
+// Get the author's display name.
 $author_name = get_the_author_meta( 'display_name', $author_id );
 
 // Get the author's avatar. You can adjust the size (e.g., 96 here) as needed.
@@ -61,11 +61,11 @@ $author_avatar = get_avatar( $author_id, 96 );
 					<?php 
 					if ( ! empty( $category_ids ) ) {
 						$category = get_category( $category_ids[0] );
-						echo $category->name . ' ';
+						echo esc_html( $category->name ) . ' ';
 					}
 					?>
 				</div>
-				<div class="date"><?php echo wp_kses_post( $formattedDate ); ?></div>
+				<div class="date"><?php echo wp_kses_post( $formatted_date ); ?></div>
 			</div>
 			<h2 class="title"><?php echo wp_kses_post( $post_select->post_title ); ?></h2>
 			<div class="author">

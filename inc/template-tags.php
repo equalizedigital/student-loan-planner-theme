@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template Tags
  *
@@ -123,15 +122,15 @@ function eqd_tha_footer_cta() {
 
 		if ( is_single() ) {
 
-			// Assuming you have the post ID
+			// Assuming you have the post ID.
 			$post_id = get_the_ID();
 
-			// Get the post categories
+			// Get the post categories.
 			$categories = get_the_category( $post_id );
 
-			// Check if categories exist for the post
+			// Check if categories exist for the post.
 			if ( ! empty( $categories ) ) {
-				// Retrieve the name of the first category
+				// Retrieve the name of the first category.
 				$category_id     = $categories[0]->term_id;
 				$hide_footer_cta = get_field( 'hide_footer_cta', 'category_' . $category_id );
 				if ( $hide_footer_cta ) {
@@ -149,13 +148,13 @@ function eqd_tha_footer_cta() {
 					<div class="calculator-signup-container">
 						<figure class="calculator-signup-container-image">
 							<?php if ( ! empty( $image ) ) : ?>
-								<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+								<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
 							<?php endif; ?>
 						</figure>
 
 						<div class="calculator-signup-container-content">
-							<h2 class="title"><?php echo $cta_title; ?></h2>
-							<div class="text"><?php echo $copy; ?></div>
+							<h2 class="title"><?php echo esc_html( $cta_title ); ?></h2>
+							<div class="text"><?php echo wp_kses_post( $copy ); ?></div>
 
 							<?php if ( ! empty( $link['url'] ) ) : ?>
 								<div class="link">
@@ -167,7 +166,6 @@ function eqd_tha_footer_cta() {
 
 							<?php
 							$list = get_field( 'list', 'option' );
-							// $list = get_field( 'list' );
 							if ( $list ) {
 								echo '<div class="calculator-signup-container-content-list">';
 								foreach ( $list as $row ) {
@@ -175,24 +173,24 @@ function eqd_tha_footer_cta() {
 										$image = $row['image']['url'];
 									}
 									if ( ! empty( $row['image'] ) ) {
-										$imageAlt = $row['image']['alt'];
+										$image_alt = $row['image']['alt'];
 									}
 									$title   = $row['title'];
 									$context = $row['context'];
 
 									echo '<div class="calculator-signup-container-content-list-item">';
 									if ( ! empty( $image ) ) {
-										echo "<img src='$image' alt='$imageAlt'></img>";
+										echo '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $image_alt ) . '" />';
 									}
 									echo '<div class="calculator-signup-container-content-list-item-content">';
 									if ( ! empty( $title ) ) {
 										echo '<h3>';
-										echo $title;
+											echo esc_html( $title );
 										echo '</h3>';
 									}
 									if ( ! empty( $context ) ) {
 										echo '<span class="content">';
-										echo $context;
+										echo wp_kses_post( $context );
 										echo '</span>';
 									}
 
@@ -316,7 +314,6 @@ function eqd_tha_page_header() {
 
 					<?php
 					if ( is_search() ) :
-						// Search
 						$search_term = get_search_query();
 						?>
 						Search: <?php echo wp_kses_post( $search_term ); ?>
@@ -329,7 +326,7 @@ function eqd_tha_page_header() {
 						<?php
 						if ( is_tax() ) {
 							$current_term = get_queried_object();
-							if ( $current_term->taxonomy !== 'occupation' ) {
+							if ( 'occupation' !== $current_term->taxonomy ) {
 								echo 'Resources for ';
 							}
 						}
@@ -367,7 +364,7 @@ function eqd_tha_page_header() {
 
 					<?php if ( ! empty( $heading_link ) ) : ?>
 						<span class="link">
-							<a href="<?php echo $heading_link['url'] ? $heading_link['url'] : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? $heading_link['title'] : ''; ?></a>
+							<a href="<?php echo $heading_link['url'] ? esc_url( $heading_link['url'] ) : ''; ?>" class="btn btn-dark-bg"><?php echo $heading_link['title'] ? esc_html( $heading_link['title'] ) : ''; ?></a>
 						</span>
 					<?php endif; ?>
 
@@ -381,7 +378,7 @@ function eqd_tha_page_header() {
 					if ( ! empty( $bg_url ) ) :
 						?>
 						<span class="hero_image">
-							<img src="<?php echo $bg_url; ?>" alt="<?php the_title(); ?>" />
+							<img src="<?php echo esc_url( $bg_url ); ?>" alt="<?php the_title(); ?>" />
 						</span>
 						<?php
 					endif;
@@ -398,10 +395,15 @@ function eqd_tha_page_header() {
 add_action( 'tha_page_header', 'eqd_tha_page_header' );
 
 /**
- * Single Sar Bar
+ * Single Sar Bar.
  */
 add_action( 'tha_single_sidebar', 'eqd_single_sidebar' );
 
+/**
+ * Single Sidebar.
+ *
+ * @return void
+ */
 function eqd_single_sidebar() {
 	// Standard Format.
 	if ( is_single() && get_post_type() === 'post' ) {
@@ -410,7 +412,7 @@ function eqd_single_sidebar() {
 		if ( empty( $layout_style ) ) {
 			$layout_style = 'standard';
 		}
-		if ( get_field( 'post_format_style' ) === 'standard' || $layout_style === true && get_field( 'post_format_style' ) !== 'full-width' ) :
+		if ( 'standard' === get_field( 'post_format_style' ) || ( true === $layout_style && 'full-width' !== get_field( 'post_format_style' ) ) ) :
 			?>
 			<div class="sidebar_container">
 				<div class="sidebar_social">
@@ -422,7 +424,6 @@ function eqd_single_sidebar() {
 				</div>
 			</div>
 			<?php
-			// echo has_block( 'acf/table-of-contents' );
 			if ( ! has_block( 'acf/table-of-contents' ) ) :
 				?>
 
@@ -431,7 +432,7 @@ function eqd_single_sidebar() {
 				?>
 				<div class="toc-nav placeholder"></div>
 				<?php
-				// mobile nav
+				// mobile nav.
 				?>
 				<div class="contents-nav-mobile">
 					<div class="contents-nav-mobile-header">
@@ -458,8 +459,8 @@ function eqd_single_sidebar() {
 						</button>
 						<div class="cta-btn">
 							<?php if ( ! empty( $header_main_link ) ) : ?>
-								<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
-									<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
+								<a href="<?php echo ! empty( $header_main_link ) ? esc_url( $header_main_link['url'] ) : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . esc_attr( $header_main_link['target'] ) . '"' : ''; ?> class="btn">
+									<?php echo ! empty( $header_main_link ) ? esc_html( $header_main_link['title'] ) : 'Get Help'; ?>
 								</a>
 							<?php endif; ?>
 						</div>
@@ -472,7 +473,11 @@ function eqd_single_sidebar() {
 	}
 }
 
-
+/**
+ * Prevent Auto Tag Scroll Delayed
+ *
+ * @return void
+ */
 function prevent_auto_tag_scroll_delayed() {
 
 	$layout_style_check = get_field( 'post_format_style' );
@@ -481,7 +486,7 @@ function prevent_auto_tag_scroll_delayed() {
 		$layout_style_check = 'standard';
 	}
 
-	if ( $layout_style_check !== 'standard' ) {
+	if ( 'standard' !== $layout_style_check ) {
 		return;
 	}
 
@@ -493,8 +498,6 @@ function prevent_auto_tag_scroll_delayed() {
 
 			if (window.location.hash) {
 				hashStore = window.location.hash;
-				// window.location.hash = '';
-				// history.replaceState(null, null, window.location.pathname + window.location.search);
 				window.scrollTo(0, 0);
 				observeH2Elements();
 			}
@@ -504,17 +507,16 @@ function prevent_auto_tag_scroll_delayed() {
 					const urlWithoutHash = hashStore.replace('#', '');
 					var element = document.getElementById(urlWithoutHash);
 					location.hash = hashStore;
-					// element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 				}, 900);
 			}
 
-			// Set up a MutationObserver to watch for changes in ID attributes on h2 elements
+			// Set up a MutationObserver to watch for changes in ID attributes on h2 elements.
 			function observeH2Elements() {
 				const h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content > h2');
 				let observedElementsCount = 0;
 				let elementsWithIdCount = 0;
 
-				// Callback function to execute when mutations are observed
+				// Callback function to execute when mutations are observed.
 				const callback = function(mutationsList, observer) {
 					for (const mutation of mutationsList) {
 						if (mutation.type === 'attributes' && mutation.attributeName === 'id') {
@@ -522,36 +524,36 @@ function prevent_auto_tag_scroll_delayed() {
 							if (target.id) {
 								console.log(`An ID was added to: `, target);
 								elementsWithIdCount++;
-								// Check if all h2 elements have an ID
+								// Check if all h2 elements have an ID.
 								if (elementsWithIdCount === observedElementsCount) {
 									allH2HaveIds();
-									observer.disconnect(); // Optionally stop observing if no further changes are needed
+									observer.disconnect(); // Optionally stop observing if no further changes are needed.
 								}
 							}
 						}
 					}
 				};
 
-				// Create an observer instance linked to the callback function
+				// Create an observer instance linked to the callback function.
 				const observer = new MutationObserver(callback);
 
-				// Options for the observer (which mutations to observe)
+				// Options for the observer (which mutations to observe).
 				const config = {
 					attributes: true
 				};
 
-				// Start observing each h2 element for configured mutations
+				// Start observing each h2 element for configured mutations.
 				h2Elements.forEach((h2) => {
-					if (!h2.id) { // Only observe h2 elements without an ID
+					if (!h2.id) { // Only observe h2 elements without an ID.
 						observedElementsCount++;
 						observer.observe(h2, config);
 					} else {
-						// Element already has an ID
+						// Element already has an ID.
 						elementsWithIdCount++;
 					}
 				});
 
-				// If all h2 elements already have an ID, we call the function directly
+				// If all h2 elements already have an ID, we call the function directly.
 				if (elementsWithIdCount === observedElementsCount) {
 					allH2HaveIds();
 				}
@@ -564,17 +566,22 @@ function prevent_auto_tag_scroll_delayed() {
 
 add_action( 'tha_page_header', 'prevent_auto_tag_scroll_delayed', 10 );
 
+/**
+ * Landing Page Header.
+ *
+ * @return void
+ */
 function eq_landing_page_header() {
-		// Check if 'slug' is set in the URL parameters
-	if ( isset( $_GET['landing_page'] ) ) {
-		$page_slug = $_GET['landing_page'];
+	// Check if 'slug' is set in the URL parameters.
+	if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to get the landing page slug.
+		$page_slug = sanitize_text_field( $_GET['landing_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to get the landing page slug.
 
-		// Query for the page by slug
+		// Query for the page by slug.
 		$args = array(
 			'post_type'   => 'slp_landing',
 			'post_status' => 'publish',
 			'numberposts' => 1,
-			'meta_query'  => array(
+			'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Meta query is needed.
 				array(
 					'key'     => 'landing_page_url_text',
 					'value'   => $page_slug,
@@ -584,7 +591,7 @@ function eq_landing_page_header() {
 		);
 		$page = get_posts( $args );
 
-		// If the page exists, redirect or load the page
+		// If the page exists, redirect or load the page.
 		if ( $page ) {
 			$page_id = $page[0]->ID;
 
@@ -610,5 +617,4 @@ function eq_landing_page_header() {
 	</header>
 	<?php
 }
-
 add_action( 'tha_landing_page_header', 'eq_landing_page_header', 10 );

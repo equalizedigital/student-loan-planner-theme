@@ -1,6 +1,11 @@
 <?php
 /**
- * media-reviews Block Template.
+ * Media Reviews Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -14,9 +19,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'media-reviews-block-' . $block['id'];
+$block_id = 'media-reviews-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -32,7 +37,7 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title                   = get_field( 'title' );
+$block_title             = get_field( 'title' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 $block_style             = get_field( 'block_style' );
 $select_testimonials     = get_field( 'select_testimonials' );
 $testimonial_block_style = get_field( 'testimonial_block_style' );
@@ -47,7 +52,7 @@ if ( $remove_padding ) :
 endif;
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo $block_style === 'purple' ? 'media-reviews-block-purple' : ''; ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo 'purple' === $block_style ? 'media-reviews-block-purple' : ''; ?>">
 	<div class="media-reviews-container">
 		<div class="media-reviews-container-review-items-loop">
 
@@ -80,7 +85,7 @@ endif;
 							if ( $testimonial_block_style ) :
 
 								if ( ! $hide_author_image ) {
-									the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height)
+									the_post_thumbnail( 'medium_large' );    // Medium large (max width 768px unlimited height).
 								}
 								?>
 								<?php endif; ?>
@@ -90,11 +95,11 @@ endif;
 									<?php
 									$location = get_field( 'location', get_the_ID() );
 									?>
-									<?php echo $location ? $location : ''; ?>
+									<?php echo $location ? esc_html( $location ) : ''; ?>
 										<div class="date">
 										<?php
 										$date = get_field( 'date', get_the_ID() );
-										echo $date ? $date : '';
+										echo $date ? esc_html( $date ) : '';
 										?>
 										</div>
 								</div>
@@ -116,7 +121,7 @@ endif;
 														</svg>
 													<?php endfor; ?>
 
-													<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
+													<div class="cover" style="width: calc(<?php echo 100 - ( esc_attr( $rating ) * 20 ); ?>% );"></div>
 											</span>
 										</div>
 									</div>
@@ -128,7 +133,7 @@ endif;
 								<?php
 								$content = get_the_content();
 								$content = '"' . $content . '"';
-								echo wp_strip_all_tags( apply_filters( 'the_content', $content ) );
+								echo wp_kses_post( wp_strip_all_tags( apply_filters( 'the_content', $content ) ) );
 								?>
 								</p>
 							</div>
@@ -147,10 +152,8 @@ endif;
 			$read_more_link = get_field( 'read_more_link' );
 			if ( $read_more_link ) :
 				?>
-			<a class="btn" href="<?php echo $read_more_link['url']; ?>"><?php echo $read_more_link['title']; ?></a>
+			<a class="btn" href="<?php echo esc_url( $read_more_link['url'] ); ?>"><?php echo esc_html( $read_more_link['title'] ); ?></a>
 			<?php endif; ?>
 		</div>
-
-
 	</div>
 </section>

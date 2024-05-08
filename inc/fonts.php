@@ -38,7 +38,7 @@ function eqd_enqueue_frontend_fonts() {
 		return;
 	}
 
-	wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' );
+	wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- external resource.
 }
 add_action( 'wp_enqueue_scripts', 'eqd_enqueue_frontend_fonts' );
 
@@ -48,7 +48,7 @@ add_action( 'wp_enqueue_scripts', 'eqd_enqueue_frontend_fonts' );
 function eqd_enqueue_backend_fonts() {
 	$font_url = eqd_theme_fonts_url();
 	if ( ! empty( $font_url ) ) {
-		wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' );
+		wp_enqueue_style( 'eqd-font', esc_url( $font_url ), array(), null, 'all' ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- external resource.
 	}
 }
 add_action( 'enqueue_block_editor_assets', 'eqd_enqueue_backend_fonts' );
@@ -89,7 +89,7 @@ function eqd_fallback_font_js() {
 	</script>
 	<?php
 }
-/* add_action( 'wp_body_open', 'eqd_fallback_font_js' ); */
+// add_action( 'wp_body_open', 'eqd_fallback_font_js' ); phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar.
 
 /**
  * Fallback Font Markup
@@ -99,4 +99,4 @@ function eqd_fallback_font_markup() {
 	<div aria-hidden="true" class="hidden" style="font-family: 'Open Sans'; position:absolute; overflow:hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;">&nbsp;</div>
 	<?php
 }
-/* add_action( 'wp_footer', 'eqd_fallback_font_markup' ); */
+// add_action( 'wp_footer', 'eqd_fallback_font_markup' ); phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar.

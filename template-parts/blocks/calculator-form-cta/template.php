@@ -1,6 +1,11 @@
 <?php
 /**
- * calculator-form-cta Block Template.
+ * Calculator Form CTA Block.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -14,9 +19,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'calculator-form-cta-block-' . $block['id'];
+$block_id = 'calculator-form-cta-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -32,15 +37,15 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title     = get_field( 'title' );
-$form_code = get_field( 'form_code' );
+$block_title = get_field( 'title' );
+$form_code   = get_field( 'form_code' );
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
 	<div class="calculator-form-cta-container">
 	<header class="calculator-form-cta-block-container">
-		<h2 class="title"><?php echo $title; ?></h2>
+		<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
 	</header>
-	<span class="form"><?php echo $form_code; ?></span>
+	<span class="form"><?php echo wp_kses_post( $form_code ); ?></span>
 	</div>
 </section>

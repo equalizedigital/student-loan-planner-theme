@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Loop
  *
@@ -84,7 +83,7 @@ function eqd_single_header() {
 	if ( is_single() ) {
 		// Load values and assing defaults.
 		$page_id    = get_the_ID();
-		$title_copy = get_field( 'title_copy', $page_id );
+		$title_copy = get_field( 'title_copy', $page_id ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 
 		$subtitle                = get_field( 'subtitle', $page_id );
 		$background_image        = get_field( 'background_image', $page_id );
@@ -104,7 +103,7 @@ function eqd_single_header() {
 		<header class="inner-hero <?php echo wp_kses_post( $container_class ); ?>">
 			<div class="inner-hero-container">
 				<?php
-				// Breadcrumbs
+				// Breadcrumbs.
 				if ( get_field( 'post_format_style' ) !== 'full-width' ) {
 					if ( function_exists( 'yoast_breadcrumb' ) ) {
 						yoast_breadcrumb( '<span id="breadcrumbs_top">', '</span>' );
@@ -113,7 +112,7 @@ function eqd_single_header() {
 				?>
 
 				<?php
-				// Title
+				// Title.
 				?>
 				<h1 class="title" style="<?php echo wp_kses_post( ! empty( $title_max_width_desktop ) ? 'max-width:' . $title_max_width_desktop . '%;' : '' ); ?>">
 					<?php
@@ -127,7 +126,7 @@ function eqd_single_header() {
 
 				<?php
 				if ( ! is_singular( 'slp_profession' ) ) {
-					// post author data
+					// post author data.
 					if ( get_field( 'post_format_style' ) === 'full-width' ) {
 						if ( get_the_date( 'U' ) < ( get_the_modified_date( 'U' ) - WEEK_IN_SECONDS ) ) {
 							$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
@@ -152,7 +151,7 @@ function eqd_single_header() {
 				?>
 
 				<?php
-				// optional subtitle
+				// optional subtitle.
 				if ( ! is_singular( 'slp_profession' ) ) {
 					?>
 				<span class="subtitle">
@@ -161,15 +160,15 @@ function eqd_single_header() {
 
 					<?php
 				}
-				// optional link
+				// optional link.
 				?>
 				<?php
 				if ( ! is_singular( 'slp_profession' ) ) {
 					if ( ! empty( $link ) ) :
 						?>
 					<span class="link">
-						<a href="<?php echo $link['url'] ? $link['url'] : ''; ?>" class="btn">
-							<?php echo $link['title'] ? $link['title'] : ''; ?>
+						<a href="<?php echo $link['url'] ? esc_url( $link['url'] ) : ''; ?>" class="btn">
+							<?php echo $link['title'] ? esc_html( $link['title'] ) : ''; ?>
 						</a>
 					</span>
 						<?php
@@ -207,7 +206,7 @@ add_action( 'tha_single_header', 'eqd_single_header' );
 
 
 /**
- * Entry header in content
+ * Entry header in content.
  *
  * @param string $output Outout.
  * @param array  $block Block.
@@ -266,8 +265,6 @@ function eqd_has_h1_block( $blocks = array() ) {
 	return false;
 }
 
-
-
 /**
  * Landing Page Single Post
  *
@@ -277,16 +274,16 @@ function eqd_has_h1_block( $blocks = array() ) {
  * @license      GPL-2.0+
  **/
 function eqd_single_landing_page() {
-	// Check if 'slug' is set in the URL parameters
-	if ( isset( $_GET['landing_page'] ) ) {
-		$page_slug = $_GET['landing_page'];
+	// Check if 'slug' is set in the URL parameters.
+	if ( isset( $_GET['landing_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to get the landing page slug.
+		$page_slug = sanitize_text_field( $_GET['landing_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to get the landing page slug.
 
-		// Query for the page by slug
+		// Query for the page by slug.
 		$args = array(
 			'post_type'   => 'slp_landing',
 			'post_status' => 'publish',
 			'numberposts' => 1,
-			'meta_query'  => array(
+			'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Meta query is needed.
 				array(
 					'key'     => 'landing_page_url_text',
 					'value'   => $page_slug,
@@ -296,7 +293,7 @@ function eqd_single_landing_page() {
 		);
 		$page = get_posts( $args );
 
-		// If the page exists, redirect or load the page
+		// If the page exists, redirect or load the page.
 		if ( $page ) {
 			$page_id = $page[0]->ID;
 
@@ -311,10 +308,10 @@ function eqd_single_landing_page() {
 			<div class="ed_landing_hero_container">
 				<figure class="ed_landing_hero_container_figure <?php echo wp_kses_post( 'image_type_' . $image_type ); ?>">
 					<?php
-					// Get the medium-sized featured image URL
+					// Get the medium-sized featured image URL.
 					$featured_img_url = get_the_post_thumbnail_url( $parameter_page, 'medium' );
 
-					// Output the image HTML if available
+					// Output the image HTML if available.
 					if ( $featured_img_url ) {
 						echo '<img src="' . esc_url( $featured_img_url ) . '" alt="Featured Image" />';
 					} else {
@@ -326,18 +323,18 @@ function eqd_single_landing_page() {
 				<div class="ed_landing_hero_container_text">
 					<h2 class="ed_landing_hero_container_text_heading">
 						<div class="sub_title">Trusted by</div>
-						<?php the_field( 'trusted_by_name', $parameter_page ); ?>
+						<?php echo wp_kses_post( get_field( 'trusted_by_name', $parameter_page ) ); ?>
 					</h2>
 					<div class="copy">
 						<?php
 						$job_title = get_field( 'job_title', $parameter_page );
-						the_field( 'job_title', $parameter_page );
+						echo esc_html( get_field( 'job_title', $parameter_page ) );
 
 						$company_name = get_field( 'company_name', $parameter_page );
 						if ( $company_name && $job_title ) {
 							echo ', ';
 						}
-						echo get_field( 'company_name', $parameter_page );
+						echo esc_html( get_field( 'company_name', $parameter_page ) );
 						?>
 					</div>
 					<?php
@@ -345,7 +342,7 @@ function eqd_single_landing_page() {
 					if ( $link_page ) :
 						?>
 					<div class="link">
-						<a href="<?php the_field( 'booking_link', $parameter_page ); ?>" class="btn">
+						<a href="<?php echo esc_url( get_field( 'booking_link', $parameter_page ) ); ?>" class="btn">
 							Book Your Custom Student Loan Plan
 						</a>
 					</div>
@@ -360,18 +357,18 @@ function eqd_single_landing_page() {
 		<section class="ed_landing_works
 		<?php
 		if ( empty( $parameter_page ) ) {
-			echo 'ed_landing_works_empty'; } else {
-			}
-			?>
+			echo 'ed_landing_works_empty'; 
+		} 
+		?>
 			">
 			<div class="ed_landing_works_container">
 				<div class="ed_landing_works_container_content">
 					<h2 class="heading">
 					<?php
 					if ( empty( $parameter_page ) ) {
-						the_field( 'heading' );
+						echo esc_html( get_field( 'heading' ) );
 					} else {
-						the_field( 'heading', $parameter_page );
+						echo esc_html( get_field( 'heading', $parameter_page ) );
 					}
 					?>
 
@@ -379,9 +376,9 @@ function eqd_single_landing_page() {
 
 					<?php
 					if ( empty( $parameter_page ) ) {
-						the_field( 'how_does_the_consult_work' );
+						echo esc_html( get_field( 'how_does_the_consult_work' ) );
 					} else {
-						the_field( 'how_does_the_consult_work', $parameter_page );
+						echo esc_html( get_field( 'how_does_the_consult_work', $parameter_page ) );
 					}
 					?>
 				</div>
@@ -392,7 +389,7 @@ function eqd_single_landing_page() {
 					if ( get_field( 'how_does_the_consult_work_youtube_id' ) ) :
 						?>
 							<div class="ed_landing_works_container_media">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php the_field( 'how_does_the_consult_work_youtube_id' ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_url( get_field( 'how_does_the_consult_work_youtube_id' ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 							</div>
 							<?php
 							endif;
@@ -400,7 +397,7 @@ function eqd_single_landing_page() {
 				} elseif ( get_field( 'how_does_the_consult_work_youtube_id', $parameter_page ) ) {
 					?>
 							<div class="ed_landing_works_container_media">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php the_field( 'how_does_the_consult_work_youtube_id', $parameter_page ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_url( get_field( 'how_does_the_consult_work_youtube_id', $parameter_page ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 							</div>
 								<?php
 

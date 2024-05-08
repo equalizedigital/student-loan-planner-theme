@@ -26,7 +26,7 @@ $hide_page_header     = get_field( 'hide_page_header' );
 $side_container_class = '';
 
 if ( get_field( 'post_format_style' ) !== 'full-width' ) {
-    $side_container_class .= 'inner-hero-alternate-style';
+	$side_container_class .= 'inner-hero-alternate-style';
 }
 
 if ( $hide_page_header ) {
@@ -35,7 +35,7 @@ if ( $hide_page_header ) {
 
 tha_content_before();
 
-	echo '<div class="' . $container_class . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
+	echo '<div class="' . esc_attr( $container_class ) . esc_attr( eqd_class( 'content-area', 'wrap', apply_filters( 'eqd_content_area_wrap', true ) ) ) . '">';
 
 		tha_content_wrap_before();
 
@@ -45,9 +45,9 @@ tha_content_before();
 
 			tha_single_header();
 
-			echo "<div class='side-main-article-container $side_container_class'>";
+			echo '<div class="side-main-article-container ' . esc_attr( $side_container_class ) . '">';
 				tha_content_before_container();
-				echo "<div class=\"site-main-article-content $container_class\">";
+				echo '<div class="site-main-article-content ' . esc_attr( $container_class ) . '">';
 
 					tha_content_top();
 					tha_single_fullwidth();

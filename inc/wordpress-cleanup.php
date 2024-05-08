@@ -25,13 +25,19 @@ function eqd_dont_update_theme( $r, $url ) {
 	if ( 0 !== strpos( $url, 'https://api.wordpress.org/themes/update-check/1.1/' ) ) {
 		return $r; // Not a theme update request. Bail immediately.
 	}
+
+	// Ensure the timeout is not greater than 3 seconds.
+	if ( isset( $r['timeout'] ) && $r['timeout'] > 3 ) {
+		$r['timeout'] = 3;
+	}
+	
 	$themes = json_decode( $r['body']['themes'] );
 	$child  = get_option( 'stylesheet' );
 	unset( $themes->themes->$child );
-	$r['body']['themes'] = json_encode( $themes );
+	$r['body']['themes'] = wp_json_encode( $themes );
 	return $r;
 }
-add_filter( 'http_request_args', 'eqd_dont_update_theme', 5, 2 );
+add_filter( 'http_request_args', 'eqd_dont_update_theme', 5, 2 ); // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.http_request_args -- timeout is not greater than 3 seconds.
 
 /**
  * Header Meta Tags
@@ -79,9 +85,6 @@ function eqd_clean_body_classes( $classes ) {
 		'admin-bar',
 		'logged-in',
 		'wp-embed-responsive',
-		'content-sidebar',
-		'content',
-		'full-width-content',
 	);
 
 	// AdThrive Classes.
@@ -196,19 +199,11 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 /**
  * Max srcset width
- *
- * @param int   $max_width  The maximum image width to be included in the 'srcset'. Default '2048'.
- * @param int[] $size_array {
- *     An array of requested width and height values.
- *
- *     @type int $0 The width in pixels.
- *     @type int $1 The height in pixels.
- * }
  */
-function eqd_max_srcset_width( $max_width, $size_array ) {
+function eqd_max_srcset_width() {
 	return 1200;
 }
-add_filter( 'max_srcset_image_width', 'eqd_max_srcset_width', 10, 2 );
+add_filter( 'max_srcset_image_width', 'eqd_max_srcset_width', 10 );
 
 /**
  * Customize image srcset
@@ -234,7 +229,7 @@ add_filter( 'max_srcset_image_width', 'eqd_max_srcset_width', 10, 2 );
  * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
  * @param int    $attachment_id Image attachment ID or 0.
  */
-function eqd_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
+function eqd_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- WP core hook.
 
 	// Array of image widths used in grid.
 	$grid_sizes = array();

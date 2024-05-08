@@ -1,12 +1,16 @@
 <?php
 /**
  * Video Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block Title Template
  */
 
 $block_name = 'video_block_template';
@@ -60,30 +64,30 @@ $heading = get_field( 'heading' );
 		<div class="video_block_template_container_content">
 			<div class="video_block_template_container_content_block">
 			<?php
-			// Assuming the field name is 'heading_level_select'
+			// Assuming the field name is 'heading_level_select'.
 			$heading_level = get_field( 'heading_level_select' );
 
-			// Default to h2 if no selection is made
+			// Default to h2 if no selection is made.
 			if ( ! $heading_level ) {
 				$heading_level = 'h2';
 			}
 
-			// Assuming the field name for the heading text is 'heading_text'
+			// Assuming the field name for the heading text is 'heading_text'.
 			$heading_text = get_field( 'heading' );
 			?>
 
 			<?php if ( $heading_text ) : ?>
 				<?php if ( $heading ) : ?>
-					<<?php echo $heading_level; ?> class="video_block_template_container_content_block_heading"><?php echo esc_html( $heading_text ); ?></<?php echo $heading_level; ?>>
+					<<?php echo esc_html( $heading_level ); ?> class="video_block_template_container_content_block_heading"><?php echo esc_html( $heading_text ); ?></<?php echo esc_html( $heading_level ); ?>>
 				<?php endif; ?>
 			<?php endif; ?>
 
 			<?php
-			$link = get_field( 'link' );
-			if ( $link ) :
-				$link_url    = $link['url'];
-				$link_title  = $link['title'];
-				$link_target = $link['target'] ? $link['target'] : '_self';
+			$button_link = get_field( 'link' );
+			if ( $button_link ) :
+				$link_url    = $button_link['url'];
+				$link_title  = $button_link['title'];
+				$link_target = $button_link['target'] ? $button_link['target'] : '_self';
 				?>
 				<a class="btn btn-dark-bg" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php endif; ?>
@@ -97,14 +101,14 @@ $heading = get_field( 'heading' );
 				</video>
 				<div class="video_block_template_container_media_video_button">
 					<button class="modal-btn" data-modal="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-controls="modal_video_block_<?php echo esc_attr( $block_id ); ?>" aria-expanded="false" aria-haspopup="dialog" aria-label="Play Video">
-						<img src="<?php echo $image_path; ?>/play.svg" alt="Play Video">
+						<img src="<?php echo esc_url( $image_path ); ?>/play.svg" alt="Play Video">
 					</button>
 				</div>
 
 			</div>
 			<div class="video_block_template_container_media_placeholder_action">
 				<button class="video_block_template_container_media_placeholder_action_btn" aria-label="Pause Video" aria-pressed="false">
-					<span class="img"><img src="<?php echo $image_path; ?>/pause.svg" alt="Pause Background Video"></span>
+					<span class="img"><img src="<?php echo esc_url( $image_path ); ?>/pause.svg" alt="Pause Background Video"></span>
 					<span class="text">Pause Video</span>
 				</button>
 			</div>

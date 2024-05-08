@@ -1,6 +1,11 @@
 <?php
 /**
- * media-reviews-slider Block Template.
+ * Media Reviews Slider Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -14,9 +19,9 @@ if ( isset( $block['data']['preview_image_help'] ) ) :
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'media-reviews-slider-block-' . $block['id'];
+$block_id = 'media-reviews-slider-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
@@ -32,10 +37,10 @@ endif;
 $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title = get_field( 'title' );
+$block_title = get_field( 'title' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="media-reviews-slider-block-container">
 	<div class="media-reviews-slider-block-container__svg">
 				<svg width="42" height="36" viewBox="0 0 42 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,14 +64,14 @@ $title = get_field( 'title' );
 				?>
 			<div class="media-reviews-slider-block-container-slider_slide">
 				<blockquote class="media-reviews-slider-block-container-slider_slide_blockquote">
-					<span class="text"><?php echo get_post_field( 'post_content', $testimonial->ID ); ?></span>
-					<span class="author"><?php echo get_the_title( $testimonial->ID ); ?></span>
+					<span class="text"><?php echo wp_kses_post( get_post_field( 'post_content', $testimonial->ID ) ); ?></span>
+					<span class="author"><?php echo esc_html( get_the_title( $testimonial->ID ) ); ?></span>
 				</blockquote>
 				<?php if ( $testimonial_youtube_video_id ) : ?>
 					<iframe 
 						width="560" 
 						height="315" 
-						src="https://www.youtube.com/embed/<?php _e( $testimonial_youtube_video_id ); ?>" 
+						src="https://www.youtube.com/embed/<?php echo esc_attr( $testimonial_youtube_video_id ); ?>" 
 						title="YouTube video player" 
 						frameborder="0" 
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

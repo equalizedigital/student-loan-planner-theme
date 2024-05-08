@@ -16,7 +16,6 @@ add_filter(
 	function ( $manifest ) {
 		$manifest['display'] = 'standalone';
 
-		// $manifest['short_name'] = 'Client Short Name'; // max 12 characters
 		$name = get_bloginfo( 'name' );
 		if ( 12 < strlen( $name ) ) {
 			$manifest['short_name'] = substr( $name, 0, 12 );
@@ -33,17 +32,6 @@ add_filter(
 				$manifest['icons']
 			);
 		}
-
-		/*
-		$manifest['icons'] = [
-				[
-					'src'     => get_stylesheet_directory_uri() . '/assets/images/pwa-icon.png',
-					'sizes'   => '512x512',
-					'type'    => 'image/png',
-					'purpose' => 'any maskable',
-				],
-			];
-		*/
 
 		return $manifest;
 	}
