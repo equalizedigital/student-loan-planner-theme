@@ -8163,43 +8163,51 @@ select.tab-block-container-tab-block_header-buttons_mobile_select {
     font-size: 14px;
     padding: 20px; }
   .video_carousel_template .swiper-nav {
-    position: relative;
-    display: flex;
-    margin: 40px 0 0;
+    position: absolute;
+    top: 22px;
+    left: 0;
+    width: 100%;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
     font-size: 12px;
-    font-weight: 600; }
+    font-weight: 600;
+    z-index: 99; }
     .video_carousel_template .swiper-nav .swiper-button-next:after,
     .video_carousel_template .swiper-nav .swiper-button-prev:after {
       font-size: 0px; }
   .video_carousel_template .swiper-nav .swiper-button-prev,
   .video_carousel_template .swiper-nav .swiper-button-next {
     position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: auto;
+    width: 50px;
+    height: 470px;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.2;
     text-align: center;
     color: #000000;
-    gap: 5px; }
+    gap: 5px;
+    position: relative; }
+    .video_carousel_template .swiper-nav .swiper-button-prev:hover,
+    .video_carousel_template .swiper-nav .swiper-button-next:hover {
+      color: #625089; }
+      .video_carousel_template .swiper-nav .swiper-button-prev:hover svg path,
+      .video_carousel_template .swiper-nav .swiper-button-next:hover svg path {
+        stroke: #625089 !important; }
     .video_carousel_template .swiper-nav .swiper-button-prev:focus,
     .video_carousel_template .swiper-nav .swiper-button-next:focus {
       outline: 2px solid blue;
-      outline-offset: 2px; }
+      outline-offset: -2px; }
+  .video_carousel_template .swiper-nav .swiper-button-prev {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+    position: absolute;
+    left: 0; }
+  .video_carousel_template .swiper-nav .swiper-button-next {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+    position: absolute;
+    right: 0; }
   .video_carousel_template .swiper-nav .arrow {
     display: flex;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     display: inline-flex; }
   .video_carousel_template .video-carousel-swiper-container {
     transition: width 200ms;

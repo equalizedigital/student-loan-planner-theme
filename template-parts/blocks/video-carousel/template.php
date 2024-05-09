@@ -112,28 +112,23 @@ $image_path = get_template_directory_uri() . '/assets/images/';
 			<?php endif; ?>
 
 		</div>
+	</div>
 
-		<div class="swiper-nav">
-			<div class="swiper-button-prev">
-				<span class="arrow">
-					<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M6.5 1L2 5.5L6.5 10" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</span>
-				Prev
-			</div>
-			|
-				<div class="swiper-button-next">
-				Next
-				<span class="arrow">
-					<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M4.5 10L9 5.5L4.5 1" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</span>
-			</div>
-
+	<div class="swiper-nav">
+		<div class="swiper-button-prev">
+			<span class="arrow">
+				<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6.5 1L2 5.5L6.5 10" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</span>
 		</div>
-
+		<div class="swiper-button-next">
+			<span class="arrow">
+				<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4.5 10L9 5.5L4.5 1" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</span>
+		</div>
 	</div>
 </section>
 
