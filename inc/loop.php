@@ -188,14 +188,15 @@ function eqd_single_header() {
 					<?php endif; ?>
 
 					<?php
-					$featured_image_id = get_post_thumbnail_id( get_the_ID() );
+					$featured_image_id  = get_post_thumbnail_id( get_the_ID() );
 					$featured_image_alt = get_post_meta( $featured_image_id, '_wp_attachment_image_alt', true );
-					$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+					$featured_image     = get_the_post_thumbnail_url( get_the_ID() );
 					if ( $featured_image ) {
 						?>
 						<?php echo '<img loading="lazy" src="' . esc_url( $featured_image ) . '" alt="' . esc_attr( $featured_image_alt ) . '" />'; ?>
 						<?php
-					} ?>
+					}
+					?>
 				</span>
 			<?php endif; ?>
 
