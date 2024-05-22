@@ -1,0 +1,21 @@
+{
+	"name": "acf/pricing-calculator",
+	"title": "Pricing Calculator",
+	"description": "Display tiles.",
+	"category": "custom-blocks",
+	"icon": "admin-post",
+	"keywords": [
+		"post",
+		"featured"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/pricing-calculator/screenshot.png"
+		}
+	}
+}

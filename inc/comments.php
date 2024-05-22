@@ -12,7 +12,7 @@
  * Post Comments
  */
 function eqd_comments() {
-	if ( is_single() && ( comments_open(get_the_ID()) || get_comments_number() ) ) {
+	if ( is_single() && ( comments_open( get_the_ID() ) || get_comments_number() ) ) {
 		comments_template();
 	}
 }
@@ -49,12 +49,12 @@ function eqd_comment_navigation( $location = '' ) {
  * Staff comment class
  *
  * @param array       $classes    An array of comment classes.
- * @param string      $class      A comma-separated list of additional classes added to the list.
+ * @param string      $comment_class      A comma-separated list of additional classes added to the list.
  * @param int         $comment_id The comment ID.
  * @param WP_Comment  $comment    The comment object.
  * @param int|WP_Post $post_id    The post ID or WP_Post object.
  */
-function eqd_staff_comment_class( $classes, $class, $comment_id, $comment, $post_id ) {
+function eqd_staff_comment_class( $classes, $comment_class, $comment_id, $comment, $post_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- WP core hook.
 	if ( empty( $comment->user_id ) ) {
 		return $classes;
 	}

@@ -304,10 +304,10 @@ div.wpforms-container-full button {
 			border: 1px solid transparent;
 			color: $black;
 			text-align: center;
-			font-size: 15px;
+			font-size: 17px;
 			font-style: normal;
-			font-weight: 400;
-			line-height: 15px;
+			font-weight: 500 !important;
+			line-height: 17px;
 			min-width: 58px;
 			border-radius: 4px;
 			cursor: pointer;
@@ -428,4 +428,40 @@ iframe {
 
 .di-calculator .di-table_results {
 	box-shadow: none !important;
+}
+
+
+.inline-logo-heading img {
+    display: inline-block;
+    margin-right: 8px;
+	margin-bottom: -3px;
+	@include media("<medium") {
+		width: 150px !important;
+	}
+}
+
+.list-style-x,
+.list-style-check {
+    list-style-type: none;
+    padding-left: 0 !important;
+}
+
+.list-style-x li,
+.list-style-check li {
+    border-bottom: 1px solid #82BC46;
+    padding: 0.5em !important;
+}
+
+.list-style-x li:before {
+    font: 30px dashicons;
+    content: "\f335";
+    margin-right: 5px;
+    vertical-align: -30%;
+}
+
+.list-style-check li:before {
+    font: 30px dashicons;
+    content: "\f15e";
+    margin-right: 5px;
+    vertical-align: -30%;
 }

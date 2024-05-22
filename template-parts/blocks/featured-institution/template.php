@@ -1,15 +1,17 @@
 <?php
 /**
  * Vendor_information_block Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block
  */
-
-
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
 	esc_attr( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
@@ -38,34 +40,34 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 $select_institutional_contact = get_field( 'select_institutional_contact' );
 $logo                         = get_field( 'company_logo', $select_institutional_contact );
 $rating                       = get_field( 'rating', $select_institutional_contact );
-$review_url                   = get_field( 'review_url', $select_institutional_contact );
+$review_url                   = get_field( 'review_url', $select_institutional_contact ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 $heading                      = get_field( 'heading', $select_institutional_contact );
-$website                      = get_field( 'website', $select_institutional_contact );
-$button_subtext               = get_field( 'button_subtext', $select_institutional_contact );
+$website                      = get_field( 'website', $select_institutional_contact ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+$button_subtext               = get_field( 'button_subtext', $select_institutional_contact ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 $features_list                = get_field( 'features_list', $select_institutional_contact );
 $about                        = get_field( 'about', $select_institutional_contact );
-$contact_info                 = get_field( 'contact_info', $select_institutional_contact );
+$contact_info                 = get_field( 'contact_info', $select_institutional_contact ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 $more_info_content            = get_field( 'more_info_content', $select_institutional_contact );
 $show_about                   = get_field( 'show_about' );
-$degrees_that_qualify         = get_field( 'degrees_that_qualify',$select_institutional_contact );
+$degrees_that_qualify         = get_field( 'degrees_that_qualify', $select_institutional_contact );
 $show_states                  = get_field( 'show_states' );
 $show_degrees                 = get_field( 'show_degrees' );
 $show_contact                 = get_field( 'show_contact' );
 $show_feature_list            = get_field( 'show_feature_list' );
 $block_id                     = get_field( 'block_id' );
-$time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
+$time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 ?>
-<section id="<?php echo !empty($block_id)?  $block_id:esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
+<section id="<?php echo ! empty( $block_id ) ? esc_attr( $block_id ) : esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
-	<h3 class="screen-reader-text"><?php echo get_the_title($select_institutional_contact); ?></h3>
+	<h3 class="screen-reader-text"><?php echo esc_html( get_the_title( $select_institutional_contact ) ); ?></h3>
 	<div class="vendor_information_block_container">
 
 		<div class="vendor_information_block_container_column_one">
 
 			<div class="vendor_information_block_container_column_one_image">
 				<?php if ( ! empty( $logo['url'] ) ) : ?>
-				<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt']; ?>">
+				<img src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_attr( $logo['alt'] ); ?>">
 				<?php endif; ?>
 			</div>
 
@@ -81,7 +83,7 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 									<path d="M7.77387 0.881322C8.07577 -0.034611 9.37143 -0.0346103 9.67334 0.881322L10.9884 4.8711C11.1236 5.28107 11.5065 5.55805 11.9382 5.55805H16.1631C17.1353 5.55805 17.5357 6.80498 16.7453 7.37105L13.3521 9.80121C12.9966 10.0558 12.8478 10.5119 12.9847 10.9273L14.2866 14.877C14.5894 15.7958 13.5411 16.5663 12.7546 16.003L9.30586 13.5331C8.95773 13.2838 8.48948 13.2838 8.14134 13.5331L4.69265 16.003C3.90614 16.5663 2.8578 15.7958 3.16065 14.877L4.46254 10.9273C4.59944 10.5119 4.4506 10.0558 4.09507 9.80121L0.701879 7.37105C-0.0885191 6.80498 0.311942 5.55805 1.28414 5.55805H5.50903C5.94069 5.55805 6.32363 5.28107 6.45876 4.8711L7.77387 0.881322Z" fill="#F19E3E"/>
 									</svg>
 								<?php endfor; ?>
-							<div class="cover" style="width: calc(<?php echo 100 - ( $rating * 20 ); ?>% );"></div>
+							<div class="cover" style="width: calc(<?php echo 100 - ( esc_attr( $rating ) * 20 ); ?>% );"></div>
 						</span>
 					</div>
 				</div>
@@ -111,14 +113,14 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 						<?php
 						$post_terms = get_the_terms( $select_institutional_contact, 'slp_eligible_professions' );
 						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
-							$numItems = count( $post_terms );
-							$i        = 0;
-							foreach ( $post_terms as $term ) {
+							$num_items = count( $post_terms );
+							$i         = 0;
+							foreach ( $post_terms as $post_term ) {
 
-								if ( ++$i === $numItems ) {
-									echo esc_html( $term->name ) . '';
+								if ( ++$i === $num_items ) {
+									echo esc_html( $post_term->name ) . '';
 								} else {
-									echo esc_html( $term->name ) . '<span>,</span> ';
+									echo esc_html( $post_term->name ) . '<span>,</span> ';
 								}
 							}
 						}
@@ -134,13 +136,13 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 					<?php
 						$post_terms = get_the_terms( $select_institutional_contact, 'slp_state' );
 					if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {
-						$numItems = count( $post_terms );
-						$i        = 0;
-						foreach ( $post_terms as $term ) {
-							if ( ++$i === $numItems ) {
-								echo '<span>' . esc_html( $term->name ) . '</span> ';
+						$num_items = count( $post_terms );
+						$i         = 0;
+						foreach ( $post_terms as $post_term ) {
+							if ( ++$i === $num_items ) {
+								echo '<span>' . esc_html( $post_term->name ) . '</span> ';
 							} else {
-								echo '<span>' . esc_html( $term->name ) . ',</span> ';
+								echo '<span>' . esc_html( $post_term->name ) . ',</span> ';
 							}
 						}
 					}
@@ -150,21 +152,22 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				<?php endif; ?>
 
 				<?php 
-				$vendor_title = get_field('title');
-				$vendor_content = get_field('content');
-				if ( $vendor_title ) : ?>
+				$vendor_title   = get_field( 'title' );
+				$vendor_content = get_field( 'content' );
+				if ( $vendor_title ) :
+					?>
 					<h4 class="vendor_information_block_container_column_two_title">
 						<?php echo wp_kses_post( $vendor_title ); ?>
 					</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
-						<?php  echo wp_kses_post($vendor_content); ?>
+						<?php echo wp_kses_post( $vendor_content ); ?>
 					</div>
 				<?php endif; ?>
 
 				<?php if ( $show_contact ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">Contact:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
-						<a href="<?php echo get_the_permalink($select_institutional_contact); ?>"><?php echo get_the_title($select_institutional_contact); ?></a>
+						<a href="<?php echo esc_url( get_the_permalink( $select_institutional_contact ) ); ?>"><?php echo esc_html( get_the_title( $select_institutional_contact ) ); ?></a>
 					</div>
 				<?php endif; ?>
 				
@@ -189,14 +192,16 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 				
 
-				<?php if( have_rows( 'eligible_states',$select_institutional_contact ) ): ?>
-					<?php while( have_rows( 'eligible_states',$select_institutional_contact ) ): the_row(); 
+				<?php if ( have_rows( 'eligible_states', $select_institutional_contact ) ) : ?>
+					<?php
+					while ( have_rows( 'eligible_states', $select_institutional_contact ) ) :
+						the_row(); 
 						?>
 						<h4 class="vendor_information_block_container_column_two_title">
-							<?php the_sub_field( 'heading' ); ?>
+							<?php echo wp_kses_post( get_sub_field( 'heading' ) ); ?>
 						</h4>
 						<div class="vendor_information_block_container_column_two_text_repeater">
-							<?php the_sub_field( 'content' ); ?>
+							<?php echo wp_kses_post( get_sub_field( 'content' ) ); ?>
 						</div>
 
 					<?php endwhile; ?>
@@ -207,21 +212,21 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				<div class="vendor_information_block_container_column_two_link">
 
 					<?php
-					if ( ! empty(get_field('review_url',$select_institutional_contact))  ) :
+					if ( ! empty( get_field( 'review_url', $select_institutional_contact ) ) ) :
 						?>
-						<a href="<?php echo get_field('review_url',$select_institutional_contact); ?>" class="vendor_information_block_container_column_two_link btn">
-							<?php echo "Full ".get_field('institution_name',$select_institutional_contact)." Review"; ?>
+						<a href="<?php echo esc_url( get_field( 'review_url', $select_institutional_contact ) ); ?>" class="vendor_information_block_container_column_two_link btn">
+							<?php echo 'Full ' . esc_attr( get_field( 'institution_name', $select_institutional_contact ) ) . ' Review'; ?>
 						</a>
 					<?php endif; ?>
 
-					<?php if(!empty($more_info_content)): ?>
+					<?php if ( ! empty( $more_info_content ) ) : ?>
 
 						<button 
 						class="vendor_information_block_container_column_two_link_more_info"
 						type="button"
-						aria-label="More Information about <?php echo get_the_title($select_institutional_contact); ?>"
+						aria-label="More Information about <?php echo esc_attr( get_the_title( $select_institutional_contact ) ); ?>"
 						aria-expanded="false"
-						aria-controls="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>"
+						aria-controls="vendor_information_block_container_column_two_link_more_info_btn_<?php echo esc_attr( $time_stamp ); ?>"
 						>More Information<span>
 								<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg>
 							</span>
@@ -232,9 +237,8 @@ $time_stamp                  = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				</div>
 			</div>
 
-			<div class="vendor_information_block_container_more_info" hidden id="vendor_information_block_container_column_two_link_more_info_btn_<?php echo $time_stamp; ?>">
+			<div class="vendor_information_block_container_more_info" hidden id="vendor_information_block_container_column_two_link_more_info_btn_<?php echo esc_attr( $time_stamp ); ?>">
 				<?php echo wp_kses_post( $more_info_content ); ?>
 			</div>
-		
 	</div>
 </section>

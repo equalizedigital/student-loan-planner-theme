@@ -348,7 +348,7 @@ window.addEventListener("load", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 	function footerMenuFunctions() {
-		
+
 		// Find all elements with class .widget-title
 		const widgetTitles = document.querySelectorAll('.widget-title');
 		// Get all sections with id pattern 'nav_menu-*'
@@ -365,12 +365,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				// Set the unique id to the menu-footer-container
 				menuFooterContainer.id = uniqueId;
 			}
-			 menuFooterContainer = section.querySelector('.menu-home-footer-container');
+			menuFooterContainer = section.querySelector('.menu-home-footer-container');
 			if (menuFooterContainer) {
 				// Set the unique id to the menu-home-footer-container
 				menuFooterContainer.id = uniqueId;
 			}
-			 menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
+			menuFooterContainer = section.querySelector('.menu-footer-privacy-container');
 			if (menuFooterContainer) {
 				// Set the unique id to the menu-footer-privacy-container
 				menuFooterContainer.id = uniqueId;
@@ -405,47 +405,47 @@ document.addEventListener('DOMContentLoaded', function () {
 				this.classList.toggle('active');
 				let sibling = this.nextElementSibling;
 				// if (sibling) {
-					var isExpanded = title.getAttribute('aria-expanded');
-					this.nextElementSibling.classList.toggle('active'); 
-					this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+				var isExpanded = title.getAttribute('aria-expanded');
+				this.nextElementSibling.classList.toggle('active');
+				this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 				// }
-			},true);
+			}, true);
 		});
-	
-}
 
-    let widgetTitlesRespo = document.querySelectorAll('.widget-title');
+	}
 
-    function handleTitleClick() {
-        this.classList.toggle('active');
-        let sibling = this.nextElementSibling;
-        if (sibling) {
-            var isExpanded = this.getAttribute('aria-expanded');
-            sibling.classList.toggle('active');
-            this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-        }
-    }
+	let widgetTitlesRespo = document.querySelectorAll('.widget-title');
 
-    window.addEventListener('resize', function () {
-        if (window.innerWidth < 768) {
-            footerMenuFunctions();
-            widgetTitlesRespo.forEach(title => {
-                title.addEventListener('click', handleTitleClick);
-            });
-        } else {
-            widgetTitlesRespo.forEach(title => {
-                title.removeAttribute('tabindex');
-                title.removeAttribute('role');
-                title.removeAttribute('aria-expanded');
-                title.removeAttribute('aria-controls');
-                title.removeEventListener('click', handleTitleClick);
-            });
-        }
-    });
+	function handleTitleClick() {
+		this.classList.toggle('active');
+		let sibling = this.nextElementSibling;
+		if (sibling) {
+			var isExpanded = this.getAttribute('aria-expanded');
+			sibling.classList.toggle('active');
+			this.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+		}
+	}
 
-    if (window.innerWidth < 768) {
-        footerMenuFunctions();
-    }
+	window.addEventListener('resize', function () {
+		if (window.innerWidth < 768) {
+			footerMenuFunctions();
+			widgetTitlesRespo.forEach(title => {
+				title.addEventListener('click', handleTitleClick);
+			});
+		} else {
+			widgetTitlesRespo.forEach(title => {
+				title.removeAttribute('tabindex');
+				title.removeAttribute('role');
+				title.removeAttribute('aria-expanded');
+				title.removeAttribute('aria-controls');
+				title.removeEventListener('click', handleTitleClick);
+			});
+		}
+	});
+
+	if (window.innerWidth < 768) {
+		footerMenuFunctions();
+	}
 });
 
 
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
 jQuery(function ($) {
 
 	// jQuery formatted selector to search for focusable items
-	var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+	var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, video, object, embed, *[tabindex], *[contenteditable]";
 
 	// store the item that has focus before opening the modal window
 	var focusedElementBeforeModal;
@@ -558,7 +558,7 @@ jQuery(function ($) {
 	function setFocusToFirstItemInModal(obj) {
 		// get list of all children elements in given object
 		var o = $(obj).find('*');
-
+		console.log(o.filter(focusableElementsString).filter(':visible'))
 		// set the focus to the first keyboard focusable item
 		o.filter(focusableElementsString).filter(':visible').first().focus();
 	}
@@ -568,58 +568,73 @@ jQuery(function ($) {
 		// jQuery('.modalOverlay').css('display', 'block'); // insert an overlay to prevent clicking and make a visual change to indicate the main apge is not available
 		jQuery('#' + obj).css('display', 'block'); // make the modal window visible
 		jQuery('#' + obj).attr('aria-hidden', 'false'); // mark the modal window as visible
-
+		jQuery('body').addClass('modal-active');
 		// attach a listener to redirect the tab to the modal window if the user somehow gets out of the modal window
 		jQuery('body').on('focusin', 'body', function () {
 			setFocusToFirstItemInModal('#' + obj);
 		})
 		// save current focus
 		focusedElementBeforeModal = jQuery(':focus');
-
 		setFocusToFirstItemInModal('#' + obj);
+
+		var video = jQuery('#' + obj).find('.video-modal-autoplay').get(0);
+		if (video) {
+			video.play();
+		}
+
 	}
 
 	function hideModal() {
+		jQuery('body').removeClass('modal-active');
 		jQuery('.modal').css('display', 'none'); // hide the modal window
 		jQuery('.modal').attr('aria-hidden', 'true'); // mark the modal window as hidden
 		jQuery(' body').attr('aria-hidden', 'false'); // mark the main page as visible
+
+		jQuery('.modal-btn').attr('aria-expanded', false);
 
 		// remove the listener which redirects tab keys in the main content area to the modal
 		jQuery('body').off('focusin', ' body');
 
 		jQuery('.modal').attr('aria-hidden', 'true');
 
+		const modal_videos = document.querySelectorAll('.modal video');
+
+		// Pause each video found
+		modal_videos.forEach(function (video) {
+			video.pause();
+		});
+
 		// set focus back to element that had it before the modal was opened
 		focusedElementBeforeModal.focus();
 	}
 });
 
-(function() {
-	
-window.addEventListener("DOMContentLoaded", function () {
-	// resource links
-	let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
-	
+(function () {
 
-	if (accordionButtons.length > 0) {
-		// Accordion
-		accordionButtons.forEach(button => {
+	window.addEventListener("DOMContentLoaded", function () {
+		// resource links
+		let accordionButtons = document.querySelectorAll('.accordion-block-container-accordion__button');
 
-			button.addEventListener('click', () => {
-				const contentId = button.getAttribute('aria-controls');
-				const content = document.getElementById(contentId);
 
-				if (button.getAttribute('aria-expanded') === 'true') {
-					button.setAttribute('aria-expanded', 'false');
-					content.classList.remove('active-content');
-				} else {
-					button.setAttribute('aria-expanded', 'true');
-					content.classList.add('active-content');
-				}
+		if (accordionButtons.length > 0) {
+			// Accordion
+			accordionButtons.forEach(button => {
+
+				button.addEventListener('click', () => {
+					const contentId = button.getAttribute('aria-controls');
+					const content = document.getElementById(contentId);
+
+					if (button.getAttribute('aria-expanded') === 'true') {
+						button.setAttribute('aria-expanded', 'false');
+						content.classList.remove('active-content');
+					} else {
+						button.setAttribute('aria-expanded', 'true');
+						content.classList.add('active-content');
+					}
+				});
 			});
-		});
-	}
-},false);
+		}
+	}, false);
 })();
 
 
@@ -726,7 +741,7 @@ window.addEventListener("load", function () {
 
 	// Listen for window resize events and recheck
 	window.addEventListener('resize', checkIsTabletSize);
-	
+
 	function teamHighlightFunctionality(windowWidth) {
 		let highlightButton = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button')
 		let highlightButtonText = document.querySelector('.team-hightlight-block-container-team-hightlight__load_more button .text')
@@ -809,96 +824,91 @@ window.addEventListener("load", function () {
 });
 
 
-
 // Lender Table Show More
 document.addEventListener('DOMContentLoaded', function () {
 
-    function checkIsTabletSizeLender() {
-        var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	function checkIsTabletSizeLender() {
+		var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-        teamLenderFunctionality(windowWidth);
-    }
+		teamLenderFunctionality(windowWidth);
+	}
 
-    // Initial check on page load
-    checkIsTabletSizeLender();
+	// Initial check on page load
+	checkIsTabletSizeLender();
 
-    // Listen for window resize events and recheck
-    window.addEventListener('resize', checkIsTabletSizeLender);
+	// Listen for window resize events and recheck
+	window.addEventListener('resize', checkIsTabletSizeLender);
 
-    function teamLenderFunctionality(windowWidth) {
-        let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button');
+	function teamLenderFunctionality(windowWidth) {
+		let highlightButtonLender = document.querySelector('.refinance_lender_section__load_more button');
 		let highlightButtonLenderText = document.querySelector('.refinance_lender_section__load_more button .text')
 
-        if (highlightButtonLender) {
-            let items = document.querySelectorAll('.data-tr');
-            let initText = highlightButtonLenderText;
-            let tabOpen = false;
+		if (highlightButtonLender) {
+			let items = document.querySelectorAll('.data-tr');
+			let initText = highlightButtonLenderText;
+			let tabOpen = false;
 
-            if (items.length >= 3) {
+			if (items.length >= 3) {
 
-                if (windowWidth <= 768) {
-                    items.forEach(function (item, index) {
-                        if (index < 3) {
-                            item.tabIndex = 0;
-                        } else {
-                            item.tabIndex = -1;
-                        }
-                    });
-                }
+				if (windowWidth <= 768) {
+					items.forEach(function (item, index) {
+						if (index < 3) {
+							item.tabIndex = 0;
+						} else {
+							item.tabIndex = -1;
+						}
+					});
+				}
 
-                highlightButtonLender.addEventListener('click', function () {
-                    items.forEach(function (item) {
-                        if (tabOpen) {
-                            item.classList.add('hidden');
-                            item.classList.remove('animate');
-                        } else {
-                            item.classList.remove('hidden');
-                            item.classList.add('animate');
-                        }
-                    });
+				highlightButtonLender.addEventListener('click', function () {
+					items.forEach(function (item) {
+						if (tabOpen) {
+							item.classList.add('hidden');
+							item.classList.remove('animate');
+						} else {
+							item.classList.remove('hidden');
+							item.classList.add('animate');
+						}
+					});
 
-                    var currentState = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
+					var currentState = this.getAttribute('aria-expanded') === 'true';
+					this.setAttribute('aria-expanded', currentState ? 'false' : 'true');
 
-                    for (var i = 0; i < 3 && i < items.length; i++) {
-                        items[i].classList.remove('hidden');
-                    }
+					for (var i = 0; i < 3 && i < items.length; i++) {
+						items[i].classList.remove('hidden');
+					}
 
-                    items[0].focus();
+					items[0].focus();
 
-                    this.classList.toggle('active');
+					this.classList.toggle('active');
 					tabOpen == false ? highlightButtonLenderText = 'Show Fewer' : highlightButtonLenderText = initText;
 
 
-                    tabOpen = !tabOpen; // Toggle the tabOpen state
-                });
+					tabOpen = !tabOpen; // Toggle the tabOpen state
+				});
 
-            }
-        }
-    }
+			}
+		}
+	}
 });
 
-
-
-
-// 
-
+// Table of Contents.
 window.addEventListener('DOMContentLoaded', () => {
-	
+
 	let toc_container_entry_content = document.querySelectorAll('.single .post_type_layout_standard .entry-content');
 	let toc_container = document.querySelectorAll('.toc_container');
 
 	if (toc_container.length > 0 || toc_container_entry_content.length > 0) {
-		
+
 		// Get all <h2> elements within .toc_container
 		let tocContainer;
 		let h2Elements;
 		if (toc_container.length > 0) {
-			 tocContainer = document.querySelector('.toc_container');
-			 h2Elements = tocContainer.querySelectorAll('h2');
-		} else if(toc_container_entry_content.length > 0){
-			 tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
-			 h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
+			tocContainer = document.querySelector('.toc_container');
+			h2Elements = tocContainer.querySelectorAll('h2');
+		} else if (toc_container_entry_content.length > 0) {
+			tocContainer = document.querySelector('.post_type_layout_standard .entry-content');
+			h2Elements = document.querySelectorAll('.post_type_layout_standard .entry-content >h2');
 		}
 
 		// Create an empty array to store the IDs
@@ -968,12 +978,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		let activeListItemMobile = null;
 		let activeListItemSidebar = null;
 		let toc_content_load_point = document.querySelector('.toc_content_load_point');
-		
+
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
 				let listItemCheck = document.querySelector(`.toc-nav li a`);
-				if (listItemCheck == null){
+				if (listItemCheck == null) {
 					return;
 				}
 				if (entry.intersectionRatio > 0) {
@@ -1015,9 +1025,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		// Track all sections that have an `id` applied
 		let targetElements;
 		if (toc_container.length > 0) {
-			 targetElements = document.querySelectorAll('.toc_container h2');
-		} else if( toc_container_entry_content.length > 0 ) {
-			 targetElements = document.querySelectorAll('.single .post_type_layout_standard .entry-content h2');
+			targetElements = document.querySelectorAll('.toc_container h2');
+		} else if (toc_container_entry_content.length > 0) {
+			targetElements = document.querySelectorAll('.single .post_type_layout_standard .entry-content h2');
 		}
 
 		targetElements.forEach(element => {
@@ -1045,33 +1055,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		});
 
-		// click toc menu links	
+		// click toc menu links
 		const elementsWithHref = document.querySelectorAll('.contents-nav-mobile-menu a, .toc-nav a');
 
 		// Add a click event listener to each element
 		elementsWithHref.forEach(element => {
 			element.addEventListener('click', event => {
 				event.preventDefault(); // Prevent the default anchor behavior
-		
+
 				// Get the href value
 				const hrefValue = element.getAttribute('href');
-		
+
 				// Find the target element using the href value
 				const targetElement = document.querySelector(hrefValue);
-		
+
 				// Check if the target element exists
 				if (targetElement) {
 					// Set the focus on the target element
 					targetElement.focus();
-					
+
 					// Toggle the contents-nav-mobile class
 					let contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
 					contentsNavMobileClicker.classList.toggle('active');
-					
+
 					// Calculate the position to scroll to
 					const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
 					const offsetPosition = elementTop - 100;
-		
+
 					// Scroll to the desired position
 					window.scrollTo({
 						top: offsetPosition,
@@ -1080,7 +1090,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		});
-		
+
 		// Get a reference to the elements
 		const dropdownSelect = document.querySelector('.contents-nav-mobile-header-dropdown-select');
 		const contentsNavMobileClicker = document.querySelector('.contents-nav-mobile');
@@ -1093,11 +1103,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-
 // vendor information block
 document.addEventListener('DOMContentLoaded', function () {
-	
+
 	const accordionButton = document.querySelectorAll('.vendor_information_block_container_column_two_link_more_info');
 	if (accordionButton.length > 0) {
 
@@ -1122,27 +1130,302 @@ document.addEventListener('DOMContentLoaded', function () {
 	const tabletChevron = document.querySelectorAll('.tablet_chevron');
 	if (tabletChevron.length > 0) {
 
-	document.querySelector('.tablet_chevron').addEventListener('click', function() {
-		var list = document.querySelector('.tabbed-content__nav-list');
-		var items = list.querySelectorAll('.tabbed-content__nav-item');
-		
-		// Find the currently active item
-		var activeItem = list.querySelector('.active');
-		var activeIndex = Array.from(items).indexOf(activeItem);
-		
-		// Determine the next item to scroll into view
-		var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
-		
-		if (nextItem) {
-			// Scroll the next item into view
-			nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-			
-			// Update the active class if needed
-			activeItem.classList.remove('active');
-			nextItem.classList.add('active');
-		}
-	});
+		document.querySelector('.tablet_chevron').addEventListener('click', function () {
+			var list = document.querySelector('.tabbed-content__nav-list');
+			var items = list.querySelectorAll('.tabbed-content__nav-item');
+
+			// Find the currently active item
+			var activeItem = list.querySelector('.active');
+			var activeIndex = Array.from(items).indexOf(activeItem);
+
+			// Determine the next item to scroll into view
+			var nextItem = items[activeIndex + 1] || items[0]; // Loop back to first if at the end
+
+			if (nextItem) {
+				// Scroll the next item into view
+				nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+
+				// Update the active class if needed
+				activeItem.classList.remove('active');
+				nextItem.classList.add('active');
+			}
+		});
 	}
 
 });
- 
+
+// Video Block.
+document.addEventListener('DOMContentLoaded', function () {
+
+	const videoBlockElement = document.querySelectorAll('.image-placeholder-action');
+	if (videoBlockElement.length) {
+
+		// Select all play buttons
+		var playButtons = document.querySelectorAll('.image-placeholder-action');
+		var allimageObject = document.querySelectorAll('.image-placeholder');
+		var documentimageobject = document.querySelectorAll('.image-object');
+
+
+		function videoFunctionality(button) {
+			documentimageobject.forEach(function (image) {
+				image.classList.remove('image-hold');
+			})
+
+			allimageObject.forEach(function (image) {
+				image.classList.remove('image-hold');
+			})
+
+			var slideContainer = button.closest('.slide-container');
+			var currentImagePlaceholder = slideContainer.querySelector('.image-placeholder');
+			var video = slideContainer.querySelector('video');
+			var currentimageobject = slideContainer.querySelector('.image-object');
+
+			document.querySelectorAll('.slide-container').forEach(function (container) {
+				container.classList.remove('image-hold');
+			})
+
+			// Pause all videos and remove the class from all .image-object elements except the current
+			document.querySelectorAll('.slide-container video').forEach(function (video) {
+				if (video !== button.closest('.slide-container').querySelector('video')) {
+					video.pause();
+					video.controls = false; // Hide controls
+					currentImagePlaceholder.classList.remove('image-hold');
+					slideContainer.classList.remove('image-hold');
+				}
+			});
+
+			// Toggle the class for the current .image-object
+			if (video.paused) {
+				currentImagePlaceholder.classList.add('image-hold');
+				currentimageobject.classList.add('image-hold');
+				slideContainer.classList.add('image-hold');
+				video.controls = true; // Show controls when video plays
+			}
+
+			video.addEventListener('ended', function () {
+				// The code you want to execute when the video ends
+				document.querySelectorAll('.slide-container video').forEach(function (otherVideo) {
+					if (otherVideo !== video) { // Ensure we're not pausing or altering the video that just ended
+						otherVideo.pause();
+						otherVideo.controls = false; // Hide controls
+						// Assuming 'currentImagePlaceholder' is defined in your broader script context
+						currentImagePlaceholder.classList.remove('image-hold');
+						currentImagePlaceholder.classList.remove('image-hold');
+						currentimageobject.classList.remove('image-hold');
+						slideContainer.classList.remove('image-hold');
+					}
+				});
+			});
+
+			// Play or pause the current video
+			video.paused ? video.play() : video.pause();
+		}
+
+
+		playButtons.forEach(function (button) {
+			// Add click event listener to each button
+			button.addEventListener('click', function () {
+				videoFunctionality(button)
+			});
+		});
+
+
+
+
+		document.getElementById('video-placeholder').play();
+
+		jQuery('.video-placeholder').on('click', function () {
+			var videoElement = jQuery('#video-placeholder').get(0); // Get the native video element
+
+			if (!videoElement.paused) {
+				videoElement.pause();
+				jQuery(this).show(); // Show the placeholder when the video is paused
+			} else {
+				videoElement.play();
+				jQuery(this).hide(); // Hide the placeholder when the video is playing
+			}
+		});
+
+
+		// Correct the element ID to point to the video element, not the placeholder
+		var videoElement = document.getElementById('video-placeholder');
+		var videoPlaceholderPause = document.querySelector('.video_block_template_container_media_placeholder_action_btn');
+		var buttonText = document.querySelector('.video_block_template_container_media_placeholder_action_btn .text'); // Get the span that contains the text
+
+		videoPlaceholderPause.addEventListener('click', function () {
+			if (!videoElement.paused) {
+				videoElement.pause();
+				videoPlaceholderPause.ariaPressed = true;
+				buttonText.textContent = 'Play Video'; // Change the text to 'Play Video'
+			} else {
+				videoElement.play();
+				videoPlaceholderPause.ariaPressed = false;
+				buttonText.textContent = 'Pause Video'; // Change the text to 'Pause Video'
+			}
+		});
+
+	}
+});
+
+// Pricing Block
+document.addEventListener('DOMContentLoaded', function () {
+
+	const pricingCalculator = document.querySelectorAll('.pricing_calculator_template');
+	if (pricingCalculator.length) {
+
+		class PricingAccordion {
+			constructor(domNode) {
+				this.rootEl = domNode;
+				this.buttonEl = this.rootEl.querySelector('button[aria-expanded]');
+
+				const controlsId = this.buttonEl.getAttribute('aria-controls');
+				this.contentEl = document.getElementById(controlsId);
+
+				this.open = this.buttonEl.getAttribute('aria-expanded') === 'true';
+
+				// add event listeners
+				this.buttonEl.addEventListener('click', this.onButtonClick.bind(this));
+			}
+
+			onButtonClick() {
+				this.toggle(!this.open);
+			}
+
+			toggle(open) {
+				// don't do anything if the open state doesn't change
+				if (open === this.open) {
+					return;
+				}
+
+				// update the internal state
+				this.open = open;
+
+				// handle DOM updates
+				this.buttonEl.setAttribute('aria-expanded', `${open}`);
+				if (open) {
+					this.contentEl.removeAttribute('hidden');
+				} else {
+					this.contentEl.setAttribute('hidden', '');
+				}
+			}
+
+			// Add public open and close methods for convenience
+			open() {
+				this.toggle(true);
+			}
+
+			close() {
+				this.toggle(false);
+			}
+		}
+
+		// init accordions
+		const accordions = document.querySelectorAll('.pricing_calculator_accordion .pricing_calculator_accordion_item_title');
+		accordions.forEach((accordionEl) => {
+			new PricingAccordion(accordionEl);
+		});
+
+		function addData($this) {
+			var dataprice = parseInt($this.data('price'), 10);
+			var dataenrollment = parseInt($this.data('enrollment'), 10);
+			var dataBenefits = $this.data('benefits');
+			var dataDisclaimer = $this.data('disclaimer');
+			var uniqueId = $this.data('unique-id');
+
+			var $targetPrice = jQuery('.large_set .price');
+			var $targetenrollment = jQuery('.info_set_number');
+			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul ul');
+			var disclaimerData = jQuery('.pricing_calculator_template_container_main_pricing_disclaimer');
+
+			var currentPrice = parseInt($targetPrice.text(), 10);
+			var currentEnrollment = parseInt($targetenrollment.text(), 10);
+
+			$targetPrice.text(currentPrice + dataprice);
+			$targetenrollment.text(currentEnrollment + dataenrollment);
+			benefitsData.append(dataBenefits);
+			disclaimerData.append('<span data-unique-id="' + uniqueId + '">' + dataDisclaimer + '</span>');
+
+			collectAndAppendText();
+
+
+		}
+		// Function to collect and append text
+		function collectAndAppendText() {
+			var container = document.querySelector('.pricing_calculator_template_container_main');
+
+			// Function to recursively grab text content from nodes
+			function getTextWithSpacing(node) {
+				let text = '';
+				node.childNodes.forEach(function (child) {
+					if (child.nodeType === Node.TEXT_NODE) {
+						// For text nodes, trim and add space to avoid extra whitespace issues
+						text += child.textContent.trim() + ' ';
+					} else if (child.nodeType === Node.ELEMENT_NODE) {
+						// For element nodes, recurse
+						text += getTextWithSpacing(child);
+					}
+				});
+				return text;
+			}
+
+			var textContent = getTextWithSpacing(container).trim(); // Trim the final string to remove any leading/trailing spaces
+
+			var ariaReadElement = document.getElementById('aria-read');
+			if (ariaReadElement) {
+				ariaReadElement.textContent = textContent; // Set the collected text
+			} else {
+				console.log('Element with ID "aria-read" not found.');
+			}
+		}
+
+
+
+		function removeData($this) {
+			var dataprice = parseInt($this.data('price'), 10);
+			var dataenrollment = parseInt($this.data('enrollment'), 10);
+			var dataBenefits = $this.data('benefits');
+			var dataDisclaimer = $this.data('disclaimer');
+			var uniqueId = $this.data('unique-id');
+
+			var $targetPrice = jQuery('.large_set .price');
+			var $targetenrollment = jQuery('.info_set_number');
+			var benefitsData = jQuery('.pricing_calculator_template_container_main_info_ul ul');
+			var disclaimerData = jQuery('.pricing_calculator_template_container_main_pricing_disclaimer');
+
+			var currentPrice = parseInt($targetPrice.text(), 10);
+			var currentEnrollment = parseInt($targetenrollment.text(), 10);
+
+			$targetPrice.text(currentPrice - dataprice);
+			$targetenrollment.text(currentEnrollment - dataenrollment);
+
+			benefitsData.find('[data-unique-id="' + uniqueId + '"]').remove();
+			disclaimerData.find('[data-unique-id="' + uniqueId + '"]').remove();
+
+			collectAndAppendText();
+		}
+
+		jQuery('.action, .pricing_calculator_accordion_add').on('click', function () {
+			var $this = jQuery(this);
+			var dataAdded = $this.data('added');
+			var pricing_calculator_accordion_item = $this.closest('.pricing_calculator_accordion_item');
+
+			if (dataAdded) {
+				// $this.data('added', false).attr('data-added', 'false');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').data('added', false).attr('data-added', 'false');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').attr('aria-pressed', 'false');
+				jQuery(pricing_calculator_accordion_item).removeClass('pricing_calculator_accordion_add_active');
+				removeData($this);
+
+				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Add Service');
+			} else {
+				// $this.data('added', true).attr('data-added', 'true');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').data('added', true).attr('data-added', 'true');
+				$this.closest('.pricing_calculator_accordion_item').find('.pricing_calculator_accordion_add,.action.btn').attr('aria-pressed', 'true');
+				addData($this);
+				jQuery(pricing_calculator_accordion_item).addClass('pricing_calculator_accordion_add_active');
+				$this.closest('.pricing_calculator_accordion_item').find('.action').text('Remove Service');
+			}
+
+		});
+	}
+});

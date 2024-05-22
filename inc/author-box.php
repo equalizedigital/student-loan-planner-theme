@@ -21,7 +21,7 @@ function eqd_custom_author_url( $link, $author_id ) {
 	}
 	return $link;
 }
-// add_filter( 'author_link', 'eqd_custom_author_url', 10, 2 );
+// add_filter( 'author_link', 'eqd_custom_author_url', 10, 2 ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment this line to use the custom author url.
 
 /**
  * Author archive avatar

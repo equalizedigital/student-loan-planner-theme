@@ -1,12 +1,16 @@
 <?php
 /**
- * vendor-repeater Block Template.
+ * Vendor Repeater Block.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
@@ -41,13 +45,13 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 			<thead>
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$company_title = get_sub_field( 'company_title' );
 							?>
 							<th>
-								<?php  echo wp_kses_post($company_title); ?>
+								<?php echo wp_kses_post( $company_title ); ?>
 							</th>
 							<?php
 						endwhile;
@@ -62,15 +66,15 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$company_logo = get_sub_field( 'company_logo' );
 							?>
 							<td>
-								<?php if( $company_logo ) { ?>
+								<?php if ( $company_logo ) { ?>
 								<h3>
-									<img src="<?php  echo wp_kses_post($company_logo['url']); ?>" alt="<?php  echo wp_kses_post($company_logo['alt']); ?>">
+									<img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>">
 								</h3>
 								<?php } ?>
 							</td>
@@ -82,15 +86,15 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$cashback_amount = get_sub_field( 'cashback_amount' );
 							?>
 							<td>
-								<div class="cashback_dollar"><?php echo wp_kses_post($cashback_amount); ?></div>
+								<div class="cashback_dollar"><?php echo wp_kses_post( $cashback_amount ); ?></div>
 								<span class="cashback">
-								Cashback<a href="#sup_disclosure_<?php echo get_row_index(); ?>" aria-label="Disclosure"><sup><?php echo get_row_index(); ?></sup></a>
+								Cashback<a href="#sup_disclosure_<?php echo esc_attr( get_row_index() ); ?>" aria-label="Disclosure"><sup><?php echo esc_html( get_row_index() ); ?></sup></a>
 								</span>
 							</td>
 							<?php
@@ -101,14 +105,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$variable = get_sub_field( 'variable' );
 							?>
 							<td>
 								<div class="title">Variable</div>
-								<div class="text"><?php  echo wp_kses_post($variable); ?><a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a></div>
+								<div class="text"><?php echo wp_kses_post( $variable ); ?><a href="#sup_disclosure_<?php echo esc_attr( get_row_index() ); ?>"><sup><?php echo esc_html( get_row_index() ); ?></sup></a></div>
 							</td>
 							<?php
 						endwhile;
@@ -118,14 +122,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$fixed = get_sub_field( 'fixed' );
 							?>
 							<td>
 								<div class="title">Fixed</div>
-								<div class="text"><?php  echo wp_kses_post($fixed); ?><a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a></div>
+								<div class="text"><?php echo wp_kses_post( $fixed ); ?><a href="#sup_disclosure_<?php echo esc_attr( get_row_index() ); ?>"><sup><?php echo esc_html( get_row_index() ); ?></sup></a></div>
 							</td>
 							<?php
 						endwhile;
@@ -135,13 +139,13 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$amount = get_sub_field( 'amount' );
 							?>
 							<td>
-								<div class="text"><?php  echo wp_kses_post($amount); ?><a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a></div>
+								<div class="text"><?php echo wp_kses_post( $amount ); ?><a href="#sup_disclosure_<?php echo esc_attr( get_row_index() ); ?>"><sup><?php echo esc_html( get_row_index() ); ?></sup></a></div>
 							</td>
 							<?php
 						endwhile;
@@ -151,16 +155,16 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<?php
-					if ( have_rows( 'vendors','option' ) ) :
-						while ( have_rows( 'vendors','option' ) ) :
+					if ( have_rows( 'vendors', 'option' ) ) :
+						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
-							$link = get_sub_field( 'link' );
-							if(!empty($link['url'])):
-							?>
+							$vendor_link = get_sub_field( 'link' );
+							if ( ! empty( $vendor_link['url'] ) ) :
+								?>
 							<td>
-								<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn" <?php echo !empty($link['target'])? wp_kses_post("target='".$link['target']."'"):''; ?>>
-								<?php  echo wp_kses_post($link['title']); ?>
-								<?php if(empty($link['target'])): ?>
+								<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" class="btn" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
+								<?php echo wp_kses_post( $vendor_link['title'] ); ?>
+								<?php if ( empty( $vendor_link['target'] ) ) : ?>
 									<span class="svg">
 										<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
@@ -170,7 +174,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 								<?php endif; ?>
 								</a>
 							</td>
-							<?php
+								<?php
 							endif;
 						endwhile;
 					endif;
@@ -182,13 +186,13 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 
 		<?php
-		if ( have_rows( 'vendors','option' ) ) :
-			while ( have_rows( 'vendors','option' ) ) :
+		if ( have_rows( 'vendors', 'option' ) ) :
+			while ( have_rows( 'vendors', 'option' ) ) :
 				the_row();
-				$company_title = get_sub_field( 'company_title' );
-				$company_logo = get_sub_field( 'company_logo' );
+				$company_title   = get_sub_field( 'company_title' );
+				$company_logo    = get_sub_field( 'company_logo' );
 				$cashback_amount = get_sub_field( 'cashback_amount' );
-				$variable = get_sub_field( 'variable' );
+				$variable        = get_sub_field( 'variable' );
 
 				?>
 
@@ -196,7 +200,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 			<thead>
 				<tr>
 					<th>
-						<?php  echo wp_kses_post($company_title); ?>
+						<?php echo wp_kses_post( $company_title ); ?>
 					</th>
 				</tr>
 			</thead>
@@ -205,15 +209,15 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<td>
-						<h3><img src="<?php  echo wp_kses_post($company_logo['url']); ?>" alt="<?php  echo wp_kses_post($company_logo['alt']); ?>"></h3>
+						<h3><img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>"></h3>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="td_container">
-						<div class="cashback_dollar"><?php echo wp_kses_post($cashback_amount); ?></div>
+						<div class="cashback_dollar"><?php echo wp_kses_post( $cashback_amount ); ?></div>
 						<span class="cashback">
-						Cashback<a href="#sup_disclosure_<?php echo get_row_index(); ?>"><sup><?php echo get_row_index(); ?></sup></a>
+						Cashback<a href="#sup_disclosure_<?php echo esc_attr( get_row_index() ); ?>"><sup><?php echo esc_html( get_row_index() ); ?></sup></a>
 						</span>
 						</div>
 					</td>
@@ -228,7 +232,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					<td>
 					<div class="td_container">
 					<div class="title">Fixed</div>
-						<div class="text"><?php  echo wp_kses_post($fixed); ?></div>
+						<div class="text"><?php echo wp_kses_post( $fixed ); ?></div>
 					</div>
 					</td>
 				</tr>
@@ -238,20 +242,21 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 					$amount = get_sub_field( 'amount' );
 					?>
 					<td>
-						<div class="text"><?php  echo wp_kses_post($amount); ?></div>
+						<div class="text"><?php echo wp_kses_post( $amount ); ?></div>
 					</td>
 				</tr>
 				<!-- tr -->
 				<tr>
-					<?php $link = get_sub_field( 'link' ); 
-					if(!empty($link['url'])):
-					?>
+					<?php
+					$vendor_link_mobile = get_sub_field( 'link' ); 
+					if ( ! empty( $vendor_link_mobile['url'] ) ) :
+						?>
 
 					<td>
-						<a href="<?php  echo wp_kses_post($link['url']); ?>" class="btn" <?php echo !empty($link['target'])? wp_kses_post("target='".$link['target']."'"):''; ?>>
-							<?php  echo wp_kses_post($link['title']); ?>
+						<a href="<?php echo wp_kses_post( $vendor_link_mobile['url'] ); ?>" class="btn" <?php echo ! empty( $vendor_link_mobile['target'] ) ? wp_kses_post( "target='" . $vendor_link_mobile['target'] . "'" ) : ''; ?>>
+							<?php echo wp_kses_post( $vendor_link_mobile['title'] ); ?>
 							<span class="svg">
-							<?php if(empty($link['target'])): ?>
+							<?php if ( empty( $vendor_link_mobile['target'] ) ) : ?>
 									<span class="svg">
 										<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M12 8.96667V11C12 11.5523 11.5523 12 11 12H2C1.44771 12 1 11.5523 1 11V2C1 1.44771 1.44772 1 2 1H4.03333" stroke="black" stroke-linecap="round"></path>
@@ -267,7 +272,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 			</tbody>
 		</table>
 
-		<?php
+				<?php
 			endwhile;
 		endif;
 		?>

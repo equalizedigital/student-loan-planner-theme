@@ -1,22 +1,39 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
+/**
+ * Mobile Navigation
+ *
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
+ **/
 
-class RqD_Doctor_Map {
+/**
+ * Doctor Map Functionality
+ */
+class EQD_Doctor_Map {
 
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		add_action( 'wp_ajax_rwc_doctor_map_ajax', array( $this, 'doctor_map_ajax_func' ) );
 		add_action( 'wp_ajax_nopriv_rwc_doctor_map_ajax', array( $this, 'doctor_map_ajax_func' ) );
 	}
 
+	/**
+	 * Doctor Map AJAX Function
+	 */
 	public function doctor_map_ajax_func() {
-		if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( $_REQUEST['nonce'], 'ajax-nonce' ) ) {
+		if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( $_REQUEST['nonce'], 'ajax-nonce' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$error = new WP_Error( '-1', 'Permission Denied' );
 			wp_send_json_error( $error );
 		}
 
-		$state = $_REQUEST['state'];
+		$state = sanitize_text_field( $_REQUEST['state'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 
-		// if state is empty set to first term
-		if ( $state == null ) {
+		// if state is empty set to first term.
+		if ( null === $state ) {
 			$terms = get_terms(
 				array(
 					'taxonomy'   => 'slp_state',
@@ -32,10 +49,10 @@ class RqD_Doctor_Map {
 		$args      = array(
 			'post_type'      => 'slp_contacts',
 			'posts_per_page' => -1,
-			'meta_key'       => 'institution_name',
+			'meta_key'       => 'institution_name', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Meta key is required.
 			'orderby'        => 'meta_value',
 			'order'          => 'ASC',
-			'tax_query'      => array(
+			'tax_query'      => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Tax query is required.
 				array(
 					'taxonomy' => 'slp_state',
 					'field'    => 'slug',
@@ -46,12 +63,13 @@ class RqD_Doctor_Map {
 		$the_query = new WP_Query( $args );
 
 		ob_start();
-        ?>
-        <h2>
-            <?php echo $this->convert_state( $state ); ?>
-        </h2>
-        <?php
-		if ( $the_query->have_posts() ) { ?>
+		?>
+		<h2>
+			<?php echo esc_html( $this->convert_state( $state ) ); ?>
+		</h2>
+		<?php
+		if ( $the_query->have_posts() ) {
+			?>
 			
 			<ul class="doctor-mortgages-block-results">
 				<?php
@@ -62,9 +80,9 @@ class RqD_Doctor_Map {
 					$post_title       = get_the_title();
 					?>
 					<li class="doctor-mortgages-block-results-result">
-						<h3><?php echo $institution_name; ?></h3>
-						<a class="link" href="<?php echo get_permalink(); ?>">
-							<?php echo $post_title; ?>
+						<h3><?php echo esc_html( $institution_name ); ?></h3>
+						<a class="link" href="<?php echo esc_url( get_permalink() ); ?>">
+							<?php echo esc_html( $post_title ); ?>
 						</a>
 					</li>
 					
@@ -73,8 +91,10 @@ class RqD_Doctor_Map {
 			<?php
 			wp_reset_postdata();
 		} else {
-			// no posts found
-            ?>No banks found.<?php
+			// no posts found.
+			?>
+			No banks found.
+			<?php
 		}
 		$html = ob_get_clean();
 
@@ -88,16 +108,16 @@ class RqD_Doctor_Map {
 			wp_send_json_error( $error );
 		}
 
-        // Slug of the taxonomy term
-        $slug = $state;
+		// Slug of the taxonomy term.
+		$slug = $state;
 
-        // Get the term object using the slug
-        $term = get_term_by('slug', $slug, 'slp_state'); // replace 'your-taxonomy-name-here' with the name of your taxonomy
+		// Get the term object using the slug.
+		$term = get_term_by( 'slug', $slug, 'slp_state' ); // replace 'your-taxonomy-name-here' with the name of your taxonomy.
 
-        // Check if the term exists and get the ACF field value using the term's ID
-        if ($term) {
-            $field_value = get_field('state_link', $term->taxonomy . '_' . $term->term_id);
-        }
+		// Check if the term exists and get the ACF field value using the term's ID.
+		if ( $term ) {
+			$field_value = get_field( 'state_link', $term->taxonomy . '_' . $term->term_id );
+		}
 
 		$data = array(
 			'html'  => $html,
@@ -109,9 +129,12 @@ class RqD_Doctor_Map {
 			),
 		);
 
-		wp_send_json_success( json_encode( $data ) );
+		wp_send_json_success( wp_json_encode( $data ) );
 	}
 
+	/**
+	 * States Select
+	 */
 	public function states_select() {
 		$terms = get_terms(
 			array(
@@ -127,9 +150,9 @@ class RqD_Doctor_Map {
 			<label for="doctor-mortgages-block-select" class="screen-reader-text">Choose a state:</label>
 			<select name="state" class="doctor-mortgages-block-select" id="doctor-mortgages-block-select">
 			<?php foreach ( $terms as $term ) { ?>
-				<option value="<?php echo $term->name; ?>"><?php echo $this->convert_state( $term->name ); ?></option>
-		<?php
-		}
+				<option value="<?php echo esc_attr( $term->name ); ?>"><?php echo esc_html( $this->convert_state( $term->name ) ); ?></option>
+					<?php
+			}
 			?>
 			</select>
 			<?php
@@ -138,6 +161,12 @@ class RqD_Doctor_Map {
 		return $html;
 	}
 
+	/**
+	 * Convert State
+	 *
+	 * @param string $name State name.
+	 * @return string
+	 */
 	public function convert_state( $name ) {
 		$states = array(
 			array(
@@ -376,20 +405,25 @@ class RqD_Doctor_Map {
 		foreach ( $states as $state ) :
 			if ( $strlen < 2 ) {
 				return false;
-			} elseif ( $strlen == 2 ) {
-				if ( strtolower( $state['abbr'] ) == strtolower( $name ) ) {
+			} elseif ( 2 === $strlen ) {
+				if ( strtolower( $state['abbr'] ) === strtolower( $name ) ) {
 					$return = $state['name'];
 					break;
 				}
-			} elseif ( strtolower( $state['name'] ) == strtolower( $name ) ) {
-					$return = strtoupper( $state['abbr'] );
-					break;
+			} elseif ( strtolower( $state['name'] ) === strtolower( $name ) ) {
+				$return = strtoupper( $state['abbr'] );
+				break;
 			}
-		endforeach;
+			endforeach;
 
 		return $return;
 	}
 
+	/**
+	 * Map
+	 *
+	 * @return string
+	 */
 	public function map() {
 		ob_start();
 		?>
@@ -399,4 +433,4 @@ class RqD_Doctor_Map {
 		return $html;
 	}
 }
-new RqD_Doctor_Map();
+		new EQD_Doctor_Map();

@@ -1,7 +1,11 @@
 <?php
-
 /**
- * media-reviews-global Block Template.
+ * Media Reviews Global Block Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -10,65 +14,64 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'media-reviews-global-block-' . $block['id'];
+$block_id = 'media-reviews-global-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block media-reviews-global-block';
+$class_name = 'block media-reviews-global-block';
 if ( ! empty( $block['className'] ) ) :
-	$className .= ' ' . $block['className'];
+	$class_name .= ' ' . $block['className'];
 endif;
 
 if ( ! empty( $block['align'] ) ) :
-	$className .= ' align' . $block['align'];
+	$class_name .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title                   = get_field( 'title', 'option' );
+$block_title             = get_field( 'title', 'option' );
 $block_style             = get_field( 'block_style', 'option' );
 $testimonial_block_style = get_field( 'testimonial_block_style', 'option' );
-$hide_title             = get_field( 'hide_title' );
+$hide_title              = get_field( 'hide_title' );
 
 if ( $testimonial_block_style ) :
-	$className .= ' media-reviews-global-block_' . $testimonial_block_style;
+	$class_name .= ' media-reviews-global-block_' . $testimonial_block_style;
 endif;
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?> <?php echo $block_style == 'purple' ? 'media-reviews-global-block-purple' : ''; ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> <?php echo 'purple' === $block_style ? 'media-reviews-global-block-purple' : ''; ?>">
 	<div class="media-reviews-global-container">
 
-		<?php if(!$hide_title ): ?>
-			<h2 class="title"><?php echo $title; ?></h2>
+		<?php if ( ! $hide_title ) : ?>
+			<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
 		<?php endif; ?>
 		<div class="media-reviews-global-container-review-items">
 			<?php
-			if ( have_rows( 'select_reviews','option' ) ) :
-				while ( have_rows( 'select_reviews','option' ) ) :
+			if ( have_rows( 'select_reviews', 'option' ) ) :
+				while ( have_rows( 'select_reviews', 'option' ) ) :
 					the_row();
 
-					// Get sub-field values
-					$link              = get_sub_field( 'link' );
+					$review_link       = get_sub_field( 'link' );
 					$logo              = get_sub_field( 'logo' );
 					$logo_white        = get_sub_field( 'logo_white' );
 					$stars             = get_sub_field( 'stars' );
 					$number_of_reviews = get_sub_field( 'number_of_reviews' );
 					?>
 				<div class="media-reviews-global-container-review-items-item">
-					<a href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo $logo['alt']; ?>. <?php echo $stars; ?> out of 5 stars. <?php echo $number_of_reviews; ?> reviews.">
+					<a href="<?php echo esc_url( $review_link ); ?>" aria-label="<?php echo esc_attr( $logo['alt'] ); ?>. <?php echo esc_html( $stars ); ?> out of 5 stars. <?php echo esc_html( $number_of_reviews ); ?> reviews.">
 						<figure>
 							<?php if ( ! empty( $logo ) ) : ?>
-								<img src="<?php echo $logo['url']; ?>" class="image" alt="<?php echo $logo['alt']; ?>">
+								<img src="<?php echo esc_url( $logo['url'] ); ?>" class="image" alt="<?php echo esc_attr( $logo['alt'] ); ?>">
 							<?php endif; ?>
 							<?php if ( ! empty( $logo_white ) ) : ?>
-								<img src="<?php echo $logo_white['url']; ?>" class="image-white" alt="<?php echo $logo_white['alt']; ?>">
+								<img src="<?php echo esc_url( $logo_white['url'] ); ?>" class="image-white" alt="<?php echo esc_attr( $logo_white['alt'] ); ?>">
 							<?php endif; ?>
 						</figure>
 						<div class="rating-stars">
@@ -79,11 +82,11 @@ endif;
 									</svg>
 								<?php endfor; ?>
 
-								<div class="cover" style="width: calc(<?php echo 100 - ( $stars * 20 ); ?>% );"></div>
+								<div class="cover" style="width: calc(<?php echo 100 - ( esc_html( $stars ) * 20 ); ?>% );"></div>
 							</span>
-							<div class="number_of_stars"><?php echo $stars; ?> out of 5</div>
+							<div class="number_of_stars"><?php echo esc_html( $stars ); ?> out of 5</div>
 						</div>
-						<span class="reviews_amount"><?php echo $number_of_reviews; ?> Reviews</span>
+						<span class="reviews_amount"><?php echo esc_html( $number_of_reviews ); ?> Reviews</span>
 					</a>
 				</div>
 					<?php

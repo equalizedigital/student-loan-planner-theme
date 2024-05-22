@@ -1,7 +1,11 @@
 <?php
-
 /**
- * query loop block Block Template.
+ * Query Loop Block.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
@@ -10,40 +14,40 @@
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'query-loop-block-' . $block['id'];
+$block_id = 'query-loop-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) :
-	$id = $block['anchor'];
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block query-loop-block';
+$class_name = 'block query-loop-block';
 if ( ! empty( $block['className'] ) ) :
-	$className .= ' ' . $block['className'];
+	$class_name .= ' ' . $block['className'];
 endif;
 if ( ! empty( $block['align'] ) ) :
-	$className .= ' align' . $block['align'];
+	$class_name .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title  = get_field( 'title' );
-$link   = get_field( 'link' );
-$authors = get_field( 'authors' );
+$block_title = get_field( 'title' );
+$block_link  = get_field( 'link' );
+$authors     = get_field( 'authors' ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 
 ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 	<div class="query-loop-container">
 		<header class="query-loop-container-header">
-			<h2 class="title"><?php echo $title; ?></h2>
-			<?php if ( $link ) : ?>
+			<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
+			<?php if ( $block_link ) : ?>
 				<div class="link">
-					<a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
+					<a href="<?php echo esc_url( $block_link['url'] ); ?>" class="btn"><?php echo esc_html( $block_link['title'] ); ?></a>
 				</div>
 			<?php endif; ?>
 		</header>
@@ -52,90 +56,73 @@ $authors = get_field( 'authors' );
 
 				<?php
 
-if( have_rows('authors') ):
+				if ( have_rows( 'authors' ) ) :
 
-	// Initialize an empty array for authors.
-	$authors_array = array();
+					// Initialize an empty array for authors.
+					$authors_array = array();
   
-	// Loop through each row in the repeater.
-	while( have_rows('authors') ): the_row();
+					// Loop through each row in the repeater.
+					while ( have_rows( 'authors' ) ) :
+						the_row();
   
-		// Get the value of the subfield 'author'.
-		$author = get_sub_field('author');
+						// Get the value of the subfield 'author'.
+						$author = get_sub_field( 'author' );
   
-		// Push the author to the authors array.
-		$authors_array[] = $author;
+						// Push the author to the authors array.
+						$authors_array[] = $author;
   
-	endwhile;
+					endwhile;
 endif;
 
 				// Loop through each author.
-				foreach ($authors_array as $author_id) {
+				foreach ( $authors_array as $author_id ) {
 					// Set up the query arguments.
 					$args = array(
-						'author'        =>  $author_id, 
+						'author'         => $author_id, 
 						'posts_per_page' => 1, // Only retrieve one post.
 					);
 					
 					// Perform the query.
-					$author_query = new WP_Query($args);
+					$author_query = new WP_Query( $args );
 					
 					// If there's a post, display it.
-					if ($author_query->have_posts()) {
-						while ($author_query->have_posts()) {
+					if ( $author_query->have_posts() ) {
+						while ( $author_query->have_posts() ) {
 							$author_query->the_post();
 							
-							// Get title
-						$title = get_the_title();
+							$post_title         = get_the_title();
+							$post_link          = get_the_permalink();
+							$author_email       = get_the_author_meta( 'user_email' );
+							$author_image_url   = get_avatar_url( $author_email, array( 'size' => 96 ) );
+							$author_name        = get_the_author();
+							$featured_image_url = get_the_post_thumbnail_url();
 
-						$link = get_the_permalink();
+							if ( empty( $featured_image_url ) ) {
+								$featured_image_url = get_template_directory_uri() . '/assets/images/placeholder-post.png';
+							}
 
-						// Get author image (assuming you're using Gravatar)
-						$author_email     = get_the_author_meta( 'user_email' );
-						$author_image_url = get_avatar_url( $author_email, array( 'size' => 96 ) );
-
-						// Get author name
-						$author_name = get_the_author();
-
-						$featured_image_url = get_the_post_thumbnail_url(  ); // gets the featured image URL
-
-						// If there's no featured image, use a default image
-						if ( empty($featured_image_url) ) {
-							$featured_image_url = get_template_directory_uri() . '/assets/images/placeholder-post.png';
-						}
-
-						?>
-							<a class="query-loop-container-loop-item" href="<?php echo $link; ?>">
+							?>
+							<a class="query-loop-container-loop-item" href="<?php echo esc_url( $post_link ); ?>">
 								<figure>
 									<img src="<?php echo esc_url( $featured_image_url ); ?>" alt="Post Featured Image">
 								</figure>
-								<h3 class="title"><?php echo $title; ?></h3>
+								<h3 class="title"><?php echo esc_html( $post_title ); ?></h3>
 								<div class="author">
 									<figure>
 									<?php echo '<img src="' . esc_url( $author_image_url ) . '" alt="' . esc_attr( $author_name ) . '">'; ?>
 									</figure>
 									<div class="author_data">
-										By <?php echo $author_name; ?>
+										By <?php echo esc_html( $author_name ); ?>
 									</div>
 								</div>
 							</a>
 
-						<?php
+							<?php
 						}
-						
-						// Reset post data after each author.
 						wp_reset_postdata();
 					}
 				}
-
-
-
-
-
-				 
 				?>
-
-
 		</div>
 	</div>
 </section>

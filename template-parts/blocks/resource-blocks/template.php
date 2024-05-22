@@ -1,79 +1,83 @@
 <?php
-
 /**
- * resource blocks Block Template.
+ * Resource blocks Block Template.
  *
- * @param	 array $block The block settings and attributes.
- * @param	 string $content The block inner HTML (empty).
- * @param	 bool $is_preview True during AJAX preview.
- * @param	 (int|string) $post_id The post ID this block is saved to.
- */
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
+ * 
+ * @param    array $block The block settings and attributes.
+ * @param    string $content The block inner HTML (empty).
+ * @param    bool $is_preview True during AJAX preview.
+ * @param    (int|string) $post_id The post ID this block is saved to.
+ **/
 
-if( isset( $block['data']['preview_image_help'] )  ) :
-	echo Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] );
+if ( isset( $block['data']['preview_image_help'] ) ) :
+	echo wp_kses_post( Loader_Gutenberg::get_preview_image( $block['data']['preview_image_help'], $block['name'] ) );
 	return;
 endif;
 
 // Create id attribute allowing for custom 'anchor' value.
-$id = 'resource-blocks-block-' . $block['id'];
-if (!empty($block['anchor'])) :
-	$id = $block['anchor'];
+$block_id = 'resource-blocks-block-' . $block['id'];
+if ( ! empty( $block['anchor'] ) ) :
+	$block_id = $block['anchor'];
 endif;
 
 // Create class attribute allowing for custom 'className' and 'align' values.
-$className = 'block resource-blocks-block';
-if (!empty($block['className'])) :
-	$className .= ' ' . $block['className'];
+$class_name = 'block resource-blocks-block';
+if ( ! empty( $block['className'] ) ) :
+	$class_name .= ' ' . $block['className'];
 endif;
 
-if (!empty($block['align'])) :
-	$className .= ' align' . $block['align'];
+if ( ! empty( $block['align'] ) ) :
+	$class_name .= ' align' . $block['align'];
 endif;
 
-$className = apply_filters( 'loader_block_class', $className, $block, $post_id );
+$class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id );
 
 // Load values and assing defaults.
-$title = get_field('title');
-$subcopy = get_field('subcopy');
-$blocks = get_field('blocks');
+$block_title = get_field( 'title' );
+$subcopy     = get_field( 'subcopy' );
+$blocks      = get_field( 'blocks' );
 ?>
-<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
 
 	<header class="resource-blocks-block-container">
-		<h2 class="title"><?php echo $title; ?></h2>
-		<span class="subtitle"><?php echo $subcopy; ?></span>
+		<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
+		<span class="subtitle"><?php echo wp_kses_post( $subcopy ); ?></span>
 	</header>
 
 	<div class="resource-blocks-block-container-list">
 	<?php 
 		 
-		if( $blocks ) {
-			echo '<ul class="resource-blocks-block-container-list-item">';
-			foreach( $blocks as $row ) {
-				if(!empty($row['link'])){
-					$link = $row['link']['url'];
-				}
+	if ( $blocks ) {
+		echo '<ul class="resource-blocks-block-container-list-item">';
+		foreach ( $blocks as $row ) {
+			if ( ! empty( $row['link'] ) ) {
+				$block_link = $row['link']['url'];
+			}
 				
-				if(!empty($row['subcopy'])){
-					$subcopy = $row['subcopy'];
-				}
+			if ( ! empty( $row['subcopy'] ) ) {
+				$subcopy = $row['subcopy'];
+			}
 			
 
-					echo '<li class="resource-blocks-block-container-list-item__block">';
-						echo "<a href=\"$link\">";
-						if(!empty($row['title'])){
-							$title = $row['title'];
-							?>
-							<h3 class="title"><?php _e($title); ?></h3>
-						<?php  } ?>
-							<p><?php _e($subcopy); ?></p>
+				echo '<li class="resource-blocks-block-container-list-item__block">';
+					echo '<a href=' . esc_url( $block_link ) . '>';
+			if ( ! empty( $row['title'] ) ) {
+				$row_title = $row['title'];
+				?>
+						<h3 class="title"><?php echo esc_html( $row_title ); ?></h3>
+						<?php } ?>
+							<p><?php echo wp_kses_post( $subcopy ); ?></p>
 						<?php
-						echo "</a>";
-					echo '</li>';
+						echo '</a>';
+						echo '</li>';
 
-			}
-			echo '</ul>';
 		}
-		?>
+		echo '</ul>';
+	}
+	?>
 	</div>
 </section>

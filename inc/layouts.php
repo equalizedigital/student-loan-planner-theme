@@ -39,7 +39,7 @@ function eqd_editor_layout_class( $classes ) {
 		return $classes;
 	}
 
-	$post_id = isset( $_GET['post'] ) ? intval( $_GET['post'] ) : false;
+	$post_id = isset( $_GET['post'] ) ? intval( $_GET['post'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No need to verify nonce here.
 	$layout  = eqd_page_layout( $post_id );
 
 	$classes .= ' ' . $layout . ' ';
@@ -190,7 +190,7 @@ add_action( 'tha_footer_top', 'eqd_output_footer_widgets' );
  * Output footer widget area.
  */
 function eqd_output_footer_widgets() {
-	if (! is_page_template( 'page-landing.php' ) ) {
+	if ( ! is_page_template( 'page-landing.php' ) ) {
 		if ( is_active_sidebar( 'Footer Widget Area 1' ) ) {
 			?>
 			<div id="footer-widget-area-1" class="widget-area">
@@ -262,7 +262,7 @@ function eqd_page_layout( $id = false ) {
 		'cultivate_landing' => 'full-width-content',
 	);
 	foreach ( $defaults as $post_type => $default_layout ) {
-		if ( ( $id && $post_type === get_post_type( $id ) ) || ( ! empty( $_GET['post_type'] ) && $post_type === $_GET['post_type'] ) ) {
+		if ( ( $id && get_post_type( $id ) === $post_type ) || ( ! empty( $_GET['post_type'] ) && $_GET['post_type'] === $post_type ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No need to verify nonce here.
 			$layout = $default_layout;
 		}
 	}
@@ -311,7 +311,7 @@ add_action( 'tha_single_fullwidth', 'eqd_single_fullwidth_content' );
  */
 function eqd_single_fullwidth_content() {
 
-	if ( is_single() && get_post_type() == 'post' ) {
+	if ( is_single() && get_post_type() === 'post' ) {
 
 		if ( get_field( 'post_format_style' ) !== 'full-width' ) :
 			?>
@@ -323,12 +323,10 @@ function eqd_single_fullwidth_content() {
 					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
 					<div class="hero_featured_image_data">
 						<?php
-						$output = '';
-						$output .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-						$post_data = get_the_content( get_the_ID() );
+						$output    = '';
+						$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+						$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 						?>
-						<?php 
-						//echo (string) YoastSEO()->meta->for_current_page()->estimated_reading_time_minutes, ' Min Read | '; ?> 
 						<?php echo wp_kses_post( $output ); ?>
 					</div>
 				</span>
@@ -339,15 +337,15 @@ function eqd_single_fullwidth_content() {
 
 
 			<?php 
-			$term_list = wp_get_post_terms(get_the_ID(), 'category', ['fields' => 'all']);
-			foreach($term_list as $term) {
-				if( get_post_meta(get_the_ID(), '_yoast_wpseo_primary_category',true) == $term->term_id ) {
-					$hide_editorial_section_on_posts = get_field( 'hide_editorial_section_on_posts',  'category_' . $term->term_id );
+			$term_list = wp_get_post_terms( get_the_ID(), 'category', array( 'fields' => 'all' ) );
+			foreach ( $term_list as $term ) {
+				if ( get_post_meta( get_the_ID(), '_yoast_wpseo_primary_category', true ) === $term->term_id ) {
+					$hide_editorial_section_on_posts = get_field( 'hide_editorial_section_on_posts', 'category_' . $term->term_id );
 				}
 			}
 
-			if ( !$hide_editorial_section_on_posts ) :
-			?>
+			if ( ! $hide_editorial_section_on_posts ) :
+				?>
 			<section class="site-main-article__author-data-editorial_statement">
 				<div class="site-main-article__author-data-editorial_statement-container">
 					<div class="site-main-article__author-data-editorial_statement-container__title">
@@ -362,20 +360,25 @@ function eqd_single_fullwidth_content() {
 			</section>
 			<?php endif; ?>
 
-			<div class="site-main-article__author-data <?php if( !empty(get_field( 'post_editor', get_the_ID() )) ){ echo "site-main-article__author-data_editor"; } ?>">
+			<div class="site-main-article__author-data 
+			<?php
+			if ( ! empty( get_field( 'post_editor', get_the_ID() ) ) ) {
+				echo 'site-main-article__author-data_editor'; }
+			?>
+			">
 				<div class="auth-editor-container">
 					<div class="article_author">
 					<?php
-					// Author
-					$id_meta        = get_the_author_meta( 'ID' );
-					$user_info_ID   = get_userdata( $id_meta );
-					$author_url_id  = get_author_posts_url( $id_meta );
+					// Author.
+					$id_meta       = get_the_author_meta( 'ID' );
+					$user_info_id  = get_userdata( $id_meta ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+					$author_url_id = get_author_posts_url( $id_meta ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 					?>
 					<span class="entry-author">
 						<?php echo get_avatar( $id_meta, 40 ); ?>
 						<span class="entry-info">
 							<span>
-								Written By <?php echo get_author_posts_link_by_id( $id_meta ); ?>
+								Written By <?php echo esc_html( get_author_posts_link_by_id( $id_meta ) ); ?>
 							</span>
 						</span>
 					</span>
@@ -383,7 +386,7 @@ function eqd_single_fullwidth_content() {
 
 				<div class="article_author">
 					<?php
-					// Author
+					// Author.
 					$id_post_editor = get_field( 'post_editor', get_the_ID() );
 
 					if ( ! empty( $id_post_editor ) ) {
@@ -398,7 +401,7 @@ function eqd_single_fullwidth_content() {
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : ''; ?>
-								<?php echo ! empty( $edit_auth_id ) ? get_author_posts_link_by_id( $edit_auth_id ) : ''; ?>
+								<?php echo ! empty( $edit_auth_id ) ? esc_html( get_author_posts_link_by_id( $edit_auth_id ) ) : ''; ?>
 							</span>
 							<span class="entry-data">
 								<?php echo ! empty( $author_info ) ? wp_kses_post( $author_info ) : ''; ?>
@@ -409,14 +412,14 @@ function eqd_single_fullwidth_content() {
 				</div>
 
 				<?php
-				// Reviewed By
+				// Reviewed By.
 				$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
-				if ( $review_by_auth_id != false ) {
+				if ( false !== $review_by_auth_id ) {
 					$profile_picture = get_avatar( $review_by_auth_id, 64 );
 					$user_info       = get_userdata( $review_by_auth_id );
-					$first_name      = $user_info->first_name;
-					$last_name       = $user_info->last_name;
-					$nickname        = $user_info->nickname;
+					$first_name      = $user_info->first_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+					$last_name       = $user_info->last_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+					$nickname        = $user_info->nickname; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 				}
 
 				?>
@@ -425,11 +428,11 @@ function eqd_single_fullwidth_content() {
 				<div class="reviewed_author">
 						
 					<div class="profile">
-						<?php echo $profile_picture; ?>
+						<?php echo wp_kses_post( $profile_picture ); ?>
 					</div>
 					
 					<div class="author_info">
-						Reviewed By <?php echo get_author_posts_link_by_id( $review_by_auth_id ); ?>
+						Reviewed By <?php echo esc_html( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
 					</div>
 				</div>
 				<?php endif; ?>
