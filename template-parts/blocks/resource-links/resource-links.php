@@ -63,7 +63,7 @@ $block_title = get_field( 'title' );
 							continue;
 						}
 						?>
-						<img src="<?php echo esc_url( $icon ); ?>" />
+						<img src="<?php echo esc_url( $icon ); ?>" alt="" aria-hidden="true" />
 						<?php echo esc_url( $resource_select_link ); ?>
 						<?php
 					}
