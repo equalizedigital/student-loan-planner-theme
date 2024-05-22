@@ -93,14 +93,14 @@ $block_title = get_field( 'title' );
 							<li class="dropdown-li">
 							<a  href="<?php echo esc_url( $manual_link_url ); ?>">
 								<?php
-								echo $icon ? '<img src="' . esc_url( $icon ) . '" aria-hidden="true" />' : '';
+								echo $icon ? '<img src="' . esc_url( $icon ) . '" aria-hidden="true" alt="" />' : '';
 								echo $manual_link_text ? '<span class="text">' . esc_html( $manual_link_text ) . '</span>' : '';
 								?>
 							</a>
 							</li>
 							<?php else : ?>
 								<li class="dropdown-li" role="tab" id="button-tab-<?php echo esc_attr( $key ); ?>" data-resourcelink="resource-link-<?php echo esc_attr( $key ); ?>" tabindex="0">
-									<img src="<?php echo esc_url( $icon ); ?>" />
+									<img src="<?php echo esc_url( $icon ); ?>" alt="" aria-hidden="true" />
 									<?php echo esc_html( $resource_list_link ); ?>
 								</li>
 							<?php endif; ?>
