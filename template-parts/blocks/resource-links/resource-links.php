@@ -165,12 +165,16 @@ $block_title = get_field( 'title' );
 				if ( ! empty( $row['selected_posts'] ) ) {
 					$selected_posts = $row['selected_posts'];
 				}
-				if( 'link' === get_field( 'type_of_button' ) ) {
+				if( 'link' === $row['type_of_button'] ) {
 					continue;
 				}
-					
 				?>
-					<div id="resource-link-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="button-tab-<?php echo esc_attr( $key ); ?>" class="resource-links-loop-container-item <?php echo 0 === $key ? 'resource-links-loop-container-item--active' : ''; ?>">
+					<div 
+						id="resource-link-<?php echo esc_attr( $key ); ?>" 
+						role="tabpanel" 
+						aria-labelledby="button-tab-<?php echo esc_attr( $key ); ?>" 
+						class="resource-links-loop-container-item <?php echo 0 === $key ? 'resource-links-loop-container-item--active' : ''; ?>"
+					>
 						
 						<div class="resource-links-loop-container-content">
 							<div class="resource-links-loop-container-content-featured">
