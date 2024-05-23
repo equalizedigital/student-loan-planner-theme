@@ -54,7 +54,7 @@ $block_title = get_field( 'title' );
 				if ( $links ) {
 					foreach ( $links as $key => $row ) {
 						if ( ! empty( $row['link'] ) ) {
-							$resource_select_link = esc_url( $row['link'] );
+							$resource_select_link = esc_html( $row['link'] );
 						}
 						if ( ! empty( $row['icon'] ) ) {
 							$icon = esc_url( $row['icon']['url'] );
@@ -64,7 +64,7 @@ $block_title = get_field( 'title' );
 						}
 						?>
 						<img src="<?php echo esc_url( $icon ); ?>" alt="" aria-hidden="true" />
-						<?php echo esc_url( $resource_select_link ); ?>
+						<?php echo esc_html( $resource_select_link ); ?>
 						<?php
 					}
 				}
