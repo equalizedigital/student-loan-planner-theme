@@ -132,7 +132,7 @@ $block_title = get_field( 'title' );
 						<?php if ( $row['manual_link'] ) : ?>
 							<a class="resource-links-container-links-link-button" href="<?php echo esc_url( $manual_link_url ); ?>">
 								<?php
-								echo $icon ? '<img src="' . esc_url( $icon ) . '" aria-hidden="true" />' : '';
+								echo $icon ? '<img src="' . esc_url( $icon ) . '" aria-hidden="true" alt="" />' : '';
 								echo $manual_link_text ? '<span class="text">' . esc_html( $manual_link_text ) . '</span>' : '';
 								?>
 							</a>
@@ -149,7 +149,7 @@ $block_title = get_field( 'title' );
 	<div class="resource-links-loop-container">
 
 		<?php 
-			$links = get_field( 'links' );
+		$links = get_field( 'links' );
 		if ( $links ) {
 			foreach ( $links as $key => $row ) {
 				if ( ! empty( $row['link'] ) ) {
@@ -164,6 +164,9 @@ $block_title = get_field( 'title' );
 				}
 				if ( ! empty( $row['selected_posts'] ) ) {
 					$selected_posts = $row['selected_posts'];
+				}
+				if( 'link' === get_field( 'type_of_button' ) ) {
+					continue;
 				}
 					
 				?>
@@ -182,7 +185,7 @@ $block_title = get_field( 'title' );
 
 							<div class="resource-links-loop-container-content-loop">
 								<header class="resource-links-loop-container-header">
-									<h3 class="title" tabindex="0"><?php echo esc_url( $loop_container_link ); ?></h3>
+									<h3 class="title" tabindex="0"><?php echo esc_html( $loop_container_link ); ?></h3>
 								</header>
 								<ul class="resource-links-loop-container-content-loop-ul">
 							<?php

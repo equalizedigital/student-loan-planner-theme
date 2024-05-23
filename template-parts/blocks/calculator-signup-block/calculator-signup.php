@@ -58,11 +58,13 @@ $block_link = get_field( 'link' );
 			if ( ! empty( $block_link ) ) {
 				$url              = $link['url'];
 				$calculator_title = $link['title'];
-				echo '<span class="content">';
-				echo '<a href="' . esc_url( $url ) . '" class="btn btn-dark-bg">';
-					echo esc_html( $calculator_title );
-				echo '</a>';
-				echo '</span>';
+				if( $link['url'] ) {
+					echo '<span class="content">';
+					echo '<a href="' . esc_url( $url ) . '" class="btn btn-dark-bg">';
+						echo esc_html( $calculator_title );
+					echo '</a>';
+					echo '</span>';
+				}
 			}
 			?>
 			<?php
