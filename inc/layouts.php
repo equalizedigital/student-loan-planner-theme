@@ -378,7 +378,7 @@ function eqd_single_fullwidth_content() {
 						<?php echo get_avatar( $id_meta, 40 ); ?>
 						<span class="entry-info">
 							<span>
-								Written By <?php echo esc_html( get_author_posts_link_by_id( $id_meta ) ); ?>
+								Written By <?php echo wp_kses_post( get_author_posts_link_by_id( $id_meta ) ); ?>
 							</span>
 						</span>
 					</span>
