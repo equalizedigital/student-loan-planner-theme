@@ -165,7 +165,7 @@ $block_title = get_field( 'title' );
 				if ( ! empty( $row['selected_posts'] ) ) {
 					$selected_posts = $row['selected_posts'];
 				}
-				if( 'link' === $row['type_of_button'] ) {
+				if ( 'link' === $row['type_of_button'] ) {
 					continue;
 				}
 				?>

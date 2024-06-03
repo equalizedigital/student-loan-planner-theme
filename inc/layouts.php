@@ -316,20 +316,20 @@ function eqd_single_fullwidth_content() {
 		if ( get_field( 'post_format_style' ) !== 'full-width' ) :
 			?>
 				<?php
-				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+				$featured_image = false; // This is set to false to prevent output. In the furture if the hero needs output set this equal to: get_the_post_thumbnail_url( get_the_ID() ); phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar -- Leaving for future use.
 				if ( $featured_image ) {
 					?>
-				<span class="hero_featured_image">
-					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
-					<div class="hero_featured_image_data">
-						<?php
-						$output    = '';
-						$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-						$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
-						?>
-						<?php echo wp_kses_post( $output ); ?>
-					</div>
-				</span>
+					<span class="hero_featured_image">
+						<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
+						<div class="hero_featured_image_data">
+							<?php
+							$output    = '';
+							$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+							$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+							?>
+							<?php echo wp_kses_post( $output ); ?>
+						</div>
+					</span>
 					<?php
 				} else {
 					echo '</br>';}
@@ -379,6 +379,7 @@ function eqd_single_fullwidth_content() {
 						<span class="entry-info">
 							<span>
 								Written By <?php echo wp_kses_post( get_author_posts_link_by_id( $id_meta ) ); ?>
+								Updated on <?php echo wp_kses_post( get_the_modified_date( 'F j, Y' ) ); ?>
 							</span>
 						</span>
 					</span>
