@@ -331,8 +331,7 @@ function eqd_single_fullwidth_content() {
 						</div>
 					</span>
 					<?php
-				} else {
-					echo '</br>';}
+				}
 				?>
 
 
