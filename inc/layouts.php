@@ -427,15 +427,6 @@ function eqd_single_fullwidth_content() {
 				<?php endif; ?>
 
 			</div>
-			
-			<div class="hero_featured_image_data">
-				<?php
-				$output    = '';
-				$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-				$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
-				?>
-				<?php echo wp_kses_post( $output ); ?>
-			</div>
 
 			<?php if ( ! $hide_editorial_section_on_posts ) :
 				?>
