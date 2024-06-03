@@ -344,21 +344,7 @@ function eqd_single_fullwidth_content() {
 				}
 			}
 
-			if ( ! $hide_editorial_section_on_posts ) :
-				?>
-			<section class="site-main-article__author-data-editorial_statement">
-				<div class="site-main-article__author-data-editorial_statement-container">
-					<div class="site-main-article__author-data-editorial_statement-container__title">
-						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
-					</div>
-					<div class="site-main-article__author-data-editorial_statement-container__copy">
-						<p>
-						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button>
-						</p>
-					</div>
-				</div>
-			</section>
-			<?php endif; ?>
+			?>
 
 			<div class="site-main-article__author-data 
 			<?php
@@ -379,6 +365,8 @@ function eqd_single_fullwidth_content() {
 						<span class="entry-info">
 							<span>
 								Written By <?php echo wp_kses_post( get_author_posts_link_by_id( $id_meta ) ); ?>
+							</span>
+							<span>
 								Updated on <?php echo wp_kses_post( get_the_modified_date( 'F j, Y' ) ); ?>
 							</span>
 						</span>
@@ -439,10 +427,32 @@ function eqd_single_fullwidth_content() {
 				<?php endif; ?>
 
 			</div>
-
 			
+			<div class="hero_featured_image_data">
+				<?php
+				$output    = '';
+				$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+				$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+				?>
+				<?php echo wp_kses_post( $output ); ?>
+			</div>
 
-			<?php
+			<?php if ( ! $hide_editorial_section_on_posts ) :
+				?>
+				<section class="site-main-article__author-data-editorial_statement">
+					<div class="site-main-article__author-data-editorial_statement-container">
+						<div class="site-main-article__author-data-editorial_statement-container__title">
+							<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
+						</div>
+						<div class="site-main-article__author-data-editorial_statement-container__copy">
+							<p>
+							<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button>
+							</p>
+						</div>
+					</div>
+				</section>
+			<?php 
+			endif;
 		endif;
 	}
 }
