@@ -45,13 +45,25 @@ require_once get_template_directory() . '/inc/class-gutenberg-loader.php';
  */
 function eqd_scripts() {
 
+	// Global post object to check the current post content.
+	global $post;
+
+	// Check if the post is loaded and contains the specific block.
+	if ( is_a( $post, 'WP_Post' ) && has_block( 'acf/video-carousel', $post ) ) {
+		// Enqueue Swiper CSS.
+		wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
+
+		// Enqueue your custom JS to initialize Swiper.
+		wp_enqueue_script( 'custom-swiper-initialization', get_template_directory_uri() . '/assets/js/video-carousel-min.js', array(), filemtime( get_template_directory() . '/assets/js/video-carousel-min.js' ), true );
+	}
+
 	wp_enqueue_script( 'theme-global', get_template_directory_uri() . '/assets/js/global-min.js', array( 'jquery' ), filemtime( get_template_directory() . '/assets/js/global-min.js' ), true );
 
 	wp_localize_script(
 		'theme-global',
 		'eqd_vars',
 		array(
-			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'nonce'   => wp_create_nonce( 'ajax-nonce' ),
 			'post_id' => get_the_ID(),
 		)
 	);
@@ -84,11 +96,12 @@ function eqd_scripts() {
 		'doctor-mortgages-map-block',
 		'rwc_base_vars',
 		array(
-			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'nonce'    => wp_create_nonce( 'ajax-nonce' ),
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		)
 	);
 
+	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'eqd_scripts' );
 
@@ -270,7 +283,6 @@ if ( ! function_exists( 'eqd_setup' ) ) :
 
 		// -- Add custom theme image sizes
 		add_image_size( 'squared-image-content-callout-thumbnail', 732, 732, true );
-
 	}
 endif;
 add_action( 'after_setup_theme', 'eqd_setup' );
@@ -301,17 +313,16 @@ add_filter( 'template_include', 'eqd_template_hierarchy' );
  *
  * @return array The modified query arguments.
  */
-function npp_custom_acf_post_object_query( $args, $field, $post_id ) {
+function eqd_custom_acf_post_object_query( $args, $field, $post_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- ACF hook.
 	// Check if the field being queried is named 'recommended_posts'.
-	if ( $field['name'] === 'recommended_posts' ) {
+	if ( 'recommended_posts' === $field['name'] ) {
 		// Modify the query to search for post titles only.
-		$args['post_type'] = 'post';
-		//$args['s'] = ''; // Clear any previous search query.
-		$args['search_columns'] = array('post_title');
+		$args['post_type']      = 'post';
+		$args['search_columns'] = array( 'post_title' );
 	}
 	return $args;
 }
-add_filter( 'acf/fields/post_object/query', 'npp_custom_acf_post_object_query', 10, 3 );
+add_filter( 'acf/fields/post_object/query', 'eqd_custom_acf_post_object_query', 10, 3 );
 
 /**
  * Filters the query arguments for the 'recommendedfeatured_posts' ACF Post Object field.
@@ -321,60 +332,74 @@ add_filter( 'acf/fields/post_object/query', 'npp_custom_acf_post_object_query', 
  * @param array $args   The WP_Query arguments.
  * @param array $field  The field settings.
  * @param int   $post_id The post ID (or term ID, depending on context).
- * 
+ *
  * @return array Modified query arguments.
  */
-function npp_filter_post_object_query( $args, $field, $post_id ) {
+function eqd_filter_post_object_query( $args, $field, $post_id ) {
 	// Check if this is the specific field we want to modify.
 	if ( 'recommendedfeatured_posts' === $field['name'] ) {
-		
+
 		// Check if it's a term ID and extract the ID.
 		if ( strpos( $post_id, 'term_' ) === 0 ) {
 			$term_id = str_replace( 'term_', '', $post_id );
-			$term = get_term( $term_id );
+			$term    = get_term( $term_id );
 
 			// Check if term belongs to the specified taxonomies.
-			if ( $term instanceof WP_Term && in_array( $term->taxonomy, [ 'category', 'post_tag', 'slp_occupation' ], true ) ) {
-				$args['tax_query'] = [
-					[
+			if ( $term instanceof WP_Term && in_array( $term->taxonomy, array( 'category', 'post_tag', 'slp_occupation' ), true ) ) {
+				$args['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- This is a necessary query.
+					array(
 						'taxonomy' => $term->taxonomy,
 						'field'    => 'term_id',
 						'terms'    => $term->term_id,
 						'operator' => 'IN',
-					],
-				];
+					),
+				);
 			}
 		}
 	}
 
 	return $args;
 }
-add_filter( 'acf/fields/post_object/query', 'npp_filter_post_object_query', 10, 3 );
+add_filter( 'acf/fields/post_object/query', 'eqd_filter_post_object_query', 10, 3 );
 
-function modify_post_object_query( $args, $field, $post_id ) {
-	// Check if the parent block is 'acf/recommended-posts-block'
-	if ( isset($field['parent']) && $field['parent'] == 'block_acf/recommended-posts-block' ) {
-		// If there's a search term, modify the query to search by title only
-		if( isset($args['s']) ) {
-			// Set search term to a variable
+/**
+ * Modify the query for the 'recommended_posts' field to search by title only.
+ *
+ * @param array $args The original query arguments.
+ * @param array $field Information about the ACF field.
+ * @param int   $post_id The ID of the current post being edited, if applicable.
+ * @return array
+ */
+function eqd_modify_post_object_query( $args, $field, $post_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	// Check if the parent block is 'acf/recommended-posts-block'.
+	if ( isset( $field['parent'] ) && 'block_acf/recommended-posts-block' === $field['parent'] ) {
+		// If there's a search term, modify the query to search by title only.
+		if ( isset( $args['s'] ) ) {
+			// Set search term to a variable.
 			$search_term = $args['s'];
 
-			// Modify the query
-			unset($args['s']); // Remove default search
-			$args['post_title_like'] = $search_term; // Add title search
+			// Modify the query.
+			unset( $args['s'] ); // Remove default search.
+			$args['post_title_like'] = $search_term; // Add title search.
 		}
 	}
-
-	// Return the modified arguments
 	return $args;
 }
-add_filter('acf/fields/post_object/query', 'modify_post_object_query', 10, 3);
+add_filter( 'acf/fields/post_object/query', 'eqd_modify_post_object_query', 10, 3 );
 
+/**
+ * This function modifies the query for the 'recommended_posts' field to search by title only.
+ *
+ * @param string $where The original WHERE clause.
+ * @param object $wp_query The WP_Query object.
+ * @return string
+ */
 function title_like_posts_where( $where, $wp_query ) {
 	global $wpdb;
-	if ( $post_title_like = $wp_query->get('post_title_like') ) {
+	$post_title_like = $wp_query->get( 'post_title_like' );
+	if ( $post_title_like ) {
 		$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
 	}
 	return $where;
 }
-add_filter('posts_where', 'title_like_posts_where', 10, 2);
+add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );

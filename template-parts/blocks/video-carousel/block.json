@@ -1,0 +1,21 @@
+{
+	"name": "acf/video-carousel",
+	"title": "Video Carousel",
+	"description": "Video Carousel with multiple videos in slider.",
+	"category": "custom-blocks",
+	"icon": "admin-post",
+	"keywords": [
+		"post",
+		"featured"
+	],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"attributes": {
+		"previewImage": {
+			"type": "string",
+			"default": "/wp-content/themes/student-loan-planner-theme/template-parts/blocks/video-carousel/screenshot.png"
+		}
+	}
+}

@@ -4,7 +4,9 @@ vendor/
 #.codekit-config.json
 #config.codekit
 config.codekit3
- 
+vendor/
+node_modules/
+
 # Hidden system files
 *.DS_Store
 *[Tt]humbs.db

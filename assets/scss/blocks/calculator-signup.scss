@@ -39,7 +39,8 @@
     margin: 0 auto;
     display: flex;
     position: relative;
-    
+	background: #625089;
+
 
     @include media("<tablet") {
         flex-direction: column;

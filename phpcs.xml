@@ -1,108 +1,129 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Theme Coding Standards">
-	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-	<!-- See https://github.com/WordPress/WordPress-Coding-Standards -->
-	<!-- See https://github.com/WPTRT/WPThemeReview -->
-	<!-- See https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+<ruleset name="WordPress Coding Standards for Equalize Digital">
+	<description>Equalize Digital Wordpress Coding Standards</description>
 
-	<!-- Set a description for this ruleset. -->
-	<description>A custom set of code standard rules to check for WordPress themes.</description>
-
-
-	<!--
-	#############################################################################
-	COMMAND LINE ARGUMENTS
-	https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml
-	#############################################################################
-	-->
-
-	<!-- Pass some flags to PHPCS:
-		 p flag: Show progress of the run.
-		 s flag: Show sniff codes in all reports.
-	-->
-	<arg value="ps"/>
-
-	<!-- Strip the filepaths down to the relevant bit. -->
-	<arg name="basepath" value="./"/>
-
-	<!-- Check up to 8 files simultaneously. -->
-	<arg name="parallel" value="8"/>
-
-	<!-- Check PHP files only. JavaScript and CSS files are checked separately using the @wordpress/scripts package. -->
-	<arg name="extensions" value="php"/>
-
-	<!-- Check all files in this directory and the directories below it. -->
+	<!-- Scan all files in directory -->
 	<file>.</file>
 
-	<!-- Exclude patterns. -->
-	<exclude-pattern>/vendor/*</exclude-pattern>
-	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<!-- Folders to exclude -->
+	<exclude-pattern>./dist/</exclude-pattern>
+	<exclude-pattern>./vendor/</exclude-pattern>
+	<exclude-pattern>./node_modules/</exclude-pattern>
 
+	<!-- Scan only PHP files -->
+	<arg name="extensions" value="php"/>
 
-	<!--
-	#############################################################################
-	USE THE WordPress AND THE Theme Review RULESET
-	#############################################################################
-	-->
+	<!-- Show colors in console -->
+	<arg value="-colors"/>
 
-	<rule ref="WordPress">
-		<!-- This rule does not apply here since the _s prefix should be changed by the theme author. -->
-		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
+	<!-- Show progress, show the error codes for each message (source). -->
+	<arg value="sp"/>
+
+	<!-- Include the WordPress-Extra standard. -->
+	<rule ref="WordPress-Extra" />
+
+	<!-- Let's also check that everything is properly documented. -->
+	<rule ref="WordPress-Docs"/>
+
+	<!-- Add in some extra rules from other standards. -->
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+	<rule ref="Generic.Commenting.Todo"/>
+
+	<!-- Add the WordPress-VIP-Go standard -->
+	<rule ref="WordPress-VIP-Go"/>
+
+	<!-- Run against the PHPCompatibility ruleset -->
+	<rule ref="PHPCompatibility">
+		<!-- WP supports down to 7.0 : https://wordpress.org/about/requirements/ -->
+		<config name="testVersion" value="7.0-"/>
 	</rule>
 
-	<!--
-	#############################################################################
-	SNIFF SPECIFIC CONFIGURATION
-	#############################################################################
-	-->
+	<config name="minimum_wp_version" value="6.2"/>
 
-	<!-- Verify that the text_domain is set to the desired text-domain.
-		 Multiple valid text domains can be provided as a comma-delimited list. -->
+	<rule ref="WordPress-Core"/>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="_s"/>
+			<property name="text_domain" type="array">
+				<element value="eqd"/>
+			</property>
 		</properties>
 	</rule>
 
-	<!-- Allow for theme specific exceptions to the file name rules based
-		 on the theme hierarchy. -->
-	<rule ref="WordPress.Files.FileName">
+	<!-- Run against the PHPCompatibility ruleset -->
+	<rule ref="PHPCompatibility">
+		<!-- WP supports down to 7.0 : https://wordpress.org/about/requirements/ -->
+		<config name="testVersion" value="7.0-"/>
+	</rule>
+
+	<!-- The %i placeholder is supported in WP since v6.2. -->
+	<rule ref="WordPress.DB.PreparedSQLPlaceholders.UnsupportedIdentifierPlaceholder">
+		<severity>1</severity>
+	</rule>
+
+	<!-- Thw WP VIP ruleset disables some of the default rules, so we re-enable them
+	as they may not be "required", but are still good practices. -->
+	<rule ref="Internal.LineEndings.Mixed">
+		<severity>6</severity>
+	</rule>
+	<rule ref="Generic.CodeAnalysis.AssignmentInCondition">
+		<severity>6</severity>
+	</rule>
+	<rule ref="WordPress.CodeAnalysis.AssignmentInTernaryCondition.FoundInTernaryCondition">
+		<severity>6</severity>
+	</rule>
+	<rule ref="WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode">
+		<severity>6</severity>
+	</rule>
+	<rule ref="WordPress.PHP.DontExtract">
+		<severity>6</severity>
+	</rule>
+	<rule ref="Universal.Operators.StrictComparisons">
+		<severity>6</severity>
+	</rule>
+	<rule ref="WordPress.PHP.StrictInArray.MissingTrueStrict">
+		<severity>6</severity>
+	</rule>
+	<rule ref="WordPress.Security.EscapeOutput.UnsafePrintingFunction">
+		<!-- We trust that translations are safe on VIP Go -->
+		<severity>6</severity>
+	</rule>
+	<rule ref="Generic.PHP.NoSilencedErrors">
+		<severity>6</severity>
+	</rule>
+	<rule ref="VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable">
+		<severity>5</severity>
+	</rule>
+
+	<rule ref="WordPress.DB.SlowDBQuery.slow_db_query_meta_key">
+		<severity>6</severity>
+	</rule>
+	<rule ref="Generic.PHP.DisallowShortOpenTag.EchoFound">
+		<severity>6</severity>
+	</rule>
+	<rule ref="WordPress.WP.AlternativeFunctions.file_system_operations_readfile">
+		<severity>4</severity>
+	</rule>
+	<rule ref="WordPress.WP.AlternativeFunctions.file_system_operations_fclose">
+		<severity>4</severity>
+	</rule>
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines"/>
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
+
+	<rule ref="VariableAnalysis.CodeAnalysis.VariableAnalysis">
 		<properties>
-			<property name="is_theme" value="true"/>
+			<!-- Do not report on unused variables before require nor usused or undefined variables in file scope. -->
+			<property name="allowUnusedVariablesBeforeRequire" value="false"/>
+			<property name="allowUndefinedVariablesInFileScope" value="false"/>
 		</properties>
 	</rule>
+	<!-- End of VIP resets -->
 
-	<!-- Set the minimum supported WP version. This is used by several sniffs.
-		 The minimum version set here should be in line with the minimum WP version
-		 as set in the "Requires at least" tag in the readme.txt file. -->
-	<config name="minimum_supported_wp_version" value="4.5"/>
-
-	<rule ref="WordPress.Arrays.MultipleStatementAlignment">
-		<properties>
-			<!-- No need to adjust alignment of large arrays when the item with the largest key is removed. -->
-			<property name="exact" value="false"/>
-			<!-- Don't align multi-line items if ALL items in the array are multi-line. -->
-			<property name="alignMultilineItems" value="!=100"/>
-			<!-- Array assignment operator should always be on the same line as the array key. -->
-			<property name="ignoreNewlines" value="false"/>
-		</properties>
-	</rule>
-
-	<!-- Verify that everything in the global namespace is prefixed with a theme specific prefix.
-		 Multiple valid prefixes can be provided as a comma-delimited list. -->
-	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
-		<properties>
-			<property name="prefixes" type="array" value="_s" />
-		</properties>
-	</rule>
-
+	<config name="minimum_supported_wp_version" value="6.2.0"/>
 
 	<!--
-	#############################################################################
-	USE THE PHPCompatibility RULESET
-	#############################################################################
-	-->
-
-	<config name="testVersion" value="5.6-"/>
+    Prevent errors caused by WordPress Coding Standards not supporting PHP 8.0+.
+    See: https://github.com/WordPress/WordPress-Coding-Standards/issues/2035#issuecomment-1289516545
+    -->
+    <ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
 
 </ruleset>

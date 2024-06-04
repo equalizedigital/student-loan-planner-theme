@@ -1,12 +1,16 @@
 <?php
 /**
  * Table-of-contents Template.
+ * 
+ * @package      Equalize Digital Base Theme
+ * @author       Equalize Digital
+ * @since        1.0.0
+ * @license      GPL-2.0+
  *
  * @param    array $block The block settings and attributes.
  * @param    string $content The block inner HTML (empty).
  * @param    bool $is_preview True during AJAX preview.
  * @param    (int|string) $post_id The post ID this block is saved to.
- * @package Block
  */
 
 if ( isset( $block['data']['preview_image_help'] ) ) :
@@ -35,7 +39,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 // Load values and assing defaults.
 $acf_copy = get_field( 'copy' );
 
-if ( get_field( 'post_format_style',get_the_ID() ) == 'full-width' ) {
+if ( get_field( 'post_format_style', get_the_ID() ) === 'full-width' ) {
 	$class_name .= ' post_format_style-full-width';
 } else {
 	$class_name .= ' post_format_style-standard';
@@ -84,8 +88,8 @@ $header_main_link = get_field( 'header_main_link', 'option' );
 		</button>
 		<div class="cta-btn">
 			<?php if ( ! empty( $header_main_link ) ) : ?>
-				<a href="<?php echo ! empty( $header_main_link ) ? $header_main_link['url'] : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . $header_main_link['target'] . '"' : ''; ?> class="btn">
-					<?php echo ! empty( $header_main_link ) ? $header_main_link['title'] : 'Get Help'; ?>
+				<a href="<?php echo ! empty( $header_main_link ) ? esc_url( $header_main_link['url'] ) : ''; ?>" <?php echo ! empty( $header_main_link['target'] ) ? 'target="' . esc_attr( $header_main_link['target'] ) . '"' : ''; ?> class="btn">
+					<?php echo ! empty( $header_main_link ) ? esc_html( $header_main_link['title'] ) : 'Get Help'; ?>
 				</a>
 			<?php endif; ?>
 		</div>

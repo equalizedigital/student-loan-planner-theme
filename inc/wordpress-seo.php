@@ -12,14 +12,13 @@
  * Breadcrumbs
  */
 function eqd_breadcrumbs() {
-	if(!is_front_page()){
+	if ( ! is_front_page() ) {
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumb">', '</p>' );
 		}
 	}
-
 }
-// add_action( 'tha_content_top', 'eqd_breadcrumbs' );
+// add_action( 'tha_content_top', 'eqd_breadcrumbs' ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment when ready to use.
 
 /**
  * Remove post title from breadcrumbs
@@ -53,4 +52,4 @@ function ea_home_breadcrumb( $crumbs ) {
 	}
 	return $crumbs;
 }
-/* add_filter( 'wpseo_breadcrumb_links', 'ea_home_breadcrumb' ); */
+// add_filter( 'wpseo_breadcrumb_links', 'ea_home_breadcrumb' ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found -- Uncomment when ready to use.

@@ -24,7 +24,7 @@ function eqd_shared_counts_email_link( $link, $id ) {
 		return $link;
 	}
 
-	$subject      = esc_html__( 'Your friend has shared an article with you.', 'shared-counts' );
+	$subject      = esc_html__( 'Your friend has shared an article with you.', 'eqd' );
 	$subject      = apply_filters( 'shared_counts_amp_email_subject', $subject, $id );
 	$body         = html_entity_decode( get_the_title( $id ), ENT_QUOTES ) . "\r\n";
 	$body        .= get_permalink( $id ) . "\r\n";
