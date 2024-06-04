@@ -427,7 +427,8 @@ function eqd_single_fullwidth_content() {
 
 			</div>
 
-			<?php if ( ! $hide_editorial_section_on_posts ) :
+			<?php
+			if ( ! $hide_editorial_section_on_posts ) :
 				?>
 				<section class="site-main-article__author-data-editorial_statement">
 					<div class="site-main-article__author-data-editorial_statement-container">
@@ -441,7 +442,7 @@ function eqd_single_fullwidth_content() {
 						</div>
 					</div>
 				</section>
-			<?php 
+				<?php 
 			endif;
 		endif;
 	}
