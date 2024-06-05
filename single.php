@@ -521,7 +521,7 @@ function eqd_single_after_entry_author_info() {
 		<div class="article_footer_data_author">
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-					<?php echo get_avatar( $id, 64 ); ?>
+					<?php echo get_avatar( $id, 80 ); ?>
 					<div class="author_name">
 						<?php echo esc_html( get_the_author() ); ?>
 					</div>
