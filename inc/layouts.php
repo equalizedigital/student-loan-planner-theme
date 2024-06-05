@@ -384,7 +384,7 @@ function eqd_single_fullwidth_content() {
 					
 					?>
 					<span class="entry-author">
-						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 40 ) : ''; ?>
+						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 80 ) : ''; ?>
 
 						<span class="entry-info">
 							<span>
@@ -403,7 +403,7 @@ function eqd_single_fullwidth_content() {
 				// Reviewed By.
 				$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 				if ( false !== $review_by_auth_id ) {
-					$profile_picture = get_avatar( $review_by_auth_id, 64 );
+					$profile_picture = get_avatar( $review_by_auth_id, 80 );
 					$user_info       = get_userdata( $review_by_auth_id );
 					$first_name      = $user_info->first_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 					$last_name       = $user_info->last_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
