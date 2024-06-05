@@ -3,7 +3,7 @@
 vendor/
 #.codekit-config.json
 #config.codekit
-config.codekit3
+#config.codekit3
 vendor/
 node_modules/
 
