@@ -360,7 +360,7 @@ function eqd_single_fullwidth_content() {
 					$author_url_id = get_author_posts_url( $id_meta ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 					?>
 					<span class="entry-author">
-						<?php echo get_avatar( $id_meta, 40 ); ?>
+						<?php echo get_avatar( $id_meta, 80 ); ?>
 						<span class="entry-info">
 							<span>
 								Written By <?php echo wp_kses_post( get_author_posts_link_by_id( $id_meta ) ); ?>
