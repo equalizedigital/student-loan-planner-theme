@@ -101,6 +101,7 @@ function eqd_shared_counts_icon( $link ) {
 			array(
 				'icon' => $social_icons[ $link['type'] ],
 				'size' => 20,
+				'force' => true, // Force rendering in the admin context for testing
 			)
 		);
 	}

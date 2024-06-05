@@ -3873,7 +3873,7 @@ section.refinance_lender_section {
       display: flex;
       gap: 18px; }
     .sidebar_container .sidebar_social > span {
-      color: #FFF;
+      color: #000;
       font-size: 16px;
       font-style: normal;
       font-weight: 700;
