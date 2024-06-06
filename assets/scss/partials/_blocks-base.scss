@@ -163,6 +163,10 @@ h2 {
 	font-weight: 700;
 	line-height: 35px;
 
+	.single & {
+		color: $black;
+	}
+
 	@include media(">tablet") {
 		line-height: 40px;
 	}
