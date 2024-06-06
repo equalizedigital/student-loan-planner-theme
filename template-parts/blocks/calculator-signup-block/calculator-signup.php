@@ -56,9 +56,9 @@ $block_link = get_field( 'link' );
 			<div class="text"><?php echo wp_kses_post( $copy ); ?></div>
 			<?php 
 			if ( ! empty( $block_link ) ) {
-				$url              = $link['url'];
-				$calculator_title = $link['title'];
-				if ( $link['url'] ) {
+				$url              = $block_link['url'];
+				$calculator_title = $block_link['title'];
+				if ( $url ) {
 					echo '<span class="content">';
 					echo '<a href="' . esc_url( $url ) . '" class="btn btn-dark-bg">';
 						echo esc_html( $calculator_title );
