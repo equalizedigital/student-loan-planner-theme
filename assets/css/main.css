@@ -621,6 +621,8 @@ h2 {
   @media (min-width: 992px) {
     h2 {
       font-size: 35px; } }
+  .single h2 {
+    color: #000; }
   @media (min-width: 769px) {
     h2 {
       line-height: 40px; } }
