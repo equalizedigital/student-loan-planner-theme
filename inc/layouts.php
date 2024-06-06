@@ -420,7 +420,7 @@ function eqd_single_fullwidth_content() {
 					</div>
 					
 					<div class="author_info">
-						Reviewed By <?php echo esc_html( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
+						Reviewed By <?php echo wp_kses_post( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
 					</div>
 				</div>
 				<?php endif; ?>
