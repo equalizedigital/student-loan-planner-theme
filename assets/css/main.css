@@ -2164,7 +2164,8 @@ header.site-header .wrap {
         height: 15px;
         display: flex;
         align-items: center;
-        justify-content: center; }
+        justify-content: center;
+        pointer-events: none; }
         .mobile-navigation .primary-navigation > ul > li .chevron img {
           width: 100%; }
         @media (min-width: 1071px) {
