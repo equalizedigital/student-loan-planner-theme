@@ -76,12 +76,12 @@
       "oAP" : "\/.github\/workflows\/lint-php.yml",
       "oF" : 0
     },
-    "\/.github\/workflows\/master.disabled" : {
+    "\/.github\/workflows\/master.yml" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/.github\/workflows\/master.disabled",
+      "oAP" : "\/.github\/workflows\/master.yml",
       "oF" : 0
     },
     "\/.github\/workflows\/security.yml" : {
