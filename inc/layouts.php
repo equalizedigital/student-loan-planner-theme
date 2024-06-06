@@ -389,7 +389,7 @@ function eqd_single_fullwidth_content() {
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : ''; ?>
-								<?php echo ! empty( $edit_auth_id ) ? esc_html( get_author_posts_link_by_id( $edit_auth_id ) ) : ''; ?>
+								<?php echo ! empty( $edit_auth_id ) ? wp_kses_post( get_author_posts_link_by_id( $edit_auth_id ) ) : ''; ?>
 							</span>
 							<span class="entry-data">
 								<?php echo ! empty( $author_info ) ? wp_kses_post( $author_info ) : ''; ?>
@@ -420,7 +420,7 @@ function eqd_single_fullwidth_content() {
 					</div>
 					
 					<div class="author_info">
-						Reviewed By <?php echo esc_html( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
+						Reviewed By <?php echo wp_kses_post( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
 					</div>
 				</div>
 				<?php endif; ?>
