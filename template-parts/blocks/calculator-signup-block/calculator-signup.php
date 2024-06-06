@@ -55,6 +55,7 @@ $block_link = get_field( 'link' );
 			<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
 			<div class="text"><?php echo wp_kses_post( $copy ); ?></div>
 			<?php 
+			var_dump( $block_link );
 			if ( ! empty( $block_link ) ) {
 				$url              = $link['url'];
 				$calculator_title = $link['title'];
