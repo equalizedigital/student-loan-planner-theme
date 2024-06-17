@@ -380,9 +380,9 @@ function eqd_single_landing_page() {
 
 					<?php
 					if ( empty( $parameter_page ) ) {
-						echo esc_html( get_field( 'how_does_the_consult_work' ) );
+						echo wp_kses_post( get_field( 'how_does_the_consult_work' ) );
 					} else {
-						echo esc_html( get_field( 'how_does_the_consult_work', $parameter_page ) );
+						echo wp_kses_post( get_field( 'how_does_the_consult_work', $parameter_page ) );
 					}
 					?>
 				</div>
