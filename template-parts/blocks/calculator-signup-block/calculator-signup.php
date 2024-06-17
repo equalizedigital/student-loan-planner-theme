@@ -1,7 +1,7 @@
 <?php
 /**
  * Calculator Signup Block.
- * 
+ *
  * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
  * @since        1.0.0
@@ -54,11 +54,11 @@ $block_link = get_field( 'link' );
 		<div class="calculator-signup-container-content">
 			<h2 class="title"><?php echo esc_html( $block_title ); ?></h2>
 			<div class="text"><?php echo wp_kses_post( $copy ); ?></div>
-			<?php 
+			<?php
 			if ( ! empty( $block_link ) ) {
 				$url              = $link['url'];
 				$calculator_title = $link['title'];
-				if( $link['url'] ) {
+				if ( $link['url'] ) {
 					echo '<span class="content">';
 					echo '<a href="' . esc_url( $url ) . '" class="btn btn-dark-bg">';
 						echo esc_html( $calculator_title );
@@ -80,7 +80,7 @@ $block_link = get_field( 'link' );
 					}
 					$calculator_signup_title = $row['title'];
 					$context                 = $row['context'];
-					
+
 					echo '<div class="calculator-signup-container-content-list-item">';
 					if ( ! empty( $image ) ) {
 						echo '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $image_alt ) . '" />';
@@ -96,7 +96,7 @@ $block_link = get_field( 'link' );
 							echo wp_kses_post( $context );
 						echo '</span>';
 					}
-					
+
 					echo '</div>';
 					echo '</div>';
 				}
