@@ -1,7 +1,7 @@
 <?php
 /**
  * Resource Links Block Template.
- * 
+ *
  * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
  * @since        1.0.0
@@ -49,7 +49,7 @@ $block_title = get_field( 'title' );
 		<div class="resource-links-container-links" role="tablist">
 		<div class="dropdown">
 				<button id="resource-links-dropdown" class="dropdown-select">
-				<?php 
+				<?php
 				$links = get_field( 'links' );
 				if ( $links ) {
 					foreach ( $links as $key => $row ) {
@@ -72,7 +72,7 @@ $block_title = get_field( 'title' );
 
 				</button>
 				<ul class="resource-links-dropdown-list" role="tablist">
-					<?php 
+					<?php
 					$links = get_field( 'links' );
 					if ( $links ) {
 						foreach ( $links as $key => $row ) {
@@ -105,15 +105,15 @@ $block_title = get_field( 'title' );
 								</li>
 							<?php endif; ?>
 
-								
+
 							<?php
 						}
 					}
 					?>
 				</ul>
 			</div>
-			
-			<?php 
+
+			<?php
 			$links = get_field( 'links' );
 			if ( $links ) {
 				foreach ( $links as $key => $row ) {
@@ -148,7 +148,7 @@ $block_title = get_field( 'title' );
 
 	<div class="resource-links-loop-container">
 
-		<?php 
+		<?php
 		$links = get_field( 'links' );
 		if ( $links ) {
 			foreach ( $links as $key => $row ) {
@@ -158,24 +158,24 @@ $block_title = get_field( 'title' );
 				if ( ! empty( $row['featured_image'] ) ) {
 					$featured_image = $row['featured_image']['url'];
 				}
-				
+
 				if ( ! empty( $row['category'] ) ) {
 					$category = $row['category'];
 				}
 				if ( ! empty( $row['selected_posts'] ) ) {
 					$selected_posts = $row['selected_posts'];
 				}
-				if( 'link' === $row['type_of_button'] ) {
+				if ( 'link' === $row['type_of_button'] ) {
 					continue;
 				}
 				?>
-					<div 
-						id="resource-link-<?php echo esc_attr( $key ); ?>" 
-						role="tabpanel" 
-						aria-labelledby="button-tab-<?php echo esc_attr( $key ); ?>" 
+					<div
+						id="resource-link-<?php echo esc_attr( $key ); ?>"
+						role="tabpanel"
+						aria-labelledby="button-tab-<?php echo esc_attr( $key ); ?>"
 						class="resource-links-loop-container-item <?php echo 0 === $key ? 'resource-links-loop-container-item--active' : ''; ?>"
 					>
-						
+
 						<div class="resource-links-loop-container-content">
 							<div class="resource-links-loop-container-content-featured">
 								<div class="resource-links-loop-container-content-featured-link">
@@ -197,15 +197,15 @@ $block_title = get_field( 'title' );
 							if ( $selected_posts ) {
 
 								$args = array(
-									'post_type' => 'post', 
+									'post_type' => 'post',
 									'post__in'  => $selected_posts,
 									'orderby'   => 'post__in',
 								);
 
 							} else {
 								$args = array(
-									'post_type'      => 'post', 
-									'posts_per_page' => 3, 
+									'post_type'      => 'post',
+									'posts_per_page' => 3,
 									'cat'            => $category,
 								);
 							}
@@ -215,7 +215,7 @@ $block_title = get_field( 'title' );
 							if ( $query->have_posts() ) {
 								while ( $query->have_posts() ) {
 									$query->the_post();
-											
+
 									// Get categories.
 									$categories = get_the_category();
 									if ( $categories ) {
@@ -223,7 +223,7 @@ $block_title = get_field( 'title' );
 									} else {
 										$category = '';
 									}
-											
+
 									$post_title       = get_the_title();
 									$post_link        = get_the_permalink();
 									$author_email     = get_the_author_meta( 'user_email' );
