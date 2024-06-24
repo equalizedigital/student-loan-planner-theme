@@ -521,7 +521,7 @@ function eqd_single_after_entry_author_info() {
 		<div class="article_footer_data_author">
 			<span class="article_footer_data_author_entry-author">
 				<div class="article_footer_data_author_entry-author_titles">
-					<?php echo get_avatar( $id, 64 ); ?>
+					<?php echo get_avatar( $id, 80 ); ?>
 					<div class="author_name">
 						<?php echo esc_html( get_the_author() ); ?>
 					</div>
@@ -555,7 +555,7 @@ function eqd_single_after_entry_author_info() {
 		<?php
 		$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 
-		$profile_picture = get_avatar( $review_by_auth_id, 64 );
+		$profile_picture = get_avatar( $review_by_auth_id, 80 );
 		if ( false !== $review_by_auth_id ) {
 			$user_info  = get_userdata( $review_by_auth_id );
 			$first_name = $user_info->first_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving this here for future use.
@@ -583,7 +583,7 @@ function eqd_single_after_entry_author_info() {
 		<?php
 		$post_editor_by_auth_id_footer = get_field( 'post_editor', get_the_ID() );
 
-		$profile_picture = get_avatar( $post_editor_by_auth_id_footer['ID'], 64 );
+		$profile_picture = get_avatar( $post_editor_by_auth_id_footer['ID'], 80 );
 		$user_info       = get_userdata( $post_editor_by_auth_id_footer['ID'] );
 
 		?>

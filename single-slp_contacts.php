@@ -62,12 +62,12 @@ tha_content_before();
 						
 						<?php if ( get_field( 'property_type' ) ) : ?>
 						<h2 class="title">Property Type</h2>
-						<div class="detail"><?php echo esc_html( get_field( 'property_type' ) ); ?></div>
+						<div class="detail"><?php echo wp_kses_post( get_field( 'property_type' ) ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( get_field( 'financing_options' ) ) : ?>
 						<h2 class="title">Financing Options</h2>
-						<div class="detail"><?php echo esc_html( get_field( 'financing_options' ) ); ?></div>
+						<div class="detail"><?php echo wp_kses_post( get_field( 'financing_options' ) ); ?></div>
 						<?php endif; ?>
 
 						<?php 

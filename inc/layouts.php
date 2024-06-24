@@ -316,23 +316,22 @@ function eqd_single_fullwidth_content() {
 		if ( get_field( 'post_format_style' ) !== 'full-width' ) :
 			?>
 				<?php
-				$featured_image = get_the_post_thumbnail_url( get_the_ID() );
+				$featured_image = false; // This is set to false to prevent output. In the furture if the hero needs output set this equal to: get_the_post_thumbnail_url( get_the_ID() ); phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar -- Leaving for future use.
 				if ( $featured_image ) {
 					?>
-				<span class="hero_featured_image">
-					<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
-					<div class="hero_featured_image_data">
-						<?php
-						$output    = '';
-						$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
-						$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
-						?>
-						<?php echo wp_kses_post( $output ); ?>
-					</div>
-				</span>
+					<span class="hero_featured_image">
+						<?php echo '<img src="' . esc_url( $featured_image ) . '" />'; ?>
+						<div class="hero_featured_image_data">
+							<?php
+							$output    = '';
+							$output   .= 'Updated on <time datetime="' . get_the_modified_date( 'Y-m-d' ) . '">' . get_the_modified_date( 'F j, Y' ) . '</time>';
+							$post_data = get_the_content( get_the_ID() ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
+							?>
+							<?php echo wp_kses_post( $output ); ?>
+						</div>
+					</span>
 					<?php
-				} else {
-					echo '</br>';}
+				}
 				?>
 
 
@@ -344,21 +343,7 @@ function eqd_single_fullwidth_content() {
 				}
 			}
 
-			if ( ! $hide_editorial_section_on_posts ) :
-				?>
-			<section class="site-main-article__author-data-editorial_statement">
-				<div class="site-main-article__author-data-editorial_statement-container">
-					<div class="site-main-article__author-data-editorial_statement-container__title">
-						<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
-					</div>
-					<div class="site-main-article__author-data-editorial_statement-container__copy">
-						<p>At Student Loan Planner, we follow a strict editorial ethics policy. This post may contain references to products from our partners within the guidelines of this policy. Read our 
-						<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button> to learn more.
-						</p>
-					</div>
-				</div>
-			</section>
-			<?php endif; ?>
+			?>
 
 			<div class="site-main-article__author-data 
 			<?php
@@ -375,10 +360,13 @@ function eqd_single_fullwidth_content() {
 					$author_url_id = get_author_posts_url( $id_meta ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 					?>
 					<span class="entry-author">
-						<?php echo get_avatar( $id_meta, 40 ); ?>
+						<?php echo get_avatar( $id_meta, 80 ); ?>
 						<span class="entry-info">
 							<span>
-								Written By <?php echo esc_html( get_author_posts_link_by_id( $id_meta ) ); ?>
+								Written By <?php echo wp_kses_post( get_author_posts_link_by_id( $id_meta ) ); ?>
+							</span>
+							<span>
+								Updated on <?php echo wp_kses_post( get_the_modified_date( 'F j, Y' ) ); ?>
 							</span>
 						</span>
 					</span>
@@ -396,12 +384,12 @@ function eqd_single_fullwidth_content() {
 					
 					?>
 					<span class="entry-author">
-						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 40 ) : ''; ?>
+						<?php echo ! empty( $edit_auth_id ) ? get_avatar( $edit_auth_id, 80 ) : ''; ?>
 
 						<span class="entry-info">
 							<span>
 								<?php echo ! empty( $id_post_editor ) ? 'Edited by' : ''; ?>
-								<?php echo ! empty( $edit_auth_id ) ? esc_html( get_author_posts_link_by_id( $edit_auth_id ) ) : ''; ?>
+								<?php echo ! empty( $edit_auth_id ) ? wp_kses_post( get_author_posts_link_by_id( $edit_auth_id ) ) : ''; ?>
 							</span>
 							<span class="entry-data">
 								<?php echo ! empty( $author_info ) ? wp_kses_post( $author_info ) : ''; ?>
@@ -415,7 +403,7 @@ function eqd_single_fullwidth_content() {
 				// Reviewed By.
 				$review_by_auth_id = get_field( 'post_reviewed_by', get_the_ID() );
 				if ( false !== $review_by_auth_id ) {
-					$profile_picture = get_avatar( $review_by_auth_id, 64 );
+					$profile_picture = get_avatar( $review_by_auth_id, 80 );
 					$user_info       = get_userdata( $review_by_auth_id );
 					$first_name      = $user_info->first_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
 					$last_name       = $user_info->last_name; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
@@ -432,16 +420,30 @@ function eqd_single_fullwidth_content() {
 					</div>
 					
 					<div class="author_info">
-						Reviewed By <?php echo esc_html( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
+						Reviewed By <?php echo wp_kses_post( get_author_posts_link_by_id( $review_by_auth_id ) ); ?>
 					</div>
 				</div>
 				<?php endif; ?>
 
 			</div>
 
-			
-
 			<?php
+			if ( ! $hide_editorial_section_on_posts ) :
+				?>
+				<section class="site-main-article__author-data-editorial_statement">
+					<div class="site-main-article__author-data-editorial_statement-container">
+						<div class="site-main-article__author-data-editorial_statement-container__title">
+							<h2 class="screen-reader-text">Editorial Ethics at Student Loan Planner</h2>
+						</div>
+						<div class="site-main-article__author-data-editorial_statement-container__copy">
+							<p>
+							<button class="modal-btn btn-style-link" aria-haspopup="true" aria-expanded="false" aria-controls="modal_disclosure" data-modal="modal_disclosure" aria-label="Open Disclosure Modal">advertising disclosure</button>
+							</p>
+						</div>
+					</div>
+				</section>
+				<?php 
+			endif;
 		endif;
 	}
 }

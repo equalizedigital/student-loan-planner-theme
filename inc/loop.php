@@ -135,7 +135,7 @@ function eqd_single_header() {
 						?>
 					<span class="entry-author">
 						<a href="<?php echo esc_url( get_author_posts_url( $id ) ); ?>" aria-hidden="true" tabindex="-1">
-							<?php echo get_avatar( $id, 40 ); ?>
+							<?php echo get_avatar( $id, 80 ); ?>
 						</a>
 						<span class="entry-info">
 							<span>

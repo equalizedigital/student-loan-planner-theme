@@ -99,8 +99,9 @@ function eqd_shared_counts_icon( $link ) {
 	if ( array_key_exists( $link['type'], $social_icons ) ) {
 		$link['icon'] = eqd_icon(
 			array(
-				'icon' => $social_icons[ $link['type'] ],
-				'size' => 20,
+				'icon'  => $social_icons[ $link['type'] ],
+				'size'  => 20,
+				'force' => true, // Force rendering in the admin context for testing.
 			)
 		);
 	}
