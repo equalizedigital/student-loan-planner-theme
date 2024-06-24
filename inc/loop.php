@@ -393,7 +393,7 @@ function eqd_single_landing_page() {
 					if ( get_field( 'how_does_the_consult_work_youtube_id' ) ) :
 						?>
 							<div class="ed_landing_works_container_media">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_url( get_field( 'how_does_the_consult_work_youtube_id' ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_attr( get_field( 'how_does_the_consult_work_youtube_id' ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 							</div>
 							<?php
 							endif;
@@ -401,10 +401,9 @@ function eqd_single_landing_page() {
 				} elseif ( get_field( 'how_does_the_consult_work_youtube_id', $parameter_page ) ) {
 					?>
 							<div class="ed_landing_works_container_media">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_url( get_field( 'how_does_the_consult_work_youtube_id', $parameter_page ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo esc_attr( get_field( 'how_does_the_consult_work_youtube_id', $parameter_page ) ); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 							</div>
-								<?php
-
+					<?php
 				}
 				?>
 			</div>
