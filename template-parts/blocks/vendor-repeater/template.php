@@ -75,7 +75,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 							<td>
 								<?php if ( $company_logo ) { ?>
 								<h3>
-									<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" class="btn" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
+									<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
 										<img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>">
 									</a>
 								</h3>
@@ -213,7 +213,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<tr>
 					<td>
 						<h3>
-							<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" class="btn" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
+							<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
 								<img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>">
 							</a>
 						</h3>
