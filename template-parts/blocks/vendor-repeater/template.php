@@ -70,11 +70,14 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 						while ( have_rows( 'vendors', 'option' ) ) :
 							the_row();
 							$company_logo = get_sub_field( 'company_logo' );
+							$vendor_link  = get_sub_field( 'link' );
 							?>
 							<td>
 								<?php if ( $company_logo ) { ?>
 								<h3>
-									<img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>">
+									<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" class="btn" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
+										<img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>">
+									</a>
 								</h3>
 								<?php } ?>
 							</td>
@@ -193,7 +196,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				$company_logo    = get_sub_field( 'company_logo' );
 				$cashback_amount = get_sub_field( 'cashback_amount' );
 				$variable        = get_sub_field( 'variable' );
-
+				$vendor_link     = get_sub_field( 'link' );
 				?>
 
 		<table class="vendor_repeater_block_container_items_table_mobile">
@@ -209,7 +212,11 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 				<!-- tr -->
 				<tr>
 					<td>
-						<h3><img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>"></h3>
+						<h3>
+							<a href="<?php echo wp_kses_post( $vendor_link['url'] ); ?>" class="btn" <?php echo ! empty( $vendor_link['target'] ) ? wp_kses_post( "target='" . $vendor_link['target'] . "'" ) : ''; ?>>
+								<img src="<?php echo wp_kses_post( $company_logo['url'] ); ?>" alt="<?php echo wp_kses_post( $company_logo['alt'] ); ?>">
+							</a>
+						</h3>
 					</td>
 				</tr>
 				<tr>
