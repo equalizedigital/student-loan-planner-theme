@@ -153,9 +153,13 @@ function eqd_single_after_entry_content() {
 									<th class="sr-only" scope="row"><?php echo esc_html( get_sub_field( 'company_name' ) ); ?></th>
 									<td>
 										<div class="td_content">
-											<a href="<?php echo wp_kses_post( $url['url'] ); ?>" <?php echo ! empty( $url['target'] ) ? wp_kses_post( "target='" . $url['target'] . "'" ) : ''; ?>>
+											<?php if( $url ) { ?>
+												<a href="<?php echo wp_kses_post( $url['url'] ); ?>" <?php echo ! empty( $url['target'] ) ? wp_kses_post( 	"target='" . $url['target'] . "'" ) : ''; ?>>
+											<?php } ?>
 												<img src="<?php echo wp_kses_post( $logo['url'] ); ?>" alt="<?php echo wp_kses_post( $logo['alt'] ); ?>">
-											</a>
+											<?php if( $url ) { ?>
+												</a>
+											<?php } ?>
 											<button class="btn-text modal-btn" data-modal="modal_disclosure_<?php echo wp_kses_post( get_row_index() ); ?>" aria-label="Disclosures for <?php echo wp_kses_post( $company_name ); ?>">Disclosures</button>
 										</div>
 									</td>
