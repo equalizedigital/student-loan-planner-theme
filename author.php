@@ -208,7 +208,9 @@ tha_content_before();
 						?>
 						</h2>
 						<?php
-						echo wp_kses_post( wpautop( $idf['custom_author_bio'][0] ) );
+						if ( isset( $idf['custom_author_bio'][0] ) ) {
+							echo wp_kses_post( wpautop( $idf['custom_author_bio'][0] ) );
+						}
 
 						$author_bio = get_the_author_meta( 'description' );
 
@@ -220,16 +222,7 @@ tha_content_before();
 							</div>
 							<?php
 
-						} else {
-							// Fallback to Yoast SEO's user bio if the custom bio is not set.
-							$yoast_user_bio = get_the_author_meta( 'wpseo_metadesc' );
-
-							// Check if Yoast's user bio exists and is not empty.
-							if ( ! empty( $yoast_user_bio ) ) {
-								echo wp_kses_post( wpautop( $yoast_user_bio ) );
-							}
 						}
-
 						?>
 					</div>
 				</div>
