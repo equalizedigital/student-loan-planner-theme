@@ -97,7 +97,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 		</div>
 
 			<div class="vendor_information_block_container_column_two">
-
+				<h3><?php echo esc_html( get_the_title( $select_institutional_contact ) ); ?></h3>
 				<?php if ( $show_about ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">About:</h4>
 					<div class="vendor_information_block_container_column_two_text_repeater">
