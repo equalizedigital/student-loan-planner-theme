@@ -7089,6 +7089,9 @@ article.type-post {
   .vendor_information_block_container_column_two {
     grid-column-start: 5;
     grid-column-end: 13; }
+    @media (max-width: 767px) {
+      .vendor_information_block_container_column_two_institution_name {
+        margin-top: 20px; } }
     .vendor_information_block_container_column_two_title {
       color: #000;
       font-size: 16px;

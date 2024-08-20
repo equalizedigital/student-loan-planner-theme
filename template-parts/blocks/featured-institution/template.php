@@ -1,7 +1,7 @@
 <?php
 /**
  * Vendor_information_block Block Template.
- * 
+ *
  * @package      Equalize Digital Base Theme
  * @author       Equalize Digital
  * @since        1.0.0
@@ -38,6 +38,7 @@ $class_name = apply_filters( 'loader_block_class', $class_name, $block, $post_id
 
 // Load values and assing defaults.
 $select_institutional_contact = get_field( 'select_institutional_contact' );
+$institution_name             = get_field( 'institution_name', $select_institutional_contact );
 $logo                         = get_field( 'company_logo', $select_institutional_contact );
 $rating                       = get_field( 'rating', $select_institutional_contact );
 $review_url                   = get_field( 'review_url', $select_institutional_contact ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Leaving for future use.
@@ -59,8 +60,6 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 ?>
 <section id="<?php echo ! empty( $block_id ) ? esc_attr( $block_id ) : esc_attr( $classid ); ?>" class="<?php echo esc_attr( $class_name ); ?>">
-
-	<h3 class="screen-reader-text"><?php echo esc_html( get_the_title( $select_institutional_contact ) ); ?></h3>
 	<div class="vendor_information_block_container">
 
 		<div class="vendor_information_block_container_column_one">
@@ -97,6 +96,9 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 		</div>
 
 			<div class="vendor_information_block_container_column_two">
+				<h3 class="vendor_information_block_container_column_two_institution_name">
+					<?php echo esc_html( $institution_name ); ?>
+				</h3>
 
 				<?php if ( $show_about ) : ?>
 					<h4 class="vendor_information_block_container_column_two_title">About:</h4>
@@ -151,7 +153,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 					</div>
 				<?php endif; ?>
 
-				<?php 
+				<?php
 				$vendor_title   = get_field( 'title' );
 				$vendor_content = get_field( 'content' );
 				if ( $vendor_title ) :
@@ -170,7 +172,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 						<a href="<?php echo esc_url( get_the_permalink( $select_institutional_contact ) ); ?>"><?php echo esc_html( get_the_title( $select_institutional_contact ) ); ?></a>
 					</div>
 				<?php endif; ?>
-				
+
 				<?php if ( $show_feature_list ) : ?>
 				<h4 class="vendor_information_block_container_column_two_title"><?php echo wp_kses_post( $heading ); ?></h4>
 				<div class="vendor_information_block_container_column_two_text_repeater">
@@ -190,12 +192,12 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 				</div>
 				<?php endif; ?>
 
-				
+
 
 				<?php if ( have_rows( 'eligible_states', $select_institutional_contact ) ) : ?>
 					<?php
 					while ( have_rows( 'eligible_states', $select_institutional_contact ) ) :
-						the_row(); 
+						the_row();
 						?>
 						<h4 class="vendor_information_block_container_column_two_title">
 							<?php echo wp_kses_post( get_sub_field( 'heading' ) ); ?>
@@ -221,7 +223,7 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 
 					<?php if ( ! empty( $more_info_content ) ) : ?>
 
-						<button 
+						<button
 						class="vendor_information_block_container_column_two_link_more_info"
 						type="button"
 						aria-label="More Information about <?php echo esc_attr( get_the_title( $select_institutional_contact ) ); ?>"
@@ -231,9 +233,9 @@ $time_stamp                   = my_acf_block_unique_id() . wp_rand( 0, 23 );
 								<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6.50008 6.50008L12.0002 1" stroke="#82BC46"/></svg>
 							</span>
 						</button>
-						
+
 					<?php endif; ?>
-					
+
 				</div>
 			</div>
 
