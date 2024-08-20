@@ -1,0 +1,31 @@
+name: Deploy Files via FTP (Staging)
+
+on:
+  push:
+    branches:
+      - stage
+    paths:
+      - '**' # Trigger for any change in any file
+  workflow_dispatch:
+    inputs:
+      sync:
+        description: "File synchronization"
+        required: true
+        default: "delta"
+
+jobs:
+  ftp-deploy:
+    name: "Deploy via FTP"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "FTP Deploy"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: "198.175.25.37"
+          username: "slpwealthcombigscoots-stagingcom"
+          password: ${{ secrets.FTP_PASSWORD_STG_SLP_WEALTH }}
+          local-dir: "./" # Set to the local directory you want to deploy
+          server-dir: "/public/wp-content/themes/student-loan-planner-theme/" # Update with your server path
